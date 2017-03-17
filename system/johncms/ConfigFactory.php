@@ -17,6 +17,6 @@ use Psr\Container\ContainerInterface;
 class ConfigFactory
 {
     public function __invoke(ContainerInterface $container){
-        return new Config($container->get('config')['johncms']);
+        return new Config($container->get('config')['mobicms']);
     }
 }
