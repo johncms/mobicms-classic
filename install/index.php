@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-const JOHNCMS = '7.1.0';
+const MOBICMS = '0.1.0';
 
 // Check the current PHP version
 if (version_compare(PHP_VERSION, '5.6', '<')) {
@@ -217,7 +207,7 @@ echo '<!DOCTYPE html>' . "\n" .
     '<html lang="' . $language . '">' . "\n" .
     '<head>' . "\n" .
     '<meta charset="utf-8">' . "\n" .
-    '<title>JohnCMS ' . JOHNCMS . '</title>' . "\n" .
+    '<title>mobiCMS ' . MOBICMS . '</title>' . "\n" .
     '<style type="text/css">' .
     'a, a:link, a:visited{color: blue;}' .
     'body {font-family: Arial, Helvetica, sans-serif; font-size: small; color: #000000; background-color: #FFFFFF}' .
@@ -237,14 +227,13 @@ echo '<!DOCTYPE html>' . "\n" .
     '</style>' . "\n" .
     '</head>' . "\n" .
     '<body>' . "\n" .
-    '<h1>JohnCMS ' . JOHNCMS . '</h1><hr />';
+    '<h1>mobiCMS ' . MOBICMS . '</h1><hr />';
 if (!$act) {
     echo '<form action="index.php" method="post">' .
         '<p><h3 class="green">' . $lng['change_language'] . '</h3>' .
         '<div><input type="radio" name="lng" value="en" ' . ($language == 'en' ? 'checked="checked"' : '') . ' />&#160;English</div>' .
         '<div><input type="radio" name="lng" value="ru" ' . ($language == 'ru' ? 'checked="checked"' : '') . ' />&#160;Русский</div>' .
         '</p><p><input type="submit" name="submit" value="' . $lng['change'] . '" /></p></form>' .
-        '<p>' . $lng['languages'] . '</p>' .
         '<hr />';
 }
 
@@ -293,7 +282,7 @@ switch ($act) {
 
         // Принимаем данные формы
         $db_host = isset($_POST['dbhost']) ? htmlentities(trim($_POST['dbhost'])) : 'localhost';
-        $db_name = isset($_POST['dbname']) ? htmlentities(trim($_POST['dbname'])) : 'johncms';
+        $db_name = isset($_POST['dbname']) ? htmlentities(trim($_POST['dbname'])) : 'mobicms';
         $db_user = isset($_POST['dbuser']) ? htmlentities(trim($_POST['dbuser'])) : 'root';
         $db_pass = isset($_POST['dbpass']) ? htmlentities(trim($_POST['dbpass'])) : '';
         $site_url = isset($_POST['siteurl']) ? preg_replace("#/$#", '', htmlentities(trim($_POST['siteurl']), ENT_QUOTES, 'UTF-8')) : 'http://' . $_SERVER["SERVER_NAME"];
@@ -418,7 +407,7 @@ switch ($act) {
                 }
 
                 $systemSettings = [
-                    'johncms' => [
+                    'mobicms' => [
                         'active'        => 1,
                         'antiflood'     => [
                             'mode'    => 2,
@@ -428,7 +417,7 @@ switch ($act) {
                             'dayto'   => 22,
                         ],
                         'clean_time'    => 0,
-                        'copyright'     => 'Powered by JohnCMS',
+                        'copyright'     => 'Powered by mobiCMS',
                         'email'         => $site_mail,
                         'flsz'          => '16000',
                         'gzip'          => 1,
@@ -450,8 +439,8 @@ switch ($act) {
                         'mod_lib_comm'  => 1,
                         'mod_down'      => 2,
                         'mod_down_comm' => 1,
-                        'meta_key'      => 'johncms',
-                        'meta_desc'     => 'Powered by JohnCMS http://johncms.com',
+                        'meta_key'      => 'mobicms',
+                        'meta_desc'     => 'Powered by mobiCMS https://mobicms.org',
                         'news'          => [
                             'view'     => 1,
                             'size'     => 200,
@@ -636,4 +625,4 @@ switch ($act) {
         }
 }
 
-echo '<hr />&copy;&#160;Powered by <a href="http://johncms.com">JohnCMS</a></body></html>';
+echo '<hr />&copy;&#160;Powered by <a href="https://mobicms.org" target="_blank">mobiCMS</a></body></html>';
