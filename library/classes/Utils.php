@@ -1,14 +1,4 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
 namespace Library;
 
@@ -25,8 +15,8 @@ class Utils
      */
     public static function redir404()
     {
-        /** @var \Johncms\Api\ConfigInterface $config */
-        $config = \App::getContainer()->get(\Johncms\Api\ConfigInterface::class);
+        /** @var \Mobicms\Api\ConfigInterface $config */
+        $config = \App::getContainer()->get(\Mobicms\Api\ConfigInterface::class);
 
         ob_get_level() and ob_end_clean();
         header('Location: ' . $config['homeurl'] . '/?err');

@@ -1,14 +1,4 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
 namespace Library;
 
@@ -32,7 +22,7 @@ class Rating
     private $db;
 
     /**
-     * @var \Johncms\Api\ToolsInterface
+     * @var \Mobicms\Api\ToolsInterface
      */
     private $tools;
 
@@ -44,7 +34,7 @@ class Rating
     {
         $container = \App::getContainer();
         $this->db = $container->get(\PDO::class);
-        $this->tools = $container->get(\Johncms\Api\ToolsInterface::class);
+        $this->tools = $container->get(\Mobicms\Api\ToolsInterface::class);
 
         $this->lib_id = $id;
         $this->check();

@@ -1,14 +1,4 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
 defined('_IN_JOHNCMS') or die('Error: restricted access');
 
@@ -17,11 +7,11 @@ require '../system/head.php';
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-/** @var Johncms\Api\ConfigInterface $config */
-$config = $container->get(Johncms\Api\ConfigInterface::class);
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 // Комментарии
 if (!$config['mod_down_comm'] && $systemUser->rights < 7) {
@@ -50,22 +40,22 @@ $textl = _t('Comments') . ': ' . (mb_strlen($res_down['rus_name']) > 30 ? $title
 
 // Параметры комментариев
 $arg = [
-    'object_comm_count' => 'total', // Поле с числом комментариев
+    'object_comm_count' => 'total',              // Поле с числом комментариев
     'comments_table'    => 'download__comments', // Таблица с комментариями
-    'object_table'      => 'download__files', // Таблица комментируемых объектов
-    'script'            => '?act=comments', // Имя скрипта (с параметрами вызова)
-    'sub_id_name'       => 'id', // Имя идентификатора комментируемого объекта
-    'sub_id'            => $id, // Идентификатор комментируемого объекта
-    'owner'             => false, // Владелец объекта
-    'owner_delete'      => false, // Возможность владельцу удалять комментарий
-    'owner_reply'       => false, // Возможность владельцу отвечать на комментарий
-    'owner_edit'        => false, // Возможность владельцу редактировать комментарий
-    'title'             => _t('Comments'), // Название раздела
-    'context_top'       => '<div class="phdr"><b>' . $textl . '</b></div>', // Выводится вверху списка
+    'object_table'      => 'download__files',    // Таблица комментируемых объектов
+    'script'            => '?act=comments',      // Имя скрипта (с параметрами вызова)
+    'sub_id_name'       => 'id',                 // Имя идентификатора комментируемого объекта
+    'sub_id'            => $id,                  // Идентификатор комментируемого объекта
+    'owner'             => false,                // Владелец объекта
+    'owner_delete'      => false,                // Возможность владельцу удалять комментарий
+    'owner_reply'       => false,                // Возможность владельцу отвечать на комментарий
+    'owner_edit'        => false,                // Возможность владельцу редактировать комментарий
+    'title'             => _t('Comments'),       // Название раздела
+    'context_top'       => '<div class="phdr"><b>' . $textl . '</b></div>',                       // Выводится вверху списка
     'context_bottom'    => '<p><a href="?act=view&amp;id=' . $id . '">' . _t('Back') . '</a></p>' // Выводится внизу списка
 ];
 
 // Показываем комментарии
-$comm = new Johncms\Comments($arg);
+$comm = new Mobicms\Comments($arg);
 
 require '../system/end.php';

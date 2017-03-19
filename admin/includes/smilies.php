@@ -1,25 +1,15 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
 defined('_IN_JOHNADM') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Johncms\Api\ToolsInterface $tools */
-$tools = $container->get(Johncms\Api\ToolsInterface::class);
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-/** @var Johncms\Api\ConfigInterface $config */
-$config = $container->get(Johncms\Api\ConfigInterface::class);
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Admin Panel') . '</b></a> | ' . _t('Smilies') . '</div>';
 

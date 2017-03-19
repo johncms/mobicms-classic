@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-namespace Johncms;
+namespace Mobicms;
 
 use Psr\Container\ContainerInterface;
 
@@ -39,7 +29,7 @@ class Counters
         $this->db = $container->get(\PDO::class);
         $this->systemUser = $container->get(Api\UserInterface::class);
         $this->tools = $container->get(Api\ToolsInterface::class);
-        $this->homeurl = $container->get('config')['johncms']['homeurl'];
+        $this->homeurl = $container->get('config')['mobicms']['homeurl'];
 
         return $this;
     }

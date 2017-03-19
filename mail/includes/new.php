@@ -1,14 +1,4 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
 defined('_IN_JOHNCMS') or die('Error: restricted access');
 
@@ -21,11 +11,11 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-/** @var Johncms\Api\ToolsInterface $tools */
-$tools = $container->get(Johncms\Api\ToolsInterface::class);
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 echo '<div class="phdr"><b>' . _t('New Messages') . '</b></div>';
 $total = $db->query('SELECT COUNT(DISTINCT `user_id`) FROM `cms_mail` WHERE `from_id` = ' . $systemUser->id . ' AND `delete` != ' . $systemUser->id . ' AND `read` = 0')->fetchColumn();

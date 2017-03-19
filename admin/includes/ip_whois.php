@@ -1,22 +1,12 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
 defined('_IN_JOHNADM') or die('Error: restricted access');
 
 $ip = isset($_GET['ip']) ? trim($_GET['ip']) : false;
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Admin Panel') . '</b></a> | IP WHOIS</div>';
 
-/** @var Johncms\Api\ToolsInterface $tools */
-$tools = App::getContainer()->get(Johncms\Api\ToolsInterface::class);
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = App::getContainer()->get(Mobicms\Api\ToolsInterface::class);
 
 function whoisQuery($whoisserver, $domain)
 {

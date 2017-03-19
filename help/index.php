@@ -1,14 +1,4 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
 define('_IN_JOHNCMS', 1);
 
@@ -31,8 +21,8 @@ require('../system/head.php');
 
 // Обрабатываем ссылку для возврата
 if (empty($_SESSION['ref'])) {
-    /** @var Johncms\Api\ConfigInterface $config */
-    $config = $container->get(Johncms\Api\ConfigInterface::class);
+    /** @var Mobicms\Api\ConfigInterface $config */
+    $config = $container->get(Mobicms\Api\ConfigInterface::class);
     $_SESSION['ref'] = isset($_SERVER['HTTP_REFERER']) ? htmlspecialchars($_SERVER['HTTP_REFERER']) : $config['homeurl'];
 }
 

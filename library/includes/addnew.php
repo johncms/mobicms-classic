@@ -1,14 +1,4 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
 defined('_IN_JOHNCMS') or die('Error: restricted access');
 
@@ -18,14 +8,14 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-/** @var Johncms\Api\ConfigInterface $config */
-$config = $container->get(Johncms\Api\ConfigInterface::class);
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-/** @var Johncms\Api\ToolsInterface $tools */
-$tools = $container->get(Johncms\Api\ToolsInterface::class);
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 use Library\Hashtags;
 
@@ -190,7 +180,7 @@ if (($adm || ($db->query("SELECT `user_add` FROM `library_cats` WHERE `id`=" . $
         . '<p><h3>' . _t('Announce') . ' (max. 500):</h3>'
         . '<textarea name="announce" rows="2" cols="20">' . $announce . '</textarea></p>'
         . '<p><h3>' . _t('Text') . ':</h3>'
-        . $container->get(Johncms\Api\BbcodeInterface::class)->buttons('form',
+        . $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form',
             'text') . '<textarea name="text" rows="' . $systemUser->getConfig()->fieldHeight . '" cols="20">' . $text . '</textarea></p>'
         . '<p><input type="checkbox" name="comments" value="1" checked="checked" />' . _t('Commenting on the Article') . '</p>'
         . '<p><h3>' . _t('To upload a photo') . '</h3>'

@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-namespace Johncms;
+namespace Mobicms;
 
 use Psr\Container\ContainerInterface;
 
@@ -27,7 +17,7 @@ class PdoFactory
         $dbHost = isset($config['db_host']) ? $config['db_host'] : 'localhost';
         $dbUser = isset($config['db_user']) ? $config['db_user'] : 'root';
         $dbPass = isset($config['db_pass']) ? $config['db_pass'] : '';
-        $dbName = isset($config['db_name']) ? $config['db_name'] : 'johncms';
+        $dbName = isset($config['db_name']) ? $config['db_name'] : 'mobicms';
 
         try {
             $pdo = new \PDO('mysql:host=' . $dbHost . ';dbname=' . $dbName, $dbUser, $dbPass,

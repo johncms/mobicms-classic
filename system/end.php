@@ -1,14 +1,4 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
 defined('_IN_JOHNCMS') or die('Error: restricted access');
 
@@ -18,11 +8,11 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Johncms\Api\ToolsInterface $tools */
-$tools = $container->get(Johncms\Api\ToolsInterface::class);
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-/** @var Johncms\Api\ConfigInterface $config */
-$config = $container->get(Johncms\Api\ConfigInterface::class);
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 // Рекламный блок сайта
 if (!empty($cms_ads[2])) {
@@ -69,5 +59,5 @@ ATTENTION!!!
 The copyright could not be removed within 90 days of installation scripts
 -----------------------------------------------------------------
 */
-echo '<div><small>&copy; <a href="http://johncms.com">JohnCMS</a></small></div>' .
+echo '<div><small>&copy; <a href="https://mobicms.org">mobiCMS</a></small></div>' .
     '</div></body></html>';

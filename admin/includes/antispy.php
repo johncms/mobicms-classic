@@ -1,20 +1,10 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
 defined('_IN_JOHNADM') or die('Error: restricted access');
 define('ROOT_DIR', '..');
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = App::getContainer()->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = App::getContainer()->get(Mobicms\Api\UserInterface::class);
 
 // Проверяем права доступа
 if ($systemUser->rights < 7) {

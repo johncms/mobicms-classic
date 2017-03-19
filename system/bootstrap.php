@@ -1,14 +1,4 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
 defined('_IN_JOHNCMS') or die('Error: restricted access');
 
@@ -67,8 +57,8 @@ session_start();
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Johncms\Api\EnvironmentInterface $env */
-$env = App::getContainer()->get(Johncms\Api\EnvironmentInterface::class);
+/** @var Mobicms\Api\EnvironmentInterface $env */
+$env = App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
@@ -107,15 +97,15 @@ if ($req->rowCount()) {
 $cacheFile = CACHE_PATH . 'cleanup.dat';
 
 if (!file_exists($cacheFile) || filemtime($cacheFile) < (time() - 86400)) {
-    new Johncms\Cleanup($db);
+    new Mobicms\Cleanup($db);
     file_put_contents($cacheFile, time());
 }
 
-/** @var Johncms\Api\ConfigInterface $config */
-$config = $container->get(Johncms\Api\ConfigInterface::class);
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-/** @var Johncms\UserConfig $userConfig */
-$userConfig = $container->get(Johncms\Api\UserInterface::class)->getConfig();
+/** @var Mobicms\UserConfig $userConfig */
+$userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
 
 if (isset($_POST['setlng']) && array_key_exists($_POST['setlng'], $config->lng_list)) {
     $locale = trim($_POST['setlng']);

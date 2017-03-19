@@ -3,24 +3,24 @@
 return [
     'dependencies' => [
         'factories' => [
-            Johncms\Api\BbcodeInterface::class      => Johncms\Bbcode::class,
-            Johncms\Api\ConfigInterface::class      => Johncms\ConfigFactory::class,
-            Johncms\Api\EnvironmentInterface::class => Johncms\Environment::class,
-            Johncms\Api\ToolsInterface::class       => Johncms\Tools::class,
-            Johncms\Api\UserInterface::class        => Johncms\UserFactory::class,
-            PDO::class                              => Johncms\PdoFactory::class,
+            Mobicms\Api\BbcodeInterface::class      => Mobicms\Bbcode::class,
+            Mobicms\Api\ConfigInterface::class      => Mobicms\ConfigFactory::class,
+            Mobicms\Api\EnvironmentInterface::class => Mobicms\Environment::class,
+            Mobicms\Api\ToolsInterface::class       => Mobicms\Tools::class,
+            Mobicms\Api\UserInterface::class        => Mobicms\UserFactory::class,
+            PDO::class                              => Mobicms\PdoFactory::class,
 
-            'counters' => Johncms\Counters::class,
+            'counters' => Mobicms\Counters::class,
         ],
 
         // DEPRECATED!!!
         // Данные псевдонимы запрещены к использованию и будут удалены в ближайших версиях.
         // В своих разработках используйте вызов соответствующих интерфейсов
         'aliases' => [
-            Johncms\User::class => Johncms\Api\UserInterface::class,
-            'bbcode'            => Johncms\Api\BbcodeInterface::class,
-            'env'               => Johncms\Api\EnvironmentInterface::class,
-            'tools'             => Johncms\Api\ToolsInterface::class,
+            Mobicms\User::class => Mobicms\Api\UserInterface::class,
+            'bbcode'            => Mobicms\Api\BbcodeInterface::class,
+            'env'               => Mobicms\Api\EnvironmentInterface::class,
+            'tools'             => Mobicms\Api\ToolsInterface::class,
         ],
     ],
 ];

@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-namespace Johncms;
+namespace Mobicms;
 
 class NewsWidget
 {
@@ -25,7 +15,7 @@ class NewsWidget
     private $db;
 
     /**
-     * @var \Johncms\Tools
+     * @var Tools
      */
     private $tools;
 
@@ -36,7 +26,7 @@ class NewsWidget
 
         $this->db = $container->get(\PDO::class);
         $this->tools = $container->get(Api\ToolsInterface::class);
-        $this->settings = $container->get('config')['johncms']['news'];
+        $this->settings = $container->get('config')['mobicms']['news'];
         $this->newscount = $this->newscount() . $this->lastnewscount();
         $this->news = $this->news();
     }
