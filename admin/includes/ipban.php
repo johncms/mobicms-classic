@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNADM') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -16,7 +16,8 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Проверяем права доступа
 if ($systemUser->rights < 9) {
-    header('Location: http://johncms.com/?err');
+    echo _t('Access denied');
+    require('../system/end.php');
     exit;
 }
 
@@ -133,8 +134,8 @@ switch ($mod) {
 
             // Проверяем, не попадает ли IP администратора в диапазон
 
-            /** @var Johncms\Api\EnvironmentInterface $env */
-            $env = App::getContainer()->get(Johncms\Api\EnvironmentInterface::class);
+            /** @var Mobicms\Api\EnvironmentInterface $env */
+            $env = App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
 
             if (($env->getIp() >= $ip1 && $env->getIp() <= $ip2) || ($env->getIpViaProxy() >= $ip1 && $env->getIpViaProxy() <= $ip2)) {
                 $error = _t('Ban impossible. Your own IP address in the range');

@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNADM') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 $error = [];
 $search_post = isset($_POST['search']) ? trim($_POST['search']) : false;

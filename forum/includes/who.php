@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 $textl = _t('Who in Forum');
 $headmod = $id ? 'forum,' . $id : 'forumwho';

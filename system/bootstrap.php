@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 error_reporting(E_ALL & ~E_NOTICE);
 date_default_timezone_set('UTC');
@@ -79,7 +79,7 @@ if ($req->rowCount()) {
             if (!empty($res['link'])) {
                 header('Location: ' . $res['link']);
             } else {
-                header('Location: http://johncms.com');
+                header('Location: http://example.com');
             }
             exit;
             break;

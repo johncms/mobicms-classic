@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 if ($id) {
     /** @var Psr\Container\ContainerInterface $container */

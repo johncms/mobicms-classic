@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNADM') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -8,11 +8,12 @@ $container = App::getContainer();
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-$config = $container->get('config')['johncms'];
+$config = $container->get('config')['mobicms'];
 
 // Проверяем права доступа
 if ($systemUser->rights < 7) {
-    header('Location: http://johncms.com/?err');
+    echo _t('Access denied');
+    require('../system/end.php');
     exit;
 }
 
@@ -29,7 +30,7 @@ if (isset($_POST['submit'])) {
     $config['active'] = isset($_POST['active']) ? intval($_POST['active']) : 0;
     $config['site_access'] = isset($_POST['access']) ? intval($_POST['access']) : 0;
 
-    $configFile = "<?php\n\n" . 'return ' . var_export(['johncms' => $config], true) . ";\n";
+    $configFile = "<?php\n\n" . 'return ' . var_export(['mobicms' => $config], true) . ";\n";
 
     if (!file_put_contents(ROOT_PATH . 'system/config/system.local.php', $configFile)) {
         echo 'ERROR: Can not write system.local.php</body></html>';

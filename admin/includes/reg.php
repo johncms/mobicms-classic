@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNADM') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -16,7 +16,8 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Проверяем права доступа
 if ($systemUser->rights < 6) {
-    header('Location: http://johncms.com/?err');
+    echo _t('Access denied');
+    require('../system/end.php');
     exit;
 }
 

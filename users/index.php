@@ -1,6 +1,6 @@
 <?php
 
-define('_IN_JOHNCMS', 1);
+define('MOBICMS', 1);
 
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';

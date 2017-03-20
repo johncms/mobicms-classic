@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = App::getContainer()->get(Mobicms\Api\UserInterface::class );

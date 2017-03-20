@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNADM') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 $sw = 0;
 $adm = 0;

@@ -1,18 +1,4 @@
 <?php
-/*
-////////////////////////////////////////////////////////////////////////////////
-// mobiCMS                             Content Management System              //
-// ����������� ���� ���� �������:      http://johncms.com                     //
-// �������������� ���� ���������:      http://gazenwagen.com                  //
-////////////////////////////////////////////////////////////////////////////////
-// mobiCMS core team:                                                         //
-// ������� ������� aka john77          john77@gazenwagen.com                  //
-// ���� �������� aka AlkatraZ          alkatraz@gazenwagen.com                //
-//                                                                            //
-// ���������� � ������� �������� � ����������� ����� version.txt              //
-////////////////////////////////////////////////////////////////////////////////
-// ���������� PEAR  http://pear.php.net
-*/
 
 defined('MOBICMS') or die('Error:restricted access');
 define('PEAR_ERROR_RETURN', 1);

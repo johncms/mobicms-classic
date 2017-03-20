@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -168,8 +168,8 @@ if (isset($_POST['submit'])
             $curator,
         ]);
 
-        /** @var Johncms\Api\EnvironmentInterface $env */
-        $env = App::getContainer()->get(Johncms\Api\EnvironmentInterface::class);
+        /** @var Mobicms\Api\EnvironmentInterface $env */
+        $env = App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
         $rid = $db->lastInsertId();
 
         // Добавляем текст поста

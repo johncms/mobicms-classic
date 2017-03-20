@@ -278,7 +278,7 @@ module.exports = function (grunt) {
         compress: {
             dist: {
                 options: {
-                    archive: 'dist/johncms-<%= pkg.version %>.zip'
+                    archive: 'dist/mobicms-<%= pkg.version %>.zip'
                 },
 
                 files: [

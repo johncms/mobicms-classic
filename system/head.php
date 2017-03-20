@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -35,7 +35,7 @@ echo '<!DOCTYPE html>' .
     "\n" . '<meta name="HandheldFriendly" content="true">' .
     "\n" . '<meta name="MobileOptimized" content="width">' .
     "\n" . '<meta content="yes" name="apple-mobile-web-app-capable">' .
-    "\n" . '<meta name="Generator" content="JohnCMS, http://johncms.com">' .
+    "\n" . '<meta name="Generator" content="mobiCMS, https://mobicms.org">' .
     "\n" . '<meta name="keywords" content="' . $keywords . '">' .
     "\n" . '<meta name="description" content="' . $descriptions . '">' .
     "\n" . '<link rel="stylesheet" href="' . $config->homeurl . '/theme/' . $tools->getSkin() . '/style.css">' .

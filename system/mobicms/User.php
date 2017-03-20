@@ -4,11 +4,6 @@ namespace Mobicms;
 
 use Zend\Stdlib\ArrayObject;
 
-/**
- * Class User
- *
- * @package Johncms
- */
 class User extends ArrayObject implements Api\UserInterface
 {
     private $userConfigObject;

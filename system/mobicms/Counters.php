@@ -17,7 +17,7 @@ class Counters
     private $systemUser;
 
     /**
-     * @var \Johncms\Tools
+     * @var \Mobicms\Tools
      */
     private $tools;
 

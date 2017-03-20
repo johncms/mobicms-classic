@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -160,8 +160,8 @@ switch ($type1['type']) {
                 } else {
                     $update = false;
 
-                    /** @var Johncms\Api\EnvironmentInterface $env */
-                    $env = App::getContainer()->get(Johncms\Api\EnvironmentInterface::class);
+                    /** @var Mobicms\Api\EnvironmentInterface $env */
+                    $env = App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
 
                     // Добавляем сообщение в базу
                     $db->prepare('
@@ -342,8 +342,8 @@ switch ($type1['type']) {
 
             unset($_SESSION['token']);
 
-            /** @var Johncms\Api\EnvironmentInterface $env */
-            $env = App::getContainer()->get(Johncms\Api\EnvironmentInterface::class);
+            /** @var Mobicms\Api\EnvironmentInterface $env */
+            $env = App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
 
             // Добавляем сообщение в базу
             $db->prepare('

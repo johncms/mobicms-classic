@@ -7,8 +7,6 @@ use Zend\Stdlib\ArrayObject;
 /**
  * Class UserConfig
  *
- * @package Johncms
- *
  * @property $directUrl
  * @property $fieldHeight
  * @property $fieldWidth

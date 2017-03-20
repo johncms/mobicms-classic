@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 //TODO: Добавить проверку, пустой ли каталог, если нет, выводить предупреждение
 //TODO: Добавить рекурсивное удаление

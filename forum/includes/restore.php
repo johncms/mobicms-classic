@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -12,7 +12,8 @@ $db = $container->get(PDO::class);
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
 if (($systemUser->rights != 3 && $systemUser->rights < 6) || !$id) {
-    header('Location: http://johncms.com?act=404');
+    echo _t('Access denied');
+    require('../system/end.php');
     exit;
 }
 

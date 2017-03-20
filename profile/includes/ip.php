@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 $textl = htmlspecialchars($user['name']) . ': ' . _t('IP History');
 require('../system/head.php');

@@ -1,6 +1,6 @@
 <?php
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -71,7 +71,7 @@ if ($req_obj->rowCount()) {
         'context_top' => $context_top,
         // Выводится вверху списка
     ];
-    $comm = new Johncms\Comments($arg);
+    $comm = new Mobicms\Comments($arg);
 
     if ($comm->added) {
         $db->exec("UPDATE `library_texts` SET `comm_count`=" . ($res_obj['comm_count'] > 0 ? ++$res_obj['comm_count'] : 1) . " WHERE `id`=" . $id);

@@ -19,7 +19,7 @@ class Comments
     private $db;
 
     /**
-     * @var \Johncms\Tools
+     * @var \Mobicms\Tools
      */
     private $tools;
 
@@ -55,7 +55,7 @@ class Comments
 
         $this->comments_table = $arg['comments_table'];
         $this->object_table = !empty($arg['object_table']) ? $arg['object_table'] : false;
-        $homeurl = \App::getContainer()->get('config')['johncms']['homeurl'];
+        $homeurl = \App::getContainer()->get('config')['mobicms']['homeurl'];
 
         if (!empty($arg['sub_id_name']) && !empty($arg['sub_id'])) {
             $this->sub_id = $arg['sub_id'];

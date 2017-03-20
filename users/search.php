@@ -1,6 +1,6 @@
 <?php
 
-define('_IN_JOHNCMS', 1);
+define('MOBICMS', 1);
 
 $headmod = 'usersearch';
 require('../system/bootstrap.php');
