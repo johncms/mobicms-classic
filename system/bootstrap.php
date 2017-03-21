@@ -58,9 +58,6 @@ session_name('SESID');
 session_start();
 
 
-/**
- * Проверка на IP бан
- */
 call_user_func(function () use ($container) {
     /** @var Mobicms\Api\EnvironmentInterface $env */
     $env = $container->get(Mobicms\Api\EnvironmentInterface::class);
@@ -68,6 +65,7 @@ call_user_func(function () use ($container) {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
+    // Проверка на IP бан
     $req = $db->query("
       SELECT `ban_type`, `link` FROM `cms_ban_ip`
       WHERE '" . $env->getIp() . "' BETWEEN `ip1` AND `ip2`
@@ -96,15 +94,17 @@ call_user_func(function () use ($container) {
                 exit;
         }
     }
+
+    // Автоочистка системы
+    $cacheFile = CACHE_PATH . 'cleanup.dat';
+
+    if (!file_exists($cacheFile) || filemtime($cacheFile) < (time() - 86400)) {
+        $db->exec('DELETE FROM `cms_sessions` WHERE `lastdate` < ' . (time() - 86400));
+        $db->exec("DELETE FROM `cms_users_iphistory` WHERE `time` < " . (time() - 7776000));
+        $db->query('OPTIMIZE TABLE `cms_sessions`, `cms_users_iphistory`, `cms_mail`, `cms_contact`');
+        file_put_contents($cacheFile, time());
+    }
 });
-
-// Автоочистка системы
-$cacheFile = CACHE_PATH . 'cleanup.dat';
-
-if (!file_exists($cacheFile) || filemtime($cacheFile) < (time() - 86400)) {
-    new Mobicms\Cleanup($container);
-    file_put_contents($cacheFile, time());
-}
 
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
