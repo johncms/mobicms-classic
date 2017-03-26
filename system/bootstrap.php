@@ -26,7 +26,15 @@ use Zend\Stdlib\Glob;
 
 class App
 {
+    /**
+     * @var ServiceManager
+     */
     private static $container;
+
+    /**
+     * @var Zend\I18n\Translator\Translator
+     */
+    private static $translator;
 
     /**
      * @return ServiceManager
@@ -48,6 +56,35 @@ class App
         }
 
         return self::$container;
+    }
+
+    public static function getTranslator()
+    {
+        if (null === self::$translator) {
+            /** @var Mobicms\Api\ConfigInterface $config */
+            $config = self::getContainer()->get(Mobicms\Api\ConfigInterface::class);
+
+            /** @var Mobicms\UserConfig $userConfig */
+            $userConfig = self::getContainer()->get(Mobicms\Api\UserInterface::class)->getConfig();
+
+            if (isset($_POST['setlng']) && array_key_exists($_POST['setlng'], $config->lng_list)) {
+                $locale = trim($_POST['setlng']);
+                $_SESSION['lng'] = $locale;
+            } elseif (isset($_SESSION['lng']) && array_key_exists($_SESSION['lng'], $config->lng_list)) {
+                $locale = $_SESSION['lng'];
+            } elseif (isset($userConfig['lng']) && array_key_exists($userConfig['lng'], $config->lng_list)) {
+                $locale = $userConfig['lng'];
+                $_SESSION['lng'] = $locale;
+            } else {
+                $locale = $config->lng;
+            }
+
+            /** @var Zend\I18n\Translator\Translator $translator */
+            self::$translator = self::getContainer()->get(Zend\I18n\Translator\Translator::class);
+            self::$translator->setLocale($locale);
+        }
+
+        return self::$translator;
     }
 }
 
@@ -106,29 +143,6 @@ call_user_func(function () use ($container) {
     }
 });
 
-/** @var Mobicms\Api\ConfigInterface $config */
-$config = $container->get(Mobicms\Api\ConfigInterface::class);
-
-/** @var Mobicms\UserConfig $userConfig */
-$userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
-
-if (isset($_POST['setlng']) && array_key_exists($_POST['setlng'], $config->lng_list)) {
-    $locale = trim($_POST['setlng']);
-    $_SESSION['lng'] = $locale;
-} elseif (isset($_SESSION['lng']) && array_key_exists($_SESSION['lng'], $config->lng_list)) {
-    $locale = $_SESSION['lng'];
-} elseif (isset($userConfig['lng']) && array_key_exists($userConfig['lng'], $config->lng_list)) {
-    $locale = $userConfig['lng'];
-    $_SESSION['lng'] = $locale;
-} else {
-    $locale = $config->lng;
-}
-
-/** @var Zend\I18n\Translator\Translator $translator */
-$translator = $container->get(Zend\I18n\Translator\Translator::class);
-$translator->setLocale($locale);
-unset($translator);
-
 /**
  * Translate a message
  *
@@ -138,14 +152,7 @@ unset($translator);
  */
 function _t($message, $textDomain = 'default')
 {
-    /** @var Zend\I18n\Translator\Translator $translator */
-    static $translator;
-
-    if (null === $translator) {
-        $translator = App::getContainer()->get(Zend\I18n\Translator\Translator::class);
-    }
-
-    return $translator->translate($message, $textDomain);
+    return App::getTranslator()->translate($message, $textDomain);
 }
 
 /**
@@ -159,14 +166,7 @@ function _t($message, $textDomain = 'default')
  */
 function _p($singular, $plural, $number, $textDomain = 'default')
 {
-    /** @var Zend\I18n\Translator\Translator $translator */
-    static $translator;
-
-    if (null === $translator) {
-        $translator = App::getContainer()->get(Zend\I18n\Translator\Translator::class);
-    }
-
-    return $translator->translatePlural($singular, $plural, $number, $textDomain);
+    return App::getTranslator()->translatePlural($singular, $plural, $number, $textDomain);
 }
 
 $kmess = $userConfig->kmess;
