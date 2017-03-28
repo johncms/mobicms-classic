@@ -88,49 +88,23 @@ class App
     }
 }
 
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
+// Проверка IP адреса на бан
+try {
+    new Mobicms\Tools\IpBan(App::getContainer());
+} catch (Mobicms\Tools\Exception\IpBanException $e) {
+    header($e->getMessage());
+    exit;
+}
 
 session_name('SESID');
 session_start();
 
-
 call_user_func(function () use ($container) {
-    /** @var Mobicms\Api\EnvironmentInterface $env */
-    $env = $container->get(Mobicms\Api\EnvironmentInterface::class);
+    /** @var Psr\Container\ContainerInterface $container */
+    $container = App::getContainer();
 
     /** @var PDO $db */
     $db = $container->get(PDO::class);
-
-    // Проверка на IP бан
-    $req = $db->query("
-      SELECT `ban_type`, `link` FROM `cms_ban_ip`
-      WHERE '" . $env->getIp() . "' BETWEEN `ip1` AND `ip2`
-      " . ($env->getIpViaProxy() ? " OR '" . $env->getIpViaProxy() . "' BETWEEN `ip1` AND `ip2`" : '') . "
-      LIMIT 1
-    ");
-
-    if ($req->rowCount()) {
-        $res = $req->fetch();
-
-        switch ($res['ban_type']) {
-            case 2:
-                if (!empty($res['link'])) {
-                    header('Location: ' . $res['link']);
-                } else {
-                    header('Location: http://example.com');
-                }
-                exit;
-                break;
-            case 3:
-                //TODO: реализовать запрет регистрации
-                //self::$deny_registration = true;
-                break;
-            default :
-                header("HTTP/1.0 404 Not Found");
-                exit;
-        }
-    }
 
     // Автоочистка системы
     $cacheFile = CACHE_PATH . 'cleanup.dat';
