@@ -1,10 +1,11 @@
 <?php
 
-namespace Mobicms;
+namespace Mobicms\Config;
 
+use Mobicms\Api\ConfigInterface;
 use Zend\Stdlib\ArrayObject;
 
-class Config extends ArrayObject implements Api\ConfigInterface
+class Config extends ArrayObject implements ConfigInterface
 {
     public function __construct(array $input)
     {
