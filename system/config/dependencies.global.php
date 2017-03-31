@@ -8,7 +8,7 @@ return [
             Mobicms\Api\EnvironmentInterface::class => Mobicms\Environment::class,
             Mobicms\Api\ToolsInterface::class       => Mobicms\Tools::class,
             Mobicms\Api\UserInterface::class        => Mobicms\UserFactory::class,
-            PDO::class                              => Mobicms\PdoFactory::class,
+            PDO::class                              => Mobicms\Database\PdoFactory::class,
 
             'counters' => Mobicms\Counters::class,
         ],

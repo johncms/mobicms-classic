@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobicms;
+namespace Mobicms\Database;
 
 use Psr\Container\ContainerInterface;
 
