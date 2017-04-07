@@ -1,10 +1,11 @@
 <?php
 
-namespace Mobicms;
+namespace Mobicms\Checkpoint;
 
+use Mobicms\Api\UserInterface;
 use Zend\Stdlib\ArrayObject;
 
-class User extends ArrayObject implements Api\UserInterface
+class User extends ArrayObject implements UserInterface
 {
     private $userConfigObject;
 

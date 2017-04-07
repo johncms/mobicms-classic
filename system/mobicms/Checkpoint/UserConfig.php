@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobicms;
+namespace Mobicms\Checkpoint;
 
 use Zend\Stdlib\ArrayObject;
 
