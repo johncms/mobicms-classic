@@ -64,7 +64,7 @@ class App
             /** @var Mobicms\Api\ConfigInterface $config */
             $config = self::getContainer()->get(Mobicms\Api\ConfigInterface::class);
 
-            /** @var Mobicms\UserConfig $userConfig */
+            /** @var Mobicms\Checkpoint\UserConfig $userConfig */ //TODO: Переделать на UserConfigInterface
             $userConfig = self::getContainer()->get(Mobicms\Api\UserInterface::class)->getConfig();
 
             if (isset($_POST['setlng']) && array_key_exists($_POST['setlng'], $config->lng_list)) {
@@ -99,7 +99,7 @@ try {
 session_name('SESID');
 session_start();
 
-call_user_func(function () use ($container) {
+call_user_func(function () {
     /** @var Psr\Container\ContainerInterface $container */
     $container = App::getContainer();
 
@@ -143,7 +143,7 @@ function _p($singular, $plural, $number, $textDomain = 'default')
     return App::getTranslator()->translatePlural($singular, $plural, $number, $textDomain);
 }
 
-$kmess = $userConfig->kmess;
+$kmess = App::getContainer()->get(Mobicms\Api\UserInterface::class)->getConfig()->kmess;
 $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
 $start = isset($_REQUEST['page']) ? $page * $kmess - $kmess : (isset($_GET['start']) ? abs(intval($_GET['start'])) : 0);
 
