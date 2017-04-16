@@ -19,7 +19,7 @@ class Comments
     private $db;
 
     /**
-     * @var \Mobicms\Tools
+     * @var \Mobicms\Tools\Utilites
      */
     private $tools;
 

@@ -1,10 +1,15 @@
 <?php
 
-namespace Mobicms;
+namespace Mobicms\Tools;
 
+use Mobicms\Api\BbcodeInterface;
+use Mobicms\Api\ConfigInterface;
+use Mobicms\Api\ToolsInterface;
+use Mobicms\Api\UserInterface;
+use Mobicms\Checkpoint\UserConfig;
 use Psr\Container\ContainerInterface;
 
-class Tools implements Api\ToolsInterface
+class Utilites implements ToolsInterface
 {
     /**
      * @var ContainerInterface
@@ -17,7 +22,7 @@ class Tools implements Api\ToolsInterface
     private $db;
 
     /**
-     * @var Api\UserInterface::class
+     * @var UserInterface::class
      */
     private $user;
 
@@ -27,16 +32,16 @@ class Tools implements Api\ToolsInterface
     private $userConfig;
 
     /**
-     * @var Api\ConfigInterface
+     * @var ConfigInterface
      */
     private $config;
 
     public function __invoke(ContainerInterface $container)
     {
         $this->container = $container;
-        $this->config = $container->get(Api\ConfigInterface::class);
+        $this->config = $container->get(ConfigInterface::class);
         $this->db = $container->get(\PDO::class);
-        $this->user = $container->get(Api\UserInterface::class);
+        $this->user = $container->get(UserInterface::class);
         $this->userConfig = $this->user->getConfig();
 
         return $this;
@@ -102,9 +107,9 @@ class Tools implements Api\ToolsInterface
         }
 
         if ($tags == 1) {
-            $str = $this->container->get(Api\BbcodeInterface::class)->tags($str);
+            $str = $this->container->get(BbcodeInterface::class)->tags($str);
         } elseif ($tags == 2) {
-            $str = $this->container->get(Api\BbcodeInterface::class)->notags($str);
+            $str = $this->container->get(BbcodeInterface::class)->notags($str);
         }
 
         return trim($str);

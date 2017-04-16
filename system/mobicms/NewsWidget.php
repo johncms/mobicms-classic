@@ -15,7 +15,7 @@ class NewsWidget
     private $db;
 
     /**
-     * @var Tools
+     * @var Tools\Utilites
      */
     private $tools;
 
