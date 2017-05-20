@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 
     $configFile = "<?php\n\n" . 'return ' . var_export(['mobicms' => $config], true) . ";\n";
 
-    if (!file_put_contents(ROOT_PATH . 'system/config/system.local.php', $configFile)) {
+    if (!file_put_contents(ROOT_PATH . 'system/config/autoload/system.local.php', $configFile)) {
         echo 'ERROR: Can not write system.local.php</body></html>';
         exit;
     }

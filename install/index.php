@@ -80,7 +80,7 @@ class install
             '/files/users/avatar/',
             '/files/users/photo/',
             '/files/mail/',
-            '/system/config/',
+            '/system/config/autoload/',
         ];
         $error = [];
 
@@ -102,8 +102,8 @@ class install
     {
         $error = [];
 
-        if (is_file('../system/config/database.local.php') && !is_writable('../system/config/database.local.php')) {
-            $error[] = '/system/config/database.local.php';
+        if (is_file('../system/config/autoload/database.local.php') && !is_writable('../system/config/autoload/database.local.php')) {
+            $error[] = '/system/config/autoload/database.local.php';
         }
 
         return !empty($error) ? $error : false;
@@ -560,11 +560,11 @@ switch ($act) {
         break;
 
     default:
-        if (is_file('../system/config/database.local.php') || is_file('../system/config/system.local.php')) {
+        if (is_file('../system/config/autoload/database.local.php') || is_file('../system/config/autoload/system.local.php')) {
             echo '<h1 class="red">' . $lng['error'] . '</h1>';
             echo '<h2 class="red">' . $lng['already_installed'] . '</h2>';
             echo '<p>' . $lng['to_install_again'] . '.</p>';
-            echo '<ul><li>/system/config/<strong class="red">database.local.php</strong></li><li>/system/config/<strong class="red">system.local.php</strong></li></ul>';
+            echo '<ul><li>/system/config/autoload/<strong class="red">database.local.php</strong></li><li>/system/config/autoload/<strong class="red">system.local.php</strong></li></ul>';
         } else {
             // Проверка настроек PHP и прав доступа
             echo '<p>' . $lng['install_note'] . '</p>';
