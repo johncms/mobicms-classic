@@ -19,8 +19,8 @@ module.exports = function (grunt) {
                             '!files/downloads/files/**/*',
                             'files/downloads/files/index.php',
 
-                            '!system/config/database.local.php',
-                            '!system/config/system.local.php',
+                            '!system/config/autoload/database.local.php',
+                            '!system/config/autoload/system.local.php',
 
                             '!system/vendor/container-interop/container-interop/docs/**',
                             '!system/vendor/container-interop/container-interop/composer.json',
