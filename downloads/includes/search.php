@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 
@@ -45,8 +35,8 @@ if ($search && !$error) {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
-    /** @var Johncms\Api\ToolsInterface $tools */
-    $tools = $container->get(Johncms\Api\ToolsInterface::class);
+    /** @var Mobicms\Api\ToolsInterface $tools */
+    $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
     // Подготавливаем данные для запроса
     $search = preg_replace("/[^\w\x7F-\xFF\s]/", " ", $search);

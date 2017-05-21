@@ -11,7 +11,7 @@
 /files/users/photo/*
 !/files/users/photo/index.php
 /system/vendor
-/system/config/*.local.php
+/system/config/autoload/*.local.php
 /dist
 /distributive
 /node_modules

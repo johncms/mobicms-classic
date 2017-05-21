@@ -1,19 +1,9 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
-/** @var Johncms\Api\ToolsInterface $tools */
-$tools = App::getContainer()->get(Johncms\Api\ToolsInterface::class);
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = App::getContainer()->get(Mobicms\Api\ToolsInterface::class);
 
 require('../system/head.php');
 $delf = opendir('../files/forum/topics');
@@ -46,14 +36,14 @@ if (!$id) {
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Johncms\Api\ConfigInterface $config */
-$config = $container->get(Johncms\Api\ConfigInterface::class);
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 $req = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 't' AND `close` != '1'");
 
@@ -125,7 +115,7 @@ div { margin: 1px 0px 1px 0px; padding: 5px 5px 5px 5px;}
                 }
 
                 $txt_tmp = htmlentities($arr['text'], ENT_QUOTES, 'UTF-8');
-                $txt_tmp = App::getContainer()->get(Johncms\Api\BbcodeInterface::class)->tags($txt_tmp);
+                $txt_tmp = App::getContainer()->get(Mobicms\Api\BbcodeInterface::class)->tags($txt_tmp);
                 $txt_tmp = preg_replace('#\[c\](.*?)\[/c\]#si', '<div class="quote">\1</div>', $txt_tmp);
                 $txt_tmp = str_replace("\r\n", "<br>", $txt_tmp);
                 $stroka = "$div <b>$arr[from]</b>(" . date("d.m.Y/H:i", $arr['time']) . ")<br>$txt_tmp</div>";

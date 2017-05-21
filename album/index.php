@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-define('_IN_JOHNCMS', 1);
+define('MOBICMS', 1);
 
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
@@ -23,15 +13,15 @@ require('../system/bootstrap.php');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
 /** @var Zend\I18n\Translator\Translator $translator */
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
-/** @var Johncms\Api\ToolsInterface $tools */
-$tools = $container->get(Johncms\Api\ToolsInterface::class);
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 $textl = _t('Album');
 $headmod = 'album';
@@ -71,8 +61,8 @@ function vote_photo(array $arg)
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
-    /** @var Johncms\Api\UserInterface $systemUser */
-    $systemUser = $container->get(Johncms\Api\UserInterface::class);
+    /** @var Mobicms\Api\UserInterface $systemUser */
+    $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
     $rating = $arg['vote_plus'] - $arg['vote_minus'];
 
@@ -127,8 +117,8 @@ if (array_key_exists($act, $array) && file_exists($path . $act . '.php')) {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
-    /** @var Johncms\Api\ConfigInterface $config */
-    $config = $container->get(Johncms\Api\ConfigInterface::class);
+    /** @var Mobicms\Api\ConfigInterface $config */
+    $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
     require('../system/head.php');
     $albumcount = $db->query("SELECT COUNT(DISTINCT `user_id`) FROM `cms_album_files`")->fetchColumn();

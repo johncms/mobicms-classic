@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -18,14 +8,14 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-/** @var Johncms\Api\ToolsInterface $tools */
-$tools = $container->get(Johncms\Api\ToolsInterface::class);
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-/** @var Johncms\Api\ConfigInterface $config */
-$config = $container->get(Johncms\Api\ConfigInterface::class);
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 // Закрываем доступ для определенных ситуаций
 if (!$id
@@ -170,8 +160,8 @@ switch ($type1['type']) {
                 } else {
                     $update = false;
 
-                    /** @var Johncms\Api\EnvironmentInterface $env */
-                    $env = App::getContainer()->get(Johncms\Api\EnvironmentInterface::class);
+                    /** @var Mobicms\Api\EnvironmentInterface $env */
+                    $env = App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
 
                     // Добавляем сообщение в базу
                     $db->prepare('
@@ -241,7 +231,7 @@ switch ($type1['type']) {
 
             echo '<form name="form" action="index.php?act=say&amp;id=' . $id . '&amp;start=' . $start . '" method="post"><div class="gmenu">' .
                 '<p><h3>' . _t('Message') . '</h3>';
-            echo '</p><p>' . $container->get(Johncms\Api\BbcodeInterface::class)->buttons('form', 'msg');
+            echo '</p><p>' . $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form', 'msg');
             echo '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="msg">' . (empty($_POST['msg']) ? '' : $tools->checkout($msg)) . '</textarea></p>' .
                 '<p><input type="checkbox" name="addfiles" value="1" ' . (isset($_POST['addfiles']) ? 'checked="checked" ' : '') . '/> ' . _t('Add File');
 
@@ -285,7 +275,7 @@ switch ($type1['type']) {
         if (!empty($_POST['citata'])) {
             // Если была цитата, форматируем ее и обрабатываем
             $citata = isset($_POST['citata']) ? trim($_POST['citata']) : '';
-            $citata = $container->get(Johncms\Api\BbcodeInterface::class)->notags($citata);
+            $citata = $container->get(Mobicms\Api\BbcodeInterface::class)->notags($citata);
             $citata = preg_replace('#\[c\](.*?)\[/c\]#si', '', $citata);
             $citata = mb_substr($citata, 0, 200);
             $tp = date("d.m.Y H:i", $type1['time']);
@@ -352,8 +342,8 @@ switch ($type1['type']) {
 
             unset($_SESSION['token']);
 
-            /** @var Johncms\Api\EnvironmentInterface $env */
-            $env = App::getContainer()->get(Johncms\Api\EnvironmentInterface::class);
+            /** @var Mobicms\Api\EnvironmentInterface $env */
+            $env = App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
 
             // Добавляем сообщение в базу
             $db->prepare('
@@ -437,7 +427,7 @@ switch ($type1['type']) {
             }
 
             echo '<p><h3>' . _t('Message') . '</h3>';
-            echo '</p><p>' . $container->get(Johncms\Api\BbcodeInterface::class)->buttons('form', 'msg');
+            echo '</p><p>' . $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form', 'msg');
             echo '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="msg">' . (empty($_POST['msg']) ? '' : $tools->checkout($_POST['msg'])) . '</textarea></p>' .
                 '<p><input type="checkbox" name="addfiles" value="1" ' . (isset($_POST['addfiles']) ? 'checked="checked" ' : '') . '/> ' . _t('Add File');
 

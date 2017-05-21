@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 $headmod = 'mail';
 $textl = _t('Mail');
@@ -23,8 +13,8 @@ if ($id) {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
-    /** @var Johncms\Api\UserInterface $systemUser */
-    $systemUser = $container->get(Johncms\Api\UserInterface::class);
+    /** @var Mobicms\Api\UserInterface $systemUser */
+    $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
     if (isset($_POST['submit'])) {
         $req = $db->query('SELECT * FROM `cms_mail` WHERE ((`user_id` = ' . $id . ' AND `from_id` = ' . $systemUser->id . ') OR (`user_id` = ' . $systemUser->id . ' AND `from_id` = ' . $id . ')) AND `delete` != ' . $systemUser->id);

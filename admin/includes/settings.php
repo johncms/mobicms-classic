@@ -1,28 +1,19 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-defined('_IN_JOHNADM') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-$config = $container->get('config')['johncms'];
+$config = $container->get('config')['mobicms'];
 
 // Проверяем права доступа
 if ($systemUser->rights < 9) {
-    header('Location: http://johncms.com/?err');
+    echo _t('Access denied');
+    require('../system/end.php');
     exit;
 }
 
@@ -33,16 +24,16 @@ if (isset($_POST['submit'])) {
     $config['skindef'] = isset($_POST['skindef']) ? trim($_POST['skindef']) : 'default';
     $config['email'] = isset($_POST['madm']) ? trim($_POST['madm']) : '@';
     $config['timeshift'] = isset($_POST['timeshift']) ? intval($_POST['timeshift']) : 0;
-    $config['copyright'] = isset($_POST['copyright']) ? trim($_POST['copyright']) : 'JohnCMS';
+    $config['copyright'] = isset($_POST['copyright']) ? trim($_POST['copyright']) : 'mobiCMS';
     $config['homeurl'] = isset($_POST['homeurl']) ? preg_replace("#/$#", '', trim($_POST['homeurl'])) : '/';
     $config['flsz'] = isset($_POST['flsz']) ? intval($_POST['flsz']) : 0;
     $config['gzip'] = isset($_POST['gz']);
-    $config['meta_key'] = isset($_POST['meta_key']) ? trim($_POST['meta_key']) : 'johncms';
-    $config['meta_desc'] = isset($_POST['meta_desc']) ? trim($_POST['meta_desc']) : 'johncms';
+    $config['meta_key'] = isset($_POST['meta_key']) ? trim($_POST['meta_key']) : 'mobicms';
+    $config['meta_desc'] = isset($_POST['meta_desc']) ? trim($_POST['meta_desc']) : 'mobicms';
 
-    $configFile = "<?php\n\n" . 'return ' . var_export(['johncms' => $config], true) . ";\n";
+    $configFile = "<?php\n\n" . 'return ' . var_export(['mobicms' => $config], true) . ";\n";
 
-    if (!file_put_contents(ROOT_PATH . 'system/config/system.local.php', $configFile)) {
+    if (!file_put_contents(ROOT_PATH . 'system/config/autoload/system.local.php', $configFile)) {
         echo 'ERROR: Can not write system.local.php</body></html>';
         exit;
     }

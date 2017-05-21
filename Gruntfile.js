@@ -19,8 +19,10 @@ module.exports = function (grunt) {
                             '!files/downloads/files/**/*',
                             'files/downloads/files/index.php',
 
-                            '!system/config/database.local.php',
-                            '!system/config/system.local.php',
+                            '!system/config/autoload/database.local.php',
+                            '!system/config/autoload/system.local.php',
+
+                            '!system/vendor/bin/**',
 
                             '!system/vendor/container-interop/container-interop/docs/**',
                             '!system/vendor/container-interop/container-interop/composer.json',
@@ -36,10 +38,14 @@ module.exports = function (grunt) {
                             'system/vendor/geshi/geshi/src/geshi/php.php',
                             'system/vendor/geshi/geshi/src/geshi/sql.php',
                             'system/vendor/geshi/geshi/src/geshi/xml.php',
-                            '!system/vendor/geshi/geshi/src/contrib/**',
-                            '!system/vendor/geshi/geshi/src/docs/**',
+                            '!system/vendor/geshi/geshi/contrib/**',
+                            '!system/vendor/geshi/geshi/docs/**',
+                            '!system/vendor/geshi/geshi/tests/**',
+                            '!system/vendor/geshi/geshi/BUGS',
+                            '!system/vendor/geshi/geshi/CHANGELOG',
                             '!system/vendor/geshi/geshi/build.properties.dist',
                             '!system/vendor/geshi/geshi/build.xml',
+                            '!system/vendor/geshi/geshi/phpunit.xml',
                             '!system/vendor/geshi/geshi/composer.json',
 
                             '!system/vendor/verot/class.upload.php/test/**',
@@ -53,6 +59,7 @@ module.exports = function (grunt) {
                             '!system/vendor/zendframework/zend-i18n/mkdocs.yml',
 
                             '!system/vendor/zendframework/zend-servicemanager/benchmarks/**',
+                            '!system/vendor/zendframework/zend-servicemanager/bin/**',
                             '!system/vendor/zendframework/zend-servicemanager/doc/**',
                             '!system/vendor/zendframework/zend-servicemanager/CHANGELOG.md',
                             '!system/vendor/zendframework/zend-servicemanager/CONDUCT.md',
@@ -278,7 +285,7 @@ module.exports = function (grunt) {
         compress: {
             dist: {
                 options: {
-                    archive: 'dist/johncms-<%= pkg.version %>.zip'
+                    archive: 'dist/mobicms-<%= pkg.version %>.zip'
                 },
 
                 files: [

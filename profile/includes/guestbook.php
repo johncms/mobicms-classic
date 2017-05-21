@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 $headmod = 'my_guest';
 $textl = _t('Profile') . ' | ' . _t('Guestbook');
@@ -19,8 +9,8 @@ $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
 if ($systemUser->isValid() && $user['id'] == $systemUser->id) {
     $datauser['comm_old'] = $datauser['comm_count'];
@@ -46,7 +36,7 @@ $arg = [
 ];
 
 // Показываем комментарии
-$comm = new Johncms\Comments($arg);
+$comm = new Mobicms\Comments($arg);
 
 // Обновляем счетчик непрочитанного
 if (!$mod && $user['id'] == $systemUser->id && $user['comm_count'] != $user['comm_old']) {

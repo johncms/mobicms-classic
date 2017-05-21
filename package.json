@@ -1,8 +1,8 @@
 {
-  "name": "JohnCMS",
-  "version": "7.1.0",
-  "description": "JohnCMS Mobile Content Management System",
-  "homepage": "http://johncms.com",
+  "name": "mobiCMS",
+  "version": "0.1.0",
+  "description": "mobiCMS Mobile Content Management System",
+  "homepage": "http://mobicms.org",
   "license": "GPL-3.0",
   "keywords": [
     "mobicms",
@@ -13,13 +13,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/john-cms/johncms-next"
+    "url": "https://github.com/mobicms/mobicms-classic"
   },
   "engines": {
     "node": ">= 0.12.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "grunt": "^1.0.1",

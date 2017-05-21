@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -18,17 +8,17 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Johncms\Api\ToolsInterface $tools */
-$tools = $container->get(Johncms\Api\ToolsInterface::class);
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-/** @var Johncms\Api\EnvironmentInterface $env */
-$env = $container->get(Johncms\Api\EnvironmentInterface::class);
+/** @var Mobicms\Api\EnvironmentInterface $env */
+$env = $container->get(Mobicms\Api\EnvironmentInterface::class);
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-/** @var Johncms\Api\ConfigInterface $config */
-$config = $container->get(Johncms\Api\ConfigInterface::class);
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 $act = isset($_REQUEST['act']) ? trim($_REQUEST['act']) : '';
 $headmod = isset($headmod) ? $headmod : '';
@@ -45,7 +35,7 @@ echo '<!DOCTYPE html>' .
     "\n" . '<meta name="HandheldFriendly" content="true">' .
     "\n" . '<meta name="MobileOptimized" content="width">' .
     "\n" . '<meta content="yes" name="apple-mobile-web-app-capable">' .
-    "\n" . '<meta name="Generator" content="JohnCMS, http://johncms.com">' .
+    "\n" . '<meta name="Generator" content="mobiCMS, https://mobicms.org">' .
     "\n" . '<meta name="keywords" content="' . $keywords . '">' .
     "\n" . '<meta name="description" content="' . $descriptions . '">' .
     "\n" . '<link rel="stylesheet" href="' . $config->homeurl . '/theme/' . $tools->getSkin() . '/style.css">' .
@@ -98,17 +88,22 @@ if (isset($cms_ads[0])) {
 
 // Выводим логотип и переключатель языков
 echo '<table style="width: 100%;" class="logo"><tr>' .
-    '<td valign="bottom"><a href="' . $config['homeurl'] . '">' . $tools->image('logo.gif', ['class' => '']) . '</a></td>' .
-    ($headmod == 'mainpage' && count($config->lng_list) > 1 ? '<td align="right"><a href="' . $config->homeurl . '/go.php?lng"><b>' . strtoupper($locale) . '</b></a>&#160;<a href="' . $config->homeurl . '/go.php?lng">' . $tools->getFlag($locale) . '</a></td>' : '') .
-    '</tr></table>';
+    '<td valign="bottom"><a href="' . $config['homeurl'] . '">' . $tools->image('logo.png', ['class' => '']) . '</a></td>';
+
+if ($headmod == 'mainpage' && count($config->lng_list) > 1) {
+    $locale = App::getTranslator()->getLocale();
+    echo '<td align="right"><a href="' . $config->homeurl . '/go.php?lng"><b>' . strtoupper($locale) . '</b></a>&#160;<a href="' . $config->homeurl . '/go.php?lng">' . $tools->getFlag($locale) . '</a></td>';
+}
+
+echo '</tr></table>';
 
 // Выводим верхний блок с приветствием
-echo '<div class="header"> ' . _t('Hi', 'system') . ', ' . ($systemUser->id ? '<b>' . $systemUser->name . '</b>!' : _t('Guest', 'system') . '!') . '</div>';
+//echo '<div class="header"> ' . _t('Hi', 'system') . ', ' . ($systemUser->id ? '<b>' . $systemUser->name . '</b>!' : _t('Guest', 'system') . '!') . '</div>';
 
 // Главное меню пользователя
 echo '<div class="tmn">' .
     (isset($_GET['err']) || $headmod != "mainpage" || ($headmod == 'mainpage' && $act) ? '<a href=\'' . $config['homeurl'] . '\'>' . $tools->image('menu_home.png') . _t('Home', 'system') . '</a><br>' : '') .
-    ($systemUser->id && $headmod != 'office' ? '<a href="' . $config['homeurl'] . '/profile/?act=office">' . $tools->image('menu_cabinet.png') . _t('Personal', 'system') . '</a><br>' : '') .
+    ($systemUser->id && $headmod != 'office' ? '<a href="' . $config['homeurl'] . '/profile/?act=office">' . $tools->image('menu_cabinet.png') . $systemUser->name . ' <small style="color: #a8b5c4">(' . _t('Personal', 'system') . ')</small></a><br>' : '') .
     (!$systemUser->id && $headmod != 'login' ? $tools->image('menu_login.png') . '<a href="' . $config['homeurl'] . '/login.php">' . _t('Login', 'system') . '</a>' : '') .
     '</div><div class="maintxt">';
 

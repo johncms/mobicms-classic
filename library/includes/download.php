@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 ob_end_clean();
 ob_start();
@@ -33,8 +23,8 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Johncms\Api\BbcodeInterface $bbcode */
-$bbcode = $container->get(Johncms\Api\BbcodeInterface::class);
+/** @var Mobicms\Api\BbcodeInterface $bbcode */
+$bbcode = $container->get(Mobicms\Api\BbcodeInterface::class);
 
 switch ($type) {
     case 'txt':
@@ -71,7 +61,7 @@ switch ($type) {
             . '<author><nickname></nickname>' . PHP_EOL . '</author>' . PHP_EOL
             . '<program-used>Lib converter jcms</program-used>' . PHP_EOL
             . '<date value=""></date>' . PHP_EOL
-            . '<src-url>http://johncms.com</src-url>' . PHP_EOL
+            . '<src-url>http://mobicms.org</src-url>' . PHP_EOL
             . '<id></id>' . PHP_EOL
             . '<version>1.0</version>' . PHP_EOL
             . '<history><p>book</p></history>' . PHP_EOL

@@ -1,23 +1,5 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-/**
- * @package     mobiCMS
- * @link        http://mobicms.net
- * @copyright   Copyright (C) 2008-2011 mobiCMS Community
- * @license     LICENSE.txt (see attached file)
- * @version     VERSION.txt (see attached file)
- * @author      http://mobicms.net/about
- */
 class Download
 {
     private static $extensions =
@@ -129,14 +111,14 @@ class Download
         /** @var Psr\Container\ContainerInterface $container */
         $container = App::getContainer();
 
-        /** @var Johncms\Api\UserInterface $systemUser */
-        $systemUser = $container->get(Johncms\Api\UserInterface::class);
+        /** @var Mobicms\Api\UserInterface $systemUser */
+        $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-        /** @var Johncms\Api\ToolsInterface $tools */
-        $tools = $container->get(Johncms\Api\ToolsInterface::class);
+        /** @var Mobicms\Api\ToolsInterface $tools */
+        $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-        /** @var Johncms\Api\ConfigInterface $config */
-        $config = $container->get(Johncms\Api\ConfigInterface::class);
+        /** @var Mobicms\Api\ConfigInterface $config */
+        $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
         $out .= $tools->image('system/' . $icon_id . '.png') . '&nbsp;';
         $out .= '<a href="?act=view&amp;id=' . $res_down['id'] . '">' . htmlspecialchars($res_down['rus_name']) . '</a> (' . $res_down['field'] . ')';
@@ -202,8 +184,8 @@ class Download
     {
         global $old;
 
-        /** @var Johncms\Api\ToolsInterface $tools */
-        $tools = App::getContainer()->get(Johncms\Api\ToolsInterface::class);
+        /** @var Mobicms\Api\ToolsInterface $tools */
+        $tools = App::getContainer()->get(Mobicms\Api\ToolsInterface::class);
 
         $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
         $morelink = isset($array['more']) ? '&amp;more=' . $array['more'] : '';

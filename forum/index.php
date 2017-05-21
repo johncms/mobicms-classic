@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-define('_IN_JOHNCMS', 1);
+define('MOBICMS', 1);
 
 require('../system/bootstrap.php');
 
@@ -25,16 +15,16 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-/** @var Johncms\Api\ToolsInterface $tools */
-$tools = $container->get(Johncms\Api\ToolsInterface::class);
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-/** @var Johncms\Api\ConfigInterface $config */
-$config = $container->get(Johncms\Api\ConfigInterface::class);
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-/** @var Johncms\Counters $counters */
+/** @var Mobicms\Counters $counters */
 $counters = App::getContainer()->get('counters');
 
 /** @var Zend\I18n\Translator\Translator $translator */
@@ -584,7 +574,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                         $token = mt_rand(1000, 100000);
                         $_SESSION['token'] = $token;
                         echo '<p>' .
-                            $container->get(Johncms\Api\BbcodeInterface::class)->buttons('form1', 'msg') .
+                            $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form1', 'msg') .
                             '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="msg"></textarea></p>' .
                             '<p><input type="checkbox" name="addfiles" value="1" /> ' . _t('Add File') .
                             '</p><p><input type="submit" name="submit" value="' . _t('Write') . '" style="width: 107px; cursor: pointer;"/> ' .
@@ -787,7 +777,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                         $token = mt_rand(1000, 100000);
                         $_SESSION['token'] = $token;
                         echo '<p>';
-                        echo $container->get(Johncms\Api\BbcodeInterface::class)->buttons('form2', 'msg');
+                        echo $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form2', 'msg');
                         echo '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="msg"></textarea><br></p>' .
                             '<p><input type="checkbox" name="addfiles" value="1" /> ' . _t('Add File');
 

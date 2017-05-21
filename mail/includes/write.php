@@ -1,16 +1,6 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 $set_mail = unserialize($user['set_mail']);
 $out = '';
@@ -24,14 +14,14 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-/** @var Johncms\Api\ToolsInterface $tools */
-$tools = $container->get(Johncms\Api\ToolsInterface::class);
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-/** @var Johncms\Api\ConfigInterface $config */
-$config = $container->get(Johncms\Api\ConfigInterface::class);
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 if ($id) {
     $req = $db->query("SELECT * FROM `users` WHERE `id` = '$id' LIMIT 1");
@@ -438,7 +428,7 @@ if (!$tools->isIgnor($id) && empty($systemUser->ban['1']) && empty($systemUser->
         '<form name="form" action="index.php?act=write' . ($id ? '&amp;id=' . $id : '') . '" method="post"  enctype="multipart/form-data">' .
         ($id ? '' : '<p><input type="text" name="nick" maxlength="15" value="' . (!empty($_POST['nick']) ? htmlspecialchars(trim($_POST['nick'])) : '') . '" placeholder="' . _t('To Whom') . '?"/></p>') .
         '<p>';
-    $out .= $container->get(Johncms\Api\BbcodeInterface::class)->buttons('form', 'text');
+    $out .= $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form', 'text');
     $out .= '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="text"></textarea></p>';
     $out .= '<p><input type="file" name="fail" style="width: 100%; max-width: 160px"/></p>';
     $out .= '<p><input type="submit" name="submit" value="' . _t('Send') . '"/></p>' .

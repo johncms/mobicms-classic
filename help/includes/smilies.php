@@ -1,19 +1,9 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = App::getContainer()->get(Johncms\Api\UserInterface::class );
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = App::getContainer()->get(Mobicms\Api\UserInterface::class );
 
 // Главное меню каталога смайлов
 echo '<div class="phdr"><a href="?"><b>' . _t('Information, FAQ') . '</b></a> | ' . _t('Smilies') . '</div>';

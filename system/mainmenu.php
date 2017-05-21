@@ -1,30 +1,20 @@
 <?php
-/*
- * JohnCMS NEXT Mobile Content Management System (http://johncms.com)
- *
- * For copyright and license information, please see the LICENSE.md
- * Installing the system or redistributions of files must retain the above copyright notice.
- *
- * @link        http://johncms.com JohnCMS Project
- * @copyright   Copyright (C) JohnCMS Community
- * @license     GPL-3
- */
 
-defined('_IN_JOHNCMS') or die('Error: restricted access');
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Johncms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Johncms\Api\UserInterface::class);
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-/** @var Johncms\Api\ConfigInterface $config */
-$config = $container->get(Johncms\Api\ConfigInterface::class);
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-/** @var Johncms\Counters $counters */
+/** @var Mobicms\Counters $counters */
 $counters = $container->get('counters');
 
-$mp = new Johncms\NewsWidget();
+$mp = new Mobicms\NewsWidget();
 
 // Блок информации
 echo '<div class="phdr"><b>' . _t('Information', 'system') . '</b></div>';
@@ -71,4 +61,3 @@ if ($systemUser->isValid() || $config->active) {
         '<div class="menu"><a href="album/index.php">' . _t('Photo Albums', 'system') . '</a> (' . $counters->album() . ')</div>';
 }
 
-echo '<div class="phdr"><a href="http://gazenwagen.com">Gazenwagen</a></div>';
