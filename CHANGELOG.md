@@ -3,7 +3,7 @@ This list contains only most important changes.
 Detailed change in the [repository log](https://github.com/mobicms/mobicms-classic/commits).
 
 # mobiCMS 0.2.0  
-`Release Date: under development`
+`Release Date: under development` 
 
 ### NEW
   * Nothing
