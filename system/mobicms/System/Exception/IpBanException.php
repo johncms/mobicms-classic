@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobicms\Tools\Exception;
+namespace Mobicms\System\Exception;
 
 class IpBanException extends \Exception
 {

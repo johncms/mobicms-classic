@@ -1,9 +1,9 @@
 <?php
 
-namespace Mobicms\Tools;
+namespace Mobicms\System;
 
 use Mobicms\Api\EnvironmentInterface;
-use Mobicms\Tools\Exception\IpBanException;
+use Mobicms\System\Exception\IpBanException;
 use Psr\Container\ContainerInterface;
 
 class IpBan

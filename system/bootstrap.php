@@ -90,8 +90,8 @@ class App
 
 // Проверка IP адреса на бан
 try {
-    new Mobicms\Tools\IpBan(App::getContainer());
-} catch (Mobicms\Tools\Exception\IpBanException $e) {
+    new Mobicms\System\IpBan(App::getContainer());
+} catch (Mobicms\System\Exception\IpBanException $e) {
     header($e->getMessage());
     exit;
 }
