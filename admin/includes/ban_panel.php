@@ -11,6 +11,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -77,7 +80,7 @@ switch ($mod) {
           FROM `cms_ban_users` LEFT JOIN `users` ON `cms_ban_users`.`user_id` = `users`.`id`
           GROUP BY `user_id`
           ORDER BY `$sort` DESC
-          LIMIT $start, $kmess");
+          LIMIT $start, $userConfig->kmess");
 
         if ($req->rowCount()) {
             while ($res = $req->fetch()) {
@@ -94,8 +97,8 @@ switch ($mod) {
 
         echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-        if ($total > $kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ban_panel&amp;', $start, $total, $kmess) . '</div>';
+        if ($total > $userConfig->kmess) {
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ban_panel&amp;', $start, $total, $userConfig->kmess) . '</div>';
             echo '<p><form action="index.php?act=ban_panel" method="post"><input type="text" name="page" size="2"/><input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';
         }
 

@@ -446,7 +446,7 @@ if ($id) {
     if ($total) {
 
         if ($total > $userConfig->kmess) {
-            $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=write&amp;id=' . $id . '&amp;', $start, $total, $kmess) . '</div>';
+            $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=write&amp;id=' . $id . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
         }
 
         $req = $db->query("SELECT `cms_mail`.*, `cms_mail`.`id` as `mid`, `cms_mail`.`time` as `mtime`, `users`.*
@@ -457,7 +457,7 @@ if ($id) {
             AND `cms_mail`.`sys`!='1'
             AND `cms_mail`.`spam`='0'
             ORDER BY `cms_mail`.`time` DESC
-            LIMIT " . $start . "," . $kmess);
+            LIMIT " . $start . "," . $userConfig->kmess);
 
         $i = 1;
         $mass_read = [];
@@ -508,8 +508,8 @@ if ($id) {
 
     $out .= '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-    if ($total > $kmess) {
-        $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=write&amp;id=' . $id . '&amp;', $start, $total, $kmess) . '</div>';
+    if ($total > $userConfig->kmess) {
+        $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=write&amp;id=' . $id . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
         $out .= '<p><form action="index.php" method="get">
 			<input type="hidden" name="act" value="write"/>
 			<input type="hidden" name="id" value="' . $id . '"/>

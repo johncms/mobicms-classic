@@ -18,6 +18,9 @@ $env = App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -44,10 +47,10 @@ switch ($mod) {
 
         if ($start >= $total) {
             // Исправляем запрос на несуществующую страницу
-            $start = max(0, $total - (($total % $kmess) == 0 ? $kmess : ($total % $kmess)));
+            $start = max(0, $total - (($total % $userConfig->kmess) == 0 ? $userConfig->kmess : ($total % $userConfig->kmess)));
         }
 
-        $end = $start + $kmess;
+        $end = $start + $userConfig->kmess;
 
         if ($end > $total) {
             $end = $total;
@@ -62,8 +65,8 @@ switch ($mod) {
         }
 
         if ($total && $systemUser->rights) {
-            if ($total > $kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;mod=ip&amp;', $start, $total, $kmess) . '</div>';
+            if ($total > $userConfig->kmess) {
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;mod=ip&amp;', $start, $total, $userConfig->kmess) . '</div>';
             }
 
             for ($i = $start; $i < $end; $i++) {
@@ -82,8 +85,8 @@ switch ($mod) {
 
             echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-            if ($total > $kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;mod=ip&amp;', $start, $total, $kmess) . '</div>' .
+            if ($total > $userConfig->kmess) {
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;mod=ip&amp;', $start, $total, $userConfig->kmess) . '</div>' .
                     '<p><form action="index.php?act=online&amp;mod=ip" method="post">' .
                     '<input type="text" name="page" size="2"/>' .
                     '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';
@@ -116,15 +119,15 @@ $total = $db->query($sql_total)->fetchColumn();
 
 // Исправляем запрос на несуществующую страницу
 if ($start >= $total) {
-    $start = max(0, $total - (($total % $kmess) == 0 ? $kmess : ($total % $kmess)));
+    $start = max(0, $total - (($total % $userConfig->kmess) == 0 ? $userConfig->kmess : ($total % $userConfig->kmess)));
 }
 
-if ($total > $kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;' . ($mod ? 'mod=' . $mod . '&amp;' : ''), $start, $total, $kmess) . '</div>';
+if ($total > $userConfig->kmess) {
+    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;' . ($mod ? 'mod=' . $mod . '&amp;' : ''), $start, $total, $userConfig->kmess) . '</div>';
 }
 
 if ($total) {
-    $req = $db->query($sql_list . "$start, $kmess");
+    $req = $db->query($sql_list . "$start, $userConfig->kmess");
     $i = 0;
 
     while ($res = $req->fetch()) {
@@ -154,8 +157,8 @@ if ($total) {
 
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-if ($total > $kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;' . ($mod ? 'mod=' . $mod . '&amp;' : ''), $start, $total, $kmess) . '</div>' .
+if ($total > $userConfig->kmess) {
+    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;' . ($mod ? 'mod=' . $mod . '&amp;' : ''), $start, $total, $userConfig->kmess) . '</div>' .
         '<p><form action="index.php?act=online' . ($mod ? '&amp;mod=' . $mod : '') . '" method="post">' .
         '<input type="text" name="page" size="2"/>' .
         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

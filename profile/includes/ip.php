@@ -14,6 +14,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -40,7 +43,7 @@ echo '</p></div>';
 $total = $db->query("SELECT COUNT(*) FROM `cms_users_iphistory` WHERE `user_id` = '" . $user['id'] . "'")->fetchColumn();
 
 if ($total) {
-    $req = $db->query("SELECT * FROM `cms_users_iphistory` WHERE `user_id` = '" . $user['id'] . "' ORDER BY `time` DESC LIMIT $start, $kmess");
+    $req = $db->query("SELECT * FROM `cms_users_iphistory` WHERE `user_id` = '" . $user['id'] . "' ORDER BY `time` DESC LIMIT $start, $userConfig->kmess");
     $i = 0;
 
     while ($res = $req->fetch()) {
@@ -55,8 +58,8 @@ if ($total) {
 
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-if ($total > $kmess) {
-    echo '<p>' . $tools->displayPagination('?act=ip&amp;user=' . $user['id'] . '&amp;', $start, $total, $kmess) . '</p>';
+if ($total > $userConfig->kmess) {
+    echo '<p>' . $tools->displayPagination('?act=ip&amp;user=' . $user['id'] . '&amp;', $start, $total, $userConfig->kmess) . '</p>';
     echo '<p><form action="?act=ip&amp;user=' . $user['id'] . '" method="post">' .
         '<input type="text" name="page" size="2"/>' .
         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

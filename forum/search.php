@@ -10,6 +10,18 @@ require('../system/bootstrap.php');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var PDO $db */
+$db = $container->get(PDO::class);
+
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
+
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
+
 /** @var Zend\I18n\Translator\Translator $translator */
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
@@ -17,15 +29,6 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 $textl = _t('Forum search');
 require('../system/head.php');
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Forum') . '</b></a> | ' . _t('Search') . '</div>';
-
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Функция подсветки результатов запроса
 function ReplaceKeywords($search, $text)
@@ -83,8 +86,8 @@ switch ($act) {
             "))->fetchColumn();
             echo '<div class="phdr">' . _t('Search results') . '</div>';
 
-            if ($total > $kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('search.php?' . ($search_t ? 't=1&amp;' : '') . 'search=' . urlencode($search) . '&amp;', $start, $total, $kmess) . '</div>';
+            if ($total > $userConfig->kmess) {
+                echo '<div class="topmenu">' . $tools->displayPagination('search.php?' . ($search_t ? 't=1&amp;' : '') . 'search=' . urlencode($search) . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
             }
 
             if ($total) {
@@ -95,7 +98,7 @@ switch ($act) {
                     WHERE MATCH (`text`) AGAINST ($query IN BOOLEAN MODE)
                     AND `type` = '" . ($search_t ? 't' : 'm') . "'
                     ORDER BY `rel` DESC
-                    LIMIT $start, $kmess
+                    LIMIT $start, $userConfig->kmess
                 ");
                 $i = 0;
 
@@ -207,8 +210,8 @@ switch ($act) {
         }
 
         // Постраничная навигация
-        if (isset($total) && $total > $kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('search.php?' . ($search_t ? 't=1&amp;' : '') . 'search=' . urlencode($search) . '&amp;', $start, $total, $kmess) . '</div>' .
+        if (isset($total) && $total > $userConfig->kmess) {
+            echo '<div class="topmenu">' . $tools->displayPagination('search.php?' . ($search_t ? 't=1&amp;' : '') . 'search=' . urlencode($search) . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
                 '<p><form action="search.php?' . ($search_t ? 't=1&amp;' : '') . 'search=' . urlencode($search) . '" method="post">' .
                 '<input type="text" name="page" size="2"/>' .
                 '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

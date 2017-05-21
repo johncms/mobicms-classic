@@ -11,6 +11,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -92,12 +95,12 @@ switch ($mod) {
         // Выводим список пользователей, ожидающих подтверждения регистрации
         $total = $db->query("SELECT COUNT(*) FROM `users` WHERE `preg` = '0'")->fetchColumn();
 
-        if ($total > $kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=reg&amp;', $start, $total, $kmess) . '</div>';
+        if ($total > $userConfig->kmess) {
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=reg&amp;', $start, $total, $userConfig->kmess) . '</div>';
         }
 
         if ($total) {
-            $req = $db->query("SELECT * FROM `users` WHERE `preg` = '0' ORDER BY `id` DESC LIMIT $start,$kmess");
+            $req = $db->query("SELECT * FROM `users` WHERE `preg` = '0' ORDER BY `id` DESC LIMIT $start, $userConfig->kmess");
             $i = 0;
 
             while ($res = $req->fetch()) {
@@ -120,8 +123,8 @@ switch ($mod) {
 
         echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-        if ($total > $kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=reg&amp;', $start, $total, $kmess) . '</div>' .
+        if ($total > $userConfig->kmess) {
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=reg&amp;', $start, $total, $userConfig->kmess) . '</div>' .
                 '<p><form action="index.php?act=reg" method="post">' .
                 '<input type="text" name="page" size="2"/>' .
                 '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

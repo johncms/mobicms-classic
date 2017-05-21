@@ -339,7 +339,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                 }
 
                 if ($total) {
-                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t'" . ($systemUser->rights >= 7 ? '' : " AND `close`!='1'") . " AND `refid`='$id' ORDER BY `vip` DESC, `time` DESC LIMIT $start, $kmess");
+                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t'" . ($systemUser->rights >= 7 ? '' : " AND `close`!='1'") . " AND `refid`='$id' ORDER BY `vip` DESC, `time` DESC LIMIT $start, $userConfig->kmess");
                     $i = 0;
 
                     while ($res = $req->fetch()) {
@@ -351,7 +351,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
 
                         $nam = $db->query("SELECT `from` FROM `forum` WHERE `type` = 'm' AND `close` != '1' AND `refid` = '" . $res['id'] . "' ORDER BY `time` DESC LIMIT 1")->fetch();
                         $colmes = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='m' AND `refid`='" . $res['id'] . "'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'"))->fetchColumn();
-                        $cpg = ceil($colmes / $kmess);
+                        $cpg = ceil($colmes / $userConfig->kmess);
                         $np = $db->query("SELECT COUNT(*) FROM `cms_forum_rdm` WHERE `time` >= '" . $res['time'] . "' AND `topic_id` = '" . $res['id'] . "' AND `user_id` = " . $systemUser->id)->fetchColumn();
                         // Значки
                         $icons = [
@@ -385,8 +385,8 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
 
                 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-                if ($total > $kmess) {
-                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;', $start, $total, $kmess) . '</div>' .
+                if ($total > $userConfig->kmess) {
+                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
                         '<p><form action="index.php?id=' . $id . '" method="post">' .
                         '<input type="text" name="page" size="2"/>' .
                         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .
@@ -431,14 +431,14 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
 
                 if ($start >= $colmes) {
                     // Исправляем запрос на несуществующую страницу
-                    $start = max(0, $colmes - (($colmes % $kmess) == 0 ? $kmess : ($colmes % $kmess)));
+                    $start = max(0, $colmes - (($colmes % $userConfig->kmess) == 0 ? $userConfig->kmess : ($colmes % $userConfig->kmess)));
                 }
 
                 // Выводим название топика
                 echo '<div class="phdr"><a href="#down">' . $tools->image('down.png', ['class' => '']) . '</a>&#160;&#160;<b>' . (empty($type1['text']) ? '-----' : $type1['text']) . '</b></div>';
 
-                if ($colmes > $kmess) {
-                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;', $start, $colmes, $kmess) . '</div>';
+                if ($colmes > $userConfig->kmess) {
+                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;', $start, $colmes, $userConfig->kmess) . '</div>';
                 }
 
                 // Метка удаления темы
@@ -508,7 +508,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                 }
 
                 // Фиксация первого поста в теме
-                if (($set_forum['postclip'] == 2 && ($set_forum['upfp'] ? $start < (ceil($colmes - $kmess)) : $start > 0)) || isset($_GET['clip'])) {
+                if (($set_forum['postclip'] == 2 && ($set_forum['upfp'] ? $start < (ceil($colmes - $userConfig->kmess)) : $start > 0)) || isset($_GET['clip'])) {
                     $postres = $db->query("SELECT `forum`.*, `users`.`sex`, `users`.`rights`, `users`.`lastdate`, `users`.`status`, `users`.`datereg`
                     FROM `forum` LEFT JOIN `users` ON `forum`.`user_id` = `users`.`id`
                     WHERE `forum`.`type` = 'm' AND `forum`.`refid` = '$id'" . ($systemUser->rights >= 7 ? "" : " AND `forum`.`close` != '1'") . "
@@ -566,7 +566,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                   FROM `forum` LEFT JOIN `users` ON `forum`.`user_id` = `users`.`id`
                   WHERE `forum`.`type` = 'm' AND `forum`.`refid` = '$id'"
                     . ($systemUser->rights >= 7 ? "" : " AND `forum`.`close` != '1'") . "$sql
-                  ORDER BY `forum`.`id` $order LIMIT $start, $kmess
+                  ORDER BY `forum`.`id` $order LIMIT $start, $userConfig->kmess
                 ");
 
                 // Верхнее поле "Написать"
@@ -797,8 +797,8 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                     '&#160;&#160;' . _t('Total') . ': ' . $colmes . '</div>';
 
                 // Постраничная навигация
-                if ($colmes > $kmess) {
-                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;', $start, $colmes, $kmess) . '</div>' .
+                if ($colmes > $userConfig->kmess) {
+                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;', $start, $colmes, $userConfig->kmess) . '</div>' .
                         '<p><form action="index.php?id=' . $id . '" method="post">' .
                         '<input type="text" name="page" size="2"/>' .
                         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

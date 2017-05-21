@@ -8,6 +8,9 @@ $container = App::getContainer();
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -37,7 +40,7 @@ if ($id && is_dir(ROOT_PATH . 'images/avatars/' . $id)) {
         echo '<div class="phdr"><a href="?act=avatars"><b>' . _t('Avatars') . '</b></a> | ' . htmlentities(file_get_contents(ROOT_PATH . 'images/avatars/' . $id . '/name.dat'), ENT_QUOTES, 'utf-8') . '</div>';
         $array = glob(ROOT_PATH . 'images/avatars/' . $id . '/*.png');
         $total = count($array);
-        $end = $start + $kmess;
+        $end = $start + $userConfig->kmess;
 
         if ($end > $total) {
             $end = $total;
@@ -60,8 +63,8 @@ if ($id && is_dir(ROOT_PATH . 'images/avatars/' . $id)) {
 
         echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-        if ($total > $kmess) {
-            echo '<p>' . $tools->displayPagination('?act=avatars&amp;id=' . $id . '&amp;', $start, $total, $kmess) . '</p>' .
+        if ($total > $userConfig->kmess) {
+            echo '<p>' . $tools->displayPagination('?act=avatars&amp;id=' . $id . '&amp;', $start, $total, $userConfig->kmess) . '</p>' .
                 '<p><form action="?act=avatars&amp;id=' . $id . '" method="post">' .
                 '<input type="text" name="page" size="2"/>' .
                 '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

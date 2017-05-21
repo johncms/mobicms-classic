@@ -14,6 +14,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -88,7 +91,7 @@ if ($do || isset($_GET['new'])) {
             LEFT JOIN `forum` ON `cms_forum_files`.`post` = `forum`.`id`
             LEFT JOIN `forum` AS `topicname` ON `cms_forum_files`.`topic` = `topicname`.`id`
             WHERE " . (isset($_GET['new']) ? " `cms_forum_files`.`time` > '$new'" : " `filetype` = '$do'") . ($systemUser->rights >= 7 ? '' : " AND `del` != '1'") . $sql .
-            "ORDER BY `time` DESC LIMIT $start,$kmess");
+            "ORDER BY `time` DESC LIMIT $start, $userConfig->kmess");
 
         for ($i = 0; $res = $req->fetch(); ++$i) {
             $res_u = $db->query("SELECT `id`, `name`, `sex`, `rights`, `lastdate`, `status`, `datereg`, `ip`, `browser` FROM `users` WHERE `id` = '" . $res['user_id'] . "'")->fetch();
@@ -97,7 +100,7 @@ if ($do || isset($_GET['new'])) {
             $text = mb_substr($res['text'], 0, 500);
             $text = $tools->checkout($text, 1, 0);
             $text = preg_replace('#\[c\](.*?)\[/c\]#si', '', $text);
-            $page = ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `refid` = '" . $res['topic'] . "' AND `id` " . ($set_forum['upfp'] ? ">=" : "<=") . " '" . $res['post'] . "'")->fetchColumn() / $kmess);
+            $page = ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `refid` = '" . $res['topic'] . "' AND `id` " . ($set_forum['upfp'] ? ">=" : "<=") . " '" . $res['post'] . "'")->fetchColumn() / $userConfig->kmess);
             $text = '<b><a href="index.php?id=' . $res['topic'] . '&amp;page=' . $page . '">' . $res['topicname'] . '</a></b><br />' . $text;
 
             if (mb_strlen($res['text']) > 500) {
@@ -139,10 +142,10 @@ if ($do || isset($_GET['new'])) {
 
         echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-        if ($total > $kmess) {
+        if ($total > $userConfig->kmess) {
             // Постраничная навигация
             echo '<p>' . $tools->displayPagination('index.php?act=files&amp;' . (isset($_GET['new']) ? 'new'
-                        : 'do=' . $do) . $lnk . '&amp;', $start, $total, $kmess) . '</p>' .
+                        : 'do=' . $do) . $lnk . '&amp;', $start, $total, $userConfig->kmess) . '</p>' .
                 '<p><form action="index.php" method="get">' .
                 '<input type="hidden" name="act" value="files"/>' .
                 '<input type="hidden" name="do" value="' . $do . '"/>' . $input . '<input type="text" name="page" size="2"/>' .

@@ -13,6 +13,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -28,7 +31,7 @@ if ($topic_vote == 0 || $systemUser->rights < 7) {
     $total = $db->query("SELECT COUNT(*) FROM `cms_forum_vote_users` WHERE `topic`='$id'")->fetchColumn();
     $req = $db->query("SELECT `cms_forum_vote_users`.*, `users`.`rights`, `users`.`lastdate`, `users`.`name`, `users`.`sex`, `users`.`status`, `users`.`datereg`, `users`.`id`
     FROM `cms_forum_vote_users` LEFT JOIN `users` ON `cms_forum_vote_users`.`user` = `users`.`id`
-    WHERE `cms_forum_vote_users`.`topic`='$id' LIMIT $start,$kmess");
+    WHERE `cms_forum_vote_users`.`topic`='$id' LIMIT $start, $userConfig->kmess");
     $i = 0;
 
     while ($res = $req->fetch()) {
@@ -44,8 +47,8 @@ if ($topic_vote == 0 || $systemUser->rights < 7) {
 
     echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-    if ($total > $kmess) {
-        echo '<p>' . $tools->displayPagination('index.php?act=users&amp;id=' . $id . '&amp;', $start, $total, $kmess) . '</p>' .
+    if ($total > $userConfig->kmess) {
+        echo '<p>' . $tools->displayPagination('index.php?act=users&amp;id=' . $id . '&amp;', $start, $total, $userConfig->kmess) . '</p>' .
             '<p><form action="index.php?act=users&amp;id=' . $id . '" method="post">' .
             '<input type="text" name="page" size="2"/>' .
             '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

@@ -12,7 +12,7 @@ interface ToolsInterface
 
     public function displayError($error, $link = '');
 
-    public function displayPagination($url, $start, $total, $kmess);
+    public function displayPagination($url, $start, $total, $listSize);
 
     public function displayPlace($user_id, $place, $headmod);
 

@@ -158,56 +158,56 @@ class Utilites implements ToolsInterface
      * @param string $url
      * @param int    $start
      * @param int    $total
-     * @param int    $kmess
+     * @param int    $listSize
      * @return string
      */
-    public function displayPagination($url, $start, $total, $kmess)
+    public function displayPagination($url, $start, $total, $listSize)
     {
         $neighbors = 2;
         if ($start >= $total) {
-            $start = max(0, $total - (($total % $kmess) == 0 ? $kmess : ($total % $kmess)));
+            $start = max(0, $total - (($total % $listSize) == 0 ? $listSize : ($total % $listSize)));
         } else {
-            $start = max(0, (int)$start - ((int)$start % (int)$kmess));
+            $start = max(0, (int)$start - ((int)$start % (int)$listSize));
         }
 
         $base_link = '<a class="pagenav" href="' . strtr($url, ['%' => '%%']) . 'page=%d' . '">%s</a>';
-        $out[] = $start == 0 ? '' : sprintf($base_link, $start / $kmess, '&lt;&lt;');
+        $out[] = $start == 0 ? '' : sprintf($base_link, $start / $listSize, '&lt;&lt;');
 
-        if ($start > $kmess * $neighbors) {
+        if ($start > $listSize * $neighbors) {
             $out[] = sprintf($base_link, 1, '1');
         }
 
-        if ($start > $kmess * ($neighbors + 1)) {
+        if ($start > $listSize * ($neighbors + 1)) {
             $out[] = '<span style="font-weight: bold;">...</span>';
         }
 
         for ($nCont = $neighbors; $nCont >= 1; $nCont--) {
-            if ($start >= $kmess * $nCont) {
-                $tmpStart = $start - $kmess * $nCont;
-                $out[] = sprintf($base_link, $tmpStart / $kmess + 1, $tmpStart / $kmess + 1);
+            if ($start >= $listSize * $nCont) {
+                $tmpStart = $start - $listSize * $nCont;
+                $out[] = sprintf($base_link, $tmpStart / $listSize + 1, $tmpStart / $listSize + 1);
             }
         }
 
-        $out[] = '<span class="currentpage"><b>' . ($start / $kmess + 1) . '</b></span>';
-        $tmpMaxPages = (int)(($total - 1) / $kmess) * $kmess;
+        $out[] = '<span class="currentpage"><b>' . ($start / $listSize + 1) . '</b></span>';
+        $tmpMaxPages = (int)(($total - 1) / $listSize) * $listSize;
 
         for ($nCont = 1; $nCont <= $neighbors; $nCont++) {
-            if ($start + $kmess * $nCont <= $tmpMaxPages) {
-                $tmpStart = $start + $kmess * $nCont;
-                $out[] = sprintf($base_link, $tmpStart / $kmess + 1, $tmpStart / $kmess + 1);
+            if ($start + $listSize * $nCont <= $tmpMaxPages) {
+                $tmpStart = $start + $listSize * $nCont;
+                $out[] = sprintf($base_link, $tmpStart / $listSize + 1, $tmpStart / $listSize + 1);
             }
         }
 
-        if ($start + $kmess * ($neighbors + 1) < $tmpMaxPages) {
+        if ($start + $listSize * ($neighbors + 1) < $tmpMaxPages) {
             $out[] = '<span style="font-weight: bold;">...</span>';
         }
 
-        if ($start + $kmess * $neighbors < $tmpMaxPages) {
-            $out[] = sprintf($base_link, $tmpMaxPages / $kmess + 1, $tmpMaxPages / $kmess + 1);
+        if ($start + $listSize * $neighbors < $tmpMaxPages) {
+            $out[] = sprintf($base_link, $tmpMaxPages / $listSize + 1, $tmpMaxPages / $listSize + 1);
         }
 
-        if ($start + $kmess < $total) {
-            $display_page = ($start + $kmess) > $total ? $total : ($start / $kmess + 2);
+        if ($start + $listSize < $total) {
+            $display_page = ($start + $listSize) > $total ? $total : ($start / $listSize + 2);
             $out[] = sprintf($base_link, $display_page, '&gt;&gt;');
         }
 

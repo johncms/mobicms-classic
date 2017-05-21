@@ -11,6 +11,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 if (($systemUser->rights != 3 && $systemUser->rights < 6) || !$id) {
     echo _t('Access denied');
     require('../system/end.php');
@@ -26,7 +29,7 @@ if ($req->rowCount()) {
     if ($res['type'] == 't') {
         header('Location: index.php?id=' . $id);
     } else {
-        $page = ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `refid` = '" . $res['refid'] . "' AND `id` " . ($set_forum['upfp'] ? ">=" : "<=") . " '" . $id . "'")->fetchColumn() / $kmess);
+        $page = ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `refid` = '" . $res['refid'] . "' AND `id` " . ($set_forum['upfp'] ? ">=" : "<=") . " '" . $id . "'")->fetchColumn() / $userConfig->kmess);
         header('Location: index.php?id=' . $res['refid'] . '&page=' . $page);
     }
 } else {

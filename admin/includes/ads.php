@@ -14,6 +14,9 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 // Проверяем права доступа
 if ($systemUser->rights < 7) {
     echo _t('Access denied');
@@ -332,7 +335,7 @@ switch ($mod) {
         $total = $db->query("SELECT COUNT(*) FROM `cms_ads` WHERE `type` = '$type'")->fetchColumn();
 
         if ($total) {
-            $req = $db->query("SELECT * FROM `cms_ads` WHERE `type` = '$type' ORDER BY `mesto` ASC LIMIT $start,$kmess");
+            $req = $db->query("SELECT * FROM `cms_ads` WHERE `type` = '$type' ORDER BY `mesto` ASC LIMIT $start, $userConfig->kmess");
             $i = 0;
 
             while ($res = $req->fetch()) {
@@ -406,8 +409,8 @@ switch ($mod) {
 
         echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-        if ($total > $kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ads&amp;type=' . $type . '&amp;', $start, $total, $kmess) . '</div>' .
+        if ($total > $userConfig->kmess) {
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ads&amp;type=' . $type . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
                 '<p><form action="index.php?act=ads&amp;type=' . $type . '" method="post">' .
                 '<input type="text" name="page" size="2"/>' .
                 '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

@@ -8,6 +8,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -17,11 +20,11 @@ use Library\Rating;
 echo '<div class="phdr"><strong><a href="?">' . _t('Library') . '</a></strong> | ' . _t('New Articles') . '</div>';
 
 $total = $db->query("SELECT COUNT(*) FROM `library_texts` WHERE `time` > '" . (time() - 259200) . "' AND `premod`=1")->fetchColumn();
-$page = $page >= ceil($total / $kmess) ? ceil($total / $kmess) : $page;
-$start = $page == 1 ? 0 : ($page - 1) * $kmess;
-$sql = $db->query("SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `comments`, `comm_count`, `cat_id`, `announce` FROM `library_texts` WHERE `time` > '" . (time() - 259200) . "' AND `premod`=1 ORDER BY `time` DESC LIMIT " . $start . "," . $kmess);
-$nav = ($total > $kmess) ? '<div class="topmenu">' . $tools->displayPagination('?act=new&amp;', $start, $total,
-        $kmess) . '</div>' : '';
+$page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
+$start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
+$sql = $db->query("SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `comments`, `comm_count`, `cat_id`, `announce` FROM `library_texts` WHERE `time` > '" . (time() - 259200) . "' AND `premod`=1 ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
+$nav = ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?act=new&amp;', $start, $total,
+        $userConfig->kmess) . '</div>' : '';
 echo $nav;
 if ($total) {
     $i = 0;

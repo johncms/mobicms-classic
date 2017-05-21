@@ -8,6 +8,9 @@ $container = App::getContainer();
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -40,7 +43,7 @@ closedir($dir);
 $total = count($array);
 
 if ($total > 0) {
-    $end = $start + $kmess;
+    $end = $start + $userConfig->kmess;
 
     if ($end > $total) {
         $end = $total;
@@ -60,8 +63,8 @@ if ($total > 0) {
 echo '<div class="gmenu"><input type="submit" name="add" value=" ' . _t('Add') . ' "/></div></form>';
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-if ($total > $kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('?act=admsmilies&amp;', $start, $total, $kmess) . '</div>';
+if ($total > $userConfig->kmess) {
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=admsmilies&amp;', $start, $total, $userConfig->kmess) . '</div>';
     echo '<p><form action="?act=admsmilies" method="post">' .
         '<input type="text" name="page" size="2"/>' .
         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

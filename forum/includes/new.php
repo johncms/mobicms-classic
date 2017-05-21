@@ -17,6 +17,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -74,15 +77,15 @@ if ($systemUser->isValid()) {
                 '<input type="submit" name="submit" value="' . _t('Show period') . '"/>' .
                 '</form></div>';
 
-            if ($count > $kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;do=period&amp;vr=' . $vr . '&amp;', $start, $count, $kmess) . '</div>';
+            if ($count > $userConfig->kmess) {
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;do=period&amp;vr=' . $vr . '&amp;', $start, $count, $userConfig->kmess) . '</div>';
             }
 
             if ($count) {
                 if ($systemUser->rights == 9) {
-                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t' AND `time` > '" . $vr1 . "' ORDER BY `time` DESC LIMIT " . $start . "," . $kmess);
+                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t' AND `time` > '" . $vr1 . "' ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
                 } else {
-                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t' AND `time` > '" . $vr1 . "' AND `close` != '1' ORDER BY `time` DESC LIMIT " . $start . "," . $kmess);
+                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t' AND `time` > '" . $vr1 . "' AND `close` != '1' ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
                 }
 
                 for ($i = 0; $res = $req->fetch(); ++$i) {
@@ -91,7 +94,7 @@ if ($systemUser->isValid()) {
                     $frm = $db->query("SELECT `text` FROM `forum` WHERE `type`='f' AND `id`='" . $razd['refid'] . "'")->fetch();
                     $colmes = $db->query("SELECT * FROM `forum` WHERE `refid` = '" . $res['id'] . "' AND `type` = 'm'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'") . " ORDER BY `time` DESC");
                     $colmes1 = $colmes->rowCount();
-                    $cpg = ceil($colmes1 / $kmess);
+                    $cpg = ceil($colmes1 / $userConfig->kmess);
                     $nick = $colmes->fetch();
 
                     if ($res['edit']) {
@@ -128,8 +131,8 @@ if ($systemUser->isValid()) {
 
             echo '<div class="phdr">' . _t('Total') . ': ' . $count . '</div>';
 
-            if ($count > $kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;do=period&amp;vr=' . $vr . '&amp;', $start, $count, $kmess) . '</div>' .
+            if ($count > $userConfig->kmess) {
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;do=period&amp;vr=' . $vr . '&amp;', $start, $count, $userConfig->kmess) . '</div>' .
                     '<p><form action="index.php?act=new&amp;do=period&amp;vr=' . $vr . '" method="post">
                     <input type="text" name="page" size="2"/>
                     <input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';
@@ -141,8 +144,8 @@ if ($systemUser->isValid()) {
             $total = $container->get('counters')->forumNew();
             echo '<div class="phdr"><a href="index.php"><b>' . _t('Forum') . '</b></a> | ' . _t('Unread') . '</div>';
 
-            if ($total > $kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $start, $total, $kmess) . '</div>';
+            if ($total > $userConfig->kmess) {
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $start, $total, $userConfig->kmess) . '</div>';
             }
 
             if ($total > 0) {
@@ -152,7 +155,7 @@ if ($systemUser->isValid()) {
                 AND (`cms_forum_rdm`.`topic_id` Is Null
                 OR `forum`.`time` > `cms_forum_rdm`.`time`)
                 ORDER BY `forum`.`time` DESC
-                LIMIT $start, $kmess");
+                LIMIT $start, $userConfig->kmess");
 
                 for ($i = 0; $res = $req->fetch(); ++$i) {
                     if ($res['close']) {
@@ -165,7 +168,7 @@ if ($systemUser->isValid()) {
                     $frm = $db->query("SELECT `id`, `text` FROM `forum` WHERE `type`='f' AND `id` = '" . $razd['refid'] . "' LIMIT 1")->fetch();
                     $colmes = $db->query("SELECT `from`, `time` FROM `forum` WHERE `refid` = '" . $res['id'] . "' AND `type` = 'm'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'") . " ORDER BY `time` DESC");
                     $colmes1 = $colmes->rowCount();
-                    $cpg = ceil($colmes1 / $kmess);
+                    $cpg = ceil($colmes1 / $userConfig->kmess);
                     $nick = $colmes->fetch();
 
                     // Значки
@@ -194,8 +197,8 @@ if ($systemUser->isValid()) {
 
             echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-            if ($total > $kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $start, $total, $kmess) . '</div>' .
+            if ($total > $userConfig->kmess) {
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $start, $total, $userConfig->kmess) . '</div>' .
                     '<p><form action="index.php" method="get">' .
                     '<input type="hidden" name="act" value="new"/>' .
                     '<input type="text" name="page" size="2"/>' .
@@ -219,7 +222,7 @@ if ($systemUser->isValid()) {
             $frm = $db->query("SELECT `id`, `refid`, `text` FROM `forum` WHERE type='f' AND id='" . $razd['refid'] . "' LIMIT 1")->fetch();
             $nikuser = $db->query("SELECT `from`, `time` FROM `forum` WHERE `type` = 'm' AND `close` != '1' AND `refid` = '" . $res['id'] . "'ORDER BY `time` DESC");
             $colmes1 = $nikuser->rowCount();
-            $cpg = ceil($colmes1 / $kmess);
+            $cpg = ceil($colmes1 / $userConfig->kmess);
             $nam = $nikuser->fetch();
             echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
             // Значки

@@ -11,6 +11,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -119,8 +122,8 @@ if ($mod == 'my_new_comm') {
 }
 
 if ($total) {
-    if ($total > $kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('?act=top' . $link . '&amp;', $start, $total, $kmess) . '</div>';
+    if ($total > $userConfig->kmess) {
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=top' . $link . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
     }
 
     $req = $db->query("
@@ -131,7 +134,7 @@ if ($total) {
       $join
       WHERE $where
       ORDER BY $order
-      LIMIT $start, $kmess
+      LIMIT $start, $userConfig->kmess
     ");
 
     for ($i = 0; $res = $req->fetch(); ++$i) {
@@ -169,8 +172,8 @@ if ($total) {
 
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-if ($total > $kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('?act=top' . $link . '&amp;', $start, $total, $kmess) . '</div>' .
+if ($total > $userConfig->kmess) {
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=top' . $link . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
         '<p><form action="?act=top' . $link . '" method="post">' .
         '<input type="text" name="page" size="2"/>' .
         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

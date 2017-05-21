@@ -209,7 +209,7 @@ switch ($type1['type']) {
             ");
 
             // Вычисляем, на какую страницу попадает добавляемый пост
-            $page = $set_forum['upfp'] ? 1 : ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `refid` = '$id'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'"))->fetchColumn() / $kmess);
+            $page = $set_forum['upfp'] ? 1 : ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `refid` = '$id'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'"))->fetchColumn() / $userConfig->kmess);
 
             if (isset($_POST['addfiles'])) {
                 if ($update) {
@@ -389,7 +389,7 @@ switch ($type1['type']) {
             ");
 
             // Вычисляем, на какую страницу попадает добавляемый пост
-            $page = $set_forum['upfp'] ? 1 : ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `refid` = '$th'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'"))->fetchColumn() / $kmess);
+            $page = $set_forum['upfp'] ? 1 : ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `refid` = '$th'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'"))->fetchColumn() / $userConfig->kmess);
 
             if (isset($_POST['addfiles'])) {
                 header("Location: index.php?id=$fadd&act=addfile");

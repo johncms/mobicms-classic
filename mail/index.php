@@ -19,6 +19,9 @@ $container = App::getContainer();
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
@@ -115,8 +118,8 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
         $total = $db->query("SELECT COUNT(*) FROM `cms_contact` WHERE `user_id`='" . $systemUser->id . "' AND `ban`!='1'")->fetchColumn();
 
         if ($total) {
-            if ($total > $kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $kmess) . '</div>';
+            if ($total > $userConfig->kmess) {
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $userConfig->kmess) . '</div>';
             }
 
             $req = $db->query("SELECT `users`.*, `cms_contact`.`from_id` AS `id`
@@ -125,7 +128,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
 			    WHERE `cms_contact`.`user_id`='" . $systemUser->id . "'
 			    AND `cms_contact`.`ban`!='1'
 			    ORDER BY `users`.`name` ASC
-			    LIMIT $start, $kmess"
+			    LIMIT $start, $userConfig->kmess"
             );
 
             for ($i = 0; ($row = $req->fetch()) !== false; ++$i) {
@@ -146,8 +149,8 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
 
         echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-        if ($total > $kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $kmess) . '</div>';
+        if ($total > $userConfig->kmess) {
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $userConfig->kmess) . '</div>';
             echo '<p><form action="index.php" method="get">
 				<input type="text" name="page" size="2"/>
 				<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

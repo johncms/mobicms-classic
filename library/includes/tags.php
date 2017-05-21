@@ -11,6 +11,9 @@ if (isset($_GET['tag'])) {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
+    /** @var Mobicms\Checkpoint\UserConfig $userConfig */
+    $userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
+
     /** @var Mobicms\Api\ToolsInterface $tools */
     $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -18,17 +21,17 @@ if (isset($_GET['tag'])) {
 
     if ($obj->getAllTagStats($tag)) {
         $total = sizeof($obj->getAllTagStats($tag));
-        $page = $page >= ceil($total / $kmess) ? ceil($total / $kmess) : $page;
-        $start = $page == 1 ? 0 : ($page - 1) * $kmess;
+        $page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
+        $start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
 
         echo '<div class="phdr"><a href="?"><strong>' . _t('Library') . '</strong></a> | ' . _t('Tags') . '</div>';
 
-        if ($total > $kmess) {
+        if ($total > $userConfig->kmess) {
             echo '<div class="topmenu">' . $tools->displayPagination('?act=tags&amp;tag=' . urlencode($tag) . '&amp;',
-                    $start, $total, $kmess) . '</div>';
+                    $start, $total, $userConfig->kmess) . '</div>';
         }
 
-        foreach (new LimitIterator(new ArrayIterator($obj->getAllTagStats($tag)), $start, $kmess) as $txt) {
+        foreach (new LimitIterator(new ArrayIterator($obj->getAllTagStats($tag)), $start, $userConfig->kmess) as $txt) {
             $row = $db->query("SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `comm_count`, `comments` FROM `library_texts` WHERE `id` = " . $txt)->fetch();
             $obj = new Library\Hashtags($row['id']);
             echo '<div class="list' . (++$i % 2 ? 2 : 1) . '">'
@@ -46,9 +49,8 @@ if (isset($_GET['tag'])) {
 
         echo '<div class="phdr">' . _t('Total') . ': ' . intval($total) . '</div>';
 
-        if ($total > $kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('?act=tags&amp;tag=' . urlencode($tag) . '&amp;',
-                    $start, $total, $kmess) . '</div>';
+        if ($total > $userConfig->kmess) {
+            echo '<div class="topmenu">' . $tools->displayPagination('?act=tags&amp;tag=' . urlencode($tag) . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
         }
         echo '<p><a href="?">' . _t('To Library') . '</a></p>';
     }

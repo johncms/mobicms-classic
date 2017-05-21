@@ -14,6 +14,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -28,8 +31,8 @@ if ($total == 1) {
 }
 
 if ($total) {
-    if ($total > $kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $start, $total, $kmess) . '</div>';
+    if ($total > $userConfig->kmess) {
+        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $start, $total, $userConfig->kmess) . '</div>';
     }
 
     //Групируем по контактам
@@ -41,7 +44,7 @@ if ($total) {
 		AND `cms_mail`.`delete` != " . $systemUser->id . "
 		GROUP BY `cms_mail`.`user_id`
 		ORDER BY `cms_contact`.`time` DESC
-		LIMIT $start, $kmess"
+		LIMIT $start, $userConfig->kmess"
     );
 
     for ($i = 0; ($row = $query->fetch()) !== false; ++$i) {
@@ -62,8 +65,8 @@ if ($total) {
 
 echo '<div class="phdr">' . _t('Total') . ': ' . $new_mail . '</div>';
 
-if ($total > $kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $start, $total, $kmess) . '</div>';
+if ($total > $userConfig->kmess) {
+    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $start, $total, $userConfig->kmess) . '</div>';
     echo '<p><form action="index.php" method="get">
 		<input type="hidden" name="act" value="new"/>
 		<input type="text" name="page" size="2"/>

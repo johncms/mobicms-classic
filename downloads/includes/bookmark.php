@@ -11,6 +11,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -29,15 +32,15 @@ echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $te
 $total = $db->query("SELECT COUNT(*) FROM `download__bookmark` WHERE `user_id` = " . $systemUser->id)->fetchColumn();
 
 // Навигация
-if ($total > $kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('?act=bookmark&amp;', $start, $total, $kmess) . '</div>';
+if ($total > $userConfig->kmess) {
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=bookmark&amp;', $start, $total, $userConfig->kmess) . '</div>';
 }
 
 // Список закладок
 if ($total) {
     $req_down = $db->query("SELECT `download__files`.*, `download__bookmark`.`id` AS `bid`
     FROM `download__files` LEFT JOIN `download__bookmark` ON `download__files`.`id` = `download__bookmark`.`file_id`
-    WHERE `download__bookmark`.`user_id`=" . $systemUser->id . " ORDER BY `download__files`.`time` DESC LIMIT $start, $kmess");
+    WHERE `download__bookmark`.`user_id`=" . $systemUser->id . " ORDER BY `download__files`.`time` DESC LIMIT $start, $userConfig->kmess");
     $i = 0;
 
     while ($res_down = $req_down->fetch()) {
@@ -50,8 +53,8 @@ if ($total) {
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 // Навигация
-if ($total > $kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('?act=bookmark&amp;', $start, $total, $kmess) . '</div>' .
+if ($total > $userConfig->kmess) {
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=bookmark&amp;', $start, $total, $userConfig->kmess) . '</div>' .
         '<p><form action="?" method="get">' .
         '<input type="hidden" value="bookmark" name="act" />' .
         '<input type="text" name="page" size="2"/><input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

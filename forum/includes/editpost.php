@@ -13,6 +13,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -35,7 +38,7 @@ if ($req->rowCount()) {
         $systemUser->rights = 3;
     }
 
-    $page = ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `refid` = '" . $res['refid'] . "' AND `id` " . ($set_forum['upfp'] ? ">=" : "<=") . " '$id'" . ($systemUser->rights < 7 ? " AND `close` != '1'" : ''))->fetchColumn() / $kmess);
+    $page = ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `refid` = '" . $res['refid'] . "' AND `id` " . ($set_forum['upfp'] ? ">=" : "<=") . " '$id'" . ($systemUser->rights < 7 ? " AND `close` != '1'" : ''))->fetchColumn() / $userConfig->kmess);
     $posts = $db->query("SELECT COUNT(*) FROM `forum` WHERE `refid` = '" . $res['refid'] . "' AND `close` != '1'")->fetchColumn();
     $link = 'index.php?id=' . $res['refid'] . '&amp;page=' . $page;
     $error = false;
@@ -166,7 +169,7 @@ if (!$error) {
                 $db->exec("DELETE FROM `cms_forum_files` WHERE `post` = " . $id);
 
                 // Формируем ссылку на нужную страницу темы
-                $page = ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `refid` = '" . $res['refid'] . "' AND `id` " . ($set_forum['upfp'] ? ">" : "<") . " '$id'")->fetchColumn() / $kmess);
+                $page = ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `refid` = '" . $res['refid'] . "' AND `id` " . ($set_forum['upfp'] ? ">" : "<") . " '$id'")->fetchColumn() / $userConfig->kmess);
                 $db->exec("DELETE FROM `forum` WHERE `id` = '$id'");
 
                 if ($posts < 2) {

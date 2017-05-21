@@ -15,6 +15,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -56,11 +59,11 @@ if ($mod == 'clear') {
             return $tools->displayDate($var[1]);
         }
 
-        if ($total > $kmess) {
-            $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=systems&amp;', $start, $total, $kmess) . '</div>';
+        if ($total > $userConfig->kmess) {
+            $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=systems&amp;', $start, $total, $userConfig->kmess) . '</div>';
         }
 
-        $req = $db->query("SELECT * FROM `cms_mail` WHERE `from_id`='" . $systemUser->id . "' AND `sys`='1' AND `delete`!='" . $systemUser->id . "' ORDER BY `time` DESC LIMIT " . $start . "," . $kmess);
+        $req = $db->query("SELECT * FROM `cms_mail` WHERE `from_id`='" . $systemUser->id . "' AND `sys`='1' AND `delete`!='" . $systemUser->id . "' ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
         $mass_read = [];
 
         for ($i = 0; ($row = $req->fetch()) !== false; ++$i) {
@@ -91,8 +94,8 @@ if ($mod == 'clear') {
 
     $out .= '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-    if ($total > $kmess) {
-        $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=systems&amp;', $start, $total, $kmess) . '</div>';
+    if ($total > $userConfig->kmess) {
+        $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=systems&amp;', $start, $total, $userConfig->kmess) . '</div>';
         $out .= '<p><form action="index.php" method="get">
 			<input type="hidden" name="act" value="systems"/>
 			<input type="text" name="page" size="2"/>

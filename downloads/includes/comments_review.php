@@ -11,6 +11,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -36,12 +39,12 @@ $total = $db->query("SELECT COUNT(*) FROM `download__comments`")->fetchColumn();
 
 if ($total) {
     $req = $db->query("SELECT `download__comments`.*, `download__comments`.`id` AS `cid`, `users`.`rights`, `users`.`name`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`, `users`.`id`, `download__files`.`rus_name`
-	FROM `download__comments` LEFT JOIN `users` ON `download__comments`.`user_id` = `users`.`id` LEFT JOIN `download__files` ON `download__comments`.`sub_id` = `download__files`.`id` ORDER BY `download__comments`.`time` DESC LIMIT $start, $kmess");
+	FROM `download__comments` LEFT JOIN `users` ON `download__comments`.`user_id` = `users`.`id` LEFT JOIN `download__files` ON `download__comments`.`sub_id` = `download__files`.`id` ORDER BY `download__comments`.`time` DESC LIMIT $start, $userConfig->kmess");
     $i = 0;
 
     // Навигация
-    if ($total > $kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('?act=review_comments&amp;', $start, $total, $kmess) . '</div>';
+    if ($total > $userConfig->kmess) {
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=review_comments&amp;', $start, $total, $userConfig->kmess) . '</div>';
     }
 
     // Выводим список
@@ -90,8 +93,8 @@ if ($total) {
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 // Навигация
-if ($total > $kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('?act=review_comments&amp;', $start, $total, $kmess) . '</div>' .
+if ($total > $userConfig->kmess) {
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=review_comments&amp;', $start, $total, $userConfig->kmess) . '</div>' .
         '<p><form action="?" method="get">' .
         '<input type="hidden" value="review_comments" name="act" />' .
         '<input type="text" name="page" size="2"/><input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

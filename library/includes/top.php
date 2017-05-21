@@ -8,6 +8,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -30,16 +33,16 @@ if ($sort == 'read' || $sort == 'comm') {
     $total = $db->query("SELECT COUNT(*) AS `cnt`, AVG(`point`) AS `avg` FROM `cms_library_rating` GROUP BY `st_id` ORDER BY `avg` DESC, `cnt` DESC LIMIT 20")->fetchColumn(0);
 }
 
-$page = $page >= ceil($total / $kmess) ? ceil($total / $kmess) : $page;
-$start = $page == 1 ? 0 : ($page - 1) * $kmess;
+$page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
+$start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
 
 if (!$total) {
     echo '<div class="menu"><p>' . _t('The list is empty') . '</p></div>';
 } else {
     if ($sort == 'read' || $sort == 'comm') {
-        $stmt = $db->query('SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `cat_id`, `comments`, `comm_count`, `announce` FROM `library_texts` WHERE ' . ($sort == 'comm' ? '`comm_count`' : '`count_views`') . ' > 0 ORDER BY ' . ($sort == 'comm' ? '`comm_count`' : '`count_views`') . ' DESC LIMIT ' . $start . ',' . $kmess);
+        $stmt = $db->query('SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `cat_id`, `comments`, `comm_count`, `announce` FROM `library_texts` WHERE ' . ($sort == 'comm' ? '`comm_count`' : '`count_views`') . ' > 0 ORDER BY ' . ($sort == 'comm' ? '`comm_count`' : '`count_views`') . ' DESC LIMIT ' . $start . ',' . $userConfig->kmess);
     } else {
-        $stmt = $db->query("SELECT `library_texts`.*, COUNT(*) AS `cnt`, AVG(`point`) AS `avg` FROM `cms_library_rating` JOIN `library_texts` ON `cms_library_rating`.`st_id` = `library_texts`.`id` GROUP BY `cms_library_rating`.`st_id` ORDER BY `avg` DESC, `cnt` DESC LIMIT " . $start . ',' . $kmess);
+        $stmt = $db->query("SELECT `library_texts`.*, COUNT(*) AS `cnt`, AVG(`point`) AS `avg` FROM `cms_library_rating` JOIN `library_texts` ON `cms_library_rating`.`st_id` = `library_texts`.`id` GROUP BY `cms_library_rating`.`st_id` ORDER BY `avg` DESC, `cnt` DESC LIMIT " . $start . ',' . $userConfig->kmess);
     }
 
     $i = 0;

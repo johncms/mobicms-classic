@@ -15,6 +15,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -42,7 +45,7 @@ if ($total) {
 		AND `cms_contact`.`ban`!='1'
 		GROUP BY `cms_mail`.`user_id`
 		ORDER BY MAX(`cms_mail`.`time`) DESC
-		LIMIT " . $start . "," . $kmess);
+		LIMIT " . $start . "," . $userConfig->kmess);
 
     for ($i = 0; $row = $req->fetch(); ++$i) {
         $count_message = $db->query("SELECT COUNT(*) FROM `cms_mail`
@@ -94,8 +97,8 @@ if ($total) {
 
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-if ($total > $kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=input&amp;', $start, $total, $kmess) . '</div>' .
+if ($total > $userConfig->kmess) {
+    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=input&amp;', $start, $total, $userConfig->kmess) . '</div>' .
         '<p><form action="index.php" method="get">
                 <input type="hidden" name="act" value="input"/>
                 <input type="text" name="page" size="2"/>

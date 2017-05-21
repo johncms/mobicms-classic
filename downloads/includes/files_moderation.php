@@ -11,6 +11,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -35,14 +38,14 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     $total = $db->query("SELECT COUNT(*) FROM `download__files` WHERE `type` = '3'")->fetchColumn();
 
     // Навигация
-    if ($total > $kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('?act=mod_files&amp;', $start, $total, $kmess) . '</div>';
+    if ($total > $userConfig->kmess) {
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=mod_files&amp;', $start, $total, $userConfig->kmess) . '</div>';
     }
 
     $i = 0;
 
     if ($total) {
-        $req_down = $db->query("SELECT * FROM `download__files` WHERE `type` = '3' ORDER BY `time` DESC LIMIT $start, $kmess");
+        $req_down = $db->query("SELECT * FROM `download__files` WHERE `type` = '3' ORDER BY `time` DESC LIMIT $start, $userConfig->kmess");
         while ($res_down = $req_down->fetch()) {
             echo (($i++ % 2) ? '<div class="list2">' : '<div class="list1">') . Download::displayFile($res_down) .
                 '<div class="sub"><a href="?act=mod_files&amp;id=' . $res_down['id'] . '">' . _t('Accept') . '</a> | ' .
@@ -57,8 +60,8 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
     // Навигация
-    if ($total > $kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('?act=mod_files&amp;', $start, $total, $kmess) . '</div>' .
+    if ($total > $userConfig->kmess) {
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=mod_files&amp;', $start, $total, $userConfig->kmess) . '</div>' .
             '<p><form action="?" method="get">' .
             '<input type="hidden" value="top_users" name="act" />' .
             '<input type="text" name="page" size="2"/><input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

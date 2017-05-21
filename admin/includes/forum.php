@@ -587,13 +587,13 @@ switch ($mod) {
         } else {
             $total = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 't' AND `close` = '1' $sort")->fetchColumn();
 
-            if ($total > $kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=htopics&amp;', $start, $total, $kmess) . '</div>';
+            if ($total > $userConfig->kmess) {
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=htopics&amp;', $start, $total, $userConfig->kmess) . '</div>';
             }
 
             $req = $db->query("SELECT `forum`.*, `forum`.`id` AS `fid`, `forum`.`user_id` AS `id`, `forum`.`from` AS `name`, `forum`.`soft` AS `browser`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`
             FROM `forum` LEFT JOIN `users` ON `forum`.`user_id` = `users`.`id`
-            WHERE `forum`.`type` = 't' AND `forum`.`close` = '1' $sort ORDER BY `forum`.`id` DESC LIMIT $start, $kmess");
+            WHERE `forum`.`type` = 't' AND `forum`.`close` = '1' $sort ORDER BY `forum`.`id` DESC LIMIT $start, $userConfig->kmess");
 
             if ($req->rowCount()) {
                 $i = 0;
@@ -629,8 +629,8 @@ switch ($mod) {
 
             echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-            if ($total > $kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=htopics&amp;', $start, $total, $kmess) . '</div>' .
+            if ($total > $userConfig->kmess) {
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=htopics&amp;', $start, $total, $userConfig->kmess) . '</div>' .
                     '<p><form action="index.php?act=forum&amp;mod=htopics" method="post">' .
                     '<input type="text" name="page" size="2"/>' .
                     '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .
@@ -683,13 +683,13 @@ switch ($mod) {
         } else {
             $total = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `close` = '1' $sort")->fetchColumn();
 
-            if ($total > $kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=hposts&amp;', $start, $total, $kmess) . '</div>';
+            if ($total > $userConfig->kmess) {
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=hposts&amp;', $start, $total, $userConfig->kmess) . '</div>';
             }
 
             $req = $db->query("SELECT `forum`.*, `forum`.`id` AS `fid`, `forum`.`user_id` AS `id`, `forum`.`from` AS `name`, `forum`.`soft` AS `browser`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`
             FROM `forum` LEFT JOIN `users` ON `forum`.`user_id` = `users`.`id`
-            WHERE `forum`.`type` = 'm' AND `forum`.`close` = '1' $sort ORDER BY `forum`.`id` DESC LIMIT $start, $kmess");
+            WHERE `forum`.`type` = 'm' AND `forum`.`close` = '1' $sort ORDER BY `forum`.`id` DESC LIMIT $start, $userConfig->kmess");
 
             if ($req->rowCount()) {
                 $i = 0;
@@ -697,7 +697,7 @@ switch ($mod) {
                 while ($res = $req->fetch()) {
                     $res['ip'] = ip2long($res['ip']);
                     $posttime = ' <span class="gray">(' . $tools->displayDate($res['time']) . ')</span>';
-                    $page = ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `refid` = '" . $res['refid'] . "' AND `id` " . ($set_forum['upfp'] ? ">=" : "<=") . " '" . $res['fid'] . "'")->fetchColumn() / $kmess);
+                    $page = ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `refid` = '" . $res['refid'] . "' AND `id` " . ($set_forum['upfp'] ? ">=" : "<=") . " '" . $res['fid'] . "'")->fetchColumn() / $userConfig->kmess);
                     $text = mb_substr($res['text'], 0, 500);
                     $text = $tools->checkout($text, 1, 0);
                     $text = preg_replace('#\[c\](.*?)\[/c\]#si', '<div class="quote">\1</div>', $text);
@@ -725,8 +725,8 @@ switch ($mod) {
 
             echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-            if ($total > $kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=hposts&amp;', $start, $total, $kmess) . '</div>' .
+            if ($total > $userConfig->kmess) {
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=hposts&amp;', $start, $total, $userConfig->kmess) . '</div>' .
                     '<p><form action="index.php?act=forum&amp;mod=hposts" method="post">' .
                     '<input type="text" name="page" size="2"/>' .
                     '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

@@ -353,8 +353,8 @@ switch ($act) {
         $total = $db->query("SELECT COUNT(*) FROM `guest` WHERE `adm`='" . (isset($_SESSION['ga']) ? 1 : 0) . "'")->fetchColumn();
         echo '<div class="phdr"><b>' . _t('Comments') . '</b></div>';
 
-        if ($total > $kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $kmess) . '</div>';
+        if ($total > $userConfig->kmess) {
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $userConfig->kmess) . '</div>';
         }
 
         if ($total) {
@@ -363,12 +363,12 @@ switch ($act) {
                 echo '<div class="rmenu"><b>АДМИН-КЛУБ</b></div>';
                 $req = $db->query("SELECT `guest`.*, `guest`.`id` AS `gid`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`, `users`.`id`
                 FROM `guest` LEFT JOIN `users` ON `guest`.`user_id` = `users`.`id`
-                WHERE `guest`.`adm`='1' ORDER BY `time` DESC LIMIT " . $start . "," . $kmess);
+                WHERE `guest`.`adm`='1' ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
             } else {
                 // Запрос для обычной Гастивухи
                 $req = $db->query("SELECT `guest`.*, `guest`.`id` AS `gid`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`, `users`.`id`
                 FROM `guest` LEFT JOIN `users` ON `guest`.`user_id` = `users`.`id`
-                WHERE `guest`.`adm`='0' ORDER BY `time` DESC LIMIT " . $start . "," . $kmess);
+                WHERE `guest`.`adm`='0' ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
             }
 
             for ($i = 0; $res = $req->fetch(); ++$i) {
@@ -445,8 +445,8 @@ switch ($act) {
 
         echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-        if ($total > $kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $kmess) . '</div>' .
+        if ($total > $userConfig->kmess) {
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $userConfig->kmess) . '</div>' .
                 '<p><form action="index.php" method="get"><input type="text" name="page" size="2"/>' .
                 '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';
         }

@@ -19,6 +19,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -225,13 +228,13 @@ if (in_array($act, $array_includes)) {
                 if ($actdir) {
                     $total = $db->query("SELECT COUNT(*) FROM `library_cats` WHERE "
                         . ($id !== null ? '`parent`=' . $id : '`parent`=0'))->fetchColumn();
-                    $nav = ($total > $kmess) ? '<div class="topmenu">' . $tools->displayPagination('?do=dir&amp;id=' . $id . '&amp;',
-                            $start, $total, $kmess) . '</div>' : '';
+                    $nav = ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?do=dir&amp;id=' . $id . '&amp;',
+                            $start, $total, $userConfig->kmess) . '</div>' : '';
                     $y = 0;
 
                     if ($total) {
                         $sql = $db->query("SELECT `id`, `name`, `dir`, `description` FROM `library_cats` WHERE "
-                            . ($id !== null ? '`parent`=' . $id : '`parent`=0') . ' ORDER BY `pos` ASC LIMIT ' . $start . ',' . $kmess);
+                            . ($id !== null ? '`parent`=' . $id : '`parent`=0') . ' ORDER BY `pos` ASC LIMIT ' . $start . ',' . $userConfig->kmess);
                         echo $nav;
 
                         while ($row = $sql->fetch()) {
@@ -270,13 +273,13 @@ if (in_array($act, $array_includes)) {
                     }
                 } else {
                     $total = $db->query('SELECT COUNT(*) FROM `library_texts` WHERE `premod`=1 AND `cat_id`=' . $id)->fetchColumn();
-                    $page = $page >= ceil($total / $kmess) ? ceil($total / $kmess) : $page;
-                    $start = $page == 1 ? 0 : ($page - 1) * $kmess;
-                    $nav = ($total > $kmess) ? '<div class="topmenu">' . $tools->displayPagination('?do=dir&amp;id=' . $id . '&amp;',
-                            $start, $total, $kmess) . '</div>' : '';
+                    $page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
+                    $start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
+                    $nav = ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?do=dir&amp;id=' . $id . '&amp;',
+                            $start, $total, $userConfig->kmess) . '</div>' : '';
 
                     if ($total) {
-                        $sql2 = $db->query("SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `comm_count`, `comments`, `announce` FROM `library_texts` WHERE `premod`=1 AND `cat_id`=" . $id . " ORDER BY `id` DESC LIMIT " . $start . "," . $kmess);
+                        $sql2 = $db->query("SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `comm_count`, `comments`, `announce` FROM `library_texts` WHERE `premod`=1 AND `cat_id`=" . $id . " ORDER BY `id` DESC LIMIT " . $start . "," . $userConfig->kmess);
                         echo $nav;
 
                         while ($row = $sql2->fetch()) {

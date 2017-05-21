@@ -13,6 +13,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -151,7 +154,7 @@ if (isset($_POST['submit'])) {
     }
 
     $pa2 = $db->query("SELECT `id` FROM `forum` WHERE `type` = 'm' AND `refid` = '" . $res['refid'] . "'")->rowCount();
-    $page = ceil($pa2 / $kmess);
+    $page = ceil($pa2 / $userConfig->kmess);
     echo '<br><a href="index.php?id=' . $res['refid'] . '&amp;page=' . $page . '">' . _t('Continue') . '</a><br>';
 } else {
     // Форма выбора файла для выгрузки

@@ -11,6 +11,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -38,7 +41,7 @@ switch ($sort) {
 }
 
 $total = $db->query("SELECT COUNT(*) FROM `users`")->fetchColumn();
-$req = $db->query("SELECT * FROM `users` WHERE `preg` = 1 ORDER BY $order LIMIT " . $start . ", " . $kmess);
+$req = $db->query("SELECT * FROM `users` WHERE `preg` = 1 ORDER BY $order LIMIT " . $start . ", " . $userConfig->kmess);
 $i = 0;
 
 while ($res = $req->fetch()) {
@@ -57,8 +60,8 @@ while ($res = $req->fetch()) {
 
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-if ($total > $kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=usr&amp;sort=' . $sort . '&amp;', $start, $total, $kmess) . '</div>';
+if ($total > $userConfig->kmess) {
+    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=usr&amp;sort=' . $sort . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
     echo '<p><form action="index.php?act=usr&amp;sort=' . $sort . '" method="post"><input type="text" name="page" size="2"/><input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';
 }
 

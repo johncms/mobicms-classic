@@ -35,6 +35,9 @@ if ($search && !$error) {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
+    /** @var Mobicms\Checkpoint\UserConfig $userConfig */
+    $userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
+
     /** @var Mobicms\Api\ToolsInterface $tools */
     $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -49,13 +52,13 @@ if ($search && !$error) {
     echo '<div class="phdr"><b>' . _t('Search results') . '</b></div>';
     $total = $db->query("SELECT COUNT(*) FROM `download__files` WHERE `type` = '2'  AND $sql")->fetchColumn();
 
-    if ($total > $kmess) {
+    if ($total > $userConfig->kmess) {
         $check_search = htmlspecialchars(rawurlencode($search));
-        echo '<div class="topmenu">' . $tools->displayPagination('?act=search&amp;search=' . $check_search . '&amp;id=' . $id . '&amp;', $start, $total, $kmess) . '</div>';
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=search&amp;search=' . $check_search . '&amp;id=' . $id . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
     }
 
     if ($total) {
-        $req_down = $db->query("SELECT * FROM `download__files` WHERE `type` = '2'  AND $sql ORDER BY `rus_name` ASC LIMIT $start, $kmess");
+        $req_down = $db->query("SELECT * FROM `download__files` WHERE `type` = '2'  AND $sql ORDER BY `rus_name` ASC LIMIT $start, $userConfig->kmess");
         $i = 0;
 
         while ($res_down = $req_down->fetch()) {
@@ -68,8 +71,8 @@ if ($search && !$error) {
     echo '<div class="phdr">' . _t('Total') . ':  ' . $total . '</div>';
 
     // Навигация
-    if ($total > $kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('?act=search&amp;search=' . $check_search . '&amp;id=' . $id . '&amp;', $start, $total, $kmess) . '</div>' .
+    if ($total > $userConfig->kmess) {
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=search&amp;search=' . $check_search . '&amp;id=' . $id . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
             '<p><form action="?" method="get">' .
             '<input type="hidden" value="' . $check_search . '" name="search" />' .
             '<input type="hidden" value="search" name="act" />' .

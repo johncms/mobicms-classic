@@ -8,6 +8,9 @@ require('../system/bootstrap.php');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
+
 /** @var Zend\I18n\Translator\Translator $translator */
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
@@ -54,12 +57,12 @@ if ($search && !$error) {
     $total = $db->query("SELECT COUNT(*) FROM `users` WHERE `name_lat` LIKE " . $db->quote($search_db))->fetchColumn();
     echo '<div class="phdr"><b>' . _t('Searching results') . '</b></div>';
 
-    if ($total > $kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('search.php?search=' . urlencode($search) . '&amp;', $start, $total, $kmess) . '</div>';
+    if ($total > $userConfig->kmess) {
+        echo '<div class="topmenu">' . $tools->displayPagination('search.php?search=' . urlencode($search) . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
     }
 
     if ($total) {
-        $req = $db->query("SELECT * FROM `users` WHERE `name_lat` LIKE " . $db->quote($search_db) . " ORDER BY `name` ASC LIMIT $start, $kmess");
+        $req = $db->query("SELECT * FROM `users` WHERE `name_lat` LIKE " . $db->quote($search_db) . " ORDER BY `name` ASC LIMIT $start, $userConfig->kmess");
         $i = 0;
         while ($res = $req->fetch()) {
             echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
@@ -74,8 +77,8 @@ if ($search && !$error) {
 
     echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-    if ($total > $kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('search.php?search=' . urlencode($search) . '&amp;', $start, $total, $kmess) . '</div>' .
+    if ($total > $userConfig->kmess) {
+        echo '<div class="topmenu">' . $tools->displayPagination('search.php?search=' . urlencode($search) . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
             '<p><form action="search.php?search=' . urlencode($search) . '" method="post">' .
             '<input type="text" name="page" size="2"/>' .
             '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

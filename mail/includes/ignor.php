@@ -15,6 +15,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -100,8 +103,8 @@ if (isset($_GET['del'])) {
     $total = $db->query("SELECT COUNT(*) FROM `cms_contact` WHERE `user_id` = '" . $systemUser->id . "' AND `ban`='1'")->fetchColumn();
 
     if ($total) {
-        if ($total > $kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ignor&amp;', $start, $total, $kmess) . '</div>';
+        if ($total > $userConfig->kmess) {
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ignor&amp;', $start, $total, $userConfig->kmess) . '</div>';
         }
 
         $req = $db->query("SELECT `users`.* FROM `cms_contact`
@@ -109,7 +112,7 @@ if (isset($_GET['del'])) {
 		    WHERE `cms_contact`.`user_id`='" . $systemUser->id . "'
 		    AND `ban`='1'
 		    ORDER BY `cms_contact`.`time` DESC
-		    LIMIT $start, $kmess"
+		    LIMIT $start, $userConfig->kmess"
         );
 
         for ($i = 0; ($row = $req->fetch()) !== false; ++$i) {
@@ -130,8 +133,8 @@ if (isset($_GET['del'])) {
 
     echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-    if ($total > $kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ignor&amp;', $start, $total, $kmess) . '</div>';
+    if ($total > $userConfig->kmess) {
+        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ignor&amp;', $start, $total, $userConfig->kmess) . '</div>';
         echo '<p><form action="index.php" method="get">
 			<input type="hidden" name="act" value="ignor"/>
 			<input type="text" name="page" size="2"/>

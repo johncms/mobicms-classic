@@ -8,6 +8,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -28,11 +31,11 @@ if (isset($_GET['yes']) || isset($_GET['all'])) {
 }
 
 $total = $db->query('SELECT COUNT(*) FROM `library_texts` WHERE `premod`=0')->fetchColumn();
-$page = $page >= ceil($total / $kmess) ? ceil($total / $kmess) : $page;
-$start = $page == 1 ? 0 : ($page - 1) * $kmess;
+$page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
+$start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
 
 if ($total) {
-    $stmt = $db->query('SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `cat_id` FROM `library_texts` WHERE `premod`=0 ORDER BY `time` DESC LIMIT ' . $start . ',' . $kmess);
+    $stmt = $db->query('SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `cat_id` FROM `library_texts` WHERE `premod`=0 ORDER BY `time` DESC LIMIT ' . $start . ',' . $userConfig->kmess);
     $i = 0;
 
     while ($row = $stmt->fetch()) {
@@ -51,7 +54,6 @@ if ($total) {
 }
 
 echo '<div class="phdr">' . _t('Total') . ': ' . intval($total) . '</div>';
-echo ($total > $kmess) ? '<div class="topmenu">' . $tools->displayPagination('?act=premod&amp;', $start, $total,
-        $kmess) . '</div>' : '';
+echo ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?act=premod&amp;', $start, $total, $userConfig->kmess) . '</div>' : '';
 echo $total ? '<div><a href="?act=premod&amp;all">' . _t('Approve all') . '</a></div>' : '';
 echo '<p><a href="?">' . _t('To Library') . '</a></p>' . PHP_EOL;

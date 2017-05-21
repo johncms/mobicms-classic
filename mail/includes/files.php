@@ -15,6 +15,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -24,8 +27,8 @@ echo '<div class="phdr"><b>' . _t('Files') . '</b></div>';
 $total = $db->query("SELECT COUNT(*) FROM `cms_mail` WHERE (`user_id`='" . $systemUser->id . "' OR `from_id`='" . $systemUser->id . "') AND `delete`!='" . $systemUser->id . "' AND `file_name`!=''")->fetchColumn();
 
 if ($total) {
-    if ($total > $kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=files&amp;', $start, $total, $kmess) . '</div>';
+    if ($total > $userConfig->kmess) {
+        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=files&amp;', $start, $total, $userConfig->kmess) . '</div>';
     }
 
     $req = $db->query("SELECT `cms_mail`.*, `users`.`name`
@@ -35,7 +38,7 @@ if ($total) {
 	    AND `cms_mail`.`delete`!='" . $systemUser->id . "'
 	    AND `cms_mail`.`file_name`!=''
 	    ORDER BY `cms_mail`.`time` DESC
-	    LIMIT " . $start . "," . $kmess);
+	    LIMIT " . $start . "," . $userConfig->kmess);
 
     for ($i = 0; ($row = $req->fetch()) !== false; ++$i) {
         echo $i % 2 ? '<div class="list1">' : '<div class="list2">';
@@ -49,8 +52,8 @@ if ($total) {
 
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
-if ($total > $kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=files&amp;', $start, $total, $kmess) . '</div>';
+if ($total > $userConfig->kmess) {
+    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=files&amp;', $start, $total, $userConfig->kmess) . '</div>';
     echo '<p><form action="index.php" method="get">
 		<input type="hidden" name="act" value="files"/>
 		<input type="text" name="page" size="2"/>
