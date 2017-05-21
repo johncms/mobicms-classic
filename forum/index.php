@@ -18,6 +18,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -575,7 +578,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                         $_SESSION['token'] = $token;
                         echo '<p>' .
                             $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form1', 'msg') .
-                            '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="msg"></textarea></p>' .
+                            '<textarea rows="' . $userConfig->fieldHeight . '" name="msg"></textarea></p>' .
                             '<p><input type="checkbox" name="addfiles" value="1" /> ' . _t('Add File') .
                             '</p><p><input type="submit" name="submit" value="' . _t('Write') . '" style="width: 107px; cursor: pointer;"/> ' .
                             (isset($set_forum['preview']) && $set_forum['preview'] ? '<input type="submit" value="' . _t('Preview') . '" style="width: 107px; cursor: pointer;"/>' : '') .
@@ -778,7 +781,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                         $_SESSION['token'] = $token;
                         echo '<p>';
                         echo $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form2', 'msg');
-                        echo '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="msg"></textarea><br></p>' .
+                        echo '<textarea rows="' . $userConfig->fieldHeight . '" name="msg"></textarea><br></p>' .
                             '<p><input type="checkbox" name="addfiles" value="1" /> ' . _t('Add File');
 
                         echo '</p><p><input type="submit" name="submit" value="' . _t('Write') . '" style="width: 107px; cursor: pointer;"/> ' .

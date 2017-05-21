@@ -11,6 +11,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -298,7 +301,7 @@ switch ($mod) {
                 '<input type="text" name="name" />' .
                 '<br><small>' . _t('Min. 2, Max. 30 characters') . '</small></p>' .
                 '<p><h3>' . _t('Description') . '</h3>' .
-                '<textarea name="desc" rows="' . $systemUser->getConfig()->fieldHeight . '"></textarea>' .
+                '<textarea name="desc" rows="' . $userConfig->fieldHeight . '"></textarea>' .
                 '<br><small>' . _t('Optional field') . '<br>' . _t('Min. 2, Max. 500 characters') . '</small></p>';
 
             if ($id) {
@@ -395,7 +398,7 @@ switch ($mod) {
                         '<input type="text" name="name" value="' . $res['text'] . '"/>' .
                         '<br><small>' . _t('Min. 2, Max. 30 characters') . '</small></p>' .
                         '<p><h3>' . _t('Description') . '</h3>' .
-                        '<textarea name="desc" rows="' . $systemUser->getConfig()->fieldHeight . '">' . str_replace('<br>', "\r\n", $res['soft']) . '</textarea>' .
+                        '<textarea name="desc" rows="' . $userConfig->fieldHeight . '">' . str_replace('<br>', "\r\n", $res['soft']) . '</textarea>' .
                         '<br><small>' . _t('Optional field') . '<br>' . _t('Min. 2, Max. 500 characters') . '</small></p>';
 
                     if ($res['type'] == 'r') {

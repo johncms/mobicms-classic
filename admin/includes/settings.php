@@ -8,6 +8,9 @@ $container = App::getContainer();
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 $config = $container->get('config')['mobicms'];
 
 // Проверяем права доступа
@@ -69,8 +72,8 @@ echo '<p>' .
 // META тэги
 echo '<p>' .
     '<h3>' . _t('META tags') . '</h3>' .
-    '&#160;' . _t('Keywords') . '<br>&#160;<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="meta_key">' . $config['meta_key'] . '</textarea><br>' .
-    '&#160;' . _t('Description') . '<br>&#160;<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="meta_desc">' . $config['meta_desc'] . '</textarea>' .
+    '&#160;' . _t('Keywords') . '<br>&#160;<textarea rows="' . $userConfig->fieldHeight . '" name="meta_key">' . $config['meta_key'] . '</textarea><br>' .
+    '&#160;' . _t('Description') . '<br>&#160;<textarea rows="' . $userConfig->fieldHeight . '" name="meta_desc">' . $config['meta_desc'] . '</textarea>' .
     '</p>';
 
 // Выбор темы оформления

@@ -15,6 +15,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -188,7 +191,7 @@ switch ($mod) {
                         '<input type="hidden" value="' . $fid . '" name="banref" />';
                 }
 
-                echo '&#160;<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="reason"></textarea>' .
+                echo '&#160;<textarea rows="' . $userConfig->fieldHeight . '" name="reason"></textarea>' .
                     '</p><p><input type="submit" value="' . _t('Apply Ban') . '" name="submit" />' .
                     '</p></div></form>';
             }

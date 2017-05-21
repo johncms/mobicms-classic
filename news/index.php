@@ -18,6 +18,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -141,7 +144,7 @@ switch ($do) {
                     '<p><h3>' . _t('Title') . '</h3>' .
                     '<input type="text" name="name"/></p>' .
                     '<p><h3>' . _t('Text') . '</h3>' .
-                    '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="text"></textarea></p>' .
+                    '<textarea rows="' . $userConfig->fieldHeight . '" name="text"></textarea></p>' .
                     '<p><h3>' . _t('Discussion') . '</h3>';
                 $fr = $db->query("SELECT * FROM `forum` WHERE `type` = 'f'");
                 echo '<input type="radio" name="pf" value="0" checked="checked" />' . _t('Do not discuss') . '<br />';
@@ -213,7 +216,7 @@ switch ($do) {
                     '<p><h3>' . _t('Title') . '</h3>' .
                     '<input type="text" name="name" value="' . $res['name'] . '"/></p>' .
                     '<p><h3>' . _t('Text') . '</h3>' .
-                    '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="text">' . htmlentities($res['text'], ENT_QUOTES, 'UTF-8') . '</textarea></p>' .
+                    '<textarea rows="' . $userConfig->fieldHeight . '" name="text">' . htmlentities($res['text'], ENT_QUOTES, 'UTF-8') . '</textarea></p>' .
                     '<p><input type="submit" name="submit" value="' . _t('Save') . '"/></p>' .
                     '</form></div>' .
                     '<div class="phdr"><a href="index.php">' . _t('Back to news') . '</a></div>';
@@ -295,7 +298,7 @@ switch ($do) {
         }
 
         $total = $db->query("SELECT COUNT(*) FROM `news`")->fetchColumn();
-        $req = $db->query("SELECT * FROM `news` ORDER BY `time` DESC LIMIT $start, $kmess");
+        $req = $db->query("SELECT * FROM `news` ORDER BY `time` DESC LIMIT $start, $userConfig->kmess");
         $i = 0;
 
         while ($res = $req->fetch()) {
@@ -324,8 +327,8 @@ switch ($do) {
         }
         echo '<div class="phdr">' . _t('Total') . ':&#160;' . $total . '</div>';
 
-        if ($total > $kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $kmess) . '</div>' .
+        if ($total > $userConfig->kmess) {
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $userConfig->kmess) . '</div>' .
                 '<p><form action="index.php" method="post">' .
                 '<input type="text" name="page" size="2"/>' .
                 '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

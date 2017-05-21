@@ -17,6 +17,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -194,7 +197,7 @@ switch ($act) {
                     '<br />' . $tools->checkout($res['text']) . '</div>' .
                     '<form name="form" action="index.php?act=otvet&amp;id=' . $id . '" method="post">' .
                     '<p><h3>' . _t('Reply') . '</h3>' . $bbcode->buttons('form', 'otv') .
-                    '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="otv">' . $tools->checkout($res['otvet']) . '</textarea></p>' .
+                    '<textarea rows="' . $userConfig->fieldHeight . '" name="otv">' . $tools->checkout($res['otvet']) . '</textarea></p>' .
                     '<p><input type="submit" name="submit" value="' . _t('Reply') . '"/></p>' .
                     '<input type="hidden" name="token" value="' . $token . '"/>' .
                     '</form></div>' .
@@ -242,7 +245,7 @@ switch ($act) {
                     '<form name="form" action="index.php?act=edit&amp;id=' . $id . '" method="post">' .
                     '<p><b>' . _t('Author') . ':</b> ' . $res['name'] . '</p><p>';
                 echo $bbcode->buttons('form', 'msg');
-                echo '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="msg">' . $text . '</textarea></p>' .
+                echo '<textarea rows="' . $userConfig->fieldHeight . '" name="msg">' . $text . '</textarea></p>' .
                     '<p><input type="submit" name="submit" value="' . _t('Save') . '"/></p>' .
                     '<input type="hidden" name="token" value="' . $token . '"/>' .
                     '</form></div>' .
@@ -334,7 +337,7 @@ switch ($act) {
 
             echo '<b>' . _t('Message') . '</b> <small>(max 5000)</small>:<br>';
             echo $bbcode->buttons('form', 'msg');
-            echo '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="msg"></textarea><br>';
+            echo '<textarea rows="' . $userConfig->fieldHeight . '" name="msg"></textarea><br>';
 
             if (!$systemUser->isValid()) {
                 // CAPTCHA для гостей

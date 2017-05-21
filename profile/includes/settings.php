@@ -14,7 +14,7 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-/** @var Mobicms\UserConfig $userConfig */
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
 $userConfig = $systemUser->getConfig();
 
 /** @var Mobicms\Api\ToolsInterface $tools */

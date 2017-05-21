@@ -6,7 +6,7 @@ interface ToolsInterface
 {
     public function antiflood();
 
-    public function checkout($string, $br, $tags);
+    public function checkout($string, $br = 0, $tags = 0);
 
     public function displayDate($var);
 
