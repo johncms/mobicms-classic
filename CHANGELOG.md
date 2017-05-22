@@ -6,7 +6,7 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 `Release Date: under development` 
 
 ### NEW
-  * Nothing
+  * Integrated [Klein.php](https://github.com/klein/klein.php) package
   
 ### CHANGED
   * Nothing
