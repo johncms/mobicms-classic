@@ -354,15 +354,15 @@ class Comments
         /** @var \Psr\Container\ContainerInterface $container */
         $container = \App::getContainer();
 
-        /** @var Api\EnvironmentInterface $env */
-        $env = $container->get(Api\EnvironmentInterface::class);
+        /** @var \Mobicms\Http\Request $request */
+        $request = $container->get(\Mobicms\Http\Request::class);
 
         // Формируем атрибуты сообщения
         $attributes = [
             'author_name' => $this->systemUser->name,
-            'author_ip' => $env->getIp(),
-            'author_ip_via_proxy' => $env->getIpViaProxy(),
-            'author_browser' => $env->getUserAgent(),
+            'author_ip' => $request->ip(),
+            'author_ip_via_proxy' => $request->ipViaProxy(),
+            'author_browser' => $request->userAgent(),
         ];
 
         // Записываем комментарий в базу

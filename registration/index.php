@@ -105,8 +105,8 @@ if (isset($_POST['submit'])) {
     }
 
     if (empty($error)) {
-        /** @var Mobicms\Api\EnvironmentInterface $env */
-        $env = $container->get(Mobicms\Api\EnvironmentInterface::class);
+        /** @var Mobicms\Http\Request $request */
+        $request = $container->get(Mobicms\Http\Request::class);
 
         $preg = $config->mod_reg > 1 ? 1 : 0;
         $db->prepare('
@@ -136,9 +136,9 @@ if (isset($_POST['submit'])) {
             $reg_name,
             $reg_about,
             $reg_sex,
-            $env->getIp(),
-            $env->getIpViaProxy(),
-            $env->getUserAgent(),
+            $request->ip(),
+            $request->ipViaProxy(),
+            $request->userAgent(),
             time(),
             time(),
             time(),

@@ -10,7 +10,7 @@
 
 namespace Mobicms\System;
 
-use Mobicms\Api\EnvironmentInterface;
+use Mobicms\Http\Request;
 use Mobicms\System\Exception\IpBanException;
 use Psr\Container\ContainerInterface;
 
@@ -18,15 +18,17 @@ class IpBan
 {
     public function __construct(ContainerInterface $container)
     {
-        /** @var EnvironmentInterface $env */
-        $env = $container->get(EnvironmentInterface::class);
-
         /** @var \PDO $db */
         $db = $container->get(\PDO::class);
 
+        /** @var Request $request */
+        $request = $container->get(Request::class);
+        $proxy = !empty($request->ipViaProxy()) ? ip2long($request->ipViaProxy()) : false;
+        $ip = ip2long($request->ip());
+
         $req = $db->query("SELECT `ban_type`, `link` FROM `cms_ban_ip`
-          WHERE '" . $env->getIp() . "' BETWEEN `ip1` AND `ip2`
-          " . ($env->getIpViaProxy() ? " OR '" . $env->getIpViaProxy() . "' BETWEEN `ip1` AND `ip2`" : '') . "
+          WHERE '" . $ip . "' BETWEEN `ip1` AND `ip2`
+          " . ($proxy ? " OR '" . $proxy . "' BETWEEN `ip1` AND `ip2`" : '') . "
           LIMIT 1
         ");
 

@@ -19,6 +19,9 @@ $container = App::getContainer();
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+/** @var Mobicms\Http\Request $request */
+$request = $container->get(Mobicms\Http\Request::class);
+
 $set_karma = $config->karma;
 
 if ($set_karma['on']) {
@@ -44,7 +47,7 @@ if ($set_karma['on']) {
                     $error[] = _t('It is forbidden to vote for administration');
                 }
 
-                if ($user['ip'] == $container->get(Mobicms\Api\EnvironmentInterface::class)->getIp()) {
+                if ($user['ip'] == $request->ip()) {
                     $error[] = _t('Cheating karma is forbidden');
                 }
 

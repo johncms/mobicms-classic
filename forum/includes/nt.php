@@ -13,17 +13,20 @@ defined('MOBICMS') or die('Error: restricted access');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
+
+/** @var Mobicms\Http\Request $request */
+$request = $container->get(Mobicms\Http\Request::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
-/** @var Mobicms\Api\ConfigInterface $config */
-$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 // Закрываем доступ для определенных ситуаций
 if (!$id
@@ -176,8 +179,6 @@ if (isset($_POST['submit'])
             $curator,
         ]);
 
-        /** @var Mobicms\Api\EnvironmentInterface $env */
-        $env = App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
         $rid = $db->lastInsertId();
 
         // Добавляем текст поста
@@ -199,9 +200,9 @@ if (isset($_POST['submit'])
             time(),
             $systemUser->id,
             $systemUser->name,
-            $env->getIp(),
-            $env->getIpViaProxy(),
-            $env->getUserAgent(),
+            $request->ip(),
+            $request->ipViaProxy(),
+            $request->userAgent(),
             $msg,
         ]);
 

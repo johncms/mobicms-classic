@@ -376,7 +376,7 @@ class Utilites implements ToolsInterface
                 $out .= '<div><span class="gray">' . _t('Browser', 'system') . ':</span> ' . htmlspecialchars($user['browser']) . '</div>' .
                     '<div><span class="gray">' . _t('IP address', 'system') . ':</span> ';
                 $hist = $mod == 'history' ? '&amp;mod=history' : '';
-                $ip = long2ip($user['ip']);
+                $ip = $user['ip'];
 
                 if ($this->user->rights && isset($user['ip_via_proxy']) && $user['ip_via_proxy']) {
                     $out .= '<b class="red"><a href="' . $homeurl . '/admin/index.php?act=search_ip&amp;ip=' . $ip . $hist . '">' . $ip . '</a></b>';

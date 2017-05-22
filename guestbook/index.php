@@ -19,26 +19,26 @@ require('../system/bootstrap.php');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Checkpoint\UserConfig $userConfig */
-$userConfig = $systemUser->getConfig();
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
-/** @var Mobicms\Api\EnvironmentInterface $env */
-$env = $container->get(Mobicms\Api\EnvironmentInterface::class);
-
 /** @var Mobicms\Api\BbcodeInterface $bbcode */
 $bbcode = $container->get(Mobicms\Api\BbcodeInterface::class);
 
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
+
+/** @var PDO $db */
+$db = $container->get(PDO::class);
+
+/** @var Mobicms\Http\Request $request */
+$request = $container->get(Mobicms\Http\Request::class);
+
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
+
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
+
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
 
 /** @var Zend\I18n\Translator\Translator $translator */
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
@@ -121,7 +121,7 @@ switch ($act) {
             $flood = $tools->antiflood();
         } else {
             // Антифлуд для гостей
-            $req = $db->query("SELECT `time` FROM `guest` WHERE `ip` = '" . $env->getIp() . "' AND `browser` = " . $db->quote($env->getUserAgent()) . " AND `time` > '" . (time() - 60) . "'");
+            $req = $db->query("SELECT `time` FROM `guest` WHERE `ip` = '" . $request->ip() . "' AND `browser` = " . $db->quote($request->userAgent()) . " AND `time` > '" . (time() - 60) . "'");
 
             if ($req->rowCount()) {
                 $res = $req->fetch();
@@ -161,8 +161,8 @@ switch ($act) {
                 $systemUser->id,
                 $from,
                 $msg,
-                $env->getIp(),
-                $env->getUserAgent(),
+                $request->ip(),
+                $request->userAgent(),
             ]);
 
             // Фиксируем время последнего поста (антиспам)

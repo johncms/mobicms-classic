@@ -26,11 +26,11 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-/** @var Mobicms\Checkpoint\UserConfig $userConfig */
-$userConfig = $systemUser->getConfig();
-
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
+
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $systemUser->getConfig();
 
 /** @var Zend\I18n\Translator\Translator $translator */
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
@@ -98,8 +98,8 @@ switch ($do) {
                                     $name,
                                 ]);
 
-                                /** @var Mobicms\Api\EnvironmentInterface $env */
-                                $env = $container->get(Mobicms\Api\EnvironmentInterface::class);
+                                /** @var Mobicms\Http\Request $request */
+                                $request = $container->get(Mobicms\Http\Request::class);
                                 $rid = $db->lastInsertId();
 
                                 $db->prepare('
@@ -119,8 +119,8 @@ switch ($do) {
                                     time(),
                                     $systemUser->id,
                                     $systemUser->name,
-                                    $env->getIp(),
-                                    $env->getUserAgent(),
+                                    $request->ip(),
+                                    $request->userAgent(),
                                     $text,
                                 ]);
                             }

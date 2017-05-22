@@ -19,8 +19,8 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-/** @var Mobicms\Api\EnvironmentInterface $env */
-$env = $container->get(Mobicms\Api\EnvironmentInterface::class);
+/** @var Mobicms\Http\Request $request */
+$request = $container->get(Mobicms\Http\Request::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -142,8 +142,8 @@ if ($systemUser->id) {
         $sql .= " `place` = " . $db->quote($headmod) . ", ";
     }
 
-    if ($systemUser->browser != $env->getUserAgent()) {
-        $sql .= " `browser` = " . $db->quote($env->getUserAgent()) . ", ";
+    if ($systemUser->browser != $request->userAgent()) {
+        $sql .= " `browser` = " . $db->quote($request->userAgent()) . ", ";
     }
 
     $totalonsite = $systemUser->total_on_site;
@@ -160,7 +160,7 @@ if ($systemUser->id) {
 } else {
     // Фиксируем местоположение гостей
     $movings = 0;
-    $session = md5($env->getIp() . $env->getIpViaProxy() . $env->getUserAgent());
+    $session = md5($request->ip() . $request->ipViaProxy() . $request->userAgent());
     $req = $db->query("SELECT * FROM `cms_sessions` WHERE `session_id` = " . $db->quote($session) . " LIMIT 1");
 
     if ($req->rowCount()) {
@@ -186,9 +186,9 @@ if ($systemUser->id) {
         // Если еще небыло в базе, то добавляем запись
         $db->exec("INSERT INTO `cms_sessions` SET
             `session_id` = '" . $session . "',
-            `ip` = '" . $env->getIp() . "',
-            `ip_via_proxy` = '" . $env->getIpViaProxy() . "',
-            `browser` = " . $db->quote($env->getUserAgent()) . ",
+            `ip` = '" . $request->ip() . "',
+            `ip_via_proxy` = '" . $request->ipViaProxy() . "',
+            `browser` = " . $db->quote($request->userAgent()) . ",
             `lastdate` = '" . time() . "',
             `sestime` = '" . time() . "',
             `place` = " . $db->quote($headmod) . "

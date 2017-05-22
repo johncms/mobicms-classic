@@ -52,6 +52,7 @@ switch ($mod) {
         // Список активных IP, со счетчиком обращений
         $ip_array = array_count_values($env->getIpLog());
         $total = count($ip_array);
+        $requestip = ip2long($container->get(Mobicms\Http\Request::class)->ip());
 
         if ($start >= $total) {
             // Исправляем запрос на несуществующую страницу
@@ -81,7 +82,7 @@ switch ($mod) {
                 $out = each($ip_list[$i]);
                 $ip = long2ip($out[0]);
 
-                if ($out[0] == $container->get(Mobicms\Api\EnvironmentInterface::class)->getIp()) {
+                if ($out[0] == $requestip) {
                     echo '<div class="gmenu">';
                 } else {
                     echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
