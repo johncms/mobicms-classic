@@ -1,7 +1,7 @@
 <?php
 
 class KCAPTCHA {
-    function KCAPTCHA() {
+    function __construct() {
         // Настройки CAPTCHA
         $alphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
         //$allowed_symbols = "0123456789";
