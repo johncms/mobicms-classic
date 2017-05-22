@@ -15,6 +15,7 @@ use Klein\Request as KleinRequest;
 class Request extends KleinRequest
 {
     protected $ipViaProxy;
+    protected $userAgent;
 
     /**
      * Gets the request IP address
@@ -55,5 +56,25 @@ class Request extends KleinRequest
         }
 
         return $this->ipViaProxy = '';
+    }
+
+    /**
+     * Gets the request user agent
+     *
+     * @return string
+     */
+    public function userAgent()
+    {
+        if ($this->userAgent !== null) {
+            return $this->userAgent;
+        }
+
+        if ($this->headers->exists('X_OPERAMINI_PHONE_UA')) {
+            $this->userAgent = 'Opera Mini: ' . $this->headers->get('X_OPERAMINI_PHONE_UA');
+        } else {
+            $this->userAgent = $this->headers->get('USER_AGENT', 'Not Recognised');
+        }
+
+        return $this->userAgent = mb_substr(filter_var($this->userAgent, FILTER_SANITIZE_SPECIAL_CHARS), 0, 180);
     }
 }
