@@ -104,26 +104,11 @@ try {
     exit;
 }
 
+// Автоочистка системы
+new Mobicms\System\Clean(App::getContainer());
+
 session_name('SESID');
 session_start();
-
-call_user_func(function () {
-    /** @var Psr\Container\ContainerInterface $container */
-    $container = App::getContainer();
-
-    /** @var PDO $db */
-    $db = $container->get(PDO::class);
-
-    // Автоочистка системы
-    $cacheFile = CACHE_PATH . 'cleanup.dat';
-
-    if (!file_exists($cacheFile) || filemtime($cacheFile) < (time() - 86400)) {
-        $db->exec('DELETE FROM `cms_sessions` WHERE `lastdate` < ' . (time() - 86400));
-        $db->exec("DELETE FROM `cms_users_iphistory` WHERE `time` < " . (time() - 7776000));
-        $db->query('OPTIMIZE TABLE `cms_sessions`, `cms_users_iphistory`, `cms_mail`, `cms_contact`');
-        file_put_contents($cacheFile, time());
-    }
-});
 
 /**
  * Translate a message

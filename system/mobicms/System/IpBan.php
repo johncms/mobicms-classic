@@ -23,6 +23,7 @@ class IpBan
 
         /** @var Request $request */
         $request = $container->get(Request::class);
+
         $proxy = !empty($request->ipViaProxy()) ? ip2long($request->ipViaProxy()) : false;
         $ip = ip2long($request->ip());
 
@@ -47,7 +48,5 @@ class IpBan
                     throw new IpBanException('HTTP/1.0 404 Not Found');
             }
         }
-
-        return $this;
     }
 }
