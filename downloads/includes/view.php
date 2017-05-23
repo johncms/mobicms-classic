@@ -132,6 +132,7 @@ switch ($format_file) {
 // Выводим скриншоты
 if (!empty($screen)) {
     $total = count($screen);
+    $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
 
     if ($total > 1) {
         if ($page >= $total) {

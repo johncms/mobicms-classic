@@ -25,7 +25,8 @@ if (isset($_GET['tag'])) {
     /** @var Mobicms\Api\ToolsInterface $tools */
     $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-    $tag = urldecode($_GET['tag']);
+    $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
+    $tag = isset($_GET['tag']) ? urldecode($_GET['tag']) : '';
 
     if ($obj->getAllTagStats($tag)) {
         $total = sizeof($obj->getAllTagStats($tag));

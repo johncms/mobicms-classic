@@ -926,6 +926,8 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
     echo '</p>';
 
     if (!$systemUser->isValid()) {
+        $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
+
         if ((empty($_SESSION['uppost'])) || ($_SESSION['uppost'] == 0)) {
             echo '<a href="index.php?id=' . $id . '&amp;page=' . $page . '&amp;newup">' . _t('New at the top') . '</a>';
         } else {

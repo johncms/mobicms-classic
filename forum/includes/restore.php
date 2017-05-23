@@ -22,6 +22,8 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 /** @var Mobicms\Checkpoint\UserConfig $userConfig */
 $userConfig = $systemUser->getConfig();
 
+$page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
+
 if (($systemUser->rights != 3 && $systemUser->rights < 6) || !$id) {
     echo _t('Access denied');
     require('../system/end.php');

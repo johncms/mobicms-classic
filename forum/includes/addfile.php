@@ -30,6 +30,8 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+$page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
+
 if (!$id || !$systemUser->isValid()) {
     echo $tools->displayError(_t('Wrong data'));
     require('../system/end.php');
