@@ -24,7 +24,7 @@ class Request extends KleinRequest
      */
     public function ip()
     {
-        return filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
+        return filter_var($this->server->get('REMOTE_ADDR'), FILTER_VALIDATE_IP);
     }
 
     /**
@@ -36,10 +36,9 @@ class Request extends KleinRequest
     {
         if ($this->ipViaProxy !== null) {
             return $this->ipViaProxy;
-        } elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])
-            && preg_match_all(
-                '#\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}#s',
-                filter_var($_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_SANITIZE_STRING),
+        } elseif ($this->server->exists('X_FORWARDED_FOR')
+            && preg_match_all('#\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}#s',
+                filter_var($this->server->get('X_FORWARDED_FOR'), FILTER_SANITIZE_STRING),
                 $vars
             )
         ) {
