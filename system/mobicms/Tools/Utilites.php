@@ -15,6 +15,7 @@ use Mobicms\Api\ConfigInterface;
 use Mobicms\Api\ToolsInterface;
 use Mobicms\Api\UserInterface;
 use Mobicms\Checkpoint\UserConfig;
+use Mobicms\Http\Request;
 use Psr\Container\ContainerInterface;
 
 class Utilites implements ToolsInterface
@@ -28,6 +29,11 @@ class Utilites implements ToolsInterface
      * @var \PDO
      */
     private $db;
+
+    /**
+     * @var Request
+     */
+    private $request;
 
     /**
      * @var UserInterface::class
@@ -49,6 +55,7 @@ class Utilites implements ToolsInterface
         $this->container = $container;
         $this->config = $container->get(ConfigInterface::class);
         $this->db = $container->get(\PDO::class);
+        $this->request = $container->get(Request::class);
         $this->user = $container->get(UserInterface::class);
         $this->userConfig = $this->user->getConfig();
 
@@ -420,6 +427,21 @@ class Utilites implements ToolsInterface
         $flag = is_file($file) ? 'data:image/png;base64,' . base64_encode(file_get_contents($file)) : false;
 
         return $flag !== false ? '<img src="' . $flag . '" style="margin-right: 8px; vertical-align: middle">' : '';
+    }
+
+    /**
+     * Get Pagination START offset
+     *
+     * @return int
+     */
+    public function getPgStart()
+    {
+        $page = $this->request->paramsGet()->get('page', 1);
+        $start = $this->request->paramsGet()->exists('page')
+            ? $page * $this->userConfig->kmess - $this->userConfig->kmess
+            : $this->request->paramsGet()->get('start', 0);
+
+        return abs(intval($start));
     }
 
     /**

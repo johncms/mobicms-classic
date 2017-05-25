@@ -28,6 +28,8 @@ interface ToolsInterface
 
     public function getFlag($locale);
 
+    public function getPgStart();
+
     public function getSkin();
 
     public function getUser($id);
