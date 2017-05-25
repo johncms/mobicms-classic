@@ -48,7 +48,7 @@ switch ($mod) {
         echo '<div class="phdr"><b>' . _t('Comments') . '</b></div>';
 
         if ($total > $userConfig->kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('?act=activity&amp;mod=comments&amp;user=' . $user['id'] . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
+            echo '<div class="topmenu">' . $tools->displayPagination('?act=activity&amp;mod=comments&amp;user=' . $user['id'] . '&amp;', $total) . '</div>';
         }
 
         $req = $db->query("SELECT * FROM `guest` WHERE `user_id` = '" . $user['id'] . "'" . ($systemUser->rights >= 1 ? '' : " AND `adm` = '0'") . " ORDER BY `id` DESC LIMIT $start, $userConfig->kmess");
@@ -72,7 +72,7 @@ switch ($mod) {
         echo '<div class="phdr"><b>' . _t('Forum') . '</b>: ' . _t('Themes') . '</div>';
 
         if ($total > $userConfig->kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('?act=activity&amp;mod=topic&amp;user=' . $user['id'] . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
+            echo '<div class="topmenu">' . $tools->displayPagination('?act=activity&amp;mod=topic&amp;user=' . $user['id'] . '&amp;', $total) . '</div>';
         }
 
         $req = $db->query("SELECT * FROM `forum` WHERE `user_id` = '" . $user['id'] . "' AND `type` = 't'" . ($systemUser->rights >= 7 ? '' : " AND `close`!='1'") . " ORDER BY `id` DESC LIMIT $start, $userConfig->kmess");
@@ -107,7 +107,7 @@ switch ($mod) {
         echo '<div class="phdr"><b>' . _t('Forum') . '</b>: ' . _t('Messages') . '</div>';
 
         if ($total > $userConfig->kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('?act=activity&amp;user=' . $user['id'] . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
+            echo '<div class="topmenu">' . $tools->displayPagination('?act=activity&amp;user=' . $user['id'] . '&amp;', $total) . '</div>';
         }
 
         $req = $db->query("SELECT * FROM `forum` WHERE `user_id` = '" . $user['id'] . "' AND `type` = 'm' " . ($systemUser->rights >= 7 ? '' : " AND `close`!='1'") . " ORDER BY `id` DESC LIMIT $start, $userConfig->kmess");
@@ -141,7 +141,7 @@ switch ($mod) {
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('?act=activity' . ($mod ? '&amp;mod=' . $mod : '') . '&amp;user=' . $user['id'] . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=activity' . ($mod ? '&amp;mod=' . $mod : '') . '&amp;user=' . $user['id'] . '&amp;', $total) . '</div>' .
         '<p><form action="?act=activity&amp;user=' . $user['id'] . ($mod ? '&amp;mod=' . $mod : '') . '" method="post">' .
         '<input type="text" name="page" size="2"/>' .
         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

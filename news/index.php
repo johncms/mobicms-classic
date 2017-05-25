@@ -336,7 +336,7 @@ switch ($do) {
         echo '<div class="phdr">' . _t('Total') . ':&#160;' . $total . '</div>';
 
         if ($total > $userConfig->kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $userConfig->kmess) . '</div>' .
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $total) . '</div>' .
                 '<p><form action="index.php" method="post">' .
                 '<input type="text" name="page" size="2"/>' .
                 '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

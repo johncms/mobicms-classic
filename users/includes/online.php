@@ -75,7 +75,7 @@ switch ($mod) {
 
         if ($total && $systemUser->rights) {
             if ($total > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;mod=ip&amp;', $start, $total, $userConfig->kmess) . '</div>';
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;mod=ip&amp;', $total) . '</div>';
             }
 
             for ($i = $start; $i < $end; $i++) {
@@ -95,7 +95,7 @@ switch ($mod) {
             echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
             if ($total > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;mod=ip&amp;', $start, $total, $userConfig->kmess) . '</div>' .
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;mod=ip&amp;', $total) . '</div>' .
                     '<p><form action="index.php?act=online&amp;mod=ip" method="post">' .
                     '<input type="text" name="page" size="2"/>' .
                     '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';
@@ -132,7 +132,7 @@ if ($start >= $total) {
 }
 
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;' . ($mod ? 'mod=' . $mod . '&amp;' : ''), $start, $total, $userConfig->kmess) . '</div>';
+    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;' . ($mod ? 'mod=' . $mod . '&amp;' : ''), $total) . '</div>';
 }
 
 if ($total) {
@@ -167,7 +167,7 @@ if ($total) {
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;' . ($mod ? 'mod=' . $mod . '&amp;' : ''), $start, $total, $userConfig->kmess) . '</div>' .
+    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;' . ($mod ? 'mod=' . $mod . '&amp;' : ''), $total) . '</div>' .
         '<p><form action="index.php?act=online' . ($mod ? '&amp;mod=' . $mod : '') . '" method="post">' .
         '<input type="text" name="page" size="2"/>' .
         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

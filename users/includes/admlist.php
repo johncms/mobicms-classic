@@ -39,7 +39,7 @@ for ($i = 0; $res = $req->fetch(); ++$i) {
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 if ($total > $userConfig->kmess) {
-    echo '<p>' . $tools->displayPagination('index.php?act=admlist&amp;', $start, $total, $userConfig->kmess) . '</p>' .
+    echo '<p>' . $tools->displayPagination('index.php?act=admlist&amp;', $total) . '</p>' .
         '<p><form action="index.php?act=admlist" method="post">' .
         '<input type="text" name="page" size="2"/>' .
         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

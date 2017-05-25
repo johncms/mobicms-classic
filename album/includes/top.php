@@ -131,7 +131,7 @@ if ($mod == 'my_new_comm') {
 
 if ($total) {
     if ($total > $userConfig->kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('?act=top' . $link . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=top' . $link . '&amp;', $total) . '</div>';
     }
 
     $req = $db->query("
@@ -181,7 +181,7 @@ if ($total) {
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('?act=top' . $link . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=top' . $link . '&amp;', $total) . '</div>' .
         '<p><form action="?act=top' . $link . '" method="post">' .
         '<input type="text" name="page" size="2"/>' .
         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

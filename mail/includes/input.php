@@ -106,7 +106,7 @@ if ($total) {
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=input&amp;', $start, $total, $userConfig->kmess) . '</div>' .
+    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=input&amp;', $total) . '</div>' .
         '<p><form action="index.php" method="get">
                 <input type="hidden" name="act" value="input"/>
                 <input type="text" name="page" size="2"/>

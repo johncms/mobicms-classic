@@ -64,6 +64,6 @@ if ($total) {
 }
 
 echo '<div class="phdr">' . _t('Total') . ': ' . intval($total) . '</div>';
-echo ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?act=premod&amp;', $start, $total, $userConfig->kmess) . '</div>' : '';
+echo ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?act=premod&amp;', $total) . '</div>' : '';
 echo $total ? '<div><a href="?act=premod&amp;all">' . _t('Approve all') . '</a></div>' : '';
 echo '<p><a href="?">' . _t('To Library') . '</a></p>' . PHP_EOL;

@@ -47,7 +47,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
 
     // Навигация
     if ($total > $userConfig->kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('?act=mod_files&amp;', $start, $total, $userConfig->kmess) . '</div>';
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=mod_files&amp;', $total) . '</div>';
     }
 
     $i = 0;
@@ -69,7 +69,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
 
     // Навигация
     if ($total > $userConfig->kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('?act=mod_files&amp;', $start, $total, $userConfig->kmess) . '</div>' .
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=mod_files&amp;', $total) . '</div>' .
             '<p><form action="?" method="get">' .
             '<input type="hidden" value="top_users" name="act" />' .
             '<input type="text" name="page" size="2"/><input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

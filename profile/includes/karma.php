@@ -204,7 +204,7 @@ if ($set_karma['on']) {
             echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
             if ($total > $userConfig->kmess) {
-                echo '<p>' . $tools->displayPagination('?act=karma&amp;mod=new&amp;', $start, $total, $userConfig->kmess) . '</p>' .
+                echo '<p>' . $tools->displayPagination('?act=karma&amp;mod=new&amp;', $total) . '</p>' .
                     '<p><form action="?act=karma&amp;mod=new" method="post">' .
                     '<input type="text" name="page" size="2"/>' .
                     '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';
@@ -275,7 +275,7 @@ if ($set_karma['on']) {
             echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
             if ($total > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('?act=karma&amp;user=' . $user['id'] . '&amp;type=' . $type . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
+                echo '<div class="topmenu">' . $tools->displayPagination('?act=karma&amp;user=' . $user['id'] . '&amp;type=' . $type . '&amp;', $total) . '</div>' .
                     '<p><form action="?act=karma&amp;user=' . $user['id'] . '&amp;type=' . $type . '" method="post">' .
                     '<input type="text" name="page" size="2"/>' .
                     '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

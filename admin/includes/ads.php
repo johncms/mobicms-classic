@@ -418,7 +418,7 @@ switch ($mod) {
         echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
         if ($total > $userConfig->kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ads&amp;type=' . $type . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ads&amp;type=' . $type . '&amp;', $total) . '</div>' .
                 '<p><form action="index.php?act=ads&amp;type=' . $type . '" method="post">' .
                 '<input type="text" name="page" size="2"/>' .
                 '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

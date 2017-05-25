@@ -141,7 +141,7 @@ if (!empty($screen)) {
 
         echo '<div class="gmenu"><b>' . _t('Screenshot') . ' (' . $page . '/' . $total . '):</b><br>' .
             '<img src="preview.php?type=2&amp;img=' . rawurlencode($screen[$page - 1]) . '" alt="screen" /></div>';
-        echo '<div class="topmenu"> ' . $tools->displayPagination('?act=view&amp;id=' . $id . '&amp;', $page - 1, $total, 1) . '</div>';
+        echo '<div class="topmenu"> ' . $tools->displayPagination('?act=view&amp;id=' . $id . '&amp;', $page - 1, $total, 1) . '</div>';//TODO: разобраться с навигацией
     } else {
         echo '<div class="gmenu"><b>' . _t('Screenshot') . ':</b><br>' .
             '<img src="preview.php?type=2&amp;img=' . rawurlencode($screen[0]) . '" alt="screen" /></div>';

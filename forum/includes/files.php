@@ -154,8 +154,7 @@ if ($do || isset($_GET['new'])) {
 
         if ($total > $userConfig->kmess) {
             // Постраничная навигация
-            echo '<p>' . $tools->displayPagination('index.php?act=files&amp;' . (isset($_GET['new']) ? 'new'
-                        : 'do=' . $do) . $lnk . '&amp;', $start, $total, $userConfig->kmess) . '</p>' .
+            echo '<p>' . $tools->displayPagination('index.php?act=files&amp;' . (isset($_GET['new']) ? 'new' : 'do=' . $do) . $lnk . '&amp;', $total) . '</p>' .
                 '<p><form action="index.php" method="get">' .
                 '<input type="hidden" name="act" value="files"/>' .
                 '<input type="hidden" name="do" value="' . $do . '"/>' . $input . '<input type="text" name="page" size="2"/>' .

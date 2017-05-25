@@ -171,13 +171,18 @@ class Utilites implements ToolsInterface
      * За основу взята доработанная функция от форума SMF 2.x.x
      *
      * @param string $url
-     * @param int    $start
      * @param int    $total
      * @param int    $listSize
      * @return string
      */
-    public function displayPagination($url, $start, $total, $listSize)
+    public function displayPagination($url, $total, $listSize = null)
     {
+        $start = $this->getPgStart();
+        
+        if($listSize === null){
+            $listSize = $this->userConfig->kmess;
+        }
+
         $neighbors = 2;
         if ($start >= $total) {
             $start = max(0, $total - (($total % $listSize) == 0 ? $listSize : ($total % $listSize)));

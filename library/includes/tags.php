@@ -36,8 +36,7 @@ if (isset($_GET['tag'])) {
         echo '<div class="phdr"><a href="?"><strong>' . _t('Library') . '</strong></a> | ' . _t('Tags') . '</div>';
 
         if ($total > $userConfig->kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('?act=tags&amp;tag=' . urlencode($tag) . '&amp;',
-                    $start, $total, $userConfig->kmess) . '</div>';
+            echo '<div class="topmenu">' . $tools->displayPagination('?act=tags&amp;tag=' . urlencode($tag) . '&amp;', $total) . '</div>';
         }
 
         foreach (new LimitIterator(new ArrayIterator($obj->getAllTagStats($tag)), $start, $userConfig->kmess) as $txt) {
@@ -59,7 +58,7 @@ if (isset($_GET['tag'])) {
         echo '<div class="phdr">' . _t('Total') . ': ' . intval($total) . '</div>';
 
         if ($total > $userConfig->kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('?act=tags&amp;tag=' . urlencode($tag) . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
+            echo '<div class="topmenu">' . $tools->displayPagination('?act=tags&amp;tag=' . urlencode($tag) . '&amp;', $total) . '</div>';
         }
         echo '<p><a href="?">' . _t('To Library') . '</a></p>';
     }

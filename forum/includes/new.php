@@ -86,7 +86,7 @@ if ($systemUser->isValid()) {
                 '</form></div>';
 
             if ($count > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;do=period&amp;vr=' . $vr . '&amp;', $start, $count, $userConfig->kmess) . '</div>';
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;do=period&amp;vr=' . $vr . '&amp;', $count) . '</div>';
             }
 
             if ($count) {
@@ -140,7 +140,7 @@ if ($systemUser->isValid()) {
             echo '<div class="phdr">' . _t('Total') . ': ' . $count . '</div>';
 
             if ($count > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;do=period&amp;vr=' . $vr . '&amp;', $start, $count, $userConfig->kmess) . '</div>' .
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;do=period&amp;vr=' . $vr . '&amp;', $count) . '</div>' .
                     '<p><form action="index.php?act=new&amp;do=period&amp;vr=' . $vr . '" method="post">
                     <input type="text" name="page" size="2"/>
                     <input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';
@@ -153,7 +153,7 @@ if ($systemUser->isValid()) {
             echo '<div class="phdr"><a href="index.php"><b>' . _t('Forum') . '</b></a> | ' . _t('Unread') . '</div>';
 
             if ($total > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $start, $total, $userConfig->kmess) . '</div>';
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $total) . '</div>';
             }
 
             if ($total > 0) {
@@ -206,7 +206,7 @@ if ($systemUser->isValid()) {
             echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
             if ($total > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $start, $total, $userConfig->kmess) . '</div>' .
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $total) . '</div>' .
                     '<p><form action="index.php" method="get">' .
                     '<input type="hidden" name="act" value="new"/>' .
                     '<input type="text" name="page" size="2"/>' .

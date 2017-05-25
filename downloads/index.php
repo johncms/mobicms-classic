@@ -280,7 +280,7 @@ if (isset($actions[$act]) && is_file(__DIR__ . '/includes/' . $actions[$act])) {
 
             // Постраничная навигация
             if ($total_files > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination($url . '?id=' . $id . '&amp;', $start, $total_files, $userConfig->kmess) . '</div>';
+                echo '<div class="topmenu">' . $tools->displayPagination($url . '?id=' . $id . '&amp;', $total_files) . '</div>';
             }
 
             // Выводи данные
@@ -314,7 +314,7 @@ if (isset($actions[$act]) && is_file(__DIR__ . '/includes/' . $actions[$act])) {
 
     // Постраничная навигация
     if ($total_files > $userConfig->kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination($url . '?id=' . $id . '&amp;', $start, $total_files, $userConfig->kmess) . '</div>' .
+        echo '<div class="topmenu">' . $tools->displayPagination($url . '?id=' . $id . '&amp;', $total_files) . '</div>' .
             '<p><form action="' . $url . '" method="get">' .
             '<input type="hidden" name="id" value="' . $id . '"/>' .
             '<input type="text" name="page" size="2"/><input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

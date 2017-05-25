@@ -68,7 +68,7 @@ if ($mod == 'clear') {
         }
 
         if ($total > $userConfig->kmess) {
-            $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=systems&amp;', $start, $total, $userConfig->kmess) . '</div>';
+            $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=systems&amp;', $total) . '</div>';
         }
 
         $req = $db->query("SELECT * FROM `cms_mail` WHERE `from_id`='" . $systemUser->id . "' AND `sys`='1' AND `delete`!='" . $systemUser->id . "' ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
@@ -103,7 +103,7 @@ if ($mod == 'clear') {
     $out .= '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
     if ($total > $userConfig->kmess) {
-        $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=systems&amp;', $start, $total, $userConfig->kmess) . '</div>';
+        $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=systems&amp;', $total) . '</div>';
         $out .= '<p><form action="index.php" method="get">
 			<input type="hidden" name="act" value="systems"/>
 			<input type="text" name="page" size="2"/>

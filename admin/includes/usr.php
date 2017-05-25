@@ -69,7 +69,7 @@ while ($res = $req->fetch()) {
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=usr&amp;sort=' . $sort . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
+    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=usr&amp;sort=' . $sort . '&amp;', $total) . '</div>';
     echo '<p><form action="index.php?act=usr&amp;sort=' . $sort . '" method="post"><input type="text" name="page" size="2"/><input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';
 }
 

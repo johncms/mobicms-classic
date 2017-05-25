@@ -36,7 +36,7 @@ $total = $db->query("SELECT COUNT(*) FROM `cms_mail` WHERE (`user_id`='" . $syst
 
 if ($total) {
     if ($total > $userConfig->kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=files&amp;', $start, $total, $userConfig->kmess) . '</div>';
+        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=files&amp;', $total) . '</div>';
     }
 
     $req = $db->query("SELECT `cms_mail`.*, `users`.`name`
@@ -61,7 +61,7 @@ if ($total) {
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=files&amp;', $start, $total, $userConfig->kmess) . '</div>';
+    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=files&amp;', $total) . '</div>';
     echo '<p><form action="index.php" method="get">
 		<input type="hidden" name="act" value="files"/>
 		<input type="text" name="page" size="2"/>

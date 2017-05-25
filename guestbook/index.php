@@ -362,7 +362,7 @@ switch ($act) {
         echo '<div class="phdr"><b>' . _t('Comments') . '</b></div>';
 
         if ($total > $userConfig->kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $userConfig->kmess) . '</div>';
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $total) . '</div>';
         }
 
         if ($total) {
@@ -454,7 +454,7 @@ switch ($act) {
         echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
         if ($total > $userConfig->kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $start, $total, $userConfig->kmess) . '</div>' .
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?', $total) . '</div>' .
                 '<p><form action="index.php" method="get"><input type="text" name="page" size="2"/>' .
                 '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';
         }

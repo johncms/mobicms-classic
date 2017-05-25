@@ -62,7 +62,7 @@ if ($search && !$error) {
 
     if ($total > $userConfig->kmess) {
         $check_search = htmlspecialchars(rawurlencode($search));
-        echo '<div class="topmenu">' . $tools->displayPagination('?act=search&amp;search=' . $check_search . '&amp;id=' . $id . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=search&amp;search=' . $check_search . '&amp;id=' . $id . '&amp;', $total) . '</div>';
     }
 
     if ($total) {
@@ -80,7 +80,7 @@ if ($search && !$error) {
 
     // Навигация
     if ($total > $userConfig->kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('?act=search&amp;search=' . $check_search . '&amp;id=' . $id . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=search&amp;search=' . $check_search . '&amp;id=' . $id . '&amp;', $total) . '</div>' .
             '<p><form action="?" method="get">' .
             '<input type="hidden" value="' . $check_search . '" name="search" />' .
             '<input type="hidden" value="search" name="act" />' .

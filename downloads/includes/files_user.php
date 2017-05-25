@@ -45,7 +45,7 @@ $total = $db->query("SELECT COUNT(*) FROM `download__files` WHERE `type` = '2'  
 
 // Навигация
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('?act=user_files&amp;id=' . $id . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=user_files&amp;id=' . $id . '&amp;', $total) . '</div>';
 }
 
 // Список файлов
@@ -65,7 +65,7 @@ echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 // Навигация
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('?act=user_files&amp;id=' . $id . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=user_files&amp;id=' . $id . '&amp;', $total) . '</div>' .
         '<p><form action="?" method="get">' .
         '<input type="hidden" name="USER" value="' . $id . '"/>' .
         '<input type="hidden" value="user_files" name="act" />' .

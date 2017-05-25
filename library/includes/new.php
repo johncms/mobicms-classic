@@ -33,8 +33,7 @@ $total = $db->query("SELECT COUNT(*) FROM `library_texts` WHERE `time` > '" . (t
 $page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
 $start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
 $sql = $db->query("SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `comments`, `comm_count`, `cat_id`, `announce` FROM `library_texts` WHERE `time` > '" . (time() - 259200) . "' AND `premod`=1 ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
-$nav = ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?act=new&amp;', $start, $total,
-        $userConfig->kmess) . '</div>' : '';
+$nav = ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?act=new&amp;', $total) . '</div>' : '';
 echo $nav;
 if ($total) {
     $i = 0;

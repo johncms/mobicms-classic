@@ -72,7 +72,7 @@ if ($id && is_dir(ROOT_PATH . 'images/avatars/' . $id)) {
         echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
         if ($total > $userConfig->kmess) {
-            echo '<p>' . $tools->displayPagination('?act=avatars&amp;id=' . $id . '&amp;', $start, $total, $userConfig->kmess) . '</p>' .
+            echo '<p>' . $tools->displayPagination('?act=avatars&amp;id=' . $id . '&amp;', $total) . '</p>' .
                 '<p><form action="?act=avatars&amp;id=' . $id . '" method="post">' .
                 '<input type="text" name="page" size="2"/>' .
                 '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .

@@ -102,7 +102,7 @@ if ($search && !$error) {
     }
 
     if ($total > $userConfig->kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=search_ip' . ($mod == 'history' ? '&amp;mod=history' : '') . '&amp;search=' . urlencode($search) . '&amp;', $start, $total, $userConfig->kmess) . '</div>';
+        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=search_ip' . ($mod == 'history' ? '&amp;mod=history' : '') . '&amp;search=' . urlencode($search) . '&amp;', $total) . '</div>';
     }
 
     if ($total) {
@@ -135,7 +135,7 @@ if ($search && !$error) {
 
     if ($total > $userConfig->kmess) {
         // Навигация по страницам
-        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=search_ip' . ($mod == 'history' ? '&amp;mod=history' : '') . '&amp;search=' . urlencode($search) . '&amp;', $start, $total, $userConfig->kmess) . '</div>' .
+        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=search_ip' . ($mod == 'history' ? '&amp;mod=history' : '') . '&amp;search=' . urlencode($search) . '&amp;', $total) . '</div>' .
             '<p><form action="index.php?act=search_ip' . ($mod == 'history' ? '&amp;mod=history' : '') . '&amp;search=' . urlencode($search) . '" method="post">' .
             '<input type="text" name="page" size="2"/><input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .
             '</form></p>';

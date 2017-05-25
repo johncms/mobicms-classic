@@ -41,7 +41,7 @@ $total = $db->query("SELECT COUNT(*) FROM `download__bookmark` WHERE `user_id` =
 
 // Навигация
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('?act=bookmark&amp;', $start, $total, $userConfig->kmess) . '</div>';
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=bookmark&amp;', $total) . '</div>';
 }
 
 // Список закладок
@@ -62,7 +62,7 @@ echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 // Навигация
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('?act=bookmark&amp;', $start, $total, $userConfig->kmess) . '</div>' .
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=bookmark&amp;', $total) . '</div>' .
         '<p><form action="?" method="get">' .
         '<input type="hidden" value="bookmark" name="act" />' .
         '<input type="text" name="page" size="2"/><input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';

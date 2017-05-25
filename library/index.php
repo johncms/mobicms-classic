@@ -238,8 +238,7 @@ if (in_array($act, $array_includes)) {
                 if ($actdir) {
                     $total = $db->query("SELECT COUNT(*) FROM `library_cats` WHERE "
                         . ($id !== null ? '`parent`=' . $id : '`parent`=0'))->fetchColumn();
-                    $nav = ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?do=dir&amp;id=' . $id . '&amp;',
-                            $start, $total, $userConfig->kmess) . '</div>' : '';
+                    $nav = ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?do=dir&amp;id=' . $id . '&amp;', $total) . '</div>' : '';
                     $y = 0;
 
                     if ($total) {
@@ -285,8 +284,7 @@ if (in_array($act, $array_includes)) {
                     $total = $db->query('SELECT COUNT(*) FROM `library_texts` WHERE `premod`=1 AND `cat_id`=' . $id)->fetchColumn();
                     $page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
                     $start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
-                    $nav = ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?do=dir&amp;id=' . $id . '&amp;',
-                            $start, $total, $userConfig->kmess) . '</div>' : '';
+                    $nav = ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?do=dir&amp;id=' . $id . '&amp;', $total) . '</div>' : '';
 
                     if ($total) {
                         $sql2 = $db->query("SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `comm_count`, `comments`, `announce` FROM `library_texts` WHERE `premod`=1 AND `cat_id`=" . $id . " ORDER BY `id` DESC LIMIT " . $start . "," . $userConfig->kmess);
@@ -366,7 +364,7 @@ if (in_array($act, $array_includes)) {
                     }
 
                     $nav = $count_pages > 1 ? '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;',
-                            $page == 1 ? 0 : ($page - 1) * 1, $count_pages, 1) . '</div>' : '';
+                            $page == 1 ? 0 : ($page - 1) * 1, $count_pages, 1) . '</div>' : ''; //TODO: разобраться с навигацией
                     $catalog = $db->query("SELECT `id`, `name` FROM `library_cats` WHERE `id` = " . $row['cat_id'] . " LIMIT 1")->fetch();
                     echo '<div class="phdr"><a href="?"><strong>' . _t('Library') . '</strong></a>'
                         . ' | <a href="?do=dir&amp;id=' . $catalog['id'] . '">' . $tools->checkout($catalog['name']) . '</a>'
@@ -375,7 +373,7 @@ if (in_array($act, $array_includes)) {
                     // Верхняя постраничная навигация
                     if ($count_pages > 1) {
                         echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;',
-                                $page == 1 ? 0 : ($page - 1) * 1, $count_pages, 1) . '</div>';
+                                $page == 1 ? 0 : ($page - 1) * 1, $count_pages, 1) . '</div>'; //TODO: разобраться с навигацией
                     }
 
                     if ($page == 1) {

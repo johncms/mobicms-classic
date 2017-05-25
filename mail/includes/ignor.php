@@ -112,7 +112,7 @@ if (isset($_GET['del'])) {
 
     if ($total) {
         if ($total > $userConfig->kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ignor&amp;', $start, $total, $userConfig->kmess) . '</div>';
+            echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ignor&amp;', $total) . '</div>';
         }
 
         $req = $db->query("SELECT `users`.* FROM `cms_contact`
@@ -142,7 +142,7 @@ if (isset($_GET['del'])) {
     echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
     if ($total > $userConfig->kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ignor&amp;', $start, $total, $userConfig->kmess) . '</div>';
+        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=ignor&amp;', $total) . '</div>';
         echo '<p><form action="index.php" method="get">
 			<input type="hidden" name="act" value="ignor"/>
 			<input type="text" name="page" size="2"/>
