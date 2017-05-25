@@ -28,7 +28,7 @@ interface ToolsInterface
 
     public function getFlag($locale);
 
-    public function getPgStart();
+    public function getPgStart($db = false);
 
     public function getSkin();
 

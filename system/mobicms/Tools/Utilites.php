@@ -432,16 +432,19 @@ class Utilites implements ToolsInterface
     /**
      * Get Pagination START offset
      *
-     * @return int
+     * @return int|string
      */
-    public function getPgStart()
+    public function getPgStart($db = false)
     {
         $page = $this->request->paramsGet()->get('page', 1);
         $start = $this->request->paramsGet()->exists('page')
             ? $page * $this->userConfig->kmess - $this->userConfig->kmess
             : $this->request->paramsGet()->get('start', 0);
+        $start = abs(intval($start));
 
-        return abs(intval($start));
+        return $db
+            ? ' LIMIT ' . $this->userConfig->kmess . ' OFFSET ' . $start
+            : $start;
     }
 
     /**
