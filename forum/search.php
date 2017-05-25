@@ -105,9 +105,7 @@ switch ($act) {
                     FROM `forum`
                     WHERE MATCH (`text`) AGAINST ($query IN BOOLEAN MODE)
                     AND `type` = '" . ($search_t ? 't' : 'm') . "'
-                    ORDER BY `rel` DESC
-                    LIMIT $start, $userConfig->kmess
-                ");
+                    ORDER BY `rel` DESC" . $tools->getPgStart(true));
                 $i = 0;
 
                 while ($res = $req->fetch()) {

@@ -111,12 +111,11 @@ if ($search && !$error) {
                 FROM `cms_users_iphistory` LEFT JOIN `users` ON `cms_users_iphistory`.`user_id` = `users`.`id`
                 WHERE `cms_users_iphistory`.`ip` BETWEEN $ip1 AND $ip2 OR `cms_users_iphistory`.`ip_via_proxy` BETWEEN $ip1 AND $ip2
                 GROUP BY `users`.`id`
-                ORDER BY `ip` ASC, `name` ASC LIMIT $start, $userConfig->kmess
-            ");
+                ORDER BY `ip` ASC, `name` ASC" . $tools->getPgStart(true));
         } else {
             $req = $db->query("SELECT * FROM `users`
             WHERE `ip` BETWEEN $ip1 AND $ip2 OR `ip_via_proxy` BETWEEN $ip1 AND $ip2
-            ORDER BY `ip` ASC, `name` ASC LIMIT $start, $userConfig->kmess");
+            ORDER BY `ip` ASC, `name` ASC" . $tools->getPgStart(true));
         }
 
         $i = 0;

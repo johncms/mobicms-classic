@@ -119,9 +119,7 @@ if (isset($_GET['del'])) {
 		    LEFT JOIN `users` ON `cms_contact`.`from_id`=`users`.`id`
 		    WHERE `cms_contact`.`user_id`='" . $systemUser->id . "'
 		    AND `ban`='1'
-		    ORDER BY `cms_contact`.`time` DESC
-		    LIMIT $start, $userConfig->kmess"
-        );
+		    ORDER BY `cms_contact`.`time` DESC" . $tools->getPgStart(true));
 
         for ($i = 0; ($row = $req->fetch()) !== false; ++$i) {
             echo $i % 2 ? '<div class="list1">' : '<div class="list2">';

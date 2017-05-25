@@ -70,7 +70,7 @@ if ($search && !$error) {
     }
 
     if ($total) {
-        $req = $db->query("SELECT * FROM `users` WHERE `name_lat` LIKE " . $db->quote($search_db) . " ORDER BY `name` ASC LIMIT $start, $userConfig->kmess");
+        $req = $db->query("SELECT * FROM `users` WHERE `name_lat` LIKE " . $db->quote($search_db) . " ORDER BY `name` ASC" . $tools->getPgStart(true));
         $i = 0;
         while ($res = $req->fetch()) {
             echo $i % 2 ? '<div class="list2">' : '<div class="list1">';

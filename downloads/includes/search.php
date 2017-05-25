@@ -66,7 +66,7 @@ if ($search && !$error) {
     }
 
     if ($total) {
-        $req_down = $db->query("SELECT * FROM `download__files` WHERE `type` = '2'  AND $sql ORDER BY `rus_name` ASC LIMIT $start, $userConfig->kmess");
+        $req_down = $db->query("SELECT * FROM `download__files` WHERE `type` = '2'  AND $sql ORDER BY `rus_name` ASC" . $tools->getPgStart(true));
         $i = 0;
 
         while ($res_down = $req_down->fetch()) {

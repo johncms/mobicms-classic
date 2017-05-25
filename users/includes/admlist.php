@@ -29,7 +29,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 // Выводим список администрации
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Community') . '</b></a> | ' . _t('Administration') . '</div>';
 $total = $db->query("SELECT COUNT(*) FROM `users` WHERE `rights` >= 1")->fetchColumn();
-$req = $db->query("SELECT `id`, `name`, `sex`, `lastdate`, `datereg`, `status`, `rights`, `ip`, `browser`, `rights` FROM `users` WHERE `rights` >= 1 ORDER BY `rights` DESC LIMIT $start, $userConfig->kmess");
+$req = $db->query("SELECT `id`, `name`, `sex`, `lastdate`, `datereg`, `status`, `rights`, `ip`, `browser`, `rights` FROM `users` WHERE `rights` >= 1 ORDER BY `rights` DESC" . $tools->getPgStart(true));
 
 for ($i = 0; $res = $req->fetch(); ++$i) {
     echo $i % 2 ? '<div class="list2">' : '<div class="list1">';

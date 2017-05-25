@@ -44,6 +44,7 @@ $id = abs(intval($request->param('id', 0)));
 $act = $request->paramsGet()->get('act');
 $mod = $request->paramsGet()->get('mod');
 $do = $request->param('do');
+$start = $tools->getPgStart();
 
 if (isset($_SESSION['ref'])) {
     unset($_SESSION['ref']);
@@ -350,7 +351,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                 }
 
                 if ($total) {
-                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t'" . ($systemUser->rights >= 7 ? '' : " AND `close`!='1'") . " AND `refid`='$id' ORDER BY `vip` DESC, `time` DESC LIMIT $start, $userConfig->kmess");
+                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t'" . ($systemUser->rights >= 7 ? '' : " AND `close`!='1'") . " AND `refid`='$id' ORDER BY `vip` DESC, `time` DESC" . $tools->getPgStart(true));
                     $i = 0;
 
                     while ($res = $req->fetch()) {
@@ -577,8 +578,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                   FROM `forum` LEFT JOIN `users` ON `forum`.`user_id` = `users`.`id`
                   WHERE `forum`.`type` = 'm' AND `forum`.`refid` = '$id'"
                     . ($systemUser->rights >= 7 ? "" : " AND `forum`.`close` != '1'") . "$sql
-                  ORDER BY `forum`.`id` $order LIMIT $start, $userConfig->kmess
-                ");
+                  ORDER BY `forum`.`id` $order" . $tools->getPgStart(true));
 
                 // Верхнее поле "Написать"
                 if (($systemUser->isValid() && !$type1['edit'] && $set_forum['upfp'] && $config->mod_forum != 3 && $allow != 4) || ($systemUser->rights >= 7 && $set_forum['upfp'])) {

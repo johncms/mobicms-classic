@@ -71,7 +71,7 @@ if ($mod == 'clear') {
             $out .= '<div class="topmenu">' . $tools->displayPagination('index.php?act=systems&amp;', $total) . '</div>';
         }
 
-        $req = $db->query("SELECT * FROM `cms_mail` WHERE `from_id`='" . $systemUser->id . "' AND `sys`='1' AND `delete`!='" . $systemUser->id . "' ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
+        $req = $db->query("SELECT * FROM `cms_mail` WHERE `from_id`='" . $systemUser->id . "' AND `sys`='1' AND `delete`!='" . $systemUser->id . "' ORDER BY `time` DESC" . $tools->getPgStart(true));
         $mass_read = [];
 
         for ($i = 0; ($row = $req->fetch()) !== false; ++$i) {

@@ -87,8 +87,7 @@ switch ($mod) {
           SELECT COUNT(`cms_ban_users`.`user_id`) AS `bancount`, MAX(`cms_ban_users`.`ban_time`) AS `bantime`, `cms_ban_users`.`id` AS `ban_id`, `users`.*
           FROM `cms_ban_users` LEFT JOIN `users` ON `cms_ban_users`.`user_id` = `users`.`id`
           GROUP BY `user_id`
-          ORDER BY `$sort` DESC
-          LIMIT $start, $userConfig->kmess");
+          ORDER BY `$sort` DESC" . $tools->getPgStart(true));
 
         if ($req->rowCount()) {
             while ($res = $req->fetch()) {

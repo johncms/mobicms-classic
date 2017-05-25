@@ -28,6 +28,7 @@ $userConfig = $systemUser->getConfig();
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
+$start = $tools->getPgStart();
 
 if (empty($_GET['id'])) {
     echo $tools->displayError(_t('Wrong data'));

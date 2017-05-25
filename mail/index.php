@@ -135,9 +135,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
 			    LEFT JOIN `users` ON `cms_contact`.`from_id`=`users`.`id`
 			    WHERE `cms_contact`.`user_id`='" . $systemUser->id . "'
 			    AND `cms_contact`.`ban`!='1'
-			    ORDER BY `users`.`name` ASC
-			    LIMIT $start, $userConfig->kmess"
-            );
+			    ORDER BY `users`.`name` ASC" . $tools->getPgStart(true));
 
             for ($i = 0; ($row = $req->fetch()) !== false; ++$i) {
                 echo $i % 2 ? '<div class="list1">' : '<div class="list2">';

@@ -23,6 +23,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
+$start = $tools->getPgStart();
 
 if ($systemUser->rights >= 7) {
     $req = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 't'");

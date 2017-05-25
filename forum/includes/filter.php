@@ -17,6 +17,7 @@ $container = App::getContainer();
 
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
+$start = $tools->getPgStart();
 
 if (!$id) {
     echo $tools->displayError(_t('Wrong data'), '<a href="index.php">' . _t('Forum') . '</a>');

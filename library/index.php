@@ -41,6 +41,7 @@ $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
 $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
+$start = $tools->getPgStart();
 
 use Library\Tree;
 use Library\Hashtags;
@@ -243,7 +244,7 @@ if (in_array($act, $array_includes)) {
 
                     if ($total) {
                         $sql = $db->query("SELECT `id`, `name`, `dir`, `description` FROM `library_cats` WHERE "
-                            . ($id !== null ? '`parent`=' . $id : '`parent`=0') . ' ORDER BY `pos` ASC LIMIT ' . $start . ',' . $userConfig->kmess);
+                            . ($id !== null ? '`parent`=' . $id : '`parent`=0') . ' ORDER BY `pos` ASC' . $tools->getPgStart(true));
                         echo $nav;
 
                         while ($row = $sql->fetch()) {

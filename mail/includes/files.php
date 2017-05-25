@@ -45,8 +45,7 @@ if ($total) {
 	    WHERE (`cms_mail`.`user_id`='" . $systemUser->id . "' OR `cms_mail`.`from_id`='" . $systemUser->id . "')
 	    AND `cms_mail`.`delete`!='" . $systemUser->id . "'
 	    AND `cms_mail`.`file_name`!=''
-	    ORDER BY `cms_mail`.`time` DESC
-	    LIMIT " . $start . "," . $userConfig->kmess);
+	    ORDER BY `cms_mail`.`time` DESC" . $tools->getPgStart(true));
 
     for ($i = 0; ($row = $req->fetch()) !== false; ++$i) {
         echo $i % 2 ? '<div class="list1">' : '<div class="list2">';

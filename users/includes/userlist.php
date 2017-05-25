@@ -34,7 +34,7 @@ if ($total > $userConfig->kmess) {
     echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=userlist&amp;', $total) . '</div>';
 }
 
-$req = $db->query("SELECT `id`, `name`, `sex`, `lastdate`, `datereg`, `status`, `rights`, `ip`, `browser`, `rights` FROM `users` WHERE `preg` = 1 ORDER BY `datereg` DESC LIMIT $start, $userConfig->kmess");
+$req = $db->query("SELECT `id`, `name`, `sex`, `lastdate`, `datereg`, `status`, `rights`, `ip`, `browser`, `rights` FROM `users` WHERE `preg` = 1 ORDER BY `datereg` DESC" . $tools->getPgStart(true));
 
 for ($i = 0; ($res = $req->fetch()) !== false; $i++) {
     echo $i % 2 ? '<div class="list2">' : '<div class="list1">';

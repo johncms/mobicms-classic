@@ -136,11 +136,6 @@ function _p($singular, $plural, $number, $textDomain = 'default')
     return App::getTranslator()->translatePlural($singular, $plural, $number, $textDomain);
 }
 
-//TODO: Удалить глобальные переменные
-$kmess = App::getContainer()->get(Mobicms\Api\UserInterface::class)->getConfig()->kmess;
-$page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;//TODO: delete
-$start = isset($_REQUEST['page']) ? $page * $kmess - $kmess : (isset($_GET['start']) ? abs(intval($_GET['start'])) : 0);
-
 if (extension_loaded('zlib') && !ini_get('zlib.output_compression')) {
     ob_start('ob_gzhandler');
 } else {

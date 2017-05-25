@@ -91,9 +91,9 @@ if ($systemUser->isValid()) {
 
             if ($count) {
                 if ($systemUser->rights == 9) {
-                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t' AND `time` > '" . $vr1 . "' ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
+                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t' AND `time` > '" . $vr1 . "' ORDER BY `time` DESC" . $tools->getPgStart(true));
                 } else {
-                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t' AND `time` > '" . $vr1 . "' AND `close` != '1' ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
+                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t' AND `time` > '" . $vr1 . "' AND `close` != '1' ORDER BY `time` DESC" . $tools->getPgStart(true));
                 }
 
                 for ($i = 0; $res = $req->fetch(); ++$i) {
@@ -162,8 +162,7 @@ if ($systemUser->isValid()) {
                 WHERE `forum`.`type`='t'" . ($systemUser->rights >= 7 ? "" : " AND `forum`.`close` != '1'") . "
                 AND (`cms_forum_rdm`.`topic_id` Is Null
                 OR `forum`.`time` > `cms_forum_rdm`.`time`)
-                ORDER BY `forum`.`time` DESC
-                LIMIT $start, $userConfig->kmess");
+                ORDER BY `forum`.`time` DESC" . $tools->getPgStart(true));
 
                 for ($i = 0; $res = $req->fetch(); ++$i) {
                     if ($res['close']) {

@@ -53,7 +53,7 @@ class Comments
 
     function __construct($arg = [])
     {
-        global $mod, $start;
+        global $mod;
 
         /** @var \Psr\Container\ContainerInterface $container */
         $container = \App::getContainer();
@@ -286,7 +286,7 @@ class Comments
                 if ($this->total) {
                     $req = $this->db->query("SELECT `" . $this->comments_table . "`.*, `" . $this->comments_table . "`.`id` AS `subid`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`, `users`.`id`
                     FROM `" . $this->comments_table . "` LEFT JOIN `users` ON `" . $this->comments_table . "`.`user_id` = `users`.`id`
-                    WHERE `sub_id` = '" . $this->sub_id . "' ORDER BY `subid` DESC LIMIT $start, $userConfig->kmess");
+                    WHERE `sub_id` = '" . $this->sub_id . "' ORDER BY `subid` DESC" . $this->tools->getPgStart(true));
                     $i = 0;
 
                     while ($res = $req->fetch()) {

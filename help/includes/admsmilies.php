@@ -21,6 +21,7 @@ $userConfig = $systemUser->getConfig();
 
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
+$start = $tools->getPgStart();
 
 // Каталог Админских Смайлов
 if ($systemUser->rights < 1) {

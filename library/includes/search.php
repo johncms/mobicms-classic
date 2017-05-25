@@ -70,9 +70,7 @@ if ($search && !$error) {
             SELECT *, MATCH (`' . ($search_t ? 'name' : 'text') . '`) AGAINST (' . $query . ' IN BOOLEAN MODE) AS `rel`
             FROM `library_texts`
             WHERE MATCH (`' . ($search_t ? 'name' : 'text') . '`) AGAINST (' . $query . ' IN BOOLEAN MODE)
-            ORDER BY `rel` DESC
-            LIMIT ' . $start . ', ' . $userConfig->kmess
-        );
+            ORDER BY `rel` DESC' . $tools->getPgStart(true));
 
         while ($res = $req->fetch()) {
             echo '<div class="list' . (++$i % 2 ? 2 : 1) . '">';

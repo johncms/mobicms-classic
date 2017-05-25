@@ -39,7 +39,7 @@ if ($topic_vote == 0 || $systemUser->rights < 7) {
     $total = $db->query("SELECT COUNT(*) FROM `cms_forum_vote_users` WHERE `topic`='$id'")->fetchColumn();
     $req = $db->query("SELECT `cms_forum_vote_users`.*, `users`.`rights`, `users`.`lastdate`, `users`.`name`, `users`.`sex`, `users`.`status`, `users`.`datereg`, `users`.`id`
     FROM `cms_forum_vote_users` LEFT JOIN `users` ON `cms_forum_vote_users`.`user` = `users`.`id`
-    WHERE `cms_forum_vote_users`.`topic`='$id' LIMIT $start, $userConfig->kmess");
+    WHERE `cms_forum_vote_users`.`topic`='$id'" . $tools->getPgStart(true));
     $i = 0;
 
     while ($res = $req->fetch()) {

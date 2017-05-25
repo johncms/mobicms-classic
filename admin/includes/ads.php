@@ -343,7 +343,7 @@ switch ($mod) {
         $total = $db->query("SELECT COUNT(*) FROM `cms_ads` WHERE `type` = '$type'")->fetchColumn();
 
         if ($total) {
-            $req = $db->query("SELECT * FROM `cms_ads` WHERE `type` = '$type' ORDER BY `mesto` ASC LIMIT $start, $userConfig->kmess");
+            $req = $db->query("SELECT * FROM `cms_ads` WHERE `type` = '$type' ORDER BY `mesto` ASC" . $tools->getPgStart(true));
             $i = 0;
 
             while ($res = $req->fetch()) {

@@ -49,7 +49,7 @@ switch ($sort) {
 }
 
 $total = $db->query("SELECT COUNT(*) FROM `users`")->fetchColumn();
-$req = $db->query("SELECT * FROM `users` WHERE `preg` = 1 ORDER BY $order LIMIT " . $start . ", " . $userConfig->kmess);
+$req = $db->query("SELECT * FROM `users` WHERE `preg` = 1 ORDER BY $order" . $tools->getPgStart(true));
 $i = 0;
 
 while ($res = $req->fetch()) {

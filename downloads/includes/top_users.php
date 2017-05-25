@@ -39,7 +39,7 @@ if ($total > $userConfig->kmess) {
 $i = 0;
 
 if ($total) {
-    $req_down = $db->query("SELECT *, COUNT(`user_id`) AS `count` FROM `download__files` WHERE `user_id` > 0 GROUP BY `user_id` ORDER BY `count` DESC LIMIT $start, $userConfig->kmess");
+    $req_down = $db->query("SELECT *, COUNT(`user_id`) AS `count` FROM `download__files` WHERE `user_id` > 0 GROUP BY `user_id` ORDER BY `count` DESC" . $tools->getPgStart(true));
 
     while ($res_down = $req_down->fetch()) {
         $user = $db->query("SELECT * FROM `users` WHERE `id`=" . $res_down['user_id'])->fetch();

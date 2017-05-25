@@ -32,6 +32,7 @@ $userConfig = $systemUser->getConfig();
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
+$start = $tools->getPgStart();
 
 // Закрываем доступ для определенных ситуаций
 if (!$id

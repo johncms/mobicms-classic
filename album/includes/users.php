@@ -56,8 +56,7 @@ if ($total) {
     $req = $db->query("SELECT `cms_album_files`.*, COUNT(`cms_album_files`.`id`) AS `count`, `users`.`id` AS `uid`, `users`.`name` AS `nick`
         FROM `cms_album_files`
         LEFT JOIN `users` ON `cms_album_files`.`user_id` = `users`.`id` $sql
-        GROUP BY `cms_album_files`.`user_id` ORDER BY `users`.`name` ASC LIMIT $start, $userConfig->kmess
-    ");
+        GROUP BY `cms_album_files`.`user_id` ORDER BY `users`.`name` ASC" . $tools->getPgStart(true));
     $i = 0;
 
     while ($res = $req->fetch()) {

@@ -368,10 +368,7 @@ switch ($mod) {
         $total = $db->query("SELECT COUNT(*) FROM `cms_ban_ip`")->fetchColumn();
 
         if ($total) {
-            $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
-            $start = isset($_REQUEST['page']) ? $page * $userConfig->kmess - $userConfig->kmess : (isset($_GET['start']) ? abs(intval($_GET['start'])) : 0);
-
-            $req = $db->query("SELECT * FROM `cms_ban_ip` ORDER BY `id` ASC LIMIT $start, $userConfig->kmess");
+            $req = $db->query("SELECT * FROM `cms_ban_ip` ORDER BY `id`" . $tools->getPgStart(true));
             $i = 0;
 
             while ($res = $req->fetch()) {

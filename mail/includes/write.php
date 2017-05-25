@@ -464,8 +464,7 @@ if ($id) {
             AND `cms_mail`.`delete`!='" . $systemUser->id . "'
             AND `cms_mail`.`sys`!='1'
             AND `cms_mail`.`spam`='0'
-            ORDER BY `cms_mail`.`time` DESC
-            LIMIT " . $start . "," . $userConfig->kmess);
+            ORDER BY `cms_mail`.`time` DESC" . $tools->getPgStart(true));
 
         $i = 1;
         $mass_read = [];

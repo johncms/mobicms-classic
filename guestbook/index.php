@@ -371,12 +371,12 @@ switch ($act) {
                 echo '<div class="rmenu"><b>АДМИН-КЛУБ</b></div>';
                 $req = $db->query("SELECT `guest`.*, `guest`.`id` AS `gid`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`, `users`.`id`
                 FROM `guest` LEFT JOIN `users` ON `guest`.`user_id` = `users`.`id`
-                WHERE `guest`.`adm`='1' ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
+                WHERE `guest`.`adm`='1' ORDER BY `time` DESC" . $tools->getPgStart(true));
             } else {
                 // Запрос для обычной Гастивухи
                 $req = $db->query("SELECT `guest`.*, `guest`.`id` AS `gid`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`, `users`.`id`
                 FROM `guest` LEFT JOIN `users` ON `guest`.`user_id` = `users`.`id`
-                WHERE `guest`.`adm`='0' ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
+                WHERE `guest`.`adm`='0' ORDER BY `time` DESC" . $tools->getPgStart(true));
             }
 
             for ($i = 0; $res = $req->fetch(); ++$i) {

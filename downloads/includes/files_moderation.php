@@ -53,7 +53,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     $i = 0;
 
     if ($total) {
-        $req_down = $db->query("SELECT * FROM `download__files` WHERE `type` = '3' ORDER BY `time` DESC LIMIT $start, $userConfig->kmess");
+        $req_down = $db->query("SELECT * FROM `download__files` WHERE `type` = '3' ORDER BY `time` DESC" . $tools->getPgStart(true));
         while ($res_down = $req_down->fetch()) {
             echo (($i++ % 2) ? '<div class="list2">' : '<div class="list1">') . Download::displayFile($res_down) .
                 '<div class="sub"><a href="?act=mod_files&amp;id=' . $res_down['id'] . '">' . _t('Accept') . '</a> | ' .

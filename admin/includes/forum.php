@@ -601,7 +601,7 @@ switch ($mod) {
 
             $req = $db->query("SELECT `forum`.*, `forum`.`id` AS `fid`, `forum`.`user_id` AS `id`, `forum`.`from` AS `name`, `forum`.`soft` AS `browser`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`
             FROM `forum` LEFT JOIN `users` ON `forum`.`user_id` = `users`.`id`
-            WHERE `forum`.`type` = 't' AND `forum`.`close` = '1' $sort ORDER BY `forum`.`id` DESC LIMIT $start, $userConfig->kmess");
+            WHERE `forum`.`type` = 't' AND `forum`.`close` = '1' $sort ORDER BY `forum`.`id` DESC" . $tools->getPgStart(true));
 
             if ($req->rowCount()) {
                 $i = 0;
@@ -697,7 +697,7 @@ switch ($mod) {
 
             $req = $db->query("SELECT `forum`.*, `forum`.`id` AS `fid`, `forum`.`user_id` AS `id`, `forum`.`from` AS `name`, `forum`.`soft` AS `browser`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`
             FROM `forum` LEFT JOIN `users` ON `forum`.`user_id` = `users`.`id`
-            WHERE `forum`.`type` = 'm' AND `forum`.`close` = '1' $sort ORDER BY `forum`.`id` DESC LIMIT $start, $userConfig->kmess");
+            WHERE `forum`.`type` = 'm' AND `forum`.`close` = '1' $sort ORDER BY `forum`.`id` DESC" . $tools->getPgStart(true));
 
             if ($req->rowCount()) {
                 $i = 0;

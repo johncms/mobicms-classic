@@ -108,7 +108,7 @@ switch ($mod) {
         }
 
         if ($total) {
-            $req = $db->query("SELECT * FROM `users` WHERE `preg` = '0' ORDER BY `id` DESC LIMIT $start, $userConfig->kmess");
+            $req = $db->query("SELECT * FROM `users` WHERE `preg` = '0' ORDER BY `id` DESC" . $tools->getPgStart(true));
             $i = 0;
 
             while ($res = $req->fetch()) {

@@ -51,9 +51,7 @@ if ($total) {
 		AND `cms_mail`.`read`='0'
 		AND `cms_mail`.`delete` != " . $systemUser->id . "
 		GROUP BY `cms_mail`.`user_id`
-		ORDER BY `cms_contact`.`time` DESC
-		LIMIT $start, $userConfig->kmess"
-    );
+		ORDER BY `cms_contact`.`time` DESC" . $tools->getPgStart(true));
 
     for ($i = 0; ($row = $query->fetch()) !== false; ++$i) {
         echo $i % 2 ? '<div class="list1">' : '<div class="list2">';

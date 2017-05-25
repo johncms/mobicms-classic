@@ -101,7 +101,7 @@ if ($do || isset($_GET['new'])) {
             LEFT JOIN `forum` ON `cms_forum_files`.`post` = `forum`.`id`
             LEFT JOIN `forum` AS `topicname` ON `cms_forum_files`.`topic` = `topicname`.`id`
             WHERE " . (isset($_GET['new']) ? " `cms_forum_files`.`time` > '$new'" : " `filetype` = '$do'") . ($systemUser->rights >= 7 ? '' : " AND `del` != '1'") . $sql .
-            "ORDER BY `time` DESC LIMIT $start, $userConfig->kmess");
+            "ORDER BY `time` DESC" . $tools->getPgStart(true));
 
         for ($i = 0; $res = $req->fetch(); ++$i) {
             $res_u = $db->query("SELECT `id`, `name`, `sex`, `rights`, `lastdate`, `status`, `datereg`, `ip`, `browser` FROM `users` WHERE `id` = '" . $res['user_id'] . "'")->fetch();

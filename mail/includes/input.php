@@ -52,8 +52,7 @@ if ($total) {
 		AND `cms_mail`.`sys`='0'
 		AND `cms_contact`.`ban`!='1'
 		GROUP BY `cms_mail`.`user_id`
-		ORDER BY MAX(`cms_mail`.`time`) DESC
-		LIMIT " . $start . "," . $userConfig->kmess);
+		ORDER BY MAX(`cms_mail`.`time`) DESC" . $tools->getPgStart(true));
 
     for ($i = 0; $row = $req->fetch(); ++$i) {
         $count_message = $db->query("SELECT COUNT(*) FROM `cms_mail`

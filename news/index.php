@@ -306,7 +306,7 @@ switch ($do) {
         }
 
         $total = $db->query("SELECT COUNT(*) FROM `news`")->fetchColumn();
-        $req = $db->query("SELECT * FROM `news` ORDER BY `time` DESC LIMIT $start, $userConfig->kmess");
+        $req = $db->query("SELECT * FROM `news` ORDER BY `time` DESC" . $tools->getPgStart(true));
         $i = 0;
 
         while ($res = $req->fetch()) {

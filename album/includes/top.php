@@ -141,9 +141,7 @@ if ($total) {
       LEFT JOIN `cms_album_cat` ON `cms_album_files`.`album_id` = `cms_album_cat`.`id`
       $join
       WHERE $where
-      ORDER BY $order
-      LIMIT $start, $userConfig->kmess
-    ");
+      ORDER BY $order" . $tools->getPgStart(true));
 
     for ($i = 0; $res = $req->fetch(); ++$i) {
         echo $i % 2 ? '<div class="list2">' : '<div class="list1">';

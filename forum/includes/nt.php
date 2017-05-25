@@ -86,7 +86,7 @@ $flood = $tools->antiflood();
 
 if ($flood) {
     require('../system/head.php');
-    echo $tools->displayError(sprintf(_t('You cannot add the message so often<br>Please, wait %d sec.'), $flood) . ', <a href="index.php?id=' . $id . '&amp;start=' . $start . '">' . _t('Back') . '</a>');
+    echo $tools->displayError(sprintf(_t('You cannot add the message so often<br>Please, wait %d sec.'), $flood) . ', <a href="index.php?id=' . $id . '&amp;start=' . $tools->getPgStart() . '">' . _t('Back') . '</a>');
     require('../system/end.php');
     exit;
 }
