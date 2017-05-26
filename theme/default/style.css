@@ -70,9 +70,13 @@ a:link, a:visited {
 }
 
 .bblist {
-    color: #4a5663;
-    background: transparent url(../../images/dot.gif) no-repeat left;
-    padding: 0px 0px 0px 10px;
+    background-image: url(../../images/dot.gif);
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: 6px;
+    padding-left: 10px;
+    margin: 2px 0 2px 6px;
+    display: inline-block;
 }
 
 /*Панель bb*/
