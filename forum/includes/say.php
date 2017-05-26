@@ -159,7 +159,12 @@ switch ($type1['type']) {
                 $update = true;
                 $res = $req->fetch();
 
-                if (!isset($_POST['addfiles']) && $res['time'] + 3600 < strtotime('+ 1 hour') && $res['strlen'] + strlen($msg) < 65536 && $res['user_id'] == $systemUser->id) {
+                if ($request->paramsPost()->exists('merge')
+                    && !$request->paramsPost()->exists('addfiles')
+                    && $res['time'] + 3600 < strtotime('+ 1 hour')
+                    && $res['strlen'] + strlen($msg) < 65536
+                    && $res['user_id'] == $systemUser->id
+                ) {
                     $newpost = $res['text'];
 
                     if (strpos($newpost, '[timestamp]') === false) {
@@ -232,37 +237,52 @@ switch ($type1['type']) {
                 header("Location: index.php?id=" . $id . "&page=" . $page);
             }
             exit;
-        } else {
-            require('../system/head.php');
-            $msg_pre = $tools->checkout($msg, 1, 1);
-            $msg_pre = $tools->smilies($msg_pre, $systemUser->rights ? 1 : 0);
-            $msg_pre = preg_replace('#\[c\](.*?)\[/c\]#si', '<div class="quote">\1</div>', $msg_pre);
-            echo '<div class="phdr"><b>' . _t('Topic') . ':</b> ' . $type1['text'] . '</div>';
+}
+else {
+    require('../system/head.php');
+    $msg_pre = $tools->checkout($msg, 1, 1);
+    $msg_pre = $tools->smilies($msg_pre, $systemUser->rights ? 1 : 0);
+    $msg_pre = preg_replace('#\[c\](.*?)\[/c\]#si', '<div class="quote">\1</div>', $msg_pre);
+    echo '<div class="phdr"><b>' . _t('Topic') . ':</b> ' . $type1['text'] . '</div>';
 
-            if ($msg && !isset($_POST['submit'])) {
-                echo '<div class="list1">' . $tools->displayUser($systemUser, ['iphide' => 1, 'header' => '<span class="gray">(' . $tools->displayDate(time()) . ')</span>', 'body' => $msg_pre]) . '</div>';
-            }
+    if ($msg && !isset($_POST['submit'])) {
+        echo '<div class="list1">' . $tools->displayUser($systemUser, ['iphide' => 1, 'header' => '<span class="gray">(' . $tools->displayDate(time()) . ')</span>', 'body' => $msg_pre]) . '</div>';
+    }
 
-            echo '<form name="form" action="index.php?act=say&amp;id=' . $id . '&amp;start=' . $start . '" method="post"><div class="gmenu">' .
-                '<p><h3>' . _t('Message') . '</h3>';
-            echo '</p><p>' . $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form', 'msg');
-            echo '<textarea rows="' . $userConfig->fieldHeight . '" name="msg">' . (empty($_POST['msg']) ? '' : $tools->checkout($msg)) . '</textarea></p>' .
-                '<p><input type="checkbox" name="addfiles" value="1" ' . (isset($_POST['addfiles']) ? 'checked="checked" ' : '') . '/> ' . _t('Add File');
+    echo '<form name="form" action="index.php?act=say&amp;id=' . $id . '&amp;start=' . $start . '" method="post"><div class="gmenu">' .
+        '<p><h3>' . _t('Message') . '</h3>';
+    echo '</p><p>' . $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form', 'msg');
+    echo '<textarea rows="' . $userConfig->fieldHeight . '" name="msg">' . (empty($_POST['msg']) ? '' : $tools->checkout($msg)) . '</textarea></p><p>';
 
-            $token = mt_rand(1000, 100000);
-            $_SESSION['token'] = $token;
-            echo '</p><p>' .
-                '<input type="submit" name="submit" value="' . _t('Send') . '" style="width: 107px; cursor: pointer"/> ' .
-                ($set_forum['preview'] ? '<input type="submit" value="' . _t('Preview') . '" style="width: 107px; cursor: pointer"/>' : '') .
-                '<input type="hidden" name="token" value="' . $token . '"/>' .
-                '</p></div></form>';
+    // Проверяем, было ли последнее сообщение от того же автора?
+    $req = $db->query("SELECT *, CHAR_LENGTH(`text`) AS `strlen` FROM `forum` WHERE `type` = 'm' AND `refid` = " . $id . " AND `close` != 1 ORDER BY `time` DESC LIMIT 1");
+
+    if ($req->rowCount()) {
+        $res = $req->fetch();
+
+        // Показываем чекбокс объединения постов
+        if ($res['strlen'] + strlen($msg) < 65536 && $res['user_id'] == $systemUser->id) {
+            echo '<input type="checkbox" name="merge" value="1" checked="checked"/> ' . _t('Merge with previous message') . '<br>';
         }
+    }
 
-        echo '<div class="phdr"><a href="../help/?act=smileys">' . _t('Smilies') . '</a></div>' .
-            '<p><a href="index.php?id=' . $id . '&amp;start=' . $start . '">' . _t('Back') . '</a></p>';
-        break;
+    echo '<input type="checkbox" name="addfiles" value="1" ' . (isset($_POST['addfiles']) ? 'checked="checked" ' : '') . '/> ' . _t('Add File');
 
-    case 'm':
+    $token = mt_rand(1000, 100000);
+    $_SESSION['token'] = $token;
+    echo '</p><p>' .
+        '<input type="submit" name="submit" value="' . _t('Send') . '" style="width: 107px; cursor: pointer"/> ' .
+        ($set_forum['preview'] ? '<input type="submit" value="' . _t('Preview') . '" style="width: 107px; cursor: pointer"/>' : '') .
+        '<input type="hidden" name="token" value="' . $token . '"/>' .
+        '</p></div></form>';
+}
+
+echo '<div class="phdr"><a href="../help/?act=smileys">' . _t('Smilies') . '</a></div>' .
+    '<p><a href="index.php?id=' . $id . '&amp;start=' . $start . '">' . _t('Back') . '</a></p>';
+break;
+
+case
+'m':
         // Добавление сообщения с цитированием поста
         $th = $type1['refid'];
         $th1 = $db->query("SELECT * FROM `forum` WHERE `id` = '$th'")->fetch();
