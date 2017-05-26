@@ -56,7 +56,7 @@ switch ($act) {
 
         if (!$nick || !$email || !$code) {
             $error = _t('The required fields are not filled');
-        } elseif (!isset($_SESSION['code']) || mb_strlen($code) < 4 || $code != $_SESSION['code']) {
+        } elseif (!isset($_SESSION['code']) || mb_strlen($code) < 3 || strtolower($code) != strtolower($_SESSION['code'])) {
             $error = _t('Incorrect code');
         }
 
@@ -157,12 +157,16 @@ switch ($act) {
         break;
 
     default:
+        $captcha = new Mobicms\Captcha\Captcha;
+        $code = $captcha->generateCode();
+        $_SESSION['captcha'] = $code;
+
         // Форма для восстановления пароля
         echo '<div class="phdr"><b>' . _t('Password recovery') . '</b></div>';
         echo '<div class="menu"><form action="skl.php?act=sent" method="post">';
         echo '<p>' . _t('Username') . ':<br><input type="text" name="nick" /><br>';
         echo _t('Your E-mail') . ':<br><input type="text" name="email" /></p>';
-        echo '<p><img src="../captcha.php?r=' . rand(1000, 9999) . '" alt="' . _t('Verification code') . '"/><br />';
+        echo '<p><img alt="' . _t('Verification code') . '" width="' . $captcha->width . '" height="' . $captcha->height . '" src="' . $captcha->generateImage($code) . '"><br />';
         echo '<input type="text" size="5" maxlength="5"  name="code"/>&#160;' . _t('Enter code') . '</p>';
         echo '<p><input type="submit" value="' . _t('Send') . '"/></p></form></div>';
         echo '<div class="phdr"><small>' . _t('Password will be send to E-mail address specified in your profile.<br />WARNING !! If E-mail address has not been specified in your profile, you will not be able to recover your password.') . '</small></div>';

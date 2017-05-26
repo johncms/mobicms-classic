@@ -114,7 +114,9 @@ switch ($act) {
         }
 
         // CAPTCHA для гостей
-        if (!$systemUser->isValid() && (empty($code) || mb_strlen($code) < 4 || $code != $_SESSION['code'])) {
+        if (!$systemUser->isValid()
+            && (empty($code) || mb_strlen($code) < 3 || strtolower($code) != strtolower($_SESSION['code']))
+        ) {
             $error[] = _t('The security code is not correct');
         }
 
@@ -129,7 +131,7 @@ switch ($act) {
 
             if ($req->rowCount()) {
                 $res = $req->fetch();
-                $flood = time() - $res['time'];
+                $flood = 60 - (time() - $res['time']);
             }
         }
 
@@ -353,7 +355,11 @@ switch ($act) {
 
             if (!$systemUser->isValid()) {
                 // CAPTCHA для гостей
-                echo '<img src="../captcha.php?r=' . rand(1000, 9999) . '" alt="' . _t('Symbols on the picture') . '"/><br />' .
+                $captcha = new Mobicms\Captcha\Captcha;
+                $code = $captcha->generateCode();
+                $_SESSION['code'] = $code;
+
+                echo '<img alt="' . _t('Verification code') . '" width="' . $captcha->width . '" height="' . $captcha->height . '" src="' . $captcha->generateImage($code) . '"/><br />' .
                     '<input type="text" size="5" maxlength="5"  name="code"/>&#160;' . _t('Symbols on the picture') . '<br />';
             }
             echo '<input type="hidden" name="token" value="' . $token . '"/>' .

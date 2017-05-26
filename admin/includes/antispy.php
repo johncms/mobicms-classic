@@ -50,7 +50,6 @@ class scaner
     public $good_files = [
         '../.htaccess',
         '../login.php',
-        '../captcha.php',
         '../closed.php',
         '../exit.php',
         '../go.php',

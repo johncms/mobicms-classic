@@ -82,8 +82,8 @@ if (isset($_POST['submit'])) {
     // Проверка кода CAPTCHA
     if (!$captcha
         || !isset($_SESSION['code'])
-        || mb_strlen($captcha) < 4
-        || $captcha != $_SESSION['code']
+        || mb_strlen($captcha) < 3
+        || mb_strtolower($captcha) != mb_strtolower($_SESSION['code'])
     ) {
         $error['captcha'] = _t('The security code is not correct');
     }
@@ -171,6 +171,10 @@ if ($config->mod_reg == 1) {
     echo '<div class="rmenu"><p>' . _t('You can get authorized on the site after confirmation of your registration.') . '</p></div>';
 }
 
+$captcha = new Mobicms\Captcha\Captcha;
+$code = $captcha->generateCode();
+$_SESSION['code'] = $code;
+
 echo '<form action="index.php" method="post"><div class="gmenu">' .
     '<p><h3>' . _t('Choose Nickname') . '</h3>' .
     (isset($error['login']) ? '<span class="red"><small>' . implode('<br />',
@@ -198,7 +202,7 @@ echo '<form action="index.php" method="post"><div class="gmenu">' .
     '<small>' . _t('Max. 1000 characters') . '</small></p></div>' .
     '<div class="gmenu"><p>' .
     '<h3>' . _t('Verification code') . '</h3>' .
-    '<img src="../captcha.php?r=' . rand(1000, 9999) . '" alt="' . _t('Verification code') . '" border="1"/><br />' .
+    '<img alt="' . _t('Verification code') . '" width="' . $captcha->width . '" height="' . $captcha->height . '" src="' . $captcha->generateImage($code) . '"/><br>' .
     (isset($error['captcha']) ? '<span class="red"><small>' . $error['captcha'] . '</small></span><br />' : '') .
     '<input type="text" size="5" maxlength="5"  name="captcha" ' . (isset($error['captcha']) ? ' style="background-color: #FFCCCC"' : '') . '/><br />' .
     '<small>' . _t('If you cannot see the image code, enable graphics in your browser and refresh this page') . '</small></p>' .

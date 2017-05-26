@@ -69,7 +69,7 @@ if ($systemUser->isValid()) {
 
             if ($systemUser['failed_login'] > 2) {
                 if ($user_code) {
-                    if (mb_strlen($user_code) > 3 && $user_code == $_SESSION['code']) {
+                    if (mb_strlen($user_code) > 3 && mb_strtolower($user_code) == mb_strtolower($_SESSION['code'])) {
                         // Если введен правильный проверочный код
                         unset($_SESSION['code']);
                         $captcha = true;
@@ -81,9 +81,16 @@ if ($systemUser->isValid()) {
                 } else {
                     // Показываем CAPTCHA
                     $display_form = 0;
+
+                    $cap = new Mobicms\Captcha\Captcha;
+                    $code = $cap->generateCode();
+                    $_SESSION['code'] = $code;
+
                     echo '<form action="login.php' . ($id ? '?id=' . $id : '') . '" method="post">' .
-                        '<div class="menu"><p><img src="captcha.php?r=' . rand(1000, 9999) . '" alt="' . _t('Verification code', 'system') . '"/><br />' .
-                        _t('Enter verification code', 'system') . ':<br><input type="text" size="5" maxlength="5"  name="code"/>' .
+                        '<div class="menu"><p>' .
+                        '<img alt="' . _t('Verification code') . '" width="' . $cap->width . '" height="' . $cap->height . '" src="' . $cap->generateImage($code) . '"/><br />' .
+                        _t('Enter verification code', 'system') . ':<br>' .
+                        '<input type="text" size="5" maxlength="5"  name="code"/>' .
                         '<input type="hidden" name="n" value="' . htmlspecialchars($user_login) . '"/>' .
                         '<input type="hidden" name="p" value="' . $user_pass . '"/>' .
                         '<input type="hidden" name="mem" value="' . $user_mem . '"/>' .
