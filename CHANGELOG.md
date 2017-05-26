@@ -6,16 +6,18 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 `Release Date: under development` 
 
 ### NEW
-  * Integrated [Klein.php](https://github.com/klein/klein.php) package
+- Integrated [Klein.php](https://github.com/klein/klein.php) package
+- Added checkbox to manage the consolidation of forum posts
   
 ### CHANGED
-  * Nothing
+- Global refactoring related to the implementation of Request
+- Global refactoring associated with deleting $kmess, $page, $start variables
 
 ### FIXED
-  * Nothing
+- Nothing
   
 ### DELETED
-  * The global variable **$kmess** is removed
+- Global variables **$kmess**, **$page**, **$start** are deleted
 
 
 # mobiCMS 0.1.0  
