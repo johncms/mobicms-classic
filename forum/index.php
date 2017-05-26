@@ -683,7 +683,8 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
 
                     // Если пост редактировался, показываем кем и когда
                     if ($res['kedit']) {
-                        echo '<br /><span class="gray"><small>' . _t('Edited') . ' <b>' . $res['edit'] . '</b> (' . $tools->displayDate($res['tedit']) . ') <b>[' . $res['kedit'] . ']</b></small></span>';
+                        echo '<div style="height: 6px; clear: both"></div>';
+                        echo '<span class="gray"><small>' . _t('Edited') . ' <b>' . $res['edit'] . '</b> (' . $tools->displayDate($res['tedit']) . ') <b>[' . $res['kedit'] . ']</b></small></span>';
                     }
 
                     // Задаем права на редактирование постов
