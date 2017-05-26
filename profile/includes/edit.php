@@ -26,13 +26,16 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Проверяем права доступа для редактирования Профиля
-if ($user['id'] != $systemUser->id && ($systemUser->rights < 7 || $user['rights'] >= $systemUser->rights)) {
+if ($systemUser->rights != 9
+    && $user['id'] != $systemUser->id
+    && ($systemUser->rights < 7 || $user['rights'] >= $systemUser->rights)
+) {
     echo $tools->displayError(_t('You cannot edit profile of higher administration'));
     require('../system/end.php');
     exit;
 }
 
-if(!empty($systemUser->ban)){
+if (!empty($systemUser->ban)) {
     require('../system/end.php');
     exit;
 }
