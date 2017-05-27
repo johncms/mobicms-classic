@@ -8,6 +8,7 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 ### NEW
 - Integrated [Klein.php](https://github.com/klein/klein.php) package
 - Added checkbox to manage the consolidation of forum posts
+- New CAPTCHA, implemented by [mobicms-captcha](https://github.com/mobicms/mobicms-captcha) package
   
 ### CHANGED
 - Global refactoring related to the implementation of Request
