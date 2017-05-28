@@ -48,6 +48,14 @@ module.exports = function (grunt) {
                             '!system/vendor/geshi/geshi/phpunit.xml',
                             '!system/vendor/geshi/geshi/composer.json',
 
+                            '!system/vendor/klein/klein/tests/**',
+                            '!system/vendor/klein/klein/composer.json',
+                            '!system/vendor/klein/klein/CHANGELOG.md',
+                            '!system/vendor/klein/klein/CONTRIBUTING.md',
+                            '!system/vendor/klein/klein/phpdoc.dist.xml',
+                            '!system/vendor/klein/klein/phpunit.xml.dist',
+                            '!system/vendor/klein/klein/UPGRADING.md',
+
                             '!system/vendor/verot/class.upload.php/test/**',
                             '!system/vendor/verot/class.upload.php/composer.json',
 
@@ -57,6 +65,7 @@ module.exports = function (grunt) {
                             '!system/vendor/zendframework/zend-i18n/CONDUCT.md',
                             '!system/vendor/zendframework/zend-i18n/CONTRIBUTING.md',
                             '!system/vendor/zendframework/zend-i18n/mkdocs.yml',
+                            '!system/vendor/zendframework/zend-i18n/phpcs.xml',
 
                             '!system/vendor/zendframework/zend-servicemanager/benchmarks/**',
                             '!system/vendor/zendframework/zend-servicemanager/bin/**',
@@ -69,7 +78,7 @@ module.exports = function (grunt) {
                             '!system/vendor/zendframework/zend-servicemanager/phpcs.xml',
                             '!system/vendor/zendframework/zend-servicemanager/mkdocs.yml',
 
-                            '!system/vendor/zendframework/zend-stdlib/benchmarks/**',
+                            '!system/vendor/zendframework/zend-stdlib/benchmark/**',
                             '!system/vendor/zendframework/zend-stdlib/doc/**',
                             '!system/vendor/zendframework/zend-stdlib/CHANGELOG.md',
                             '!system/vendor/zendframework/zend-stdlib/CONDUCT.md',
