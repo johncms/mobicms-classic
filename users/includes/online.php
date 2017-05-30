@@ -77,7 +77,7 @@ switch ($mod) {
 
         if ($total && $systemUser->rights) {
             if ($total > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;mod=ip&amp;', $total) . '</div>';
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=online&amp;mod=ip&amp;', $total, null, $start) . '</div>';
             }
 
             for ($i = $start; $i < $end; $i++) {

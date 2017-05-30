@@ -20,7 +20,7 @@ interface ToolsInterface
 
     public function displayError($error, $link = '');
 
-    public function displayPagination($url, $total, $listSize = null);
+    public function displayPagination($url, $total, $listSize = null, $offset = null);
 
     public function displayPlace($user_id, $place, $headmod);
 
