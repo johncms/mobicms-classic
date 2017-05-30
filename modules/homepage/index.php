@@ -22,6 +22,13 @@ $config = $container->get(Mobicms\Api\ConfigInterface::class);
 /** @var Mobicms\Counters $counters */
 $counters = $container->get('counters');
 
+if (isset($_SESSION['ref'])) {
+    unset($_SESSION['ref']);
+}
+
+$headmod = 'mainpage';
+require ROOT_PATH . 'system/head.php';
+
 $mp = new Mobicms\NewsWidget();
 
 // Блок информации
@@ -69,3 +76,4 @@ if ($systemUser->isValid() || $config->active) {
         '<div class="menu"><a href="album/index.php">' . _t('Photo Albums', 'system') . '</a> (' . $counters->album() . ')</div>';
 }
 
+require ROOT_PATH . 'system/end.php';

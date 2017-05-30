@@ -10,12 +10,22 @@
 
 namespace Mobicms\Http;
 
+use Mobicms\Api\ConfigInterface;
 use Psr\Container\ContainerInterface;
 
 class RequestFactory
 {
     public function __invoke(ContainerInterface $container)
     {
-        return Request::createFromGlobals();
+        $basePath = $container->get(ConfigInterface::class)->base_path;
+        $request = Request::createFromGlobals();
+
+        if (!empty($basePath)) {
+            $basePath = trim($basePath, '/') . '/';
+            $uri = $request->server()->get('REQUEST_URI');
+            $request->server()->set('REQUEST_URI', substr($uri, strlen($basePath)));
+        }
+
+        return $request;
     }
 }

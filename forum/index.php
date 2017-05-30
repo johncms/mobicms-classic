@@ -936,5 +936,5 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
         }
     }
 }
-
+echo $_SERVER['base'];
 require_once('../system/end.php');

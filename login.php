@@ -124,47 +124,42 @@ if ($systemUser->isValid()) {
                         $db->exec("UPDATE `users` SET `sestime` = '" . time() . "' WHERE `id` = " . $systemUser['id']);
                         $set_user = unserialize($systemUser['set_user']);
 
-                        if ($systemUser['lastdate'] < (time() - 3600) && $set_user['digest']) {
-                            header('Location: ' . $config->homeurl . '/index.php?act=digest&last=' . $systemUser['lastdate']);
-                        } else {
-                            header('Location: ' . $config->homeurl . '/index.php');
-                        }
-
-                        echo '<div class="gmenu"><p><b><a href="index.php?act=digest">' . _t('Enter site', 'system') . '</a></b></p></div>';
+                        header('Location: ' . $config->homeurl);
+                        exit;
                     }
                 } else {
-                    // Если логин неудачный
-                    if ($systemUser['failed_login'] < 3) {
-                        // Прибавляем к счетчику неудачных логинов
-                        $db->exec("UPDATE `users` SET `failed_login` = '" . ($systemUser['failed_login'] + 1) . "' WHERE `id` = " . $systemUser['id']);
-                    }
-
-                    $error[] = _t('Authorization failed', 'system');
+                // Если логин неудачный
+                if ($systemUser['failed_login'] < 3) {
+                    // Прибавляем к счетчику неудачных логинов
+                    $db->exec("UPDATE `users` SET `failed_login` = '" . ($systemUser['failed_login'] + 1) . "' WHERE `id` = " . $systemUser['id']);
                 }
+
+                $error[] = _t('Authorization failed', 'system');
             }
-        } else {
-            $error[] = _t('Authorization failed', 'system');
         }
+    } else {
+        $error[] = _t('Authorization failed', 'system');
+    }
+}
+
+if ($display_form) {
+    if ($error) {
+        echo $tools->displayError($error);
     }
 
-    if ($display_form) {
-        if ($error) {
-            echo $tools->displayError($error);
-        }
+    $info = '';
 
-        $info = '';
-
-        echo $info;
-        echo '<div class="gmenu"><form action="login.php" method="post"><p>' . _t('Username', 'system') . ':<br>' .
-            '<input type="text" name="n" value="' . htmlentities($user_login, ENT_QUOTES, 'UTF-8') . '" maxlength="20"/>' .
-            '<br>' . _t('Password', 'system') . ':<br>' .
-            '<input type="password" name="p" maxlength="20"/></p>' .
-            '<p><input type="checkbox" name="mem" value="1" checked="checked"/>' . _t('Remember', 'system') . '</p>' .
-            '<p><input type="submit" value="' . _t('Login', 'system') . '"/></p>' .
-            '</form></div>' .
-            '<div class="menu"><p>' . $tools->image('user.png') . '<a href="registration/">' . _t('Registration', 'system') . '</a></p></div>' .
-            '<div class="bmenu"><p>' . $tools->image('lock.png') . '<a href="profile/skl.php?continue">' . _t('Forgot password?', 'system') . '</a></p></div>';
-    }
+    echo $info;
+    echo '<div class="gmenu"><form action="login.php" method="post"><p>' . _t('Username', 'system') . ':<br>' .
+        '<input type="text" name="n" value="' . htmlentities($user_login, ENT_QUOTES, 'UTF-8') . '" maxlength="20"/>' .
+        '<br>' . _t('Password', 'system') . ':<br>' .
+        '<input type="password" name="p" maxlength="20"/></p>' .
+        '<p><input type="checkbox" name="mem" value="1" checked="checked"/>' . _t('Remember', 'system') . '</p>' .
+        '<p><input type="submit" value="' . _t('Login', 'system') . '"/></p>' .
+        '</form></div>' .
+        '<div class="menu"><p>' . $tools->image('user.png') . '<a href="registration/">' . _t('Registration', 'system') . '</a></p></div>' .
+        '<div class="bmenu"><p>' . $tools->image('lock.png') . '<a href="profile/skl.php?continue">' . _t('Forgot password?', 'system') . '</a></p></div>';
+}
 }
 
 require('system/end.php');

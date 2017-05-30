@@ -12,35 +12,28 @@ define('MOBICMS', 1);
 
 require('system/bootstrap.php');
 
-$act = isset($_GET['act']) ? trim($_GET['act']) : '';
+$klein = new Klein\Klein();
+$klein->respond('GET', '/', function () {
+    include ROOT_PATH . 'modules/homepage/index.php';
+});
 
+$klein->onHttpError(function ($code, $router) {
+    switch ($code) {
+        case 404:
+            $router->response()->body(
+                'ERROR 404: Page not found.'
+            );
+            break;
+        case 405:
+            $router->response()->body(
+                'You can\'t do that!'
+            );
+            break;
+        default:
+            $router->response()->body(
+                'Oh no, a bad error happened that caused a ' . $code
+            );
+    }
+});
 
-if (isset($_SESSION['ref'])) {
-    unset($_SESSION['ref']);
-}
-
-if (isset($_GET['err'])) {
-    $act = 404;
-}
-
-switch ($act) {
-    case '404':
-        /** @var Mobicms\Api\ToolsInterface $tools */
-        $tools = App::getContainer()->get(Mobicms\Api\ToolsInterface::class);
-
-        $headmod = 'error404';
-        require('system/head.php');
-        echo $tools->displayError(_t('The requested page does not exists'));
-        break;
-
-    default:
-        // Главное меню сайта
-        if (isset($_SESSION['ref'])) {
-            unset($_SESSION['ref']);
-        }
-        $headmod = 'mainpage';
-        require('system/head.php');
-        include 'system/mainmenu.php';
-}
-
-require('system/end.php');
+$klein->dispatch(App::getContainer()->get(Mobicms\Http\Request::class));

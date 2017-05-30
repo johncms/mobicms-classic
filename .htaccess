@@ -48,3 +48,8 @@ AddDefaultCharset UTF-8
 #    ExpiresByType application/atom+xml                  "access plus 1 hour"
 #    ExpiresByType application/rss+xml                   "access plus 1 hour"
 #</IfModule>
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L]

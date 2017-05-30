@@ -22,6 +22,7 @@ namespace Mobicms\Api;
  * @property $flsz
  * @property $gzip
  * @property $homeurl
+ * @property $base_path
  * @property $karma
  * @property $lng
  * @property $lng_list
