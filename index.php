@@ -12,12 +12,20 @@ define('MOBICMS', 1);
 
 require('system/bootstrap.php');
 
-$klein = new Klein\Klein();
-$klein->respond('GET', '/', function () {
+/** @var Psr\Container\ContainerInterface $container */
+$container = App::getContainer();
+
+/** @var Mobicms\Http\Request $request */
+$request = $container->get(Mobicms\Http\Request::class);
+
+/** @var Mobicms\Http\Router $router */
+$router = $container->get(Mobicms\Http\Router::class);
+
+$router->respond('GET', '/', function () {
     include ROOT_PATH . 'modules/homepage/index.php';
 });
 
-$klein->onHttpError(function ($code, $router) {
+$router->onHttpError(function ($code, $router) {
     switch ($code) {
         case 404:
             $router->response()->body(
@@ -26,14 +34,14 @@ $klein->onHttpError(function ($code, $router) {
             break;
         case 405:
             $router->response()->body(
-                'You can\'t do that!'
+                'ERROR 404: You can\'t do that!'
             );
             break;
         default:
             $router->response()->body(
-                'Oh no, a bad error happened that caused a ' . $code
+                'ERROR: Oh no, a bad error happened that caused a ' . $code
             );
     }
 });
 
-$klein->dispatch(App::getContainer()->get(Mobicms\Http\Request::class));
+$router->dispatch($request);
