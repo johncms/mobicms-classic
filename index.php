@@ -29,6 +29,11 @@ $router->respond('GET', '/', function () {
     include ROOT_PATH . 'modules/homepage/index.php';
 });
 
+// Гостевая
+$router->respond(['GET', 'POST'], '@^/guestbook/', function () {
+    include ROOT_PATH . 'modules/guestbook/index.php';
+});
+
 // Обработка ошибок
 $router->onHttpError(function ($code, $router) use ($response) {
     switch ($code) {

@@ -44,7 +44,7 @@ echo '<div class="phdr"><b>' . _t('Communication', 'system') . '</b></div>';
 
 // Ссылка на гостевую
 if ($config->mod_guest || $systemUser->rights >= 7) {
-    echo '<div class="menu"><a href="guestbook/index.php">' . _t('Guestbook', 'system') . '</a> (' . $counters->guestbook() . ')</div>';
+    echo '<div class="menu"><a href="guestbook/">' . _t('Guestbook', 'system') . '</a> (' . $counters->guestbook() . ')</div>';
 }
 
 // Ссылка на Форум

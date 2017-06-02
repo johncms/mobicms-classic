@@ -18,7 +18,6 @@ $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 $guestAccess = [];
 
 $headmod = 'guestbook';
-require('../system/bootstrap.php');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -34,6 +33,9 @@ $db = $container->get(PDO::class);
 
 /** @var Mobicms\Http\Request $request */
 $request = $container->get(Mobicms\Http\Request::class);
+
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -59,12 +61,12 @@ if (isset($_SESSION['ga']) && $systemUser->rights < 1 && !in_array($systemUser->
 
 // Задаем заголовки страницы
 $textl = isset($_SESSION['ga']) ? _t('Admin Club') : _t('Guestbook');
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 // Если гостевая закрыта, выводим сообщение и закрываем доступ (кроме Админов)
 if (!$config->mod_guest && $systemUser->rights < 7) {
     echo '<div class="rmenu"><p>' . _t('Guestbook is closed') . '</p></div>';
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -74,7 +76,8 @@ switch ($act) {
         if ($systemUser->rights >= 6 && $id) {
             if (isset($_GET['yes'])) {
                 $db->exec('DELETE FROM `guest` WHERE `id` = ' . $id);
-                header("Location: index.php");
+                $response->header('Location', '.');
+                $response->send();
             } else {
                 echo '<div class="phdr"><a href="index.php"><b>' . _t('Guestbook') . '</b></a> | ' . _t('Delete message') . '</div>' .
                     '<div class="rmenu"><p>' . _t('Do you really want to delete?') . '?<br>' .
@@ -145,7 +148,8 @@ switch ($act) {
             $res = $req->fetch();
 
             if ($res['text'] == $msg) {
-                header("location: index.php");
+                $response->header('Location', '.');
+                $response->send();
                 exit;
             }
         }
@@ -177,7 +181,8 @@ switch ($act) {
                 $db->exec("UPDATE `users` SET `postguest` = '$postguest', `lastpost` = '" . time() . "' WHERE `id` = " . $systemUser->id);
             }
 
-            header('location: index.php');
+            $response->header('Location', '.');
+            $response->send();
         } else {
             echo $tools->displayError($error, '<a href="index.php">' . _t('Back') . '</a>');
         }
@@ -198,7 +203,9 @@ switch ($act) {
                     `otime` = '" . time() . "'
                     WHERE `id` = '$id'
                 ");
-                header("location: index.php");
+
+                $response->header('Location', '.');
+                $response->send();
             } else {
                 echo '<div class="phdr"><a href="index.php"><b>' . _t('Guestbook') . '</b></a> | ' . _t('Reply') . '</div>';
                 $req = $db->query("SELECT * FROM `guest` WHERE `id` = '$id'");
@@ -248,7 +255,8 @@ switch ($act) {
                     $id,
                 ]);
 
-                header("location: index.php");
+                $response->header('Location', '.');
+                $response->send();
             } else {
                 $token = mt_rand(1000, 100000);
                 $_SESSION['token'] = $token;
@@ -472,4 +480,4 @@ switch ($act) {
         break;
 }
 
-require('../system/end.php');
+require ROOT_PATH . 'system/end.php';
