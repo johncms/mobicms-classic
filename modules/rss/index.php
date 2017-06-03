@@ -10,8 +10,6 @@
 
 define('MOBICMS', 1);
 
-require_once ('../system/bootstrap.php');
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 

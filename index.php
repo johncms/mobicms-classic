@@ -39,9 +39,14 @@ $router->respond(['GET', 'POST'], '@^/help/', function () {
     include ROOT_PATH . 'modules/help/index.php';
 });
 
-// Гостевая
+// Новости
 $router->respond(['GET', 'POST'], '@^/news/', function () {
     include ROOT_PATH . 'modules/news/index.php';
+});
+
+// RSS
+$router->respond('GET', '/rss/', function () {
+    include ROOT_PATH . 'modules/rss/index.php';
 });
 
 // Пользователи (актив сайта)

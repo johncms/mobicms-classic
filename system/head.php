@@ -48,7 +48,7 @@ echo '<!DOCTYPE html>' .
     "\n" . '<meta name="description" content="' . $descriptions . '">' .
     "\n" . '<link rel="stylesheet" href="' . $config->homeurl . '/theme/' . $tools->getSkin() . '/style.css">' .
     "\n" . '<link rel="shortcut icon" href="' . $config->homeurl . '/favicon.ico">' .
-    "\n" . '<link rel="alternate" type="application/rss+xml" title="RSS | ' . _t('Site News', 'system') . '" href="' . $config->homeurl . '/rss/rss.php">' .
+    "\n" . '<link rel="alternate" type="application/rss+xml" title="RSS | ' . _t('Site News', 'system') . '" href="' . $config->homeurl . '/rss/">' .
     "\n" . '<title>' . $textl . '</title>' .
     "\n" . '</head><body>';
 
