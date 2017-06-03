@@ -14,8 +14,6 @@ $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 
-require('../system/bootstrap.php');
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
@@ -25,7 +23,7 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 
 $textl = 'FAQ';
 $headmod = 'faq';
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 // Обрабатываем ссылку для возврата
 if (empty($_SESSION['ref'])) {
@@ -68,8 +66,8 @@ $array = [
     'usersmilies',
 ];
 
-if ($act && ($key = array_search($act, $array)) !== false && file_exists('includes/' . $array[$key] . '.php')) {
-    require('includes/' . $array[$key] . '.php');
+if ($act && ($key = array_search($act, $array)) !== false && file_exists(__DIR__ . '/includes/' . $array[$key] . '.php')) {
+    require __DIR__ . '/includes/' . $array[$key] . '.php';
 } else {
     // Главное меню FAQ
     echo '<div class="phdr"><b>' . _t('Information, FAQ') . '</b></div>' .
@@ -80,4 +78,4 @@ if ($act && ($key = array_search($act, $array)) !== false && file_exists('includ
         '<div class="phdr"><a href="' . $_SESSION['ref'] . '">' . _t('Back') . '</a></div>';
 }
 
-require('../system/end.php');
+require ROOT_PATH . 'system/end.php';

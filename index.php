@@ -34,6 +34,11 @@ $router->respond(['GET', 'POST'], '@^/guestbook/', function () {
     include ROOT_PATH . 'modules/guestbook/index.php';
 });
 
+// Справка
+$router->respond(['GET', 'POST'], '@^/help/', function () {
+    include ROOT_PATH . 'modules/help/index.php';
+});
+
 // Гостевая
 $router->respond(['GET', 'POST'], '@^/news/', function () {
     include ROOT_PATH . 'modules/news/index.php';

@@ -19,6 +19,9 @@ $cat = isset($_GET['cat']) ? trim($_GET['cat']) : '';
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -28,7 +31,7 @@ $start = $tools->getPgStart();
 
 if (($adm && !$systemUser->rights) || ($add && !$adm && !$cat) || ($delete && !$_POST['delete_sm']) || ($add && !$_POST['add_sm'])) {
     echo $tools->displayError(_t('Wrong data'), '<a href="faq.php?act=smileys">' . _t('Smilies') . '</a>');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -55,7 +58,9 @@ if (count($smileys) > $user_smileys) {
 $db->query("UPDATE `users` SET `smileys` = " . $db->quote(serialize($smileys)) . " WHERE `id` = " . $systemUser->id);
 
 if ($delete || isset($_GET['clean'])) {
-    header('location: index.php?act=my_smilies&start=' . $start . '');
+    $response->header('Location', '?act=my_smilies&start=' . $start);
 } else {
-    header('location: index.php?act=' . ($adm ? 'admsmilies' : 'usersmilies&cat=' . urlencode($cat) . '') . '&start=' . $start . '');
+    $response->header('Location', '?act=' . ($adm ? 'admsmilies' : 'usersmilies&cat=' . urlencode($cat) . '') . '&start=' . $start);
 }
+
+$response->send();

@@ -27,10 +27,10 @@ $start = $tools->getPgStart();
 if ($id && is_dir(ROOT_PATH . 'images/avatars/' . $id)) {
     $avatar = isset($_GET['avatar']) ? intval($_GET['avatar']) : false;
 
-    if ($systemUser->isValid() && $avatar && is_file('../images/avatars/' . $id . '/' . $avatar . '.png')) {
+    if ($systemUser->isValid() && $avatar && is_file(ROOT_PATH . 'images/avatars/' . $id . '/' . $avatar . '.png')) {
         if (isset($_POST['submit'])) {
             // Устанавливаем пользовательский Аватар
-            if (@copy('../images/avatars/' . $id . '/' . $avatar . '.png', '../files/users/avatar/' . $systemUser->id . '.png')) {
+            if (@copy(ROOT_PATH . 'images/avatars/' . $id . '/' . $avatar . '.png', ROOT_PATH . 'files/users/avatar/' . $systemUser->id . '.png')) {
                 echo '<div class="gmenu"><p>' . _t('Avatar has been successfully applied') . '<br />' .
                     '<a href="../profile/?act=edit">' . _t('Continue') . '</a></p></div>';
             } else {
