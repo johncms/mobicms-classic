@@ -44,6 +44,11 @@ $router->respond(['GET', 'POST'], '@^/news/', function () {
     include ROOT_PATH . 'modules/news/index.php';
 });
 
+// Пользователи (актив сайта)
+$router->respond(['GET', 'POST'], '@^/users/', function () {
+    include ROOT_PATH . 'modules/users/index.php';
+});
+
 // Обработка ошибок
 $router->onHttpError(function ($code, $router) use ($response) {
     switch ($code) {

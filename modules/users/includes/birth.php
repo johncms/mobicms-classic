@@ -12,7 +12,7 @@ define('MOBICMS', 1);
 
 $textl = _t('Birthdays');
 $headmod = 'birth';
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();

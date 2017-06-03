@@ -12,7 +12,7 @@ defined('MOBICMS') or die('Error: restricted access');
 
 $headmod = 'userstop';
 $textl = _t('Top Activity');
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -24,9 +24,8 @@ $db = $container->get(PDO::class);
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Функция отображения списков
-function get_top($order = 'postforum')
+function get_top($order = 'postforum', PDO $db, $tools)
 {
-    global $db, $tools;
     $req = $db->query("SELECT * FROM `users` WHERE `$order` > 0 ORDER BY `$order` DESC LIMIT 9");
 
     if ($req->rowCount()) {
@@ -61,7 +60,7 @@ switch ($mod) {
         // Топ Гостевой
         echo '<div class="phdr"><a href="index.php"><b>' . _t('Community') . '</b></a> | ' . _t('Most active in Guestbook') . '</div>';
         echo '<div class="topmenu">' . implode(' | ', $menu) . '</div>';
-        echo get_top('postguest');
+        echo get_top('postguest', $db, $tools);
         echo '<div class="phdr"><a href="../guestbook/index.php">' . _t('Guestbook') . '</a></div>';
         break;
 
@@ -69,7 +68,7 @@ switch ($mod) {
         // Топ комментариев
         echo '<div class="phdr"><a href="index.php"><b>' . _t('Community') . '</b></a> | ' . _t('Most commentators') . '</div>';
         echo '<div class="topmenu">' . implode(' | ', $menu) . '</div>';
-        echo get_top('komm');
+        echo get_top('komm', $db, $tools);
         echo '<div class="phdr"><a href="../index.php">' . _t('Home') . '</a></div>';
         break;
 
@@ -98,7 +97,7 @@ switch ($mod) {
         // Топ Форума
         echo '<div class="phdr"><a href="index.php"><b>' . _t('Community') . '</b></a> | ' . _t('Most active in Forum') . '</div>';
         echo '<div class="topmenu">' . implode(' | ', $menu) . '</div>';
-        echo get_top('postforum');
+        echo get_top('postforum', $db, $tools);
         echo '<div class="phdr"><a href="../forum/index.php">' . _t('Forum') . '</a></div>';
 }
 

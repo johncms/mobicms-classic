@@ -11,7 +11,6 @@
 define('MOBICMS', 1);
 
 $headmod = 'usersearch';
-require('../system/bootstrap.php');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -27,14 +26,14 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 $textl = _t('User Search');
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 // Принимаем данные, выводим форму поиска
 $search_post = isset($_POST['search']) ? trim($_POST['search']) : false;
 $search_get = isset($_GET['search']) ? rawurldecode(trim($_GET['search'])) : '';
 $search = $search_post ? $search_post : $search_get;
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Community') . '</b></a> | ' . _t('User Search') . '</div>' .
-    '<form action="search.php" method="post">' .
+    '<form action="?act=search" method="post">' .
     '<div class="gmenu"><p>' .
     '<input type="text" name="search" value="' . $tools->checkout($search) . '" />' .
     '<input type="submit" value="' . _t('Search') . '" name="submit" />' .
@@ -102,4 +101,4 @@ if ($search && !$error) {
 echo '<p>' . ($search && !$error ? '<a href="search.php">' . _t('New search') . '</a><br />' : '') .
     '<a href="index.php">' . _t('Back') . '</a></p>';
 
-require('../system/end.php');
+require ROOT_PATH . 'system/end.php';

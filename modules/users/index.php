@@ -15,7 +15,6 @@ $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 
 $headmod = 'users';
-require('../system/bootstrap.php');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -35,24 +34,24 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Закрываем от неавторизованных юзеров
 if (!$systemUser->isValid() && !$config->active) {
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo $tools->displayError(_t('For registered users only'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
 // Переключаем режимы работы
 $array = [
-    'admlist'  => 'includes',
-    'birth'    => 'includes',
-    'online'   => 'includes',
-    'top'      => 'includes',
-    'userlist' => 'includes',
+    'admlist',
+    'birth',
+    'online',
+    'search',
+    'top',
+    'userlist',
 ];
-$path = !empty($array[$act]) ? $array[$act] . '/' : '';
 
-if (array_key_exists($act, $array) && file_exists($path . $act . '.php')) {
-    require_once($path . $act . '.php');
+if (in_array($act, $array) && file_exists(__DIR__ . '/includes/' . $act . '.php')) {
+    require_once __DIR__ . '/includes/' . $act . '.php';
 } else {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
@@ -62,13 +61,13 @@ if (array_key_exists($act, $array) && file_exists($path . $act . '.php')) {
 
     // Актив сайта
     $textl = _t('Community');
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
 
     $brth = $db->query("SELECT COUNT(*) FROM `users` WHERE `dayb` = '" . date('j', time()) . "' AND `monthb` = '" . date('n', time()) . "' AND `preg` = '1'")->fetchColumn();
     $count_adm = $db->query("SELECT COUNT(*) FROM `users` WHERE `rights` > 0")->fetchColumn();
 
     echo '<div class="phdr"><b>' . _t('Community') . '</b></div>' .
-        '<div class="gmenu"><form action="search.php" method="post">' .
+        '<div class="gmenu"><form action="?act=search" method="post">' .
         '<p><h3><img src="../images/search.png" width="16" height="16" class="left" />&#160;' . _t('Look for the User') . '</h3>' .
         '<input type="text" name="search"/>' .
         '<input type="submit" value="' . _t('Search') . '" name="submit" /><br />' .
@@ -83,4 +82,4 @@ if (array_key_exists($act, $array) && file_exists($path . $act . '.php')) {
         '<div class="phdr"><a href="index.php">' . _t('Back') . '</a></div>';
 }
 
-require_once('../system/end.php');
+require_once ROOT_PATH . 'system/end.php';
