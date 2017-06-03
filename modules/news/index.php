@@ -11,7 +11,6 @@
 define('MOBICMS', 1);
 
 $headmod = 'news';
-require('../system/bootstrap.php');
 
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
@@ -22,6 +21,9 @@ $container = App::getContainer();
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
+
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -37,7 +39,7 @@ $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
 $textl = _t('News');
-require('../system/head.php');
+require(ROOT_PATH . 'system/head.php');
 
 switch ($do) {
     case 'add':
@@ -173,7 +175,8 @@ switch ($do) {
                     '<p><a href="index.php">' . _t('Back to news') . '</a></p>';
             }
         } else {
-            header("location: index.php");
+            $response->header('Location', '.');
+            $response->send();
         }
         break;
 
@@ -230,7 +233,8 @@ switch ($do) {
                     '<div class="phdr"><a href="index.php">' . _t('Back to news') . '</a></div>';
             }
         } else {
-            header('location: index.php');
+            $response->header('Location', '.');
+            $response->send();
         }
         break;
 
@@ -275,7 +279,8 @@ switch ($do) {
                     '<div class="phdr"><a href="index.php">' . _t('Cancel') . '</a></div>';
             }
         } else {
-            header("location: index.php");
+            $response->header('Location', '.');
+            $response->send();
         }
         break;
 
@@ -293,7 +298,8 @@ switch ($do) {
                     '<a href="index.php?do=del&amp;id=' . $id . '&amp;yes">' . _t('Delete') . '</a> | <a href="index.php">' . _t('Cancel') . '</a></p>';
             }
         } else {
-            header("location: index.php");
+            $response->header('Location', '.');
+            $response->send();
         }
         break;
 
@@ -343,4 +349,4 @@ switch ($do) {
         }
 }
 
-require('../system/end.php');
+require(ROOT_PATH . 'system/end.php');
