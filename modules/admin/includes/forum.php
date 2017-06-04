@@ -776,7 +776,7 @@ switch ($mod) {
             '<li>' . _t('Files') . ':&#160;' . $total_files . '</li>' .
             '<li>' . _t('Votes') . ':&#160;' . $total_votes . '</li>' .
             '</ul></p></div>' .
-            '<div class="menu"><p><h3><img src="../images/settings.png" width="16" height="16" class="left" />&#160;' . _t('Settings') . '</h3><ul>' .
+            '<div class="menu"><p><h3><img src="../assets/images/settings.png" width="16" height="16" class="left" />&#160;' . _t('Settings') . '</h3><ul>' .
             '<li><a href="index.php?act=forum&amp;mod=cat"><b>' . _t('Forum structure') . '</b></a></li>' .
             '<li><a href="index.php?act=forum&amp;mod=hposts">' . _t('Hidden posts') . '</a> (' . $total_msg_del . ')</li>' .
             '<li><a href="index.php?act=forum&amp;mod=htopics">' . _t('Hidden topics') . '</a> (' . $total_thm_del . ')</li>' .

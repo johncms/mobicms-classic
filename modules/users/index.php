@@ -68,7 +68,7 @@ if (in_array($act, $array) && file_exists(__DIR__ . '/includes/' . $act . '.php'
 
     echo '<div class="phdr"><b>' . _t('Community') . '</b></div>' .
         '<div class="gmenu"><form action="?act=search" method="post">' .
-        '<p><h3><img src="../images/search.png" width="16" height="16" class="left" />&#160;' . _t('Look for the User') . '</h3>' .
+        '<p><h3><img src="../assets/images/search.png" width="16" height="16" class="left" />&#160;' . _t('Look for the User') . '</h3>' .
         '<input type="text" name="search"/>' .
         '<input type="submit" value="' . _t('Search') . '" name="submit" /><br />' .
         '<small>' . _t('The search is performed by Nickname and are case-insensitive.') . '</small></p></form></div>' .

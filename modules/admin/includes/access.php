@@ -57,7 +57,7 @@ echo '<form method="post" action="index.php?act=access">';
 
 // Управление доступом к Форуму
 echo '<div class="menu"><p>' .
-    '<h3><img src="../images/' . $color[$config['mod_forum']] . '.gif" width="16" height="16" class="left"/>&#160;' . _t('Forum') . '</h3>' .
+    '<h3><img src="../assets/images/' . $color[$config['mod_forum']] . '.gif" width="16" height="16" class="left"/>&#160;' . _t('Forum') . '</h3>' .
     '<div style="font-size: x-small">' .
     '<input type="radio" value="2" name="forum" ' . ($config['mod_forum'] == 2 ? 'checked="checked"' : '') . '/>&#160;' . _t('Access is allowed') . '<br>' .
     '<input type="radio" value="1" name="forum" ' . ($config['mod_forum'] == 1 ? 'checked="checked"' : '') . '/>&#160;' . _t('Only for authorized') . '<br>' .
@@ -66,7 +66,7 @@ echo '<div class="menu"><p>' .
     '</div></p>';
 
 // Управление доступом к Гостевой
-echo '<p><h3><img src="../images/' . $color[$config['mod_guest']] . '.gif" width="16" height="16" class="left"/>&#160;' . _t('Guestbook') . '</h3>' .
+echo '<p><h3><img src="../assets/images/' . $color[$config['mod_guest']] . '.gif" width="16" height="16" class="left"/>&#160;' . _t('Guestbook') . '</h3>' .
     '<div style="font-size: x-small">' .
     '<input type="radio" value="2" name="guest" ' . ($config['mod_guest'] == 2 ? 'checked="checked"' : '') . '/>&#160;' . _t('Access is allowed') . '<br>' .
     '<input type="radio" value="1" name="guest" ' . ($config['mod_guest'] == 1 ? 'checked="checked"' : '') . '/>&#160;' . _t('Only for authorized') . '<br>' .
@@ -74,7 +74,7 @@ echo '<p><h3><img src="../images/' . $color[$config['mod_guest']] . '.gif" width
     '</div></p>';
 
 // Управление доступом к Библиотеке
-echo '<p><h3><img src="../images/' . $color[$config['mod_lib']] . '.gif" width="16" height="16" class="left"/>&#160;' . _t('Library') . '</h3>' .
+echo '<p><h3><img src="../assets/images/' . $color[$config['mod_lib']] . '.gif" width="16" height="16" class="left"/>&#160;' . _t('Library') . '</h3>' .
     '<div style="font-size: x-small">' .
     '<input type="radio" value="2" name="lib" ' . ($config['mod_lib'] == 2 ? 'checked="checked"' : '') . '/>&#160;' . _t('Access is allowed') . '<br>' .
     '<input type="radio" value="1" name="lib" ' . ($config['mod_lib'] == 1 ? 'checked="checked"' : '') . '/>&#160;' . _t('Only for authorized') . '<br>' .
@@ -83,7 +83,7 @@ echo '<p><h3><img src="../images/' . $color[$config['mod_lib']] . '.gif" width="
     '</div></p>';
 
 // Управление доступом к Загрузкам
-echo '<p><h3><img src="../images/' . $color[$config['mod_down']] . '.gif" width="16" height="16" class="left"/>&#160;' . _t('Downloads') . '</h3>' .
+echo '<p><h3><img src="../assets/images/' . $color[$config['mod_down']] . '.gif" width="16" height="16" class="left"/>&#160;' . _t('Downloads') . '</h3>' .
     '<div style="font-size: x-small">' .
     '<input type="radio" value="2" name="down" ' . ($config['mod_down'] == 2 ? 'checked="checked"' : '') . '/>&#160;' . _t('Access is allowed') . '<br>' .
     '<input type="radio" value="1" name="down" ' . ($config['mod_down'] == 1 ? 'checked="checked"' : '') . '/>&#160;' . _t('Only for authorized') . '<br>' .
@@ -92,14 +92,14 @@ echo '<p><h3><img src="../images/' . $color[$config['mod_down']] . '.gif" width=
     '</div></p>';
 
 // Управление доступом к Активу сайта (списки юзеров и т.д.)
-echo '<p><h3><img src="../images/' . $color[$config['active'] + 1] . '.gif" width="16" height="16" class="left"/>&#160;' . _t('Community') . '</h3>' .
+echo '<p><h3><img src="../assets/images/' . $color[$config['active'] + 1] . '.gif" width="16" height="16" class="left"/>&#160;' . _t('Community') . '</h3>' .
     '<div style="font-size: x-small">' .
     '<input type="radio" value="1" name="active" ' . ($config['active'] ? 'checked="checked"' : '') . '/>&#160;' . _t('Access is allowed') . '<br>' .
     '<input type="radio" value="0" name="active" ' . (!$config['active'] ? 'checked="checked"' : '') . '/>&#160;' . _t('Only for authorized') . '<br>' .
     '</div></p></div>';
 
 // Управление доступом к Регистрации
-echo '<div class="gmenu"><h3><img src="../images/' . $color[$config['mod_reg']] . '.gif" width="16" height="16" class="left"/>&#160;' . _t('Registration') . '</h3>' .
+echo '<div class="gmenu"><h3><img src="../assets/images/' . $color[$config['mod_reg']] . '.gif" width="16" height="16" class="left"/>&#160;' . _t('Registration') . '</h3>' .
     '<div style="font-size: x-small">' .
     '<input type="radio" value="2" name="reg" ' . ($config['mod_reg'] == 2 ? 'checked="checked"' : '') . '/>&#160;' . _t('Access is allowed') . '<br>' .
     '<input type="radio" value="1" name="reg" ' . ($config['mod_reg'] == 1 ? 'checked="checked"' : '') . '/>&#160;' . _t('With moderation') . '<br>' .

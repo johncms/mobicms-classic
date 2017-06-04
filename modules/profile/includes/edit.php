@@ -214,7 +214,7 @@ if (file_exists('../files/users/photo/' . $user['id'] . '_small.jpg')) {
 echo '<small><a href="?act=images&amp;mod=up_photo&amp;user=' . $user['id'] . '">' . _t('Upload') . '</a>' . $link . '</small><br>' .
     '</p></div>' .
     '<div class="menu">' .
-    '<p><h3><img src="../images/contacts.png" width="16" height="16" class="left" />&#160;' . _t('Personal info') . '</h3>' .
+    '<p><h3><img src="../assets/images/contacts.png" width="16" height="16" class="left" />&#160;' . _t('Personal info') . '</h3>' .
     _t('Your name') . ':<br><input type="text" value="' . $user['imname'] . '" name="imname" /></p>' .
     '<p>' . _t('Date of birth (d.m.y)') . '<br>' .
     '<input type="text" value="' . $user['dayb'] . '" size="2" maxlength="2" name="dayb" />.' .
@@ -222,7 +222,7 @@ echo '<small><a href="?act=images&amp;mod=up_photo&amp;user=' . $user['id'] . '"
     '<input type="text" value="' . $user['yearofbirth'] . '" size="4" maxlength="4" name="yearofbirth" /></p>' .
     '<p>' . _t('City, Country') . ':<br><input type="text" value="' . $user['live'] . '" name="live" /></p>' .
     '<p>' . _t('About myself') . ':<br><textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="about">' . strip_tags($user['about']) . '</textarea></p>' .
-    '<p><h3><img src="../images/mail.png" width="16" height="16" class="left" />&#160;' . _t('Contacts') . '</h3>' .
+    '<p><h3><img src="../assets/images/mail.png" width="16" height="16" class="left" />&#160;' . _t('Contacts') . '</h3>' .
     _t('Phone number') . ':<br><input type="text" value="' . $user['mibile'] . '" name="mibile" /><br>' .
     '</p><p>E-mail<br>' .
     '<input type="text" value="' . $user['mail'] . '" name="mail" /><br>' .
@@ -236,7 +236,7 @@ echo '<small><a href="?act=images&amp;mod=up_photo&amp;user=' . $user['id'] . '"
 
 // Административные функции
 if ($systemUser->rights >= 7) {
-    echo '<div class="rmenu"><p><h3><img src="../images/settings.png" width="16" height="16" class="left" />&#160;' . _t('Administrative Functions') . '</h3><ul>';
+    echo '<div class="rmenu"><p><h3><img src="../assets/images/settings.png" width="16" height="16" class="left" />&#160;' . _t('Administrative Functions') . '</h3><ul>';
     echo '<li><input name="karma_off" type="checkbox" value="1" ' . ($user['karma_off'] ? 'checked="checked"' : '') . ' />&#160;' . _t('Prohibit Karma') . '</li>';
     echo '<li><a href="?act=password&amp;user=' . $user['id'] . '">' . _t('Change Password') . '</a></li>';
 
