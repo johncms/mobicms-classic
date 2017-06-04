@@ -106,7 +106,8 @@ echo '<div class="bmenu"><p><h3>' . _t('Settings') . '</h3>' .
     '<div>' . $tools->image('user-edit.png') . '<a href="?act=edit">' . _t('Edit Profile') . '</a></div>' .
     '<div>' . $tools->image('lock.png') . '<a href="?act=password">' . _t('Change Password') . '</a></div>' .
     '<div>' . $tools->image('settings.png') . '<a href="?act=settings">' . _t('System Settings') . '</a></div>';
-if ($systemUser->rights >= 1) {
+
+if ($systemUser->rights >= 6) {
     echo '<div>' . $tools->image('forbidden.png') . '<span class="red"><a href="../admin/"><b>' . _t('Admin Panel') . '</b></a></span></div>';
 }
 echo '</p></div>';

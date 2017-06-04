@@ -24,14 +24,24 @@ $response = $container->get(Mobicms\Http\Response::class);
 /** @var Mobicms\Http\Router $router */
 $router = $container->get(Mobicms\Http\Router::class);
 
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
+
 // Главная страница
 $router->respond('GET', '/', function () {
     include ROOT_PATH . 'modules/homepage/index.php';
 });
 
 // Админ панель
-$router->respond(['GET', 'POST'], '@^/admin/', function () {
-    include ROOT_PATH . 'modules/admin/index.php';
+if ($systemUser->isValid() && $systemUser->rights >= 6) {
+    $router->respond(['GET', 'POST'], '@^/admin/', function () {
+        include ROOT_PATH . 'modules/admin/index.php';
+    });
+}
+
+// Админ панель
+$router->respond(['GET', 'POST'], '@^/album/', function () {
+    include ROOT_PATH . 'modules/album/index.php';
 });
 
 // Гостевая

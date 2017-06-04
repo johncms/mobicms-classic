@@ -30,7 +30,7 @@ $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
 // Проверяем права доступа
-if ($systemUser->rights < 1) {
+if ($systemUser->rights < 6) {
     echo _t('Access denied');
     require ROOT_PATH . 'system/end.php';
     exit;
