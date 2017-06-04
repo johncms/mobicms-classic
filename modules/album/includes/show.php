@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -29,7 +29,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if (!$al) {
     echo $tools->displayError(_t('Wrong data'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -37,7 +37,7 @@ $req = $db->query("SELECT * FROM `cms_album_cat` WHERE `id` = '$al'");
 
 if (!$req->rowCount()) {
     echo $tools->displayError(_t('Wrong data'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -72,7 +72,7 @@ if (($album['access'] == 1 || $album['access'] == 3)
 ) {
     // Доступ закрыт
     echo $tools->displayError(_t('Access forbidden'), '<a href="?act=list&amp;user=' . $user['id'] . '">' . _t('Album List') . '</a>');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 } elseif ($album['access'] == 2
     && $user['id'] != $systemUser->id
@@ -94,7 +94,7 @@ if (($album['access'] == 1 || $album['access'] == 3)
             '<p><input type="submit" name="submit" value="' . _t('Login') . '"/></p>' .
             '</div></form>' .
             '<div class="phdr"><a href="?act=list&amp;user=' . $user['id'] . '">' . _t('Album List') . '</a></div>';
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 }
@@ -139,7 +139,7 @@ if ($total) {
                 );
                 echo '<span class="green"><b>' . _t('Photo added to the profile') . '</b></span><br>';
             }
-            echo '<a href="' . $_SESSION['ref'] . '"><img src="image.php?u=' . $user['id'] . '&amp;f=' . $res['img_name'] . '" /></a>';
+            echo '<a href="' . $_SESSION['ref'] . '"><img src="../assets/modules/album/image.php?u=' . $user['id'] . '&amp;f=' . $res['img_name'] . '" /></a>';
 
             // Счетчик просмотров
             if (!$db->query("SELECT COUNT(*) FROM `cms_album_views` WHERE `user_id` = '" . $systemUser->id . "' AND `file_id` = " . $res['id'])->fetchColumn()) {

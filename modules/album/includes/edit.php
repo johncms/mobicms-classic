@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -38,7 +38,7 @@ if ($user['id'] == $systemUser->id && empty($systemUser->ban) || $systemUser->ri
             $access = $res['access'];
         } else {
             echo $tools->displayError(_t('Wrong data'));
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
     } else {
@@ -133,7 +133,7 @@ if ($user['id'] == $systemUser->id && empty($systemUser->ban) || $systemUser->ri
 
             echo '<div class="gmenu"><p>' . ($al ? _t('Album successfully changed') : _t('Album successfully created')) . '<br>' .
                 '<a href="?act=list&amp;user=' . $user['id'] . '">' . _t('Continue') . '</a></p></div>';
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
     }

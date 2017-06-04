@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -47,7 +50,7 @@ if ($req->rowCount()) {
     }
 
     // Проверка наличия файла
-    if (!$error && !file_exists('../files/users/album/' . $res['user_id'] . '/' . $res['img_name'])) {
+    if (!$error && !file_exists(ROOT_PATH . 'files/users/album/' . $res['user_id'] . '/' . $res['img_name'])) {
         $error[] = _t('File does not exist');
     }
 } else {
@@ -60,9 +63,12 @@ if (!$error) {
         $downloads = $db->query("SELECT COUNT(*) FROM `cms_album_downloads` WHERE `file_id` = '$img'")->fetchColumn();
         $db->exec("UPDATE `cms_album_files` SET `downloads` = '$downloads' WHERE `id` = '$img'");
     }
+
     // Отдаем файл
-    header('location: ' . $config['homeurl'] . '/files/users/album/' . $res['user_id'] . '/' . $res['img_name']);
+    //TODO: переделать на отдачу файла через Response
+    $response->header('Location', $config['homeurl'] . '/files/users/album/' . $res['user_id'] . '/' . $res['img_name']);
+    $response->send();
 } else {
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo $tools->displayError($error, '<a href="index.php">' . _t('Back') . '</a>');
 }

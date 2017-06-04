@@ -39,7 +39,7 @@ if ($systemUser->isValid() && $systemUser->rights >= 6) {
     });
 }
 
-// Админ панель
+// Фотоальбомы
 $router->respond(['GET', 'POST'], '@^/album/', function () {
     include ROOT_PATH . 'modules/album/index.php';
 });

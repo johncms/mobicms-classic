@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -34,7 +34,7 @@ if ($al && $user['id'] == $systemUser->id && empty($systemUser->ban) || $systemU
     if (!$req_a->rowCount()) {
         // Если альбома не существует, завершаем скрипт
         echo $tools->displayError(_t('Wrong data'));
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 

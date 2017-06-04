@@ -35,7 +35,7 @@ switch ($mod) {
         // Непрочитанные комментарии в личных альбомах
         if (!$systemUser->isValid() || $systemUser->id != $user['id']) {
             echo $tools->displayError(_t('Wrong data'));
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -120,7 +120,7 @@ switch ($mod) {
 
 // Показываем список фотографий, отсортированных по рейтингу
 unset($_SESSION['ref']);
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Photo Albums') . '</b></a> | ' . $title . '</div>';
 
 if ($mod == 'my_new_comm') {

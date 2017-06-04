@@ -19,6 +19,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -28,14 +31,15 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 // Голосуем за фотографию
 if (!$img) {
     echo $tools->displayError(_t('Wrong data'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
 $check = $db->query("SELECT * FROM `cms_album_votes` WHERE `user_id` = '" . $systemUser->id . "' AND `file_id` = '$img' LIMIT 1");
 
 if ($check->rowCount()) {
-    header('Location: ' . $ref);
+    $response->header('Location', $ref);
+    $response->send();
     exit;
 }
 
@@ -70,7 +74,8 @@ if ($req->rowCount()) {
             break;
     }
 
-    header('Location: ' . $ref);
+    $response->header('Location', $ref);
+    $response->send();
 } else {
     echo $tools->displayError(_t('Wrong data'));
 }

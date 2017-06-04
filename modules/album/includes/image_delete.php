@@ -10,13 +10,16 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
+
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -43,7 +46,8 @@ if ($img && $user['id'] == $systemUser->id || $systemUser->rights >= 6) {
             $db->exec("DELETE FROM `cms_album_votes` WHERE `file_id` = '$img'");
             $db->exec("DELETE FROM `cms_album_comments` WHERE `sub_id` = '$img'");
 
-            header('Location: ?act=show&al=' . $album . '&user=' . $user['id']);
+            $response->header('Location', '?act=show&al=' . $album . '&user=' . $user['id']);
+            $response->send();
         } else {
             echo '<div class="rmenu"><form action="?act=image_delete&amp;img=' . $img . '&amp;user=' . $user['id'] . '" method="post">' .
                 '<p>' . _t('Are you sure you want to delete this image?') . '</p>' .
