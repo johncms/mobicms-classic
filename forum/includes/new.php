@@ -106,15 +106,15 @@ if ($systemUser->isValid()) {
                     $nick = $colmes->fetch();
 
                     if ($res['edit']) {
-                        echo $tools->image('tz.gif');
+                        echo $tools->image('modules/forum/tz.gif');
                     } elseif ($res['close']) {
-                        echo $tools->image('dl.gif');
+                        echo $tools->image('modules/forum/dl.gif');
                     } else {
-                        echo $tools->image('np.gif');
+                        echo $tools->image('modules/forum/np.gif');
                     }
 
                     if ($res['realid'] == 1) {
-                        echo $tools->image('rate.gif');
+                        echo $tools->image('images/rate.gif');
                     }
 
                     echo '&#160;<a href="index.php?id=' . $res['id'] . ($cpg > 1 && $set_forum['upfp'] && $set_forum['postclip'] ? '&amp;clip' : '') . ($set_forum['upfp'] && $cpg > 1 ? '&amp;page=' . $cpg : '') . '">' . (empty($res['text']) ? '-----' : $res['text']) .
@@ -180,10 +180,10 @@ if ($systemUser->isValid()) {
 
                     // Значки
                     $icons = [
-                        (isset($np) ? (!$res['vip'] ? $tools->image('op.gif') : '') : $tools->image('np.gif')),
-                        ($res['vip'] ? $tools->image('pt.gif') : ''),
-                        ($res['realid'] ? $tools->image('rate.gif') : ''),
-                        ($res['edit'] ? $tools->image('tz.gif') : ''),
+                        (isset($np) ? (!$res['vip'] ? $tools->image('modules/forum/op.gif') : '') : $tools->image('modules/forum/np.gif')),
+                        ($res['vip'] ? $tools->image('modules/forum/pt.gif') : ''),
+                        ($res['realid'] ? $tools->image('images/rate.gif') : ''),
+                        ($res['edit'] ? $tools->image('modules/forum/tz.gif') : ''),
                     ];
                     echo implode('', array_filter($icons));
                     echo '<a href="index.php?id=' . $res['id'] . ($cpg > 1 && $set_forum['upfp'] && $set_forum['postclip'] ? '&amp;clip' : '') . ($set_forum['upfp'] && $cpg > 1 ? '&amp;page=' . $cpg : '') . '">' . (empty($res['text']) ? '-----' : $res['text']) .
@@ -234,9 +234,9 @@ if ($systemUser->isValid()) {
             echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
             // Значки
             $icons = [
-                ($res['vip'] ? $tools->image('pt.gif') : ''),
-                ($res['realid'] ? $tools->image('rate.gif') : ''),
-                ($res['edit'] ? $tools->image('tz.gif') : ''),
+                ($res['vip'] ? $tools->image('modules/forum/pt.gif') : ''),
+                ($res['realid'] ? $tools->image('images/rate.gif') : ''),
+                ($res['edit'] ? $tools->image('modules/forum/tz.gif') : ''),
             ];
             echo implode('', array_filter($icons));
             echo '<a href="index.php?id=' . $res['id'] . '">' . (empty($res['text']) ? '-----' : $res['text']) . '</a>&#160;[' . $colmes1 . ']';

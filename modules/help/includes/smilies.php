@@ -22,10 +22,10 @@ if ($systemUser->isValid()) {
 }
 
 if ($systemUser->rights >= 1) {
-    echo '<div class="gmenu"><a href="?act=admsmilies">' . _t('For administration') . '</a> (' . (int)count(glob(ROOT_PATH . 'images/smileys/admin/*.gif')) . ')</div>';
+    echo '<div class="gmenu"><a href="?act=admsmilies">' . _t('For administration') . '</a> (' . (int)count(glob(ROOT_PATH . 'assets/smilies/admin/*.gif')) . ')</div>';
 }
 
-$dir = glob(ROOT_PATH . 'images/smileys/user/*', GLOB_ONLYDIR);
+$dir = glob(ROOT_PATH . 'assets/smilies/user/*', GLOB_ONLYDIR);
 
 foreach ($dir as $val) {
     $cat = strtolower(basename($val));
@@ -43,7 +43,7 @@ $i = 0;
 foreach ($smileys_cat as $key => $val) {
     echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
     echo '<a href="?act=usersmilies&amp;cat=' . urlencode($key) . '">' . htmlspecialchars($val) . '</a>' .
-        ' (' . count(glob(ROOT_PATH . 'images/smileys/user/' . $key . '/*.{gif,jpg,png}', GLOB_BRACE)) . ')';
+        ' (' . count(glob(ROOT_PATH . 'assets/smilies/user/' . $key . '/*.{gif,jpg,png}', GLOB_BRACE)) . ')';
     echo '</div>';
     ++$i;
 }

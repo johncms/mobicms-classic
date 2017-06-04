@@ -40,7 +40,7 @@ if (!is_array($user_sm)) {
 echo '<div class="topmenu"><a href="?act=my_smilies">' . _t('My smilies') . '</a>  (' . count($user_sm) . ' / ' . $user_smileys . ')</div>' .
     '<form action="?act=set_my_sm&amp;start=' . $start . '&amp;adm" method="post">';
 $array = [];
-$dir = opendir('../images/smileys/admin');
+$dir = opendir(ROOT_PATH . 'assets/smilies/admin');
 
 while (($file = readdir($dir)) !== false) {
     if (($file != '.') && ($file != "..") && ($file != "name.dat") && ($file != ".svn") && ($file != "index.php")) {
@@ -63,7 +63,7 @@ if ($total > 0) {
         echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
         $smileys = (in_array($smile, $user_sm) ? ''
             : '<input type="checkbox" name="add_sm[]" value="' . $smile . '" />&#160;');
-        echo $smileys . '<img src="../images/smileys/admin/' . $array[$i] . '" alt="" /> - :' . $smile . ': ' . _t('or') . ' :' . $tools->trans($smile) . ':</div>';
+        echo $smileys . '<img src="../assets/smilies/admin/' . $array[$i] . '" alt="" /> - :' . $smile . ': ' . _t('or') . ' :' . $tools->trans($smile) . ':</div>';
     }
 } else {
     echo '<div class="menu"><p>' . _t('The list is empty') . '</p></div>';

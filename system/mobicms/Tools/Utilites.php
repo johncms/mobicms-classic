@@ -335,9 +335,9 @@ class Utilites implements ToolsInterface
             $out .= '</td><td>';
 
             if ($user['sex']) {
-                $out .= $this->image(($user['sex'] == 'm' ? 'm' : 'w') . ($user['datereg'] > time() - 86400 ? '_new' : '') . '.png', ['class' => 'icon-inline']);
+                $out .= $this->image('images/' . ($user['sex'] == 'm' ? 'm' : 'w') . ($user['datereg'] > time() - 86400 ? '_new' : '') . '.png', ['class' => 'icon-inline']);
             } else {
-                $out .= $this->image('del.png');
+                $out .= $this->image('images/del.png');
             }
 
             $out .= !$this->user->isValid() || $this->user->id == $user['id'] ? '<b>' . $user['name'] . '</b>' : '<a href="' . $homeurl . '/profile/?user=' . $user['id'] . '"><b>' . $user['name'] . '</b></a>';
@@ -361,7 +361,7 @@ class Utilites implements ToolsInterface
             }
 
             if (!isset($arg['stshide']) && !empty($user['status'])) {
-                $out .= '<div class="status">' . $this->image('label.png', ['class' => 'icon-inline']) . $user['status'] . '</div>';
+                $out .= '<div class="status">' . $this->image('images/label.png', ['class' => 'icon-inline']) . $user['status'] . '</div>';
             }
 
             $out .= '</td></tr></table>';
@@ -493,12 +493,11 @@ class Utilites implements ToolsInterface
      */
     public function image($name, array $args = [])
     {
-        $homeurl = $this->config['homeurl'];
-
+        //TODO: разобраться с путями картинок в темах
         if (is_file(ROOT_PATH . 'theme/' . $this->getSkin() . '/images/' . $name)) {
-            $src = $homeurl . '/theme/' . $this->getSkin() . '/images/' . $name;
-        } elseif (is_file(ROOT_PATH . 'images/' . $name)) {
-            $src = $homeurl . '/images/' . $name;
+            $src = $this->config->homeurl . '/theme/' . $this->getSkin() . '/images/' . $name;
+        } elseif (is_file(ROOT_PATH . 'assets/' . $name)) {
+            $src = $this->config->homeurl . '/assets/' . $name;
         } else {
             return false;
         }
@@ -598,7 +597,7 @@ class Utilites implements ToolsInterface
         static $smiliesCache = [];
 
         if (empty($smiliesCache)) {
-            $file = ROOT_PATH . 'files/cache/smileys.dat';
+            $file = CACHE_PATH . 'smilies.cache';
 
             if (file_exists($file) && ($smileys = file_get_contents($file)) !== false) {
                 $smiliesCache = unserialize($smileys);

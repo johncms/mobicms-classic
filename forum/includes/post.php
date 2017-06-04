@@ -55,9 +55,9 @@ if (file_exists(('../files/users/avatar/' . $res['user_id'] . '.png'))) {
 echo '</td><td>';
 
 if ($res['sex']) {
-    echo $tools->image(($res['sex'] == 'm' ? 'm' : 'w') . ($res['datereg'] > time() - 86400 ? '_new' : '') . '.png', ['class' => 'icon-inline']);
+    echo $tools->image('images/' . ($res['sex'] == 'm' ? 'm' : 'w') . ($res['datereg'] > time() - 86400 ? '_new' : '') . '.png', ['class' => 'icon-inline']);
 } else {
-    echo $tools->image('del.png');
+    echo $tools->image('images/del.png');
 }
 
 // Ник юзера и ссылка на его анкету
@@ -91,7 +91,7 @@ echo ' <span class="gray">(' . $tools->displayDate($res['time']) . ')</span><br 
 
 // Статус юзера
 if (!empty($res['status'])) {
-    echo '<div class="status">' . $tools->image('label.png', ['class' => 'icon-inline']) . $res['status'] . '</div>';
+    echo '<div class="status">' . $tools->image('images/label.png', ['class' => 'icon-inline']) . $res['status'] . '</div>';
 }
 
 echo '</td></tr></table>';

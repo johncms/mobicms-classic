@@ -30,7 +30,7 @@ if (!empty($cms_ads[2])) {
 echo '</div><div class="fmenu">';
 
 if (isset($_GET['err']) || $headmod != "mainpage" || ($headmod == 'mainpage' && isset($_GET['act']))) {
-    echo '<div><a href=\'' . $config->homeurl . '\'>' . $tools->image('menu_home.png') . _t('Home', 'system') . '</a></div>';
+    echo '<div><a href=\'' . $config->homeurl . '\'>' . $tools->image('images/menu_home.png') . _t('Home', 'system') . '</a></div>';
 }
 
 echo '<div>' . $container->get('counters')->online() . '</div>' .

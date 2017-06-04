@@ -102,7 +102,7 @@ class Rating
     {
         $stmt = $this->db->prepare('SELECT COUNT(*) FROM `cms_library_rating` WHERE `st_id` = ?');
         $stmt->execute([$this->lib_id]);
-        $res = ($anchor ? '<a href="#rating">' : '') . $this->tools->image('rating/star.' . (str_replace('.', '-',
+        $res = ($anchor ? '<a href="#rating">' : '') . $this->tools->image('modules/library/star.' . (str_replace('.', '-',
                     (string) $this->getRate())) . '.gif',
                 ['alt' => 'rating ' . $this->lib_id . ' article']) . ($anchor ? '</a>' : '') . ' (' . $stmt->fetchColumn() . ')';
 

@@ -157,8 +157,8 @@ if ($display_form) {
         '<p><input type="checkbox" name="mem" value="1" checked="checked"/>' . _t('Remember', 'system') . '</p>' .
         '<p><input type="submit" value="' . _t('Login', 'system') . '"/></p>' .
         '</form></div>' .
-        '<div class="menu"><p>' . $tools->image('user.png') . '<a href="registration/">' . _t('Registration', 'system') . '</a></p></div>' .
-        '<div class="bmenu"><p>' . $tools->image('lock.png') . '<a href="profile/skl.php?continue">' . _t('Forgot password?', 'system') . '</a></p></div>';
+        '<div class="menu"><p>' . $tools->image('images/user.png') . '<a href="registration/">' . _t('Registration', 'system') . '</a></p></div>' .
+        '<div class="bmenu"><p>' . $tools->image('images/lock.png') . '<a href="profile/skl.php?continue">' . _t('Forgot password?', 'system') . '</a></p></div>';
 }
 }
 
