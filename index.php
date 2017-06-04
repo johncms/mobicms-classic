@@ -54,6 +54,11 @@ $router->respond(['GET', 'POST'], '@^/help/', function () {
     include ROOT_PATH . 'modules/help/index.php';
 });
 
+// Вход / выход с сайта
+$router->respond(['GET', 'POST'], '@^/login/', function () {
+    include ROOT_PATH . 'modules/login/index.php';
+});
+
 // Новости
 $router->respond(['GET', 'POST'], '@^/news/', function () {
     include ROOT_PATH . 'modules/news/index.php';

@@ -112,7 +112,7 @@ echo '</tr></table>';
 echo '<div class="tmn">' .
     (isset($_GET['err']) || $headmod != "mainpage" || ($headmod == 'mainpage' && $act) ? '<a href=\'' . $config['homeurl'] . '\'>' . $tools->image('images/menu_home.png') . _t('Home', 'system') . '</a><br>' : '') .
     ($systemUser->id && $headmod != 'office' ? '<a href="' . $config['homeurl'] . '/profile/?act=office">' . $tools->image('images/menu_cabinet.png') . $systemUser->name . ' <small style="color: #a8b5c4">(' . _t('Personal', 'system') . ')</small></a><br>' : '') .
-    (!$systemUser->id && $headmod != 'login' ? $tools->image('images/menu_login.png') . '<a href="' . $config['homeurl'] . '/login.php">' . _t('Login', 'system') . '</a>' : '') .
+    (!$systemUser->id && $headmod != 'login' ? $tools->image('images/menu_login.png') . '<a href="' . $config['homeurl'] . '/login/">' . _t('Login', 'system') . '</a>' : '') .
     '</div><div class="maintxt">';
 
 // Рекламный блок сайта

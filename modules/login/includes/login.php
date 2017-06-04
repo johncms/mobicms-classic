@@ -8,11 +8,10 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
 
 $headmod = 'login';
-require('system/bootstrap.php');
-require('system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 
@@ -21,6 +20,9 @@ $container = App::getContainer();
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
+
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -69,7 +71,7 @@ if ($systemUser->isValid()) {
 
             if ($systemUser['failed_login'] > 2) {
                 if ($user_code) {
-                    if (mb_strlen($user_code) > 3 && mb_strtolower($user_code) == mb_strtolower($_SESSION['code'])) {
+                    if (mb_strlen($user_code) >= 3 && strtolower($user_code) == strtolower($_SESSION['code'])) {
                         // Если введен правильный проверочный код
                         unset($_SESSION['code']);
                         $captcha = true;
@@ -113,8 +115,8 @@ if ($systemUser->isValid()) {
                             // Установка данных COOKIE
                             $cuid = base64_encode($systemUser['id']);
                             $cups = md5($user_pass);
-                            setcookie("cuid", $cuid, time() + 3600 * 24 * 365);
-                            setcookie("cups", $cups, time() + 3600 * 24 * 365);
+                            setcookie("cuid", $cuid, time() + 3600 * 24 * 365, '/');
+                            setcookie("cups", $cups, time() + 3600 * 24 * 365, '/');
                         }
 
                         // Установка данных сессии
@@ -123,43 +125,42 @@ if ($systemUser->isValid()) {
 
                         $db->exec("UPDATE `users` SET `sestime` = '" . time() . "' WHERE `id` = " . $systemUser['id']);
                         $set_user = unserialize($systemUser['set_user']);
-
-                        header('Location: ' . $config->homeurl);
+                        $response->redirect($config->homeurl)->sendHeaders();
                         exit;
                     }
                 } else {
-                // Если логин неудачный
-                if ($systemUser['failed_login'] < 3) {
-                    // Прибавляем к счетчику неудачных логинов
-                    $db->exec("UPDATE `users` SET `failed_login` = '" . ($systemUser['failed_login'] + 1) . "' WHERE `id` = " . $systemUser['id']);
+                    // Если логин неудачный
+                    if ($systemUser['failed_login'] < 3) {
+                        // Прибавляем к счетчику неудачных логинов
+                        $db->exec("UPDATE `users` SET `failed_login` = '" . ($systemUser['failed_login'] + 1) . "' WHERE `id` = " . $systemUser['id']);
+                    }
+
+                    $error[] = _t('Authorization failed', 'system');
                 }
-
-                $error[] = _t('Authorization failed', 'system');
             }
+        } else {
+            $error[] = _t('Authorization failed', 'system');
         }
-    } else {
-        $error[] = _t('Authorization failed', 'system');
+    }
+
+    if ($display_form) {
+        if ($error) {
+            echo $tools->displayError($error);
+        }
+
+        $info = '';
+
+        echo $info;
+        echo '<div class="gmenu"><form action="?" method="post"><p>' . _t('Username', 'system') . ':<br>' .
+            '<input type="text" name="n" value="' . htmlentities($user_login, ENT_QUOTES, 'UTF-8') . '" maxlength="20"/>' .
+            '<br>' . _t('Password', 'system') . ':<br>' .
+            '<input type="password" name="p" maxlength="20"/></p>' .
+            '<p><input type="checkbox" name="mem" value="1" checked="checked"/>' . _t('Remember', 'system') . '</p>' .
+            '<p><input type="submit" value="' . _t('Login', 'system') . '"/></p>' .
+            '</form></div>' .
+            '<div class="menu"><p>' . $tools->image('images/user.png') . '<a href="../registration/">' . _t('Registration', 'system') . '</a></p></div>' .
+            '<div class="bmenu"><p>' . $tools->image('images/lock.png') . '<a href="profile/skl.php?continue">' . _t('Forgot password?', 'system') . '</a></p></div>';
     }
 }
 
-if ($display_form) {
-    if ($error) {
-        echo $tools->displayError($error);
-    }
-
-    $info = '';
-
-    echo $info;
-    echo '<div class="gmenu"><form action="login.php" method="post"><p>' . _t('Username', 'system') . ':<br>' .
-        '<input type="text" name="n" value="' . htmlentities($user_login, ENT_QUOTES, 'UTF-8') . '" maxlength="20"/>' .
-        '<br>' . _t('Password', 'system') . ':<br>' .
-        '<input type="password" name="p" maxlength="20"/></p>' .
-        '<p><input type="checkbox" name="mem" value="1" checked="checked"/>' . _t('Remember', 'system') . '</p>' .
-        '<p><input type="submit" value="' . _t('Login', 'system') . '"/></p>' .
-        '</form></div>' .
-        '<div class="menu"><p>' . $tools->image('images/user.png') . '<a href="registration/">' . _t('Registration', 'system') . '</a></p></div>' .
-        '<div class="bmenu"><p>' . $tools->image('images/lock.png') . '<a href="profile/skl.php?continue">' . _t('Forgot password?', 'system') . '</a></p></div>';
-}
-}
-
-require('system/end.php');
+require ROOT_PATH . 'system/end.php';

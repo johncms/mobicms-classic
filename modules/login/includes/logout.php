@@ -8,26 +8,33 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
 
-require('system/bootstrap.php');
+/** @var Psr\Container\ContainerInterface $container */
+$container = App::getContainer();
 
 /** @var Mobicms\Api\ConfigInterface $config */
-$config = App::getContainer()->get(Mobicms\Api\ConfigInterface::class);
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
+
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
 
 $referer = isset($_SERVER['HTTP_REFERER']) ? htmlspecialchars($_SERVER['HTTP_REFERER']) : $config->homeurl;
 
 if (isset($_POST['submit'])) {
-    setcookie('cuid', '');
-    setcookie('cups', '');
     session_destroy();
-    header('Location: ' . $config->homeurl);
+    $response
+        ->cookie('cuid', '', strtotime('-1 Year', time()), '/')
+        ->cookie('cups', '', strtotime('-1 Year', time()), '/')
+        ->redirect($config->homeurl)
+        ->send();
+    exit;
 } else {
-    require('system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo '<div class="rmenu">' .
         '<p>' . _t('Are you sure you want to leave the site?', 'system') . '</p>' .
-        '<form action="exit.php" method="post"><p><input type="submit" name="submit" value="' . _t('Logout', 'system') . '" /></p></form>' .
+        '<form action="?" method="post"><p><input type="submit" name="submit" value="' . _t('Logout', 'system') . '" /></p></form>' .
         '<p><a href="' . $referer . '">' . _t('Cancel', 'system') . '</a></p>' .
         '</div>';
-    require('system/end.php');
+    require ROOT_PATH . 'system/end.php';
 }
