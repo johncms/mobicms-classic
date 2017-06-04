@@ -15,9 +15,10 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 ### CHANGED
 - Global refactoring related to the implementation of Request and Response
 - Global refactoring associated with deleting $kmess, $page, $start variables
+- All images moved to the `/assets` folder and sorted by module
 
 ### FIXED
-- Nothing
+- Unknown tag error in the Library module
   
 ### DELETED
 - Global variables **$kmess**, **$page**, **$start** are deleted
