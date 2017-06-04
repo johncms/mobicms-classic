@@ -64,6 +64,11 @@ $router->respond(['GET', 'POST'], '@^/news/', function () {
     include ROOT_PATH . 'modules/news/index.php';
 });
 
+// Пользовательские профили
+$router->respond(['GET', 'POST'], '@^/profile/', function () {
+    include ROOT_PATH . 'modules/profile/index.php';
+});
+
 // Регистрация
 $router->respond(['GET', 'POST'], '@^/registration/', function () {
     include ROOT_PATH . 'modules/registration/index.php';

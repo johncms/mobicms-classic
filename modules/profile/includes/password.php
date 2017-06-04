@@ -25,12 +25,12 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 // Проверяем права доступа
 if ($user['id'] != $systemUser->id && ($systemUser->rights < 7 || $user['rights'] > $systemUser->rights)) {
     echo $tools->displayError(_t('Access forbidden'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
 $textl = htmlspecialchars($user['name']) . ': ' . _t('Change Password');
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 switch ($mod) {
     case 'change':

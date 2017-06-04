@@ -11,13 +11,19 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $textl = _t('Settings');
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Api\ConfigInterface $config */
+$config = $container->get(Mobicms\Api\ConfigInterface::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
+
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -31,12 +37,9 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 // Проверяем права доступа
 if ($user['id'] != $systemUser->id) {
     echo $tools->displayError(_t('Access forbidden'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
-
-/** @var Mobicms\Api\ConfigInterface $config */
-$config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 $menu = [
     (!$mod ? '<b>' . _t('General setting') . '</b>' : '<a href="?act=settings">' . _t('General setting') . '</a>'),
@@ -172,13 +175,13 @@ switch ($mod) {
             // Записываем настройки
             $db->prepare('UPDATE `users` SET `set_user` = ? WHERE `id` = ?')->execute([serialize($set_user), $systemUser->id]);
             $_SESSION['set_ok'] = 1;
-            header('Location: ?act=settings');
+            $response->redirect('?act=settings')->sendHeaders();
             exit;
         } elseif (isset($_GET['reset'])) {
             // Задаем настройки по-умолчанию
             $db->exec("UPDATE `users` SET `set_user` = '' WHERE `id` = " . $systemUser->id);
             $_SESSION['reset_ok'] = 1;
-            header('Location: ?act=settings');
+            $response->redirect('?act=settings')->sendHeaders();
             exit;
         }
 

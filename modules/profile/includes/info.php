@@ -21,7 +21,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Подробная информация, контактные данные
 $textl = htmlspecialchars($user['name']) . ': ' . _t('Information');
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 echo '<div class="phdr"><a href="?user=' . $user['id'] . '"><b>' . _t('Profile') . '</b></a> | ' . _t('Information') . '</div>';
 
 if ($user['id'] == $systemUser->id || ($systemUser->rights >= 7 && $systemUser->rights > $user['rights'])) {
@@ -30,7 +30,7 @@ if ($user['id'] == $systemUser->id || ($systemUser->rights >= 7 && $systemUser->
 
 echo '<div class="user"><p>' . $tools->displayUser($user) . '</p></div>' .
     '<div class="list2"><p>' .
-    '<h3><img src="../images/contacts.png" width="16" height="16" class="left" />&#160;' . _t('Personal info') . '</h3>' .
+    '<h3><img src="../assets/images/contacts.png" width="16" height="16" class="left" />&#160;' . _t('Personal info') . '</h3>' .
     '<ul>';
 
 if (file_exists('../files/users/photo/' . $user['id'] . '_small.jpg')) {
@@ -42,7 +42,7 @@ echo '<li><span class="gray">' . _t('Name') . ':</span> ' . (empty($user['imname
     '<li><span class="gray">' . _t('City, Country') . ':</span> ' . (empty($user['live']) ? '' : $user['live']) . '</li>' .
     '<li><span class="gray">' . _t('About myself') . ':</span> ' . (empty($user['about']) ? '' : '<br />' . $tools->smilies($tools->checkout($user['about'], 1, 1))) . '</li>' .
     '</ul></p><p>' .
-    '<h3><img src="../images/mail.png" width="16" height="16" class="left" />&#160;' . _t('Contacts') . '</h3><ul>' .
+    '<h3><img src="../assets/images/mail.png" width="16" height="16" class="left" />&#160;' . _t('Contacts') . '</h3><ul>' .
     '<li><span class="gray">' . _t('Phone number') . ':</span> ' . (empty($user['mibile']) ? '' : $user['mibile']) . '</li>' .
     '<li><span class="gray">E-mail:</span> ';
 

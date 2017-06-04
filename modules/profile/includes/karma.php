@@ -11,7 +11,7 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $textl = _t('Karma');
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -19,14 +19,17 @@ $container = App::getContainer();
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-/** @var Mobicms\Http\Request $request */
-$request = $container->get(Mobicms\Http\Request::class);
-
 $set_karma = $config->karma;
 
 if ($set_karma['on']) {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
+
+    /** @var Mobicms\Http\Request $request */
+    $request = $container->get(Mobicms\Http\Request::class);
+
+    /** @var Mobicms\Http\Response $response */
+    $response = $container->get(Mobicms\Http\Response::class);
 
     /** @var Mobicms\Api\UserInterface $systemUser */
     $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -152,7 +155,7 @@ if ($set_karma['on']) {
                         }
 
                         $db->exec("UPDATE `users` SET $sql WHERE `id` = " . $user['id']);
-                        header('Location: ?act=karma&user=' . $user['id'] . '&type=' . $type);
+                        $response->redirect('?act=karma&user=' . $user['id'] . '&type=' . $type)->sendHeaders();
                     } else {
                         echo '<div class="rmenu"><p>' . _t('Do you really want to delete comment?') . '<br>' .
                             '<a href="?act=karma&amp;mod=delete&amp;user=' . $user['id'] . '&amp;id=' . $id . '&amp;type=' . $type . '&amp;yes">' . _t('Delete') . '</a> | ' .
@@ -169,7 +172,7 @@ if ($set_karma['on']) {
                     $db->exec("DELETE FROM `karma_users` WHERE `karma_user` = " . $user['id']);
                     $db->query('OPTIMIZE TABLE `karma_users`');
                     $db->exec("UPDATE `users` SET `karma_plus` = '0', `karma_minus` = '0' WHERE `id` = " . $user['id']);
-                    header('Location: ?user=' . $user['id']);
+                    $response->redirect('?user=' . $user['id'])->sendHeaders();
                 } else {
                     echo '<div class="rmenu"><p>' . _t('Do you really want to delete all reviews about user?') . '<br>' .
                         '<a href="?act=karma&amp;mod=clean&amp;user=' . $user['id'] . '&amp;yes">' . _t('Delete') . '</a> | ' .

@@ -53,13 +53,16 @@ class Comments
 
     function __construct($arg = [])
     {
-        global $mod;
+        $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 
         /** @var \Psr\Container\ContainerInterface $container */
         $container = \App::getContainer();
         $this->tools = $container->get(Api\ToolsInterface::class);
         $this->db = $container->get(\PDO::class);
         $this->systemUser = $container->get(Api\UserInterface::class );
+
+        /** @var \Mobicms\Http\Response $response */
+        $response = $container->get(\Mobicms\Http\Response::class);
 
         /** @var \Mobicms\Checkpoint\UserConfig $userConfig */
         $userConfig = $this->systemUser->getConfig();
@@ -131,7 +134,7 @@ class Comments
                                     $this->item,
                                 ]);
 
-                                header('Location: ' . str_replace('&amp;', '&', $this->url));
+                                $response->redirect(str_replace('&amp;', '&', $this->url))->sendHeaders();
                             } else {
                                 echo $this->tools->displayError($message['error'], '<a href="' . $this->url . '&amp;mod=reply&amp;item=' . $this->item . '">' . _t('Back', 'system') . '</a>');
                             }
@@ -187,7 +190,7 @@ class Comments
                                     $this->item,
                                 ]);
 
-                                header('Location: ' . str_replace('&amp;', '&', $this->url));
+                                $response->redirect(str_replace('&amp;', '&', $this->url))->sendHeaders();
                             } else {
                                 echo $this->tools->displayError($message['error'], '<a href="' . $this->url . '&amp;mod=edit&amp;item=' . $this->item . '">' . _t('Back', 'system') . '</a>');
                             }
@@ -236,7 +239,8 @@ class Comments
                             // Обновляем счетчик комментариев
                             $this->msg_total(1);
                         }
-                        header('Location: ' . str_replace('&amp;', '&', $this->url));
+
+                        $response->redirect(str_replace('&amp;', '&', $this->url))->sendHeaders();
                     } else {
                         echo '<div class="phdr"><a href="' . $this->url . '"><b>' . $arg['title'] . '</b></a> | ' . _t('Delete', 'system') . '</div>' .
                             '<div class="rmenu"><p>' . _t('Do you really want to delete?', 'system') . '<br />' .
@@ -411,7 +415,6 @@ class Comments
         $message = isset($_POST['message']) ? mb_substr(trim($_POST['message']), 0, $this->max_lenght) : false;
         $code = isset($_POST['code']) ? intval($_POST['code']) : null;
         $code_chk = isset($_SESSION['code']) ? $_SESSION['code'] : null;
-        $translit = isset($_POST['translit']);
 
         // Проверяем код
         if ($code == $code_chk) {

@@ -11,7 +11,7 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $textl = htmlspecialchars($user['name']) . ': ' . _t('IP History');
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -31,7 +31,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 // Проверяем права доступа
 if (!$systemUser->rights && $systemUser->id != $user['id']) {
     echo $tools->displayError(_t('Access forbidden'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 

@@ -11,7 +11,7 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $headmod = 'userban';
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 $ban = isset($_GET['ban']) ? intval($_GET['ban']) : 0;
 
 /** @var Psr\Container\ContainerInterface $container */

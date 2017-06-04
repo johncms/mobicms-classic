@@ -10,8 +10,6 @@
 
 define('MOBICMS', 1);
 
-require('../system/bootstrap.php');
-
 $id = isset($_GET['id']) ? abs(intval($_GET['id'])) : 0;
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 
@@ -32,7 +30,7 @@ $db = $container->get(PDO::class);
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 $textl = _t('Password recovery');
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 function passgen($length)
 {
@@ -173,4 +171,4 @@ switch ($act) {
         break;
 }
 
-require('../system/end.php');
+require ROOT_PATH . 'system/end.php';

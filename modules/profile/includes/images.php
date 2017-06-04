@@ -11,7 +11,7 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $textl = _t('Edit Profile');
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -27,7 +27,7 @@ if (($systemUser->id != $user['id'] && $systemUser->rights < 7)
 ) {
     // Если не хватает прав, выводим ошибку
     echo $tools->displayError(_t('You cannot edit profile of higher administration'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
