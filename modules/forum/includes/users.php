@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -31,7 +31,7 @@ $topic_vote = $db->query("SELECT COUNT(*) FROM `cms_forum_vote` WHERE `type` = '
 
 if ($topic_vote == 0 || $systemUser->rights < 7) {
     echo $tools->displayError(_t('Wrong data'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 } else {
     $topic_vote = $db->query("SELECT `name`, `time`, `count` FROM `cms_forum_vote` WHERE `type` = '1' AND `topic` = '$id' LIMIT 1")->fetch();
@@ -65,4 +65,4 @@ if ($topic_vote == 0 || $systemUser->rights < 7) {
     echo '<p><a href="index.php?id=' . $id . '">' . _t('Go to Topic') . '</a></p>';
 }
 
-require('../system/end.php');
+require ROOT_PATH . 'system/end.php';

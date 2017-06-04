@@ -13,13 +13,15 @@ define('MOBICMS', 1);
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 
 $headmod = 'forumsearch';
-require('../system/bootstrap.php');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
+
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -35,7 +37,7 @@ $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
 $textl = _t('Forum search');
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Forum') . '</b></a> | ' . _t('Search') . '</div>';
 
 // Функция подсветки результатов запроса
@@ -52,7 +54,7 @@ switch ($act) {
         if ($systemUser->isValid()) {
             if (isset($_POST['submit'])) {
                 $db->exec("DELETE FROM `cms_users_data` WHERE `user_id` = '" . $systemUser->id . "' AND `key` = 'forum_search' LIMIT 1");
-                header('Location: search.php');
+                $response->redirect('.')->sendHeaders();
             } else {
                 echo '<form action="search.php?act=reset" method="post">' .
                     '<div class="rmenu">' .
@@ -227,4 +229,4 @@ switch ($act) {
         echo '<p>' . ($search ? '<a href="search.php">' . _t('New Search') . '</a><br />' : '') . '<a href="index.php">' . _t('Forum') . '</a></p>';
 }
 
-require('../system/end.php');
+require ROOT_PATH . 'system/end.php';

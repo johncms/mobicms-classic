@@ -22,6 +22,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Http\Request $request */
 $request = $container->get(Mobicms\Http\Request::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -35,9 +38,9 @@ if (!$id
     || isset($systemUser->ban['11'])
     || (!$systemUser->rights && $config['mod_forum'] == 3)
 ) {
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo $tools->displayError(_t('Access forbidden'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -85,18 +88,18 @@ function forum_link($m)
 $flood = $tools->antiflood();
 
 if ($flood) {
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo $tools->displayError(sprintf(_t('You cannot add the message so often<br>Please, wait %d sec.'), $flood) . ', <a href="index.php?id=' . $id . '&amp;start=' . $tools->getPgStart() . '">' . _t('Back') . '</a>');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
 $req_r = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 'r' LIMIT 1");
 
 if (!$req_r->rowCount()) {
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo $tools->displayError(_t('Wrong data'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -224,20 +227,20 @@ if (isset($_POST['submit'])
         ");
 
         if ($_POST['addfiles'] == 1) {
-            header("Location: index.php?id=$postid&act=addfile");
+            $response->redirect("?id=$postid&act=addfile")->sendHeaders();
         } else {
-            header("Location: index.php?id=$rid");
+            $response->redirect("?id=$rid")->sendHeaders();
         }
     } else {
         // Выводим сообщение об ошибке
-        require('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
         echo $tools->displayError($error, '<a href="index.php?act=nt&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 } else {
     $res_c = $db->query("SELECT * FROM `forum` WHERE `id` = '" . $res_r['refid'] . "'")->fetch();
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     $msg_pre = $tools->checkout($msg, 1, 1);
     $msg_pre = $tools->smilies($msg_pre, $systemUser->rights ? 1 : 0);
     $msg_pre = preg_replace('#\[c\](.*?)\[/c\]#si', '<div class="quote">\1</div>', $msg_pre);

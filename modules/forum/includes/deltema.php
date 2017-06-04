@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -24,9 +27,9 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     if (!$id) {
-        require('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('Wrong data'));
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 
@@ -34,9 +37,9 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     $req = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 't'");
 
     if (!$req->rowCount()) {
-        require('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('Topic has been deleted or does not exists'));
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 
@@ -65,10 +68,11 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
             $db->exec("UPDATE `forum` SET `close` = '1', `close_who` = '" . $systemUser->name . "' WHERE `id` = '$id'");
             $db->exec("UPDATE `cms_forum_files` SET `del` = '1' WHERE `topic` = '$id'");
         }
-        header('Location: index.php?id=' . $res['refid']);
+
+        $response->redirect('?id=' . $res['refid'])->sendHeaders();
     } else {
         // Меню выбора режима удаления темы
-        require('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
         echo '<div class="phdr"><a href="index.php?id=' . $id . '"><b>' . _t('Forum') . '</b></a> | ' . _t('Delete Topic') . '</div>' .
             '<div class="rmenu"><form method="post" action="index.php?act=deltema&amp;id=' . $id . '">' .
             '<p><h3>' . _t('Do you really want to delete?') . '</h3>' .

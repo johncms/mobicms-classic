@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -24,19 +27,19 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     if (empty($_GET['id'])) {
-        require('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('Wrong data'));
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 
     if ($db->query("SELECT COUNT(*) FROM `forum` WHERE `id` = '" . $id . "' AND `type` = 't'")->fetchColumn()) {
         $db->exec("UPDATE `forum` SET  `vip` = '" . (isset($_GET['vip']) ? '1' : '0') . "' WHERE `id` = '$id'");
-        header('Location: index.php?id=' . $id);
+        $response->redirect('?id=' . $id)->sendHeaders();
     } else {
-        require('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('Wrong data'));
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 }

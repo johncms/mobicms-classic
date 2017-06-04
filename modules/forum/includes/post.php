@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -32,7 +32,7 @@ $start = $tools->getPgStart();
 
 if (empty($_GET['id'])) {
     echo $tools->displayError(_t('Wrong data'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 

@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -24,18 +27,18 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     if (!$id) {
-        require('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('Wrong data'));
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 
     $typ = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 't'");
 
     if (!$typ->rowCount()) {
-        require('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('Wrong data'));
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 
@@ -43,18 +46,18 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
         $razd = isset($_POST['razd']) ? abs(intval($_POST['razd'])) : false;
 
         if (!$razd) {
-            require('../system/head.php');
+            require ROOT_PATH . 'system/head.php';
             echo $tools->displayError(_t('Wrong data'));
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
         $typ1 = $db->query("SELECT * FROM `forum` WHERE `id` = '$razd' AND `type` = 'r'");
 
         if (!$typ1->rowCount()) {
-            require('../system/head.php');
+            require ROOT_PATH . 'system/head.php';
             echo $tools->displayError(_t('Wrong data'));
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -62,11 +65,12 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
             `refid` = '$razd'
             WHERE `id` = '$id'
         ");
-        header("Location: index.php?id=$id");
+
+        $response->redirect('?id=' . $id)->sendHeaders();
     } else {
         // Перенос темы
         $ms = $typ->fetch();
-        require('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
 
         if (empty($_GET['other'])) {
             $rz1 = $db->query("SELECT * FROM `forum` WHERE id='" . $ms['refid'] . "'")->fetch();

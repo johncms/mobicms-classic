@@ -11,7 +11,7 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $headmod = 'forumfiles';
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -84,7 +84,7 @@ if ($c || $s || $t) {
         $caption .= $res['text'];
     } else {
         echo $tools->displayError(_t('Wrong data'), '<a href="index.php">' . _t('Forum') . '</a>');
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 }

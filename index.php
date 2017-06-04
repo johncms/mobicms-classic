@@ -44,6 +44,11 @@ $router->respond(['GET', 'POST'], '@^/album/', function () {
     include ROOT_PATH . 'modules/album/index.php';
 });
 
+// Форум
+$router->respond(['GET', 'POST'], '@^/forum/', function () {
+    include ROOT_PATH . 'modules/forum/index.php';
+});
+
 // Гостевая
 $router->respond(['GET', 'POST'], '@^/guestbook/', function () {
     include ROOT_PATH . 'modules/guestbook/index.php';

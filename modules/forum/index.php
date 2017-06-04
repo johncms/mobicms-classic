@@ -10,8 +10,6 @@
 
 define('MOBICMS', 1);
 
-require('../system/bootstrap.php');
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
@@ -131,9 +129,9 @@ if (!$config->mod_forum && $systemUser->rights < 7) {
 }
 
 if ($error) {
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo '<div class="rmenu"><p>' . $error . '</p></div>';
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -188,10 +186,10 @@ $mods = [
     'curators',
 ];
 
-if ($act && ($key = array_search($act, $mods)) !== false && file_exists('includes/' . $mods[$key] . '.php')) {
-    require('includes/' . $mods[$key] . '.php');
+if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/includes/' . $mods[$key] . '.php')) {
+    require __DIR__ . '/includes/' . $mods[$key] . '.php';
 } else {
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
 
     // Если форум закрыт, то для Админов выводим напоминание
     if (!$config->mod_forum) {
@@ -217,7 +215,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
         if (!$type->rowCount()) {
             // Если темы не существует, показываем ошибку
             echo $tools->displayError(_t('Topic has been deleted or does not exists'), '<a href="index.php">' . _t('Forum') . '</a>');
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -434,7 +432,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                 // Если тема помечена для удаления, разрешаем доступ только администрации
                 if ($systemUser->rights < 6 && $type1['close'] == 1) {
                     echo '<div class="rmenu"><p>' . _t('Topic deleted') . '<br><a href="?id=' . $type1['refid'] . '">' . _t('Go to Section') . '</a></p></div>';
-                    require('../system/end.php');
+                    require ROOT_PATH . 'system/end.php';
                     exit;
                 }
 
@@ -490,7 +488,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                         while ($vote = $vote_result->fetch()) {
                             $count_vote = $topic_vote['count'] ? round(100 / $topic_vote['count'] * $vote['count']) : 0;
                             echo $tools->checkout($vote['name'], 0, 1) . ' [' . $vote['count'] . ']<br />';
-                            echo '<img src="vote_img.php?img=' . $count_vote . '" alt="' . _t('Rating') . ': ' . $count_vote . '%" /><br />';
+                            echo '<img src="' . $config->homeurl . '/assets/modules/forum/vote_img.php?img=' . $count_vote . '" alt="' . _t('Rating') . ': ' . $count_vote . '%" /><br />';
                         }
 
                         echo '</small></div><div class="bmenu">' . _t('Total votes') . ': ';
@@ -623,7 +621,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
                     if (file_exists(('../files/users/avatar/' . $res['user_id'] . '.png'))) {
                         echo '<img src="../files/users/avatar/' . $res['user_id'] . '.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
                     } else {
-                        echo '<img src="../images/empty.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
+                        echo '<img src="../assets/images/empty.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
                     }
                     echo '</td><td>';
 
@@ -937,4 +935,4 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
     }
 }
 echo $_SERVER['base'];
-require_once('../system/end.php');
+require ROOT_PATH . 'system/end.php';

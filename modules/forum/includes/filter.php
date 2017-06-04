@@ -10,10 +10,13 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
+
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
 
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
@@ -21,7 +24,7 @@ $start = $tools->getPgStart();
 
 if (!$id) {
     echo $tools->displayError(_t('Wrong data'), '<a href="index.php">' . _t('Forum') . '</a>');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -30,7 +33,7 @@ switch ($do) {
         // Удаляем фильтр
         unset($_SESSION['fsort_id']);
         unset($_SESSION['fsort_users']);
-        header("Location: index.php?id=$id");
+        $response->redirect('?id=' . $id)->sendHeaders();
         break;
 
     case 'set':
@@ -39,7 +42,7 @@ switch ($do) {
 
         if (empty($_POST['users'])) {
             echo '<div class="rmenu"><p>' . _t('You have not selected any author') . '<br /><a href="index.php?act=filter&amp;id=' . $id . '&amp;start=' . $start . '">' . _t('Back') . '</a></p></div>';
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -51,7 +54,7 @@ switch ($do) {
 
         $_SESSION['fsort_id'] = $id;
         $_SESSION['fsort_users'] = serialize($array);
-        header("Location: index.php?id=$id");
+        $response->redirect('?id=' . $id)->sendHeaders();
         break;
 
     default :

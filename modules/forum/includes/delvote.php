@@ -24,11 +24,11 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     $topic_vote = $db->query("SELECT COUNT(*) FROM `cms_forum_vote` WHERE `type`='1' AND `topic` = '$id'")->fetchColumn();
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
 
     if ($topic_vote == 0) {
         echo $tools->displayError(_t('Wrong data'));
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 
@@ -43,6 +43,4 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
         echo '<a href="' . htmlspecialchars(getenv("HTTP_REFERER")) . '">' . _t('Cancel') . '</a></p>';
         $_SESSION['prd'] = htmlspecialchars(getenv("HTTP_REFERER"));
     }
-} else {
-    header('location: ../index.php?err');
 }

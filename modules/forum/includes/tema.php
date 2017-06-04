@@ -13,7 +13,7 @@ defined('MOBICMS') or die('Error: restricted access');
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = App::getContainer()->get(Mobicms\Api\ToolsInterface::class);
 
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 $delf = opendir('../files/forum/topics');
 $tm = [];
 
@@ -37,7 +37,7 @@ for ($it = 0; $it < $totalt; $it++) {
 
 if (!$id) {
     echo $tools->displayError(_t('Wrong data'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -57,7 +57,7 @@ $req = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 't' AND
 
 if (!$req->rowCount()) {
     echo $tools->displayError(_t('Wrong data'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 

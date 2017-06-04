@@ -17,6 +17,9 @@ if ($id) {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
+    /** @var Mobicms\Http\Response $response */
+    $response = $container->get(Mobicms\Http\Response::class);
+
     /** @var Mobicms\Api\ToolsInterface $tools */
     $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -31,7 +34,7 @@ if ($id) {
         if (file_exists('../files/forum/attach/' . $res['filename'])) {
             $dlcount = $res['dlcount'] + 1;
             $db->exec("UPDATE `cms_forum_files` SET  `dlcount` = '$dlcount' WHERE `id` = '$id'");
-            header('location: ../files/forum/attach/' . $res['filename']);
+            $response->redirect('../files/forum/attach/' . $res['filename'])->sendHeaders();
         } else {
             $error = true;
         }
@@ -40,11 +43,9 @@ if ($id) {
     }
 
     if ($error) {
-        require('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('File does not exist'), '<a href="index.php">' . _t('Forum') . '</a>');
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
-} else {
-    header('location: index.php');
 }

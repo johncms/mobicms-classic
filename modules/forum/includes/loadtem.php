@@ -13,13 +13,16 @@ defined('MOBICMS') or die('Error: restricted access');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if (empty($_GET['n'])) {
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo $tools->displayError(_t('Wrong data'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -38,9 +41,9 @@ while ($f = readdir($o)) {
 $tt = count($a);
 
 if (!in_array($n, $b)) {
-    require_once('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo $tools->displayError(_t('Wrong data'));
-    require_once('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -48,6 +51,6 @@ for ($i = 0; $i < $tt; $i++) {
     $tf = pathinfo($a[$i], PATHINFO_EXTENSION);
     $tf1 = str_replace(".$tf", "", $a[$i]);
     if ($n == $tf1) {
-        header("Location: ../files/forum/topics/$n.$tf");
+        $response->redirect("../files/forum/topics/$n.$tf")->sendHeaders();
     }
 }

@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -34,7 +34,7 @@ $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['pa
 
 if (!$id || !$systemUser->isValid()) {
     echo $tools->displayError(_t('Wrong data'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -43,14 +43,14 @@ $res = $db->query("SELECT * FROM `forum` WHERE `id` = '$id'")->fetch();
 
 if ($res['type'] != 'm' || $res['user_id'] != $systemUser->id) {
     echo $tools->displayError(_t('Wrong data'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
 // Проверяем лимит времени, отведенный для выгрузки файла
 if ($res['time'] < (time() - 3600)) {
     echo $tools->displayError(_t('The time allotted for the file upload has expired'), '<a href="index.php?id=' . $res['refid'] . '&amp;page=' . $page . '">' . _t('Back') . '</a>');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -160,7 +160,7 @@ if (isset($_POST['submit'])) {
             echo $tools->displayError($error, '<a href="index.php?act=addfile&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
         }
     } else {
-        echo  $tools->displayError(_t('Error uploading file'), '<a href="index.php?act=addfile&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
+        echo $tools->displayError(_t('Error uploading file'), '<a href="index.php?act=addfile&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
     }
 
     $pa2 = $db->query("SELECT `id` FROM `forum` WHERE `type` = 'm' AND `refid` = '" . $res['refid'] . "'")->rowCount();

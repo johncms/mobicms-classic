@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -24,11 +27,11 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     $topic_vote = $db->query("SELECT COUNT(*) FROM `cms_forum_vote` WHERE `type`='1' AND `topic`='$id'")->fetchColumn();
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
 
     if ($topic_vote == 0) {
         echo $tools->displayError(_t('Wrong data'));
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 
@@ -38,7 +41,7 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
         $countvote = $db->query("SELECT COUNT(*) FROM `cms_forum_vote` WHERE `type` = '2' AND `topic` = '$id'")->fetchColumn();
 
         if ($countvote <= 2) {
-            header('location: ?act=editvote&id=' . $id . '');
+            $response->redirect('?act=editvote&id=' . $id)->sendHeaders();
         }
 
         if ($totalvote != 0) {
@@ -49,14 +52,14 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
                 $totalcount = $topic_vote['count'] - $countus;
                 $db->exec("UPDATE `cms_forum_vote` SET  `count` = '$totalcount'   WHERE `type` = '1' AND `topic` = '$id'");
                 $db->exec("DELETE FROM `cms_forum_vote_users` WHERE `vote` = '$vote'");
-                header('location: ?act=editvote&id=' . $id . '');
+                $response->redirect('?act=editvote&id=' . $id)->sendHeaders();
             } else {
                 echo '<div class="rmenu"><p>' . _t('Do you really want to delete the answer?') . '<br />' .
                     '<a href="index.php?act=editvote&amp;id=' . $id . '&amp;vote=' . $vote . '&amp;delvote&amp;yes">' . _t('Delete') . '</a><br />' .
                     '<a href="' . htmlspecialchars(getenv("HTTP_REFERER")) . '">' . _t('Cancel') . '</a></p></div>';
             }
         } else {
-            header('location: ?act=editvote&id=' . $id . '');
+            $response->redirect('?act=editvote&id=' . $id)->sendHeaders();
         }
     } else {
         if (isset($_POST['submit'])) {

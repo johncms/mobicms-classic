@@ -10,13 +10,16 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
+
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -31,7 +34,7 @@ $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['pa
 
 if (!$systemUser->isValid() || !$id) {
     echo $tools->displayError(_t('Wrong data'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -123,7 +126,7 @@ if (!$error) {
                 $db->exec("UPDATE `cms_forum_files` SET `del` = '0' WHERE `post` = '$id'");
             }
 
-            header('Location: ' . $link);
+            $response->redirect($link)->sendHeaders();
             break;
 
         case 'delfile':
@@ -143,11 +146,11 @@ if (!$error) {
 
                 if ($req_f->rowCount()) {
                     $db->exec("DELETE FROM `cms_forum_files` WHERE `id` = " . $fid);
-                    unlink('../files/forum/attach/' . $res_f['filename']);
-                    header('Location: ' . $link);
+                    unlink(ROOT_PATH . 'files/forum/attach/' . $res_f['filename']);
+                    $response->redirect($link)->sendHeaders();
                 } else {
                     echo $tools->displayError(_t('You cannot edit your posts after 5 minutes') . '<br /><a href="' . $link . '">' . _t('Back') . '</a>');
-                    require('../system/end.php');
+                    require ROOT_PATH . 'system/end.php';
                     exit;
                 }
             }
@@ -184,9 +187,9 @@ if (!$error) {
 
                 if ($posts < 2) {
                     // Пересылка на удаление всей темы
-                    header('Location: index.php?act=deltema&id=' . $res['refid']);
+                    $response->redirect('?act=deltema&id=' . $res['refid'])->sendHeaders();
                 } else {
-                    header('Location: index.php?id=' . $res['refid'] . '&page=' . $page);
+                    $response->redirect('?id=' . $res['refid'] . '&page=' . $page)->sendHeaders();
                 }
             } else {
                 // Скрытие поста
@@ -201,10 +204,10 @@ if (!$error) {
                     // Если это был последний пост темы, то скрываем саму тему
                     $res_l = $db->query("SELECT `refid` FROM `forum` WHERE `id` = '" . $res['refid'] . "'")->fetch();
                     $db->exec("UPDATE `forum` SET `close` = '1', `close_who` = '" . $systemUser->name . "' WHERE `id` = '" . $res['refid'] . "' AND `type` = 't'");
-                    header('Location: index.php?id=' . $res_l['refid']);
+                    $response->redirect('?id=' . $res_l['refid'])->sendHeaders();
                 } else {
                     $db->exec("UPDATE `forum` SET `close` = '1', `close_who` = '" . $systemUser->name . "' WHERE `id` = '$id'");
-                    header('Location: index.php?id=' . $res['refid'] . '&page=' . $page);
+                    $response->redirect('?id=' . $res['refid'] . '&page=' . $page)->sendHeaders();
                 }
             }
             break;
@@ -236,7 +239,7 @@ if (!$error) {
             if (isset($_POST['submit'])) {
                 if (empty($_POST['msg'])) {
                     echo $tools->displayError(_t('You have not entered the message'), '<a href="index.php?act=editpost&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
-                    require('../system/end.php');
+                    require ROOT_PATH . 'system/end.php';
                     exit;
                 }
 
@@ -255,7 +258,7 @@ if (!$error) {
                     $id,
                 ]);
 
-                header('Location: index.php?id=' . $res['refid'] . '&page=' . $page);
+                $response->redirect('?id=' . $res['refid'] . '&page=' . $page)->sendHeaders();
             } else {
                 $msg_pre = $tools->checkout($msg, 1, 1);
                 $msg_pre = $tools->smilies($msg_pre, $systemUser->rights ? 1 : 0);

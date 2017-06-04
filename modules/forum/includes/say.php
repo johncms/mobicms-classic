@@ -22,6 +22,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Http\Request $request */
 $request = $container->get(Mobicms\Http\Request::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -41,9 +44,9 @@ if (!$id
     || isset($systemUser->ban[11])
     || (!$systemUser->rights && $config['mod_forum'] == 3)
 ) {
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo $tools->displayError(_t('Access forbidden'));
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -91,9 +94,9 @@ function forum_link($m)
 $flood = $tools->antiflood();
 
 if ($flood) {
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo $tools->displayError(sprintf(_t('You cannot add the message so often<br>Please, wait %d sec.'), $flood), '<a href="index.php?id=' . $id . '&amp;start=' . $start . '">' . _t('Back') . '</a>');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -105,9 +108,9 @@ switch ($type1['type']) {
         // Добавление простого сообщения
         if (($type1['edit'] == 1 || $type1['close'] == 1) && $systemUser->rights < 7) {
             // Проверка, закрыта ли тема
-            require('../system/head.php');
+            require ROOT_PATH . 'system/head.php';
             echo $tools->displayError(_t('You cannot write in a closed topic'), '<a href="index.php?id=' . $id . '">' . _t('Back') . '</a>');
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -123,9 +126,9 @@ switch ($type1['type']) {
         ) {
             // Проверяем на минимальную длину
             if (mb_strlen($msg) < 4) {
-                require('../system/head.php');
+                require ROOT_PATH . 'system/head.php';
                 echo $tools->displayError(_t('Text is too short'), '<a href="index.php?id=' . $id . '">' . _t('Back') . '</a>');
-                require('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             }
 
@@ -135,9 +138,9 @@ switch ($type1['type']) {
             if ($req->rowCount()) {
                 $res = $req->fetch();
                 if ($msg == $res['text']) {
-                    require('../system/head.php');
+                    require ROOT_PATH . 'system/head.php';
                     echo $tools->displayError(_t('Message already exists'), '<a href="index.php?id=' . $id . '&amp;start=' . $start . '">' . _t('Back') . '</a>');
-                    require('../system/end.php');
+                    require ROOT_PATH . 'system/end.php';
                     exit;
                 }
             }
@@ -229,17 +232,17 @@ switch ($type1['type']) {
 
             if (isset($_POST['addfiles'])) {
                 if ($update) {
-                    header("Location: index.php?id=" . $res['id'] . "&act=addfile");
+                    $response->redirect('?id=' . $res['id'] . '&act=addfile')->sendHeaders();
                 } else {
-                    header("Location: index.php?id=" . $fadd . "&act=addfile");
+                    $response->redirect('?id=' . $fadd . '&act=addfile')->sendHeaders();
                 }
             } else {
-                header("Location: index.php?id=" . $id . "&page=" . $page);
+                $response->redirect('?id=' . $id . '&page=' . $page)->sendHeaders();
             }
             exit;
 }
 else {
-    require('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     $msg_pre = $tools->checkout($msg, 1, 1);
     $msg_pre = $tools->smilies($msg_pre, $systemUser->rights ? 1 : 0);
     $msg_pre = preg_replace('#\[c\](.*?)\[/c\]#si', '<div class="quote">\1</div>', $msg_pre);
@@ -288,16 +291,16 @@ case
         $th1 = $db->query("SELECT * FROM `forum` WHERE `id` = '$th'")->fetch();
 
         if (($th1['edit'] == 1 || $th1['close'] == 1) && $systemUser->rights < 7) {
-            require('../system/head.php');
+            require ROOT_PATH . 'system/head.php';
             echo $tools->displayError(_t('You cannot write in a closed topic'), '<a href="index.php?id=' . $th1['id'] . '">' . _t('Back') . '</a>');
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
         if ($type1['user_id'] == $systemUser->id) {
-            require('../system/head.php');
+            require ROOT_PATH . 'system/head.php';
             echo $tools->displayError(_t('You can not reply to your own message'), '<a href="index.php?id=' . $th1['id'] . '">' . _t('Back') . '</a>');
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -340,17 +343,17 @@ case
             && $_POST['token'] == $_SESSION['token']
         ) {
             if (empty($_POST['msg'])) {
-                require('../system/head.php');
+                require ROOT_PATH . 'system/head.php';
                 echo $tools->displayError(_t('You have not entered the message'), '<a href="index.php?act=say&amp;id=' . $th . (isset($_GET['cyt']) ? '&amp;cyt' : '') . '">' . _t('Repeat') . '</a>');
-                require('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             }
 
             // Проверяем на минимальную длину
             if (mb_strlen($msg) < 4) {
-                require('../system/head.php');
+                require ROOT_PATH . 'system/head.php';
                 echo $tools->displayError(_t('Text is too short'), '<a href="index.php?id=' . $id . '">' . _t('Back') . '</a>');
-                require('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             }
 
@@ -361,9 +364,9 @@ case
                 $res = $req->fetch();
 
                 if ($msg == $res['text']) {
-                    require('../system/head.php');
+                    require ROOT_PATH . 'system/head.php';
                     echo $tools->displayError(_t('Message already exists'), '<a href="index.php?id=' . $th . '&amp;start=' . $start . '">' . _t('Back') . '</a>');
-                    require('../system/end.php');
+                    require ROOT_PATH . 'system/end.php';
                     exit;
                 }
             }
@@ -420,14 +423,14 @@ case
             $page = $set_forum['upfp'] ? 1 : ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `refid` = '$th'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'"))->fetchColumn() / $userConfig->kmess);
 
             if (isset($_POST['addfiles'])) {
-                header("Location: index.php?id=$fadd&act=addfile");
+                $response->redirect("?id=$fadd&act=addfile")->sendHeaders();
             } else {
-                header("Location: index.php?id=$th&page=$page");
+                $response->redirect("?id=$th&page=$page")->sendHeaders();
             }
             exit;
         } else {
             $textl = _t('Forum');
-            require('../system/head.php');
+            require ROOT_PATH . 'system/head.php';
             $qt = " $type1[text]";
             $msg_pre = $tools->checkout($msg, 1, 1);
             $msg_pre = $tools->smilies($msg_pre, $systemUser->rights ? 1 : 0);
@@ -475,7 +478,7 @@ case
         break;
 
     default:
-        require('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('Topic has been deleted or does not exists'), '<a href="index.php">' . _t('Forum') . '</a>');
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
 }

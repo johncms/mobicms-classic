@@ -16,11 +16,14 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
 if (($systemUser->rights != 3 && $systemUser->rights < 6) || !$id) {
-    header('Location: index.php');
+    $response->redirect('.')->sendHeaders();
     exit;
 }
 
@@ -32,4 +35,4 @@ if ($db->query("SELECT COUNT(*) FROM `forum` WHERE `id` = '$id' AND `type` = 't'
     }
 }
 
-header("Location: index.php?id=$id");
+$response->redirect('?id=' . $id)->sendHeaders();

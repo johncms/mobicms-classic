@@ -12,13 +12,16 @@ defined('MOBICMS') or die('Error: restricted access');
 
 $textl = _t('Who in Forum');
 $headmod = $id ? 'forum,' . $id : 'forumwho';
-require_once('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
+
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -31,7 +34,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 $start = $tools->getPgStart();
 
 if (!$systemUser->isValid()) {
-    header('Location: index.php');
+    $response->redirect('.')->sendHeaders();
     exit;
 }
 
@@ -73,7 +76,7 @@ if ($id) {
             echo '<div class="menu"><p>' . _t('The list is empty') . '</p></div>';
         }
     } else {
-        header('Location: index.php');
+        $response->redirect('.')->sendHeaders();
     }
 
     echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';

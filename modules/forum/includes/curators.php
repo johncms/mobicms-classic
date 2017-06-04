@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -30,7 +30,7 @@ if ($systemUser->rights >= 7) {
 
     if (!$req->rowCount() || $systemUser->rights < 7) {
         echo $tools->displayError(_t('Topic has been deleted or does not exists'));
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 
