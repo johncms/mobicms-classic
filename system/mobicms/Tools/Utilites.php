@@ -329,7 +329,7 @@ class Utilites implements ToolsInterface
             if (file_exists((ROOT_PATH . 'files/users/avatar/' . $user['id'] . '.png'))) {
                 $out .= '<img src="' . $homeurl . '/files/users/avatar/' . $user['id'] . '.png" width="32" height="32" alt="" />&#160;';
             } else {
-                $out .= '<img src="' . $homeurl . '/images/empty.png" width="32" height="32" alt="" />&#160;';
+                $out .= '<img src="' . $homeurl . '/assets/images/empty.png" width="32" height="32" alt="" />&#160;';
             }
 
             $out .= '</td><td>';
