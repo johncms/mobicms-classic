@@ -59,6 +59,11 @@ $router->respond(['GET', 'POST'], '@^/news/', function () {
     include ROOT_PATH . 'modules/news/index.php';
 });
 
+// Регистрация
+$router->respond(['GET', 'POST'], '@^/registration/', function () {
+    include ROOT_PATH . 'modules/registration/index.php';
+});
+
 // RSS
 $router->respond('GET', '/rss/', function () {
     include ROOT_PATH . 'modules/rss/index.php';
