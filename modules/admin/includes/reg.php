@@ -28,7 +28,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 // Проверяем права доступа
 if ($systemUser->rights < 6) {
     echo _t('Access denied');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -39,7 +39,7 @@ switch ($mod) {
         // Подтверждаем регистрацию выбранного пользователя
         if (!$id) {
             echo $tools->displayError(_t('Wrong data'));
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -57,7 +57,7 @@ switch ($mod) {
         // Удаляем регистрацию выбранного пользователя
         if (!$id) {
             echo $tools->displayError(_t('Wrong data'));
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -94,7 +94,7 @@ switch ($mod) {
                 '<a href="index.php?act=reg">' . _t('Continue') . '</a></p></div>';
         } else {
             echo $tools->displayError(_t('Wrong data'));
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
         break;

@@ -25,7 +25,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 // Проверяем права доступа
 if ($systemUser->rights < 9) {
     echo _t('Access denied');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 

@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -28,7 +31,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 // Проверяем права доступа
 if ($systemUser->rights < 7) {
     echo _t('Access denied');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -51,7 +54,7 @@ switch ($mod) {
         // Удаление категории, или раздела
         if (!$id) {
             echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -71,7 +74,7 @@ switch ($mod) {
 
                         if (!$category || $category == $id) {
                             echo $tools->displayError(_t('Wrong data'));
-                            require('../system/end.php');
+                            require ROOT_PATH . 'system/end.php';
                             exit;
                         }
 
@@ -79,7 +82,7 @@ switch ($mod) {
 
                         if (!$check) {
                             echo $tools->displayError(_t('Wrong data'));
-                            require('../system/end.php');
+                            require ROOT_PATH . 'system/end.php';
                             exit;
                         }
 
@@ -125,7 +128,7 @@ switch ($mod) {
 
                         if (!$subcat || $subcat == $id) {
                             echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
-                            require('../system/end.php');
+                            require ROOT_PATH . 'system/end.php';
                             exit;
                         }
 
@@ -133,7 +136,7 @@ switch ($mod) {
 
                         if (!$check) {
                             echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
-                            require('../system/end.php');
+                            require ROOT_PATH . 'system/end.php';
                             exit;
                         }
 
@@ -145,7 +148,7 @@ switch ($mod) {
                     } elseif (isset($_POST['delete'])) {
                         if ($systemUser->rights != 9) {
                             echo $tools->displayError(_t('Access forbidden'));
-                            require_once('../system/end.php');
+                            require_once ROOT_PATH . 'system/end.php';
                             exit;
                         }
 
@@ -219,7 +222,8 @@ switch ($mod) {
             }
             echo '<div class="phdr"><a href="index.php?act=forum&amp;mod=cat">' . _t('Back') . '</a></div>';
         } else {
-            header('Location: index.php?act=forum&mod=cat');
+            $response->header('Location', '?act=forum&mod=cat');
+            $response->send();
         }
 
         break;
@@ -235,7 +239,7 @@ switch ($mod) {
                 $cat_name = $res['text'];
             } else {
                 echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
-                require('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             }
         }
@@ -290,7 +294,8 @@ switch ($mod) {
                     $sort,
                 ]);
 
-                header('Location: index.php?act=forum&mod=cat' . ($id ? '&id=' . $id : ''));
+                $response->header('Location', '?act=forum&mod=cat' . ($id ? '&id=' . $id : ''));
+                $response->send();
             } else {
                 // Выводим сообщение об ошибках
                 echo $tools->displayError($error);
@@ -329,7 +334,7 @@ switch ($mod) {
         // Редактирование выбранной категории, или раздела
         if (!$id) {
             echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -392,7 +397,9 @@ switch ($mod) {
                             // Меняем категорию для прикрепленных файлов
                             $db->exec("UPDATE `cms_forum_files` SET `cat` = '$category' WHERE `cat` = '" . $res['refid'] . "'");
                         }
-                        header('Location: index.php?act=forum&mod=cat' . ($res['type'] == 'r' ? '&id=' . $res['refid'] : ''));
+
+                        $response->header('Location', '?act=forum&mod=cat' . ($res['type'] == 'r' ? '&id=' . $res['refid'] : ''));
+                        $response->send();
                     } else {
                         // Выводим сообщение об ошибках
                         echo $tools->displayError($error);
@@ -429,10 +436,12 @@ switch ($mod) {
                         '<div class="phdr"><a href="index.php?act=forum&amp;mod=cat' . ($res['type'] == 'r' ? '&amp;id=' . $res['refid'] : '') . '">' . _t('Back') . '</a></div>';
                 }
             } else {
-                header('Location: index.php?act=forum&mod=cat');
+                $response->header('Location', '?act=forum&mod=cat');
+                $response->send();
             }
         } else {
-            header('Location: index.php?act=forum&mod=cat');
+            $response->header('Location', '?act=forum&mod=cat');
+            $response->send();
         }
         break;
 
@@ -456,7 +465,8 @@ switch ($mod) {
             }
         }
 
-        header('Location: index.php?act=forum&mod=cat' . ($res1['type'] == 'r' ? '&id=' . $res1['refid'] : ''));
+        $response->header('Location', '?act=forum&mod=cat' . ($res1['type'] == 'r' ? '&id=' . $res1['refid'] : ''));
+        $response->send();
         break;
 
     case 'down':
@@ -478,7 +488,9 @@ switch ($mod) {
                 }
             }
         }
-        header('Location: index.php?act=forum&mod=cat' . ($res1['type'] == 'r' ? '&id=' . $res1['refid'] : ''));
+
+        $response->header('Location', '?act=forum&mod=cat' . ($res1['type'] == 'r' ? '&id=' . $res1['refid'] : ''));
+        $response->send();
         break;
 
     case 'cat':
@@ -569,7 +581,7 @@ switch ($mod) {
         if (isset($_POST['deltopic'])) {
             if ($systemUser->rights != 9) {
                 echo $tools->displayError(_t('Access forbidden'));
-                require('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             }
 
@@ -588,10 +600,11 @@ switch ($mod) {
                 // Удаляем посты
                 $db->exec("DELETE FROM `forum` WHERE `type` = 'm' AND `refid` = " . $res['id']);
             }
+
             // Удаляем темы
             $db->exec("DELETE FROM `forum` WHERE `type` = 't' AND `close` = '1' $sort");
-
-            header('Location: index.php?act=forum&mod=htopics');
+            $response->header('Location', '?act=forum&mod=htopics');
+            $response->send();
         } else {
             $total = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 't' AND `close` = '1' $sort")->fetchColumn();
 
@@ -666,7 +679,7 @@ switch ($mod) {
         if (isset($_POST['delpost'])) {
             if ($systemUser->rights != 9) {
                 echo $tools->displayError(_t('Access forbidden'));
-                require('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             }
 
@@ -686,8 +699,8 @@ switch ($mod) {
 
             // Удаляем посты
             $db->exec("DELETE FROM `forum` WHERE `type` = 'm' AND `close` = '1' $sort");
-
-            header('Location: index.php?act=forum&mod=hposts');
+            $response->header('Location', '?act=forum&mod=hposts');
+            $response->send();
         } else {
             $total = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `close` = '1' $sort")->fetchColumn();
 

@@ -16,8 +16,6 @@ $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 $do = isset($_REQUEST['do']) ? trim($_REQUEST['do']) : false;
 
-require('../system/bootstrap.php');
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
@@ -34,13 +32,13 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 // Проверяем права доступа
 if ($systemUser->rights < 1) {
     echo _t('Access denied');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
 $headmod = 'admin';
 $textl = _t('Admin Panel');
-require('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 $array = [
     'forum',
@@ -67,8 +65,8 @@ $array = [
     'usr_del',
 ];
 
-if ($act && ($key = array_search($act, $array)) !== false && file_exists('includes/' . $array[$key] . '.php')) {
-    require('includes/' . $array[$key] . '.php');
+if (!empty($act) && in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
+    require(__DIR__ . '/includes/' . $act . '.php');
 } else {
     $regtotal = $db->query("SELECT COUNT(*) FROM `users` WHERE `preg`='0'")->fetchColumn();
     $bantotal = $db->query("SELECT COUNT(*) FROM `cms_ban_users` WHERE `ban_time` > '" . time() . "'")->fetchColumn();
@@ -131,4 +129,4 @@ if ($act && ($key = array_search($act, $array)) !== false && file_exists('includ
     echo '<div class="phdr" style="font-size: x-small"><b>mobiCMS 0.2.0</b></div>';
 }
 
-require('../system/end.php');
+require ROOT_PATH . 'system/end.php';

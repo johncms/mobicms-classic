@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -25,7 +28,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 // Проверяем права доступа
 if ($systemUser->rights < 9) {
     echo _t('Access denied');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -95,7 +98,8 @@ switch ($mod) {
             }
         }
 
-        header('Location: index.php?act=counters');
+        $response->header('Location', '?act=counters');
+        $response->send();
         break;
 
     case 'down':
@@ -117,14 +121,16 @@ switch ($mod) {
                 }
             }
         }
-        header('Location: index.php?act=counters');
+
+        $response->header('Location', '?act=counters');
+        $response->send();
         break;
 
     case 'del':
         // Удаление счетчика
         if (!$id) {
             echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=counters">' . _t('Back') . '</a>');
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -134,7 +140,7 @@ switch ($mod) {
             if (isset($_POST['submit'])) {
                 $db->exec('DELETE FROM `cms_counters` WHERE `id` = ' . $id);
                 echo '<p>' . _t('Counter deleted') . '<br><a href="index.php?act=counters">' . _t('Continue') . '</a></p>';
-                require('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             } else {
                 echo '<form action="index.php?act=counters&amp;mod=del&amp;id=' . $id . '" method="post">';
@@ -145,7 +151,7 @@ switch ($mod) {
             }
         } else {
             echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=counters">' . _t('Back') . '</a>');
-            require('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
         break;
@@ -161,7 +167,7 @@ switch ($mod) {
 
             if (empty($name) || empty($link1)) {
                 echo $tools->displayError(_t('The required fields are not filled'), '<a href="index.php?act=counters&amp;mod=edit' . ($id ? '&amp;id=' . $id : '') . '">' . _t('Back') . '</a>');
-                require('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             }
 
@@ -201,7 +207,7 @@ switch ($mod) {
                     $switch = 1;
                 } else {
                     echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=counters">' . _t('Back') . '</a>');
-                    require('../system/end.php');
+                    require ROOT_PATH . 'system/end.php';
                     exit;
                 }
             }
@@ -235,7 +241,7 @@ switch ($mod) {
 
         if (empty($name) || empty($link1)) {
             echo $tools->displayError(_t('The required fields are not filled'), '<a href="index.php?act=counters&amp;mod=edit' . ($id ? '&amp;id=' . $id : '') . '">' . _t('Back') . '</a>');
-            require_once('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -245,7 +251,7 @@ switch ($mod) {
 
             if (!$req->rowCount()) {
                 echo $tools->displayError(_t('Wrong data'));
-                require_once('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             }
 

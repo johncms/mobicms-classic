@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -28,7 +31,7 @@ $userConfig = $systemUser->getConfig();
 // Проверяем права доступа
 if ($systemUser->rights < 7) {
     echo _t('Access denied');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -45,7 +48,7 @@ switch ($mod) {
                 $res = $req->fetch();
             } else {
                 echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=ads">' . _t('Back') . '</a>');
-                require('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             }
         } else {
@@ -96,7 +99,7 @@ switch ($mod) {
 
             if ($error) {
                 echo $tools->displayError($error, '<a href="index.php?act=ads&amp;from=addlink">' . _t('Back') . '</a>');
-                require('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             }
 
@@ -245,7 +248,9 @@ switch ($mod) {
                 }
             }
         }
-        header('Location: ' . getenv("HTTP_REFERER"));
+
+        $response->header('Location', $_SERVER['HTTP_REFERER']);
+        $response->send();
         break;
 
     case 'up':
@@ -268,7 +273,9 @@ switch ($mod) {
                 }
             }
         }
-        header('Location: ' . getenv("HTTP_REFERER") . '');
+
+        $response->header('Location', $_SERVER['HTTP_REFERER']);
+        $response->send();
         break;
 
     case 'del':
@@ -276,7 +283,9 @@ switch ($mod) {
         if ($id) {
             if (isset($_POST['submit'])) {
                 $db->exec("DELETE FROM `cms_ads` WHERE `id` = '$id'");
-                header('Location: ' . $_POST['ref']);
+
+                $response->header('Location', $_POST['ref']);
+                $response->send();
             } else {
                 echo '<div class="phdr"><a href="index.php?act=ads"><b>' . _t('Advertisement') . '</b></a> | ' . _t('Delete') . '</div>' .
                     '<div class="rmenu"><form action="index.php?act=ads&amp;mod=del&amp;id=' . $id . '" method="post">' .
@@ -294,7 +303,9 @@ switch ($mod) {
         if (isset($_POST['submit'])) {
             $db->exec("DELETE FROM `cms_ads` WHERE `to` = '1'");
             $db->query("OPTIMIZE TABLE `cms_ads`");
-            header('location: index.php?act=ads');
+
+            $response->header('Location', '?act=ads');
+            $response->send();
         } else {
             echo '<div class="phdr"><a href="index.php?act=ads"><b>' . _t('Advertisement') . '</b></a> | ' . _t('Delete inactive links') . '</div>' .
                 '<div class="menu"><form method="post" action="index.php?act=ads&amp;mod=clear">' .
@@ -315,7 +326,9 @@ switch ($mod) {
                 $db->exec("UPDATE `cms_ads` SET `to`='" . ($res['to'] ? 0 : 1) . "' WHERE `id` = '$id'");
             }
         }
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+        $response->header('Location', $_SERVER['HTTP_REFERER']);
+        $response->send();
         break;
 
     default:

@@ -27,7 +27,7 @@ $config = $container->get('config')['mobicms'];
 // Проверяем права доступа
 if ($systemUser->rights < 9) {
     echo _t('Access denied');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 

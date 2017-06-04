@@ -19,6 +19,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Http\Request $request */
 $request = $container->get(Mobicms\Http\Request::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -31,7 +34,7 @@ $userConfig = $systemUser->getConfig();
 // Проверяем права доступа
 if ($systemUser->rights < 9) {
     echo _t('Access denied');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -50,7 +53,7 @@ switch ($mod) {
             if (empty($get_ip)) {
                 echo $tools->displayError(_t('Invalid IP'),
                     '<a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a>');
-                require_once('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             }
 
@@ -141,7 +144,7 @@ switch ($mod) {
 
                     echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
                     echo '<p><a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a><br><a href="index.php">' . _t('Admin Panel') . '</a></p>';
-                    require_once('../system/end.php');
+                    require ROOT_PATH . 'system/end.php';
                     exit;
                 }
             }
@@ -232,7 +235,7 @@ switch ($mod) {
         if (!$ip1 || !$ip2) {
             echo $tools->displayError(_t('Invalid IP'),
                 '<a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a>');
-            require_once('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -255,14 +258,16 @@ switch ($mod) {
             time(),
         ]);
 
-        header('Location: index.php?act=ipban');
+        $response->header('Location', '?act=ipban');
+        $response->send();
         break;
 
     case 'clear':
         // Очистка таблицы банов по IP
         if (isset($_GET['yes'])) {
             $db->query("TRUNCATE TABLE `cms_ban_ip`");
-            header('Location: index.php?act=ipban');
+            $response->header('Location', '?act=ipban');
+            $response->send();
         } else {
             echo '<div class="rmenu"><p>' . _t('Are you sure you wan to unban all IP?') . '</p>' .
                 '<p><a href="index.php?act=ipban&amp;mod=clear&amp;yes=yes">' . _t('Perform') . '</a> | ' .
@@ -285,7 +290,7 @@ switch ($mod) {
             if (!$get_ip) {
                 echo $tools->displayError(_t('Invalid IP'),
                     '<a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a>');
-                require_once('../system/end.php');
+                require ROOT_PATH . 'system/end.php';
                 exit;
             }
 
@@ -293,14 +298,14 @@ switch ($mod) {
         } else {
             echo $tools->displayError(_t('Invalid IP'),
                 '<a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a>');
-            require_once('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
         if (!$req->rowCount()) {
             echo '<div class="menu"><p>' . _t('This address not in the database') . '</p></div>';
             echo '<div class="phdr"><a href="index.php?act=ipban">' . _t('Back') . '</a></div>';
-            require_once('../system/end.php');
+            require ROOT_PATH . 'system/end.php';
             exit;
         } else {
             $res = $req->fetch();

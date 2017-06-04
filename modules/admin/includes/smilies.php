@@ -25,16 +25,17 @@ $ext = ['gif', 'jpg', 'jpeg', 'png']; // Список разрешенных р�
 $smileys = [];
 
 // Обрабатываем простые смайлы
-foreach (glob(ROOT_PATH . 'images' . DIRECTORY_SEPARATOR . 'smileys' . DIRECTORY_SEPARATOR . 'simply' . DIRECTORY_SEPARATOR . '*') as $var) {
+foreach (glob(ROOT_PATH . 'images/smileys/simply/*') as $var) {
     $file = basename($var);
     $name = explode(".", $file);
+
     if (in_array($name[1], $ext)) {
         $smileys['usr'][':' . $name[0]] = '<img src="' . $config['homeurl'] . '/images/smileys/simply/' . $file . '" alt="" />';
     }
 }
 
 // Обрабатываем Админские смайлы
-foreach (glob(ROOT_PATH . 'images' . DIRECTORY_SEPARATOR . 'smileys' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . '*') as $var) {
+foreach (glob(ROOT_PATH . 'images/smileys/admin/*') as $var) {
     $file = basename($var);
     $name = explode(".", $file);
     if (in_array($name[1], $ext)) {
@@ -44,7 +45,7 @@ foreach (glob(ROOT_PATH . 'images' . DIRECTORY_SEPARATOR . 'smileys' . DIRECTORY
 }
 
 // Обрабатываем смайлы каталога
-foreach (glob(ROOT_PATH . 'images' . DIRECTORY_SEPARATOR . 'smileys' . DIRECTORY_SEPARATOR . 'user' . DIRECTORY_SEPARATOR . '*' . DIRECTORY_SEPARATOR . '*') as $var) {
+foreach (glob(ROOT_PATH . 'images/smileys/user/*/*') as $var) {
     $file = basename($var);
     $name = explode(".", $file);
     if (in_array($name[1], $ext)) {

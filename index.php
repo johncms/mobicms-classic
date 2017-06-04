@@ -29,6 +29,11 @@ $router->respond('GET', '/', function () {
     include ROOT_PATH . 'modules/homepage/index.php';
 });
 
+// Админ панель
+$router->respond(['GET', 'POST'], '@^/admin/', function () {
+    include ROOT_PATH . 'modules/admin/index.php';
+});
+
 // Гостевая
 $router->respond(['GET', 'POST'], '@^/guestbook/', function () {
     include ROOT_PATH . 'modules/guestbook/index.php';

@@ -24,7 +24,7 @@ $config = $container->get('config')['mobicms'];
 // Проверяем права доступа
 if ($systemUser->rights < 9) {
     echo _t('Access denied');
-    require('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -86,7 +86,7 @@ echo '<p>' .
 
 // Выбор темы оформления
 echo '<p><h3>' . _t('Themes') . '</h3>&#160;<select name="skindef">';
-$dir = opendir('../theme');
+$dir = opendir(ROOT_PATH . 'theme');
 
 while ($skindef = readdir($dir)) {
     if (($skindef != '.') && ($skindef != '..') && ($skindef != '.svn')) {
