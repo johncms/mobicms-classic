@@ -60,10 +60,8 @@ if (!$user) {
  *                1 - в контактах
  *                2 - в игноре у меня
  */
-function is_contact($id = 0)
+function is_contact($id = 0, $db, $systemUser)
 {
-    global $db, $systemUser;
-
     static $user_id = null;
     static $return = 0;
 
@@ -220,15 +218,15 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     if ($user['id'] != $systemUser->id) {
         echo '<div class="menu"><p>';
         // Контакты
-        if (is_contact($user['id']) != 2) {
-            if (!is_contact($user['id'])) {
+        if (is_contact($user['id'], $db, $systemUser) != 2) {
+            if (!is_contact($user['id'], $db, $systemUser)) {
                 echo '<div>' . $tools->image('images/users.png') . '&#160;<a href="../mail/index.php?id=' . $user['id'] . '">' . _t('Add to Contacts') . '</a></div>';
             } else {
                 echo '<div>' . $tools->image('images/users.png') . '&#160;<a href="../mail/index.php?act=deluser&amp;id=' . $user['id'] . '">' . _t('Remove from Contacts') . '</a></div>';
             }
         }
 
-        if (is_contact($user['id']) != 2) {
+        if (is_contact($user['id'], $db, $systemUser) != 2) {
             echo '<div>' . $tools->image('images/del.png') . '&#160;<a href="../mail/index.php?act=ignor&amp;id=' . $user['id'] . '&amp;add">' . _t('Block User') . '</a></div>';
         } else {
             echo '<div>' . $tools->image('images/del.png') . '&#160;<a href="../mail/index.php?act=ignor&amp;id=' . $user['id'] . '&amp;del">' . _t('Unlock User') . '</a></div>';
@@ -237,7 +235,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
         echo '</p>';
 
         if (!$tools->isIgnor($user['id'])
-            && is_contact($user['id']) != 2
+            && is_contact($user['id'], $db, $systemUser) != 2
             && !isset($systemUser->ban['1'])
             && !isset($systemUser->ban['3'])
         ) {
