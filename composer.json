@@ -1,8 +1,14 @@
 {
   "name": "mobicms/mobicms-classic",
   "description": "Mobile Content Management System",
-  "homepage": "http://mobicms.org",
+  "type": "project",
+  "homepage": "https://mobicms.org",
   "license": "GPL-3.0",
+  "keywords": [
+    "mobicms",
+    "cms",
+    "mobile"
+  ],
   "authors": [
     {
       "name": "mobiCMS Community",
@@ -10,10 +16,12 @@
     }
   ],
   "config": {
+    "sort-packages": true,
     "vendor-dir": "system/vendor"
   },
   "require": {
     "php": "^5.6 || ^7.0",
+    "roave/security-advisories": "dev-master",
     "klein/klein": "^2.1",
     "mobicms/mobicms-captcha": "^1.0",
     "zendframework/zend-stdlib": "^3.1",
