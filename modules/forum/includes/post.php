@@ -50,7 +50,7 @@ echo '<table cellpadding="0" cellspacing="0"><tr><td>';
 if (file_exists(('../files/users/avatar/' . $res['user_id'] . '.png'))) {
     echo '<img src="../files/users/avatar/' . $res['user_id'] . '.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
 } else {
-    echo '<img src="../images/empty.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
+    echo '<img src="../assets/images/empty.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
 }
 echo '</td><td>';
 
