@@ -156,7 +156,7 @@ if ($total) {
             echo 'Только для друзей';
         } elseif ($res['access'] == 2) {
             // Если доступ по паролю
-            echo '<a href="?act=show&amp;al=' . $res['album_id'] . '&amp;img=' . $res['id'] . '&amp;user=' . $res['user_id'] . '"><img src="' . $config['homeurl'] . '/images/stop.gif" width="50" height="50"/></a>';
+            echo '<a href="?act=show&amp;al=' . $res['album_id'] . '&amp;img=' . $res['id'] . '&amp;user=' . $res['user_id'] . '"><img src="' . $config['homeurl'] . '/assets/modules/album/stop.gif" width="50" height="50"/></a>';
         }
 
         echo '<div class="sub">' .
