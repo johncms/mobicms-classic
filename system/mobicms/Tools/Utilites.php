@@ -287,7 +287,7 @@ class Utilites implements ToolsInterface
             }
         }
 
-        return '<a href="' . $this->config['homeurl'] . '/index.php">' . $placelist['homepage'] . '</a>';
+        return '<a href="' . $this->config['homeurl'] . '/">' . $placelist['homepage'] . '</a>';
     }
 
     /**
