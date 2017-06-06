@@ -182,7 +182,7 @@ if ($id) {
 
             $arg = [
                 'stshide' => 1,
-                'header'  => ('<br /><img src="../images/info.png" width="16" height="16" align="middle" />&#160;' . $place),
+                'header'  => ('<br /><img src="../assets/images/info.png" width="16" height="16" align="middle" />&#160;' . $place),
             ];
             echo $tools->displayUser($res, $arg);
             echo '</div>';
