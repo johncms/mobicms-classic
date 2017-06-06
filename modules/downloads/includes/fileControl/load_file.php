@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -52,5 +55,5 @@ if ($error) {
         $_SESSION['down_' . $id] = 1;
     }
 
-    header('Location: ' . $link);
+    $response->file($config->homeurl . '/' .$link);
 }

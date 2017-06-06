@@ -22,7 +22,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-require_once('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 $req = $db->query("SELECT * FROM `download__category` WHERE `id` = '" . $id . "' LIMIT 1");
 $res = $req->fetch();
@@ -202,4 +202,4 @@ if ($req->rowCount() && is_dir($res['dir'])) {
     exit;
 }
 
-require_once('../system/end.php');
+require ROOT_PATH . 'system/end.php';

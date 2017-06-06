@@ -25,8 +25,8 @@ $userConfig = $systemUser->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-require '../system/head.php';
-require 'classes/download.php';
+require ROOT_PATH . 'system/head.php';
+require dirname(__DIR__) . '/classes/download.php';
 
 $textl = _t('Files on moderation');
 
@@ -78,4 +78,4 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     echo '<p><a href="?">' . _t('Downloads') . '</a></p>';
 }
 
-require '../system/end.php';
+require ROOT_PATH . 'system/end.php';

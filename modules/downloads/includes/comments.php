@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require '../system/head.php';
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -35,7 +35,7 @@ $res_down = $req_down->fetch();
 
 if (!$req_down->rowCount() || !is_file($res_down['dir'] . '/' . $res_down['name']) || ($res_down['type'] == 3 && $systemUser->rights < 6 && $systemUser->rights != 4)) {
     echo _t('File not found') . ' <a href="?">' . _t('Downloads') . '</a>';
-    require '../system/end.php';
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -66,4 +66,4 @@ $arg = [
 // Показываем комментарии
 $comm = new Mobicms\Comments($arg);
 
-require '../system/end.php';
+require ROOT_PATH . 'system/end.php';

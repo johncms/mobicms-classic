@@ -22,8 +22,8 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-require '../system/head.php';
-require 'classes/download.php';
+require ROOT_PATH . 'system/head.php';
+require dirname(__DIR__) . '/classes/download.php';
 
 // Топ файлов
 if ($id == 2) {
@@ -58,4 +58,4 @@ while ($res_down = $req_down->fetch()) {
 }
 
 echo '<div class="phdr"><a href="?">' . _t('Downloads') . '</a></div>';
-require '../system/end.php';
+require ROOT_PATH . 'system/end.php';

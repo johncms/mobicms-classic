@@ -19,9 +19,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-require '../system/head.php';
-require 'classes/download.php';
-require 'classes/getid3/getid3.php';
+require ROOT_PATH . 'system/head.php';
+require dirname(dirname(__DIR__)) . '/classes/download.php';
+require dirname(dirname(__DIR__)) . '/classes/getid3/getid3.php';
 
 // Редактировать mp3 тегов
 $req_down = $db->query("SELECT * FROM `download__files` WHERE `id` = '" . $id . "' AND (`type` = 2 OR `type` = 3)  LIMIT 1");
@@ -29,7 +29,7 @@ $res_down = $req_down->fetch();
 
 if (!$req_down->rowCount() || !is_file($res_down['dir'] . '/' . $res_down['name']) || pathinfo($res_down['name'], PATHINFO_EXTENSION) != 'mp3' || $systemUser->rights < 6) {
     echo '<a href="?">' . _t('Downloads') . '</a>';
-    require '../system/end.php';
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
     $tagsArray['album'][0] = isset($_POST['album']) && !empty($_POST['album']) ? Download::mp3tagsOut($_POST['album'], 1) : '';
     $tagsArray['genre'][0] = isset($_POST['genre']) && !empty($_POST['genre']) ? Download::mp3tagsOut($_POST['genre'], 1) : '';
     $tagsArray['year'][0] = isset($_POST['year']) ? (int)$_POST['year'] : 0;
-    require 'classes/getid3/write.php';
+    require __DIR__ . '../../classes/getid3/write.php';
     $tagsWriter = new getid3_writetags;
     $tagsWriter->filename = $res_down['dir'] . '/' . $res_down['name'];
     $tagsWriter->tagformats = ['id3v1', 'id3v2.3'];
@@ -70,4 +70,4 @@ echo '<div class="list1"><form action="?act=mp3tags&amp;id=' . $id . '" method="
     '<input type="submit" name="submit" value="' . _t('Save') . '"/></form></div>' .
     '<div class="phdr"><a href="?act=view&amp;id=' . $id . '">' . _t('Back') . '</a></div>';
 
-require '../system/end.php';
+require ROOT_PATH . 'system/end.php';

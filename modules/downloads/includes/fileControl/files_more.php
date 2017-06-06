@@ -25,7 +25,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-require '../system/head.php';
+require ROOT_PATH . 'system/head.php';
 
 // Дополнительные файлы
 $req_down = $db->query("SELECT * FROM `download__files` WHERE `id` = '" . $id . "' AND (`type` = 2 OR `type` = 3)  LIMIT 1");
@@ -33,7 +33,7 @@ $res_down = $req_down->fetch();
 
 if (!$req_down->rowCount() || !is_file($res_down['dir'] . '/' . $res_down['name']) || ($systemUser->rights < 6 && $systemUser->rights != 4)) {
     echo '<a href="?">' . _t('Downloads') . '</a>';
-    require '../system/end.php';
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -213,7 +213,7 @@ if ($edit) {
             $i = 0;
 
             if ($total_file) {
-                require 'classes/download.php';
+                require dirname(dirname(__DIR__)) . '/classes/download.php';
 
                 while ($res_file_more = $req_file_more->fetch()) {
                     $format = explode('.', $res_file_more['name']);
@@ -232,4 +232,4 @@ if ($edit) {
     }
 }
 
-require '../system/end.php';
+require ROOT_PATH . 'system/end.php';

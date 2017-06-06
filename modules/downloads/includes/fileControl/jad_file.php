@@ -7,7 +7,7 @@
  * @link        http://mobicms.org mobiCMS Project
  * @copyright   Copyright (C) mobiCMS Community
  */
-
+//TODO: удалить файль и функционал
 defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
@@ -52,7 +52,7 @@ if (!isset($_SESSION['down_' . $id])) {
 }
 
 $size = filesize($down_file);
-require(SYSPATH . 'lib/pclzip.lib.php');
+require __DIR__ . '../../classes/pclzip.lib.php';
 $zip = new PclZip($down_file);
 $content = $zip->extract(PCLZIP_OPT_BY_NAME, 'META-INF/MANIFEST.MF', PCLZIP_OPT_EXTRACT_AS_STRING);
 

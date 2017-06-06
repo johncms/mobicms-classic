@@ -22,8 +22,8 @@ $userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-require '../system/head.php';
-require 'classes/download.php';
+require ROOT_PATH . 'system/head.php';
+require dirname(__DIR__) . '/classes/download.php';
 
 // Новые файлы
 $textl = _t('New Files');
@@ -75,4 +75,4 @@ if ($total > $userConfig->kmess) {
 }
 
 echo '<p><a href="?id=' . $id . '">' . _t('Downloads') . '</a></p>';
-require '../system/end.php';
+require ROOT_PATH . 'system/end.php';

@@ -17,8 +17,8 @@ $search_post = isset($_POST['search']) ? trim($_POST['search']) : false;
 $search_get = isset($_GET['search']) ? rawurldecode(trim($_GET['search'])) : '';
 $search = $search_post ? $search_post : $search_get;
 
-require_once '../system/head.php';
-require 'classes/download.php';
+require ROOT_PATH . 'system/head.php';
+require dirname(__DIR__) . '/classes/download.php';
 
 // Форма для поиска
 echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . _t('Search') . '</div>' .
@@ -98,4 +98,4 @@ if ($search && !$error) {
 }
 
 echo '<p><a href="?">' . _t('Downloads') . '</a></p>';
-require_once '../system/end.php';
+require ROOT_PATH . 'system/end.php';

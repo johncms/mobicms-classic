@@ -15,7 +15,7 @@ if ($vote > 100) {
 }
 
 header("Content-type: image/gif");
-$vote_img = imageCreateFromGIF(ROOT_PATH . 'assets/modules/download/vote.gif');
+$vote_img = imageCreateFromGIF('../../../assets/modules/download/vote.gif');
 $color = imagecolorallocate($vote_img, 0, 255, 0);
 $color2 = imagecolorallocate($vote_img, 255, 153, 153);
 $color3 = imagecolorallocate($vote_img, 255, 102, 102);

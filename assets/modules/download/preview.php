@@ -24,10 +24,7 @@ function format($name)
 $copyright = '';
 $type = isset($_GET['type']) ? abs(intval($_GET['type'])) : 0;
 $image = htmlspecialchars(rawurldecode($_GET['img']));
-$image = '../' . strtr($image, [
-        '../' => '',
-        './'  => '_',
-    ]);
+$image = '../../../' . strtr($image, ['../' => '', './' => '_',]);
 
 if ($image && file_exists($image)) {
     $att_ext = strtolower(format($image));

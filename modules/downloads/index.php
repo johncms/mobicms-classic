@@ -14,8 +14,6 @@ $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 
-require('../system/bootstrap.php');
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
@@ -38,7 +36,7 @@ $textl = _t('Downloads');
 $headmod = 'downloads';
 const DOWNLOADS = ROOT_PATH . 'files' . DIRECTORY_SEPARATOR . 'downloads' . DIRECTORY_SEPARATOR;
 const DOWNLOADS_SCR = DOWNLOADS . 'screen' . DIRECTORY_SEPARATOR;
-$files_path = '../files/downloads/files'; //TODO: переделать на константы
+$files_path = 'files/downloads/files'; //TODO: переделать на константы
 
 // Настройки
 $set_down =
@@ -64,9 +62,9 @@ if (!$config['mod_down'] && $systemUser->rights < 7) {
 }
 
 if ($error) {
-    require_once('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo '<div class="rmenu"><p>' . $error . '</p></div>';
-    require_once("../system/end.php");
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -136,7 +134,7 @@ $actions = [
 ];
 
 if (isset($actions[$act]) && is_file(__DIR__ . '/includes/' . $actions[$act])) {
-    require_once(__DIR__ . '/includes/' . $actions[$act]);
+    require __DIR__ . '/includes/' . $actions[$act];
 } else {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
@@ -145,7 +143,7 @@ if (isset($actions[$act]) && is_file(__DIR__ . '/includes/' . $actions[$act])) {
     $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
     require __DIR__ . '/classes/download.php';
-    require '../system/head.php';
+    require ROOT_PATH . 'system/head.php';
 
     if (!$config['mod_down']) {
         echo '<div class="rmenu">' . _t('Downloads are closed') . '</div>';
@@ -367,5 +365,5 @@ if (isset($actions[$act]) && is_file(__DIR__ . '/includes/' . $actions[$act])) {
 
     echo '</p>';
 
-    require_once('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
 }

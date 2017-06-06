@@ -28,7 +28,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-require_once '../system/head.php';
+require ROOT_PATH . 'system/head.php';
 
 // Обзор комментариев
 if (!$config['mod_down_comm'] && $systemUser->rights < 7) {
@@ -109,4 +109,4 @@ if ($total > $userConfig->kmess) {
 }
 
 echo '<p><a href="?">' . _t('Downloads') . '</a></p>';
-require_once '../system/end.php';
+require ROOT_PATH . 'system/end.php';

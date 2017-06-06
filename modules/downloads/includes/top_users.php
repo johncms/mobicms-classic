@@ -22,7 +22,7 @@ $userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-require '../system/head.php';
+require ROOT_PATH . 'system/head.php';
 
 // Топ юзеров
 $textl = _t('Top Users');
@@ -61,4 +61,4 @@ if ($total > $userConfig->kmess) {
 }
 
 echo '<p><a href="?">' . _t('Downloads') . '</a></p>';
-require '../system/end.php';
+require ROOT_PATH . 'system/end.php';

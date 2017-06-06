@@ -25,8 +25,8 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-require '../system/head.php';
-require 'classes/download.php';
+require ROOT_PATH . 'system/head.php';
+require dirname(__DIR__) . '/classes/download.php';
 
 // Выводим файл
 $req_down = $db->query("SELECT * FROM `download__files` WHERE `id` = '" . $id . "' AND (`type` = 2 OR `type` = 3)  LIMIT 1");
@@ -34,7 +34,7 @@ $res_down = $req_down->fetch();
 
 if (!$req_down->rowCount() || !is_file($res_down['dir'] . '/' . $res_down['name'])) {
     echo '<div class="rmenu"><p>' . _t('File not found') . '<br><a href="?">' . _t('Downloads') . '</a></p></div>';
-    require '../system/end.php';
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -45,7 +45,7 @@ if ($res_down['type'] == 3) {
     echo '<div class="rmenu">' . _t('The file is on moderation') . '</div>';
 
     if ($systemUser->rights < 6 && $systemUser->rights != 4) {
-        require '../system/end.php';
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 }
@@ -73,8 +73,8 @@ if (is_dir(DOWNLOADS_SCR . $id)) {
 switch ($format_file) {
     case 'mp3':
         // Проигрываем аудио файлы
-        $text_info = '<audio src="' . $config['homeurl'] . str_replace('../', '/', $res_down['dir']) . '/' . $res_down['name'] . '" controls></audio><br>';
-        require 'classes/getid3/getid3.php';
+        $text_info = '<audio src="' . $config['homeurl'] . '/' . str_replace('../', '', $res_down['dir']) . '/' . $res_down['name'] . '" controls></audio><br>';
+        require dirname(__DIR__) . '/classes/getid3/getid3.php';
         $getID3 = new getID3;
         $getID3->encoding = 'cp1251';
         $getid = $getID3->analyze($res_down['dir'] . '/' . $res_down['name']);
@@ -116,7 +116,7 @@ switch ($format_file) {
     case 'webm':
     case 'mp4':
         // Проигрываем видео файлы
-        echo '<div class="gmenu"><video src="' . $config['homeurl'] . str_replace('../', '/', $res_down['dir']) . '/' . $res_down['name'] . '" controls></video></div>';
+        echo '<div class="gmenu"><video src="' . $config['homeurl'] . '/' . str_replace('../', '', $res_down['dir']) . '/' . $res_down['name'] . '" controls></video></div>';
         break;
 
     case 'jpg':
@@ -124,7 +124,7 @@ switch ($format_file) {
     case 'gif':
     case 'png':
         $info_file = getimagesize($res_down['dir'] . '/' . $res_down['name']);
-        echo '<div class="gmenu"><img src="preview.php?type=2&amp;img=' . rawurlencode($res_down['dir'] . '/' . $res_down['name']) . '" alt="preview" /></div>';
+        echo '<div class="gmenu"><img src="../assets/modules/download/preview.php?type=2&amp;img=' . rawurlencode($res_down['dir'] . '/' . $res_down['name']) . '" alt="preview" /></div>';
         $text_info = '<span class="gray">' . _t('Resolution') . ': </span>' . $info_file[0] . 'x' . $info_file[1] . ' px<br>';
         break;
 }
@@ -140,11 +140,11 @@ if (!empty($screen)) {
         }
 
         echo '<div class="gmenu"><b>' . _t('Screenshot') . ' (' . $page . '/' . $total . '):</b><br>' .
-            '<img src="preview.php?type=2&amp;img=' . rawurlencode($screen[$page - 1]) . '" alt="screen" /></div>';
-        echo '<div class="topmenu"> ' . $tools->displayPagination('?act=view&amp;id=' . $id . '&amp;', $page - 1, $total, 1) . '</div>';//TODO: разобраться с навигацией
+            '<img src="../assets/modules/download/preview.php?type=2&amp;img=' . rawurlencode($screen[$page - 1]) . '" alt="screen" /></div>';
+        echo '<div class="topmenu"> ' . $tools->displayPagination('?act=view&amp;id=' . $id . '&amp;', $total, 1, $page - 1) . '</div>';//TODO: разобраться с навигацией
     } else {
         echo '<div class="gmenu"><b>' . _t('Screenshot') . ':</b><br>' .
-            '<img src="preview.php?type=2&amp;img=' . rawurlencode($screen[0]) . '" alt="screen" /></div>';
+            '<img src="../assets/modules/download/preview.php?type=2&amp;img=' . rawurlencode($screen[0]) . '" alt="screen" /></div>';
     }
 }
 
@@ -182,13 +182,11 @@ $sum = ($file_rate[1] + $file_rate[0]) ? round(100 / ($file_rate[1] + $file_rate
 echo '<b>' . _t('Rating') . ' </b>';
 
 if (!isset($_SESSION['rate_file_' . $id]) && $systemUser->isValid()) {
-    echo '(<a href="?act=view&amp;id=' . $id . '&amp;plus">+</a>/<a href="?act=view&amp;id=' . $id . '&amp;minus">-</a>)';
-} else {
-    echo '(+/-)';
+    echo '<a href="?act=view&amp;id=' . $id . '&amp;plus">&#160;+&#160;</a> / <a href="?act=view&amp;id=' . $id . '&amp;minus">&#160;-&#160;</a>';
 }
 
 echo ': <b><span class="green">' . $file_rate[0] . '</span>/<span class="red">' . $file_rate[1] . '</span></b><br>' .
-    '<img src="rating.php?img=' . $sum . '" alt="' . _t('Rating') . '" /></p>';
+    '<img src="../assets/modules/download/rating.php?img=' . $sum . '" alt="' . _t('Rating') . '" /></p>';
 
 if ($config['mod_down_comm'] || $systemUser->rights >= 7) {
     echo '<p><a href="?act=comments&amp;id=' . $res_down['id'] . '">' . _t('Comments') . '</a> (' . $res_down['comm_count'] . ')</p>';
@@ -264,4 +262,4 @@ if ($systemUser->rights > 6 || $systemUser->rights == 4) {
     echo '</div></p>';
 }
 
-require '../system/end.php';
+require ROOT_PATH . 'system/end.php';
