@@ -39,9 +39,9 @@ if ($id) {
 
     if (!$req->rowCount()) {
         $textl = _t('Mail');
-        require_once('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('User does not exists'));
-        require_once("../system/end.php");
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 
@@ -49,7 +49,7 @@ if ($id) {
 
     if ($mod == 'clear') {
         $textl = _t('Mail');
-        require_once('../system/head.php');
+        require ROOT_PATH . 'system/head.php';
         echo '<div class="phdr"><b>' . _t('Clear messages') . '</b></div>';
 
         if (isset($_POST['clear'])) {
@@ -95,7 +95,7 @@ if ($id) {
 
         echo '<div class="phdr"><a href="index.php?act=write&amp;id=' . $id . '">' . _t('Back') . '</a></div>';
         echo '<p><a href="../profile/?act=office">' . _t('Personal') . '</a></p>';
-        require_once('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 }
@@ -202,18 +202,6 @@ if (isset($_POST['submit']) && empty($systemUser->ban['1']) && empty($systemUser
             $error[] = _t('Error uploading file');
         }
 
-    } else {
-        if (isset($_POST['fail']) && mb_strlen($_POST['fail']) > 0) {
-            $do_file_mini = true;
-            $array = explode('file=', $_POST['fail']);
-            $fname = mb_strtolower($array[0]);
-            $filebase64 = $array[1];
-            $fsize = strlen(base64_decode($filebase64));
-
-            if (empty($fsize)) {
-                $error[] = _t('Error uploading file');
-            }
-        }
     }
 
     if (empty($error) && ($do_file || $do_file_mini)) {
@@ -357,38 +345,14 @@ if (isset($_POST['submit']) && empty($systemUser->ban['1']) && empty($systemUser
     }
 
     // Проверка наличия файла с таким же именем
-    if (!empty($newfile) && file_exists('../files/mail/' . $newfile) !== false) {
+    if (!empty($newfile) && file_exists(ROOT_PATH . 'files/mail/' . $newfile) !== false) {
         $newfile = time() . '_' . $newfile;
     }
 
     if (empty($error) && $do_file) {
-        if ((move_uploaded_file($_FILES['fail']['tmp_name'], '../files/mail/' . $newfile)) === true) {
-            @ chmod('../files/mail/' . $newfile, 0666);
+        if ((move_uploaded_file($_FILES['fail']['tmp_name'], ROOT_PATH . 'files/mail/' . $newfile)) === true) {
+            @ chmod(ROOT_PATH . 'files/mail/' . $newfile, 0666);
             @unlink($_FILES['fail']['tmp_name']);
-        } else {
-            $error[] = _t('Error uploading file');
-        }
-    }
-
-    if (empty($error) && $do_file_mini) {
-        if (strlen($filebase64) > 0) {
-            $FileName = '../files/mail/' . $newfile;
-            $filedata = base64_decode($filebase64);
-            $fid = @fopen($FileName, "wb");
-            if ($fid) {
-                if (flock($fid, LOCK_EX)) {
-                    fwrite($fid, $filedata);
-                    flock($fid, LOCK_UN);
-                }
-                fclose($fid);
-            }
-
-            if (file_exists($FileName) && filesize($FileName) == strlen($filedata)) {
-                @ chmod($FileName, 0666);
-                unset($FileName);
-            } else {
-                $error[] = _t('Error uploading file');
-            }
         } else {
             $error[] = _t('Error uploading file');
         }
@@ -526,7 +490,7 @@ if ($id) {
 }
 
 $textl = _t('Mail');
-require_once('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 echo $out;
 echo '<p>';
 

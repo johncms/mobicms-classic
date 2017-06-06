@@ -14,7 +14,6 @@ $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 
-require_once('../system/bootstrap.php');
 $headmod = 'mail';
 
 if (isset($_SESSION['ref'])) {
@@ -74,11 +73,11 @@ $mods = [
 ];
 
 //Проверка выбора функции
-if ($act && ($key = array_search($act, $mods)) !== false && file_exists('includes/' . $mods[$key] . '.php')) {
-    require('includes/' . $mods[$key] . '.php');
+if ($act && ($key = array_search($act, $mods)) !== false && file_exists(__DIR__ . '/includes/' . $mods[$key] . '.php')) {
+    require __DIR__ . '/includes/' . $mods[$key] . '.php';
 } else {
     $textl = _t('Mail');
-    require_once('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo '<div class="phdr"><b>' . _t('Contacts') . '</b></div>';
 
     /** @var PDO $db */
@@ -92,7 +91,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
 
         if (!$req->rowCount()) {
             echo $tools->displayError(_t('User does not exists'));
-            require_once("../system/end.php");
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -166,4 +165,4 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists('include
     }
 }
 
-require_once(ROOT_PATH . 'system/end.php');
+require ROOT_PATH . 'system/end.php';

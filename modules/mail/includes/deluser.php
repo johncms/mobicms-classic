@@ -12,7 +12,7 @@ defined('MOBICMS') or die('Error: restricted access');
 
 $headmod = 'mail';
 $textl = _t('Mail');
-require_once('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 if ($id) {
     /** @var Psr\Container\ContainerInterface $container */

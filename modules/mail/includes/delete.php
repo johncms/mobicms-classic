@@ -12,7 +12,7 @@ defined('MOBICMS') or die('Error: restricted access');
 
 $headmod = 'mail';
 $textl = _t('Mail');
-require_once('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 echo '<div class="phdr"><h3>' . _t('Deleting messages') . '</h3></div>';
 
@@ -35,7 +35,7 @@ if ($id) {
     if (!$req->rowCount()) {
         //Выводим ошибку
         echo $tools->displayError(_t('Message does not exist'));
-        require_once("../system/end.php");
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 
@@ -53,7 +53,7 @@ if ($id) {
 
                 //Удаляем файл
                 if ($res['file_name']) {
-                    @unlink('../files/mail/' . $res['file_name']);
+                    @unlink(ROOT_PATH . 'files/mail/' . $res['file_name']);
                 }
 
                 $db->exec("DELETE FROM `cms_mail` WHERE `user_id`='" . $systemUser->id . "' AND `id` = '$id' LIMIT 1");
@@ -63,7 +63,7 @@ if ($id) {
 
                     //Удаляем файл
                     if ($res['file_name']) {
-                        @unlink('../files/mail/' . $res['file_name']);
+                        @unlink(ROOT_PATH . 'files/mail/' . $res['file_name']);
                     }
 
                     $db->exec("DELETE FROM `cms_mail` WHERE (`user_id`='" . $systemUser->id . "' OR `from_id`='" . $systemUser->id . "') AND `id` = '$id' LIMIT 1");

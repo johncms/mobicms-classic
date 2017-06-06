@@ -112,7 +112,7 @@ if ($mod == 'clear') {
 }
 
 $textl = _t('Mail');
-require_once('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 echo '<div class="phdr"><b>' . _t('System messages') . '</b></div>';
 echo $out;
 echo '<p>';

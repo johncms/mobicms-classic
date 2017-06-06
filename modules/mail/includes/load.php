@@ -11,7 +11,7 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $textl = _t('Mail');
-require_once('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -31,13 +31,13 @@ if ($id) {
     if (!$req->rowCount()) {
         //Выводим ошибку
         echo $tools->displayError(_t('Such file does not exist'));
-        require_once("../system/end.php");
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 
     $res = $req->fetch();
 
-    if (file_exists('../files/mail/' . $res['file_name'])) {
+    if (file_exists(ROOT_PATH . 'files/mail/' . $res['file_name'])) {
         $db->exec("UPDATE `cms_mail` SET `count` = `count`+1 WHERE `id` = '$id' LIMIT 1");
         header('Location: ../files/mail/' . $res['file_name']);
         exit;

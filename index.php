@@ -69,6 +69,11 @@ $router->respond(['GET', 'POST'], '@^/login/', function () {
     include ROOT_PATH . 'modules/login/index.php';
 });
 
+// Почта
+$router->respond(['GET', 'POST'], '@^/mail/', function () {
+    include ROOT_PATH . 'modules/mail/index.php';
+});
+
 // Новости
 $router->respond(['GET', 'POST'], '@^/news/', function () {
     include ROOT_PATH . 'modules/news/index.php';

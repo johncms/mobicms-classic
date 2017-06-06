@@ -12,7 +12,7 @@ defined('MOBICMS') or die('Error: restricted access');
 
 $headmod = 'mail';
 $textl = _t('Mail');
-require_once('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -38,7 +38,7 @@ if (isset($_GET['del'])) {
 
         if (!$req->rowCount()) {
             echo $tools->displayError(_t('User does not exists'));
-            require_once("../system/end.php");
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 
@@ -67,7 +67,7 @@ if (isset($_GET['del'])) {
 
         if (!$req->rowCount()) {
             echo $tools->displayError(_t('User does not exists'));
-            require_once("../system/end.php");
+            require ROOT_PATH . 'system/end.php';
             exit;
         }
 

@@ -11,7 +11,7 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $textl = _t('Mail');
-require_once('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 echo '<div class="phdr"><b>' . _t('Incoming messages') . '</b></div>';
 
 /** @var Psr\Container\ContainerInterface $container */
