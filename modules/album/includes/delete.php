@@ -37,8 +37,8 @@ if ($al && $user['id'] == $systemUser->id || $systemUser->rights >= 6) {
 
             while ($res = $req->fetch()) {
                 // Удаляем файлы фотографий
-                @unlink('../files/users/album/' . $user['id'] . '/' . $res['img_name']);
-                @unlink('../files/users/album/' . $user['id'] . '/' . $res['tmb_name']);
+                @unlink(ROOT_PATH . 'files/users/album/' . $user['id'] . '/' . $res['img_name']);
+                @unlink(ROOT_PATH . 'files/users/album/' . $user['id'] . '/' . $res['tmb_name']);
                 // Удаляем записи из таблицы голосований
                 $db->exec("DELETE FROM `cms_album_votes` WHERE `file_id` = " . $res['id']);
                 // Удаляем комментарии

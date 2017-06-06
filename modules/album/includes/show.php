@@ -130,12 +130,12 @@ if ($total) {
             // Предпросмотр отдельного изображения
             if ($user['id'] == $systemUser->id && isset($_GET['profile'])) {
                 copy(
-                    '../files/users/album/' . $user['id'] . '/' . $res['tmb_name'],
-                    '../files/users/photo/' . $systemUser->id . '_small.jpg'
+                    ROOT_PATH . 'files/users/album/' . $user['id'] . '/' . $res['tmb_name'],
+                    ROOT_PATH . 'files/users/photo/' . $systemUser->id . '_small.jpg'
                 );
                 copy(
-                    '../files/users/album/' . $user['id'] . '/' . $res['img_name'],
-                    '../files/users/photo/' . $systemUser->id . '.jpg'
+                    ROOT_PATH . 'files/users/album/' . $user['id'] . '/' . $res['img_name'],
+                    ROOT_PATH . 'files/users/photo/' . $systemUser->id . '.jpg'
                 );
                 echo '<span class="green"><b>' . _t('Photo added to the profile') . '</b></span><br>';
             }

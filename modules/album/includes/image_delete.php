@@ -38,8 +38,8 @@ if ($img && $user['id'] == $systemUser->id || $systemUser->rights >= 6) {
         //TODO: Администрация не должна удалять фотки старших по должности
         if (isset($_POST['submit'])) {
             // Удаляем файлы картинок
-            @unlink('../files/users/album/' . $user['id'] . '/' . $res['img_name']);
-            @unlink('../files/users/album/' . $user['id'] . '/' . $res['tmb_name']);
+            @unlink(ROOT_PATH . 'files/users/album/' . $user['id'] . '/' . $res['img_name']);
+            @unlink(ROOT_PATH . 'files/users/album/' . $user['id'] . '/' . $res['tmb_name']);
 
             // Удаляем записи из таблиц
             $db->exec("DELETE FROM `cms_album_files` WHERE `id` = '$img'");
