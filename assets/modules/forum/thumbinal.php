@@ -12,8 +12,8 @@ $radius = 4;
 
 $file = isset($_GET['file']) ? htmlspecialchars(urldecode($_GET['file'])) : null;
 
-if ($file && file_exists('../files/forum/attach/' . $file)) {
-    list($width, $height, $type) = getimagesize('../files/forum/attach/' . $file);
+if ($file && file_exists('../../../files/forum/attach/' . $file)) {
+    list($width, $height, $type) = getimagesize('../../../files/forum/attach/' . $file);
 
     switch ($type) {
         case 1:
@@ -49,7 +49,7 @@ if ($file && file_exists('../files/forum/attach/' . $file)) {
         }
 
         $function = 'imageCreateFrom' . $att_ext;
-        $image = $function('../files/forum/attach/' . $file);
+        $image = $function('../../../files/forum/attach/' . $file);
 
         if ($att_ext == 'gif') {
             $tmp = imagecreate($tn_width, $tn_height);

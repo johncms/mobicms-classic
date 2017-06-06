@@ -102,16 +102,15 @@ if (isset($_POST['submit'])) {
         }
 
         // Проверка наличия файла с таким же именем
-        if (file_exists("../files/forum/attach/$fname")) {
+        if (file_exists(ROOT_PATH . 'files/forum/attach/' . $fname)) {
             $fname = time() . $fname;
         }
 
         // Окончательная обработка
         if (!$error && $do_file) {
             // Для обычного браузера
-            if ((move_uploaded_file($_FILES["fail"]["tmp_name"], "../files/forum/attach/$fname")) == true) {
-                @chmod("$fname", 0777);
-                @chmod("../files/forum/attach/$fname", 0777);
+            if ((move_uploaded_file($_FILES["fail"]["tmp_name"], ROOT_PATH . 'files/forum/attach/' . $fname)) == true) {
+                @chmod(ROOT_PATH . 'files/forum/attach/' . $fname, 0777);
                 echo _t('File attached') . '<br>';
             } else {
                 $error[] = _t('Error uploading file');
