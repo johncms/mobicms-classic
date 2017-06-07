@@ -290,8 +290,8 @@ if (in_array($act, $array_includes)) {
 
                         while ($row = $sql2->fetch()) {
                             echo '<div class="list' . (++$i % 2 ? 2 : 1) . '">'
-                                . (file_exists(ROOT_PATH . 'files/library/images/small/' . $row['id'] . '.png')
-                                    ? '<div class="avatar"><img src="../files/library/images/small/' . $row['id'] . '.png" alt="screen" /></div>'
+                                . (file_exists(ROOT_PATH . 'uploads/library/images/small/' . $row['id'] . '.png')
+                                    ? '<div class="avatar"><img src="../uploads/library/images/small/' . $row['id'] . '.png" alt="screen" /></div>'
                                     : '')
                                 . '<div class="righttable"><h4><a href="index.php?id=' . $row['id'] . '">' . $tools->checkout($row['name']) . '</a></h4>'
                                 . '<div><small>' . $tools->checkout($row['announce'], 0, 0) . '</small></div></div>';
@@ -433,10 +433,10 @@ if (in_array($act, $array_includes)) {
 
                     if ($page == 1) {
                         // Картинка статьи
-                        if (file_exists('../files/library/images/big/' . $id . '.png')) {
+                        if (file_exists(UPLOAD_PATH . 'library/images/big/' . $id . '.png')) {
                             $img_style = 'width: 50%; max-width: 240px; height: auto; float: left; clear: both; margin: 10px';
-                            echo '<a href="../files/library/images/orig/' . $id . '.png">'
-                                . '<img style="' . $img_style . '" src="../files/library/images/big/' . $id . '.png" alt="screen" /></a>';
+                            echo '<a href="../uploads/library/images/orig/' . $id . '.png">'
+                                . '<img style="' . $img_style . '" src="../uploads/library/images/big/' . $id . '.png" alt="screen" /></a>';
                         }
                     }
 

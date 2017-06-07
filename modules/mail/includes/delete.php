@@ -53,7 +53,7 @@ if ($id) {
 
                 //Удаляем файл
                 if ($res['file_name']) {
-                    @unlink(ROOT_PATH . 'files/mail/' . $res['file_name']);
+                    @unlink(UPLOAD_PATH . 'mail/' . $res['file_name']);
                 }
 
                 $db->exec("DELETE FROM `cms_mail` WHERE `user_id`='" . $systemUser->id . "' AND `id` = '$id' LIMIT 1");
@@ -63,7 +63,7 @@ if ($id) {
 
                     //Удаляем файл
                     if ($res['file_name']) {
-                        @unlink(ROOT_PATH . 'files/mail/' . $res['file_name']);
+                        @unlink(UPLOAD_PATH . 'mail/' . $res['file_name']);
                     }
 
                     $db->exec("DELETE FROM `cms_mail` WHERE (`user_id`='" . $systemUser->id . "' OR `from_id`='" . $systemUser->id . "') AND `id` = '$id' LIMIT 1");

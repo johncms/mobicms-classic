@@ -55,7 +55,7 @@ switch ($mod) {
                 $handle->image_x = 32;
                 $handle->image_y = 32;
                 $handle->image_convert = 'png';
-                $handle->process('../files/users/avatar/');
+                $handle->process(UPLOAD_PATH . 'users/avatar/');
                 if ($handle->processed) {
                     echo '<div class="gmenu"><p>' . _t('The avatar is successfully uploaded') . '<br />' .
                         '<a href="?act=edit&amp;user=' . $user['id'] . '">' . _t('Continue') . '</a></p></div>';
@@ -98,7 +98,7 @@ switch ($mod) {
                 $handle->image_ratio_no_zoom_in = true;
                 //$handle->image_ratio_y = true;
                 $handle->image_convert = 'jpg';
-                $handle->process('../files/users/photo/');
+                $handle->process(UPLOAD_PATH . 'users/photo/');
                 if ($handle->processed) {
                     // Обрабатываем превьюшку
                     $handle->file_new_name_body = $user['id'] . '_small';
@@ -107,7 +107,7 @@ switch ($mod) {
                     $handle->image_x = 100;
                     $handle->image_ratio_y = true;
                     $handle->image_convert = 'jpg';
-                    $handle->process('../files/users/photo/');
+                    $handle->process(UPLOAD_PATH . 'users/photo/');
                     if ($handle->processed) {
                         echo '<div class="gmenu"><p>' . _t('The photo is successfully uploaded') . '<br /><a href="?act=edit&amp;user=' . $user['id'] . '">' . _t('Continue') . '</a></p></div>';
                     } else {

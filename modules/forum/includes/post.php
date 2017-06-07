@@ -47,8 +47,8 @@ echo '<div class="phdr"><b>' . _t('Topic') . ':</b> ' . $them['text'] . '</div><
 
 // Данные пользователя
 echo '<table cellpadding="0" cellspacing="0"><tr><td>';
-if (file_exists(('../files/users/avatar/' . $res['user_id'] . '.png'))) {
-    echo '<img src="../files/users/avatar/' . $res['user_id'] . '.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
+if (file_exists(UPLOAD_PATH . 'users/avatar/' . $res['user_id'] . '.png')) {
+    echo '<img src="../uploads/users/avatar/' . $res['user_id'] . '.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
 } else {
     echo '<img src="../assets/images/empty.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
 }
@@ -106,10 +106,10 @@ $freq = $db->query("SELECT * FROM `cms_forum_files` WHERE `post` = '" . $res['id
 
 if ($freq->rowCount()) {
     $fres = $freq->fetch();
-    $fls = round(@filesize('../files/forum/attach/' . $fres['filename']) / 1024, 2);
+    $fls = round(@filesize('../uploads/forum/attach/' . $fres['filename']) / 1024, 2);
     echo '<div class="gray" style="font-size: x-small; background-color: rgba(128, 128, 128, 0.1); padding: 2px 4px; margin-top: 4px">' . _t('Attachment') . ':';
     // Предпросмотр изображений
-    $att_ext = strtolower(pathinfo('./files/forum/attach/' . $fres['filename'], PATHINFO_EXTENSION));
+    $att_ext = strtolower(pathinfo('./uploads/forum/attach/' . $fres['filename'], PATHINFO_EXTENSION));
     $pic_ext = [
         'gif',
         'jpg',

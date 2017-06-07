@@ -55,8 +55,8 @@ if (($adm || ($db->query("SELECT `user_add` FROM `library_cats` WHERE `id`=" . $
             $ext = explode('.', $_FILES['textfile']['name']);
             if (mb_strtolower(end($ext)) == 'txt') {
                 $newname = $_FILES['textfile']['name'];
-                if (move_uploaded_file($_FILES['textfile']['tmp_name'], '../files/library/tmp/' . $newname)) {
-                    $txt = file_get_contents('../files/library/tmp/' . $newname);
+                if (move_uploaded_file($_FILES['textfile']['tmp_name'], UPLOAD_PATH . 'library/tmp/' . $newname)) {
+                    $txt = file_get_contents(UPLOAD_PATH . 'library/tmp/' . $newname);
                     if (mb_check_encoding($txt, 'UTF-8')) {
                     } elseif (mb_check_encoding($txt, 'windows-1251')) {
                         $txt = iconv('windows-1251', 'UTF-8', $txt);
@@ -69,7 +69,7 @@ if (($adm || ($db->query("SELECT `user_add` FROM `library_cats` WHERE `id`=" . $
                     }
 
                     $text = trim($txt);
-                    unlink('../files/library/tmp' . DIRECTORY_SEPARATOR . $newname);
+                    unlink(UPLOAD_PATH . 'library/tmp' . DIRECTORY_SEPARATOR . $newname);
                 } else {
                     echo $tools->displayError(_t('Error uploading') . '<br><a href="?act=addnew&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
                     require ROOT_PATH . 'system/end.php';
@@ -128,7 +128,7 @@ if (($adm || ($db->query("SELECT `user_add` FROM `library_cats` WHERE `id`=" . $
                     $handle->image_x = $handle->image_src_x;
                     $handle->image_y = $handle->image_src_y;
                     $handle->image_convert = 'png';
-                    $handle->process('../files/library/images/orig/');
+                    $handle->process(UPLOAD_PATH . 'library/images/orig/');
                     $err_image = $handle->error;
                     $handle->file_new_name_body = $cid;
                     $handle->file_overwrite = true;
@@ -143,7 +143,7 @@ if (($adm || ($db->query("SELECT `user_add` FROM `library_cats` WHERE `id`=" . $
                     }
 
                     $handle->image_convert = 'png';
-                    $handle->process('../files/library/images/big/');
+                    $handle->process(UPLOAD_PATH . 'library/images/big/');
                     $err_image = $handle->error;
                     $handle->file_new_name_body = $cid;
                     $handle->file_overwrite = true;
@@ -151,7 +151,7 @@ if (($adm || ($db->query("SELECT `user_add` FROM `library_cats` WHERE `id`=" . $
                     $handle->image_x = 32;
                     $handle->image_y = 32;
                     $handle->image_convert = 'png';
-                    $handle->process('../files/library/images/small/');
+                    $handle->process(UPLOAD_PATH . 'library/images/small/');
 
                     if ($err_image) {
                         echo $tools->displayError(_t('Photo uploading error') . '<br><a href="?act=addnew&amp;id=' . $id . '">' . _t('Repeat') . '</a>');

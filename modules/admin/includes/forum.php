@@ -156,7 +156,7 @@ switch ($mod) {
                         $req_f = $db->query("SELECT * FROM `cms_forum_files` WHERE `subcat` = '$id'");
 
                         while ($res_f = $req_f->fetch()) {
-                            unlink('../files/forum/attach/' . $res_f['filename']);
+                            unlink(UPLOAD_PATH . 'forum/attach/' . $res_f['filename']);
                         }
 
                         $db->exec("DELETE FROM `cms_forum_files` WHERE `subcat` = '$id'");
@@ -593,7 +593,7 @@ switch ($mod) {
                 if ($req_f->rowCount()) {
                     // Удаляем файлы
                     while ($res_f = $req_f->fetch()) {
-                        unlink('../files/forum/attach/' . $res_f['filename']);
+                        unlink(UPLOAD_PATH . 'forum/attach/' . $res_f['filename']);
                     }
                     $db->exec("DELETE FROM `cms_forum_files` WHERE `topic` = " . $res['id']);
                 }
@@ -691,7 +691,7 @@ switch ($mod) {
                 if ($req_f->rowCount()) {
                     while ($res_f = $req_f->fetch()) {
                         // Удаляем файлы
-                        unlink('../files/forum/attach/' . $res_f['filename']);
+                        unlink(UPLOAD_PATH . 'forum/attach/' . $res_f['filename']);
                     }
                     $db->exec("DELETE FROM `cms_forum_files` WHERE `post` = '" . $res['id'] . "'");
                 }

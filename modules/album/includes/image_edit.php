@@ -43,7 +43,7 @@ if ($img && $user['id'] == $systemUser->id || $systemUser->rights >= 6) {
                 $description = isset($_POST['description']) ? trim($_POST['description']) : '';
                 $description = mb_substr($description, 0, 500);
                 if ($rotate == 1 || $rotate == 2 || ($brightness > 0 && $brightness < 5) || ($contrast > 0 && $contrast < 5)) {
-                    $path = ROOT_PATH . 'files/users/album/' . $user['id'] . '/';
+                    $path = UPLOAD_PATH . 'users/album/' . $user['id'] . '/';
                     $handle = new upload($path . $res['img_name']);
                     // Обрабатываем основное изображение
                     $handle->file_new_name_body = 'img_' . time();
@@ -152,8 +152,8 @@ if ($img && $user['id'] == $systemUser->id || $systemUser->rights >= 6) {
                     }
 
                     $handle->clean();
-                    @unlink(ROOT_PATH . 'files/users/album/' . $user['id'] . '/' . $res['img_name']);
-                    @unlink(ROOT_PATH . 'files/users/album/' . $user['id'] . '/' . $res['tmb_name']);
+                    @unlink(UPLOAD_PATH . 'users/album/' . $user['id'] . '/' . $res['img_name']);
+                    @unlink(UPLOAD_PATH . 'users/album/' . $user['id'] . '/' . $res['tmb_name']);
                     $sql = "`img_name` = " . $db->quote($img_name) . ", `tmb_name` = " . $db->quote($tmb_name) . ",";
                 }
 
@@ -170,7 +170,7 @@ if ($img && $user['id'] == $systemUser->id || $systemUser->rights >= 6) {
             echo '<form action="?act=image_edit&amp;img=' . $img . '&amp;user=' . $user['id'] . '" method="post">' .
                 '<div class="menu">' .
                 '<p><h3>' . _t('Image') . '</h3>' .
-                '<img src="../files/users/album/' . $user['id'] . '/' . $res['tmb_name'] . '" /></p>' .
+                '<img src="../uploads/users/album/' . $user['id'] . '/' . $res['tmb_name'] . '" /></p>' .
                 '<p><h3>' . _t('Description') . '</h3>' .
                 '<textarea name="description" rows="' . $systemUser->getConfig()->fieldHeight . '">' . $tools->checkout($res['description']) . '</textarea><br>' .
                 '<small>' . _t('Optional field') . ', max. 500</small></p>' .

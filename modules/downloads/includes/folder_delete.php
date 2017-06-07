@@ -19,6 +19,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -53,12 +56,10 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
                 rmdir(DOWNLOADS_SCR . $res_down['id']);
             }
 
-            @unlink(ROOT_PATH . 'files/download/java_icons/' . $res_down['id'] . '.png');
             $req_file_more = $db->query("SELECT * FROM `download__more` WHERE `refid` = " . $res_down['id']);
 
             while ($res_file_more = $req_file_more->fetch()) {
                 @unlink($res_down['dir'] . '/' . $res_file_more['name']);
-                @unlink(ROOT_PATH . 'files/download/java_icons/' . $res_file_more['id'] . '.png');
             }
 
             @unlink($res_down['dir'] . '/' . $res_down['name']);
@@ -72,7 +73,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
         $db->query("OPTIMIZE TABLE `download__bookmark`, `download__files`, `download__comments`, `download__more`, `download__category`");
 
         rmdir($res['dir']);
-        header('location: ?id=' . $res['refid']);
+        $response->redirect('?id=' . $res['refid'])->sendHeaders();
     } else {
         require ROOT_PATH . 'system/head.php';
         echo '<div class="phdr"><b>' . _t('Delete Folder') . '</b></div>' .

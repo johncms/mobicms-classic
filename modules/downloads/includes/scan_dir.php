@@ -77,7 +77,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
             $db->query("OPTIMIZE TABLE `download__bookmark`, `download__files`, `download__comments`,`download__more`");
 
             echo '<div class="phdr"><b>' . _t('Remove missing files') . '</b></div>' .
-                '<div class="rmenu"><p>' . _t('Database successfully updated') . '</p></div>' .
+                '<div class="gmenu"><p>' . _t('Database successfully updated') . '</p></div>' .
                 '<div class="phdr"><a href="?id=' . $id . '">' . _t('Back') . '</a></div>';
             break;
 
@@ -281,10 +281,6 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
                     _t('Categories') . ': ' . $i . '<br>' .
                     _t('Files') . ': ' . $i_three . '<br>' .
                     _t('Additional Files') . ': ' . $i_two . '</div>';
-
-                echo '<div class="rmenu">' .
-                    '<a href="?act=scan_dir&amp;do=clean&amp;id=' . $id . '">' . _t('Remove missing files') . '</a><br>' .
-                    '<a href="?act=recount&amp;do=clean&amp;id=' . $id . '">' . _t('Update counters') . '</a></div>';
             } else {
                 // Выбор режима обновления
                 echo '<div class="menu"><p><h3>' . _t('Update') . '</h3><ul>';

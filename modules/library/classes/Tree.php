@@ -116,10 +116,10 @@ class Tree
             $obj = new Hashtags($data);
             $this->cleaned['tags'] += $obj->delTags();
 
-            if (file_exists('../files/library/images/small/' . $data . '.png')) {
-                unlink('../files/library/images/big/' . $data . '.png');
-                unlink('../files/library/images/orig/' . $data . '.png');
-                unlink('../files/library/images/small/' . $data . '.png');
+            if (file_exists('../uploads/library/images/small/' . $data . '.png')) {
+                unlink('../uploads/library/images/big/' . $data . '.png');
+                unlink('../uploads/library/images/orig/' . $data . '.png');
+                unlink('../uploads/library/images/small/' . $data . '.png');
                 $this->cleaned['images'] += 3;
             }
         } else {

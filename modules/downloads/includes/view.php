@@ -63,7 +63,7 @@ if (is_dir(DOWNLOADS_SCR . $id)) {
 
     while ($file = readdir($dir)) {
         if (($file != '.') && ($file != "..") && ($file != "name.dat") && ($file != ".svn") && ($file != "index.php")) {
-            $screen[] = '../files/downloads/screen/' . $id . '/' . $file;
+            $screen[] = '../uploads/downloads/screen/' . $id . '/' . $file;
         }
     }
 

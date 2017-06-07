@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -46,7 +49,6 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
             rmdir(DOWNLOADS_SCR . $id);
         }
 
-        @unlink(ROOT_PATH . 'files/download/java_icons/' . $id . '.png');
         $req_file_more = $db->query("SELECT * FROM `download__more` WHERE `refid` = " . $id);
 
         if ($req_file_more->rowCount()) {
@@ -54,8 +56,6 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
                 if (is_file($res_down['dir'] . '/' . $res_file_more['name'])) {
                     @unlink($res_down['dir'] . '/' . $res_file_more['name']);
                 }
-
-                @unlink(ROOT_PATH . 'files/download/java_icons/' . $res_file_more['id'] . '_' . $id . '.png');
             }
 
             $db->exec("DELETE FROM `download__more` WHERE `refid` = " . $id);
@@ -81,7 +81,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
         $db->exec("UPDATE `download__category` SET `total` = (`total`-1) WHERE $sql");
         $db->exec("DELETE FROM `download__files` WHERE `id` = " . $id);
         $db->query("OPTIMIZE TABLE `download__files`");
-        header('Location: ?id=' . $res_down['refid']);
+        $response->redirect('?id=' . $res_down['refid'])->sendHeaders();
     } else {
         echo '<div class="phdr"><b>' . _t('Delete File') . '</b></div>' .
             '<div class="rmenu"><p><a href="?act=delete_file&amp;id=' . $id . '&amp;yes"><b>' . _t('Delete') . '</b></a></p></div>' .

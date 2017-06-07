@@ -21,9 +21,11 @@ if (version_compare(PHP_VERSION, '5.6', '<')) {
 
 define('START_MEMORY', memory_get_usage());
 define('START_TIME', microtime(true));
+
 define('ROOT_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR);
+define('UPLOAD_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR);
 define('CONFIG_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR);
-define('CACHE_PATH', ROOT_PATH . 'files' . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR);
+define('CACHE_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR);
 
 require __DIR__ . '/vendor/autoload.php';
 

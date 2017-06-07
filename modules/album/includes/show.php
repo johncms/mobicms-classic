@@ -130,12 +130,12 @@ if ($total) {
             // Предпросмотр отдельного изображения
             if ($user['id'] == $systemUser->id && isset($_GET['profile'])) {
                 copy(
-                    ROOT_PATH . 'files/users/album/' . $user['id'] . '/' . $res['tmb_name'],
-                    ROOT_PATH . 'files/users/photo/' . $systemUser->id . '_small.jpg'
+                    UPLOAD_PATH . 'users/album/' . $user['id'] . '/' . $res['tmb_name'],
+                    UPLOAD_PATH . 'users/photo/' . $systemUser->id . '_small.jpg'
                 );
                 copy(
-                    ROOT_PATH . 'files/users/album/' . $user['id'] . '/' . $res['img_name'],
-                    ROOT_PATH . 'files/users/photo/' . $systemUser->id . '.jpg'
+                    UPLOAD_PATH . 'users/album/' . $user['id'] . '/' . $res['img_name'],
+                    UPLOAD_PATH . 'users/photo/' . $systemUser->id . '.jpg'
                 );
                 echo '<span class="green"><b>' . _t('Photo added to the profile') . '</b></span><br>';
             }
@@ -149,7 +149,7 @@ if ($total) {
             }
         } else {
             // Предпросмотр изображения в списке
-            echo '<a href="?act=show&amp;al=' . $al . '&amp;img=' . $res['id'] . '&amp;user=' . $user['id'] . '&amp;view"><img src="../files/users/album/' . $user['id'] . '/' . $res['tmb_name'] . '" /></a>';
+            echo '<a href="?act=show&amp;al=' . $al . '&amp;img=' . $res['id'] . '&amp;user=' . $user['id'] . '&amp;view"><img src="../uploads/users/album/' . $user['id'] . '/' . $res['tmb_name'] . '" /></a>';
         }
 
         if (!empty($res['description'])) {

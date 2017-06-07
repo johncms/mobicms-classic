@@ -14,11 +14,10 @@ module.exports = function (grunt) {
                             '.htaccess',
                             'files/.htaccess',
 
-                            '!files/cache/**/*',
-                            'files/cache/.htaccess',
                             '!files/downloads/files/**/*',
                             'files/downloads/files/index.php',
 
+                            '!system/cache/**/*',
                             '!system/config/autoload/database.local.php',
                             '!system/config/autoload/system.local.php',
 

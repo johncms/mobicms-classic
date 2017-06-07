@@ -33,8 +33,8 @@ echo '<div class="user"><p>' . $tools->displayUser($user) . '</p></div>' .
     '<h3><img src="../assets/images/contacts.png" width="16" height="16" class="left" />&#160;' . _t('Personal info') . '</h3>' .
     '<ul>';
 
-if (file_exists('../files/users/photo/' . $user['id'] . '_small.jpg')) {
-    echo '<a href="../files/users/photo/' . $user['id'] . '.jpg"><img src="../files/users/photo/' . $user['id'] . '_small.jpg" alt="' . $user['name'] . '" border="0" /></a>';
+if (file_exists(UPLOAD_PATH . 'users/photo/' . $user['id'] . '_small.jpg')) {
+    echo '<a href="../uploads/users/photo/' . $user['id'] . '.jpg"><img src="../files/users/photo/' . $user['id'] . '_small.jpg" alt="' . $user['name'] . '" border="0" /></a>';
 }
 
 echo '<li><span class="gray">' . _t('Name') . ':</span> ' . (empty($user['imname']) ? '' : $user['imname']) . '</li>' .

@@ -50,7 +50,7 @@ if ($req->rowCount()) {
     }
 
     // Проверка наличия файла
-    if (!$error && !file_exists(ROOT_PATH . 'files/users/album/' . $res['user_id'] . '/' . $res['img_name'])) {
+    if (!$error && !file_exists(UPLOAD_PATH . 'users/album/' . $res['user_id'] . '/' . $res['img_name'])) {
         $error[] = _t('File does not exist');
     }
 } else {
@@ -66,7 +66,7 @@ if (!$error) {
 
     // Отдаем файл
     //TODO: переделать на отдачу файла через Response
-    $response->header('Location', $config['homeurl'] . '/files/users/album/' . $res['user_id'] . '/' . $res['img_name']);
+    $response->header('Location', $config['homeurl'] . '/uploads/users/album/' . $res['user_id'] . '/' . $res['img_name']);
     $response->send();
 } else {
     require ROOT_PATH . 'system/head.php';

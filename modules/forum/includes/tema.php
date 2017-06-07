@@ -14,7 +14,7 @@ defined('MOBICMS') or die('Error: restricted access');
 $tools = App::getContainer()->get(Mobicms\Api\ToolsInterface::class);
 
 require ROOT_PATH . 'system/head.php';
-$delf = opendir('../files/forum/topics');
+$delf = opendir('../uploads/forum/topics');
 $tm = [];
 
 while ($tt = readdir($delf)) {
@@ -27,11 +27,11 @@ closedir($delf);
 $totalt = count($tm);
 
 for ($it = 0; $it < $totalt; $it++) {
-    $filtime[$it] = filemtime("../files/forum/topics/$tm[$it]");
+    $filtime[$it] = filemtime("../uploads/forum/topics/$tm[$it]");
     $tim = time();
     $ftime1 = $tim - 300;
     if ($filtime[$it] < $ftime1) {
-        unlink("../files/forum/topics/$tm[$it]");
+        unlink("../uploads/forum/topics/$tm[$it]");
     }
 }
 
@@ -83,14 +83,14 @@ if (isset($_POST['submit'])) {
             }
 
             $num = time() . $id;
-            $fp = fopen("../files/forum/topics/$num.txt", "a+");
+            $fp = fopen("../uploads/forum/topics/$num.txt", "a+");
             flock($fp, LOCK_EX);
             fputs($fp, "$text\r\n");
             fflush($fp);
             flock($fp, LOCK_UN);
             fclose($fp);
             @chmod("$fp", 0777);
-            @chmod("../files/forum/topics/$num.txt", 0777);
+            @chmod("../uploads/forum/topics/$num.txt", 0777);
             echo '<a href="index.php?act=loadtem&amp;n=' . $num . '">' . _t('Download') . '</a><br>' . _t('Link active 5 minutes') . '<br><a href="index.php">' . _t('Forum') . '</a><br>';
             break;
 
@@ -132,14 +132,14 @@ div { margin: 1px 0px 1px 0px; padding: 5px 5px 5px 5px;}
             }
             $text = $text . '<p>' . _t('This theme was downloaded from the forum site') . ': <b>' . $config['copyright'] . '</b></p></body></html>';
             $num = time() . $id;
-            $fp = fopen("../files/forum/topics/$num.htm", "a+");
+            $fp = fopen("../uploads/forum/topics/$num.htm", "a+");
             flock($fp, LOCK_EX);
             fputs($fp, "$text\r\n");
             fflush($fp);
             flock($fp, LOCK_UN);
             fclose($fp);
             @chmod("$fp", 0777);
-            @chmod("../files/forum/topics/$num.htm", 0777);
+            @chmod("../uploads/forum/topics/$num.htm", 0777);
             echo '<a href="index.php?act=loadtem&amp;n=' . $num . '">' . _t('Download') . '</a><br>' . _t('Link active 5 minutes') . '<br><a href="index.php">' . _t('Forum') . '</a><br>';
             break;
     }

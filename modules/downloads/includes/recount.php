@@ -28,4 +28,9 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     }
 }
 
-header('Location: ?id=' . $id);
+require ROOT_PATH . 'system/head.php';
+echo '<div class="phdr"><b>' . _t('Update counters') . '</b></div>' .
+    '<div class="gmenu"><p>' . _t('All Counters successfully updated') . '</p></div>' .
+    '<div class="phdr"><a href="?id=' . $id . '">' . _t('Back') . '</a></div>';
+require ROOT_PATH . 'system/end.php';
+

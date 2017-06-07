@@ -31,10 +31,10 @@ if ($id) {
     if ($req->rowCount()) {
         $res = $req->fetch();
 
-        if (file_exists(ROOT_PATH . 'files/forum/attach/' . $res['filename'])) {
+        if (file_exists(ROOT_PATH . 'uploads/forum/attach/' . $res['filename'])) {
             $dlcount = $res['dlcount'] + 1;
             $db->exec("UPDATE `cms_forum_files` SET  `dlcount` = '$dlcount' WHERE `id` = '$id'");
-            $response->redirect('../files/forum/attach/' . $res['filename'])->send();
+            $response->redirect('../uploads/forum/attach/' . $res['filename'])->send();
             exit;
         } else {
             $error = true;

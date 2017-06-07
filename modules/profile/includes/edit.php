@@ -55,12 +55,12 @@ echo '<div class="phdr"><a href="?user=' . $user['id'] . '"><b>' . ($user['id'] 
 
 if (isset($_GET['delavatar'])) {
     // Удаляем аватар
-    @unlink('../files/users/avatar/' . $user['id'] . '.png');
+    @unlink(UPLOAD_PATH . 'users/avatar/' . $user['id'] . '.png');
     echo '<div class="rmenu">' . _t('Avatar is successfully removed') . '</div>';
 } elseif (isset($_GET['delphoto'])) {
     // Удаляем фото
-    @unlink('../files/users/photo/' . $user['id'] . '.jpg');
-    @unlink('../files/users/photo/' . $user['id'] . '_small.jpg');
+    @unlink(UPLOAD_PATH . 'users/photo/' . $user['id'] . '.jpg');
+    @unlink(UPLOAD_PATH . 'users/photo/' . $user['id'] . '_small.jpg');
     echo '<div class="rmenu">' . _t('Photo is successfully removed') . '</div>';
 } elseif (isset($_POST['submit'])) {
     // Принимаем данные из формы, проверяем и записываем в базу
@@ -191,8 +191,8 @@ if ($systemUser->rights >= 7) {
 echo '</p><p>' . _t('Avatar') . ':<br>';
 $link = '';
 
-if (file_exists(('../files/users/avatar/' . $user['id'] . '.png'))) {
-    echo '<img src="../files/users/avatar/' . $user['id'] . '.png" width="32" height="32" alt="' . $user['name'] . '" /><br>';
+if (file_exists(UPLOAD_PATH . 'users/avatar/' . $user['id'] . '.png')) {
+    echo '<img src="../uploads/users/avatar/' . $user['id'] . '.png" width="32" height="32" alt="' . $user['name'] . '" /><br>';
     $link = ' | <a href="?act=edit&amp;user=' . $user['id'] . '&amp;delavatar">' . _t('Delete') . '</a>';
 }
 
@@ -206,8 +206,8 @@ echo $link . '</small></p>';
 echo '<p>' . _t('Photo') . ':<br>';
 $link = '';
 
-if (file_exists('../files/users/photo/' . $user['id'] . '_small.jpg')) {
-    echo '<a href="../files/users/photo/' . $user['id'] . '.jpg"><img src="../files/users/photo/' . $user['id'] . '_small.jpg" alt="' . $user['name'] . '" border="0" /></a><br>';
+if (file_exists(UPLOAD_PATH . 'users/photo/' . $user['id'] . '_small.jpg')) {
+    echo '<a href="../uploads/users/photo/' . $user['id'] . '.jpg"><img src="../uploads/users/photo/' . $user['id'] . '_small.jpg" alt="' . $user['name'] . '" border="0" /></a><br>';
     $link = ' | <a href="?act=edit&amp;user=' . $user['id'] . '&amp;delphoto">' . _t('Delete') . '</a>';
 }
 

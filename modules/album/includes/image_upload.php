@@ -66,7 +66,7 @@ if ($al && $user['id'] == $systemUser->id && empty($systemUser->ban) || $systemU
             //$handle->image_text_background = '#AAAAAA';
             //$handle->image_text_background_percent = 50;
             //$handle->image_text_padding = 1;
-            $handle->process(ROOT_PATH . 'files/users/album/' . $user['id'] . '/');
+            $handle->process(UPLOAD_PATH . 'users/album/' . $user['id'] . '/');
             $img_name = $handle->file_dst_name;
 
             if ($handle->processed) {
@@ -77,7 +77,7 @@ if ($al && $user['id'] == $systemUser->id && empty($systemUser->ban) || $systemU
                 $handle->image_y = 100;
                 $handle->image_ratio_no_zoom_in = true;
                 $handle->image_convert = 'jpg';
-                $handle->process(ROOT_PATH . 'files/users/album/' . $user['id'] . '/');
+                $handle->process(UPLOAD_PATH . 'users/album/' . $user['id'] . '/');
                 $tmb_name = $handle->file_dst_name;
 
                 if ($handle->processed) {

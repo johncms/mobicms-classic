@@ -9,7 +9,7 @@
  */
 
 defined('MOBICMS') or die('Error: restricted access');
-
+//TODO: доработать под новую структуру каталогов
 define('ROOT_DIR', '..');
 
 /** @var Mobicms\Api\UserInterface $systemUser */

@@ -37,7 +37,7 @@ class Environment implements Api\EnvironmentInterface
 
     private function ipLog($ip)
     {
-        $file = ROOT_PATH . 'files/cache/ip_flood.dat';
+        $file = CACHE_PATH . 'ip_flood.dat';
         $tmp = [];
         $requests = 1;
 

@@ -45,7 +45,7 @@ switch ($type) {
             switch ($mode) {
                 case 'moveaction':
                     if (!isset($_GET['movedeny'])) {
-                        echo '<div class="alarm"><div>' . _t('Are you sure you want to move the contents?') . '</div><div><a href="?act=del&amp;type=' . $type . '&amp;id=' . $id . '&amp;movedeny&amp;do=moveaction&amp;move=' . intval($_POST['move']) . '">' . _t('Move') . '</a> | <a href="?">' . _t('Cancel') . '</a></div></div>';
+                        echo '<div class="rmenu"><div>' . _t('Are you sure you want to move the contents?') . '</div><div><a href="?act=del&amp;type=' . $type . '&amp;id=' . $id . '&amp;movedeny&amp;do=moveaction&amp;move=' . intval($_POST['move']) . '">' . _t('Move') . '</a> | <a href="?">' . _t('Cancel') . '</a></div></div>';
                     } else {
                         $move = intval($_GET['move']);
                         if ($dirtype) {
@@ -87,7 +87,7 @@ switch ($type) {
 
                 case 'delall':
                     if (!isset($_GET['deldeny'])) {
-                        echo '<div class="alarm"><div>' . _t('Are you sure you want to delete content?') . '</div><div><a href="?act=del&amp;type=' . $type . '&amp;id=' . $id . '&amp;deldeny&amp;do=delall">' . _t('Delete') . '</a> | <a href="?">' . _t('Cancel') . '</a></div></div>';
+                        echo '<div class="rmenu"><div>' . _t('Are you sure you want to delete content?') . '</div><div><a href="?act=del&amp;type=' . $type . '&amp;id=' . $id . '&amp;deldeny&amp;do=delall">' . _t('Delete') . '</a> | <a href="?">' . _t('Cancel') . '</a></div></div>';
                     } else {
                         $childs = new Tree($id);
                         $deleted = $childs->getAllChildsId()->cleanDir();
@@ -99,7 +99,7 @@ switch ($type) {
                     break;
 
                 default:
-                    echo '<div class="alarm">' . _t('Section is not empty') . '</div>'
+                    echo '<div class="rmenu">' . _t('Section is not empty') . '</div>'
                         . '<div class="menu"><h3>' . _t('Select action') . '</h3>'
                         . '<form action="?act=del&amp;type=dir&amp;id=' . $id . '" method="post">'
                         . '<div><input type="radio" name="mode" value="delmove" checked="checked" /> ' . _t('Delete with movement') . '</div>'
@@ -112,7 +112,7 @@ switch ($type) {
         } else {
             $sql = "DELETE FROM `library_cats` WHERE `id`=" . $id;
             if (!isset($_GET['yes'])) {
-                echo '<div class="alarm"><div>' . _t('Delete confirmation') . '</div><div><a href="?act=del&amp;type=' . $type . '&amp;id=' . $id . '&amp;yes">' . _t('Delete') . '</a> | <a href="?do=dir&amp;id=' . $id . '">' . _t('Cancel') . '</a></div></div>';
+                echo '<div class="rmenu"><div>' . _t('Delete confirmation') . '</div><div><a href="?act=del&amp;type=' . $type . '&amp;id=' . $id . '&amp;yes">' . _t('Delete') . '</a> | <a href="?do=dir&amp;id=' . $id . '">' . _t('Cancel') . '</a></div></div>';
             }
         }
         break;
@@ -123,29 +123,29 @@ switch ($type) {
         } else {
             $sql = "DELETE FROM `library_texts` WHERE `id`=" . $id;
             if (!isset($_GET['yes'])) {
-                echo '<div class="alarm"><div>' . _t('Delete confirmation') . '</div><div><a href="?act=del&amp;type=' . $type . '&amp;id=' . $id . '&amp;yes">' . _t('Delete') . '</a> | <a href="index.php?id=' . $id . '">' . _t('Cancel') . '</a></div></div>';
+                echo '<div class="rmenu"><div>' . _t('Delete confirmation') . '</div><div><a href="?act=del&amp;type=' . $type . '&amp;id=' . $id . '&amp;yes">' . _t('Delete') . '</a> | <a href="index.php?id=' . $id . '">' . _t('Cancel') . '</a></div></div>';
             }
         }
         break;
     case 'image':
         if (!isset($_GET['yes'])) {
-            echo '<div class="alarm"><div>' . _t('Delete confirmation') . '</div><div><a href="?act=del&amp;type=' . $type . '&amp;id=' . $id . '&amp;yes">' . _t('Delete') . '</a> | <a href="?act=moder&amp;type=article&amp;id=' . $id . '">' . _t('Cancel') . '</a></div></div>';
+            echo '<div class="rmenu"><div>' . _t('Delete confirmation') . '</div><div><a href="?act=del&amp;type=' . $type . '&amp;id=' . $id . '&amp;yes">' . _t('Delete') . '</a> | <a href="?act=moder&amp;type=article&amp;id=' . $id . '">' . _t('Cancel') . '</a></div></div>';
         }
         break;
 }
 if (isset($_GET['yes']) && $type == 'image') {
-    if (file_exists('../files/library/images/small/' . $id . '.png')) {
-        @unlink('../files/library/images/big/' . $id . '.png');
-        @unlink('../files/library/images/orig/' . $id . '.png');
-        @unlink('../files/library/images/small/' . $id . '.png');
+    if (file_exists(UPLOAD_PATH . 'library/images/small/' . $id . '.png')) {
+        @unlink(UPLOAD_PATH . 'library/images/big/' . $id . '.png');
+        @unlink(UPLOAD_PATH . 'library/images/orig/' . $id . '.png');
+        @unlink(UPLOAD_PATH . 'library/images/small/' . $id . '.png');
     }
     echo '<div class="gmenu">' . _t('Deleted') . '</div><div><a href="?act=moder&amp;type=article&amp;id=' . $id . '">' . _t('Back') . '</a></div>' . PHP_EOL;
 } elseif (isset($_GET['yes'])) {
     if ($db->exec($sql)) {
-        if (file_exists('../files/library/images/small/' . $id . '.png')) {
-            @unlink('../files/library/images/big/' . $id . '.png');
-            @unlink('../files/library/images/orig/' . $id . '.png');
-            @unlink('../files/library/images/small/' . $id . '.png');
+        if (file_exists(UPLOAD_PATH . 'library/images/small/' . $id . '.png')) {
+            @unlink(UPLOAD_PATH . 'library/images/big/' . $id . '.png');
+            @unlink(UPLOAD_PATH . 'library/images/orig/' . $id . '.png');
+            @unlink(UPLOAD_PATH . 'library/images/small/' . $id . '.png');
         }
         echo '<div class="gmenu">' . _t('Deleted') . '</div><p><a href="?">' . _t('Back') . '</a></p>' . PHP_EOL;
     }

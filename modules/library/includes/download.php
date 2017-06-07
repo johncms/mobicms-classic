@@ -19,8 +19,8 @@ if (isset($_GET['type']) && in_array($_GET['type'], ['txt', 'fb2'])) {
     Library\Utils::redir404();
 }
 
-$image_lib = file_exists('../files/library/images/orig/' . $id . '.png')
-    ? chunk_split(base64_encode(file_get_contents('../files/library/images/orig/' . $id . '.png')))
+$image_lib = file_exists('../uploads/library/images/orig/' . $id . '.png')
+    ? chunk_split(base64_encode(file_get_contents('../uploads/library/images/orig/' . $id . '.png')))
     : '';
 
 $out = '';

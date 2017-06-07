@@ -13,6 +13,7 @@ namespace Library;
 /**
  * Класс хештегов
  * Class Hashtags
+ *
  * @package Library
  * @author  Koenig(Compolomus)
  */
@@ -20,6 +21,7 @@ class Hashtags
 {
     /**
      * не обязательный аргумент, индификатор статьи
+     *
      * @var bool|int
      */
     private $lib_id = false;
@@ -31,6 +33,7 @@ class Hashtags
 
     /**
      * Hashtags constructor.
+     *
      * @param int $id
      */
     public function __construct($id = 0)
@@ -41,6 +44,7 @@ class Hashtags
 
     /**
      * Получение всех статей по тегу
+     *
      * @param $tag
      * @return array|null
      */
@@ -59,6 +63,7 @@ class Hashtags
 
     /**
      * Получение всех тегов статьи
+     *
      * @param int $tpl
      * @return object|null
      */
@@ -81,6 +86,7 @@ class Hashtags
 
     /**
      * Добавление тега
+     *
      * @param $tags
      * @return int|null
      */
@@ -102,17 +108,20 @@ class Hashtags
 
     /**
      * Удаление тега
+     *
      * @return int
      */
     public function delTags()
     {
         $stmt = $this->db->prepare('DELETE FROM `library_tags` WHERE `lib_text_id` = ?');
         $stmt->execute([$this->lib_id]);
+
         return $stmt->rowCount();
     }
 
     /**
      * Проверка существования тега
+     *
      * @param string $tag
      * @return bool
      */
@@ -126,6 +135,7 @@ class Hashtags
 
     /**
      * Валидация корректности тега, замена спец символов
+     *
      * @param string $tag
      * @return string
      */
@@ -136,16 +146,18 @@ class Hashtags
 
     /**
      * Массив тегов с релевантностью
+     *
      * @return array|bool
      */
     public function arrayCloudTags()
     {
         $result = [];
-        $stmt = $this->db->query('SELECT `library_texts`.`id`, `library_tags`.`lib_text_id`, `library_tags`.`tag_name`, COUNT(*) as `count` FROM `library_tags` JOIN `library_texts` ON `library_texts`.`id` = `library_tags`.`lib_text_id` GROUP BY `tag_name` ORDER BY `count` DESC;');
+        $stmt = $this->db->query('SELECT `library_texts`.`id`, `library_tags`.`lib_text_id`, `library_tags`.`tag_name`, COUNT(*) AS `count` FROM `library_tags` JOIN `library_texts` ON `library_texts`.`id` = `library_tags`.`lib_text_id` GROUP BY `tag_name` ORDER BY `count` DESC;');
         if ($stmt->rowCount()) {
             while ($row = $stmt->fetch()) {
                 $result[$row['tag_name']] = $row['count'];
             }
+
             return $result;
         } else {
             return false;
@@ -154,6 +166,7 @@ class Hashtags
 
     /**
      * Рейтинг тегов с сортировкой по алфавиту или релевантности
+     *
      * @param string $sort
      * @return array|bool
      */
@@ -186,6 +199,7 @@ class Hashtags
 
     /**
      * Получение ссылок или кэша для отображения
+     *
      * @param $array
      * @return string
      */
@@ -205,19 +219,20 @@ class Hashtags
      */
     public function delCache()
     {
-        file_exists('../files/cache/cmpranglibcloud.dat') ? unlink('../files/cache/cmpranglibcloud.dat') : false;
-        file_exists('../files/cache/cmpalphalibcloud.dat') ? unlink('../files/cache/cmpalphalibcloud.dat') : false;
+        file_exists(CACHE_PATH . 'cmpranglibcloud.dat') ? unlink(CACHE_PATH . 'cmpranglibcloud.dat') : false;
+        file_exists(CACHE_PATH . 'cmpalphalibcloud.dat') ? unlink(CACHE_PATH . 'cmpalphalibcloud.dat') : false;
     }
 
     /**
      * Получение кэша, если кэш отсутствует, создает его
+     *
      * @param string $sort
      * @return string
      */
     public function getCache($sort = 'cmpalpha')
     {
-        if (file_exists('../files/cache/' . $sort . 'libcloud.dat')) {
-            return file_get_contents('../files/cache/' . $sort . 'libcloud.dat');
+        if (file_exists(CACHE_PATH . $sort . 'libcloud.dat')) {
+            return file_get_contents(CACHE_PATH . $sort . 'libcloud.dat');
         } else {
             return $this->setCache($sort);
         }
@@ -225,6 +240,7 @@ class Hashtags
 
     /**
      * Установка кэша с сортировкой
+     *
      * @param string $sort
      * @return string
      */
@@ -233,7 +249,7 @@ class Hashtags
         $obj = new self();
         $tags = $this->db->query('SELECT `id` FROM `library_tags` LIMIT 1')->rowCount();
         $res = ($tags > 0 ? $obj->cloud($obj->tagRang($sort)) : '<p>' . _t('The list is empty') . '</p>');
-        file_put_contents('../files/cache/' . $sort . 'libcloud.dat', $res);
+        file_put_contents(CACHE_PATH . $sort . 'libcloud.dat', $res);
 
         return $this->getCache($sort);
     }

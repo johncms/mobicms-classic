@@ -73,7 +73,7 @@ class install
     public static function check_folders_rights()
     {
         $folders = [
-            '/files/cache/',
+            '/system/cache/',
             '/files/downloads/files/',
             '/files/downloads/screen/',
             '/files/forum/attach/',

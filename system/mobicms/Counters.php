@@ -49,7 +49,7 @@ class Counters
      */
     public function album()
     {
-        $file = ROOT_PATH . 'files/cache/count_album.dat';
+        $file = CACHE_PATH . 'count_album.dat';
 
         if (file_exists($file) && filemtime($file) > (time() - 600)) {
             $res = unserialize(file_get_contents($file));
@@ -83,7 +83,7 @@ class Counters
      */
     public function downloads()
     {
-        $file = ROOT_PATH . 'files/cache/count_downloads.dat';
+        $file = CACHE_PATH . 'count_downloads.dat';
 
         if (file_exists($file) && filemtime($file) > (time() - 600)) {
             $res = unserialize(file_get_contents($file));
@@ -119,7 +119,7 @@ class Counters
      */
     public function forum()
     {
-        $file = ROOT_PATH . 'files/cache/count_forum.dat';
+        $file = CACHE_PATH . 'count_forum.dat';
         $new = '';
 
         if (file_exists($file) && filemtime($file) > (time() - 600)) {
@@ -216,7 +216,7 @@ class Counters
      */
     public function library()
     {
-        $file = ROOT_PATH . 'files/cache/count_library.dat';
+        $file = CACHE_PATH . 'count_library.dat';
 
         if (file_exists($file) && filemtime($file) > (time() - 3200)) {
             $res = unserialize(file_get_contents($file));
@@ -249,7 +249,7 @@ class Counters
      */
     public function online()
     {
-        $file = ROOT_PATH . 'files/cache/count_online.dat';
+        $file = CACHE_PATH . 'count_online.dat';
 
         if (file_exists($file) && filemtime($file) > (time() - 10)) {
             $res = unserialize(file_get_contents($file));
@@ -272,7 +272,7 @@ class Counters
      */
     public function users()
     {
-        $file = ROOT_PATH . 'files/cache/count_users.dat';
+        $file = CACHE_PATH . 'count_users.dat';
 
         if (file_exists($file) && filemtime($file) > (time() - 600)) {
             $res = unserialize(file_get_contents($file));

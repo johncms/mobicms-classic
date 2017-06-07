@@ -19,8 +19,8 @@ function format($name)
 $u = isset($_GET['u']) ? abs(intval($_GET['u'])) : NULL;
 $file = isset($_GET['f']) ? htmlspecialchars(urldecode($_GET['f'])) : NULL;
 
-if ($u && $file && file_exists('../../../files/users/album/' . $u . '/' . $file)) {
-    $att_ext = strtolower(format('../../../files/users/album/' . $u . '/' . $file));
+if ($u && $file && file_exists('../../../uploads/users/album/' . $u . '/' . $file)) {
+    $att_ext = strtolower(format('../../../uploads/users/album/' . $u . '/' . $file));
     $pic_ext = array(
         'gif',
         'jpg',
@@ -29,7 +29,7 @@ if ($u && $file && file_exists('../../../files/users/album/' . $u . '/' . $file)
     );
 
     if (in_array($att_ext, $pic_ext)) {
-        $sizs = GetImageSize('../../../files/users/album/' . $u . '/' . $file);
+        $sizs = GetImageSize('../../../uploads/users/album/' . $u . '/' . $file);
         $razm = 230;
         $width = $sizs[0];
         $height = $sizs[1];
@@ -49,19 +49,19 @@ if ($u && $file && file_exists('../../../files/users/album/' . $u . '/' . $file)
 
         switch ($att_ext) {
             case "gif":
-                $im = ImageCreateFromGIF('../../../files/users/album/' . $u . '/' . $file);
+                $im = ImageCreateFromGIF('../../../uploads/users/album/' . $u . '/' . $file);
                 break;
 
             case "jpg":
-                $im = ImageCreateFromJPEG('../../../files/users/album/' . $u . '/' . $file);
+                $im = ImageCreateFromJPEG('../../../uploads/users/album/' . $u . '/' . $file);
                 break;
 
             case "jpeg":
-                $im = ImageCreateFromJPEG('../../../files/users/album/' . $u . '/' . $file);
+                $im = ImageCreateFromJPEG('../../../uploads/users/album/' . $u . '/' . $file);
                 break;
 
             case "png":
-                $im = ImageCreateFromPNG('../../../files/users/album/' . $u . '/' . $file);
+                $im = ImageCreateFromPNG('../../../uploads/users/album/' . $u . '/' . $file);
                 break;
         }
 
