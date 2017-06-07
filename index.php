@@ -64,6 +64,11 @@ $router->respond(['GET', 'POST'], '@^/help/', function () {
     include ROOT_PATH . 'modules/help/index.php';
 });
 
+// Библиотека
+$router->respond(['GET', 'POST'], '@^/library/', function () {
+    include ROOT_PATH . 'modules/library/index.php';
+});
+
 // Вход / выход с сайта
 $router->respond(['GET', 'POST'], '@^/login/', function () {
     include ROOT_PATH . 'modules/login/index.php';

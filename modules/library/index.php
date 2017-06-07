@@ -16,7 +16,6 @@ $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 $do = isset($_REQUEST['do']) ? trim($_REQUEST['do']) : false;
 
 $headmod = 'library';
-require_once('../system/bootstrap.php');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -73,9 +72,9 @@ if (!$config['mod_lib'] && $systemUser->rights < 7) {
 }
 
 if ($error) {
-    require_once('../system/head.php');
+    require ROOT_PATH . 'system/head.php';
     echo $tools->displayError($error);
-    require_once('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -103,7 +102,7 @@ if ($id > 0) {
     }
 }
 
-require_once('../system/head.php');
+require ROOT_PATH . 'system/head.php';
 
 ?>
 
@@ -154,7 +153,7 @@ $array_includes = [
 $i = 0;
 
 if (in_array($act, $array_includes)) {
-    require_once('includes/' . $act . '.php');
+    require __DIR__ . '/includes/' . $act . '.php';
 } else {
     if (!$id) {
         echo '<div class="phdr"><strong>' . _t('Library') . '</strong></div>';
@@ -291,7 +290,7 @@ if (in_array($act, $array_includes)) {
 
                         while ($row = $sql2->fetch()) {
                             echo '<div class="list' . (++$i % 2 ? 2 : 1) . '">'
-                                . (file_exists('../files/library/images/small/' . $row['id'] . '.png')
+                                . (file_exists(ROOT_PATH . 'files/library/images/small/' . $row['id'] . '.png')
                                     ? '<div class="avatar"><img src="../files/library/images/small/' . $row['id'] . '.png" alt="screen" /></div>'
                                     : '')
                                 . '<div class="righttable"><h4><a href="index.php?id=' . $row['id'] . '">' . $tools->checkout($row['name']) . '</a></h4>'
@@ -462,4 +461,4 @@ if (in_array($act, $array_includes)) {
     } // end else !id
 } // end else $act
 
-require_once('../system/end.php');
+require ROOT_PATH . 'system/end.php';

@@ -27,7 +27,7 @@ $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 if (!$systemUser->isValid()) {
     echo $tools->displayError(_t('Access forbidden'));
-    require_once('../system/end.php');
+    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -39,7 +39,7 @@ if ($req_obj->rowCount()) {
 
     if (!$res_obj) {
         echo $tools->displayError(_t('Access forbidden'));
-        require('../system/end.php');
+        require ROOT_PATH . 'system/end.php';
         exit;
     }
 
