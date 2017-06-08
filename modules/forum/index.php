@@ -178,7 +178,6 @@ $mods = [
     'ren',
     'restore',
     'say',
-    'tema',
     'users',
     'vip',
     'vote',
@@ -875,9 +874,6 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 } else {
                     echo '<div><a href="index.php?act=filter&amp;id=' . $id . '&amp;start=' . $start . '">' . _t('Filter by author') . '</a></div>';
                 }
-
-                // Ссылка на скачку темы
-                echo '<a href="index.php?act=tema&amp;id=' . $id . '">' . _t('Download Topic') . '</a>';
                 break;
 
             default:
