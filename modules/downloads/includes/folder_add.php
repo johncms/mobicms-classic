@@ -48,7 +48,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
             $error[] = _t('The required fields are not filled');
         }
 
-        if (preg_match("/[^0-9a-zA-Z]+/", $name)) {
+        if (preg_match("/[^0-9a-zA-Z\-\_]+/", $name)) {
             $error[] = _t('Invalid characters');
         }
 
