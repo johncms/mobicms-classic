@@ -118,9 +118,9 @@ if ($do || isset($_GET['new'])) {
             }
 
             // Формируем ссылку на файл
-            $fls = @filesize('../uploads/forum/attach/' . $res['filename']);
+            $fls = @filesize(UPLOAD_PATH . 'forum/attach/' . $res['filename']);
             $fls = round($fls / 1024, 0);
-            $att_ext = strtolower(pathinfo('./uploads/forum/attach/' . $res['filename'], PATHINFO_EXTENSION));
+            $att_ext = strtolower(pathinfo(UPLOAD_PATH . 'forum/attach/' . $res['filename'], PATHINFO_EXTENSION));
             $pic_ext = [
                 'gif',
                 'jpg',
@@ -131,11 +131,11 @@ if ($do || isset($_GET['new'])) {
             if (in_array($att_ext, $pic_ext)) {
                 // Если картинка, то выводим предпросмотр
                 $file = '<div><a href="index.php?act=file&amp;id=' . $res['id'] . '">';
-                $file .= '<img src="thumbinal.php?file=' . (urlencode($res['filename'])) . '" alt="' . _t('Click to view image') . '" /></a></div>';
+                $file .= '<img src="../assets/modules/forum/thumbinal.php?file=' . (urlencode($res['filename'])) . '" alt="' . _t('Click to view image') . '" /></a></div>';
             } else {
                 // Если обычный файл, выводим значок и ссылку
-                $file = ($res['del'] ? '<img src="../images/del.png" width="16" height="16" />'
-                        : '') . '<img src="../images/system/' . $res['filetype'] . '.png" width="16" height="16" />&#160;';
+                $file = ($res['del'] ? '<img src="../assets/images/del.png" width="16" height="16" />'
+                        : '') . '<img src="../assets/images/system/' . $res['filetype'] . '.png" width="16" height="16" />&#160;';
             }
 
             $file .= '<a href="index.php?act=file&amp;id=' . $res['id'] . '">' . htmlspecialchars($res['filename']) . '</a><br />';
@@ -176,7 +176,7 @@ if ($do || isset($_GET['new'])) {
         $count = $db->query("SELECT COUNT(*) FROM `cms_forum_files` WHERE `filetype` = '$i'" . ($systemUser->rights >= 7 ? '' : " AND `del` != '1'") . $sql)->fetchColumn();
 
         if ($count > 0) {
-            $link[] = '<img src="../images/system/' . $i . '.png" width="16" height="16" class="left" />&#160;<a href="index.php?act=files&amp;do=' . $i . $lnk . '">' . $types[$i] . '</a>&#160;(' . $count . ')';
+            $link[] = '<img src="../assets/images/system/' . $i . '.png" width="16" height="16" class="left" />&#160;<a href="index.php?act=files&amp;do=' . $i . $lnk . '">' . $types[$i] . '</a>&#160;(' . $count . ')';
             $total = $total + $count;
         }
     }
