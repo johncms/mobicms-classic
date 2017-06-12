@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-03-25 11:48-0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -16,74 +16,74 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: id\n"
-"X-Crowdin-File: /registration/default.pot\n"
+"X-Crowdin-File: /modules/registration/default.pot\n"
 "Language: id_ID\n"
 
-#: index.php:33 index.php:52 index.php:207
+#: index.php:29 index.php:48 index.php:207
 msgid "Registration"
 msgstr "Pendaftaran"
 
-#: index.php:39
+#: index.php:35
 msgid "Registration is temporarily closed"
 msgstr "Registrasi ditutup sementara"
 
-#: index.php:63
+#: index.php:59
 msgid "You have not entered Nickname"
 msgstr "Anda belum memasukkan nama pengguna"
 
-#: index.php:65
+#: index.php:61
 msgid "Nickname wrong length"
 msgstr "Nama pengguna terlalu panjang"
 
-#: index.php:69
+#: index.php:65
 msgid "Invalid characters"
 msgstr "Karakter salah"
 
-#: index.php:74
+#: index.php:70
 msgid "You have not entered password"
 msgstr "Anda belum memasukkan kata sandi"
 
-#: index.php:76
+#: index.php:72
 msgid "Invalid length"
 msgstr "Panjang tidak valid"
 
-#: index.php:81
+#: index.php:77
 msgid "You have not selected genger"
 msgstr "Anda belum memilih jenis kelamin"
 
-#: index.php:90
+#: index.php:86
 msgid "The security code is not correct"
 msgstr "Kode verifikasi salah"
 
-#: index.php:105
+#: index.php:101
 msgid "Selected Nickname is already in use"
 msgstr "Nama pengguna sudah digunakan"
 
-#: index.php:152
+#: index.php:148
 msgid "Your registratiton data"
 msgstr "Data pendaftaran Anda"
 
-#: index.php:153
+#: index.php:149
 msgid "Your ID"
 msgstr "ID Anda"
 
-#: index.php:154
+#: index.php:150
 msgid "Your Username"
 msgstr "Nama Pengguna"
 
-#: index.php:155
+#: index.php:151
 msgid "Your Password"
 msgstr "Kata Sandi"
 
-#: index.php:158
+#: index.php:154
 msgid "Please, wait until a moderator approves your registration"
 msgstr "Mohon tunggu hingga Moderator menerima Pendaftaran Anda"
 
-#: index.php:162
+#: index.php:158
 msgid "Enter"
 msgstr "Masuk"
 
-#: index.php:173
+#: index.php:169
 msgid "You can get authorized on the site after confirmation of your registration."
 msgstr "Anda bisa masuk setelah Pendaftaran Anda dikonfirmasi."
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
-"POT-Creation-Date: 2017-03-26 17:27+0400\n"
-"PO-Revision-Date: 2017-03-26 09:42-0400\n"
+"POT-Creation-Date: 2017-06-12 21:13+0400\n"
+"PO-Revision-Date: 2017-06-12 13:31-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Arabic\n"
 "MIME-Version: 1.0\n"
@@ -17,268 +17,267 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /mail/default.pot\n"
+"X-Crowdin-File: /modules/mail/default.pot\n"
 
-#: includes/delete.php:16 includes/deluser.php:16 includes/files.php:16
-#: includes/ignor.php:16 includes/input.php:15 includes/load.php:15
-#: includes/new.php:15 includes/output.php:15 includes/systems.php:113
-#: includes/write.php:40 includes/write.php:50 includes/write.php:106
-#: includes/write.php:528 index.php:79
+#: includes/delete.php:14 includes/deluser.php:14 includes/files.php:14
+#: includes/ignor.php:14 includes/input.php:13 includes/load.php:13
+#: includes/new.php:13 includes/output.php:13 includes/systems.php:114
+#: includes/write.php:41 includes/write.php:51 includes/write.php:107
+#: includes/write.php:492 index.php:79
 msgid "Mail"
 msgstr "البريـــد"
 
-#: includes/delete.php:19
+#: includes/delete.php:17
 msgid "Deleting messages"
 msgstr "حذف المراسلات"
 
-#: includes/delete.php:39
+#: includes/delete.php:37
 msgid "Message does not exist"
 msgstr "الرساله غير موجوده"
 
-#: includes/delete.php:50 includes/delete.php:77
+#: includes/delete.php:48 includes/delete.php:75
 msgid "Message deleted"
 msgstr "تم حذف الرساله"
 
-#: includes/delete.php:51 includes/delete.php:78 includes/deluser.php:57
-#: includes/ignor.php:101 includes/write.php:95
+#: includes/delete.php:49 includes/delete.php:76 includes/deluser.php:55
+#: includes/ignor.php:102 includes/write.php:96
 msgid "Back"
 msgstr "رجوع"
 
-#: includes/delete.php:82
+#: includes/delete.php:80
 msgid "You really want to remove the message?"
 msgstr "هل ترغب في حذف هذي الرسالة؟"
 
-#: includes/delete.php:83 includes/deluser.php:50 includes/deluser.php:54
-#: includes/ignor.php:127 includes/input.php:88 includes/new.php:59
-#: includes/output.php:89 includes/systems.php:54 includes/systems.php:89
-#: includes/write.php:90 includes/write.php:495 index.php:143
+#: includes/delete.php:81 includes/deluser.php:48 includes/deluser.php:52
+#: includes/ignor.php:126 includes/input.php:88 includes/new.php:58
+#: includes/output.php:88 includes/systems.php:55 includes/systems.php:90
+#: includes/write.php:91 includes/write.php:459 index.php:141
 msgid "Delete"
 msgstr "حذف"
 
-#: includes/delete.php:87
+#: includes/delete.php:85
 msgid "The message for removal isn't chosen"
 msgstr "لم يتم اختيار الرساله لازالتها"
 
-#: includes/delete.php:90 includes/files.php:70 includes/ignor.php:152
-#: includes/input.php:115 includes/new.php:83 includes/output.php:116
-#: includes/systems.php:123 includes/write.php:96 includes/write.php:537
-#: index.php:166
+#: includes/delete.php:88 includes/files.php:70 includes/ignor.php:151
+#: includes/input.php:115 includes/new.php:82 includes/output.php:115
+#: includes/systems.php:124 includes/write.php:97 includes/write.php:501
+#: index.php:164
 msgid "Personal"
 msgstr "الملف الشخصي"
 
-#: includes/deluser.php:48
+#: includes/deluser.php:46
 msgid "Contact deleted"
 msgstr "تم حذف جهة الاتصال"
 
-#: includes/deluser.php:48 includes/input.php:78 includes/output.php:79
+#: includes/deluser.php:46 includes/input.php:78 includes/output.php:78
 #: index.php:113
 msgid "Continue"
 msgstr "متابعة"
 
-#: includes/deluser.php:53
+#: includes/deluser.php:51
 msgid "When you delete a contact is deleted and all correspondence with him.<br>Are you sure you want to delete?"
 msgstr "عند قيامك بحذف حذف جهة اتصال وجميع المراسلات معه. <br> هل أنت متأكد من أنك تريد حذف؟"
 
-#: includes/deluser.php:60
+#: includes/deluser.php:58
 msgid "Contact for removal isn't chosen"
 msgstr "لم تختار جهة الاتصال لازالتها"
 
-#: includes/files.php:16 includes/files.php:31
+#: includes/files.php:14 includes/files.php:32
 msgid "Files"
 msgstr "الملفات"
 
-#: includes/files.php:56 includes/ignor.php:138 includes/input.php:102
-#: includes/new.php:70 includes/output.php:103 includes/systems.php:99
-#: includes/write.php:513 index.php:154
+#: includes/files.php:56 includes/ignor.php:137 includes/input.php:102
+#: includes/new.php:69 includes/output.php:102 includes/systems.php:100
+#: includes/write.php:477 index.php:152
 msgid "The list is empty"
 msgstr "قائمة فارغة"
 
-#: includes/files.php:60 includes/ignor.php:141 includes/input.php:105
-#: includes/new.php:73 includes/output.php:106 includes/systems.php:102
-#: includes/write.php:516 index.php:157
+#: includes/files.php:60 includes/ignor.php:140 includes/input.php:105
+#: includes/new.php:72 includes/output.php:105 includes/systems.php:103
+#: includes/write.php:480 index.php:155
 msgid "Total"
 msgstr "المجموع"
 
-#: includes/files.php:67 includes/ignor.php:148 includes/input.php:112
-#: includes/new.php:80 includes/output.php:113 includes/systems.php:109
-#: includes/write.php:524 index.php:163
+#: includes/files.php:67 includes/ignor.php:147 includes/input.php:112
+#: includes/new.php:79 includes/output.php:112 includes/systems.php:110
+#: includes/write.php:488 index.php:161
 msgid "To Page"
 msgstr "الى صفحة"
 
-#: includes/ignor.php:31 includes/ignor.php:107 includes/output.php:89
+#: includes/ignor.php:32 includes/ignor.php:108 includes/output.php:88
 #: index.php:123
 msgid "Blocklist"
 msgstr "قائمة المحجوبين"
 
-#: includes/ignor.php:39 includes/ignor.php:68 includes/write.php:42
-#: includes/write.php:144 index.php:93
+#: includes/ignor.php:40 includes/ignor.php:69 includes/write.php:43
+#: includes/write.php:145 index.php:93
 msgid "User does not exists"
 msgstr "المستخدم غير موجود"
 
-#: includes/ignor.php:49
+#: includes/ignor.php:50
 msgid "User not blocked"
 msgstr "تم حظر العضو"
 
-#: includes/ignor.php:52
+#: includes/ignor.php:53
 msgid "User is unblocked"
 msgstr "تم رفع الحظر عن العضو"
 
-#: includes/ignor.php:56
+#: includes/ignor.php:57
 msgid "You really want to unblock contact?"
 msgstr "هل تريد ازالة الحظر عن العضو"
 
-#: includes/ignor.php:57 includes/ignor.php:127
+#: includes/ignor.php:58 includes/ignor.php:126
 msgid "Unblock"
 msgstr "رفع الحظر"
 
-#: includes/ignor.php:61 includes/ignor.php:104
+#: includes/ignor.php:62 includes/ignor.php:105
 msgid "Contact isn't chosen"
 msgstr "نأسف لم تختار جهة اتصال"
 
-#: includes/ignor.php:78
+#: includes/ignor.php:79
 msgid "This user can not be blocked"
 msgstr "لا يمكن حظر هذا العضو"
 
-#: includes/ignor.php:94
+#: includes/ignor.php:95
 msgid "User is blocked"
 msgstr "تهانينا! تم رفع الحظر"
 
-#: includes/ignor.php:98
+#: includes/ignor.php:99
 msgid "You really want to block contact?"
 msgstr "هل تريد رفع الحظر عن جهة الاتصال"
 
-#: includes/ignor.php:99
+#: includes/ignor.php:100
 msgid "Block"
 msgstr "حظر"
 
-#: includes/ignor.php:107 index.php:123
+#: includes/ignor.php:108 index.php:123
 msgid "My Contacts"
 msgstr "جهات الاتصال الخاصه بي"
 
-#: includes/ignor.php:127 includes/input.php:88 includes/new.php:59
-#: includes/output.php:89 index.php:143
+#: includes/ignor.php:126 includes/input.php:88 includes/new.php:58
+#: includes/output.php:88 index.php:141
 msgid "Correspondence"
 msgstr "المراسلات"
 
-#: includes/input.php:17
+#: includes/input.php:15
 msgid "Incoming messages"
 msgstr "حذف المراسلات"
 
-#: includes/load.php:35 includes/load.php:47
+#: includes/load.php:36 includes/load.php:48
 msgid "Such file does not exist"
 msgstr "لايوجد ملف"
 
-#: includes/load.php:50
+#: includes/load.php:51
 msgid "No file selected"
 msgstr "لم يتم اختيار ملف"
 
-#: includes/new.php:30
+#: includes/new.php:31
 msgid "New Messages"
 msgstr "رسائل جديدة"
 
-#: includes/new.php:59
+#: includes/new.php:58
 msgid "Block Sender"
 msgstr "حظر المرسل"
 
-#: includes/output.php:17
+#: includes/output.php:15
 msgid "Sent messages"
 msgstr "رسائل مرسلة"
 
-#: includes/systems.php:48 includes/write.php:85
+#: includes/systems.php:49 includes/write.php:86
 msgid "Messages are deleted"
 msgstr "تم حذف الرساله"
 
-#: includes/systems.php:51 includes/write.php:89
+#: includes/systems.php:52 includes/write.php:90
 msgid "Confirm the deletion of messages"
 msgstr "تأكيد حذف الرسالة"
 
-#: includes/systems.php:115
+#: includes/systems.php:116
 msgid "System messages"
 msgstr "رسالة النظام"
 
-#: includes/systems.php:120 includes/write.php:52 includes/write.php:534
+#: includes/systems.php:121 includes/write.php:53 includes/write.php:498
 msgid "Clear messages"
 msgstr "تنظيف الرسائل"
 
-#: includes/write.php:122
+#: includes/write.php:123
 msgid "Specify the recipient's login"
 msgstr "تعيين تسجيل الدخول الخاص بالمستلم"
 
-#: includes/write.php:126
+#: includes/write.php:127
 msgid "Message cannot be empty"
 msgstr "الرساله لا يمكن ان تكون فارغة"
 
-#: includes/write.php:130
+#: includes/write.php:131
 msgid "You cannot send messages to yourself"
 msgstr "لا يمكنك ارساله رساله الى نفسك"
 
-#: includes/write.php:136
+#: includes/write.php:137
 #, php-format
 msgid "You cannot add the message so often. Please, wait %d sec."
 msgstr "لا يمكنك إضافة الرسالة حتى غالباً. الرجاء الانتظار %d ثانية."
 
-#: includes/write.php:162
+#: includes/write.php:163
 msgid "To this user can write only contacts"
 msgstr "يمكن أن يكتب لهذا المستخدم فقط من جهات الاتصال"
 
-#: includes/write.php:169
+#: includes/write.php:170
 msgid "To this user can write only friends"
 msgstr "يمكن أن يكتب لهذا المستخدم فقط الأصدقاء"
 
-#: includes/write.php:201 includes/write.php:213 includes/write.php:368
-#: includes/write.php:389 includes/write.php:392
+#: includes/write.php:202 includes/write.php:357
 msgid "Error uploading file"
 msgstr "خطأ في رفع الملف"
 
-#: includes/write.php:288
+#: includes/write.php:277
 msgid "It is forbidden to upload files without a name"
 msgstr "لا يمكن رفع ملف بدون اسم"
 
-#: includes/write.php:292
+#: includes/write.php:281
 msgid "It is forbidden to upload files without extension"
 msgstr "يمنع تحميل ملفات بدون ملحق"
 
-#: includes/write.php:296
+#: includes/write.php:285
 msgid "The size of the file exceeds the maximum allowable upload"
 msgstr "يتجاوز حجم الملف الحد الأقصى المسموح به تحميل"
 
-#: includes/write.php:300
+#: includes/write.php:289
 msgid "File name contains invalid characters"
 msgstr "يحتوي اسم الملف على أحرف غير صالحة"
 
-#: includes/write.php:304
+#: includes/write.php:293
 msgid "Forbidden file type! By uploading permitted only files with the following extension"
 msgstr "حظر نوع الملف! عن طريق تحميل يسمح فقط الملفات ذات الملحق التالي"
 
-#: includes/write.php:318
+#: includes/write.php:307
 msgid "The user at your ignore list. Sending the message is impossible."
 msgstr "المستخدم في قائمة التجاهل الخاصة بك. من المستحيل إرسال الرسالة."
 
-#: includes/write.php:328
+#: includes/write.php:317
 msgid "The user added you in the ignore list. Sending the message isn't possible."
 msgstr "لا يمكن ارسال رساله لعضو بقائمة التجاهل"
 
-#: includes/write.php:406
+#: includes/write.php:371
 msgid "Message already exists"
 msgstr "هذا الاسم موجود من قبل"
 
-#: includes/write.php:439
+#: includes/write.php:404
 msgid "To Whom"
 msgstr "الذين"
 
-#: includes/write.php:444
+#: includes/write.php:409
 msgid "Send"
 msgstr "إرسال"
 
-#: includes/write.php:446
+#: includes/write.php:411
 msgid "Personal correspondence with"
 msgstr "المراسلات الشخصية مع"
 
-#: includes/write.php:446
+#: includes/write.php:411
 msgid "Send a message"
 msgstr "ارسال رسالة"
 
-#: includes/write.php:492
+#: includes/write.php:456
 msgid "File"
 msgstr "ملف"
 
@@ -302,7 +301,7 @@ msgstr "تريد حقاً لإضافة جهة اتصال؟"
 msgid "Add"
 msgstr "اضافة"
 
-#: index.php:143
+#: index.php:141
 msgid "Block User"
 msgstr "حظر مستخدم"
 

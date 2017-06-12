@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-04-05 06:22-0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Lithuanian\n"
 "MIME-Version: 1.0\n"
@@ -12,485 +12,436 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-KeywordsList: _t;_p:1,2\n"
-"X-Poedit-SearchPath-0: login.php\n"
-"X-Poedit-SearchPath-1: go.php\n"
-"X-Poedit-SearchPath-2: exit.php\n"
-"X-Poedit-SearchPath-3: system/johncms\n"
-"X-Poedit-SearchPath-4: system/head.php\n"
-"X-Poedit-SearchPath-5: system/end.php\n"
-"X-Poedit-SearchPath-6: system/mainmenu.php\n"
+"X-Poedit-SearchPath-0: system/mobicms\n"
+"X-Poedit-SearchPath-1: system/head.php\n"
+"X-Poedit-SearchPath-2: system/end.php\n"
+"X-Poedit-SearchPath-3: modules/login\n"
+"X-Poedit-SearchPath-4: modules/homepage\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: lt\n"
 "X-Crowdin-File: /system/system.pot\n"
 "Language: lt_LT\n"
 
-#: exit.php:30
-msgid "Are you sure you want to leave the site?"
-msgstr "Ar tikrai norite palikti šią svetainę?"
+#: modules/homepage/index.php:35
+msgid "Information"
+msgstr "Informacija"
 
-#: exit.php:31
-msgid "Logout"
-msgstr "Atsijungti"
+#: modules/homepage/index.php:37
+msgid "News archive"
+msgstr "Naujienų archyvas"
 
-#: exit.php:32 system/johncms/Comments.php:243
-msgid "Cancel"
-msgstr "Atšaukti"
+#: modules/homepage/index.php:38
+msgid "Information, FAQ"
+msgstr "Informacija, klausimai ir atsakymai"
 
-#: go.php:37
-msgid "Select language"
-msgstr "Pasirinkti kalbą"
+#: modules/homepage/index.php:43
+msgid "Communication"
+msgstr "Komunikacijos"
 
-#: go.php:43
-msgid "Default"
-msgstr "Numatytas"
-
-#: go.php:50
-msgid "Apply"
-msgstr "Pritaikyti"
-
-#: go.php:50 go.php:67 system/johncms/Comments.php:112
-#: system/johncms/Comments.php:135 system/johncms/Comments.php:143
-#: system/johncms/Comments.php:146 system/johncms/Comments.php:163
-#: system/johncms/Comments.php:191 system/johncms/Comments.php:200
-#: system/johncms/Comments.php:203 system/johncms/Comments.php:247
-msgid "Back"
-msgstr "Atgal"
-
-#: go.php:58
-msgid "External Link"
-msgstr "Išorinė nuoroda"
-
-#: go.php:61
-msgid "ATTENTION!"
-msgstr "DĖMESIO!"
-
-#: go.php:62
-msgid "You are going to leave our site and go to an external link"
-msgstr "Jus ketinate palikti mūsų svetainę ir eiti į išorinę nuorodą"
-
-#: go.php:63
-msgid "Administration of our site is not responsible for the content of external sites"
-msgstr "Mūsų svetainės administracija nėra atsakinga už išorės svetainių turinį"
-
-#: go.php:64
-#, php-format
-msgid "It is recommended not to specify your data, relating to %s (Login, Password), on third party sites"
-msgstr "Rekomenduojama nenurodyti savo duomenų, susijusių su %s (prisijungimas, slaptažodžio), trečiųjų šalių tinklalapiuose"
-
-#: go.php:65
-msgid "Go to Link"
-msgstr "Eiti į Nuorodą"
-
-#: login.php:37 system/end.php:35 system/head.php:110
-msgid "Home"
-msgstr "Pradžia"
-
-#: login.php:39 login.php:158 system/head.php:112
-msgid "Login"
-msgstr "Prisijungti"
-
-#: login.php:49
-msgid "You have not entered login"
-msgstr "Jus neįvedėte slapyvardžio"
-
-#: login.php:53
-msgid "You have not entered password"
-msgstr "Jus neįvedėte slaptažodžio"
-
-#: login.php:57
-msgid "Nickname"
-msgstr "Slapyvardis"
-
-#: login.php:57 login.php:61
-msgid "Invalid length"
-msgstr "Neleistinas ilgis"
-
-#: login.php:61 login.php:155
-msgid "Password"
-msgstr "Slaptažodis"
-
-#: login.php:81
-msgid "The security code is not correct"
-msgstr "Neteisingas apsaugos kodas"
-
-#: login.php:87
-msgid "Verification code"
-msgstr "Patvirtinimo kodas"
-
-#: login.php:88
-msgid "Enter verification code"
-msgstr "Įveskite patvirtinimo kodą"
-
-#: login.php:92
-msgid "Continue"
-msgstr "Tęsti"
-
-#: login.php:104
-msgid "Sorry, but your request for registration is not considered yet. Please, be patient."
-msgstr "Atsiprašome, bet jusų prašymas dar neperžiuretas administracija. Prašome, būkite kantrus."
-
-#: login.php:128
-msgid "Enter site"
-msgstr "Patekti į svetainę"
-
-#: login.php:137 login.php:141
-msgid "Authorization failed"
-msgstr "Autorizavimas nepavyko"
-
-#: login.php:153
-msgid "Username"
-msgstr "Vartotojo vardas"
-
-#: login.php:157
-msgid "Remember"
-msgstr "Prisiminti"
-
-#: login.php:160
-msgid "Registration"
-msgstr "Registracija"
-
-#: login.php:161
-msgid "Forgot password?"
-msgstr "Pamiršote slaptažodį?"
-
-#: system/head.php:53
-msgid "Site News"
-msgstr "Svetainės Naujienos"
-
-#: system/head.php:106
-msgid "Hi"
-msgstr "Sveiki"
-
-#: system/head.php:106 system/johncms/Tools.php:299
-msgid "Guest"
-msgstr "Svečias"
-
-#: system/head.php:111
-msgid "Personal"
-msgstr "Asmeninės"
-
-#: system/head.php:198
-msgid "Ban"
-msgstr "Blokuoti"
-
-#: system/head.php:198
-msgid "Details"
-msgstr "Detaliau"
-
-#: system/head.php:207
-msgid "System"
-msgstr "Sistema"
-
-#: system/head.php:219
-msgid "Mail"
-msgstr "Paštas"
-
-#: system/head.php:223 system/johncms/Tools.php:242 system/mainmenu.php:42
+#: modules/homepage/index.php:47 system/head.php:226
+#: system/mobicms/Tools/Utilites.php:260
 msgid "Guestbook"
 msgstr "Svečių Knyga"
 
-#: system/head.php:229
-msgid "Comments"
-msgstr "Komentarai"
-
-#: system/head.php:233 system/johncms/Counters.php:164
-msgid "Unread"
-msgstr "Neskaityta"
-
-#: system/johncms/Bbcode.php:164
-msgid "Edit List"
-msgstr "Redaguoti sąrašą"
-
-#: system/johncms/Bbcode.php:175
-msgid "Add Smilies"
-msgstr "Pridėti Šypsenėles"
-
-#: system/johncms/Bbcode.php:233
-msgid "Bold"
-msgstr "Paryškintas"
-
-#: system/johncms/Bbcode.php:234
-msgid "Italic"
-msgstr "Kursyvinis"
-
-#: system/johncms/Bbcode.php:235
-msgid "Underline"
-msgstr "Pabrauktas"
-
-#: system/johncms/Bbcode.php:236
-msgid "Strike"
-msgstr "Perbrauktas"
-
-#: system/johncms/Bbcode.php:237
-msgid "Text Color"
-msgstr "Teksto spalva"
-
-#: system/johncms/Bbcode.php:238
-msgid "Background Color"
-msgstr "Fono spalva"
-
-#: system/johncms/Bbcode.php:239
-msgid "List"
-msgstr "Sąrašas"
-
-#: system/johncms/Bbcode.php:240
-msgid "Spoiler"
-msgstr "Paslėptukas"
-
-#: system/johncms/Bbcode.php:241
-msgid "Quote"
-msgstr "Cituoti"
-
-#: system/johncms/Bbcode.php:242
-msgid "URL"
-msgstr "URL"
-
-#: system/johncms/Bbcode.php:243
-msgid "Code"
-msgstr "Kodas"
-
-#: system/johncms/Bbcode.php:247
-msgid "Smilies"
-msgstr "Šypsenėlės"
-
-#: system/johncms/Bbcode.php:287
-msgid "Added"
-msgstr "Pridėta"
-
-#: system/johncms/Comments.php:104 system/johncms/Comments.php:299
-msgid "Reply"
-msgstr "Atsakyti"
-
-#: system/johncms/Comments.php:112
-msgid "Administrator already replied to this message"
-msgstr "Administratorius jau atsakė į šį pranešimą"
-
-#: system/johncms/Comments.php:146 system/johncms/Comments.php:200
-msgid "Wrong data"
-msgstr "Klaidingi duomenys"
-
-#: system/johncms/Comments.php:154 system/johncms/Comments.php:300
-msgid "Edit"
-msgstr "Redaguoti"
-
-#: system/johncms/Comments.php:163
-msgid "You cannot edit posts of higher administration"
-msgstr "Jus negalite redaguoti vyresniojo už jus administracijos pranešimus"
-
-#: system/johncms/Comments.php:240 system/johncms/Comments.php:242
-#: system/johncms/Comments.php:301
-msgid "Delete"
-msgstr "Ištrinti"
-
-#: system/johncms/Comments.php:241
-msgid "Do you really want to delete?"
-msgstr "Ar tikrai norite ištrinti?"
-
-#: system/johncms/Comments.php:244
-msgid "Clear all messages from this user"
-msgstr "Išvalyti visus šio vartotojo pranešimus"
-
-#: system/johncms/Comments.php:245
-msgid "Clear"
-msgstr "Išvalyti"
-
-#: system/johncms/Comments.php:307
-msgid "Edited"
-msgstr "Redagavo"
-
-#: system/johncms/Comments.php:331
-msgid "The list is empty"
-msgstr "Sąrašas tuščias"
-
-#: system/johncms/Comments.php:334
-msgid "Total"
-msgstr "Viso"
-
-#: system/johncms/Comments.php:340
-msgid "To Page"
-msgstr "Į puslapį"
-
-#: system/johncms/Comments.php:399
-msgid "Message"
-msgstr "Žinutė"
-
-#: system/johncms/Comments.php:402
-msgid "Send"
-msgstr "Siųsti"
-
-#: system/johncms/Comments.php:422
-msgid "Text is too short"
-msgstr "Tekstas per trumpas"
-
-#: system/johncms/Comments.php:428
-msgid "You cannot add the message so often<br>Please, wait"
-msgstr "Jus negalite rašyti pranešimą taip dažnai<br> Prašome palaukti"
-
-#: system/johncms/Comments.php:428
-msgid "seconds"
-msgstr "sek."
-
-#: system/johncms/Comments.php:438
-msgid "Message already exists"
-msgstr "Pranešimas jau yra"
-
-#: system/johncms/Counters.php:163
-msgid "Show for Period"
-msgstr "Rodyti laikotarpi"
-
-#: system/johncms/Counters.php:170
-msgid "Last activity"
-msgstr "Paskutinis aktyvumas"
-
-#: system/johncms/NewsWidget.php:63
-msgid "show more"
-msgstr "rodyti daugiau"
-
-#: system/johncms/NewsWidget.php:98
-msgid "Discuss"
-msgstr "Diskusija"
-
-#: system/johncms/Tools.php:135
-msgid "Today"
-msgstr "Šiandien"
-
-#: system/johncms/Tools.php:138
-msgid "Yesterday"
-msgstr "Vakar"
-
-#: system/johncms/Tools.php:154
-msgid "ERROR"
-msgstr "KLAIDA"
-
-#: system/johncms/Tools.php:234
-msgid "List of Admins"
-msgstr "Administratorių sąrašas"
-
-#: system/johncms/Tools.php:235
-msgid "Watching the photo album"
-msgstr "Žiūrėti nuotraukų albumą"
-
-#: system/johncms/Tools.php:236
-msgid "List of birthdays"
-msgstr "Gimtadienių sąrašas"
-
-#: system/johncms/Tools.php:237 system/mainmenu.php:57
-msgid "Downloads"
-msgstr "Atsisiuntimai"
-
-#: system/johncms/Tools.php:238
-msgid "Reading the FAQ"
-msgstr "Skaityti DUK"
-
-#: system/johncms/Tools.php:239 system/mainmenu.php:47
+#: modules/homepage/index.php:52 system/mobicms/Tools/Utilites.php:257
 msgid "Forum"
 msgstr "Forumas"
 
-#: system/johncms/Tools.php:240
-msgid "Forum Files"
-msgstr "Forumo failai"
+#: modules/homepage/index.php:58
+msgid "Useful"
+msgstr "Naudinga"
 
-#: system/johncms/Tools.php:241
-msgid "Looking, who in Forum?"
-msgstr "Žiurite, kas forume?"
+#: modules/homepage/index.php:62 system/mobicms/Tools/Utilites.php:255
+msgid "Downloads"
+msgstr "Atsisiuntimai"
 
-#: system/johncms/Tools.php:243
-msgid "Here, in the list"
-msgstr "Čia, sąraše"
-
-#: system/johncms/Tools.php:244
-msgid "On the Homepage"
-msgstr "Pagrindiniame puslapyje"
-
-#: system/johncms/Tools.php:245 system/mainmenu.php:62
+#: modules/homepage/index.php:67 system/mobicms/Tools/Utilites.php:263
 msgid "Library"
 msgstr "Biblioteka"
 
-#: system/johncms/Tools.php:246
+#: modules/homepage/index.php:74
+msgid "Community"
+msgstr "Bendruomenė"
+
+#: modules/homepage/index.php:75
+msgid "Users"
+msgstr "Vartotojai"
+
+#: modules/homepage/index.php:76
+msgid "Photo Albums"
+msgstr "Nuotraukų Albumai"
+
+#: modules/login/includes/login.php:37 system/end.php:33 system/head.php:113
+msgid "Home"
+msgstr "Pradžia"
+
+#: modules/login/includes/login.php:39 modules/login/includes/login.php:159
+#: system/head.php:115
+msgid "Login"
+msgstr "Prisijungti"
+
+#: modules/login/includes/login.php:49
+msgid "You have not entered login"
+msgstr "Jus neįvedėte slapyvardžio"
+
+#: modules/login/includes/login.php:53
+msgid "You have not entered password"
+msgstr "Jus neįvedėte slaptažodžio"
+
+#: modules/login/includes/login.php:57
+msgid "Nickname"
+msgstr "Slapyvardis"
+
+#: modules/login/includes/login.php:57 modules/login/includes/login.php:61
+msgid "Invalid length"
+msgstr "Neleistinas ilgis"
+
+#: modules/login/includes/login.php:61 modules/login/includes/login.php:156
+msgid "Password"
+msgstr "Slaptažodis"
+
+#: modules/login/includes/login.php:81
+msgid "The security code is not correct"
+msgstr "Neteisingas apsaugos kodas"
+
+#: modules/login/includes/login.php:93
+msgid "Verification code"
+msgstr "Patvirtinimo kodas"
+
+#: modules/login/includes/login.php:94
+msgid "Enter verification code"
+msgstr "Įveskite patvirtinimo kodą"
+
+#: modules/login/includes/login.php:99
+msgid "Continue"
+msgstr "Tęsti"
+
+#: modules/login/includes/login.php:111
+msgid "Sorry, but your request for registration is not considered yet. Please, be patient."
+msgstr "Atsiprašome, bet jusų prašymas dar neperžiuretas administracija. Prašome, būkite kantrus."
+
+#: modules/login/includes/login.php:138 modules/login/includes/login.php:142
+msgid "Authorization failed"
+msgstr "Autorizavimas nepavyko"
+
+#: modules/login/includes/login.php:154
+msgid "Username"
+msgstr "Vartotojo vardas"
+
+#: modules/login/includes/login.php:158
+msgid "Remember"
+msgstr "Prisiminti"
+
+#: modules/login/includes/login.php:161
+msgid "Registration"
+msgstr "Registracija"
+
+#: modules/login/includes/logout.php:35
+msgid "Are you sure you want to leave the site?"
+msgstr "Ar tikrai norite palikti šią svetainę?"
+
+#: modules/login/includes/logout.php:36
+msgid "Logout"
+msgstr "Atsijungti"
+
+#: modules/login/includes/logout.php:37 system/mobicms/Comments.php:248
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: system/head.php:51
+msgid "Site News"
+msgstr "Svetainės Naujienos"
+
+#: system/head.php:114
+msgid "Personal"
+msgstr "Asmeninės"
+
+#: system/head.php:201
+msgid "Ban"
+msgstr "Blokuoti"
+
+#: system/head.php:201
+msgid "Details"
+msgstr "Detaliau"
+
+#: system/head.php:210
+msgid "System"
+msgstr "Sistema"
+
+#: system/head.php:222
+msgid "Mail"
+msgstr "Paštas"
+
+#: system/head.php:232
+msgid "Comments"
+msgstr "Komentarai"
+
+#: system/head.php:236 system/mobicms/Counters.php:162
+msgid "Unread"
+msgstr "Neskaityta"
+
+#: system/mobicms/Bbcode.php:153
+msgid "Edit List"
+msgstr "Redaguoti sąrašą"
+
+#: system/mobicms/Bbcode.php:164
+msgid "Add Smilies"
+msgstr "Pridėti Šypsenėles"
+
+#: system/mobicms/Bbcode.php:222
+msgid "Bold"
+msgstr "Paryškintas"
+
+#: system/mobicms/Bbcode.php:223
+msgid "Italic"
+msgstr "Kursyvinis"
+
+#: system/mobicms/Bbcode.php:224
+msgid "Underline"
+msgstr "Pabrauktas"
+
+#: system/mobicms/Bbcode.php:225
+msgid "Strike"
+msgstr "Perbrauktas"
+
+#: system/mobicms/Bbcode.php:226
+msgid "Text Color"
+msgstr "Teksto spalva"
+
+#: system/mobicms/Bbcode.php:227
+msgid "Background Color"
+msgstr "Fono spalva"
+
+#: system/mobicms/Bbcode.php:228
+msgid "List"
+msgstr "Sąrašas"
+
+#: system/mobicms/Bbcode.php:229
+msgid "Spoiler"
+msgstr "Paslėptukas"
+
+#: system/mobicms/Bbcode.php:230
+msgid "Quote"
+msgstr "Cituoti"
+
+#: system/mobicms/Bbcode.php:231
+msgid "URL"
+msgstr "URL"
+
+#: system/mobicms/Bbcode.php:232
+msgid "Code"
+msgstr "Kodas"
+
+#: system/mobicms/Bbcode.php:236
+msgid "Smilies"
+msgstr "Šypsenėlės"
+
+#: system/mobicms/Bbcode.php:276
+msgid "Added"
+msgstr "Pridėta"
+
+#: system/mobicms/Comments.php:108 system/mobicms/Comments.php:304
+msgid "Reply"
+msgstr "Atsakyti"
+
+#: system/mobicms/Comments.php:116
+msgid "Administrator already replied to this message"
+msgstr "Administratorius jau atsakė į šį pranešimą"
+
+#: system/mobicms/Comments.php:116 system/mobicms/Comments.php:139
+#: system/mobicms/Comments.php:147 system/mobicms/Comments.php:150
+#: system/mobicms/Comments.php:167 system/mobicms/Comments.php:195
+#: system/mobicms/Comments.php:204 system/mobicms/Comments.php:207
+#: system/mobicms/Comments.php:252
+msgid "Back"
+msgstr "Atgal"
+
+#: system/mobicms/Comments.php:150 system/mobicms/Comments.php:204
+msgid "Wrong data"
+msgstr "Klaidingi duomenys"
+
+#: system/mobicms/Comments.php:158 system/mobicms/Comments.php:305
+msgid "Edit"
+msgstr "Redaguoti"
+
+#: system/mobicms/Comments.php:167
+msgid "You cannot edit posts of higher administration"
+msgstr "Jus negalite redaguoti vyresniojo už jus administracijos pranešimus"
+
+#: system/mobicms/Comments.php:245 system/mobicms/Comments.php:247
+#: system/mobicms/Comments.php:306
+msgid "Delete"
+msgstr "Ištrinti"
+
+#: system/mobicms/Comments.php:246
+msgid "Do you really want to delete?"
+msgstr "Ar tikrai norite ištrinti?"
+
+#: system/mobicms/Comments.php:249
+msgid "Clear all messages from this user"
+msgstr "Išvalyti visus šio vartotojo pranešimus"
+
+#: system/mobicms/Comments.php:250
+msgid "Clear"
+msgstr "Išvalyti"
+
+#: system/mobicms/Comments.php:312
+msgid "Edited"
+msgstr "Redagavo"
+
+#: system/mobicms/Comments.php:336
+msgid "The list is empty"
+msgstr "Sąrašas tuščias"
+
+#: system/mobicms/Comments.php:339
+msgid "Total"
+msgstr "Viso"
+
+#: system/mobicms/Comments.php:345
+msgid "To Page"
+msgstr "Į puslapį"
+
+#: system/mobicms/Comments.php:404
+msgid "Message"
+msgstr "Žinutė"
+
+#: system/mobicms/Comments.php:407
+msgid "Send"
+msgstr "Siųsti"
+
+#: system/mobicms/Comments.php:426
+msgid "Text is too short"
+msgstr "Tekstas per trumpas"
+
+#: system/mobicms/Comments.php:432
+msgid "You cannot add the message so often<br>Please, wait"
+msgstr "Jus negalite rašyti pranešimą taip dažnai<br> Prašome palaukti"
+
+#: system/mobicms/Comments.php:432
+msgid "seconds"
+msgstr "sek."
+
+#: system/mobicms/Comments.php:442
+msgid "Message already exists"
+msgstr "Pranešimas jau yra"
+
+#: system/mobicms/Counters.php:161
+msgid "Show for Period"
+msgstr "Rodyti laikotarpi"
+
+#: system/mobicms/Counters.php:168
+msgid "Last activity"
+msgstr "Paskutinis aktyvumas"
+
+#: system/mobicms/NewsWidget.php:61
+msgid "show more"
+msgstr "rodyti daugiau"
+
+#: system/mobicms/NewsWidget.php:96
+msgid "Discuss"
+msgstr "Diskusija"
+
+#: system/mobicms/Tools/Utilites.php:145
+msgid "Today"
+msgstr "Šiandien"
+
+#: system/mobicms/Tools/Utilites.php:148
+msgid "Yesterday"
+msgstr "Vakar"
+
+#: system/mobicms/Tools/Utilites.php:164
+msgid "ERROR"
+msgstr "KLAIDA"
+
+#: system/mobicms/Tools/Utilites.php:252
+msgid "List of Admins"
+msgstr "Administratorių sąrašas"
+
+#: system/mobicms/Tools/Utilites.php:253
+msgid "Watching the photo album"
+msgstr "Žiūrėti nuotraukų albumą"
+
+#: system/mobicms/Tools/Utilites.php:254
+msgid "List of birthdays"
+msgstr "Gimtadienių sąrašas"
+
+#: system/mobicms/Tools/Utilites.php:256
+msgid "Reading the FAQ"
+msgstr "Skaityti DUK"
+
+#: system/mobicms/Tools/Utilites.php:258
+msgid "Forum Files"
+msgstr "Forumo failai"
+
+#: system/mobicms/Tools/Utilites.php:259
+msgid "Looking, who in Forum?"
+msgstr "Žiurite, kas forume?"
+
+#: system/mobicms/Tools/Utilites.php:261
+msgid "Here, in the list"
+msgstr "Čia, sąraše"
+
+#: system/mobicms/Tools/Utilites.php:262
+msgid "On the Homepage"
+msgstr "Pagrindiniame puslapyje"
+
+#: system/mobicms/Tools/Utilites.php:264
 msgid "Personal correspondence"
 msgstr "Asmeninė korespondencija"
 
-#: system/johncms/Tools.php:247
+#: system/mobicms/Tools/Utilites.php:265
 msgid "Reading the news"
 msgstr "Skaito naujienas"
 
-#: system/johncms/Tools.php:248
+#: system/mobicms/Tools/Utilites.php:266
 msgid "Who is online?"
 msgstr "Kas Prisijungę?"
 
-#: system/johncms/Tools.php:249
+#: system/mobicms/Tools/Utilites.php:267
 msgid "Profile"
 msgstr "Profilis"
 
-#: system/johncms/Tools.php:250
+#: system/mobicms/Tools/Utilites.php:268
 msgid "Personal Profile"
 msgstr "Asmeninis Profilis"
 
-#: system/johncms/Tools.php:251
+#: system/mobicms/Tools/Utilites.php:269
 msgid "Registered on the site"
 msgstr "Prisiregistravęs svetainėje"
 
-#: system/johncms/Tools.php:252
+#: system/mobicms/Tools/Utilites.php:270
 msgid "List of users"
 msgstr "Vartotojų sąrašas"
 
-#: system/johncms/Tools.php:253
+#: system/mobicms/Tools/Utilites.php:271
 msgid "Watching Top 10 Users"
 msgstr "Žiurį Top 10 Vartotojų"
 
-#: system/johncms/Tools.php:367
+#: system/mobicms/Tools/Utilites.php:317
+msgid "Guest"
+msgstr "Svečias"
+
+#: system/mobicms/Tools/Utilites.php:385
 msgid "Last Visit"
 msgstr "Paskutinis apsilankymas"
 
-#: system/johncms/Tools.php:373
+#: system/mobicms/Tools/Utilites.php:391
 msgid "Browser"
 msgstr "Naršyklė"
 
-#: system/johncms/Tools.php:374
+#: system/mobicms/Tools/Utilites.php:392
 msgid "IP address"
 msgstr "IP adresas"
 
-#: system/johncms/Tools.php:393
+#: system/mobicms/Tools/Utilites.php:411
 msgid "IP History"
 msgstr "IP Istorija"
 
-#: system/johncms/Tools.php:594
+#: system/mobicms/Tools/Utilites.php:629
 msgid "Day"
 msgid_plural "Days"
 msgstr[0] "Dieną"
 msgstr[1] "Dienos"
 msgstr[2] "Dienų"
-
-#: system/mainmenu.php:30
-msgid "Information"
-msgstr "Informacija"
-
-#: system/mainmenu.php:32
-msgid "News archive"
-msgstr "Naujienų archyvas"
-
-#: system/mainmenu.php:33
-msgid "Information, FAQ"
-msgstr "Informacija, klausimai ir atsakymai"
-
-#: system/mainmenu.php:38
-msgid "Communication"
-msgstr "Komunikacijos"
-
-#: system/mainmenu.php:53
-msgid "Useful"
-msgstr "Naudinga"
-
-#: system/mainmenu.php:69
-msgid "Community"
-msgstr "Bendruomenė"
-
-#: system/mainmenu.php:70
-msgid "Users"
-msgstr "Vartotojai"
-
-#: system/mainmenu.php:71
-msgid "Photo Albums"
-msgstr "Nuotraukų Albumai"
 

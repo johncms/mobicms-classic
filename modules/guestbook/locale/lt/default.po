@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-03-26 09:42-0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Lithuanian\n"
 "MIME-Version: 1.0\n"
@@ -16,152 +16,156 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: lt\n"
-"X-Crowdin-File: /guestbook/default.pot\n"
+"X-Crowdin-File: /modules/guestbook/default.pot\n"
 "Language: lt_LT\n"
 
-#: index.php:56 index.php:329
+#: index.php:63 index.php:344
 msgid "Admin Club"
 msgstr "Admin-Klubas"
 
-#: index.php:56 index.php:74 index.php:196 index.php:250 index.php:291
-#: index.php:294 index.php:324 index.php:328
+#: index.php:63 index.php:82 index.php:210 index.php:265 index.php:306
+#: index.php:309 index.php:339 index.php:343
 msgid "Guestbook"
 msgstr "Svečių Knyga"
 
-#: index.php:61
+#: index.php:68
 msgid "Guestbook is closed"
 msgstr "Svečių knygą uždarytą"
 
-#: index.php:74
+#: index.php:82
 msgid "Delete message"
 msgstr "Pašalinti pranešimą"
 
-#: index.php:75
+#: index.php:83
 msgid "Do you really want to delete?"
 msgstr "Ar tikrai norite ištrinti?"
 
-#: index.php:76 index.php:435
+#: index.php:84 index.php:454
 msgid "Delete"
 msgstr "Ištrinti"
 
-#: index.php:77 index.php:303
+#: index.php:85 index.php:318
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: index.php:96
+#: index.php:104
 msgid "Wrong data"
 msgstr "Klaidingi duomenys"
 
-#: index.php:100
+#: index.php:108
 msgid "You have not entered a name"
 msgstr "Jus neįvedėte slapyvardžio"
 
-#: index.php:104
+#: index.php:112
 msgid "You have not entered the message"
 msgstr "Jus neįvedėte pranešimo"
 
-#: index.php:108
+#: index.php:116
 msgid "Access forbidden"
 msgstr "Prieiga uždrausta"
 
-#: index.php:113
+#: index.php:123
 msgid "The security code is not correct"
 msgstr "Neteisingas apsaugos kodas"
 
-#: index.php:132
+#: index.php:142
 #, php-format
 msgid "You cannot add the message so often. Please, wait %d seconds."
 msgstr "Jus negalite rašyti pranešimus taip dažnai. Prašome palaukti %d sekundžių."
 
-#: index.php:175 index.php:211 index.php:259
+#: index.php:187 index.php:225 index.php:274
 msgid "Back"
 msgstr "Atgal"
 
-#: index.php:196 index.php:206 index.php:208 index.php:434
+#: index.php:210 index.php:220 index.php:222 index.php:453
 msgid "Reply"
 msgstr "Atsakyti"
 
-#: index.php:250 index.php:435
+#: index.php:265 index.php:454
 msgid "Edit"
 msgstr "Redaguoti"
 
-#: index.php:253
+#: index.php:268
 msgid "Author"
 msgstr "Autorius"
 
-#: index.php:256
+#: index.php:271
 msgid "Save"
 msgstr "Išsaugoti"
 
-#: index.php:276
+#: index.php:291
 msgid "All messages older than 1 day were deleted"
 msgstr "Ištrinti visi pranešimai, vyresnieji už 1 dieną"
 
-#: index.php:282
+#: index.php:297
 msgid "Full clearing is finished"
 msgstr "Viskas išvalytą sėkmingai"
 
-#: index.php:287
+#: index.php:302
 msgid "All messages older than 1 week were deleted"
 msgstr "Ištrinti visi pranešimai, vyresni 1 savaitės"
 
-#: index.php:294 index.php:301 index.php:330
+#: index.php:309 index.php:316 index.php:345
 msgid "Clear"
 msgstr "Išvalyti"
 
-#: index.php:297
+#: index.php:312
 msgid "Clearing parameters"
 msgstr "Valymo nustatymai"
 
-#: index.php:298
+#: index.php:313
 msgid "Older than 1 week"
 msgstr "Vyresni nei 1 savaite"
 
-#: index.php:299
+#: index.php:314
 msgid "Older than 1 day"
 msgstr "Vyresni nei ą dieną"
 
-#: index.php:300
+#: index.php:315
 msgid "Clear all"
 msgstr "Išvalyti viską"
 
-#: index.php:321
+#: index.php:336
 msgid "The guestbook is closed"
 msgstr "Svečių knygą uždarytą"
 
-#: index.php:342
+#: index.php:357
 msgid "Name"
 msgstr "Vardas"
 
-#: index.php:345
+#: index.php:360
 msgid "Message"
 msgstr "Pranešimas"
 
-#: index.php:351 index.php:352
+#: index.php:370
+msgid "Verification code"
+msgstr "Patvirtinimo kodas"
+
+#: index.php:371
 msgid "Symbols on the picture"
 msgstr "Simboliai ant nuotraukos"
 
-#: index.php:355
+#: index.php:374
 msgid "Send"
 msgstr "Siųsti"
 
-#: index.php:357
+#: index.php:376
 msgid "For registered users only"
 msgstr "Tik registruotiems Vartotojams"
 
-#: index.php:361
+#: index.php:380
 msgid "Comments"
 msgstr "Komentarai"
 
-#: index.php:450
+#: index.php:469
 msgid "The guestbook is empty.<br><strong>Be the first! :)</strong>"
 msgstr "Svečių knyga tusčia.<br><strong>Buk pirmas</strong>"
 
-#: index.php:453
+#: index.php:472
 msgid "Total"
 msgstr "Viso"
 
-#: index.php:458
+#: index.php:477
 msgid "To Page"
 msgstr "Į puslapį"
 

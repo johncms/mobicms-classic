@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-03-25 11:49-0400\n"
+"PO-Revision-Date: 2017-06-12 13:36-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -16,306 +16,306 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: pl\n"
-"X-Crowdin-File: /help/default.pot\n"
+"X-Crowdin-File: /modules/help/default.pot\n"
 "Language: pl_PL\n"
 
-#: includes/admsmilies.php:26 includes/set_my_sm.php:31
+#: includes/admsmilies.php:28 includes/set_my_sm.php:33
 msgid "Wrong data"
 msgstr "Nieprawidłowe dane"
 
-#: includes/admsmilies.php:26 includes/admsmilies.php:80
-#: includes/avatars.php:35 includes/avatars.php:81 includes/avatars.php:99
-#: includes/forum.php:61 includes/my_smilies.php:72 includes/smilies.php:53
-#: includes/tags.php:81 includes/usersmilies.php:90 index.php:82
+#: includes/admsmilies.php:28 includes/admsmilies.php:82
+#: includes/avatars.php:37 includes/avatars.php:83 includes/avatars.php:101
+#: includes/forum.php:59 includes/my_smilies.php:74 includes/smilies.php:51
+#: includes/tags.php:79 includes/usersmilies.php:92 index.php:78
 msgid "Back"
 msgstr "Powrót"
 
-#: includes/admsmilies.php:31 includes/my_smilies.php:25
-#: includes/set_my_sm.php:31 includes/smilies.php:19
-#: includes/usersmilies.php:41 index.php:81
+#: includes/admsmilies.php:33 includes/my_smilies.php:27
+#: includes/set_my_sm.php:33 includes/smilies.php:17
+#: includes/usersmilies.php:43 index.php:77
 msgid "Smilies"
 msgstr "Emotikonki"
 
-#: includes/admsmilies.php:31 includes/smilies.php:27
+#: includes/admsmilies.php:33 includes/smilies.php:25
 msgid "For administration"
 msgstr "Dla administracji"
 
-#: includes/admsmilies.php:38 includes/my_smilies.php:25
-#: includes/smilies.php:23 includes/usersmilies.php:54
+#: includes/admsmilies.php:40 includes/my_smilies.php:27
+#: includes/smilies.php:21 includes/usersmilies.php:56
 msgid "My smilies"
 msgstr "Moje emotikony"
 
-#: includes/admsmilies.php:64 includes/my_smilies.php:56
-#: includes/usersmilies.php:70
+#: includes/admsmilies.php:66 includes/my_smilies.php:58
+#: includes/usersmilies.php:72
 msgid "or"
 msgstr "lub"
 
-#: includes/admsmilies.php:67 includes/avatars.php:68
-#: includes/my_smilies.php:63 includes/usersmilies.php:78
+#: includes/admsmilies.php:69 includes/avatars.php:70
+#: includes/my_smilies.php:65 includes/usersmilies.php:80
 msgid "The list is empty"
 msgstr "Lista jest pusta"
 
-#: includes/admsmilies.php:70 includes/usersmilies.php:75
+#: includes/admsmilies.php:72 includes/usersmilies.php:77
 msgid "Add"
 msgstr "Dodaj"
 
-#: includes/admsmilies.php:71 includes/avatars.php:71 includes/avatars.php:98
-#: includes/my_smilies.php:66 includes/usersmilies.php:81
+#: includes/admsmilies.php:73 includes/avatars.php:73 includes/avatars.php:100
+#: includes/my_smilies.php:68 includes/usersmilies.php:83
 msgid "Total"
 msgstr "Wszystkich"
 
-#: includes/admsmilies.php:77 includes/avatars.php:77
-#: includes/usersmilies.php:87
+#: includes/admsmilies.php:79 includes/avatars.php:79
+#: includes/usersmilies.php:89
 msgid "To Page"
 msgstr "Do strony"
 
-#: includes/avatars.php:32
+#: includes/avatars.php:34
 msgid "Avatar has been successfully applied"
 msgstr "Avatar został pomyślnie zainstalowany"
 
-#: includes/avatars.php:33
+#: includes/avatars.php:35
 msgid "Continue"
 msgstr "Kontynuuj"
 
-#: includes/avatars.php:35
+#: includes/avatars.php:37
 msgid "An error occurred"
 msgstr "Wystąpił błąd"
 
-#: includes/avatars.php:38 includes/avatars.php:47 includes/avatars.php:85
-#: index.php:80
+#: includes/avatars.php:40 includes/avatars.php:49 includes/avatars.php:87
+#: index.php:76
 msgid "Avatars"
 msgstr "Avatary"
 
-#: includes/avatars.php:38
+#: includes/avatars.php:40
 msgid "Set to Profile"
 msgstr "Ustaw w profilu"
 
-#: includes/avatars.php:39
+#: includes/avatars.php:41
 msgid "Are you sure you want to set yourself this avatar?"
 msgstr "Na pewno chcesz ustawić ten avatar?"
 
-#: includes/avatars.php:41
+#: includes/avatars.php:43
 msgid "Save"
 msgstr "Zapisz"
 
-#: includes/avatars.php:43
+#: includes/avatars.php:45
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: includes/avatars.php:62
+#: includes/avatars.php:64
 msgid "Select"
 msgstr "Wybierz"
 
-#: includes/avatars.php:85 includes/forum.php:16 includes/smilies.php:19
-#: includes/tags.php:18 index.php:77
+#: includes/avatars.php:87 includes/forum.php:14 includes/smilies.php:17
+#: includes/tags.php:16 index.php:73
 msgid "Information, FAQ"
 msgstr "Informacje, pytania i odpowiedzi"
 
-#: includes/forum.php:16 index.php:78
+#: includes/forum.php:14 index.php:74
 msgid "Forum rules"
 msgstr "Regulamin forum"
 
-#: includes/forum.php:30
+#: includes/forum.php:28
 msgid "FORBIDDEN"
 msgstr "ZABRONIONE"
 
-#: includes/forum.php:32
+#: includes/forum.php:30
 msgid "Advertising messages"
 msgstr "Treści reklamowe"
 
-#: includes/forum.php:33
+#: includes/forum.php:31
 msgid "The messages containing direct propagation of racial, national and religious animosity"
 msgstr "Wiadomości zawierające bezpośrednie propagandę rasowej, narodowej i religijnej nienawiści"
 
-#: includes/forum.php:34
+#: includes/forum.php:32
 msgid "Any abusive, obscene, vulgar, slanderous, hateful, threatening and sexually-oriented messages or any other material that may violate any applicable laws"
 msgstr "Obraźliwe, obsceniczne, wulgarne, bluźniercze, znienawidzony, groźne i sexy-based wiadomości, lub dowolny inny materiał, który może naruszać obowiązujących przepisów prawa"
 
-#: includes/forum.php:35
+#: includes/forum.php:33
 msgid "The messages obviously offending someone, espcially forum users"
 msgstr "Wiadomości, jawnie obrażają kogoś, zwłaszcza forumowiczów"
 
-#: includes/forum.php:36
+#: includes/forum.php:34
 msgid "Purposely to deform a writing of nicknames of other users for the purpose of giving to the message an offensive shade"
 msgstr "Celowo zakłócać pisanie nicków innych użytkowników w celu nadania wiadomości obraźliwe odcień"
 
-#: includes/forum.php:37
+#: includes/forum.php:35
 msgid "Publishing deleted by moderator messages repeatedly"
 msgstr "Publikacja usuniętych Wiadomości moderator wielokrotnie"
 
-#: includes/forum.php:38
+#: includes/forum.php:36
 msgid "Post messages not related to the topic"
 msgstr "Zamieścić posty nie odnoszące się do tematu"
 
-#: includes/forum.php:39
+#: includes/forum.php:37
 msgid "Continuing topics that have been closed by moderator"
 msgstr "Ciąg dalszy tematu, zamknięte przez moderatora"
 
-#: includes/forum.php:42
+#: includes/forum.php:40
 msgid "ABSOLUTELY FORBIDDEN"
 msgstr "KATEGORYCZNIE ZABRONIONE"
 
-#: includes/forum.php:44
+#: includes/forum.php:42
 msgid "Writing in the public topics a discontent with inappropriate actions of other users and discussing about moderators working. Use private messages for this purpose"
 msgstr "Pisać w publicznych punktach niezadowolenie niewystarczające działania innych użytkowników i moderatorów dyskusji działa. Użyj prywatne wiadomości do tego"
 
-#: includes/forum.php:45
+#: includes/forum.php:43
 msgid "Register the nicknames having offensive tone for other users"
 msgstr "Rejestracja nicków, które mają obraźliwy ton dla innych użytkowników"
 
-#: includes/forum.php:48
+#: includes/forum.php:46
 msgid "UNACCEPTABLE"
 msgstr "Niedopuszczalne"
 
-#: includes/forum.php:50
+#: includes/forum.php:48
 msgid "Quote full messages of the previous user and quote the messages already containing other quotes"
 msgstr "Quote wiadomości poprzedniego użytkownika i Cytować wiadomości, już zawierające inne cytaty"
 
-#: includes/forum.php:51
+#: includes/forum.php:49
 msgid "Post messages only contains external link"
 msgstr "Pisać wiadomości zawiera tylko link zewnętrzny"
 
-#: includes/forum.php:52
+#: includes/forum.php:50
 msgid "Post messages written in translite"
 msgstr "Publikować wiadomości napisane w translite"
 
-#: includes/forum.php:53
+#: includes/forum.php:51
 msgid "Posting of purposeless messages: consisting of smileys only or posts like \"Ok\", \"What?\", \"Who is there?\", etc."
 msgstr "Noclegi bezsensownych postów składających się tylko z uśmiechów lub Wiadomości typu \"ok\", \"co?\", \"Kto tam?\", itp."
 
-#: includes/forum.php:58
+#: includes/forum.php:56
 msgid "Message posted despite the above warnings will be changed or deleted."
 msgstr "Komunikat bez względu na powyższe ostrzeżenia zostaną zmienione lub usunięte."
 
-#: includes/forum.php:59
+#: includes/forum.php:57
 msgid "This rule applies to all members and moderators, repeated actions will make you get ban or even lose your account."
 msgstr "Zasada ta dotyczy wszystkich uczestników i moderatorów, powtarzające się czynności pozwolą ci dostać bana lub nawet stracić swoje konto."
 
-#: includes/my_smilies.php:61
+#: includes/my_smilies.php:63
 msgid "Delete"
 msgstr "Usuń"
 
-#: includes/my_smilies.php:63
+#: includes/my_smilies.php:65
 msgid "Add Smilies"
 msgstr "Dodaj emotikone"
 
-#: includes/tags.php:18 index.php:79
+#: includes/tags.php:16 index.php:75
 msgid "bbCode Tags"
 msgstr "Tagi BBCode"
 
-#: includes/tags.php:24
+#: includes/tags.php:22
 msgid "PHP code"
 msgstr "Kod PHP"
 
-#: includes/tags.php:27
+#: includes/tags.php:25
 msgid "Link name"
 msgstr "Nazwa linku"
 
-#: includes/tags.php:28
+#: includes/tags.php:26
 msgid "URL Link"
 msgstr "Adres URL"
 
-#: includes/tags.php:31
+#: includes/tags.php:29
 msgid "Bold"
 msgstr "Pogrubienie"
 
-#: includes/tags.php:35
+#: includes/tags.php:33
 msgid "Italic"
 msgstr "Pochylenie"
 
-#: includes/tags.php:39
+#: includes/tags.php:37
 msgid "Underline"
 msgstr "Podkreślenie"
 
-#: includes/tags.php:43
+#: includes/tags.php:41
 msgid "Strike"
 msgstr "Strajk"
 
-#: includes/tags.php:47
+#: includes/tags.php:45
 msgid "Red"
 msgstr "Czerwony"
 
-#: includes/tags.php:51
+#: includes/tags.php:49
 msgid "Green"
 msgstr "Zielony"
 
-#: includes/tags.php:55
+#: includes/tags.php:53
 msgid "Blue"
 msgstr "Niebieski"
 
-#: includes/tags.php:59
+#: includes/tags.php:57
 msgid "Text Color"
 msgstr "Kolor tekstu"
 
-#: includes/tags.php:63
+#: includes/tags.php:61
 msgid "Background Color"
 msgstr "Kolor tła"
 
-#: includes/tags.php:67
+#: includes/tags.php:65
 msgid "Quote"
 msgstr "Cytat"
 
-#: includes/tags.php:71
+#: includes/tags.php:69
 msgid "Bulleted list"
 msgstr "Lista punktowana"
 
-#: includes/tags.php:74
+#: includes/tags.php:72
 msgid "Title"
 msgstr "Tytuł"
 
-#: includes/tags.php:74
+#: includes/tags.php:72
 msgid "Text"
 msgstr "Tekst"
 
-#: includes/tags.php:75
+#: includes/tags.php:73
 msgid "Spoiler"
 msgstr "Spoiler"
 
-#: index.php:46
+#: index.php:42
 msgid "Animals"
 msgstr "Zwierzęta"
 
-#: index.php:47
+#: index.php:43
 msgid "Brawl, Weapons"
 msgstr "Bijatyka, Broń"
 
-#: index.php:48
+#: index.php:44
 msgid "Emotions"
 msgstr "Emotikony"
 
-#: index.php:49
+#: index.php:45
 msgid "Flowers"
 msgstr "Kwiaty"
 
-#: index.php:50
+#: index.php:46
 msgid "Food, Alcohol"
 msgstr "Jedzenie, Alkohol"
 
-#: index.php:51
+#: index.php:47
 msgid "Gestures"
 msgstr "Gesty"
 
-#: index.php:52
+#: index.php:48
 msgid "Holidays"
 msgstr "Wakacje"
 
-#: index.php:53
+#: index.php:49
 msgid "Love"
 msgstr "Miłość"
 
-#: index.php:54
+#: index.php:50
 msgid "Miscellaneous"
 msgstr "Różne"
 
-#: index.php:55
+#: index.php:51
 msgid "Music, Dancing"
 msgstr "Muzyka, Taniec"
 
-#: index.php:56
+#: index.php:52
 msgid "Sports"
 msgstr "Sport"
 
-#: index.php:57
+#: index.php:53
 msgid "Technology"
 msgstr "Technologia"
 

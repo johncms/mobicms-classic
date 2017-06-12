@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-03-25 11:49-0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -16,74 +16,74 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /registration/default.pot\n"
+"X-Crowdin-File: /modules/registration/default.pot\n"
 "Language: ru_RU\n"
 
-#: index.php:33 index.php:52 index.php:207
+#: index.php:29 index.php:48 index.php:207
 msgid "Registration"
 msgstr "Регистрация"
 
-#: index.php:39
+#: index.php:35
 msgid "Registration is temporarily closed"
 msgstr "Регистрация временно закрыта"
 
-#: index.php:63
+#: index.php:59
 msgid "You have not entered Nickname"
 msgstr "Вы не ввели Ник"
 
-#: index.php:65
+#: index.php:61
 msgid "Nickname wrong length"
 msgstr "Неверная длина Ника"
 
-#: index.php:69
+#: index.php:65
 msgid "Invalid characters"
 msgstr "Недопустимые символы"
 
-#: index.php:74
+#: index.php:70
 msgid "You have not entered password"
 msgstr "Вы не ввели пароль"
 
-#: index.php:76
+#: index.php:72
 msgid "Invalid length"
 msgstr "Недопустимая длина"
 
-#: index.php:81
+#: index.php:77
 msgid "You have not selected genger"
 msgstr "Не указан пол"
 
-#: index.php:90
+#: index.php:86
 msgid "The security code is not correct"
 msgstr "Проверочный код введен неверно"
 
-#: index.php:105
+#: index.php:101
 msgid "Selected Nickname is already in use"
 msgstr "Выбранный Ник уже используется"
 
-#: index.php:152
+#: index.php:148
 msgid "Your registratiton data"
 msgstr "Вы зарегистрированы"
 
-#: index.php:153
+#: index.php:149
 msgid "Your ID"
 msgstr "Ваш ID"
 
-#: index.php:154
+#: index.php:150
 msgid "Your Username"
 msgstr "Ваш Логин"
 
-#: index.php:155
+#: index.php:151
 msgid "Your Password"
 msgstr "Ваш Пароль"
 
-#: index.php:158
+#: index.php:154
 msgid "Please, wait until a moderator approves your registration"
 msgstr "Пожалуйста подождите, пока модератор одобрит вашу регистрацию"
 
-#: index.php:162
+#: index.php:158
 msgid "Enter"
 msgstr "Вход"
 
-#: index.php:173
+#: index.php:169
 msgid "You can get authorized on the site after confirmation of your registration."
 msgstr "Вы сможете получить авторизованный доступ к разделам сайта после подтверждения Вашей регистрации."
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
-"POT-Creation-Date: 2017-03-25 19:15+0400\n"
-"PO-Revision-Date: 2017-03-25 11:49-0400\n"
+"POT-Creation-Date: 2017-06-12 21:13+0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -17,450 +17,450 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: uk\n"
-"X-Crowdin-File: /library/default.pot\n"
+"X-Crowdin-File: /modules/library/default.pot\n"
 
-#: classes/Hashtags.php:237 includes/lastcom.php:46 includes/top.php:47
-#: index.php:212 index.php:271 index.php:326
+#: classes/Hashtags.php:251 includes/lastcom.php:44 includes/tags.php:68
+#: includes/top.php:50 index.php:212 index.php:270 index.php:324
 msgid "The list is empty"
 msgstr "Список порожній"
 
-#: classes/Rating.php:140
+#: classes/Rating.php:130
 msgid "Vote"
 msgstr "Голосувати"
 
-#: classes/Tree.php:196 includes/addnew.php:185 includes/comments.php:51
-#: includes/del.php:31 includes/lastcom.php:24 includes/mkdir.php:48
-#: includes/moder.php:127 includes/new.php:27 includes/premod.php:26
-#: includes/search.php:35 includes/search.php:61 includes/tagcloud.php:23
-#: includes/tags.php:34 includes/top.php:34 index.php:60 index.php:157
-#: index.php:369
+#: classes/Tree.php:194 includes/addnew.php:182 includes/comments.php:49
+#: includes/del.php:29 includes/lastcom.php:22 includes/mkdir.php:46
+#: includes/moder.php:125 includes/new.php:30 includes/premod.php:29
+#: includes/search.php:36 includes/search.php:62 includes/tagcloud.php:21
+#: includes/tags.php:36 includes/top.php:37 index.php:62 index.php:159
+#: index.php:367
 msgid "Library"
 msgstr "Бібліотека"
 
-#: includes/addnew.php:39
+#: includes/addnew.php:36
 #, php-format
 msgid "You cannot add the Article so often<br>Please, wait %d sec."
 msgstr "Ви не можете додавати статті так часто <br>Будь ласка, почекайте %d секунд."
 
-#: includes/addnew.php:40 includes/addnew.php:204 includes/del.php:62
-#: includes/del.php:86 includes/del.php:99 includes/del.php:144
-#: includes/del.php:152 includes/lastcom.php:49 includes/mkdir.php:62
-#: includes/moder.php:112 includes/moder.php:197 includes/top.php:105
+#: includes/addnew.php:37 includes/addnew.php:201 includes/del.php:60
+#: includes/del.php:84 includes/del.php:97 includes/del.php:142
+#: includes/del.php:150 includes/lastcom.php:47 includes/mkdir.php:60
+#: includes/moder.php:110 includes/moder.php:195 includes/top.php:108
 msgid "Back"
 msgstr "Повернутися"
 
-#: includes/addnew.php:54 includes/mkdir.php:30
+#: includes/addnew.php:51 includes/mkdir.php:28
 msgid "You have not entered the name"
 msgstr "Ви не ввели ім'я"
 
-#: includes/addnew.php:69
+#: includes/addnew.php:66
 msgid "The file is invalid encoding, preferably UTF-8"
 msgstr "Неприпустиме кодування файлу, бажано UTF-8"
 
-#: includes/addnew.php:69 includes/addnew.php:77 includes/addnew.php:82
-#: includes/addnew.php:160 includes/mkdir.php:31
+#: includes/addnew.php:66 includes/addnew.php:74 includes/addnew.php:79
+#: includes/addnew.php:157 includes/mkdir.php:29
 msgid "Repeat"
 msgstr "Повторити"
 
-#: includes/addnew.php:77
+#: includes/addnew.php:74
 msgid "Error uploading"
 msgstr "Помилка завантаження"
 
-#: includes/addnew.php:82
+#: includes/addnew.php:79
 msgid "Invalid file format allowed * .txt"
 msgstr "Невірний формат файлу, дозволено *.txt"
 
-#: includes/addnew.php:89
+#: includes/addnew.php:86
 msgid "You have not entered text"
 msgstr "Ви не ввели текст"
 
-#: includes/addnew.php:160 includes/moder.php:102
+#: includes/addnew.php:157 includes/moder.php:100
 msgid "Photo uploading error"
 msgstr "Помилка завантаження фото"
 
-#: includes/addnew.php:174
+#: includes/addnew.php:171
 msgid "Article added"
 msgstr "Статтю додано"
 
-#: includes/addnew.php:174
+#: includes/addnew.php:171
 msgid "Thank you for what we have written. After checking moderated, your Article will be published in the library."
 msgstr "Дякуємо за те, що написали. Після модерації ваша стаття буде опублікована в бібліотеці."
 
-#: includes/addnew.php:176
+#: includes/addnew.php:173
 msgid "To Article"
 msgstr "До статті"
 
-#: includes/addnew.php:176 includes/mkdir.php:45
+#: includes/addnew.php:173 includes/mkdir.php:43
 msgid "To Section"
 msgstr "До розділу"
 
-#: includes/addnew.php:185 index.php:333
+#: includes/addnew.php:182 index.php:331
 msgid "Write Article"
 msgstr "Написати статтю"
 
-#: includes/addnew.php:188 includes/mkdir.php:51 includes/moder.php:138
+#: includes/addnew.php:185 includes/mkdir.php:49 includes/moder.php:136
 msgid "Title"
 msgstr "Назва"
 
-#: includes/addnew.php:190 includes/moder.php:143
+#: includes/addnew.php:187 includes/moder.php:141
 msgid "Announce"
 msgstr "Оголошення"
 
-#: includes/addnew.php:192 includes/moder.php:147
+#: includes/addnew.php:189 includes/moder.php:145
 msgid "Text"
 msgstr "Текст"
 
-#: includes/addnew.php:195 includes/moder.php:190
+#: includes/addnew.php:192 includes/moder.php:188
 msgid "Commenting on the Article"
 msgstr "Коментуючи статтю"
 
-#: includes/addnew.php:196 includes/moder.php:136
+#: includes/addnew.php:193 includes/moder.php:134
 msgid "To upload a photo"
 msgstr "Щоб завантажити фото"
 
-#: includes/addnew.php:198
+#: includes/addnew.php:195
 msgid "Select the text file"
 msgstr "Виберіть текстовий файл"
 
-#: includes/addnew.php:199
+#: includes/addnew.php:196
 msgid "Text entry field will be ignored"
 msgstr "Поле для введення тексту буде проігноровано"
 
-#: includes/addnew.php:200 includes/comments.php:56 includes/moder.php:154
-#: includes/new.php:56 includes/tags.php:34 includes/tags.php:52
-#: includes/top.php:76
+#: includes/addnew.php:197 includes/comments.php:54 includes/moder.php:152
+#: includes/new.php:58 includes/tags.php:36 includes/tags.php:55
+#: includes/top.php:79
 msgid "Tags"
 msgstr "Теги"
 
-#: includes/addnew.php:201
+#: includes/addnew.php:198
 msgid "Specify the Tag to the Article, separated by commas"
 msgstr "Додайте теги до статті, розділівши їх комами"
 
-#: includes/addnew.php:202 includes/mkdir.php:60 includes/moder.php:195
+#: includes/addnew.php:199 includes/mkdir.php:58 includes/moder.php:193
 msgid "Save"
 msgstr "Зберегти"
 
-#: includes/comments.php:31 includes/comments.php:43 index.php:69
+#: includes/comments.php:29 includes/comments.php:41 index.php:71
 msgid "Access forbidden"
 msgstr "Доступ заборонено"
 
-#: includes/comments.php:57 includes/lastcom.php:42 includes/new.php:59
-#: includes/premod.php:56 includes/search.php:104 includes/tags.php:50
-#: includes/top.php:79 index.php:315 index.php:398
+#: includes/comments.php:55 includes/lastcom.php:40 includes/new.php:61
+#: includes/premod.php:59 includes/search.php:102 includes/tags.php:53
+#: includes/top.php:82 index.php:313 index.php:396
 msgid "Who added"
 msgstr "Хто додав"
 
-#: includes/comments.php:58 includes/moder.php:192 includes/new.php:69
-#: includes/search.php:106 includes/tags.php:51 includes/top.php:89
-#: index.php:408
+#: includes/comments.php:56 includes/moder.php:190 includes/new.php:71
+#: includes/search.php:104 includes/tags.php:54 includes/top.php:92
+#: index.php:406
 msgid "Number of readings"
 msgstr "Кількість читань"
 
-#: includes/comments.php:79 includes/new.php:75 includes/new.php:77
-#: includes/tags.php:53 includes/top.php:95 includes/top.php:97 index.php:414
-#: index.php:417
+#: includes/comments.php:77 includes/new.php:77 includes/new.php:79
+#: includes/tags.php:56 includes/top.php:98 includes/top.php:100 index.php:412
+#: index.php:415
 msgid "Comments"
 msgstr "Коментарі"
 
-#: includes/comments.php:90
+#: includes/comments.php:88
 msgid "Wrong data"
 msgstr "Невірні дані"
 
-#: includes/del.php:31 includes/del.php:92 includes/del.php:117
-#: includes/del.php:128 includes/del.php:134 includes/premod.php:58
-#: index.php:206 index.php:265 index.php:279 index.php:335 index.php:457
+#: includes/del.php:29 includes/del.php:90 includes/del.php:115
+#: includes/del.php:126 includes/del.php:132 includes/premod.php:61
+#: index.php:206 index.php:264 index.php:278 index.php:333 index.php:455
 msgid "Delete"
 msgstr "Видалити"
 
-#: includes/del.php:43
+#: includes/del.php:41
 msgid "Section does not exist"
 msgstr "Розділу не існує"
 
-#: includes/del.php:50
+#: includes/del.php:48
 msgid "Are you sure you want to move the contents?"
 msgstr "Ви дійсно бажаєте видалити цей контент?"
 
-#: includes/del.php:50
+#: includes/del.php:48
 msgid "Move"
 msgstr "Перемістити"
 
-#: includes/del.php:50 includes/del.php:92 includes/del.php:117
-#: includes/del.php:128 includes/del.php:134
+#: includes/del.php:48 includes/del.php:90 includes/del.php:115
+#: includes/del.php:126 includes/del.php:132
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: includes/del.php:62
+#: includes/del.php:60
 msgid "Successful transfer"
 msgstr "Успішно переміщено"
 
-#: includes/del.php:74 includes/moder.php:158
+#: includes/del.php:72 includes/moder.php:156
 msgid "Move to Section"
 msgstr "Перемістити в розділ"
 
-#: includes/del.php:82 includes/premod.php:58
+#: includes/del.php:80 includes/premod.php:61
 msgid "Approve"
 msgstr "Підтвердити"
 
-#: includes/del.php:86
+#: includes/del.php:84
 msgid "There are no Sections for moving"
 msgstr "Немає розділів для переміщення"
 
-#: includes/del.php:92
+#: includes/del.php:90
 msgid "Are you sure you want to delete content?"
 msgstr "Ви дійсно бажаєте видалити контент?"
 
-#: includes/del.php:96
+#: includes/del.php:94
 #, php-format
 msgid "Successfully deleted:<br>Directories: (%d)<br>Articles: (%d)<br>Tags: (%d)<br>Comments: (%d)<br>Images: (%d)"
 msgstr "Успішно видалено:<br>Папок: (%d)<br>Статей: (%d)<br>Тегів: (%d)<br>Коментарів: (%d)<br>Зображень: (%d)"
 
-#: includes/del.php:104
+#: includes/del.php:102
 msgid "Section is not empty"
 msgstr "Розділ не є порожнім"
 
-#: includes/del.php:105
+#: includes/del.php:103
 msgid "Select action"
 msgstr "Вибрати дію"
 
-#: includes/del.php:107
+#: includes/del.php:105
 msgid "Delete with movement"
 msgstr "Видалити з переміщенням"
 
-#: includes/del.php:108
+#: includes/del.php:106
 msgid "Delete all Sections and Articles"
 msgstr "Видалити всі розділи та статті"
 
-#: includes/del.php:109
+#: includes/del.php:107
 msgid "Do"
 msgstr "Зробити"
 
-#: includes/del.php:117 includes/del.php:128 includes/del.php:134
+#: includes/del.php:115 includes/del.php:126 includes/del.php:132
 msgid "Delete confirmation"
 msgstr "Підтвердження видалення"
 
-#: includes/del.php:124
+#: includes/del.php:122
 msgid "Articles do not exist"
 msgstr "Статей не існує"
 
-#: includes/del.php:144 includes/del.php:152
+#: includes/del.php:142 includes/del.php:150
 msgid "Deleted"
 msgstr "Видалено"
 
-#: includes/download.php:57
+#: includes/download.php:55
 msgid "Author name"
 msgstr "Ім'я автора"
 
-#: includes/download.php:58
+#: includes/download.php:56
 msgid "Author last name"
 msgstr "Прізвище автора"
 
-#: includes/download.php:60
+#: includes/download.php:58
 msgid "Name of the book"
 msgstr "Назва книги"
 
-#: includes/download.php:62
+#: includes/download.php:60
 msgid "Date"
 msgstr "Дата"
 
-#: includes/lastcom.php:24 index.php:182
+#: includes/lastcom.php:22 index.php:182
 msgid "Latest comments"
 msgstr "Останні коментарі"
 
-#: includes/mkdir.php:45
+#: includes/mkdir.php:43
 msgid "Section created"
 msgstr "Розділ створено"
 
-#: includes/mkdir.php:48 index.php:218
+#: includes/mkdir.php:46 index.php:218
 msgid "Create Section"
 msgstr "Створити розділ"
 
-#: includes/mkdir.php:53 includes/moder.php:140
+#: includes/mkdir.php:51 includes/moder.php:138
 msgid "Section description"
 msgstr "Опис розділу"
 
-#: includes/mkdir.php:55 includes/moder.php:178
+#: includes/mkdir.php:53 includes/moder.php:176
 msgid "Section type"
 msgstr "Тип розділу"
 
-#: includes/mkdir.php:57 includes/moder.php:181 index.php:254
+#: includes/mkdir.php:55 includes/moder.php:179 index.php:253
 msgid "Sections"
 msgstr "Розділи"
 
-#: includes/mkdir.php:58 includes/moder.php:182 index.php:254
+#: includes/mkdir.php:56 includes/moder.php:180 index.php:253
 msgid "Articles"
 msgstr "Статті"
 
-#: includes/moder.php:112
+#: includes/moder.php:110
 msgid "Changed"
 msgstr "Змінено"
 
-#: includes/moder.php:128
+#: includes/moder.php:126
 msgid "Edit Section"
 msgstr "Редагувати розділ"
 
-#: includes/moder.php:128
+#: includes/moder.php:126
 msgid "Edit Article"
 msgstr "Редагувати статтю"
 
-#: includes/moder.php:151
+#: includes/moder.php:149
 msgid "The text of the Article can not be edited, a large amount of data !!!"
 msgstr "Текст статті не можна редагувати, великий об'єм даних!!!"
 
-#: includes/moder.php:164
+#: includes/moder.php:162
 msgid "The ROOT"
 msgstr "Корінь"
 
-#: includes/moder.php:184
+#: includes/moder.php:182
 msgid "Allow users to add their Articles?"
 msgstr "Дозволити користувачам додавати свої статті?"
 
-#: includes/moder.php:185
+#: includes/moder.php:183
 msgid "Yes"
 msgstr "Так"
 
-#: includes/moder.php:186
+#: includes/moder.php:184
 msgid "No"
 msgstr "Ні"
 
-#: includes/moder.php:188
+#: includes/moder.php:186
 msgid "Verified"
 msgstr "Підтверджений"
 
-#: includes/new.php:27 index.php:176
+#: includes/new.php:30 index.php:178
 msgid "New Articles"
 msgstr "Нові статті"
 
-#: includes/new.php:52 includes/top.php:72
+#: includes/new.php:54 includes/top.php:75
 msgid "Section"
 msgstr "Розділ"
 
-#: includes/new.php:64 includes/top.php:84 index.php:320 index.php:403
+#: includes/new.php:66 includes/top.php:87 index.php:318 index.php:401
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: includes/new.php:77 includes/top.php:97 index.php:418
+#: includes/new.php:79 includes/top.php:100 index.php:416
 msgid "Comments are closed"
 msgstr "Коментарі закриті"
 
-#: includes/new.php:84 includes/premod.php:63 includes/search.php:114
-#: includes/tags.php:57 index.php:215 index.php:274 index.php:329
+#: includes/new.php:86 includes/premod.php:66 includes/search.php:112
+#: includes/tags.php:61 index.php:215 index.php:273 index.php:327
 msgid "Total"
 msgstr "Всього"
 
-#: includes/new.php:86 includes/premod.php:67 includes/search.php:133
-#: includes/tagcloud.php:26 includes/tags.php:63
+#: includes/new.php:88 includes/premod.php:69 includes/search.php:130
+#: includes/tagcloud.php:24 includes/tags.php:66
 msgid "To Library"
 msgstr "До бібліотеки"
 
-#: includes/premod.php:26
+#: includes/premod.php:29
 msgid "Moderation Articles"
 msgstr "Модерація статей"
 
-#: includes/premod.php:30
+#: includes/premod.php:33
 msgid "Article"
 msgstr "Стаття"
 
-#: includes/premod.php:30
+#: includes/premod.php:33
 msgid "Added to the database"
 msgstr "Додано в базу даних"
 
-#: includes/premod.php:33
+#: includes/premod.php:36
 msgid "All Articles added in database"
 msgstr "Всі статті додані в базу даних"
 
-#: includes/premod.php:66
+#: includes/premod.php:68
 msgid "Approve all"
 msgstr "Затвердити всі"
 
-#: includes/search.php:35 includes/search.php:38 index.php:158
+#: includes/search.php:36 includes/search.php:39 index.php:160
 msgid "Search"
 msgstr "Пошук"
 
-#: includes/search.php:39
+#: includes/search.php:40
 msgid "Search in titles Articles"
 msgstr "Шукати у заголовках статей"
 
-#: includes/search.php:46 includes/search.php:129
+#: includes/search.php:47 includes/search.php:126
 msgid "Length of query: 4 min 64 max<br>Search is case-insensitive letters<br>Results are sorted by relevance"
 msgstr "Довжина запиту: 4 мін., 64 макс.<br>Пошук нечутливий до регістру букв<br>Результати виводяться з сортуванням по релевантності"
 
-#: includes/search.php:61
+#: includes/search.php:62
 msgid "Search results"
 msgstr "Результати пошуку"
 
-#: includes/search.php:111
+#: includes/search.php:109
 msgid "Your search did not match any results"
 msgstr "За вашим запитом нічого не знайдено"
 
-#: includes/search.php:121
+#: includes/search.php:118
 msgid "To Page"
 msgstr "До сторінки"
 
-#: includes/search.php:132
+#: includes/search.php:129
 msgid "New Search"
 msgstr "Новий пошук"
 
-#: includes/tagcloud.php:19
+#: includes/tagcloud.php:17
 msgid "Sorted by alphabetical"
 msgstr "Відсортовано за алфавітом"
 
-#: includes/tagcloud.php:20
+#: includes/tagcloud.php:18
 msgid "Sorted by relevance"
 msgstr "Впорядкувати за релевантністю"
 
-#: includes/tagcloud.php:23 index.php:158
+#: includes/tagcloud.php:21 index.php:160
 msgid "Tag Cloud"
 msgstr "Хмара тегів"
 
-#: includes/tagcloud.php:24 includes/top.php:35
+#: includes/tagcloud.php:22 includes/top.php:38
 msgid "Sort"
 msgstr "Сортувати"
 
-#: includes/top.php:29
+#: includes/top.php:32
 msgid "Most readings"
 msgstr "Більшість читань"
 
-#: includes/top.php:30
+#: includes/top.php:33
 msgid "By rating"
 msgstr "За рейтингом"
 
-#: includes/top.php:31
+#: includes/top.php:34
 msgid "By comments"
 msgstr "За коментарями"
 
-#: includes/top.php:34 index.php:180
+#: includes/top.php:37 index.php:181
 msgid "Rating articles"
 msgstr "Рейтинг статей"
 
-#: index.php:67 index.php:132
+#: index.php:69 index.php:134
 msgid "Library is closed"
 msgstr "Бібліотека закрита"
 
-#: index.php:166
+#: index.php:168
 msgid "On moderation"
 msgstr "На модерації"
 
-#: index.php:203 index.php:259 index.php:260
+#: index.php:203 index.php:258 index.php:259
 msgid "Up"
 msgstr "Вгору"
 
-#: index.php:204 index.php:262 index.php:263
+#: index.php:204 index.php:261 index.php:262
 msgid "Down"
 msgstr "Вниз"
 
-#: index.php:205 index.php:264 index.php:278 index.php:334 index.php:456
+#: index.php:205 index.php:263 index.php:277 index.php:332 index.php:454
 msgid "Edit"
 msgstr "Редагувати"
 
-#: index.php:280
+#: index.php:279
 msgid "Create"
 msgstr "Створити"
 
-#: index.php:310 index.php:393
+#: index.php:308 index.php:391
 msgid "The Tags"
 msgstr "Теги"
 
-#: index.php:450
+#: index.php:448
 msgid "Download file"
 msgstr "Завантаження файлу"
 

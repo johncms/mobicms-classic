@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-03-25 11:49-0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -16,74 +16,74 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: vi\n"
-"X-Crowdin-File: /registration/default.pot\n"
+"X-Crowdin-File: /modules/registration/default.pot\n"
 "Language: vi_VN\n"
 
-#: index.php:33 index.php:52 index.php:207
+#: index.php:29 index.php:48 index.php:207
 msgid "Registration"
 msgstr "Đăng ký"
 
-#: index.php:39
+#: index.php:35
 msgid "Registration is temporarily closed"
 msgstr "Đăng ký tạm thời đóng cửa"
 
-#: index.php:63
+#: index.php:59
 msgid "You have not entered Nickname"
 msgstr "Bạn chưa nhập Tên"
 
-#: index.php:65
+#: index.php:61
 msgid "Nickname wrong length"
 msgstr "Chiều dài sai biệt hiệu"
 
-#: index.php:69
+#: index.php:65
 msgid "Invalid characters"
 msgstr "Ký tự không hợp lệ"
 
-#: index.php:74
+#: index.php:70
 msgid "You have not entered password"
 msgstr "Bạn chưa nhập mật khẩu"
 
-#: index.php:76
+#: index.php:72
 msgid "Invalid length"
 msgstr "Chiều dài không hợp lệ"
 
-#: index.php:81
+#: index.php:77
 msgid "You have not selected genger"
 msgstr "Bạn chưa chọn giới tính"
 
-#: index.php:90
+#: index.php:86
 msgid "The security code is not correct"
 msgstr "Mã bảo vệ là không đúng"
 
-#: index.php:105
+#: index.php:101
 msgid "Selected Nickname is already in use"
 msgstr "Tên Này Đã Có Người Sử Dụng"
 
-#: index.php:152
+#: index.php:148
 msgid "Your registratiton data"
 msgstr "Dữ liệu thông tin tài khoản của bạn"
 
-#: index.php:153
+#: index.php:149
 msgid "Your ID"
 msgstr "ID của bạn"
 
-#: index.php:154
+#: index.php:150
 msgid "Your Username"
 msgstr "Tên tài khoản"
 
-#: index.php:155
+#: index.php:151
 msgid "Your Password"
 msgstr "Mật khẩu của bạn"
 
-#: index.php:158
+#: index.php:154
 msgid "Please, wait until a moderator approves your registration"
 msgstr "Tài khoản của bạn đang chờ xác nhận đăng ký của quản trị viên bằng cách kiểm duyệt"
 
-#: index.php:162
+#: index.php:158
 msgid "Enter"
 msgstr "Xác nhận"
 
-#: index.php:173
+#: index.php:169
 msgid "You can get authorized on the site after confirmation of your registration."
 msgstr "Bạn có thể nhận được ủy quyền trên trang web sau khi xác nhận đăng ký của bạn."
 

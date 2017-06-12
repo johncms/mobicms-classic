@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
-"POT-Creation-Date: 2017-03-25 19:18+0400\n"
-"PO-Revision-Date: 2017-03-25 11:49-0400\n"
+"POT-Creation-Date: 2017-06-12 21:15+0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -17,159 +17,160 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /users/default.pot\n"
+"X-Crowdin-File: /modules/users/default.pot\n"
 
-#: includes/admlist.php:15 includes/admlist.php:29 index.php:80
+#: includes/admlist.php:13 includes/admlist.php:30 index.php:77
 msgid "Administration"
 msgstr "Администрация"
 
-#: includes/admlist.php:29 includes/birth.php:29 includes/top.php:64
-#: includes/top.php:72 includes/top.php:81 includes/top.php:101
-#: includes/userlist.php:30 index.php:66 index.php:72 search.php:35
+#: includes/admlist.php:30 includes/birth.php:30 includes/search.php:35
+#: includes/top.php:61 includes/top.php:69 includes/top.php:78
+#: includes/top.php:98 includes/userlist.php:31 index.php:63 index.php:69
 msgid "Community"
 msgstr "Сообщество"
 
-#: includes/admlist.php:38 includes/birth.php:41 includes/online.php:93
-#: includes/online.php:165 includes/userlist.php:43 search.php:85
+#: includes/admlist.php:39 includes/birth.php:42 includes/online.php:97
+#: includes/online.php:171 includes/search.php:85 includes/userlist.php:44
 msgid "Total"
 msgstr "Всего"
 
-#: includes/admlist.php:44 includes/birth.php:47 includes/online.php:99
-#: includes/online.php:171 includes/userlist.php:49 search.php:91
+#: includes/admlist.php:45 includes/birth.php:48 includes/online.php:103
+#: includes/online.php:177 includes/search.php:91 includes/userlist.php:50
 msgid "To Page"
 msgstr "На страницу"
 
-#: includes/admlist.php:48 includes/userlist.php:53 search.php:28 search.php:35
+#: includes/admlist.php:49 includes/search.php:28 includes/search.php:35
+#: includes/userlist.php:54
 msgid "User Search"
 msgstr "Поиск пользователя"
 
-#: includes/admlist.php:49 includes/birth.php:54 includes/top.php:107
-#: includes/userlist.php:54 index.php:85 search.php:102
+#: includes/admlist.php:50 includes/birth.php:55 includes/search.php:102
+#: includes/top.php:104 includes/userlist.php:55 index.php:82
 msgid "Back"
 msgstr "Назад"
 
-#: includes/birth.php:15 includes/birth.php:29 index.php:81
+#: includes/birth.php:13 includes/birth.php:30 index.php:78
 msgid "Birthdays"
 msgstr "Именинники"
 
-#: includes/birth.php:51 includes/online.php:162 includes/top.php:46
-#: includes/top.php:92
+#: includes/birth.php:52 includes/online.php:168 includes/top.php:43
+#: includes/top.php:89
 msgid "The list is empty"
 msgstr "Список пуст"
 
-#: includes/online.php:16
+#: includes/online.php:14
 msgid "Online"
 msgstr "Онлайн"
 
-#: includes/online.php:38 index.php:79
+#: includes/online.php:41 index.php:76
 msgid "Users"
 msgstr "Пользователи"
 
-#: includes/online.php:39
+#: includes/online.php:42
 msgid "History"
 msgstr "История"
 
-#: includes/online.php:42
+#: includes/online.php:45
 msgid "Guests"
 msgstr "Гости"
 
-#: includes/online.php:43
+#: includes/online.php:46
 msgid "IP Activity"
 msgstr "Активность IP"
 
-#: includes/online.php:46
+#: includes/online.php:49
 msgid "Who is online?"
 msgstr "Кто на сайте"
 
-#: includes/top.php:16 index.php:83
-msgid "Top Activity"
-msgstr "Топ активности"
-
-#: includes/top.php:52 includes/top.php:104
-msgid "Forum"
-msgstr "Форум"
-
-#: includes/top.php:53 includes/top.php:67
-msgid "Guestbook"
-msgstr "Гостевая"
-
-#: includes/top.php:54
-msgid "Comments"
-msgstr "Комментарии"
-
-#: includes/top.php:58
-msgid "Karma"
-msgstr "Карма"
-
-#: includes/top.php:64
-msgid "Most active in Guestbook"
-msgstr "Самые активные в Гостевой"
-
-#: includes/top.php:72
-msgid "Most commentators"
-msgstr "Больше всего комментировали"
-
-#: includes/top.php:75 includes/top.php:95
-msgid "Home"
-msgstr "Главная"
-
-#: includes/top.php:81
-msgid "Best Karma"
-msgstr "Лучшая Карма"
-
-#: includes/top.php:101
-msgid "Most active in Forum"
-msgstr "Самые активные на Форуме"
-
-#: includes/userlist.php:15 includes/userlist.php:30
-msgid "List of users"
-msgstr "Список пользователей"
-
-#: index.php:41
-msgid "For registered users only"
-msgstr "Только для зарегистрированных посетителей"
-
-#: index.php:74
-msgid "Look for the User"
-msgstr "Искать пользователя"
-
-#: index.php:76 search.php:39
+#: includes/search.php:39 index.php:73
 msgid "Search"
 msgstr "Поиск"
 
-#: index.php:77
-msgid "The search is performed by Nickname and are case-insensitive."
-msgstr "Поиск осуществляется по нику и не зависят от регистра."
-
-#: index.php:82
-msgid "Photo Albums"
-msgstr "Фотоальбомы"
-
-#: search.php:46 search.php:50
+#: includes/search.php:46 includes/search.php:50
 msgid "Nickname"
 msgstr "Ник"
 
-#: search.php:46
+#: includes/search.php:46
 msgid "Invalid length"
 msgstr "Недопустимая длина"
 
-#: search.php:50
+#: includes/search.php:50
 msgid "Invalid characters"
 msgstr "Недопустимые символы"
 
-#: search.php:65
+#: includes/search.php:65
 msgid "Searching results"
 msgstr "Результаты поиска"
 
-#: search.php:82
+#: includes/search.php:82
 msgid "Your search did not match any results"
 msgstr "По Вашему запросу ничего не найдено"
 
-#: search.php:98
+#: includes/search.php:98
 msgid "Search by Nickname are case insensitive. For example <strong>UsEr</strong> and <strong>user</strong> are identical."
 msgstr "Поиск по Нику не учитывает регистр символов. Например <strong>UsEr</strong> и <strong>user</strong> идентичны."
 
-#: search.php:101
+#: includes/search.php:101
 msgid "New search"
 msgstr "Новый поиск"
+
+#: includes/top.php:14 index.php:80
+msgid "Top Activity"
+msgstr "Топ активности"
+
+#: includes/top.php:49 includes/top.php:101
+msgid "Forum"
+msgstr "Форум"
+
+#: includes/top.php:50 includes/top.php:64
+msgid "Guestbook"
+msgstr "Гостевая"
+
+#: includes/top.php:51
+msgid "Comments"
+msgstr "Комментарии"
+
+#: includes/top.php:55
+msgid "Karma"
+msgstr "Карма"
+
+#: includes/top.php:61
+msgid "Most active in Guestbook"
+msgstr "Самые активные в Гостевой"
+
+#: includes/top.php:69
+msgid "Most commentators"
+msgstr "Больше всего комментировали"
+
+#: includes/top.php:72 includes/top.php:92
+msgid "Home"
+msgstr "Главная"
+
+#: includes/top.php:78
+msgid "Best Karma"
+msgstr "Лучшая Карма"
+
+#: includes/top.php:98
+msgid "Most active in Forum"
+msgstr "Самые активные на Форуме"
+
+#: includes/userlist.php:13 includes/userlist.php:31
+msgid "List of users"
+msgstr "Список пользователей"
+
+#: index.php:38
+msgid "For registered users only"
+msgstr "Только для зарегистрированных посетителей"
+
+#: index.php:71
+msgid "Look for the User"
+msgstr "Искать пользователя"
+
+#: index.php:74
+msgid "The search is performed by Nickname and are case-insensitive."
+msgstr "Поиск осуществляется по нику и не зависят от регистра."
+
+#: index.php:79
+msgid "Photo Albums"
+msgstr "Фотоальбомы"
 

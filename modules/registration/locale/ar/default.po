@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-03-25 11:48-0400\n"
+"PO-Revision-Date: 2017-06-12 13:31-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Arabic\n"
 "MIME-Version: 1.0\n"
@@ -16,74 +16,74 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /registration/default.pot\n"
+"X-Crowdin-File: /modules/registration/default.pot\n"
 "Language: ar_SA\n"
 
-#: index.php:33 index.php:52 index.php:207
+#: index.php:29 index.php:48 index.php:207
 msgid "Registration"
 msgstr "تسجيل اشتراك جديد"
 
-#: index.php:39
+#: index.php:35
 msgid "Registration is temporarily closed"
 msgstr "التسجيل مغلق مؤقتا"
 
-#: index.php:63
+#: index.php:59
 msgid "You have not entered Nickname"
 msgstr "لم تقم بادخال العضوية"
 
-#: index.php:65
+#: index.php:61
 msgid "Nickname wrong length"
 msgstr "الاسم طويل جدا"
 
-#: index.php:69
+#: index.php:65
 msgid "Invalid characters"
 msgstr "احرف غير صالحه"
 
-#: index.php:74
+#: index.php:70
 msgid "You have not entered password"
 msgstr "لم تقم بادخال كلمة المرور"
 
-#: index.php:76
+#: index.php:72
 msgid "Invalid length"
 msgstr "طويل جدا"
 
-#: index.php:81
+#: index.php:77
 msgid "You have not selected genger"
 msgstr "لم تقم بتحديد محتوى"
 
-#: index.php:90
+#: index.php:86
 msgid "The security code is not correct"
 msgstr "رمز الامان غير صحيح"
 
-#: index.php:105
+#: index.php:101
 msgid "Selected Nickname is already in use"
 msgstr "الاسم مسجل من قبل"
 
-#: index.php:152
+#: index.php:148
 msgid "Your registratiton data"
 msgstr "بيانات التسجيل الخاصه بك"
 
-#: index.php:153
+#: index.php:149
 msgid "Your ID"
 msgstr "المعرف"
 
-#: index.php:154
+#: index.php:150
 msgid "Your Username"
 msgstr "اسم العضوية"
 
-#: index.php:155
+#: index.php:151
 msgid "Your Password"
 msgstr "كلمة المرور الخاصه بك"
 
-#: index.php:158
+#: index.php:154
 msgid "Please, wait until a moderator approves your registration"
 msgstr "من فضلگ انتظر حتى يقوم المشرف بتفعيل عضويتگ"
 
-#: index.php:162
+#: index.php:158
 msgid "Enter"
 msgstr "ادخل"
 
-#: index.php:173
+#: index.php:169
 msgid "You can get authorized on the site after confirmation of your registration."
 msgstr "ويمكن الحصول على إذن على الموقع بعد تأكيد التسجيل الخاص بك."
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-03-25 11:49-0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -16,999 +16,899 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /profile/default.pot\n"
+"X-Crowdin-File: /modules/profile/default.pot\n"
 "Language: ru_RU\n"
 
-#: includes/activity.php:16 includes/activity.php:34 includes/stat.php:51
-#: index.php:213
+#: includes/activity.php:14 includes/activity.php:35 includes/stat.php:49
+#: index.php:206
 msgid "Activity"
 msgstr "Активность"
 
-#: includes/activity.php:34 includes/ban.php:205 includes/ban.php:309
-#: includes/edit.php:50 includes/guestbook.php:16 includes/guestbook.php:31
-#: includes/images.php:42 includes/images.php:83 includes/info.php:27
-#: includes/ip.php:41 includes/karma.php:122 includes/karma.php:209
-#: includes/karma.php:220 includes/karma.php:281 includes/office.php:46
-#: includes/password.php:103 includes/reset.php:33 includes/stat.php:27
-#: index.php:120
+#: includes/activity.php:35 includes/ban.php:206 includes/ban.php:310
+#: includes/edit.php:54 includes/guestbook.php:14 includes/guestbook.php:29
+#: includes/images.php:40 includes/images.php:81 includes/info.php:25
+#: includes/ip.php:42 includes/karma.php:129 includes/karma.php:216
+#: includes/karma.php:227 includes/karma.php:288 includes/office.php:44
+#: includes/password.php:101 includes/reset.php:31 includes/stat.php:25
+#: index.php:113
 msgid "Profile"
 msgstr "Анкета"
 
-#: includes/activity.php:36 includes/activity.php:106
+#: includes/activity.php:37 includes/activity.php:107
 msgid "Messages"
 msgstr "Сообщения"
 
-#: includes/activity.php:37 includes/activity.php:71
+#: includes/activity.php:38 includes/activity.php:72
 msgid "Themes"
 msgstr "Темы"
 
-#: includes/activity.php:38 includes/activity.php:47 includes/ban.php:163
-#: includes/guestbook.php:44 includes/stat.php:54 includes/stat.php:67
+#: includes/activity.php:39 includes/activity.php:48 includes/ban.php:164
+#: includes/guestbook.php:42 includes/stat.php:52 includes/stat.php:65
 msgid "Comments"
 msgstr "Комментарии"
 
-#: includes/activity.php:64 includes/activity.php:99 includes/activity.php:136
-#: includes/ban.php:387 includes/ip.php:63 includes/karma.php:198
-#: includes/karma.php:268
+#: includes/activity.php:65 includes/activity.php:100 includes/activity.php:137
+#: includes/ban.php:388 includes/ip.php:64 includes/karma.php:205
+#: includes/karma.php:275
 msgid "The list is empty"
 msgstr "Список пуст"
 
-#: includes/activity.php:71 includes/activity.php:106 includes/ban.php:171
-#: includes/settings.php:45 includes/settings.php:76 includes/stat.php:52
-#: includes/stat.php:65
+#: includes/activity.php:72 includes/activity.php:107 includes/ban.php:172
+#: includes/settings.php:46 includes/settings.php:77 includes/stat.php:50
+#: includes/stat.php:63
 msgid "Forum"
 msgstr "Форум"
 
-#: includes/activity.php:140 includes/ban.php:297 includes/ban.php:390
-#: includes/ip.php:66 includes/karma.php:200 includes/karma.php:271
+#: includes/activity.php:141 includes/ban.php:298 includes/ban.php:391
+#: includes/ip.php:67 includes/karma.php:207 includes/karma.php:278
 msgid "Total"
 msgstr "Всего"
 
-#: includes/activity.php:146 includes/ban.php:396 includes/ip.php:72
-#: includes/karma.php:206 includes/karma.php:277
+#: includes/activity.php:147 includes/ban.php:397 includes/ip.php:73
+#: includes/karma.php:213 includes/karma.php:284
 msgid "To Page"
 msgstr "На страницу"
 
-#: includes/ban.php:38
+#: includes/ban.php:39
 msgid "You do not have enought rights to ban this user"
 msgstr "У Вас не хватает прав, чтоб банить данного пользователя"
 
-#: includes/ban.php:40
+#: includes/ban.php:41
 msgid "Ban the User"
 msgstr "Банить пользователя"
 
-#: includes/ban.php:52
+#: includes/ban.php:53
 msgid "Reason not specified"
 msgstr "Причина не указана"
 
-#: includes/ban.php:56
+#: includes/ban.php:57
 msgid "There is no required data"
 msgstr "Отсутствуют необходимые данные"
 
-#: includes/ban.php:60
+#: includes/ban.php:61
 msgid "You have no rights to ban in this section"
 msgstr "Вы не имеете права банить не в своем разделе"
 
-#: includes/ban.php:64
+#: includes/ban.php:65
 msgid "Ban already active"
 msgstr "Такой бан уже есть"
 
-#: includes/ban.php:138 includes/office.php:84
+#: includes/ban.php:139 includes/office.php:82
 msgid "System"
 msgstr "Система"
 
-#: includes/ban.php:142 index.php:136
+#: includes/ban.php:143 index.php:129
 msgid "Ban"
 msgstr "Бан"
 
-#: includes/ban.php:148
+#: includes/ban.php:149
 msgid "User banned"
 msgstr "Пользователь забанен"
 
-#: includes/ban.php:155
+#: includes/ban.php:156
 msgid "Ban type"
 msgstr "Тип бана"
 
-#: includes/ban.php:159
+#: includes/ban.php:160
 msgid "Full block"
 msgstr "Полная блокировка"
 
-#: includes/ban.php:161
+#: includes/ban.php:162
 msgid "Private messages"
 msgstr "Личные сообщения"
 
-#: includes/ban.php:165 includes/guestbook.php:16 includes/guestbook.php:31
-#: includes/office.php:49 includes/stat.php:53 includes/stat.php:66
-#: index.php:223
+#: includes/ban.php:166 includes/guestbook.php:14 includes/guestbook.php:29
+#: includes/office.php:47 includes/stat.php:51 includes/stat.php:64
+#: index.php:216
 msgid "Guestbook"
 msgstr "Гостевая"
 
-#: includes/ban.php:176
+#: includes/ban.php:177
 msgid "Library"
 msgstr "Библиотека"
 
-#: includes/ban.php:179
+#: includes/ban.php:180
 msgid "Ban time"
 msgstr "Срок бана"
 
-#: includes/ban.php:181
+#: includes/ban.php:182
 msgid "Minutes (60 max.)"
 msgstr "Минут (60 макс.)"
 
-#: includes/ban.php:182
+#: includes/ban.php:183
 msgid "Hours (24 max.)"
 msgstr "Часов (24 макс.)"
 
-#: includes/ban.php:185
+#: includes/ban.php:186
 msgid "Days (30 max.)"
 msgstr "Дней (30 макс.)"
 
-#: includes/ban.php:189 includes/ban.php:362
+#: includes/ban.php:190 includes/ban.php:363
 msgid "Till cancel"
 msgstr "До отмены"
 
-#: includes/ban.php:192
+#: includes/ban.php:193
 msgid "Reason"
 msgstr "Причина"
 
-#: includes/ban.php:197
+#: includes/ban.php:198
 msgid "Violation"
 msgstr "Нарушение"
 
-#: includes/ban.php:202
+#: includes/ban.php:203
 msgid "Apply Ban"
 msgstr "Применить Бан"
 
-#: includes/ban.php:212 includes/ban.php:242 includes/ban.php:250
-#: includes/ban.php:275 skl.php:116
+#: includes/ban.php:213 includes/ban.php:243 includes/ban.php:251
+#: includes/ban.php:276
 msgid "Wrong data"
 msgstr "Неверные данные"
 
-#: includes/ban.php:221
+#: includes/ban.php:222
 msgid "Ban not active"
 msgstr "Бан уже не активен"
 
-#: includes/ban.php:225
+#: includes/ban.php:226
 msgid "Ban termination"
 msgstr "Прекращение действия Бана"
 
-#: includes/ban.php:230
+#: includes/ban.php:231
 msgid "Ban terminated"
 msgstr "Пользователь разбанен"
 
-#: includes/ban.php:233
+#: includes/ban.php:234
 msgid "Ban time is going to the end. Infrigement will be saved in the bans history"
 msgstr "Прекращается действие активного бана с сохранением записи в истории нарушений"
 
-#: includes/ban.php:234
+#: includes/ban.php:235
 msgid "Terminate Ban"
 msgstr "Отменить бан"
 
-#: includes/ban.php:236 includes/ban.php:272 includes/edit.php:45
-#: includes/info.php:61 includes/karma.php:71 includes/karma.php:126
-#: includes/stat.php:87 skl.php:106
+#: includes/ban.php:237 includes/ban.php:273 includes/edit.php:49
+#: includes/info.php:59 includes/karma.php:78 includes/karma.php:133
+#: includes/stat.php:85
 msgid "Back"
 msgstr "Назад"
 
-#: includes/ban.php:256 includes/ban.php:376
+#: includes/ban.php:257 includes/ban.php:377
 msgid "Delete Ban"
 msgstr "Удалить Бан"
 
-#: includes/ban.php:266
+#: includes/ban.php:267
 msgid "Ban deleted"
 msgstr "Бан удален"
 
-#: includes/ban.php:266 includes/images.php:63 includes/images.php:114
-#: includes/karma.php:103 includes/password.php:81
+#: includes/ban.php:267 includes/images.php:61 includes/images.php:112
+#: includes/karma.php:110 includes/password.php:79
 msgid "Continue"
 msgstr "Продолжить"
 
-#: includes/ban.php:269
+#: includes/ban.php:270
 msgid "Removing ban along with a record in the bans history"
 msgstr "Удаляется бан вместе с записью в истории нарушений"
 
-#: includes/ban.php:270 includes/edit.php:192 includes/edit.php:207
-#: includes/karma.php:154 includes/karma.php:171 index.php:132
+#: includes/ban.php:271 includes/edit.php:196 includes/edit.php:211
+#: includes/karma.php:161 includes/karma.php:178 index.php:125
 msgid "Delete"
 msgstr "Удалить"
 
-#: includes/ban.php:283 includes/ban.php:299
+#: includes/ban.php:284 includes/ban.php:300
 msgid "Violations history"
 msgstr "История нарушений"
 
-#: includes/ban.php:288
+#: includes/ban.php:289
 msgid "Violations history cleared"
 msgstr "История нарушений очищена"
 
-#: includes/ban.php:291
+#: includes/ban.php:292
 msgid "Are you sure want to clean entire history of user violations?"
 msgstr "Вы действительно хотите очистить всю историю нарушений данного пользователя?"
 
-#: includes/ban.php:292
+#: includes/ban.php:293
 msgid "Clear"
 msgstr "Очистить"
 
-#: includes/ban.php:301 includes/ban.php:314
+#: includes/ban.php:302 includes/ban.php:315
 msgid "Ban Panel"
 msgstr "Бан панель"
 
-#: includes/ban.php:303
+#: includes/ban.php:304
 msgid "Violations history can be cleared by Supervisor only"
 msgstr "Очищать историю нарушений могут только Супервайзоры"
 
-#: includes/ban.php:309
+#: includes/ban.php:310
 msgid "Violations History"
 msgstr "История нарушений"
 
-#: includes/ban.php:318
+#: includes/ban.php:319
 msgid "Clear history"
 msgstr "Очистить историю"
 
-#: includes/ban.php:328
+#: includes/ban.php:329
 msgid "My Violations"
 msgstr "Мои нарушения"
 
-#: includes/ban.php:358
+#: includes/ban.php:359
 msgid "Who applied the Ban?"
 msgstr "Кто банил?"
 
-#: includes/ban.php:361
+#: includes/ban.php:362
 msgid "Time"
 msgstr "Время"
 
-#: includes/ban.php:365
+#: includes/ban.php:366
 msgid "Remains"
 msgstr "Осталось"
 
-#: includes/ban.php:372
+#: includes/ban.php:373
 msgid "Cancel Ban"
 msgstr "Отменить Бан"
 
-#: includes/edit.php:15 includes/images.php:15 includes/office.php:108
-#: includes/reset.php:26
+#: includes/edit.php:13 includes/images.php:13 includes/office.php:106
+#: includes/reset.php:24
 msgid "Edit Profile"
 msgstr "Редактировать анкету"
 
-#: includes/edit.php:32 includes/images.php:31
+#: includes/edit.php:36 includes/images.php:29
 msgid "You cannot edit profile of higher administration"
 msgstr "Вы не можете редактировать анкету старшего Вас по должности"
 
-#: includes/edit.php:45 includes/settings.php:111 includes/settings.php:194
+#: includes/edit.php:49 includes/settings.php:112 includes/settings.php:195
 msgid "Default settings are set"
 msgstr "Установлены настройки по умолчанию"
 
-#: includes/edit.php:50 index.php:122
+#: includes/edit.php:54 index.php:115
 msgid "My Profile"
 msgstr "Мой профиль"
 
-#: includes/edit.php:50 includes/info.php:30 index.php:128
+#: includes/edit.php:54 includes/info.php:28 index.php:121
 msgid "Edit"
 msgstr "Изменить"
 
-#: includes/edit.php:55
+#: includes/edit.php:59
 msgid "Avatar is successfully removed"
 msgstr "Аватар успешно удален"
 
-#: includes/edit.php:60
+#: includes/edit.php:64
 msgid "Photo is successfully removed"
 msgstr "Фотография успешно удалена"
 
-#: includes/edit.php:91
+#: includes/edit.php:95
 msgid "Min. nick length 2, max. 20 characters"
 msgstr "Минимальная длина Ника - 2, максимальная 20 символов"
 
-#: includes/edit.php:97
+#: includes/edit.php:101
 msgid "Nick contains invalid characters"
 msgstr "Недопустимые символы в Нике"
 
-#: includes/edit.php:102
+#: includes/edit.php:106
 msgid "Invalid format date of birth"
 msgstr "Дата рождения указана неверно"
 
-#: includes/edit.php:107
+#: includes/edit.php:111
 msgid "ICQ number must be at least 5 digits and max. 10"
 msgstr "Номер ICQ должен состоять минимум из 5 цифр и максимум из 10"
 
-#: includes/edit.php:165
+#: includes/edit.php:169
 msgid "Data saved"
 msgstr "Данные сохранены"
 
-#: includes/edit.php:177 skl.php:165
+#: includes/edit.php:181
 msgid "Username"
 msgstr "Ваш логин"
 
-#: includes/edit.php:180 includes/edit.php:183
+#: includes/edit.php:184 includes/edit.php:187
 msgid "Nickname"
 msgstr "Ник"
 
-#: includes/edit.php:180
+#: includes/edit.php:184
 msgid "Min.2, Max. 20"
 msgstr "Мин.2, макс. 20"
 
-#: includes/edit.php:181 includes/edit.php:184
+#: includes/edit.php:185 includes/edit.php:188
 msgid "Status"
 msgstr "Статус"
 
-#: includes/edit.php:181
+#: includes/edit.php:185
 msgid "Max. 50"
 msgstr "Макс. 50"
 
-#: includes/edit.php:187
+#: includes/edit.php:191
 msgid "Avatar"
 msgstr "Аватар"
 
-#: includes/edit.php:195 includes/edit.php:210 includes/images.php:74
-#: includes/images.php:127
+#: includes/edit.php:199 includes/edit.php:214 includes/images.php:72
+#: includes/images.php:125
 msgid "Upload"
 msgstr "Загрузить"
 
-#: includes/edit.php:198
+#: includes/edit.php:202
 msgid "Select in Catalog"
 msgstr "Выбрать в каталоге"
 
-#: includes/edit.php:202
+#: includes/edit.php:206
 msgid "Photo"
 msgstr "Фото"
 
-#: includes/edit.php:213 includes/info.php:35
+#: includes/edit.php:217 includes/info.php:33
 msgid "Personal info"
 msgstr "Личная информация"
 
-#: includes/edit.php:214
+#: includes/edit.php:218
 msgid "Your name"
 msgstr "Ваше имя"
 
-#: includes/edit.php:215
+#: includes/edit.php:219
 msgid "Date of birth (d.m.y)"
 msgstr "Дата рождения (д.м.г)"
 
-#: includes/edit.php:219 includes/info.php:44
+#: includes/edit.php:223 includes/info.php:42
 msgid "City, Country"
 msgstr "Город, страна"
 
-#: includes/edit.php:220 includes/info.php:45
+#: includes/edit.php:224 includes/info.php:43
 msgid "About myself"
 msgstr "О себе"
 
-#: includes/edit.php:221 includes/info.php:47 includes/office.php:95
-#: includes/office.php:99
+#: includes/edit.php:225 includes/info.php:45 includes/office.php:93
+#: includes/office.php:97
 msgid "Contacts"
 msgstr "Контакты"
 
-#: includes/edit.php:222 includes/info.php:48
+#: includes/edit.php:226 includes/info.php:46
 msgid "Phone number"
 msgstr "Номер телефона"
 
-#: includes/edit.php:225
+#: includes/edit.php:229
 msgid "Show in Profile"
 msgstr "Показывать в анкете"
 
-#: includes/edit.php:226
+#: includes/edit.php:230
 msgid "Warning! Write your e-mail correctly. Your password will be sent to the email address on record for this account."
 msgstr "Внимание! Правильно указывайте свой адрес электронной почты! Именно на него будет высылаться Ваш пароль"
 
-#: includes/edit.php:230 includes/info.php:59
+#: includes/edit.php:234 includes/info.php:57
 msgid "Site"
 msgstr "Сайт"
 
-#: includes/edit.php:235
+#: includes/edit.php:239
 msgid "Administrative Functions"
 msgstr "Административные функции"
 
-#: includes/edit.php:236
+#: includes/edit.php:240
 msgid "Prohibit Karma"
 msgstr "Запретить карму"
 
-#: includes/edit.php:237 includes/office.php:109 includes/password.php:34
-#: includes/password.php:91
+#: includes/edit.php:241 includes/office.php:107 includes/password.php:32
+#: includes/password.php:89
 msgid "Change Password"
 msgstr "Сменить пароль"
 
-#: includes/edit.php:240
+#: includes/edit.php:244
 msgid "Reset User options to default"
 msgstr "Сбросить настройки пользователя по умолчанию"
 
-#: includes/edit.php:243
+#: includes/edit.php:247
 msgid "Select gender"
 msgstr "Укажите пол"
 
-#: includes/edit.php:244
+#: includes/edit.php:248
 msgid "Man"
 msgstr "Мужчина"
 
-#: includes/edit.php:245
+#: includes/edit.php:249
 msgid "Woman"
 msgstr "Женщина"
 
-#: includes/edit.php:249
+#: includes/edit.php:253
 msgid "Position on the Site"
 msgstr "Должность на Сайте"
 
-#: includes/edit.php:250
+#: includes/edit.php:254
 msgid "User"
 msgstr "Обычный пользователь"
 
-#: includes/edit.php:251
+#: includes/edit.php:255
 msgid "Forum Moderator"
 msgstr "Модератор Форума"
 
-#: includes/edit.php:252
+#: includes/edit.php:256
 msgid "Download Moderator"
 msgstr "Модератор Загрузок"
 
-#: includes/edit.php:253
+#: includes/edit.php:257
 msgid "Library Moderator"
 msgstr "Модератор Библиотеки"
 
-#: includes/edit.php:254
+#: includes/edit.php:258
 msgid "Super Modererator"
 msgstr "Супермодератор"
 
-#: includes/edit.php:257
+#: includes/edit.php:261
 msgid "Administrator"
 msgstr "Администратор"
 
-#: includes/edit.php:258
+#: includes/edit.php:262
 msgid "Supervisor"
 msgstr "Супервайзор"
 
-#: includes/edit.php:265 includes/password.php:101 includes/settings.php:70
-#: includes/settings.php:123 includes/settings.php:238
+#: includes/edit.php:269 includes/password.php:99 includes/settings.php:71
+#: includes/settings.php:124 includes/settings.php:239
 msgid "Save"
 msgstr "Сохранить"
 
-#: includes/images.php:42
+#: includes/images.php:40
 msgid "Upload Avatar"
 msgstr "Загрузить Аватар"
 
-#: includes/images.php:62
+#: includes/images.php:60
 msgid "The avatar is successfully uploaded"
 msgstr "Аватар успешно загружен"
 
-#: includes/images.php:71
+#: includes/images.php:69
 msgid "Select Image"
 msgstr "Выбрать картинку"
 
-#: includes/images.php:77 includes/images.php:129
+#: includes/images.php:75 includes/images.php:127
 #, php-format
 msgid "Allowed image formats: JPG, PNG, GIF. File size should not exceed %d kb.<br>The new image will replace old (if was)."
 msgstr "Разрешенные форматы изображений: JPG, GIF или PNG. Размер файла не должен превышать %d Кб.<br>The новое изображение заменит старое (если было)."
 
-#: includes/images.php:83
+#: includes/images.php:81
 msgid "Upload Photo"
 msgstr "Загрузить фото"
 
-#: includes/images.php:114
+#: includes/images.php:112
 msgid "The photo is successfully uploaded"
 msgstr "Фотография успешно загружена"
 
-#: includes/images.php:124
+#: includes/images.php:122
 msgid "Select image"
 msgstr "Выбрать картинку"
 
-#: includes/info.php:25 includes/info.php:27 index.php:212
+#: includes/info.php:23 includes/info.php:25 index.php:205
 msgid "Information"
 msgstr "Информация"
 
-#: includes/info.php:42
+#: includes/info.php:40
 msgid "Name"
 msgstr "Имя"
 
-#: includes/info.php:43 index.php:145
+#: includes/info.php:41 index.php:138
 msgid "Birthday"
 msgstr "День рождения"
 
-#: includes/info.php:52
+#: includes/info.php:50
 msgid "hidden"
 msgstr "скрыт"
 
-#: includes/ip.php:15 includes/ip.php:41
+#: includes/ip.php:13 includes/ip.php:42
 msgid "IP History"
 msgstr "История IP"
 
-#: includes/ip.php:32 includes/office.php:33 includes/password.php:29
-#: includes/settings.php:35
+#: includes/ip.php:33 includes/office.php:31 includes/password.php:27
+#: includes/settings.php:39
 msgid "Access forbidden"
 msgstr "Доступ запрещен"
 
-#: includes/karma.php:15 includes/karma.php:180 includes/karma.php:220
-#: includes/karma.php:239 index.php:185
+#: includes/karma.php:13 includes/karma.php:187 includes/karma.php:227
+#: includes/karma.php:246 index.php:178
 msgid "Karma"
 msgstr "Карма"
 
-#: includes/karma.php:43
+#: includes/karma.php:50
 msgid "It is forbidden to vote for administration"
 msgstr "За администрацию голосовать запрещено"
 
-#: includes/karma.php:47
+#: includes/karma.php:54
 msgid "Cheating karma is forbidden"
 msgstr "Накрутка кармы запрещена"
 
-#: includes/karma.php:52
+#: includes/karma.php:59
 #, php-format
 msgid "Users can take part in voting if they have stayed on a site not less %s and their score on the forum %d posts."
 msgstr "Пользователи могут принять участие в голосовании, если они находились на сайте не менее %s и написали не менее %d постов на форуме."
 
-#: includes/karma.php:53
+#: includes/karma.php:60
 msgid "hours"
 msgstr "часов"
 
-#: includes/karma.php:53
+#: includes/karma.php:60
 msgid "days"
 msgstr "дней"
 
-#: includes/karma.php:61
+#: includes/karma.php:68
 msgid "You can vote for single user just one time for 24 hours\""
 msgstr "Вы можете голосовать за одного пользователя один раз в течение 24 часов\""
 
-#: includes/karma.php:67
+#: includes/karma.php:74
 #, php-format
 msgid "You have exceeded the limit of votes. New voices will be added %s"
 msgstr "Вы превысили лимит голосов. Новые голоса будут добавлены %s"
 
-#: includes/karma.php:103
+#: includes/karma.php:110
 msgid "You have successfully voted"
 msgstr "Вы успешно проголосовали"
 
-#: includes/karma.php:105
+#: includes/karma.php:112
 msgid "Vote for"
 msgstr "Голосовать за"
 
-#: includes/karma.php:107
+#: includes/karma.php:114
 msgid "Type of vote"
 msgstr "Тип голоса"
 
-#: includes/karma.php:108 includes/karma.php:217
+#: includes/karma.php:115 includes/karma.php:224
 msgid "Positive"
 msgstr "Положительные"
 
-#: includes/karma.php:109 includes/karma.php:218
+#: includes/karma.php:116 includes/karma.php:225
 msgid "Negative"
 msgstr "Отрицательные"
 
-#: includes/karma.php:110
+#: includes/karma.php:117
 msgid "Votes quantity"
 msgstr "Количество голосов"
 
-#: includes/karma.php:117
+#: includes/karma.php:124
 msgid "Comment"
 msgstr "Комментарий"
 
-#: includes/karma.php:119
+#: includes/karma.php:126
 msgid "Min. 2, Max. 500 characters"
 msgstr "Мин. 2, макс. 500 символов"
 
-#: includes/karma.php:120 index.php:196
+#: includes/karma.php:127 index.php:189
 msgid "Vote"
 msgstr "Голосовать"
 
-#: includes/karma.php:126
+#: includes/karma.php:133
 msgid "You are not allowed to vote for users"
 msgstr "Вам запрещено отдавать голоса за пользователей"
 
-#: includes/karma.php:153
+#: includes/karma.php:160
 msgid "Do you really want to delete comment?"
 msgstr "Вы действительно хотите удалить отзыв?"
 
-#: includes/karma.php:155 includes/karma.php:172
+#: includes/karma.php:162 includes/karma.php:179
 msgid "Cancel"
 msgstr "Отмена"
 
-#: includes/karma.php:170
+#: includes/karma.php:177
 msgid "Do you really want to delete all reviews about user?"
 msgstr "Вы действительно хотите удалить все отзывы о пользователе?"
 
-#: includes/karma.php:180
+#: includes/karma.php:187
 msgid "New responses"
 msgstr "Новые отзывы"
 
-#: includes/karma.php:216
+#: includes/karma.php:223
 msgid "All"
 msgstr "Все"
 
-#: includes/karma.php:241 index.php:187
+#: includes/karma.php:248 index.php:180
 msgid "For"
 msgstr "За"
 
-#: includes/karma.php:242 index.php:188
+#: includes/karma.php:249 index.php:181
 msgid "Against"
 msgstr "Против"
 
-#: includes/karma.php:280
+#: includes/karma.php:287
 msgid "Reset Karma"
 msgstr "Сбросить карму"
 
-#: includes/office.php:16
+#: includes/office.php:14
 msgid "My Account"
 msgstr "Личный кабинет"
 
-#: includes/office.php:45
+#: includes/office.php:43
 msgid "My Pages"
 msgstr "Мои Страницы"
 
-#: includes/office.php:47
+#: includes/office.php:45
 msgid "Statistics"
 msgstr "Статистика"
 
-#: includes/office.php:48 index.php:222
+#: includes/office.php:46 index.php:215
 msgid "Photo Album"
 msgstr "Фотоальбом"
 
-#: includes/office.php:53
+#: includes/office.php:51
 msgid "Admin-Club"
 msgstr "Админ-клуб"
 
-#: includes/office.php:58
+#: includes/office.php:56
 msgid "My Mailbox"
 msgstr "Моя почта"
 
-#: includes/office.php:70
+#: includes/office.php:68
 msgid "Received"
 msgstr "Входящие"
 
-#: includes/office.php:79
+#: includes/office.php:77
 msgid "Sent"
 msgstr "Отправленные"
 
-#: includes/office.php:88
+#: includes/office.php:86
 msgid "Files"
 msgstr "Файлы"
 
-#: includes/office.php:91 index.php:249
+#: includes/office.php:89 index.php:242
 msgid "Write"
 msgstr "Написать"
 
-#: includes/office.php:103
+#: includes/office.php:101
 msgid "Blocked"
 msgstr "Заблокированные"
 
-#: includes/office.php:107 includes/settings.php:15 includes/settings.php:52
-#: includes/settings.php:76 includes/settings.php:128
+#: includes/office.php:105 includes/settings.php:13 includes/settings.php:53
+#: includes/settings.php:77 includes/settings.php:129
 msgid "Settings"
 msgstr "Настройки"
 
-#: includes/office.php:110
+#: includes/office.php:108
 msgid "System Settings"
 msgstr "Системные настройки"
 
-#: includes/office.php:112
+#: includes/office.php:111
 msgid "Admin Panel"
 msgstr "Админ панель"
 
-#: includes/office.php:117
+#: includes/office.php:116
 msgid "Exit"
 msgstr "Выход"
 
-#: includes/password.php:48 includes/password.php:52
+#: includes/password.php:46 includes/password.php:50
 msgid "It is necessary to fill in all fields"
 msgstr "Нужно заполнить все поля формы"
 
-#: includes/password.php:57
+#: includes/password.php:55
 msgid "Old password entered incorrectly"
 msgstr "Старый пароль введен неправильно"
 
-#: includes/password.php:61
+#: includes/password.php:59
 msgid "The password confirmation you entered is wrong"
 msgstr "Подтверждение нового пароля введено неверно"
 
-#: includes/password.php:65
+#: includes/password.php:63
 msgid "The password must contain at least 3 characters"
 msgstr "Пароль должен содержать не менее 3 символов"
 
-#: includes/password.php:80
+#: includes/password.php:78
 msgid "Password successfully changed"
 msgstr "Пароль успешно изменен"
 
-#: includes/password.php:85
+#: includes/password.php:83
 msgid "Repeat"
 msgstr "Повторить"
 
-#: includes/password.php:95
+#: includes/password.php:93
 msgid "Enter old password"
 msgstr "Введите старый пароль"
 
-#: includes/password.php:98
+#: includes/password.php:96
 msgid "Enter new password"
 msgstr "Введите новый пароль"
 
-#: includes/password.php:99
+#: includes/password.php:97
 msgid "Repeat password"
 msgstr "Повторите пароль"
 
-#: includes/reset.php:31
+#: includes/reset.php:29
 #, php-format
 msgid "For user %s default settings were set."
 msgstr "Для пользователя %s были установлены настройки по умолчанию."
 
-#: includes/settings.php:44 includes/settings.php:128
+#: includes/settings.php:45 includes/settings.php:129
 msgid "General setting"
 msgstr "Общие настройки"
 
-#: includes/settings.php:46 includes/settings.php:52
+#: includes/settings.php:47 includes/settings.php:53
 msgid "Mail"
 msgstr "Почта"
 
-#: includes/settings.php:67
+#: includes/settings.php:68
 msgid "Who can write you?"
 msgstr "Кто может писать вам?"
 
-#: includes/settings.php:68
+#: includes/settings.php:69
 msgid "All can write"
 msgstr "Могут писать все"
 
-#: includes/settings.php:69
+#: includes/settings.php:70
 msgid "Only my contacts"
 msgstr "Только мои контакты"
 
-#: includes/settings.php:96 includes/settings.php:189
+#: includes/settings.php:97 includes/settings.php:190
 msgid "Settings saved successfully"
 msgstr "Настройки успешно сохранены"
 
-#: includes/settings.php:115
+#: includes/settings.php:116
 msgid "Basic settings"
 msgstr "Основные настройки"
 
-#: includes/settings.php:116
+#: includes/settings.php:117
 msgid "Inverse sorting"
 msgstr "Обратная сортировка"
 
-#: includes/settings.php:117
+#: includes/settings.php:118
 msgid "Use the form of a quick answer"
 msgstr "Использовать форму быстрого ответа"
 
-#: includes/settings.php:118
+#: includes/settings.php:119
 msgid "Preview of messages"
 msgstr "Предварительный просмотр сообщений"
 
-#: includes/settings.php:119
+#: includes/settings.php:120
 msgid "Attach first post"
 msgstr "Прикрепить первый пост"
 
-#: includes/settings.php:120
+#: includes/settings.php:121
 msgid "Always"
 msgstr "Всегда"
 
-#: includes/settings.php:121
+#: includes/settings.php:122
 msgid "In unread topics"
 msgstr "В непрочитанных темах"
 
-#: includes/settings.php:122
+#: includes/settings.php:123
 msgid "Never"
 msgstr "Никогда"
 
-#: includes/settings.php:124
+#: includes/settings.php:125
 msgid "Reset settings"
 msgstr "Сброс настроек"
 
-#: includes/settings.php:199
+#: includes/settings.php:200
 msgid "Time settings"
 msgstr "Настройки времени"
 
-#: includes/settings.php:200
+#: includes/settings.php:201
 msgid "Shift of time"
 msgstr "Сдвиг времени"
 
-#: includes/settings.php:202
+#: includes/settings.php:203
 msgid "System time"
 msgstr "Системное время"
 
-#: includes/settings.php:203
+#: includes/settings.php:204
 msgid "System Functions"
 msgstr "Системные функции"
 
-#: includes/settings.php:204
+#: includes/settings.php:205
 msgid "Direct URL"
 msgstr "Прямые ссылки"
 
-#: includes/settings.php:205
+#: includes/settings.php:206
 msgid "Youtube Player"
 msgstr "Проигрыватель YouTube"
 
-#: includes/settings.php:206
+#: includes/settings.php:207
 msgid "Text entering"
 msgstr "Ввод текста"
 
-#: includes/settings.php:207
+#: includes/settings.php:208
 msgid "Height of field"
 msgstr "Высота поля"
 
-#: includes/settings.php:209
+#: includes/settings.php:210
 msgid "Appearance"
 msgstr "Внешний вид"
 
-#: includes/settings.php:219
+#: includes/settings.php:220
 msgid "Theme"
 msgstr "Тема оформления"
 
-#: includes/settings.php:220
+#: includes/settings.php:221
 msgid "Size of Lists"
 msgstr "Размер списков"
 
-#: includes/settings.php:225
+#: includes/settings.php:226
 msgid "Select Language"
 msgstr "Выбрать Язык"
 
-#: includes/settings.php:231
+#: includes/settings.php:232
 msgid "Site Default"
 msgstr "По умолчанию"
 
-#: includes/settings.php:239
+#: includes/settings.php:240
 msgid "Reset Settings"
 msgstr "Сбросить настройки"
 
-#: includes/stat.php:25 includes/stat.php:27 includes/stat.php:30 index.php:214
+#: includes/stat.php:23 includes/stat.php:25 includes/stat.php:28 index.php:207
 msgid "Statistic"
 msgstr "Статистика"
 
-#: includes/stat.php:34 index.php:164
+#: includes/stat.php:32 index.php:157
 msgid "Pending confirmation"
 msgstr "Ожидает подтверждения регистрации"
 
-#: includes/stat.php:36
+#: includes/stat.php:34
 msgid "Registration confirmed"
 msgstr "Регистрацию подтвердил"
 
-#: includes/stat.php:38
+#: includes/stat.php:36
 msgid "Free registration"
 msgstr "Свободная регистрация"
 
-#: includes/stat.php:42
+#: includes/stat.php:40
 msgid "Registered"
 msgstr "Дата регистрации"
 
-#: includes/stat.php:43
+#: includes/stat.php:41
 msgid "He stay on the site"
 msgstr "Пробыл на сайте"
 
-#: includes/stat.php:43
+#: includes/stat.php:41
 msgid "She stay on the site"
 msgstr "Пробыла на сайте"
 
-#: includes/stat.php:47
+#: includes/stat.php:45
 msgid "Last visit"
 msgstr "Последний визит"
 
-#: includes/stat.php:56
+#: includes/stat.php:54
 msgid "Achievements"
 msgstr "Достижения"
 
-#: index.php:43
+#: index.php:39
 msgid "For registered users only"
 msgstr "Только для зарегистрированных посетителей"
 
-#: index.php:53
+#: index.php:49
 msgid "This User does not exists"
 msgstr "Такого пользователя не существует"
 
-#: index.php:122
+#: index.php:115
 msgid "User Profile"
 msgstr "Анкета пользователя"
 
-#: index.php:156
+#: index.php:149
 msgid "Where?"
 msgstr "Где?"
 
-#: index.php:203
+#: index.php:196
 msgid "New reviews"
 msgstr "Новые отзывы"
 
-#: index.php:218
+#: index.php:211
 msgid "Violations"
 msgstr "Нарушения"
 
-#: index.php:230
+#: index.php:223
 msgid "Add to Contacts"
 msgstr "Добавить в контакты"
 
-#: index.php:232
+#: index.php:225
 msgid "Remove from Contacts"
 msgstr "Удалить из контактов"
 
-#: index.php:237
+#: index.php:230
 msgid "Block User"
 msgstr "Заблокировать пользователя"
 
-#: index.php:239
+#: index.php:232
 msgid "Unlock User"
 msgstr "Разблокировать пользователя"
-
-#: skl.php:36 skl.php:89 skl.php:163
-msgid "Password recovery"
-msgstr "Восстановление пароля"
-
-#: skl.php:60
-msgid "The required fields are not filled"
-msgstr "Не заполнены обязательные поля"
-
-#: skl.php:62
-msgid "Incorrect code"
-msgstr "Проверочный код введен неверно"
-
-#: skl.php:75
-msgid "Invalid Email address"
-msgstr "Недопустимый адрес электронной почты"
-
-#: skl.php:79
-msgid "Password can be recovered 1 time per day"
-msgstr "Пароль можно восстанавливать не чаще 1 раза в сутки"
-
-#: skl.php:82 skl.php:133
-msgid "User does not exists"
-msgstr "Такого пользователя не существует"
-
-#: skl.php:91
-#, php-format
-msgid "Hello %s!\n"
-"You start process of password recovery on the site %s\n"
-"In order to recover your password, you must click on the link: %s\n"
-"Link valid for 1 hour\n\n"
-"If you receive this mail by mistake, just ignore this letter"
-msgstr "Здравствуйте, %s!\n"
-"Вы начали процесс восстановления пароля на сайте %s\n"
-"Чтоб восстановить ваш пароль, вы должны перейти по ссылке: %s\n"
-"Ссылка действительна 1 час\n\n"
-"Если вы получили это письмо по ошибке, просто игнорируйте его."
-
-#: skl.php:100
-msgid "Check your e-mail for further information"
-msgstr "Инструкции по восстановлению пароля высланы на указанный Вами адрес E-mail"
-
-#: skl.php:102
-msgid "Error sending E-mail"
-msgstr "Ошибка отправки E-mail"
-
-#: skl.php:125
-msgid "Password recovery is impossible"
-msgstr "Восстановление пароля невозможно"
-
-#: skl.php:129
-msgid "Time allotted for the password recovery has been exceeded"
-msgstr "Время, отведенное на восстановления пароля, прошло"
-
-#: skl.php:139
-msgid "Your new password"
-msgstr "Ваш новый пароль"
-
-#: skl.php:141
-#, php-format
-msgid "Hello %s\n"
-"You have changed your password on the site %s\n\n"
-"Your new password: %s\n\n"
-"After logging in, you can change your password to new one."
-msgstr "Привет %s\n"
-"Вы изменили пароль на сайте %s\n\n"
-"Ваш новый пароль: %s\n\n"
-"После входа в систему Вы сможете сменить пароль на новый."
-
-#: skl.php:150
-msgid "Change password"
-msgstr "Меняем пароль"
-
-#: skl.php:151
-msgid "Password successfully changed.<br>New password sent to your E-mail address."
-msgstr "Пароль успешно изменен.<br>Новый пароль выслан на ваш адрес E-mail"
-
-#: skl.php:153
-msgid "Error sending Email"
-msgstr "Ошибка отправки E-mail"
-
-#: skl.php:166
-msgid "Your E-mail"
-msgstr "Ваш e-mail"
-
-#: skl.php:167
-msgid "Verification code"
-msgstr "Проверочный код"
-
-#: skl.php:168
-msgid "Enter code"
-msgstr "Введите код"
-
-#: skl.php:169
-msgid "Send"
-msgstr "Отправить"
-
-#: skl.php:170
-msgid "Password will be send to E-mail address specified in your profile.<br />WARNING !! If E-mail address has not been specified in your profile, you will not be able to recover your password."
-msgstr "Пароль будет выслан на E-mail Адрес, указанный в Вашей анкете.<br>ВНИМЕНИЕ! Если в анкете не был указан E-mail адрес, то Вы не сможете восстановить пароль"
 

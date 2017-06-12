@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
-"POT-Creation-Date: 2017-04-05 13:59+0400\n"
-"PO-Revision-Date: 2017-04-05 06:22-0400\n"
+"POT-Creation-Date: 2017-06-12 21:10+0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Lithuanian\n"
 "MIME-Version: 1.0\n"
@@ -17,537 +17,542 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: lt\n"
-"X-Crowdin-File: /admin/default.pot\n"
+"X-Crowdin-File: /modules/admin/default.pot\n"
 
-#: includes/access.php:29 includes/access.php:112 includes/ads.php:222
-#: includes/ads.php:321 includes/ads.php:427 includes/antiflood.php:33
-#: includes/antispy.php:447 includes/antispy.php:458 includes/ban_panel.php:67
-#: includes/ban_panel.php:73 includes/ban_panel.php:115
-#: includes/counters.php:300 includes/counters.php:321 includes/forum.php:755
-#: includes/forum.php:772 includes/ip_whois.php:16 includes/ipban.php:138
-#: includes/ipban.php:194 includes/ipban.php:216 includes/ipban.php:329
-#: includes/ipban.php:358 includes/ipban.php:363 includes/ipban.php:412
-#: includes/karma.php:44 includes/karma.php:85 includes/languages.php:36
-#: includes/languages.php:88 includes/news.php:29 includes/news.php:79
-#: includes/reg.php:33 includes/reg.php:146 includes/search_ip.php:35
+#: includes/access.php:23 includes/access.php:65 includes/access.php:73
+#: includes/access.php:81 includes/access.php:90 includes/access.php:106
+#: includes/ads.php:33 includes/antiflood.php:26 includes/antispy.php:20
+#: includes/counters.php:30 includes/forum.php:33 includes/ipban.php:36
+#: includes/karma.php:26 includes/languages.php:29 includes/news.php:23
+#: includes/reg.php:30 includes/settings.php:26 includes/usr_clean.php:24
+#: includes/usr_del.php:27 index.php:34
+msgid "Access denied"
+msgstr "Prieiga uždrausta"
+
+#: includes/access.php:28 includes/access.php:111 includes/ads.php:227
+#: includes/ads.php:336 includes/ads.php:442 includes/antiflood.php:32
+#: includes/antispy.php:435 includes/antispy.php:446 includes/ban_panel.php:68
+#: includes/ban_panel.php:74 includes/ban_panel.php:115
+#: includes/counters.php:305 includes/counters.php:326 includes/forum.php:770
+#: includes/forum.php:787 includes/ip_whois.php:14 includes/ipban.php:146
+#: includes/ipban.php:201 includes/ipban.php:223 includes/ipban.php:338
+#: includes/ipban.php:367 includes/ipban.php:372 includes/ipban.php:417
+#: includes/karma.php:43 includes/karma.php:84 includes/languages.php:35
+#: includes/languages.php:87 includes/news.php:28 includes/news.php:78
+#: includes/reg.php:35 includes/reg.php:148 includes/search_ip.php:36
 #: includes/search_ip.php:142 includes/search_ip.php:151
-#: includes/settings.php:29 includes/settings.php:101 includes/smilies.php:24
-#: includes/smilies.php:67 includes/usr.php:27 includes/usr.php:75
-#: includes/usr_adm.php:19 includes/usr_adm.php:72 includes/usr_clean.php:32
-#: includes/usr_del.php:78 index.php:44 index.php:77
+#: includes/settings.php:31 includes/settings.php:103 includes/smilies.php:22
+#: includes/smilies.php:66 includes/usr.php:28 includes/usr.php:76
+#: includes/usr_adm.php:17 includes/usr_adm.php:70 includes/usr_clean.php:31
+#: includes/usr_del.php:77 index.php:40 index.php:73
 msgid "Admin Panel"
-msgstr ""
+msgstr "Administratoriaus panele"
 
-#: includes/access.php:29 index.php:120
+#: includes/access.php:28 index.php:116
 msgid "Permissions"
-msgstr ""
+msgstr "Prieigos teisės"
 
-#: includes/access.php:49 includes/antiflood.php:84 includes/karma.php:64
-#: includes/news.php:54 includes/settings.php:50
+#: includes/access.php:48 includes/antiflood.php:83 includes/karma.php:63
+#: includes/news.php:53 includes/settings.php:52
 msgid "Settings are saved successfully"
-msgstr ""
+msgstr "Nustatymai išsaugoti sėkmingai"
 
-#: includes/access.php:61 includes/usr_del.php:135 index.php:103
+#: includes/access.php:60 includes/usr_del.php:134 index.php:99
 msgid "Forum"
-msgstr ""
+msgstr "Forumas"
+
+#: includes/access.php:62 includes/access.php:71 includes/access.php:79
+#: includes/access.php:88 includes/access.php:97 includes/access.php:104
+msgid "Access is allowed"
+msgstr "Leidžiama prieiga"
 
 #: includes/access.php:63 includes/access.php:72 includes/access.php:80
-#: includes/access.php:89 includes/access.php:98 includes/access.php:105
-msgid "Access is allowed"
-msgstr ""
-
-#: includes/access.php:64 includes/access.php:73 includes/access.php:81
-#: includes/access.php:90 includes/access.php:99
+#: includes/access.php:89 includes/access.php:98
 msgid "Only for authorized"
-msgstr ""
+msgstr "Tik svetainės vartotojams"
 
-#: includes/access.php:65
+#: includes/access.php:64
 msgid "Read only"
-msgstr ""
+msgstr "Tik skaityti"
 
-#: includes/access.php:66 includes/access.php:74 includes/access.php:82
-#: includes/access.php:91 includes/access.php:107
-msgid "Access denied"
-msgstr ""
-
-#: includes/access.php:70
+#: includes/access.php:69
 msgid "Guestbook"
-msgstr ""
+msgstr "Svečiu Knyga"
 
-#: includes/access.php:78
+#: includes/access.php:77
 msgid "Library"
-msgstr ""
+msgstr "Biblioteka"
 
-#: includes/access.php:83 includes/access.php:92 includes/news.php:71
-#: includes/usr_del.php:131
+#: includes/access.php:82 includes/access.php:91 includes/news.php:70
+#: includes/usr_del.php:130
 msgid "Comments"
-msgstr ""
+msgstr "Komentarai"
 
-#: includes/access.php:87
+#: includes/access.php:86
 msgid "Downloads"
-msgstr ""
+msgstr "Siuntiniai"
 
-#: includes/access.php:96
+#: includes/access.php:95
 msgid "Community"
-msgstr ""
+msgstr "Bendruomenė"
 
-#: includes/access.php:103 includes/ipban.php:127 includes/ipban.php:178
-#: includes/ipban.php:206 includes/ipban.php:313 includes/ipban.php:384
+#: includes/access.php:102 includes/ipban.php:135 includes/ipban.php:185
+#: includes/ipban.php:213 includes/ipban.php:322 includes/ipban.php:390
 msgid "Registration"
-msgstr ""
+msgstr "Registracija"
 
-#: includes/access.php:106
+#: includes/access.php:105
 msgid "With moderation"
-msgstr ""
+msgstr "Su moderacija"
 
-#: includes/access.php:110
+#: includes/access.php:109
 msgid "Administrators always have access to all closed modules and comments"
-msgstr ""
+msgstr "Administratoriai visada turi prieigą prie visų uždarų modulių ir komentaru"
 
-#: includes/access.php:111 includes/antiflood.php:109 includes/counters.php:184
-#: includes/forum.php:425 includes/karma.php:83 includes/news.php:76
-#: includes/settings.php:99
+#: includes/access.php:110 includes/antiflood.php:108 includes/counters.php:189
+#: includes/forum.php:434 includes/karma.php:82 includes/news.php:75
+#: includes/settings.php:101
 msgid "Save"
-msgstr ""
+msgstr "Išsaugoti"
 
-#: includes/ads.php:36 includes/ads.php:221 includes/ads.php:279
-#: includes/ads.php:297 includes/ads.php:321 index.php:105
+#: includes/ads.php:41 includes/ads.php:226 includes/ads.php:290
+#: includes/ads.php:310 includes/ads.php:336 index.php:101
 msgid "Advertisement"
-msgstr ""
+msgstr "Reklama"
 
-#: includes/ads.php:36
+#: includes/ads.php:41
 msgid "Edit link"
-msgstr ""
+msgstr "Redaguoti nuorodą"
 
-#: includes/ads.php:36 includes/ads.php:425
+#: includes/ads.php:41 includes/ads.php:440
 msgid "Add link"
-msgstr ""
+msgstr "Pridėti nuorodą"
 
-#: includes/ads.php:45 includes/counters.php:74 includes/counters.php:127
-#: includes/counters.php:148 includes/counters.php:204
-#: includes/counters.php:248 includes/forum.php:51 includes/forum.php:71
-#: includes/forum.php:79 includes/forum.php:125 includes/forum.php:133
-#: includes/forum.php:235 includes/forum.php:329 includes/ip_whois.php:113
-#: includes/reg.php:39 includes/reg.php:57 includes/reg.php:94
-#: includes/usr_del.php:52
+#: includes/ads.php:50 includes/counters.php:76 includes/counters.php:132
+#: includes/counters.php:153 includes/counters.php:209
+#: includes/counters.php:253 includes/forum.php:56 includes/forum.php:76
+#: includes/forum.php:84 includes/forum.php:130 includes/forum.php:138
+#: includes/forum.php:241 includes/forum.php:336 includes/ip_whois.php:111
+#: includes/reg.php:41 includes/reg.php:59 includes/reg.php:96
+#: includes/usr_del.php:51
 msgid "Wrong data"
-msgstr ""
+msgstr "Klaidingi duomenys"
 
-#: includes/ads.php:45 includes/ads.php:96 includes/antiflood.php:110
-#: includes/counters.php:127 includes/counters.php:148
-#: includes/counters.php:164 includes/counters.php:204
-#: includes/counters.php:238 includes/forum.php:218 includes/forum.php:322
-#: includes/forum.php:427 includes/ip_whois.php:117 includes/ipban.php:47
-#: includes/ipban.php:138 includes/ipban.php:197 includes/ipban.php:230
-#: includes/ipban.php:283 includes/ipban.php:291 includes/ipban.php:298
-#: includes/ipban.php:358 includes/usr_clean.php:91
+#: includes/ads.php:50 includes/ads.php:101 includes/antiflood.php:109
+#: includes/counters.php:132 includes/counters.php:153
+#: includes/counters.php:169 includes/counters.php:209
+#: includes/counters.php:243 includes/forum.php:223 includes/forum.php:329
+#: includes/forum.php:436 includes/ip_whois.php:115 includes/ipban.php:55
+#: includes/ipban.php:146 includes/ipban.php:204 includes/ipban.php:237
+#: includes/ipban.php:292 includes/ipban.php:300 includes/ipban.php:307
+#: includes/ipban.php:367 includes/usr_clean.php:90
 msgid "Back"
-msgstr ""
+msgstr "Atgal"
 
-#: includes/ads.php:71 includes/counters.php:164 includes/counters.php:238
+#: includes/ads.php:76 includes/counters.php:169 includes/counters.php:243
 msgid "The required fields are not filled"
-msgstr ""
+msgstr "Privalomi laukai neužpildyti"
 
-#: includes/ads.php:82
+#: includes/ads.php:87
 msgid "This place is occupied"
-msgstr ""
+msgstr "Ši vieta užimta"
 
-#: includes/ads.php:88
+#: includes/ads.php:93
 msgid "Invalid characters"
-msgstr ""
+msgstr "Klaidingi simboliai"
 
-#: includes/ads.php:91
+#: includes/ads.php:96
 msgid "Color is specified incorrectly"
-msgstr ""
-
-#: includes/ads.php:181
-msgid "Link successfully changed"
-msgstr ""
-
-#: includes/ads.php:181
-msgid "Link successfully added"
-msgstr ""
-
-#: includes/ads.php:182 includes/antispy.php:435 includes/counters.php:137
-#: includes/ipban.php:340 includes/reg.php:45 includes/reg.php:51
-#: includes/reg.php:69 includes/reg.php:75 includes/reg.php:92
-#: includes/usr_clean.php:75
-msgid "Continue"
-msgstr ""
+msgstr "Spalva nurodyta neteisingai"
 
 #: includes/ads.php:186
+msgid "Link successfully changed"
+msgstr "Nuoroda sėkmingai išsaugota"
+
+#: includes/ads.php:186
+msgid "Link successfully added"
+msgstr "Nuoroda sėkmingai pridėta"
+
+#: includes/ads.php:187 includes/antispy.php:423 includes/counters.php:142
+#: includes/ipban.php:349 includes/reg.php:47 includes/reg.php:53
+#: includes/reg.php:71 includes/reg.php:77 includes/reg.php:94
+#: includes/usr_clean.php:74
+msgid "Continue"
+msgstr "Tęsti"
+
+#: includes/ads.php:191
 msgid "Link"
-msgstr ""
+msgstr "Nuoroda"
 
-#: includes/ads.php:188 includes/ads.php:409
+#: includes/ads.php:193 includes/ads.php:424
 msgid "Direct Link"
-msgstr ""
+msgstr "Tiesioginė nuoroda"
 
-#: includes/ads.php:189
+#: includes/ads.php:194
 msgid "Click statistics won't be counted, If the direct link is turned on"
-msgstr ""
+msgstr "Statistiniai duomenys nebus skaičiuojami, Jei tiesioginė nuoroda ijungta"
 
-#: includes/ads.php:190 includes/counters.php:170 includes/counters.php:212
-#: includes/forum.php:255 includes/forum.php:306 includes/forum.php:361
-#: includes/forum.php:403 includes/news.php:65
+#: includes/ads.php:195 includes/counters.php:175 includes/counters.php:217
+#: includes/forum.php:261 includes/forum.php:313 includes/forum.php:368
+#: includes/forum.php:412 includes/news.php:64
 msgid "Title"
-msgstr ""
+msgstr "Pavadinimas"
 
-#: includes/ads.php:192
+#: includes/ads.php:197
 msgid "To change the name when updating pages, you must wtite names trought the symbol |"
-msgstr ""
-
-#: includes/ads.php:193
-msgid "Color"
-msgstr ""
-
-#: includes/ads.php:195
-msgid "In the format FFFFFF, if you do not want to use link color, simply do not fill this field"
-msgstr ""
-
-#: includes/ads.php:196
-msgid "Hits"
-msgstr ""
+msgstr "Kad keisti pavadinimus atnaujinant puslapi, reikia jos rašyti per \"|\" ženkla"
 
 #: includes/ads.php:198
+msgid "Color"
+msgstr "Spalva"
+
+#: includes/ads.php:200
+msgid "In the format FFFFFF, if you do not want to use link color, simply do not fill this field"
+msgstr "Formatas FFFFFF, jei nenorite keisti nuorodos spalva, tiesiog nereikia nieko užpildyti"
+
+#: includes/ads.php:201
+msgid "Hits"
+msgstr "Hitai"
+
+#: includes/ads.php:203
 msgid "Number of hits for link existence which will be automatically removed from the page<br>0 - Unlimited"
 msgstr ""
 
-#: includes/ads.php:199 includes/karma.php:79
+#: includes/ads.php:204 includes/karma.php:78
 msgid "Days"
 msgstr ""
 
-#: includes/ads.php:201
+#: includes/ads.php:206
 msgid "Number of days for link existence which will be automatically removed from the page<br>0 - Unlimited"
 msgstr ""
 
-#: includes/ads.php:203 includes/ads.php:374 includes/ads.php:380
+#: includes/ads.php:208 includes/ads.php:389 includes/ads.php:395
 msgid "Show"
 msgstr ""
 
-#: includes/ads.php:204 includes/ads.php:328
+#: includes/ads.php:209 includes/ads.php:343
 msgid "Everyone"
 msgstr ""
 
-#: includes/ads.php:205 includes/ads.php:329
+#: includes/ads.php:210 includes/ads.php:344
 msgid "Guests"
 msgstr ""
 
-#: includes/ads.php:206 includes/ads.php:330 index.php:80 index.php:86
+#: includes/ads.php:211 includes/ads.php:345 index.php:76 index.php:82
 msgid "Users"
 msgstr ""
 
-#: includes/ads.php:207
+#: includes/ads.php:212
 msgid "Location"
 msgstr ""
 
-#: includes/ads.php:208 includes/ads.php:334
+#: includes/ads.php:213 includes/ads.php:349
 msgid "Above logo"
 msgstr ""
 
-#: includes/ads.php:209 includes/ads.php:335
+#: includes/ads.php:214 includes/ads.php:350
 msgid "Under menu"
 msgstr ""
 
-#: includes/ads.php:210 includes/ads.php:336
+#: includes/ads.php:215 includes/ads.php:351
 msgid "Over the counter"
 msgstr ""
 
-#: includes/ads.php:211 includes/ads.php:337
+#: includes/ads.php:216 includes/ads.php:352
 msgid "Under counter"
 msgstr ""
 
-#: includes/ads.php:212
+#: includes/ads.php:217
 msgid "Layout"
 msgstr ""
 
-#: includes/ads.php:213 includes/ads.php:323
+#: includes/ads.php:218 includes/ads.php:338
 msgid "All pages"
 msgstr ""
 
-#: includes/ads.php:214 includes/ads.php:324
+#: includes/ads.php:219 includes/ads.php:339
 msgid "Only on Homepage"
 msgstr ""
 
-#: includes/ads.php:215 includes/ads.php:325
+#: includes/ads.php:220 includes/ads.php:340
 msgid "On all, except Homepage"
 msgstr ""
 
-#: includes/ads.php:216
+#: includes/ads.php:221
 msgid "Styling links"
 msgstr ""
 
-#: includes/ads.php:217
+#: includes/ads.php:222
 msgid "Bold"
 msgstr ""
 
-#: includes/ads.php:218
+#: includes/ads.php:223
 msgid "Italic"
 msgstr ""
 
-#: includes/ads.php:219
+#: includes/ads.php:224
 msgid "Underline"
 msgstr ""
 
-#: includes/ads.php:220 includes/ads.php:372 includes/counters.php:72
-#: includes/counters.php:312 includes/forum.php:508 includes/forum.php:535
-#: includes/usr.php:58
+#: includes/ads.php:225 includes/ads.php:387 includes/counters.php:74
+#: includes/counters.php:317 includes/forum.php:522 includes/forum.php:549
+#: includes/usr.php:59
 msgid "Edit"
 msgstr ""
 
-#: includes/ads.php:220 includes/counters.php:211 includes/counters.php:318
-#: includes/forum.php:320 includes/forum.php:544
+#: includes/ads.php:225 includes/counters.php:216 includes/counters.php:323
+#: includes/forum.php:327 includes/forum.php:558
 msgid "Add"
 msgstr ""
 
-#: includes/ads.php:279 includes/ads.php:282 includes/ads.php:300
-#: includes/ads.php:373 includes/counters.php:72 includes/counters.php:142
-#: includes/counters.php:144 includes/counters.php:313 includes/forum.php:200
-#: includes/forum.php:214 includes/forum.php:509 includes/forum.php:536
-#: includes/ipban.php:343 includes/reg.php:115 includes/usr.php:58
-#: includes/usr_clean.php:90 includes/usr_del.php:140
+#: includes/ads.php:290 includes/ads.php:293 includes/ads.php:313
+#: includes/ads.php:388 includes/counters.php:74 includes/counters.php:147
+#: includes/counters.php:149 includes/counters.php:318 includes/forum.php:205
+#: includes/forum.php:219 includes/forum.php:523 includes/forum.php:550
+#: includes/ipban.php:352 includes/reg.php:117 includes/usr.php:59
+#: includes/usr_clean.php:89 includes/usr_del.php:139
 msgid "Delete"
 msgstr ""
 
-#: includes/ads.php:281
+#: includes/ads.php:292
 msgid "Are you sure want to delete link?"
 msgstr ""
 
-#: includes/ads.php:285 includes/ads.php:302 includes/counters.php:145
-#: includes/ipban.php:194 includes/ipban.php:216 includes/ipban.php:265
-#: includes/ipban.php:344 includes/karma.php:40 includes/usr_del.php:147
+#: includes/ads.php:296 includes/ads.php:315 includes/counters.php:150
+#: includes/ipban.php:201 includes/ipban.php:223 includes/ipban.php:274
+#: includes/ipban.php:353 includes/karma.php:39 includes/usr_del.php:146
 msgid "Cancel"
 msgstr ""
 
-#: includes/ads.php:297 includes/ads.php:426
+#: includes/ads.php:310 includes/ads.php:441
 msgid "Delete inactive links"
 msgstr ""
 
-#: includes/ads.php:299
+#: includes/ads.php:312
 msgid "Are you sure you want to delete all inactive links?"
 msgstr ""
 
-#: includes/ads.php:370 includes/counters.php:310 includes/forum.php:506
-#: includes/forum.php:533
+#: includes/ads.php:385 includes/counters.php:315 includes/forum.php:520
+#: includes/forum.php:547
 msgid "Up"
 msgstr ""
 
-#: includes/ads.php:371 includes/counters.php:311 includes/forum.php:507
-#: includes/forum.php:534
+#: includes/ads.php:386 includes/counters.php:316 includes/forum.php:521
+#: includes/forum.php:548
 msgid "Down"
 msgstr ""
 
-#: includes/ads.php:374
+#: includes/ads.php:389
 msgid "Hide"
 msgstr ""
 
-#: includes/ads.php:378
+#: includes/ads.php:393
 msgid "Start date"
 msgstr ""
 
-#: includes/ads.php:379
+#: includes/ads.php:394
 msgid "Disposition"
 msgstr ""
 
-#: includes/ads.php:386 includes/ads.php:389
+#: includes/ads.php:401 includes/ads.php:404
 msgid "hits"
 msgstr ""
 
-#: includes/ads.php:403
+#: includes/ads.php:418
 msgid "Agreement"
 msgstr ""
 
-#: includes/ads.php:406
+#: includes/ads.php:421
 msgid "Remains"
 msgstr ""
 
-#: includes/ads.php:413 includes/ban_panel.php:102 includes/forum.php:514
-#: includes/forum.php:633 includes/forum.php:729 includes/ipban.php:394
-#: includes/reg.php:127
+#: includes/ads.php:428 includes/ban_panel.php:102 includes/forum.php:528
+#: includes/forum.php:648 includes/forum.php:744 includes/ipban.php:400
+#: includes/reg.php:129
 msgid "The list is empty"
 msgstr ""
 
-#: includes/ads.php:416 includes/antispy.php:393 includes/antispy.php:424
-#: includes/ban_panel.php:105 includes/forum.php:636 includes/forum.php:732
-#: includes/ipban.php:137 includes/ipban.php:398 includes/languages.php:86
-#: includes/reg.php:130 includes/search_ip.php:133 includes/smilies.php:66
-#: includes/usr.php:68 includes/usr_adm.php:71 includes/usr_clean.php:89
+#: includes/ads.php:431 includes/antispy.php:381 includes/antispy.php:412
+#: includes/ban_panel.php:105 includes/forum.php:651 includes/forum.php:747
+#: includes/ipban.php:145 includes/ipban.php:404 includes/languages.php:85
+#: includes/reg.php:132 includes/search_ip.php:133 includes/smilies.php:65
+#: includes/usr.php:69 includes/usr_adm.php:69 includes/usr_clean.php:88
 msgid "Total"
 msgstr ""
 
-#: includes/ads.php:422 includes/ban_panel.php:109 includes/forum.php:642
-#: includes/forum.php:738 includes/ipban.php:403 includes/reg.php:136
-#: includes/search_ip.php:139 includes/usr.php:72
+#: includes/ads.php:437 includes/ban_panel.php:109 includes/forum.php:657
+#: includes/forum.php:753 includes/ipban.php:408 includes/reg.php:138
+#: includes/search_ip.php:139 includes/usr.php:73
 msgid "To Page"
 msgstr ""
 
-#: includes/antiflood.php:33
+#: includes/antiflood.php:32
 msgid "Antiflood Settings"
 msgstr ""
 
-#: includes/antiflood.php:93
+#: includes/antiflood.php:92
 msgid "Operation mode"
 msgstr ""
 
-#: includes/antiflood.php:94 includes/antiflood.php:96
-#: includes/antiflood.php:103
+#: includes/antiflood.php:93 includes/antiflood.php:95
+#: includes/antiflood.php:102
 msgid "Day"
 msgstr ""
 
-#: includes/antiflood.php:95 includes/antiflood.php:96
-#: includes/antiflood.php:104
+#: includes/antiflood.php:94 includes/antiflood.php:95
+#: includes/antiflood.php:103
 msgid "Night"
 msgstr ""
 
-#: includes/antiflood.php:97
+#: includes/antiflood.php:96
 msgid "Automatic change from day to night mode, according to specified time set"
 msgstr ""
 
-#: includes/antiflood.php:99
+#: includes/antiflood.php:98
 msgid "Adaptive"
 msgstr ""
 
-#: includes/antiflood.php:100
+#: includes/antiflood.php:99
 msgid "If one of administration is online (on the site), the system work in &quot;day&quot; mode, if administration is offline, it switch to &quot;night&quot;"
 msgstr ""
 
-#: includes/antiflood.php:102
+#: includes/antiflood.php:101
 msgid "Time limit"
 msgstr ""
 
-#: includes/antiflood.php:105
+#: includes/antiflood.php:104
 msgid "Min. 4, max. 300 seconds"
 msgstr ""
 
-#: includes/antiflood.php:106
+#: includes/antiflood.php:105
 msgid "Day mode"
 msgstr ""
 
-#: includes/antiflood.php:107
+#: includes/antiflood.php:106
 msgid "Beginning of day"
 msgstr ""
 
-#: includes/antiflood.php:108
+#: includes/antiflood.php:107
 msgid "End of day"
 msgstr ""
 
-#: includes/antispy.php:384 includes/antispy.php:404 includes/antispy.php:430
-#: includes/antispy.php:447 index.php:128
+#: includes/antispy.php:372 includes/antispy.php:392 includes/antispy.php:418
+#: includes/antispy.php:435 index.php:124
 msgid "Anti-Spyware"
 msgstr ""
 
-#: includes/antispy.php:384 includes/antispy.php:449
+#: includes/antispy.php:372 includes/antispy.php:437
 msgid "Distributive scan"
 msgstr ""
 
-#: includes/antispy.php:387
+#: includes/antispy.php:375
 msgid "Distributive contains complementary files<br>Warning! If the files listed below does not pertain to your additional modules and you are not assured of their safety, remove them. They can be dangerous for your site."
 msgstr ""
 
-#: includes/antispy.php:395
+#: includes/antispy.php:383
 msgid "<h3>EXCELLENT!!!</h3>List of files corresponds to the distributive"
 msgstr ""
 
-#: includes/antispy.php:398
+#: includes/antispy.php:386
 msgid "Rescan"
 msgstr ""
 
-#: includes/antispy.php:404 includes/antispy.php:451
+#: includes/antispy.php:392 includes/antispy.php:439
 msgid "Snapshot scan"
 msgstr ""
 
-#: includes/antispy.php:410
+#: includes/antispy.php:398
 msgid "Snapshot is not created"
 msgstr ""
 
-#: includes/antispy.php:410 includes/antispy.php:430 includes/antispy.php:439
-#: includes/antispy.php:453
+#: includes/antispy.php:398 includes/antispy.php:418 includes/antispy.php:427
+#: includes/antispy.php:441
 msgid "Create snapshot"
 msgstr ""
 
-#: includes/antispy.php:413
+#: includes/antispy.php:401
 msgid "Snapshot Inconsistency<br>Warning! You need to pay attention to all files from the list. They have been added or modified since the image created."
 msgstr ""
 
-#: includes/antispy.php:421
+#: includes/antispy.php:409
 msgid "Excellent!<br>All files are consistent with previously made image."
 msgstr ""
 
-#: includes/antispy.php:434
+#: includes/antispy.php:422
 msgid "Snapshot successfully created"
 msgstr ""
 
-#: includes/antispy.php:438
+#: includes/antispy.php:426
 msgid "WARNING!!!<br>Before continuing make sure that all the files have been identified in the scanning mode distribution reliable and contain no unauthorized modifications."
 msgstr ""
 
-#: includes/antispy.php:441
+#: includes/antispy.php:429
 msgid "This procedure creates a list of all script files to your site, calculates the checksums and writes to the database, for later comparison."
 msgstr ""
 
-#: includes/antispy.php:448
+#: includes/antispy.php:436
 msgid "Scan mode"
 msgstr ""
 
-#: includes/antispy.php:450
+#: includes/antispy.php:438
 msgid "Files identification which are not included in the original distributive"
 msgstr ""
 
-#: includes/antispy.php:452
+#: includes/antispy.php:440
 msgid "Compare the list of files and checksums with pre-made way. Allows you to identify unknow files, and unauthorized changes."
 msgstr ""
 
-#: includes/antispy.php:454
+#: includes/antispy.php:442
 msgid "Takes a snapshot of all script files from the site calculates their checksums and stored in the database."
 msgstr ""
 
-#: includes/antispy.php:458
+#: includes/antispy.php:446
 msgid "Scanner menu"
 msgstr ""
 
-#: includes/ban_panel.php:32
+#: includes/ban_panel.php:33
 msgid "Amnesty is available for supervisors only"
 msgstr ""
 
-#: includes/ban_panel.php:34 includes/ban_panel.php:67
-#: includes/ban_panel.php:73 index.php:89
+#: includes/ban_panel.php:35 includes/ban_panel.php:68
+#: includes/ban_panel.php:74 index.php:85
 msgid "Ban Panel"
 msgstr ""
 
-#: includes/ban_panel.php:34 includes/ban_panel.php:51
-#: includes/ban_panel.php:62 includes/ban_panel.php:113
+#: includes/ban_panel.php:35 includes/ban_panel.php:52
+#: includes/ban_panel.php:63 includes/ban_panel.php:113
 msgid "Amnesty"
 msgstr ""
 
-#: includes/ban_panel.php:42
+#: includes/ban_panel.php:43
 msgid "Amnesty has been successful"
 msgstr ""
 
-#: includes/ban_panel.php:56
+#: includes/ban_panel.php:57
 msgid "All the users with active bans were unbanned (Except for bans &quot;till cancel&quot;)"
 msgstr ""
 
-#: includes/ban_panel.php:60
+#: includes/ban_panel.php:61
 msgid "Unban all"
 msgstr ""
 
-#: includes/ban_panel.php:61
+#: includes/ban_panel.php:62
 msgid "Clear Ban database"
 msgstr ""
 
-#: includes/ban_panel.php:64
+#: includes/ban_panel.php:65
 msgid "&quot;Unban All&quot; - terminating all active bans<br>&quot;Clear Database&quot; - terminates all bans and clears an offenses history"
 msgstr ""
 
-#: includes/ban_panel.php:74 includes/usr.php:29
+#: includes/ban_panel.php:75 includes/usr.php:30
 msgid "Sort"
 msgstr ""
 
-#: includes/ban_panel.php:77 includes/ban_panel.php:79
+#: includes/ban_panel.php:78 includes/ban_panel.php:80
 msgid "Term"
 msgstr ""
 
-#: includes/ban_panel.php:77 includes/ban_panel.php:79
+#: includes/ban_panel.php:78 includes/ban_panel.php:80
 msgid "Violations"
 msgstr ""
 
@@ -555,652 +560,652 @@ msgstr ""
 msgid "Violations history"
 msgstr ""
 
-#: includes/counters.php:49 includes/counters.php:142 includes/counters.php:169
-#: includes/counters.php:211 includes/counters.php:300
-#: includes/counters.php:321 index.php:108
+#: includes/counters.php:51 includes/counters.php:147 includes/counters.php:174
+#: includes/counters.php:216 includes/counters.php:305
+#: includes/counters.php:326 index.php:104
 msgid "Counters"
 msgstr ""
 
-#: includes/counters.php:49 includes/counters.php:225
+#: includes/counters.php:51 includes/counters.php:230
 msgid "Viewing"
 msgstr ""
 
-#: includes/counters.php:51 includes/counters.php:171 includes/counters.php:213
-#: includes/counters.php:217
+#: includes/counters.php:53 includes/counters.php:176 includes/counters.php:218
+#: includes/counters.php:222
 msgid "Option 1"
 msgstr ""
 
-#: includes/counters.php:52 includes/counters.php:172 includes/counters.php:214
-#: includes/counters.php:218
+#: includes/counters.php:54 includes/counters.php:177 includes/counters.php:219
+#: includes/counters.php:223
 msgid "Option 2"
 msgstr ""
 
-#: includes/counters.php:53 includes/counters.php:215
+#: includes/counters.php:55 includes/counters.php:220
 msgid "Display mode"
 msgstr ""
 
-#: includes/counters.php:57
+#: includes/counters.php:59
 msgid "On all pages showing option 1"
 msgstr ""
 
-#: includes/counters.php:61
+#: includes/counters.php:63
 msgid "On all pages showing option 2"
 msgstr ""
 
-#: includes/counters.php:65
+#: includes/counters.php:67
 msgid "On the main showing option 1, on the other pages option 2"
 msgstr ""
 
-#: includes/counters.php:70
+#: includes/counters.php:72
 msgid "Disable"
 msgstr ""
 
-#: includes/counters.php:71
+#: includes/counters.php:73
 msgid "Enable"
 msgstr ""
 
-#: includes/counters.php:137
+#: includes/counters.php:142
 msgid "Counter deleted"
 msgstr ""
 
-#: includes/counters.php:144 includes/forum.php:212
+#: includes/counters.php:149 includes/forum.php:217
 msgid "Do you really want to delete?"
 msgstr ""
 
-#: includes/counters.php:169
+#: includes/counters.php:174
 msgid "Preview"
 msgstr ""
 
-#: includes/counters.php:173
+#: includes/counters.php:178
 msgid "If the counter are displayed correctly and without errors, click &quot;Save&quot;.<br>Otherwise, click back button and correct errors."
 msgstr ""
 
-#: includes/counters.php:213
+#: includes/counters.php:218
 msgid "Code for main page"
 msgstr ""
 
-#: includes/counters.php:214
+#: includes/counters.php:219
 msgid "Code for other pages"
 msgstr ""
 
-#: includes/counters.php:215 includes/ipban.php:174 includes/languages.php:79
+#: includes/counters.php:220 includes/ipban.php:181 includes/languages.php:78
 msgid "Default"
 msgstr ""
 
-#: includes/counters.php:216
+#: includes/counters.php:221
 msgid "On the main showing option 1, on the other pages option 2.<br>If &quot;option 2&quot; not filled, counter would only appear on the main page."
 msgstr ""
 
-#: includes/counters.php:219
+#: includes/counters.php:224
 msgid "WARNING!<br>Make sure you have correctly entered the code. It must meet the standard of XML <br> If you click &quot;View&quot; and XHTML errors occured, then click &quot;Back&quot; button in your browser, return to this form and correct the errors."
 msgstr ""
 
-#: includes/counters.php:295
+#: includes/counters.php:300
 msgid "Counter successfully changed"
 msgstr ""
 
-#: includes/counters.php:295
+#: includes/counters.php:300
 msgid "Counter successfully added"
 msgstr ""
 
-#: includes/forum.php:51 includes/forum.php:125 includes/forum.php:133
-#: includes/forum.php:235 includes/forum.php:329 includes/forum.php:484
-#: includes/forum.php:546 includes/forum.php:551 includes/forum.php:650
-#: includes/forum.php:755
+#: includes/forum.php:56 includes/forum.php:130 includes/forum.php:138
+#: includes/forum.php:241 includes/forum.php:336 includes/forum.php:498
+#: includes/forum.php:560 includes/forum.php:565 includes/forum.php:665
+#: includes/forum.php:770
 msgid "Forum Management"
 msgstr ""
 
-#: includes/forum.php:60
+#: includes/forum.php:65
 msgid "Delete section"
 msgstr ""
 
-#: includes/forum.php:60
+#: includes/forum.php:65
 msgid "Delete category"
 msgstr ""
 
-#: includes/forum.php:97 includes/forum.php:210
+#: includes/forum.php:102 includes/forum.php:215
 msgid "Category deleted"
 msgstr ""
 
-#: includes/forum.php:97 includes/forum.php:141
+#: includes/forum.php:102 includes/forum.php:146
 msgid "All content has been moved to"
 msgstr ""
 
-#: includes/forum.php:97
+#: includes/forum.php:102
 msgid "selected category"
 msgstr ""
 
-#: includes/forum.php:100
+#: includes/forum.php:105
 msgid "<h3>WARNING!</h3>There are subsections. Move them to another category."
 msgstr ""
 
-#: includes/forum.php:101
+#: includes/forum.php:106
 msgid "Select category"
 msgstr ""
 
-#: includes/forum.php:108
+#: includes/forum.php:113
 msgid "All categories, topics, and files will be moved into selected category. Old category will be removed."
 msgstr ""
 
-#: includes/forum.php:109 includes/forum.php:195
+#: includes/forum.php:114 includes/forum.php:200
 msgid "Move"
 msgstr ""
 
-#: includes/forum.php:113 includes/forum.php:199
+#: includes/forum.php:118 includes/forum.php:204
 msgid "Complete removal"
 msgstr ""
 
-#: includes/forum.php:113
+#: includes/forum.php:118
 msgid "If you want to destroy all the information, first remove"
 msgstr ""
 
-#: includes/forum.php:113
+#: includes/forum.php:118
 msgid "subsections"
 msgstr ""
 
-#: includes/forum.php:141 includes/forum.php:210
+#: includes/forum.php:146 includes/forum.php:215
 msgid "Section deleted"
 msgstr ""
 
-#: includes/forum.php:141
+#: includes/forum.php:146
 msgid "selected section"
 msgstr ""
 
-#: includes/forum.php:145 includes/forum.php:569 includes/forum.php:666
+#: includes/forum.php:150 includes/forum.php:583 includes/forum.php:681
 msgid "Access forbidden"
 msgstr ""
 
-#: includes/forum.php:175
+#: includes/forum.php:180
 msgid "Section with all contents are removed"
 msgstr ""
 
-#: includes/forum.php:176 includes/forum.php:301
+#: includes/forum.php:181 includes/forum.php:308
 msgid "Go to category"
 msgstr ""
 
-#: includes/forum.php:179
+#: includes/forum.php:184
 msgid "<h3>WARNING!</h3>There are topics in the section. You must move them to another section."
 msgstr ""
 
-#: includes/forum.php:179
+#: includes/forum.php:184
 msgid "Select section"
 msgstr ""
 
-#: includes/forum.php:188
+#: includes/forum.php:193
 msgid "Other category"
 msgstr ""
 
-#: includes/forum.php:195
+#: includes/forum.php:200
 msgid "All the topics and files will be moved to selected section. Old section will be deleted."
 msgstr ""
 
-#: includes/forum.php:199
+#: includes/forum.php:204
 msgid "WARNING! All the information will be deleted"
 msgstr ""
 
-#: includes/forum.php:251 includes/forum.php:357
+#: includes/forum.php:257 includes/forum.php:364
 msgid "You have not entered Title"
 msgstr ""
 
-#: includes/forum.php:255 includes/forum.php:361
+#: includes/forum.php:261 includes/forum.php:368
 msgid "Invalid length"
 msgstr ""
 
-#: includes/forum.php:259 includes/forum.php:365
+#: includes/forum.php:265 includes/forum.php:372
 msgid "Description should be at least 2 characters in length"
 msgstr ""
 
-#: includes/forum.php:298
+#: includes/forum.php:305
 msgid "Add Section"
 msgstr ""
 
-#: includes/forum.php:298
+#: includes/forum.php:305
 msgid "Add Category"
 msgstr ""
 
-#: includes/forum.php:308 includes/forum.php:405
+#: includes/forum.php:315 includes/forum.php:414
 msgid "Min. 2, Max. 30 characters"
 msgstr ""
 
-#: includes/forum.php:309 includes/forum.php:406 includes/settings.php:82
+#: includes/forum.php:316 includes/forum.php:415 includes/settings.php:84
 msgid "Description"
 msgstr ""
 
-#: includes/forum.php:311 includes/forum.php:408
+#: includes/forum.php:318 includes/forum.php:417
 msgid "Optional field"
 msgstr ""
 
-#: includes/forum.php:311 includes/forum.php:408
+#: includes/forum.php:318 includes/forum.php:417
 msgid "Min. 2, Max. 500 characters"
 msgstr ""
 
-#: includes/forum.php:314 includes/forum.php:412
+#: includes/forum.php:321 includes/forum.php:421
 msgid "Common access"
 msgstr ""
 
-#: includes/forum.php:315 includes/forum.php:413
+#: includes/forum.php:322 includes/forum.php:422
 msgid "Only for reading"
 msgstr ""
 
-#: includes/forum.php:316 includes/forum.php:414
+#: includes/forum.php:323 includes/forum.php:423
 msgid "Allow authors to edit the 1st post"
 msgstr ""
 
-#: includes/forum.php:317 includes/forum.php:415
+#: includes/forum.php:324 includes/forum.php:424
 msgid "Assign the newly created authors as curators"
 msgstr ""
 
-#: includes/forum.php:351 includes/forum.php:353
+#: includes/forum.php:358 includes/forum.php:360
 msgid "Category is not chosen"
 msgstr ""
 
-#: includes/forum.php:400
+#: includes/forum.php:409
 msgid "Edit Section"
 msgstr ""
 
-#: includes/forum.php:400
+#: includes/forum.php:409
 msgid "Edit Category"
 msgstr ""
 
-#: includes/forum.php:416
+#: includes/forum.php:425
 msgid "Category"
 msgstr ""
 
-#: includes/forum.php:484 includes/forum.php:765
+#: includes/forum.php:498 includes/forum.php:780
 msgid "Forum structure"
 msgstr ""
 
-#: includes/forum.php:490
+#: includes/forum.php:504
 msgid "List of sections"
 msgstr ""
 
-#: includes/forum.php:518 includes/forum.php:546
+#: includes/forum.php:532 includes/forum.php:560
 msgid "List of categories"
 msgstr ""
 
-#: includes/forum.php:551 includes/forum.php:767
+#: includes/forum.php:565 includes/forum.php:782
 msgid "Hidden topics"
 msgstr ""
 
-#: includes/forum.php:558 includes/forum.php:661
+#: includes/forum.php:572 includes/forum.php:676
 msgid "Filter by author"
 msgstr ""
 
-#: includes/forum.php:564
+#: includes/forum.php:578
 msgid "Filter by section"
 msgstr ""
 
-#: includes/forum.php:613 includes/forum.php:712
+#: includes/forum.php:628 includes/forum.php:727
 msgid "Filter"
 msgstr ""
 
-#: includes/forum.php:614
+#: includes/forum.php:629
 msgid "by section"
 msgstr ""
 
-#: includes/forum.php:615 includes/forum.php:714
+#: includes/forum.php:630 includes/forum.php:729
 msgid "by author"
 msgstr ""
 
-#: includes/forum.php:629 includes/forum.php:726 includes/reg.php:143
+#: includes/forum.php:644 includes/forum.php:741 includes/reg.php:145
 msgid "Delete all"
 msgstr ""
 
-#: includes/forum.php:650 includes/forum.php:766
+#: includes/forum.php:665 includes/forum.php:781
 msgid "Hidden posts"
 msgstr ""
 
-#: includes/forum.php:657
+#: includes/forum.php:672
 msgid "Filter by topic"
 msgstr ""
 
-#: includes/forum.php:713
+#: includes/forum.php:728
 msgid "by topic"
 msgstr ""
 
-#: includes/forum.php:756
+#: includes/forum.php:771
 msgid "Statistic"
 msgstr ""
 
-#: includes/forum.php:757
+#: includes/forum.php:772
 msgid "Categories"
 msgstr ""
 
-#: includes/forum.php:758
+#: includes/forum.php:773
 msgid "Sections"
 msgstr ""
 
-#: includes/forum.php:759
+#: includes/forum.php:774
 msgid "Topics"
 msgstr ""
 
-#: includes/forum.php:760
+#: includes/forum.php:775
 msgid "Messages"
 msgstr ""
 
-#: includes/forum.php:761
+#: includes/forum.php:776
 msgid "Files"
 msgstr ""
 
-#: includes/forum.php:762
+#: includes/forum.php:777
 msgid "Votes"
 msgstr ""
 
-#: includes/forum.php:764
+#: includes/forum.php:779
 msgid "Settings"
 msgstr ""
 
-#: includes/forum.php:769
+#: includes/forum.php:784
 msgid "Go to Forum"
 msgstr ""
 
-#: includes/ipban.php:36 includes/ipban.php:271 includes/ipban.php:351
-#: includes/ipban.php:363 index.php:129
+#: includes/ipban.php:44 includes/ipban.php:280 includes/ipban.php:360
+#: includes/ipban.php:372 index.php:125
 msgid "Ban by IP"
 msgstr ""
 
-#: includes/ipban.php:36 includes/ipban.php:191 includes/ipban.php:213
+#: includes/ipban.php:44 includes/ipban.php:198 includes/ipban.php:220
 msgid "Add Ban"
 msgstr ""
 
-#: includes/ipban.php:46 includes/ipban.php:89 includes/ipban.php:100
-#: includes/ipban.php:229 includes/ipban.php:282 includes/ipban.php:290
-#: includes/search_ip.php:73 includes/search_ip.php:82
+#: includes/ipban.php:54 includes/ipban.php:97 includes/ipban.php:108
+#: includes/ipban.php:236 includes/ipban.php:291 includes/ipban.php:299
+#: includes/search_ip.php:74 includes/search_ip.php:83
 msgid "Invalid IP"
 msgstr ""
 
-#: includes/ipban.php:64 includes/search_ip.php:49
+#: includes/ipban.php:72 includes/search_ip.php:50
 msgid "First IP is entered incorrectly"
 msgstr ""
 
-#: includes/ipban.php:72 includes/search_ip.php:57
+#: includes/ipban.php:80 includes/search_ip.php:58
 msgid "Second IP is entered incorrectly"
 msgstr ""
 
-#: includes/ipban.php:113
+#: includes/ipban.php:121
 msgid "Address you entered conflicts with other who in the database"
 msgstr ""
 
-#: includes/ipban.php:123 includes/ipban.php:174 includes/ipban.php:207
-#: includes/ipban.php:309 includes/ipban.php:380
+#: includes/ipban.php:131 includes/ipban.php:181 includes/ipban.php:214
+#: includes/ipban.php:318 includes/ipban.php:386
 msgid "Redirect"
 msgstr ""
 
-#: includes/ipban.php:131 includes/ipban.php:182 includes/ipban.php:205
-#: includes/ipban.php:317 includes/ipban.php:388
+#: includes/ipban.php:139 includes/ipban.php:189 includes/ipban.php:212
+#: includes/ipban.php:326 includes/ipban.php:394
 msgid "Block"
 msgstr ""
 
-#: includes/ipban.php:150
+#: includes/ipban.php:157
 msgid "Ban impossible. Your own IP address in the range"
 msgstr ""
 
-#: includes/ipban.php:159
+#: includes/ipban.php:166
 msgid "Ban range address"
 msgstr ""
 
-#: includes/ipban.php:163
+#: includes/ipban.php:170
 msgid "Ban on the subnet mask"
 msgstr ""
 
-#: includes/ipban.php:167
+#: includes/ipban.php:174
 msgid "Ban IP address"
 msgstr ""
 
-#: includes/ipban.php:170 includes/ipban.php:204 includes/ipban.php:305
+#: includes/ipban.php:177 includes/ipban.php:211 includes/ipban.php:314
 msgid "Ban type"
 msgstr ""
 
-#: includes/ipban.php:174 includes/ipban.php:208
+#: includes/ipban.php:181 includes/ipban.php:215
 msgid "Redirect URL"
 msgstr ""
 
-#: includes/ipban.php:185 includes/ipban.php:211 includes/ipban.php:324
+#: includes/ipban.php:192 includes/ipban.php:218 includes/ipban.php:333
 msgid "Reason"
 msgstr ""
 
-#: includes/ipban.php:185 includes/ipban.php:324
+#: includes/ipban.php:192 includes/ipban.php:333
 msgid "Not specified"
 msgstr ""
 
-#: includes/ipban.php:192
+#: includes/ipban.php:199
 msgid "Please, check up correctness of the input data"
 msgstr ""
 
-#: includes/ipban.php:202 includes/ipban.php:353
+#: includes/ipban.php:209 includes/ipban.php:362
 msgid "IP address"
 msgstr ""
 
-#: includes/ipban.php:210
+#: includes/ipban.php:217
 msgid "If the ban on Redirect, then specify the URL"
 msgstr ""
 
-#: includes/ipban.php:214
+#: includes/ipban.php:221
 msgid "Example:<br><span class='red'>10.5.7.1</span> - Ban one address<br><span class='red'>10.5.7.1-10.5.7.100</span> - Ban range of address.<br><span class='red'>10.5.*.*</span> - Ban on a mask. There will banned from the entrie subnet, begining with address 0 and ending with 255"
 msgstr ""
 
-#: includes/ipban.php:263
+#: includes/ipban.php:272
 msgid "Are you sure you wan to unban all IP?"
 msgstr ""
 
-#: includes/ipban.php:264
+#: includes/ipban.php:273
 msgid "Perform"
 msgstr ""
 
-#: includes/ipban.php:271
+#: includes/ipban.php:280
 msgid "Ban details"
 msgstr ""
 
-#: includes/ipban.php:297
+#: includes/ipban.php:306
 msgid "This address not in the database"
 msgstr ""
 
-#: includes/ipban.php:325
+#: includes/ipban.php:334
 msgid "Who applied the ban?"
 msgstr ""
 
-#: includes/ipban.php:326
+#: includes/ipban.php:335
 msgid "Date"
 msgstr ""
 
-#: includes/ipban.php:327
+#: includes/ipban.php:336
 msgid "Time"
 msgstr ""
 
-#: includes/ipban.php:328
+#: includes/ipban.php:337
 msgid "Delete Ban"
 msgstr ""
 
-#: includes/ipban.php:339
+#: includes/ipban.php:348
 msgid "Ban has been successfully removed"
 msgstr ""
 
-#: includes/ipban.php:342
+#: includes/ipban.php:351
 msgid "re you sure to remove ban?"
 msgstr ""
 
-#: includes/ipban.php:351 includes/ipban.php:355 includes/ipban.php:409
-#: includes/search_ip.php:39
+#: includes/ipban.php:360 includes/ipban.php:364 includes/ipban.php:414
+#: includes/search_ip.php:40
 msgid "Search"
 msgstr ""
 
-#: includes/ipban.php:356
+#: includes/ipban.php:365
 msgid "Enter a single address, mask and range are not allowed"
 msgstr ""
 
-#: includes/ipban.php:397 includes/usr.php:61
+#: includes/ipban.php:403 includes/usr.php:62
 msgid "Ban"
 msgstr ""
 
-#: includes/ipban.php:409
+#: includes/ipban.php:414
 msgid "Unban all IP"
 msgstr ""
 
-#: includes/karma.php:36
+#: includes/karma.php:35
 msgid "Karma is cleared"
 msgstr ""
 
-#: includes/karma.php:38
+#: includes/karma.php:37
 msgid "You really want to clear the Karma?"
 msgstr ""
 
-#: includes/karma.php:39
+#: includes/karma.php:38
 msgid "Clear"
 msgstr ""
 
-#: includes/karma.php:44 index.php:91
+#: includes/karma.php:43 index.php:87
 msgid "Karma"
 msgstr ""
 
-#: includes/karma.php:73
+#: includes/karma.php:72
 msgid "Voices per day"
 msgstr ""
 
-#: includes/karma.php:75
+#: includes/karma.php:74
 msgid "Restriction for vote"
 msgstr ""
 
-#: includes/karma.php:76
+#: includes/karma.php:75
 msgid "Forum posts"
 msgstr ""
 
-#: includes/karma.php:77
+#: includes/karma.php:76
 msgid "Stay on site"
 msgstr ""
 
-#: includes/karma.php:78
+#: includes/karma.php:77
 msgid "Hours"
 msgstr ""
 
-#: includes/karma.php:80
+#: includes/karma.php:79
 msgid "General Settings"
 msgstr ""
 
-#: includes/karma.php:81
+#: includes/karma.php:80
 msgid "Switch module ON"
 msgstr ""
 
-#: includes/karma.php:82
+#: includes/karma.php:81
 msgid "Forbid to vote for the administration"
 msgstr ""
 
-#: includes/karma.php:84
+#: includes/karma.php:83
 msgid "Clear Karma"
 msgstr ""
 
-#: includes/languages.php:36
+#: includes/languages.php:35
 msgid "Default language"
 msgstr ""
 
-#: includes/languages.php:56
+#: includes/languages.php:55
 msgid "Descriptions have been updated successfully"
 msgstr ""
 
-#: includes/languages.php:73
+#: includes/languages.php:72
 msgid "Select language"
 msgstr ""
 
-#: includes/languages.php:84
+#: includes/languages.php:83
 msgid "Apply"
 msgstr ""
 
-#: includes/languages.php:87
+#: includes/languages.php:86
 msgid "Update List"
 msgstr ""
 
-#: includes/news.php:29
+#: includes/news.php:28
 msgid "News on the mainpage"
 msgstr ""
 
-#: includes/news.php:63
+#: includes/news.php:62
 msgid "Appearance"
 msgstr ""
 
-#: includes/news.php:64
+#: includes/news.php:63
 msgid "Title + Text"
 msgstr ""
 
-#: includes/news.php:66
+#: includes/news.php:65
 msgid "Text"
 msgstr ""
 
-#: includes/news.php:67
+#: includes/news.php:66
 msgid "Not to show"
 msgstr ""
 
-#: includes/news.php:68
+#: includes/news.php:67
 msgid "Line breaks"
 msgstr ""
 
-#: includes/news.php:69 includes/smilies.php:24
+#: includes/news.php:68 includes/smilies.php:22
 msgid "Smilies"
 msgstr ""
 
-#: includes/news.php:70
+#: includes/news.php:69
 msgid "bbCode Tags"
 msgstr ""
 
-#: includes/news.php:72
+#: includes/news.php:71
 msgid "Text size"
 msgstr ""
 
-#: includes/news.php:74
+#: includes/news.php:73
 msgid "Quantity of news"
 msgstr ""
 
-#: includes/news.php:75
+#: includes/news.php:74
 msgid "How many days to show?"
 msgstr ""
 
-#: includes/news.php:77
+#: includes/news.php:76
 msgid "Reset Settings"
 msgstr ""
 
-#: includes/reg.php:33
+#: includes/reg.php:35
 msgid "Registration confirmation"
 msgstr ""
 
-#: includes/reg.php:45 includes/reg.php:51
+#: includes/reg.php:47 includes/reg.php:53
 msgid "Registration is confirmed"
 msgstr ""
 
-#: includes/reg.php:69 includes/usr_del.php:123
+#: includes/reg.php:71 includes/usr_del.php:122
 msgid "User deleted"
 msgstr ""
 
-#: includes/reg.php:75
+#: includes/reg.php:77
 msgid "All unconfirmed registrations were removed"
 msgstr ""
 
-#: includes/reg.php:91
+#: includes/reg.php:93
 msgid "All unconfirmed registrations with selected IP were deleted"
 msgstr ""
 
-#: includes/reg.php:114
+#: includes/reg.php:116
 msgid "Approve"
 msgstr ""
 
-#: includes/reg.php:116
+#: includes/reg.php:118
 msgid "Remove IP"
 msgstr ""
 
-#: includes/reg.php:143
+#: includes/reg.php:145
 msgid "Confirm all"
 msgstr ""
 
-#: includes/search_ip.php:31
+#: includes/search_ip.php:32
 msgid "Actual IP"
 msgstr ""
 
-#: includes/search_ip.php:32
+#: includes/search_ip.php:33
 msgid "IP history"
 msgstr ""
 
-#: includes/search_ip.php:35 index.php:94
+#: includes/search_ip.php:36 index.php:90
 msgid "Search IP"
 msgstr ""
 
-#: includes/search_ip.php:95
+#: includes/search_ip.php:96
 msgid "Search results"
 msgstr ""
 
@@ -1216,167 +1221,167 @@ msgstr ""
 msgid "<b>Sample queries:</b><br><span class=\"red\">10.5.7.1</span> - Search for a single address<br><span class=\"red\">10.5.7.1-10.5.7.100</span> - Search a range address (forbidden to use mask symbol *)<br><span class=\"red\">10.5.*.*</span> - Search mask. Will be found all subnet addresses starting with 0 and ending with 255"
 msgstr ""
 
-#: includes/settings.php:29 index.php:117
+#: includes/settings.php:31 index.php:113
 msgid "System Settings"
 msgstr ""
 
-#: includes/settings.php:62
+#: includes/settings.php:64
 msgid "Common Settings"
 msgstr ""
 
-#: includes/settings.php:63
+#: includes/settings.php:65
 msgid "Web site address without the slash at the end"
 msgstr ""
 
-#: includes/settings.php:64
+#: includes/settings.php:66
 msgid "Site copyright"
 msgstr ""
 
-#: includes/settings.php:65
+#: includes/settings.php:67
 msgid "Site Email"
 msgstr ""
 
-#: includes/settings.php:66
+#: includes/settings.php:68
 msgid "Max. file size"
 msgstr ""
 
-#: includes/settings.php:67
+#: includes/settings.php:69
 msgid "Gzip compression"
 msgstr ""
 
-#: includes/settings.php:72
+#: includes/settings.php:74
 msgid "Time shift"
 msgstr ""
 
-#: includes/settings.php:74
+#: includes/settings.php:76
 msgid "System Time"
 msgstr ""
 
-#: includes/settings.php:75
+#: includes/settings.php:77
 msgid "Server Time"
 msgstr ""
 
-#: includes/settings.php:80
+#: includes/settings.php:82
 msgid "META tags"
 msgstr ""
 
-#: includes/settings.php:81
+#: includes/settings.php:83
 msgid "Keywords"
 msgstr ""
 
-#: includes/settings.php:86
+#: includes/settings.php:88
 msgid "Themes"
 msgstr ""
 
-#: includes/smilies.php:61
+#: includes/smilies.php:60
 msgid "Smilie cache updated successfully"
 msgstr ""
 
-#: includes/smilies.php:63
+#: includes/smilies.php:62
 msgid "Error updating cache"
 msgstr ""
 
-#: includes/usr.php:27
+#: includes/usr.php:28
 msgid "List of Users"
 msgstr ""
 
-#: includes/usr.php:34 includes/usr.php:40 includes/usr.php:46
+#: includes/usr.php:35 includes/usr.php:41 includes/usr.php:47
 msgid "Nickname"
 msgstr ""
 
-#: includes/usr_adm.php:19 index.php:87
+#: includes/usr_adm.php:17 index.php:83
 msgid "Administration"
 msgstr ""
 
-#: includes/usr_adm.php:23
+#: includes/usr_adm.php:21
 msgid "Supervisors"
 msgstr ""
 
-#: includes/usr_adm.php:35
+#: includes/usr_adm.php:33
 msgid "Administrators"
 msgstr ""
 
-#: includes/usr_adm.php:48
+#: includes/usr_adm.php:46
 msgid "Super Moderators"
 msgstr ""
 
-#: includes/usr_adm.php:61
+#: includes/usr_adm.php:59
 msgid "Moderators"
 msgstr ""
 
-#: includes/usr_clean.php:32 index.php:88
+#: includes/usr_clean.php:31 index.php:84
 msgid "Database cleanup"
 msgstr ""
 
-#: includes/usr_clean.php:75
+#: includes/usr_clean.php:74
 msgid "Inactive profiles deleted"
 msgstr ""
 
-#: includes/usr_clean.php:87
+#: includes/usr_clean.php:86
 msgid "Inactive profiles"
 msgstr ""
 
-#: includes/usr_clean.php:88
+#: includes/usr_clean.php:87
 msgid "This category includes profiles, recorded more than 6 months ago, with the date of last visit for more than 5 months ago and with zero activity.<br>Can safely remove them."
 msgstr ""
 
-#: includes/usr_del.php:46
+#: includes/usr_del.php:45
 msgid "You cannot delete higher administration"
 msgstr ""
 
-#: includes/usr_del.php:49
+#: includes/usr_del.php:48
 msgid "User does not exists"
 msgstr ""
 
-#: includes/usr_del.php:78
+#: includes/usr_del.php:77
 msgid "Delete user"
 msgstr ""
 
-#: includes/usr_del.php:128
+#: includes/usr_del.php:127
 msgid "Cleaning activities"
 msgstr ""
 
-#: includes/usr_del.php:136
+#: includes/usr_del.php:135
 msgid "All threads and posts created by the user go in the hidden state"
 msgstr ""
 
-#: includes/usr_del.php:139
+#: includes/usr_del.php:138
 msgid "Are you sure that you want to delete this user?"
 msgstr ""
 
-#: index.php:83
+#: index.php:79
 msgid "On registration"
 msgstr ""
 
-#: index.php:90
+#: index.php:86
 msgid "Antiflood"
 msgstr ""
 
-#: index.php:93
+#: index.php:89
 msgid "Search by Nickname"
 msgstr ""
 
-#: index.php:102
+#: index.php:98
 msgid "Modules"
 msgstr ""
 
-#: index.php:104
+#: index.php:100
 msgid "News"
 msgstr ""
 
-#: index.php:115
+#: index.php:111
 msgid "System"
 msgstr ""
 
-#: index.php:118
+#: index.php:114
 msgid "Update Smilies"
 msgstr ""
 
-#: index.php:119
+#: index.php:115
 msgid "Language Settings"
 msgstr ""
 
-#: index.php:126
+#: index.php:122
 msgid "Security"
 msgstr ""
 

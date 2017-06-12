@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
-"POT-Creation-Date: 2017-03-25 19:13+0400\n"
-"PO-Revision-Date: 2017-03-25 11:49-0400\n"
+"POT-Creation-Date: 2017-06-12 21:11+0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Lithuanian\n"
 "MIME-Version: 1.0\n"
@@ -17,404 +17,404 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: lt\n"
-"X-Crowdin-File: /album/default.pot\n"
+"X-Crowdin-File: /modules/album/default.pot\n"
 
-#: includes/comments.php:36 index.php:55
+#: includes/comments.php:34 index.php:51
 msgid "User does not exists"
 msgstr "Tokio vartotojo nėra"
 
-#: includes/comments.php:48 includes/image_download.php:44 includes/show.php:73
+#: includes/comments.php:46 includes/image_download.php:45 includes/show.php:74
 msgid "Access forbidden"
 msgstr "Prieiga uždrausta"
 
-#: includes/comments.php:49 includes/show.php:73 includes/show.php:95
-#: includes/show.php:193
+#: includes/comments.php:47 includes/show.php:74 includes/show.php:96
+#: includes/show.php:195
 msgid "Album List"
 msgstr "Albumų sąrašas"
 
-#: includes/comments.php:54 includes/list.php:34 includes/show.php:47
-#: includes/top.php:123 includes/users.php:46 index.php:146
+#: includes/comments.php:52 includes/list.php:32 includes/show.php:48
+#: includes/top.php:124 includes/users.php:47 index.php:140
 msgid "Photo Albums"
 msgstr "Nuotraukų Albumai"
 
-#: includes/comments.php:55 includes/list.php:34 includes/show.php:47
+#: includes/comments.php:53 includes/list.php:32 includes/show.php:48
 msgid "Personal"
 msgstr "Asmeninės"
 
-#: includes/comments.php:68 includes/show.php:172 includes/top.php:168
+#: includes/comments.php:66 includes/show.php:174 includes/top.php:167
 msgid "Views"
 msgstr "Peržiūros"
 
-#: includes/comments.php:68 includes/show.php:172 includes/top.php:168
+#: includes/comments.php:66 includes/show.php:174 includes/top.php:167
 msgid "Downloads"
 msgstr "Siuntiniai"
 
-#: includes/comments.php:69 includes/show.php:175 includes/top.php:171
+#: includes/comments.php:67 includes/show.php:177 includes/top.php:170
 msgid "Download"
 msgstr "Atsiųsti"
 
-#: includes/comments.php:85 includes/show.php:174 includes/top.php:170
+#: includes/comments.php:83 includes/show.php:176 includes/top.php:169
 msgid "Comments"
 msgstr "Komentarai"
 
-#: includes/comments.php:105 includes/delete.php:65 includes/edit.php:42
-#: includes/edit.php:79 includes/image_delete.php:57
-#: includes/image_download.php:47 includes/image_download.php:56
-#: includes/image_edit.php:218 includes/image_move.php:48
-#: includes/image_move.php:71 includes/image_upload.php:38 includes/show.php:30
-#: includes/show.php:38 includes/top.php:36 includes/vote.php:32
-#: includes/vote.php:77
+#: includes/comments.php:103 includes/delete.php:63 includes/edit.php:40
+#: includes/edit.php:77 includes/image_delete.php:59
+#: includes/image_download.php:48 includes/image_download.php:57
+#: includes/image_edit.php:216 includes/image_move.php:46
+#: includes/image_move.php:69 includes/image_upload.php:36 includes/show.php:31
+#: includes/show.php:39 includes/top.php:37 includes/vote.php:33
+#: includes/vote.php:80
 msgid "Wrong data"
 msgstr "Klaidingi duomenys"
 
-#: includes/delete.php:35 includes/image_delete.php:36
-#: includes/image_edit.php:36 includes/image_move.php:34
-#: includes/image_upload.php:44
+#: includes/delete.php:33 includes/image_delete.php:37
+#: includes/image_edit.php:34 includes/image_move.php:32
+#: includes/image_upload.php:42
 msgid "Photo Album"
 msgstr "Nuotraukų Albumas"
 
-#: includes/delete.php:35 includes/delete.php:60 includes/image_delete.php:52
-#: includes/list.php:57 includes/show.php:163
+#: includes/delete.php:33 includes/delete.php:58 includes/image_delete.php:54
+#: includes/list.php:55 includes/show.php:165
 msgid "Delete"
 msgstr "Ištrinti"
 
-#: includes/delete.php:54
+#: includes/delete.php:52
 msgid "Album deleted"
 msgstr "Albumas ištrintas"
 
-#: includes/delete.php:55 includes/edit.php:137 includes/image_edit.php:169
-#: includes/image_move.php:46 includes/image_move.php:67
-#: includes/image_upload.php:109
+#: includes/delete.php:53 includes/edit.php:135 includes/image_edit.php:167
+#: includes/image_move.php:44 includes/image_move.php:65
+#: includes/image_upload.php:107
 msgid "Continue"
 msgstr "Tęsti"
 
-#: includes/delete.php:58 includes/show.php:54 index.php:36
+#: includes/delete.php:56 includes/show.php:55 index.php:32
 msgid "Album"
 msgstr "Albumas"
 
-#: includes/delete.php:59
+#: includes/delete.php:57
 msgid "Are you sure you want to delete this album? If it contains photos, they also will be deleted."
 msgstr "Ar jūs tikrai norite ištrinti šį albumą? Jei jame yra nuotraukos, jos taip pat bus ištrintos."
 
-#: includes/delete.php:62 includes/edit.php:164 includes/image_delete.php:54
-#: includes/image_edit.php:215 includes/image_move.php:65
+#: includes/delete.php:60 includes/edit.php:162 includes/image_delete.php:56
+#: includes/image_edit.php:213 includes/image_move.php:63
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: includes/edit.php:35
+#: includes/edit.php:33
 msgid "Edit Album"
 msgstr "Redaguoti Albumą"
 
-#: includes/edit.php:47 includes/list.php:39
+#: includes/edit.php:45 includes/list.php:37
 msgid "Create Album"
 msgstr "Sukurti albumą"
 
-#: includes/edit.php:65
+#: includes/edit.php:63
 msgid "You have not entered Title"
 msgstr "Jūs neįrašėte jokio Pavadinimo"
 
-#: includes/edit.php:67 includes/edit.php:149
+#: includes/edit.php:65 includes/edit.php:147
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: includes/edit.php:67 includes/edit.php:75
+#: includes/edit.php:65 includes/edit.php:73
 msgid "Invalid length"
 msgstr "Neleistinas ilgis"
 
-#: includes/edit.php:73
+#: includes/edit.php:71
 msgid "You have not entered password"
 msgstr "Jus neįvedėte slaptažodžio"
 
-#: includes/edit.php:75 includes/edit.php:155
+#: includes/edit.php:73 includes/edit.php:153
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: includes/edit.php:84
+#: includes/edit.php:82
 msgid "The album already exists"
 msgstr "Albumas jau yra"
 
-#: includes/edit.php:136
+#: includes/edit.php:134
 msgid "Album successfully changed"
 msgstr "Albumas sekmingai pakeistas"
 
-#: includes/edit.php:136
+#: includes/edit.php:134
 msgid "Album successfully created"
 msgstr "Albumas sėkmingai sukurtas"
 
-#: includes/edit.php:151
+#: includes/edit.php:149
 msgid "Min. 2, Max. 30"
 msgstr "Min. 2, Maks. 30"
 
-#: includes/edit.php:152 includes/image_edit.php:176
-#: includes/image_upload.php:125
+#: includes/edit.php:150 includes/image_edit.php:174
+#: includes/image_upload.php:123
 msgid "Description"
 msgstr "Aprašymas"
 
-#: includes/edit.php:154 includes/image_edit.php:178
-#: includes/image_upload.php:127
+#: includes/edit.php:152 includes/image_edit.php:176
+#: includes/image_upload.php:125
 msgid "Optional field"
 msgstr "Neprivalomas laukas"
 
-#: includes/edit.php:154
+#: includes/edit.php:152
 msgid "Max. 500"
 msgstr "Maks. 500"
 
-#: includes/edit.php:157
+#: includes/edit.php:155
 msgid "This field is required if the password access is activated"
 msgstr "Jeigu įjungta prieiga pagal slaptažodi, šis laukas butina užpildyti"
 
-#: includes/edit.php:158
+#: includes/edit.php:156
 msgid "Access"
 msgstr "Prieiga"
 
-#: includes/edit.php:159
+#: includes/edit.php:157
 msgid "Everyone"
 msgstr "Visiems"
 
-#: includes/edit.php:160
+#: includes/edit.php:158
 msgid "With Password"
 msgstr "Su slaptažodžiu"
 
-#: includes/edit.php:161
+#: includes/edit.php:159
 msgid "Only for me"
 msgstr "Tik man"
 
-#: includes/edit.php:162 includes/image_edit.php:213
+#: includes/edit.php:160 includes/image_edit.php:211
 msgid "Save"
 msgstr "Išsaugoti"
 
-#: includes/image_delete.php:36
+#: includes/image_delete.php:37
 msgid "Delete image"
 msgstr "Ištrinti nuotrauką"
 
-#: includes/image_delete.php:51
+#: includes/image_delete.php:53
 msgid "Are you sure you want to delete this image?"
 msgstr "Ar tikrai norite ištrinti šia nuotrauka?"
 
-#: includes/image_download.php:53
+#: includes/image_download.php:54
 msgid "File does not exist"
 msgstr "Tokio failo nėra"
 
-#: includes/image_download.php:69 includes/image_upload.php:132
+#: includes/image_download.php:73 includes/image_upload.php:130
 msgid "Back"
 msgstr "Atgal"
 
-#: includes/image_edit.php:36
+#: includes/image_edit.php:34
 msgid "Edit image"
 msgstr "Redaguoti nuotrauką"
 
-#: includes/image_edit.php:168
+#: includes/image_edit.php:166
 msgid "Image successfully changed"
 msgstr "Nuotrauka sėkmingai pakeista"
 
-#: includes/image_edit.php:174 includes/image_upload.php:123
+#: includes/image_edit.php:172 includes/image_upload.php:121
 msgid "Image"
 msgstr "Nuotrauka"
 
-#: includes/image_edit.php:208
+#: includes/image_edit.php:206
 msgid "Rotate"
 msgstr "Pasukti"
 
-#: includes/image_edit.php:209
+#: includes/image_edit.php:207
 msgid "do not rotate"
 msgstr "nesukti"
 
-#: includes/image_edit.php:210
+#: includes/image_edit.php:208
 msgid "clockwise"
 msgstr "pagal laikrodžio rodyklę"
 
-#: includes/image_edit.php:211
+#: includes/image_edit.php:209
 msgid "counterclockwise"
 msgstr "prieš laikrodžio rodyklę"
 
-#: includes/image_edit.php:212
+#: includes/image_edit.php:210
 msgid "Note, you may lose the quality of an image if you change the brightness, contrast and rotate it for many times. Do not make any changes without a reason."
-msgstr ""
+msgstr "Atkreipkite dėmesį, kad paveikslelis gali prarasti kokybė, kažka dažnai keičiant nuotraukoje per svetainė."
 
-#: includes/image_move.php:34
+#: includes/image_move.php:32
 msgid "Move image"
 msgstr "Perkelti nuotrauka"
 
-#: includes/image_move.php:45
+#: includes/image_move.php:43
 msgid "Image successfully moved to the selected album"
 msgstr "Nuotrauka sėkmingai persikėlė į pasirinktą albumą"
 
-#: includes/image_move.php:55
+#: includes/image_move.php:53
 msgid "Select Album"
 msgstr "Pasirinkti albumą"
 
-#: includes/image_move.php:63 includes/show.php:162
+#: includes/image_move.php:61 includes/show.php:164
 msgid "Move"
 msgstr "Perkelti"
 
-#: includes/image_move.php:67
+#: includes/image_move.php:65
 msgid "You must create at least one additional album in order to move the image"
-msgstr ""
+msgstr "Turite sukurti bent vieną papildomą albumo siekiant perkelti paveikslelį(nuotrauką)"
 
-#: includes/image_upload.php:44
+#: includes/image_upload.php:42
 msgid "Upload image"
 msgstr "Įkelti nuotrauką"
 
-#: includes/image_upload.php:108
+#: includes/image_upload.php:106
 msgid "Image uploaded"
 msgstr "Nuotrauką įkeltą"
 
-#: includes/image_upload.php:110
+#: includes/image_upload.php:108
 msgid "Profile"
 msgstr "Profilis"
 
-#: includes/image_upload.php:119
+#: includes/image_upload.php:117
 msgid "File not selected"
-msgstr ""
+msgstr "Failas nepasirinktas"
+
+#: includes/image_upload.php:127
+msgid "Upload"
+msgstr "Įkelti"
 
 #: includes/image_upload.php:129
-msgid "Upload"
-msgstr ""
-
-#: includes/image_upload.php:131
 #, php-format
 msgid "Allowed format image JPG, JPEG, PNG, GIF<br>File size should not exceed %d kb."
-msgstr ""
+msgstr "Leidžiamas paveikslelio formatas: JPG, JPEG, PNG, GIF<br>Failo dydis neturėtu viršyti %d kb."
 
-#: includes/list.php:54
+#: includes/list.php:52
 msgid "Up"
-msgstr ""
+msgstr "Į viršų"
 
-#: includes/list.php:55
+#: includes/list.php:53
 msgid "Down"
-msgstr ""
+msgstr "Į apačią"
 
-#: includes/list.php:56 includes/show.php:161
+#: includes/list.php:54 includes/show.php:163
 msgid "Edit"
-msgstr ""
+msgstr "Redaguoti"
 
-#: includes/list.php:69 includes/show.php:180 includes/top.php:177
+#: includes/list.php:67 includes/show.php:182 includes/top.php:176
 #: includes/users.php:68
 msgid "The list is empty"
-msgstr ""
+msgstr "Sąrašas tuščias"
 
-#: includes/list.php:72 includes/show.php:183 includes/top.php:180
+#: includes/list.php:70 includes/show.php:185 includes/top.php:179
 #: includes/users.php:70
 msgid "Total"
-msgstr ""
+msgstr "Viso"
 
-#: includes/show.php:50
+#: includes/show.php:51
 msgid "Add image"
-msgstr ""
+msgstr "Pridėti paveikslėlį"
 
-#: includes/show.php:85
+#: includes/show.php:86
 msgid "Incorrect Password"
-msgstr ""
+msgstr "Neteisingas slaptažodis"
 
-#: includes/show.php:91
+#: includes/show.php:92
 msgid "You must type a password to view this album"
-msgstr ""
+msgstr "Jūs turite įvesti slaptažodį, kad galėtumėte peržiūrėti šį albumą"
 
-#: includes/show.php:93
+#: includes/show.php:94
 msgid "Login"
-msgstr ""
+msgstr "Prisijungti"
 
-#: includes/show.php:138
+#: includes/show.php:140
 msgid "Photo added to the profile"
-msgstr ""
+msgstr "Nuotrauka pridėta į profilį"
 
-#: includes/show.php:167
+#: includes/show.php:169
 msgid "Add to Profile"
-msgstr ""
+msgstr "Pridėti į profilį"
 
-#: includes/show.php:173 includes/top.php:169
+#: includes/show.php:175 includes/top.php:168
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
-#: includes/show.php:189 includes/top.php:186 includes/users.php:75
+#: includes/show.php:191 includes/top.php:185 includes/users.php:75
 msgid "To Page"
-msgstr ""
+msgstr "Į puslapį"
 
-#: includes/top.php:41
+#: includes/top.php:42
 msgid "Unread Comments"
-msgstr ""
+msgstr "Neperskaityti komentarai"
 
-#: includes/top.php:52
+#: includes/top.php:53
 msgid "Recent comments"
-msgstr ""
+msgstr "Naujausi komentarai"
 
-#: includes/top.php:62 index.php:164
+#: includes/top.php:63 index.php:158
 msgid "Top Views"
-msgstr ""
+msgstr "Top peržiuros"
 
-#: includes/top.php:72 index.php:163
+#: includes/top.php:73 index.php:157
 msgid "Top Downloads"
-msgstr ""
+msgstr "TOP Siuntiniai"
 
-#: includes/top.php:82 index.php:165
+#: includes/top.php:83 index.php:159
 msgid "Top Comments"
-msgstr ""
+msgstr "Top Komentarai"
 
-#: includes/top.php:92 index.php:162
+#: includes/top.php:93 index.php:156
 msgid "Top Votes"
-msgstr ""
+msgstr "Top Balsų"
 
-#: includes/top.php:102 index.php:166
+#: includes/top.php:103 index.php:160
 msgid "Top Worst"
-msgstr ""
+msgstr "Top blogiausių"
 
-#: includes/top.php:112
+#: includes/top.php:113
 msgid "New photos"
-msgstr ""
+msgstr "Naujos Nuotraukos"
 
-#: includes/users.php:42
+#: includes/users.php:43
 msgid "All"
-msgstr ""
+msgstr "Visi"
 
-#: includes/users.php:43 index.php:153
+#: includes/users.php:44 index.php:147
 msgid "Guys"
-msgstr ""
+msgstr "Vaikinai"
 
-#: includes/users.php:44 index.php:154
+#: includes/users.php:45 index.php:148
 msgid "Girls"
-msgstr ""
+msgstr "Merginos"
 
-#: includes/users.php:46
+#: includes/users.php:47
 msgid "List"
-msgstr ""
+msgstr "Sąrašas"
 
-#: index.php:45
+#: index.php:41
 msgid "For registered users only"
-msgstr ""
+msgstr "Tik registruotiems Vartotojams"
 
-#: index.php:87 index.php:161
+#: index.php:83 index.php:155
 msgid "Rating"
-msgstr ""
+msgstr "Įvertinimas"
 
-#: index.php:88
+#: index.php:84
 msgid "Against"
-msgstr ""
+msgstr "Prieš"
 
-#: index.php:88
+#: index.php:84
 msgid "For"
-msgstr ""
+msgstr "Už"
 
-#: index.php:95
+#: index.php:91
 msgid "Vote"
-msgstr ""
+msgstr "Balsuoti"
 
-#: index.php:148
+#: index.php:142
 msgid "New Photos"
-msgstr ""
+msgstr "Naujos Nuotraukos"
 
-#: index.php:149
+#: index.php:143
 msgid "New Comments"
-msgstr ""
+msgstr "Nauji Komentarai"
 
-#: index.php:152
+#: index.php:146
 msgid "Albums"
-msgstr ""
+msgstr "Albumas"
 
-#: index.php:157
+#: index.php:151
 msgid "My Album"
-msgstr ""
+msgstr "Mano Albumas"
 
-#: index.php:169
+#: index.php:163
 msgid "Users"
-msgstr ""
+msgstr "Vartotojai"
 

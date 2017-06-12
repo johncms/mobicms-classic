@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-03-25 11:48-0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -16,306 +16,306 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: id\n"
-"X-Crowdin-File: /help/default.pot\n"
+"X-Crowdin-File: /modules/help/default.pot\n"
 "Language: id_ID\n"
 
-#: includes/admsmilies.php:26 includes/set_my_sm.php:31
+#: includes/admsmilies.php:28 includes/set_my_sm.php:33
 msgid "Wrong data"
 msgstr "Data salah"
 
-#: includes/admsmilies.php:26 includes/admsmilies.php:80
-#: includes/avatars.php:35 includes/avatars.php:81 includes/avatars.php:99
-#: includes/forum.php:61 includes/my_smilies.php:72 includes/smilies.php:53
-#: includes/tags.php:81 includes/usersmilies.php:90 index.php:82
+#: includes/admsmilies.php:28 includes/admsmilies.php:82
+#: includes/avatars.php:37 includes/avatars.php:83 includes/avatars.php:101
+#: includes/forum.php:59 includes/my_smilies.php:74 includes/smilies.php:51
+#: includes/tags.php:79 includes/usersmilies.php:92 index.php:78
 msgid "Back"
 msgstr "Kembali"
 
-#: includes/admsmilies.php:31 includes/my_smilies.php:25
-#: includes/set_my_sm.php:31 includes/smilies.php:19
-#: includes/usersmilies.php:41 index.php:81
+#: includes/admsmilies.php:33 includes/my_smilies.php:27
+#: includes/set_my_sm.php:33 includes/smilies.php:17
+#: includes/usersmilies.php:43 index.php:77
 msgid "Smilies"
 msgstr "Smile"
 
-#: includes/admsmilies.php:31 includes/smilies.php:27
+#: includes/admsmilies.php:33 includes/smilies.php:25
 msgid "For administration"
 msgstr "Untuk admin"
 
-#: includes/admsmilies.php:38 includes/my_smilies.php:25
-#: includes/smilies.php:23 includes/usersmilies.php:54
+#: includes/admsmilies.php:40 includes/my_smilies.php:27
+#: includes/smilies.php:21 includes/usersmilies.php:56
 msgid "My smilies"
 msgstr "Smile saya"
 
-#: includes/admsmilies.php:64 includes/my_smilies.php:56
-#: includes/usersmilies.php:70
+#: includes/admsmilies.php:66 includes/my_smilies.php:58
+#: includes/usersmilies.php:72
 msgid "or"
 msgstr "atau"
 
-#: includes/admsmilies.php:67 includes/avatars.php:68
-#: includes/my_smilies.php:63 includes/usersmilies.php:78
+#: includes/admsmilies.php:69 includes/avatars.php:70
+#: includes/my_smilies.php:65 includes/usersmilies.php:80
 msgid "The list is empty"
 msgstr "Daftar ini kosong"
 
-#: includes/admsmilies.php:70 includes/usersmilies.php:75
+#: includes/admsmilies.php:72 includes/usersmilies.php:77
 msgid "Add"
 msgstr "Tambahkan"
 
-#: includes/admsmilies.php:71 includes/avatars.php:71 includes/avatars.php:98
-#: includes/my_smilies.php:66 includes/usersmilies.php:81
+#: includes/admsmilies.php:73 includes/avatars.php:73 includes/avatars.php:100
+#: includes/my_smilies.php:68 includes/usersmilies.php:83
 msgid "Total"
 msgstr "Total"
 
-#: includes/admsmilies.php:77 includes/avatars.php:77
-#: includes/usersmilies.php:87
+#: includes/admsmilies.php:79 includes/avatars.php:79
+#: includes/usersmilies.php:89
 msgid "To Page"
 msgstr "Ke halaman"
 
-#: includes/avatars.php:32
+#: includes/avatars.php:34
 msgid "Avatar has been successfully applied"
 msgstr "Avatar berhasil dipasang"
 
-#: includes/avatars.php:33
+#: includes/avatars.php:35
 msgid "Continue"
 msgstr "Lanjutkan"
 
-#: includes/avatars.php:35
+#: includes/avatars.php:37
 msgid "An error occurred"
 msgstr "Terjadi kesalahan"
 
-#: includes/avatars.php:38 includes/avatars.php:47 includes/avatars.php:85
-#: index.php:80
+#: includes/avatars.php:40 includes/avatars.php:49 includes/avatars.php:87
+#: index.php:76
 msgid "Avatars"
 msgstr "Avatar"
 
-#: includes/avatars.php:38
+#: includes/avatars.php:40
 msgid "Set to Profile"
 msgstr "Setel dalam profil"
 
-#: includes/avatars.php:39
+#: includes/avatars.php:41
 msgid "Are you sure you want to set yourself this avatar?"
 msgstr "Apakah Anda yakin mengatur avatar sendiri?"
 
-#: includes/avatars.php:41
+#: includes/avatars.php:43
 msgid "Save"
 msgstr "Simpan"
 
-#: includes/avatars.php:43
+#: includes/avatars.php:45
 msgid "Cancel"
 msgstr "Batal"
 
-#: includes/avatars.php:62
+#: includes/avatars.php:64
 msgid "Select"
 msgstr "Pilih"
 
-#: includes/avatars.php:85 includes/forum.php:16 includes/smilies.php:19
-#: includes/tags.php:18 index.php:77
+#: includes/avatars.php:87 includes/forum.php:14 includes/smilies.php:17
+#: includes/tags.php:16 index.php:73
 msgid "Information, FAQ"
 msgstr "Informasi, FAQ"
 
-#: includes/forum.php:16 index.php:78
+#: includes/forum.php:14 index.php:74
 msgid "Forum rules"
 msgstr "Ketentuan Forum"
 
-#: includes/forum.php:30
+#: includes/forum.php:28
 msgid "FORBIDDEN"
 msgstr "DILARANG"
 
-#: includes/forum.php:32
+#: includes/forum.php:30
 msgid "Advertising messages"
 msgstr "Pesan Iklan"
 
-#: includes/forum.php:33
+#: includes/forum.php:31
 msgid "The messages containing direct propagation of racial, national and religious animosity"
 msgstr "Pesan yang berisi langsung penyebaran kebencian rasial, nasional dan keagamaan"
 
-#: includes/forum.php:34
+#: includes/forum.php:32
 msgid "Any abusive, obscene, vulgar, slanderous, hateful, threatening and sexually-oriented messages or any other material that may violate any applicable laws"
 msgstr "Segala sesuatu yang kasar, cabul, vulgar, memfitnah, kebencian, mengancam dan berorientasi seksual pesan atau materi lainnya yang melanggar undang-undang yang berlaku"
 
-#: includes/forum.php:35
+#: includes/forum.php:33
 msgid "The messages obviously offending someone, espcially forum users"
 msgstr "Pesan jelas menyinggung seseorang, terutama pengguna forum"
 
-#: includes/forum.php:36
+#: includes/forum.php:34
 msgid "Purposely to deform a writing of nicknames of other users for the purpose of giving to the message an offensive shade"
 msgstr "Sengaja untuk merusak penulisan nama panggilan pengguna lain untuk memberikan pesan naungan ofensif"
 
-#: includes/forum.php:37
+#: includes/forum.php:35
 msgid "Publishing deleted by moderator messages repeatedly"
 msgstr "Penerbitan dihapus oleh moderator pesan berulang kali"
 
-#: includes/forum.php:38
+#: includes/forum.php:36
 msgid "Post messages not related to the topic"
 msgstr "Pos pesan tidak terkait dengan topik"
 
-#: includes/forum.php:39
+#: includes/forum.php:37
 msgid "Continuing topics that have been closed by moderator"
 msgstr "Melanjutkan topik telah ditutup oleh Moderator"
 
-#: includes/forum.php:42
+#: includes/forum.php:40
 msgid "ABSOLUTELY FORBIDDEN"
 msgstr "SANGAT DILARANG"
 
-#: includes/forum.php:44
+#: includes/forum.php:42
 msgid "Writing in the public topics a discontent with inappropriate actions of other users and discussing about moderators working. Use private messages for this purpose"
 msgstr "Menulis di topik umum yang tidak puas dengan tindakan yang tidak pantas dari pengguna lain dan membahas tentang moderator bekerja. Menggunakan pesan pribadi untuk tujuan ini"
 
-#: includes/forum.php:45
+#: includes/forum.php:43
 msgid "Register the nicknames having offensive tone for other users"
 msgstr "Daftar julukan yang memiliki nada ofensif untuk pengguna lain"
 
-#: includes/forum.php:48
+#: includes/forum.php:46
 msgid "UNACCEPTABLE"
 msgstr "TIDAK DAPAT DITERIMA"
 
-#: includes/forum.php:50
+#: includes/forum.php:48
 msgid "Quote full messages of the previous user and quote the messages already containing other quotes"
 msgstr "Mengutip penuh pesan pengguna sebelumnya dan mengutip pesan yang sudah yang berisi kutipan lain"
 
-#: includes/forum.php:51
+#: includes/forum.php:49
 msgid "Post messages only contains external link"
 msgstr "Pos yang hanya berisi tautan eksternal"
 
-#: includes/forum.php:52
+#: includes/forum.php:50
 msgid "Post messages written in translite"
 msgstr "Mengirim pesan yang diterjemahkan"
 
-#: includes/forum.php:53
+#: includes/forum.php:51
 msgid "Posting of purposeless messages: consisting of smileys only or posts like \"Ok\", \"What?\", \"Who is there?\", etc."
 msgstr "Posting pesan yang memiliki tujuan: terdiri hanya dari Smiley atau posting seperti \"Ok\", \"Apa?\", \"Siapa disana?\", dll."
 
-#: includes/forum.php:58
+#: includes/forum.php:56
 msgid "Message posted despite the above warnings will be changed or deleted."
 msgstr "Pesan dikirim meskipun peringatan di atas akan diubah atau dihapus."
 
-#: includes/forum.php:59
+#: includes/forum.php:57
 msgid "This rule applies to all members and moderators, repeated actions will make you get ban or even lose your account."
 msgstr "Ketentuan ini berlaku untuk semua pengguna dan moderator, melanggar ketentuan Anda akan diblokir atau kehilangan akun."
 
-#: includes/my_smilies.php:61
+#: includes/my_smilies.php:63
 msgid "Delete"
 msgstr "Hapus"
 
-#: includes/my_smilies.php:63
+#: includes/my_smilies.php:65
 msgid "Add Smilies"
 msgstr "Tambahkan Smile"
 
-#: includes/tags.php:18 index.php:79
+#: includes/tags.php:16 index.php:75
 msgid "bbCode Tags"
 msgstr "tag bbCode"
 
-#: includes/tags.php:24
+#: includes/tags.php:22
 msgid "PHP code"
 msgstr "Kode PHP"
 
-#: includes/tags.php:27
+#: includes/tags.php:25
 msgid "Link name"
 msgstr "Nama tautan"
 
-#: includes/tags.php:28
+#: includes/tags.php:26
 msgid "URL Link"
 msgstr "Tautan URL"
 
-#: includes/tags.php:31
+#: includes/tags.php:29
 msgid "Bold"
 msgstr "Tebal"
 
-#: includes/tags.php:35
+#: includes/tags.php:33
 msgid "Italic"
 msgstr "Miring"
 
-#: includes/tags.php:39
+#: includes/tags.php:37
 msgid "Underline"
 msgstr "Bergaris bawah"
 
-#: includes/tags.php:43
+#: includes/tags.php:41
 msgid "Strike"
 msgstr "Coret"
 
-#: includes/tags.php:47
+#: includes/tags.php:45
 msgid "Red"
 msgstr "Merah"
 
-#: includes/tags.php:51
+#: includes/tags.php:49
 msgid "Green"
 msgstr "Hijau"
 
-#: includes/tags.php:55
+#: includes/tags.php:53
 msgid "Blue"
 msgstr "Biru"
 
-#: includes/tags.php:59
+#: includes/tags.php:57
 msgid "Text Color"
 msgstr "Warna Teks"
 
-#: includes/tags.php:63
+#: includes/tags.php:61
 msgid "Background Color"
 msgstr "Warna Latarbelakang"
 
-#: includes/tags.php:67
+#: includes/tags.php:65
 msgid "Quote"
 msgstr "Kutipan"
 
-#: includes/tags.php:71
+#: includes/tags.php:69
 msgid "Bulleted list"
 msgstr "Daftar berbutir"
 
-#: includes/tags.php:74
+#: includes/tags.php:72
 msgid "Title"
 msgstr "Judul"
 
-#: includes/tags.php:74
+#: includes/tags.php:72
 msgid "Text"
 msgstr "Teks"
 
-#: includes/tags.php:75
+#: includes/tags.php:73
 msgid "Spoiler"
 msgstr "Spoiler"
 
-#: index.php:46
+#: index.php:42
 msgid "Animals"
 msgstr "Binatang"
 
-#: index.php:47
+#: index.php:43
 msgid "Brawl, Weapons"
 msgstr "Perkelahian, Senjata"
 
-#: index.php:48
+#: index.php:44
 msgid "Emotions"
 msgstr "Emosi"
 
-#: index.php:49
+#: index.php:45
 msgid "Flowers"
 msgstr "Bunga"
 
-#: index.php:50
+#: index.php:46
 msgid "Food, Alcohol"
 msgstr "Makanan, Alkohol"
 
-#: index.php:51
+#: index.php:47
 msgid "Gestures"
 msgstr "Gerakan"
 
-#: index.php:52
+#: index.php:48
 msgid "Holidays"
 msgstr "Liburan"
 
-#: index.php:53
+#: index.php:49
 msgid "Love"
 msgstr "Cinta"
 
-#: index.php:54
+#: index.php:50
 msgid "Miscellaneous"
 msgstr "Lainnya"
 
-#: index.php:55
+#: index.php:51
 msgid "Music, Dancing"
 msgstr "Musik, Tari"
 
-#: index.php:56
+#: index.php:52
 msgid "Sports"
 msgstr "Olahraga"
 
-#: index.php:57
+#: index.php:53
 msgid "Technology"
 msgstr "Teknologi"
 

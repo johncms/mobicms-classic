@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-03-25 11:49-0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Lithuanian\n"
 "MIME-Version: 1.0\n"
@@ -16,999 +16,899 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: lt\n"
-"X-Crowdin-File: /profile/default.pot\n"
+"X-Crowdin-File: /modules/profile/default.pot\n"
 "Language: lt_LT\n"
 
-#: includes/activity.php:16 includes/activity.php:34 includes/stat.php:51
-#: index.php:213
+#: includes/activity.php:14 includes/activity.php:35 includes/stat.php:49
+#: index.php:206
 msgid "Activity"
 msgstr "Aktyvumas"
 
-#: includes/activity.php:34 includes/ban.php:205 includes/ban.php:309
-#: includes/edit.php:50 includes/guestbook.php:16 includes/guestbook.php:31
-#: includes/images.php:42 includes/images.php:83 includes/info.php:27
-#: includes/ip.php:41 includes/karma.php:122 includes/karma.php:209
-#: includes/karma.php:220 includes/karma.php:281 includes/office.php:46
-#: includes/password.php:103 includes/reset.php:33 includes/stat.php:27
-#: index.php:120
+#: includes/activity.php:35 includes/ban.php:206 includes/ban.php:310
+#: includes/edit.php:54 includes/guestbook.php:14 includes/guestbook.php:29
+#: includes/images.php:40 includes/images.php:81 includes/info.php:25
+#: includes/ip.php:42 includes/karma.php:129 includes/karma.php:216
+#: includes/karma.php:227 includes/karma.php:288 includes/office.php:44
+#: includes/password.php:101 includes/reset.php:31 includes/stat.php:25
+#: index.php:113
 msgid "Profile"
 msgstr "Profilis"
 
-#: includes/activity.php:36 includes/activity.php:106
+#: includes/activity.php:37 includes/activity.php:107
 msgid "Messages"
 msgstr "Žinutės"
 
-#: includes/activity.php:37 includes/activity.php:71
+#: includes/activity.php:38 includes/activity.php:72
 msgid "Themes"
 msgstr "Temos"
 
-#: includes/activity.php:38 includes/activity.php:47 includes/ban.php:163
-#: includes/guestbook.php:44 includes/stat.php:54 includes/stat.php:67
+#: includes/activity.php:39 includes/activity.php:48 includes/ban.php:164
+#: includes/guestbook.php:42 includes/stat.php:52 includes/stat.php:65
 msgid "Comments"
 msgstr "Komentarai"
 
-#: includes/activity.php:64 includes/activity.php:99 includes/activity.php:136
-#: includes/ban.php:387 includes/ip.php:63 includes/karma.php:198
-#: includes/karma.php:268
+#: includes/activity.php:65 includes/activity.php:100 includes/activity.php:137
+#: includes/ban.php:388 includes/ip.php:64 includes/karma.php:205
+#: includes/karma.php:275
 msgid "The list is empty"
 msgstr "Sąrašas tuščias"
 
-#: includes/activity.php:71 includes/activity.php:106 includes/ban.php:171
-#: includes/settings.php:45 includes/settings.php:76 includes/stat.php:52
-#: includes/stat.php:65
+#: includes/activity.php:72 includes/activity.php:107 includes/ban.php:172
+#: includes/settings.php:46 includes/settings.php:77 includes/stat.php:50
+#: includes/stat.php:63
 msgid "Forum"
 msgstr "Forumas"
 
-#: includes/activity.php:140 includes/ban.php:297 includes/ban.php:390
-#: includes/ip.php:66 includes/karma.php:200 includes/karma.php:271
+#: includes/activity.php:141 includes/ban.php:298 includes/ban.php:391
+#: includes/ip.php:67 includes/karma.php:207 includes/karma.php:278
 msgid "Total"
 msgstr "Viso"
 
-#: includes/activity.php:146 includes/ban.php:396 includes/ip.php:72
-#: includes/karma.php:206 includes/karma.php:277
+#: includes/activity.php:147 includes/ban.php:397 includes/ip.php:73
+#: includes/karma.php:213 includes/karma.php:284
 msgid "To Page"
 msgstr "Į puslapį"
 
-#: includes/ban.php:38
+#: includes/ban.php:39
 msgid "You do not have enought rights to ban this user"
 msgstr "Jūs neturitw teisės blokuoti šį vartotoją"
 
-#: includes/ban.php:40
+#: includes/ban.php:41
 msgid "Ban the User"
 msgstr "Blokuoti vartotoją"
 
-#: includes/ban.php:52
+#: includes/ban.php:53
 msgid "Reason not specified"
 msgstr "Priežastis nenurodyta"
 
-#: includes/ban.php:56
+#: includes/ban.php:57
 msgid "There is no required data"
 msgstr "Nėra reikiamų duomenų"
 
-#: includes/ban.php:60
+#: includes/ban.php:61
 msgid "You have no rights to ban in this section"
 msgstr "Jūs neturite teisės uždrausti šiame skyriuje"
 
-#: includes/ban.php:64
+#: includes/ban.php:65
 msgid "Ban already active"
 msgstr "Jau užblokuotas"
 
-#: includes/ban.php:138 includes/office.php:84
+#: includes/ban.php:139 includes/office.php:82
 msgid "System"
 msgstr "Sistema"
 
-#: includes/ban.php:142 index.php:136
+#: includes/ban.php:143 index.php:129
 msgid "Ban"
 msgstr "Blokuoti"
 
-#: includes/ban.php:148
+#: includes/ban.php:149
 msgid "User banned"
 msgstr "Vartotojas užblokuotas"
 
-#: includes/ban.php:155
+#: includes/ban.php:156
 msgid "Ban type"
 msgstr "Blokavimo tipas"
 
-#: includes/ban.php:159
+#: includes/ban.php:160
 msgid "Full block"
 msgstr "Pilnas blokiravimas"
 
-#: includes/ban.php:161
+#: includes/ban.php:162
 msgid "Private messages"
 msgstr "Asmeninės žinutės"
 
-#: includes/ban.php:165 includes/guestbook.php:16 includes/guestbook.php:31
-#: includes/office.php:49 includes/stat.php:53 includes/stat.php:66
-#: index.php:223
+#: includes/ban.php:166 includes/guestbook.php:14 includes/guestbook.php:29
+#: includes/office.php:47 includes/stat.php:51 includes/stat.php:64
+#: index.php:216
 msgid "Guestbook"
 msgstr "Svečių Knyga"
 
-#: includes/ban.php:176
+#: includes/ban.php:177
 msgid "Library"
 msgstr "Biblioteka"
 
-#: includes/ban.php:179
+#: includes/ban.php:180
 msgid "Ban time"
 msgstr "Bloko trukmė"
 
-#: includes/ban.php:181
+#: includes/ban.php:182
 msgid "Minutes (60 max.)"
 msgstr "Min. (60 maks.)"
 
-#: includes/ban.php:182
+#: includes/ban.php:183
 msgid "Hours (24 max.)"
 msgstr "Valandos (24 maks.)"
 
-#: includes/ban.php:185
+#: includes/ban.php:186
 msgid "Days (30 max.)"
 msgstr "Dienų (30 max.)"
 
-#: includes/ban.php:189 includes/ban.php:362
+#: includes/ban.php:190 includes/ban.php:363
 msgid "Till cancel"
 msgstr "Iki atšaukimo"
 
-#: includes/ban.php:192
+#: includes/ban.php:193
 msgid "Reason"
 msgstr "Priežastis"
 
-#: includes/ban.php:197
+#: includes/ban.php:198
 msgid "Violation"
 msgstr "Pažeidimas"
 
-#: includes/ban.php:202
+#: includes/ban.php:203
 msgid "Apply Ban"
 msgstr "Taikyti blokavimą"
 
-#: includes/ban.php:212 includes/ban.php:242 includes/ban.php:250
-#: includes/ban.php:275 skl.php:116
+#: includes/ban.php:213 includes/ban.php:243 includes/ban.php:251
+#: includes/ban.php:276
 msgid "Wrong data"
 msgstr "Klaidingi duomenys"
 
-#: includes/ban.php:221
+#: includes/ban.php:222
 msgid "Ban not active"
 msgstr "Blokas neaktyvus"
 
-#: includes/ban.php:225
+#: includes/ban.php:226
 msgid "Ban termination"
 msgstr "Blokavimo termino ejimas į pabaigą"
 
-#: includes/ban.php:230
+#: includes/ban.php:231
 msgid "Ban terminated"
 msgstr "Vartotojas atblokotas"
 
-#: includes/ban.php:233
+#: includes/ban.php:234
 msgid "Ban time is going to the end. Infrigement will be saved in the bans history"
 msgstr "Blokavimo laikas eina į pabaigą. Informacija bus išsaugota blokavimo istorijoje"
 
-#: includes/ban.php:234
+#: includes/ban.php:235
 msgid "Terminate Ban"
 msgstr "Atšaukti bloka"
 
-#: includes/ban.php:236 includes/ban.php:272 includes/edit.php:45
-#: includes/info.php:61 includes/karma.php:71 includes/karma.php:126
-#: includes/stat.php:87 skl.php:106
+#: includes/ban.php:237 includes/ban.php:273 includes/edit.php:49
+#: includes/info.php:59 includes/karma.php:78 includes/karma.php:133
+#: includes/stat.php:85
 msgid "Back"
 msgstr "Atgal"
 
-#: includes/ban.php:256 includes/ban.php:376
+#: includes/ban.php:257 includes/ban.php:377
 msgid "Delete Ban"
 msgstr "Ištrinti bloką"
 
-#: includes/ban.php:266
+#: includes/ban.php:267
 msgid "Ban deleted"
 msgstr "Blokas ištrintas"
 
-#: includes/ban.php:266 includes/images.php:63 includes/images.php:114
-#: includes/karma.php:103 includes/password.php:81
+#: includes/ban.php:267 includes/images.php:61 includes/images.php:112
+#: includes/karma.php:110 includes/password.php:79
 msgid "Continue"
 msgstr "Tęsti"
 
-#: includes/ban.php:269
+#: includes/ban.php:270
 msgid "Removing ban along with a record in the bans history"
 msgstr "Blokavimas ištrinamas kartu su užrašu blokavimo istorijoje"
 
-#: includes/ban.php:270 includes/edit.php:192 includes/edit.php:207
-#: includes/karma.php:154 includes/karma.php:171 index.php:132
+#: includes/ban.php:271 includes/edit.php:196 includes/edit.php:211
+#: includes/karma.php:161 includes/karma.php:178 index.php:125
 msgid "Delete"
 msgstr "Ištrinti"
 
-#: includes/ban.php:283 includes/ban.php:299
+#: includes/ban.php:284 includes/ban.php:300
 msgid "Violations history"
 msgstr "Pažeidimų istoriją"
 
-#: includes/ban.php:288
+#: includes/ban.php:289
 msgid "Violations history cleared"
 msgstr "Pažeidimų istorija išvalytą"
 
-#: includes/ban.php:291
+#: includes/ban.php:292
 msgid "Are you sure want to clean entire history of user violations?"
 msgstr "Ar tikrai norite išvalyti visą vartotojo blokavimo istoriją?"
 
-#: includes/ban.php:292
+#: includes/ban.php:293
 msgid "Clear"
 msgstr "Išvalyti"
 
-#: includes/ban.php:301 includes/ban.php:314
+#: includes/ban.php:302 includes/ban.php:315
 msgid "Ban Panel"
 msgstr "Blokavimo panele"
 
-#: includes/ban.php:303
+#: includes/ban.php:304
 msgid "Violations history can be cleared by Supervisor only"
 msgstr "Pažeidimų istorija gali pašalinti tik Administracija"
 
-#: includes/ban.php:309
+#: includes/ban.php:310
 msgid "Violations History"
 msgstr "Pažeidimų istoriją"
 
-#: includes/ban.php:318
+#: includes/ban.php:319
 msgid "Clear history"
 msgstr "Išvalyti istoriją"
 
-#: includes/ban.php:328
+#: includes/ban.php:329
 msgid "My Violations"
 msgstr "Mano blokai"
 
-#: includes/ban.php:358
+#: includes/ban.php:359
 msgid "Who applied the Ban?"
 msgstr "Kas taikė baną?"
 
-#: includes/ban.php:361
+#: includes/ban.php:362
 msgid "Time"
 msgstr "Laikas"
 
-#: includes/ban.php:365
+#: includes/ban.php:366
 msgid "Remains"
 msgstr "Lieka"
 
-#: includes/ban.php:372
+#: includes/ban.php:373
 msgid "Cancel Ban"
 msgstr "Atšaukti bloka"
 
-#: includes/edit.php:15 includes/images.php:15 includes/office.php:108
-#: includes/reset.php:26
+#: includes/edit.php:13 includes/images.php:13 includes/office.php:106
+#: includes/reset.php:24
 msgid "Edit Profile"
 msgstr "Redaguoti profilį"
 
-#: includes/edit.php:32 includes/images.php:31
+#: includes/edit.php:36 includes/images.php:29
 msgid "You cannot edit profile of higher administration"
 msgstr "Jus negalite redaguoti vyresniojo už jus administratoriaus profilį"
 
-#: includes/edit.php:45 includes/settings.php:111 includes/settings.php:194
+#: includes/edit.php:49 includes/settings.php:112 includes/settings.php:195
 msgid "Default settings are set"
 msgstr "Pradiniai nustatymai nustatyti"
 
-#: includes/edit.php:50 index.php:122
+#: includes/edit.php:54 index.php:115
 msgid "My Profile"
 msgstr "Mano profilis"
 
-#: includes/edit.php:50 includes/info.php:30 index.php:128
+#: includes/edit.php:54 includes/info.php:28 index.php:121
 msgid "Edit"
 msgstr "Redaguoti"
 
-#: includes/edit.php:55
+#: includes/edit.php:59
 msgid "Avatar is successfully removed"
 msgstr "Paveikslėlis sėkmingai pakeistas"
 
-#: includes/edit.php:60
+#: includes/edit.php:64
 msgid "Photo is successfully removed"
 msgstr "Fotorgrafija sėkmingai pašalintą"
 
-#: includes/edit.php:91
+#: includes/edit.php:95
 msgid "Min. nick length 2, max. 20 characters"
 msgstr "Min. Niko ilgis 2, maks. 20 simbolių"
 
-#: includes/edit.php:97
+#: includes/edit.php:101
 msgid "Nick contains invalid characters"
 msgstr "Nike yra netinkamų simbolių"
 
-#: includes/edit.php:102
+#: includes/edit.php:106
 msgid "Invalid format date of birth"
 msgstr "Neteisinga gimimo data"
 
-#: includes/edit.php:107
+#: includes/edit.php:111
 msgid "ICQ number must be at least 5 digits and max. 10"
 msgstr "ICQ numeris turi buti ne mažiau negu 5 skaičiu ir maks. 10"
 
-#: includes/edit.php:165
+#: includes/edit.php:169
 msgid "Data saved"
 msgstr "Duomenys išsaugoti"
 
-#: includes/edit.php:177 skl.php:165
+#: includes/edit.php:181
 msgid "Username"
 msgstr "Vartotojo vardas"
 
-#: includes/edit.php:180 includes/edit.php:183
+#: includes/edit.php:184 includes/edit.php:187
 msgid "Nickname"
 msgstr "Slapyvardis"
 
-#: includes/edit.php:180
+#: includes/edit.php:184
 msgid "Min.2, Max. 20"
 msgstr "Min.2, Maks. 20"
 
-#: includes/edit.php:181 includes/edit.php:184
+#: includes/edit.php:185 includes/edit.php:188
 msgid "Status"
 msgstr "Būsena"
 
-#: includes/edit.php:181
+#: includes/edit.php:185
 msgid "Max. 50"
 msgstr "Maks. 50"
 
-#: includes/edit.php:187
+#: includes/edit.php:191
 msgid "Avatar"
 msgstr "Avataras"
 
-#: includes/edit.php:195 includes/edit.php:210 includes/images.php:74
-#: includes/images.php:127
+#: includes/edit.php:199 includes/edit.php:214 includes/images.php:72
+#: includes/images.php:125
 msgid "Upload"
 msgstr "Įkelti"
 
-#: includes/edit.php:198
+#: includes/edit.php:202
 msgid "Select in Catalog"
 msgstr "Pasirinkite katalogą"
 
-#: includes/edit.php:202
+#: includes/edit.php:206
 msgid "Photo"
 msgstr "Fotografija"
 
-#: includes/edit.php:213 includes/info.php:35
+#: includes/edit.php:217 includes/info.php:33
 msgid "Personal info"
 msgstr "Asmeninė informacija"
 
-#: includes/edit.php:214
+#: includes/edit.php:218
 msgid "Your name"
 msgstr "Jūsų vardas"
 
-#: includes/edit.php:215
+#: includes/edit.php:219
 msgid "Date of birth (d.m.y)"
 msgstr "Gimimo data (d.m.y)"
 
-#: includes/edit.php:219 includes/info.php:44
+#: includes/edit.php:223 includes/info.php:42
 msgid "City, Country"
 msgstr "Miestas, Šalis"
 
-#: includes/edit.php:220 includes/info.php:45
+#: includes/edit.php:224 includes/info.php:43
 msgid "About myself"
 msgstr "Apie Mane"
 
-#: includes/edit.php:221 includes/info.php:47 includes/office.php:95
-#: includes/office.php:99
+#: includes/edit.php:225 includes/info.php:45 includes/office.php:93
+#: includes/office.php:97
 msgid "Contacts"
 msgstr "Kontaktai"
 
-#: includes/edit.php:222 includes/info.php:48
+#: includes/edit.php:226 includes/info.php:46
 msgid "Phone number"
 msgstr "Telefono numeris"
 
-#: includes/edit.php:225
+#: includes/edit.php:229
 msgid "Show in Profile"
 msgstr "Rodyti profilį"
 
-#: includes/edit.php:226
+#: includes/edit.php:230
 msgid "Warning! Write your e-mail correctly. Your password will be sent to the email address on record for this account."
 msgstr "Dėmėsio! Teisingai irašykite savo elektroninį adresą! Butent į jį bus siunčiamas jūsų slaptažodis."
 
-#: includes/edit.php:230 includes/info.php:59
+#: includes/edit.php:234 includes/info.php:57
 msgid "Site"
 msgstr "Svetainė"
 
-#: includes/edit.php:235
+#: includes/edit.php:239
 msgid "Administrative Functions"
 msgstr "Administravimo funkcijos"
 
-#: includes/edit.php:236
+#: includes/edit.php:240
 msgid "Prohibit Karma"
 msgstr "Uždrausti karma"
 
-#: includes/edit.php:237 includes/office.php:109 includes/password.php:34
-#: includes/password.php:91
+#: includes/edit.php:241 includes/office.php:107 includes/password.php:32
+#: includes/password.php:89
 msgid "Change Password"
 msgstr "Keisti slaptažodį"
 
-#: includes/edit.php:240
+#: includes/edit.php:244
 msgid "Reset User options to default"
 msgstr "Atstatyti vartotojo nustatymus i pradinį"
 
-#: includes/edit.php:243
+#: includes/edit.php:247
 msgid "Select gender"
 msgstr "Pasirinkite lytį"
 
-#: includes/edit.php:244
+#: includes/edit.php:248
 msgid "Man"
 msgstr "Vyras"
 
-#: includes/edit.php:245
+#: includes/edit.php:249
 msgid "Woman"
 msgstr "Moteris"
 
-#: includes/edit.php:249
+#: includes/edit.php:253
 msgid "Position on the Site"
 msgstr "Svetainės administracija"
 
-#: includes/edit.php:250
+#: includes/edit.php:254
 msgid "User"
 msgstr "Vartotojas"
 
-#: includes/edit.php:251
+#: includes/edit.php:255
 msgid "Forum Moderator"
 msgstr "Forumo Moderatorius"
 
-#: includes/edit.php:252
+#: includes/edit.php:256
 msgid "Download Moderator"
 msgstr "Siuntinių moderatorius"
 
-#: includes/edit.php:253
+#: includes/edit.php:257
 msgid "Library Moderator"
 msgstr "Bibliotekos moderatorius"
 
-#: includes/edit.php:254
+#: includes/edit.php:258
 msgid "Super Modererator"
 msgstr "Super moderatorius"
 
-#: includes/edit.php:257
+#: includes/edit.php:261
 msgid "Administrator"
 msgstr "Administratorius"
 
-#: includes/edit.php:258
+#: includes/edit.php:262
 msgid "Supervisor"
 msgstr "SuperVaizorius"
 
-#: includes/edit.php:265 includes/password.php:101 includes/settings.php:70
-#: includes/settings.php:123 includes/settings.php:238
+#: includes/edit.php:269 includes/password.php:99 includes/settings.php:71
+#: includes/settings.php:124 includes/settings.php:239
 msgid "Save"
 msgstr "Išsaugoti"
 
-#: includes/images.php:42
+#: includes/images.php:40
 msgid "Upload Avatar"
 msgstr "Įkelti avatarą"
 
-#: includes/images.php:62
+#: includes/images.php:60
 msgid "The avatar is successfully uploaded"
 msgstr "Avataras sėkmingai įkeltas"
 
-#: includes/images.php:71
+#: includes/images.php:69
 msgid "Select Image"
 msgstr "Pasirinkti vaizdą"
 
-#: includes/images.php:77 includes/images.php:129
+#: includes/images.php:75 includes/images.php:127
 #, php-format
 msgid "Allowed image formats: JPG, PNG, GIF. File size should not exceed %d kb.<br>The new image will replace old (if was)."
 msgstr "Leidžiami vaizdo formatai: JPG, PNG, GIF. Failo dydis neturėtų viršyti %d kb.<br>Naujas vaizdas pakeis seną (jei buvo)."
 
-#: includes/images.php:83
+#: includes/images.php:81
 msgid "Upload Photo"
 msgstr "Įkelti Nuotrauką"
 
-#: includes/images.php:114
+#: includes/images.php:112
 msgid "The photo is successfully uploaded"
 msgstr "Nuotrauka sėkmingai įkeltą"
 
-#: includes/images.php:124
+#: includes/images.php:122
 msgid "Select image"
 msgstr "Pasirinkite paveikslėlį"
 
-#: includes/info.php:25 includes/info.php:27 index.php:212
+#: includes/info.php:23 includes/info.php:25 index.php:205
 msgid "Information"
 msgstr "Informacija"
 
-#: includes/info.php:42
+#: includes/info.php:40
 msgid "Name"
 msgstr "Vardas"
 
-#: includes/info.php:43 index.php:145
+#: includes/info.php:41 index.php:138
 msgid "Birthday"
 msgstr "Gimtadienis"
 
-#: includes/info.php:52
+#: includes/info.php:50
 msgid "hidden"
 msgstr "paslėptas"
 
-#: includes/ip.php:15 includes/ip.php:41
+#: includes/ip.php:13 includes/ip.php:42
 msgid "IP History"
 msgstr "IP Istorija"
 
-#: includes/ip.php:32 includes/office.php:33 includes/password.php:29
-#: includes/settings.php:35
+#: includes/ip.php:33 includes/office.php:31 includes/password.php:27
+#: includes/settings.php:39
 msgid "Access forbidden"
 msgstr "Prieiga uždrausta"
 
-#: includes/karma.php:15 includes/karma.php:180 includes/karma.php:220
-#: includes/karma.php:239 index.php:185
+#: includes/karma.php:13 includes/karma.php:187 includes/karma.php:227
+#: includes/karma.php:246 index.php:178
 msgid "Karma"
 msgstr "Karma"
 
-#: includes/karma.php:43
+#: includes/karma.php:50
 msgid "It is forbidden to vote for administration"
 msgstr "Už administracija draudžiama balsuoti"
 
-#: includes/karma.php:47
+#: includes/karma.php:54
 msgid "Cheating karma is forbidden"
 msgstr "Prisukti karma draudžiama"
 
-#: includes/karma.php:52
+#: includes/karma.php:59
 #, php-format
 msgid "Users can take part in voting if they have stayed on a site not less %s and their score on the forum %d posts."
 msgstr "Vartotojai gali dalyvauti balsavyme, jeigu buvo svetainei ne mažiau negu %s ir parašė ne mažiau negu %d pranešimų forumę."
 
-#: includes/karma.php:53
+#: includes/karma.php:60
 msgid "hours"
 msgstr "valandų"
 
-#: includes/karma.php:53
+#: includes/karma.php:60
 msgid "days"
 msgstr "dienų"
 
-#: includes/karma.php:61
+#: includes/karma.php:68
 msgid "You can vote for single user just one time for 24 hours\""
 msgstr "Jūs galite balsuoti už vieną vartotoją tik vieną kartą per 24 valandas\""
 
-#: includes/karma.php:67
+#: includes/karma.php:74
 #, php-format
 msgid "You have exceeded the limit of votes. New voices will be added %s"
 msgstr "Jus viršijote balsavimo limitą. Naujų balsu bus papildyti %s"
 
-#: includes/karma.php:103
+#: includes/karma.php:110
 msgid "You have successfully voted"
 msgstr "Jus sėkmingai prabalsavot"
 
-#: includes/karma.php:105
+#: includes/karma.php:112
 msgid "Vote for"
 msgstr "Balsuoti už"
 
-#: includes/karma.php:107
+#: includes/karma.php:114
 msgid "Type of vote"
 msgstr "Balsavimo rušis"
 
-#: includes/karma.php:108 includes/karma.php:217
+#: includes/karma.php:115 includes/karma.php:224
 msgid "Positive"
 msgstr "Teigiami"
 
-#: includes/karma.php:109 includes/karma.php:218
+#: includes/karma.php:116 includes/karma.php:225
 msgid "Negative"
 msgstr "Neigiami"
 
-#: includes/karma.php:110
+#: includes/karma.php:117
 msgid "Votes quantity"
 msgstr "Balsų kiekis"
 
-#: includes/karma.php:117
+#: includes/karma.php:124
 msgid "Comment"
 msgstr "Komentaras"
 
-#: includes/karma.php:119
+#: includes/karma.php:126
 msgid "Min. 2, Max. 500 characters"
 msgstr "Min. 2, Maks. 500 simbolių"
 
-#: includes/karma.php:120 index.php:196
+#: includes/karma.php:127 index.php:189
 msgid "Vote"
 msgstr "Balsuoti"
 
-#: includes/karma.php:126
+#: includes/karma.php:133
 msgid "You are not allowed to vote for users"
 msgstr "Jus negalite balsuoti už vartotojus"
 
-#: includes/karma.php:153
+#: includes/karma.php:160
 msgid "Do you really want to delete comment?"
 msgstr "Ar jus tikrai norite ištrinti šį įrašą?"
 
-#: includes/karma.php:155 includes/karma.php:172
+#: includes/karma.php:162 includes/karma.php:179
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: includes/karma.php:170
+#: includes/karma.php:177
 msgid "Do you really want to delete all reviews about user?"
 msgstr "Ar jus tikrai norite ištrinti visu pranešimus apie vartotoją?"
 
-#: includes/karma.php:180
+#: includes/karma.php:187
 msgid "New responses"
 msgstr "Nauji pranešimai"
 
-#: includes/karma.php:216
+#: includes/karma.php:223
 msgid "All"
 msgstr "Visi"
 
-#: includes/karma.php:241 index.php:187
+#: includes/karma.php:248 index.php:180
 msgid "For"
 msgstr "Už"
 
-#: includes/karma.php:242 index.php:188
+#: includes/karma.php:249 index.php:181
 msgid "Against"
 msgstr "Prieš"
 
-#: includes/karma.php:280
+#: includes/karma.php:287
 msgid "Reset Karma"
 msgstr "Atstatyti karma"
 
-#: includes/office.php:16
+#: includes/office.php:14
 msgid "My Account"
 msgstr "Mano paskyra"
 
-#: includes/office.php:45
+#: includes/office.php:43
 msgid "My Pages"
 msgstr "Mano puslapiai"
 
-#: includes/office.php:47
+#: includes/office.php:45
 msgid "Statistics"
 msgstr "Statistika"
 
-#: includes/office.php:48 index.php:222
+#: includes/office.php:46 index.php:215
 msgid "Photo Album"
 msgstr "Nuotraukų Albumas"
 
-#: includes/office.php:53
+#: includes/office.php:51
 msgid "Admin-Club"
 msgstr "Admin-Klubas"
 
-#: includes/office.php:58
+#: includes/office.php:56
 msgid "My Mailbox"
 msgstr "Mano paštas"
 
-#: includes/office.php:70
+#: includes/office.php:68
 msgid "Received"
 msgstr "Gauta"
 
-#: includes/office.php:79
+#: includes/office.php:77
 msgid "Sent"
 msgstr "Išsiusti"
 
-#: includes/office.php:88
+#: includes/office.php:86
 msgid "Files"
 msgstr "Failai"
 
-#: includes/office.php:91 index.php:249
+#: includes/office.php:89 index.php:242
 msgid "Write"
 msgstr "Rašyti"
 
-#: includes/office.php:103
+#: includes/office.php:101
 msgid "Blocked"
 msgstr "Užblokuota"
 
-#: includes/office.php:107 includes/settings.php:15 includes/settings.php:52
-#: includes/settings.php:76 includes/settings.php:128
+#: includes/office.php:105 includes/settings.php:13 includes/settings.php:53
+#: includes/settings.php:77 includes/settings.php:129
 msgid "Settings"
 msgstr "Nustatymai"
 
-#: includes/office.php:110
+#: includes/office.php:108
 msgid "System Settings"
 msgstr "Sistemos nustatymai"
 
-#: includes/office.php:112
+#: includes/office.php:111
 msgid "Admin Panel"
 msgstr "Administratoriaus panele"
 
-#: includes/office.php:117
+#: includes/office.php:116
 msgid "Exit"
 msgstr "Išeiti"
 
-#: includes/password.php:48 includes/password.php:52
+#: includes/password.php:46 includes/password.php:50
 msgid "It is necessary to fill in all fields"
 msgstr "Butina užpildyti visus laukus"
 
-#: includes/password.php:57
+#: includes/password.php:55
 msgid "Old password entered incorrectly"
 msgstr "Senas slaptažodis įvestas neteisingai"
 
-#: includes/password.php:61
+#: includes/password.php:59
 msgid "The password confirmation you entered is wrong"
 msgstr "Naujo slaptažodžio patvirtinimas įvestas neteisingai"
 
-#: includes/password.php:65
+#: includes/password.php:63
 msgid "The password must contain at least 3 characters"
 msgstr "Slaptažodis negali sudaryti mažiau, negu 3 simboliai"
 
-#: includes/password.php:80
+#: includes/password.php:78
 msgid "Password successfully changed"
 msgstr "Slaptažodis sėkmingai pakeistas"
 
-#: includes/password.php:85
+#: includes/password.php:83
 msgid "Repeat"
 msgstr "Pakartoti"
 
-#: includes/password.php:95
+#: includes/password.php:93
 msgid "Enter old password"
 msgstr "Įveskite seną slaptažodį"
 
-#: includes/password.php:98
+#: includes/password.php:96
 msgid "Enter new password"
 msgstr "Įveskite naują slaptažodį"
 
-#: includes/password.php:99
+#: includes/password.php:97
 msgid "Repeat password"
 msgstr "Pakartokite slaptažodį"
 
-#: includes/reset.php:31
+#: includes/reset.php:29
 #, php-format
 msgid "For user %s default settings were set."
 msgstr "Vartotojo %s pradiniai nustatymai nustatyti."
 
-#: includes/settings.php:44 includes/settings.php:128
+#: includes/settings.php:45 includes/settings.php:129
 msgid "General setting"
 msgstr "Bendrieji nustatymai"
 
-#: includes/settings.php:46 includes/settings.php:52
+#: includes/settings.php:47 includes/settings.php:53
 msgid "Mail"
 msgstr "Paštas"
 
-#: includes/settings.php:67
+#: includes/settings.php:68
 msgid "Who can write you?"
 msgstr "Kas gali jums rašyti?"
 
-#: includes/settings.php:68
+#: includes/settings.php:69
 msgid "All can write"
 msgstr "Visi gali rašyti,"
 
-#: includes/settings.php:69
+#: includes/settings.php:70
 msgid "Only my contacts"
 msgstr "Tik mano kontaktai"
 
-#: includes/settings.php:96 includes/settings.php:189
+#: includes/settings.php:97 includes/settings.php:190
 msgid "Settings saved successfully"
 msgstr "Nustatymai išsaugoti sėkmingai"
 
-#: includes/settings.php:115
+#: includes/settings.php:116
 msgid "Basic settings"
 msgstr "Pagrindiniai nustatymai"
 
-#: includes/settings.php:116
+#: includes/settings.php:117
 msgid "Inverse sorting"
 msgstr "Atvirkštinis rūšiavimas"
 
-#: includes/settings.php:117
+#: includes/settings.php:118
 msgid "Use the form of a quick answer"
 msgstr "Naudokite greito atsakymo forma"
 
-#: includes/settings.php:118
+#: includes/settings.php:119
 msgid "Preview of messages"
 msgstr "Pranešimo peržiūra"
 
-#: includes/settings.php:119
+#: includes/settings.php:120
 msgid "Attach first post"
 msgstr "Pridėti pirmą pranešimą"
 
-#: includes/settings.php:120
+#: includes/settings.php:121
 msgid "Always"
 msgstr "Visada"
 
-#: includes/settings.php:121
+#: includes/settings.php:122
 msgid "In unread topics"
 msgstr "Neskaitytos temos"
 
-#: includes/settings.php:122
+#: includes/settings.php:123
 msgid "Never"
 msgstr "Niekada"
 
-#: includes/settings.php:124
+#: includes/settings.php:125
 msgid "Reset settings"
 msgstr "Atstatyti nustatymus"
 
-#: includes/settings.php:199
+#: includes/settings.php:200
 msgid "Time settings"
 msgstr "Laiko nustatymai"
 
-#: includes/settings.php:200
+#: includes/settings.php:201
 msgid "Shift of time"
 msgstr "Laiko juosta"
 
-#: includes/settings.php:202
+#: includes/settings.php:203
 msgid "System time"
 msgstr "Sistemos laikas"
 
-#: includes/settings.php:203
+#: includes/settings.php:204
 msgid "System Functions"
 msgstr "Sistemos Funkcijos"
 
-#: includes/settings.php:204
+#: includes/settings.php:205
 msgid "Direct URL"
 msgstr "Tiesioginiai URL"
 
-#: includes/settings.php:205
-msgid "Youtube Player"
-msgstr ""
-
 #: includes/settings.php:206
+msgid "Youtube Player"
+msgstr "\"YouTube\" grotuvas"
+
+#: includes/settings.php:207
 msgid "Text entering"
 msgstr "Teksto įvedimas"
 
-#: includes/settings.php:207
+#: includes/settings.php:208
 msgid "Height of field"
 msgstr "Formos aukštis"
 
-#: includes/settings.php:209
+#: includes/settings.php:210
 msgid "Appearance"
 msgstr "Apipavidalinimas"
 
-#: includes/settings.php:219
+#: includes/settings.php:220
 msgid "Theme"
 msgstr "Tema"
 
-#: includes/settings.php:220
+#: includes/settings.php:221
 msgid "Size of Lists"
 msgstr "Sarašo dydis"
 
-#: includes/settings.php:225
+#: includes/settings.php:226
 msgid "Select Language"
 msgstr "Pasirinkite kalbą"
 
-#: includes/settings.php:231
+#: includes/settings.php:232
 msgid "Site Default"
 msgstr "Pradiniai nustatymai"
 
-#: includes/settings.php:239
+#: includes/settings.php:240
 msgid "Reset Settings"
 msgstr "Atstatyti nustatymus"
 
-#: includes/stat.php:25 includes/stat.php:27 includes/stat.php:30 index.php:214
+#: includes/stat.php:23 includes/stat.php:25 includes/stat.php:28 index.php:207
 msgid "Statistic"
 msgstr "Statistika"
 
-#: includes/stat.php:34 index.php:164
+#: includes/stat.php:32 index.php:157
 msgid "Pending confirmation"
 msgstr "Laukiantis patvirtinimo"
 
-#: includes/stat.php:36
+#: includes/stat.php:34
 msgid "Registration confirmed"
 msgstr "Registracija patvirtintą"
 
-#: includes/stat.php:38
+#: includes/stat.php:36
 msgid "Free registration"
 msgstr "Nemokama registracija"
 
-#: includes/stat.php:42
+#: includes/stat.php:40
 msgid "Registered"
 msgstr "Registracijos data"
 
-#: includes/stat.php:43
+#: includes/stat.php:41
 msgid "He stay on the site"
 msgstr "Prabuvo svetainei"
 
-#: includes/stat.php:43
+#: includes/stat.php:41
 msgid "She stay on the site"
 msgstr "Prabuvo svetainei"
 
-#: includes/stat.php:47
+#: includes/stat.php:45
 msgid "Last visit"
 msgstr "Paskutinis apsilankymas"
 
-#: includes/stat.php:56
+#: includes/stat.php:54
 msgid "Achievements"
 msgstr "Pasiekimai"
 
-#: index.php:43
+#: index.php:39
 msgid "For registered users only"
 msgstr "Tik registruotiems Vartotojams"
 
-#: index.php:53
+#: index.php:49
 msgid "This User does not exists"
 msgstr "Tokio vartotojo nėra"
 
-#: index.php:122
+#: index.php:115
 msgid "User Profile"
 msgstr "Vartotojo profilis"
 
-#: index.php:156
+#: index.php:149
 msgid "Where?"
 msgstr "Kur?"
 
-#: index.php:203
+#: index.php:196
 msgid "New reviews"
 msgstr "Nauji atsiliepimai"
 
-#: index.php:218
+#: index.php:211
 msgid "Violations"
 msgstr "Blokai"
 
-#: index.php:230
+#: index.php:223
 msgid "Add to Contacts"
 msgstr "Pridėti į kontaktus"
 
-#: index.php:232
+#: index.php:225
 msgid "Remove from Contacts"
 msgstr "Pašalinti iš kontaktų"
 
-#: index.php:237
+#: index.php:230
 msgid "Block User"
 msgstr "Užblokuoti vartotoją"
 
-#: index.php:239
+#: index.php:232
 msgid "Unlock User"
 msgstr "Atblokuoti vartotoją"
-
-#: skl.php:36 skl.php:89 skl.php:163
-msgid "Password recovery"
-msgstr "Slaptažodžio atkūrimas"
-
-#: skl.php:60
-msgid "The required fields are not filled"
-msgstr "Privalomi laukai neužpildyti"
-
-#: skl.php:62
-msgid "Incorrect code"
-msgstr "Neteisingas kodas"
-
-#: skl.php:75
-msgid "Invalid Email address"
-msgstr "Neteisingas el. pašto adresas"
-
-#: skl.php:79
-msgid "Password can be recovered 1 time per day"
-msgstr "Slaptažodi galima atstatyti vieną kartą per dieną"
-
-#: skl.php:82 skl.php:133
-msgid "User does not exists"
-msgstr "Tokio vartotojo nėra"
-
-#: skl.php:91
-#, php-format
-msgid "Hello %s!\n"
-"You start process of password recovery on the site %s\n"
-"In order to recover your password, you must click on the link: %s\n"
-"Link valid for 1 hour\n\n"
-"If you receive this mail by mistake, just ignore this letter"
-msgstr "Sveiki %s!\n"
-" Jus pradėjote atstatynėti savo slaptažodi svetainei %s\n"
-" Kad atstatyti slaptažodi, jus turite pereit pagal šia nuoroda: %s\n"
-" Nuoroda veikia 1 val.\n\n"
-"Jeigu jus gavote ši laiška klaidingai, tiesiog proignorokite jį"
-
-#: skl.php:100
-msgid "Check your e-mail for further information"
-msgstr "Instrukcijos del slaptažodžio atstatymo išsiusti į jūsų el. paštą"
-
-#: skl.php:102
-msgid "Error sending E-mail"
-msgstr "Klaida siunčiant el. laišką"
-
-#: skl.php:125
-msgid "Password recovery is impossible"
-msgstr "Slaptažodžio atkūrimas neįmanomas"
-
-#: skl.php:129
-msgid "Time allotted for the password recovery has been exceeded"
-msgstr "Laikas, per kuri galėjote atstatyti slaptažodį praejo"
-
-#: skl.php:139
-msgid "Your new password"
-msgstr "Jūsų naujas slaptažodis"
-
-#: skl.php:141
-#, php-format
-msgid "Hello %s\n"
-"You have changed your password on the site %s\n\n"
-"Your new password: %s\n\n"
-"After logging in, you can change your password to new one."
-msgstr "Sveiki %s\n"
-" Jus sėkmingai pakeitėte slaptažodį svetainei %s\n\n"
-"Jūsų naujas slaptažodis:%s\n\n"
-" Po prisijungimo jus galite pakeisti slaptažodį į naują."
-
-#: skl.php:150
-msgid "Change password"
-msgstr "Pakeisti slaptažodį"
-
-#: skl.php:151
-msgid "Password successfully changed.<br>New password sent to your E-mail address."
-msgstr "Slaptažodis pakeistas sėkmingai.<br>Naujas slaptažodis išsiųstas į jūsų E-pašto dežute."
-
-#: skl.php:153
-msgid "Error sending Email"
-msgstr "Klaida siunčiant el. laišką"
-
-#: skl.php:166
-msgid "Your E-mail"
-msgstr "Jūsų el. pašto adresas"
-
-#: skl.php:167
-msgid "Verification code"
-msgstr "Patvirtinimo kodas"
-
-#: skl.php:168
-msgid "Enter code"
-msgstr "Įveskite kodą"
-
-#: skl.php:169
-msgid "Send"
-msgstr "Siųsti"
-
-#: skl.php:170
-msgid "Password will be send to E-mail address specified in your profile.<br />WARNING !! If E-mail address has not been specified in your profile, you will not be able to recover your password."
-msgstr "Slaptažodis bus išsiustas i el. pašto dežute, kurį jus ivedėte jūsų anketoje.<br>Dėmėsio! Jeigu jūsų anketoje įrašytas neteisingas el. paštas, tai jus negalėsite atstatyti savo slaptažodį."
 
