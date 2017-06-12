@@ -98,6 +98,9 @@ class App
     }
 }
 
+// Счетчик активности IP адресов
+App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
+
 // Проверка IP адреса на бан
 try {
     new Mobicms\System\IpBan(App::getContainer());
