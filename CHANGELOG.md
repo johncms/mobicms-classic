@@ -23,6 +23,7 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 ### Deleted
 - Global variables **$kmess**, **$page**, **$start** are deleted
 - Ability to download forum topics
+- Old password recovery function
 
 
 ## mobiCMS Classic 0.1.0  
