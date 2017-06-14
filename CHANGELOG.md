@@ -3,7 +3,7 @@ This list contains only most important changes.
 Detailed change in the [repository log](https://github.com/mobicms/mobicms-classic/commits).
 
 ## mobiCMS Classic 0.2.0  
-`Release Date: under development` 
+`Release Date: 14.06.2017` 
 
 ### New
 - Integrated [Klein.php](https://github.com/klein/klein.php) package
@@ -16,6 +16,7 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 - Global refactoring related to the implementation of Request and Response
 - Global refactoring associated with deleting $kmess, $page, $start variables
 - All images moved to the `/assets` folder and sorted by module
+- The limit on the size of news is removed
 
 ### Fixed
 - Unknown tag error in the Library module
