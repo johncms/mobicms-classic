@@ -93,7 +93,7 @@ class NewsWidget
                         $komm = $mes - 1;
 
                         if ($komm >= 0) {
-                            $news .= '<br /><a href="../forum/?id=' . $res['kom'] . '">' . _t('Discuss', 'system') . '</a> (' . $komm . ')';
+                            $news .= '<div style="margin: .4em 0"><a href="forum/?id=' . $res['kom'] . '">' . _t('Discuss', 'system') . '</a> (' . $komm . ')</div>';
                         }
                     }
                     $news .= '</div>';
