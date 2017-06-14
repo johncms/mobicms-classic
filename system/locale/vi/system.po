@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"PO-Revision-Date: 2017-06-14 07:31-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -17,11 +17,57 @@ msgstr ""
 "X-Poedit-SearchPath-2: system/end.php\n"
 "X-Poedit-SearchPath-3: modules/login\n"
 "X-Poedit-SearchPath-4: modules/homepage\n"
+"X-Poedit-SearchPath-5: go.php\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: vi\n"
 "X-Crowdin-File: /system/system.pot\n"
 "Language: vi_VN\n"
+
+#: go.php:35
+msgid "Select language"
+msgstr "Chọn ngôn ngữ"
+
+#: go.php:41
+msgid "Default"
+msgstr "Mặc định"
+
+#: go.php:48
+msgid "Apply"
+msgstr "Áp dụng"
+
+#: go.php:56
+msgid "External Link"
+msgstr "Liên kết ngoài"
+
+#: go.php:59
+msgid "ATTENTION!"
+msgstr "Chú Ý!"
+
+#: go.php:60
+msgid "You are going to leave our site and go to an external link"
+msgstr "Bạn đang để lại trang web của chúng tôi và đi đến một liên kết bên ngoài"
+
+#: go.php:61
+msgid "Administration of our site is not responsible for the content of external sites"
+msgstr "Quản lý trang web của chúng tôi không chịu trách nhiệm về nội dung của các trang web bên ngoài"
+
+#: go.php:62
+#, php-format
+msgid "It is recommended not to specify your data, relating to %s (Login, Password), on third party sites"
+msgstr "Đó là đề nghị không để xác định dữ liệu của liên quan đến %s (Nhập Mật mã), trên các trang thứ ba"
+
+#: go.php:63
+msgid "Go to Link"
+msgstr "Vào liên kết"
+
+#: go.php:65 system/mobicms/Comments.php:116 system/mobicms/Comments.php:139
+#: system/mobicms/Comments.php:147 system/mobicms/Comments.php:150
+#: system/mobicms/Comments.php:167 system/mobicms/Comments.php:195
+#: system/mobicms/Comments.php:204 system/mobicms/Comments.php:207
+#: system/mobicms/Comments.php:252
+msgid "Back"
+msgstr "Quay lại"
 
 #: modules/homepage/index.php:35
 msgid "Information"
@@ -248,14 +294,6 @@ msgstr "Phản hồi"
 #: system/mobicms/Comments.php:116
 msgid "Administrator already replied to this message"
 msgstr "Quản trị viên đã trả lời thư này"
-
-#: system/mobicms/Comments.php:116 system/mobicms/Comments.php:139
-#: system/mobicms/Comments.php:147 system/mobicms/Comments.php:150
-#: system/mobicms/Comments.php:167 system/mobicms/Comments.php:195
-#: system/mobicms/Comments.php:204 system/mobicms/Comments.php:207
-#: system/mobicms/Comments.php:252
-msgid "Back"
-msgstr "Quay lại"
 
 #: system/mobicms/Comments.php:150 system/mobicms/Comments.php:204
 msgid "Wrong data"

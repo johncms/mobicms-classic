@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-KeywordsList: _t;_p:1,2\n"
@@ -18,6 +18,52 @@ msgstr ""
 "X-Poedit-SearchPath-2: system/end.php\n"
 "X-Poedit-SearchPath-3: modules/login\n"
 "X-Poedit-SearchPath-4: modules/homepage\n"
+"X-Poedit-SearchPath-5: go.php\n"
+
+#: go.php:35
+msgid "Select language"
+msgstr ""
+
+#: go.php:41
+msgid "Default"
+msgstr ""
+
+#: go.php:48
+msgid "Apply"
+msgstr ""
+
+#: go.php:56
+msgid "External Link"
+msgstr ""
+
+#: go.php:59
+msgid "ATTENTION!"
+msgstr ""
+
+#: go.php:60
+msgid "You are going to leave our site and go to an external link"
+msgstr ""
+
+#: go.php:61
+msgid "Administration of our site is not responsible for the content of external sites"
+msgstr ""
+
+#: go.php:62
+#, php-format
+msgid "It is recommended not to specify your data, relating to %s (Login, Password), on third party sites"
+msgstr ""
+
+#: go.php:63
+msgid "Go to Link"
+msgstr ""
+
+#: go.php:65 system/mobicms/Comments.php:116 system/mobicms/Comments.php:139
+#: system/mobicms/Comments.php:147 system/mobicms/Comments.php:150
+#: system/mobicms/Comments.php:167 system/mobicms/Comments.php:195
+#: system/mobicms/Comments.php:204 system/mobicms/Comments.php:207
+#: system/mobicms/Comments.php:252
+msgid "Back"
+msgstr ""
 
 #: modules/homepage/index.php:35
 msgid "Information"
@@ -243,14 +289,6 @@ msgstr ""
 
 #: system/mobicms/Comments.php:116
 msgid "Administrator already replied to this message"
-msgstr ""
-
-#: system/mobicms/Comments.php:116 system/mobicms/Comments.php:139
-#: system/mobicms/Comments.php:147 system/mobicms/Comments.php:150
-#: system/mobicms/Comments.php:167 system/mobicms/Comments.php:195
-#: system/mobicms/Comments.php:204 system/mobicms/Comments.php:207
-#: system/mobicms/Comments.php:252
-msgid "Back"
 msgstr ""
 
 #: system/mobicms/Comments.php:150 system/mobicms/Comments.php:204

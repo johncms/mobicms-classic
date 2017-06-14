@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-06-12 13:36-0400\n"
+"PO-Revision-Date: 2017-06-14 07:30-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -17,11 +17,57 @@ msgstr ""
 "X-Poedit-SearchPath-2: system/end.php\n"
 "X-Poedit-SearchPath-3: modules/login\n"
 "X-Poedit-SearchPath-4: modules/homepage\n"
+"X-Poedit-SearchPath-5: go.php\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: pl\n"
 "X-Crowdin-File: /system/system.pot\n"
 "Language: pl_PL\n"
+
+#: go.php:35
+msgid "Select language"
+msgstr "Wybierz język"
+
+#: go.php:41
+msgid "Default"
+msgstr "Domyślnie"
+
+#: go.php:48
+msgid "Apply"
+msgstr "Zatwierdź"
+
+#: go.php:56
+msgid "External Link"
+msgstr "Link zewnętrzny"
+
+#: go.php:59
+msgid "ATTENTION!"
+msgstr "UWAGA!"
+
+#: go.php:60
+msgid "You are going to leave our site and go to an external link"
+msgstr "Właśnie zamierzasz opuścić naszą stronę i przechodzisz na link zewnętrzny"
+
+#: go.php:61
+msgid "Administration of our site is not responsible for the content of external sites"
+msgstr "Nie ponosimy żadnej odpowiedzialności za treści stron zewnętrznych"
+
+#: go.php:62
+#, php-format
+msgid "It is recommended not to specify your data, relating to %s (Login, Password), on third party sites"
+msgstr "Zaleca się, aby nie podawać swoje dane, odnoszące się do %s (login, hasło), na innych stronach internetowych"
+
+#: go.php:63
+msgid "Go to Link"
+msgstr "Przejdź do linku"
+
+#: go.php:65 system/mobicms/Comments.php:116 system/mobicms/Comments.php:139
+#: system/mobicms/Comments.php:147 system/mobicms/Comments.php:150
+#: system/mobicms/Comments.php:167 system/mobicms/Comments.php:195
+#: system/mobicms/Comments.php:204 system/mobicms/Comments.php:207
+#: system/mobicms/Comments.php:252
+msgid "Back"
+msgstr "Powrót"
 
 #: modules/homepage/index.php:35
 msgid "Information"
@@ -248,14 +294,6 @@ msgstr "Odpowiedź"
 #: system/mobicms/Comments.php:116
 msgid "Administrator already replied to this message"
 msgstr "Administrator już odpowiedział na tę wiadomość"
-
-#: system/mobicms/Comments.php:116 system/mobicms/Comments.php:139
-#: system/mobicms/Comments.php:147 system/mobicms/Comments.php:150
-#: system/mobicms/Comments.php:167 system/mobicms/Comments.php:195
-#: system/mobicms/Comments.php:204 system/mobicms/Comments.php:207
-#: system/mobicms/Comments.php:252
-msgid "Back"
-msgstr "Powrót"
 
 #: system/mobicms/Comments.php:150 system/mobicms/Comments.php:204
 msgid "Wrong data"

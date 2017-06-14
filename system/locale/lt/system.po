@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"PO-Revision-Date: 2017-06-14 07:30-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Lithuanian\n"
 "MIME-Version: 1.0\n"
@@ -17,11 +17,57 @@ msgstr ""
 "X-Poedit-SearchPath-2: system/end.php\n"
 "X-Poedit-SearchPath-3: modules/login\n"
 "X-Poedit-SearchPath-4: modules/homepage\n"
+"X-Poedit-SearchPath-5: go.php\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: lt\n"
 "X-Crowdin-File: /system/system.pot\n"
 "Language: lt_LT\n"
+
+#: go.php:35
+msgid "Select language"
+msgstr "Pasirinkti kalbą"
+
+#: go.php:41
+msgid "Default"
+msgstr "Numatytas"
+
+#: go.php:48
+msgid "Apply"
+msgstr "Pritaikyti"
+
+#: go.php:56
+msgid "External Link"
+msgstr "Išorinė nuoroda"
+
+#: go.php:59
+msgid "ATTENTION!"
+msgstr "DĖMESIO!"
+
+#: go.php:60
+msgid "You are going to leave our site and go to an external link"
+msgstr "Jus ketinate palikti mūsų svetainę ir eiti į išorinę nuorodą"
+
+#: go.php:61
+msgid "Administration of our site is not responsible for the content of external sites"
+msgstr "Mūsų svetainės administracija nėra atsakinga už išorės svetainių turinį"
+
+#: go.php:62
+#, php-format
+msgid "It is recommended not to specify your data, relating to %s (Login, Password), on third party sites"
+msgstr "Rekomenduojama nenurodyti savo duomenų, susijusių su %s (prisijungimas, slaptažodžio), trečiųjų šalių tinklalapiuose"
+
+#: go.php:63
+msgid "Go to Link"
+msgstr "Eiti į Nuorodą"
+
+#: go.php:65 system/mobicms/Comments.php:116 system/mobicms/Comments.php:139
+#: system/mobicms/Comments.php:147 system/mobicms/Comments.php:150
+#: system/mobicms/Comments.php:167 system/mobicms/Comments.php:195
+#: system/mobicms/Comments.php:204 system/mobicms/Comments.php:207
+#: system/mobicms/Comments.php:252
+msgid "Back"
+msgstr "Atgal"
 
 #: modules/homepage/index.php:35
 msgid "Information"
@@ -248,14 +294,6 @@ msgstr "Atsakyti"
 #: system/mobicms/Comments.php:116
 msgid "Administrator already replied to this message"
 msgstr "Administratorius jau atsakė į šį pranešimą"
-
-#: system/mobicms/Comments.php:116 system/mobicms/Comments.php:139
-#: system/mobicms/Comments.php:147 system/mobicms/Comments.php:150
-#: system/mobicms/Comments.php:167 system/mobicms/Comments.php:195
-#: system/mobicms/Comments.php:204 system/mobicms/Comments.php:207
-#: system/mobicms/Comments.php:252
-msgid "Back"
-msgstr "Atgal"
 
 #: system/mobicms/Comments.php:150 system/mobicms/Comments.php:204
 msgid "Wrong data"
