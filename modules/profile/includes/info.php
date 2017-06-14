@@ -34,7 +34,7 @@ echo '<div class="user"><p>' . $tools->displayUser($user) . '</p></div>' .
     '<ul>';
 
 if (file_exists(UPLOAD_PATH . 'users/photo/' . $user['id'] . '_small.jpg')) {
-    echo '<a href="../uploads/users/photo/' . $user['id'] . '.jpg"><img src="../files/users/photo/' . $user['id'] . '_small.jpg" alt="' . $user['name'] . '" border="0" /></a>';
+    echo '<a href="../uploads/users/photo/' . $user['id'] . '.jpg"><img src="../uploads/users/photo/' . $user['id'] . '_small.jpg" alt="' . $user['name'] . '" border="0" /></a>';
 }
 
 echo '<li><span class="gray">' . _t('Name') . ':</span> ' . (empty($user['imname']) ? '' : $user['imname']) . '</li>' .
