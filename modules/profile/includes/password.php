@@ -76,7 +76,7 @@ switch ($mod) {
             }
 
             echo '<div class="gmenu"><p><b>' . _t('Password successfully changed') . '</b><br />' .
-                '<a href="' . ($systemUser->id == $user['id'] ? '../login.php' : '?user=' . $user['id']) . '">' . _t('Continue') . '</a></p>';
+                '<a href="' . ($systemUser->id == $user['id'] ? '../login/' : '?user=' . $user['id']) . '">' . _t('Continue') . '</a></p>';
             echo '</div>';
         } else {
             echo $tools->displayError($error,
