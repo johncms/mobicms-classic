@@ -55,5 +55,5 @@ if ($error) {
         $_SESSION['down_' . $id] = 1;
     }
 
-    $response->file($config->homeurl . '/' .$link);
+    $response->redirect($config->homeurl . '/' .$link)->sendHeaders();
 }
