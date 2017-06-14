@@ -34,7 +34,7 @@ $settings = $config['news'];
 if (isset($_POST['submit'])) {
     // Принимаем настройки из формы
     $settings['view'] = isset($_POST['view']) && $_POST['view'] >= 0 && $_POST['view'] < 4 ? intval($_POST['view']) : 1;
-    $settings['size'] = isset($_POST['size']) && $_POST['size'] > 49 && $_POST['size'] < 501 ? intval($_POST['size']) : 200;
+    $settings['size'] = isset($_POST['size']) && $_POST['size'] > 100 ? intval($_POST['size']) : 500;
     $settings['quantity'] = isset($_POST['quantity']) && $_POST['quantity'] > 0 && $_POST['quantity'] < 16 ? intval($_POST['quantity']) : 3;
     $settings['days'] = isset($_POST['days']) && $_POST['days'] > 0 && $_POST['days'] < 31 ? intval($_POST['days']) : 7;
     $settings['breaks'] = isset($_POST['breaks']);
@@ -69,7 +69,7 @@ echo '<form action="index.php?act=news" method="post"><div class="menu"><p>' .
     '<input name="tags" type="checkbox" value="1" ' . ($settings['tags'] ? 'checked="checked"' : '') . ' />&#160;' . _t('bbCode Tags') . '<br>' .
     '<input name="kom" type="checkbox" value="1" ' . ($settings['kom'] ? 'checked="checked"' : '') . ' />&#160;' . _t('Comments') . '</p>' .
     '<p><h3>' . _t('Text size') . '</h3>&#160;' .
-    '<input type="text" size="3" maxlength="3" name="size" value="' . $settings['size'] . '" />&#160;(50 - 500)</p>' .
+    '<input type="text" size="3" name="size" value="' . $settings['size'] . '" />&#160;(100 min.)</p>' .
     '<p><h3>' . _t('Quantity of news') . '</h3>&#160;<input type="text" size="3" maxlength="2" name="quantity" value="' . $settings['quantity'] . '" />&#160;(1 - 15)</p>' .
     '<p><h3>' . _t('How many days to show?') . '</h3>&#160;<input type="text" size="3" maxlength="2" name="days" value="' . $settings['days'] . '" />&#160;(1 - 30)</p>' .
     '<br><p><input type="submit" value="' . _t('Save') . '" name="submit" /></p></div>' .
