@@ -217,7 +217,7 @@ a:link, a:visited {
     border: 1px solid white;
     color: #333333;
     font-size: small;
-    padding: 3px 4px 4px 4px;
+    padding: 3px 4px 4px 8px;
 }
 
 .news h2 {
