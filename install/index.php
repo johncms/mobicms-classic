@@ -74,20 +74,19 @@ class install
     {
         $folders = [
             '/system/cache/',
-            '/files/downloads/files/',
-            '/files/downloads/screen/',
-            '/files/forum/attach/',
-            '/files/forum/topics/',
-            '/files/library/',
-            '/files/library/tmp',
-            '/files/library/images',
-            '/files/library/images/big',
-            '/files/library/images/orig',
-            '/files/library/images/small',
-            '/files/users/album/',
-            '/files/users/avatar/',
-            '/files/users/photo/',
-            '/files/mail/',
+            '/uploads/downloads/files/',
+            '/uploads/downloads/screen/',
+            '/uploads/forum/attach/',
+            '/uploads/library/',
+            '/uploads/library/tmp',
+            '/uploads/library/images',
+            '/uploads/library/images/big',
+            '/uploads/library/images/orig',
+            '/uploads/library/images/small',
+            '/uploads/users/album/',
+            '/uploads/users/avatar/',
+            '/uploads/users/photo/',
+            '/uploads/mail/',
             '/system/config/autoload/',
         ];
         $error = [];
@@ -276,7 +275,7 @@ switch ($act) {
         echo '<h3 class="blue">' . $lng['congratulations'] . '</h3>' .
             $lng['installation_completed'] . '<p><ul>' .
             '<li><a href="../admin">' . $lng['admin_panel'] . '</a></li>' .
-            '<li><a href="../index.php">' . $lng['to_site'] . '</a></li>' .
+            '<li><a href="../">' . $lng['to_site'] . '</a></li>' .
             '</ul></p>' .
             $lng['final_warning'];
         break;
