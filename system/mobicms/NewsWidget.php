@@ -84,7 +84,7 @@ class NewsWidget
                             $news .= $text;
                             break;
                         default :
-                            $news .= '<b>' . $res['name'] . '</b><br />' . $text;
+                            $news .= '<h2>' . $res['name'] . '</h2>' . $text;
                     }
 
                     // Ссылка на каменты

@@ -201,7 +201,7 @@ a:link, a:visited {
     color: black;
 }
 
-.maintxt a{
+.maintxt a {
     color: #0000d6;
 }
 
@@ -216,8 +216,13 @@ a:link, a:visited {
     background-color: #eeeeee;
     border: 1px solid white;
     color: #333333;
-    font-size: x-small;
+    font-size: small;
     padding: 3px 4px 4px 4px;
+}
+
+.news h2 {
+    margin: .3em 0;
+    font-size: 1.3em;
 }
 
 .phdr {
