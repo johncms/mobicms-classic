@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: johncms\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2017-06-12 13:36-0400\n"
+"Last-Translator: mobiCMS <dev@mobicms.net>\n"
+"Language-Team: Polish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: crowdin.com\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-KeywordsList: _t;_p:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Crowdin-Project: johncms\n"
+"X-Crowdin-Language: pl\n"
+"X-Crowdin-File: /modules/guestbook/default.pot\n"
+"Language: pl_PL\n"
+
+#: index.php:63 index.php:344
+msgid "Admin Club"
+msgstr "Klub Admina"
+
+#: index.php:63 index.php:82 index.php:210 index.php:265 index.php:306
+#: index.php:309 index.php:339 index.php:343
+msgid "Guestbook"
+msgstr "Księga gości"
+
+#: index.php:68
+msgid "Guestbook is closed"
+msgstr "Księga gości jest zamknięta"
+
+#: index.php:82
+msgid "Delete message"
+msgstr "Usuń wiadomość"
+
+#: index.php:83
+msgid "Do you really want to delete?"
+msgstr "Czy na pewno chcesz usunąć?"
+
+#: index.php:84 index.php:454
+msgid "Delete"
+msgstr "Usuń"
+
+#: index.php:85 index.php:318
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: index.php:104
+msgid "Wrong data"
+msgstr "Nieprawidłowe dane"
+
+#: index.php:108
+msgid "You have not entered a name"
+msgstr "Nie wpisałeś nazwy"
+
+#: index.php:112
+msgid "You have not entered the message"
+msgstr "Wpisz wiadomość!"
+
+#: index.php:116
+msgid "Access forbidden"
+msgstr "Dostęp zabroniony"
+
+#: index.php:123
+msgid "The security code is not correct"
+msgstr "Kod zabezpieczający nie jest poprawny"
+
+#: index.php:142
+#, php-format
+msgid "You cannot add the message so often. Please, wait %d seconds."
+msgstr "Nie wolno pisać wiadomość tak szybko!<br>Proszę, odczekać."
+
+#: index.php:187 index.php:225 index.php:274
+msgid "Back"
+msgstr "Powrót"
+
+#: index.php:210 index.php:220 index.php:222 index.php:453
+msgid "Reply"
+msgstr "Odpowiedź"
+
+#: index.php:265 index.php:454
+msgid "Edit"
+msgstr "Edytuj"
+
+#: index.php:268
+msgid "Author"
+msgstr "Autor"
+
+#: index.php:271
+msgid "Save"
+msgstr "Zapisz"
+
+#: index.php:291
+msgid "All messages older than 1 day were deleted"
+msgstr "Wszystkie wiadomości starsze niż 1 dzień zostały usunięte"
+
+#: index.php:297
+msgid "Full clearing is finished"
+msgstr "Pełne czyszczenie zostało zakończone"
+
+#: index.php:302
+msgid "All messages older than 1 week were deleted"
+msgstr "Wszystkie wiadomości starsze niż 1 tydzień zostały usunięte"
+
+#: index.php:309 index.php:316 index.php:345
+msgid "Clear"
+msgstr "Wyczyść"
+
+#: index.php:312
+msgid "Clearing parameters"
+msgstr "Usuwanie parametrów"
+
+#: index.php:313
+msgid "Older than 1 week"
+msgstr "Starsze niż 1 tydzień"
+
+#: index.php:314
+msgid "Older than 1 day"
+msgstr "Starsze niż 1 dzień"
+
+#: index.php:315
+msgid "Clear all"
+msgstr "Wyczyść wszystko"
+
+#: index.php:336
+msgid "The guestbook is closed"
+msgstr "Księga gości jest zamknięta"
+
+#: index.php:357
+msgid "Name"
+msgstr "Imię"
+
+#: index.php:360
+msgid "Message"
+msgstr "Wiadomość"
+
+#: index.php:370
+msgid "Verification code"
+msgstr "Kod weryfikacyjny"
+
+#: index.php:371
+msgid "Symbols on the picture"
+msgstr "Symbole na zdjęcie"
+
+#: index.php:374
+msgid "Send"
+msgstr "Wysłać"
+
+#: index.php:376
+msgid "For registered users only"
+msgstr "Tylko dla zarejestrowanych"
+
+#: index.php:380
+msgid "Comments"
+msgstr "Komentarze"
+
+#: index.php:469
+msgid "The guestbook is empty.<br><strong>Be the first! :)</strong>"
+msgstr "Księga gości jest pusta.<br><b>Bądź pierwszy i dodaj wpis! :)</b>"
+
+#: index.php:472
+msgid "Total"
+msgstr "Wszystkich"
+
+#: index.php:477
+msgid "To Page"
+msgstr "Do strony"
+

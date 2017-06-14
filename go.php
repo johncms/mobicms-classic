@@ -1,4 +1,12 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 define('MOBICMS', 1);
 
@@ -21,7 +29,7 @@ $url = isset($_REQUEST['url']) ? strip_tags(rawurldecode(trim($_REQUEST['url']))
 if (isset($_GET['lng'])) {
     // Переключатель языков
     require('system/head.php');
-    echo '<div class="menu"><form action="' . $referer . '" method="post"><p>';
+    echo '<div class="menu"><form method="post"><p>';
 
     if (count($config->lng_list) > 1) {
         echo '<p><h3>' . _t('Select language', 'system') . '</h3>';
@@ -37,7 +45,7 @@ if (isset($_GET['lng'])) {
         echo '</p>';
     }
 
-    echo '</p><p><input type="submit" name="submit" value="' . _t('Apply', 'system') . '" /></p><p><a href="' . $referer . '">' . _t('Back', 'system') . '</a></p></form></div>';
+    echo '</p><p><input type="submit" name="submit" value="' . _t('Apply', 'system') . '" /></p></form></div>';
     require('system/end.php');
 } elseif ($url) {
     // Редирект по ссылкам в текстах, обработанным функцией tags()

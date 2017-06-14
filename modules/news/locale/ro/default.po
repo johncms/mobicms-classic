@@ -1,0 +1,156 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: johncms\n"
+"POT-Creation-Date: 2017-06-12 21:14+0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"Last-Translator: mobiCMS <dev@mobicms.net>\n"
+"Language-Team: Romanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: crowdin.com\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+"Language: ro_RO\n"
+"X-Poedit-KeywordsList: _t;_p:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Crowdin-Project: johncms\n"
+"X-Crowdin-Language: ro\n"
+"X-Crowdin-File: /modules/news/default.pot\n"
+
+#: index.php:41 index.php:48 index.php:186 index.php:244 index.php:290
+#: index.php:308
+msgid "News"
+msgstr "Stiri"
+
+#: index.php:48 index.php:311
+msgid "Add"
+msgstr "Adauga"
+
+#: index.php:57 index.php:198
+msgid "You have not entered news title"
+msgstr "Nu ai introdus nici in titlu"
+
+#: index.php:61 index.php:202
+msgid "You have not entered news text"
+msgstr "Nu ai introdus nici in text"
+
+#: index.php:67
+#, php-format
+msgid "You cannot add the message so often. Please, wait %d seconds."
+msgstr "Nu poti adauga in mesaj asa de des. Te rog asteapta, %d secunde"
+
+#: index.php:148
+msgid "News added"
+msgstr "Stiri adaugate"
+
+#: index.php:148 index.php:150 index.php:175 index.php:189 index.php:233
+#: index.php:255 index.php:262 index.php:269 index.php:295
+msgid "Back to news"
+msgstr "Inapoi la stiri"
+
+#: index.php:154 index.php:227
+msgid "Title"
+msgstr "Titlu"
+
+#: index.php:156 index.php:229
+msgid "Text"
+msgstr "Text"
+
+#: index.php:158
+msgid "Discussion"
+msgstr "Discutii"
+
+#: index.php:160
+msgid "Do not discuss"
+msgstr "Nu discuta"
+
+#: index.php:173 index.php:231
+msgid "Save"
+msgstr "Salveaza"
+
+#: index.php:186 index.php:335
+msgid "Edit"
+msgstr "Editeaza"
+
+#: index.php:189
+msgid "Wrong data"
+msgstr "Date gresite"
+
+#: index.php:220
+msgid "Repeat"
+msgstr "Repeta"
+
+#: index.php:222
+msgid "Article changed"
+msgstr "Articol modificat"
+
+#: index.php:222
+msgid "Continue"
+msgstr "Continua"
+
+#: index.php:244 index.php:277 index.php:311
+msgid "Clear"
+msgstr "Sterge"
+
+#: index.php:255
+msgid "Delete all news older than 1 week"
+msgstr "Sterge toate sterile mai vechi de o saptamana"
+
+#: index.php:262
+msgid "Delete all news"
+msgstr "Sterge toate stirile"
+
+#: index.php:269
+msgid "Delete all news older than 1 month"
+msgstr "Sterge toate sterile mai vechi de o luna"
+
+#: index.php:273
+msgid "Clearing parameters"
+msgstr "Sterge parametri"
+
+#: index.php:274
+msgid "Older than 1 month"
+msgstr "Mai vechi de o luna"
+
+#: index.php:275
+msgid "Older than 1 week"
+msgstr "Mai vechi de o saptamana"
+
+#: index.php:276
+msgid "Clear all"
+msgstr "Sterge tot"
+
+#: index.php:279 index.php:298
+msgid "Cancel"
+msgstr "Anuleaza"
+
+#: index.php:290 index.php:298 index.php:336
+msgid "Delete"
+msgstr "Sterge"
+
+#: index.php:295
+msgid "Article deleted"
+msgstr "Articol sters"
+
+#: index.php:297
+msgid "Do you really want to delete?"
+msgstr "Esti sigur ca vrei sa stergi?"
+
+#: index.php:323
+msgid "Author"
+msgstr "Autor"
+
+#: index.php:330
+msgid "Discuss in Forum"
+msgstr "Discuta in Forum"
+
+#: index.php:342
+msgid "Total"
+msgstr "Total"
+
+#: index.php:348
+msgid "To Page"
+msgstr "La pagina"
+

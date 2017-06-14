@@ -1,0 +1,176 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: johncms\n"
+"POT-Creation-Date: 2017-06-12 21:15+0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"Last-Translator: mobiCMS <dev@mobicms.net>\n"
+"Language-Team: Vietnamese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: crowdin.com\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: vi_VN\n"
+"X-Poedit-KeywordsList: _t;_p:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Crowdin-Project: johncms\n"
+"X-Crowdin-Language: vi\n"
+"X-Crowdin-File: /modules/users/default.pot\n"
+
+#: includes/admlist.php:13 includes/admlist.php:30 index.php:77
+msgid "Administration"
+msgstr "Quản trị"
+
+#: includes/admlist.php:30 includes/birth.php:30 includes/search.php:35
+#: includes/top.php:61 includes/top.php:69 includes/top.php:78
+#: includes/top.php:98 includes/userlist.php:31 index.php:63 index.php:69
+msgid "Community"
+msgstr "Cộng đồng"
+
+#: includes/admlist.php:39 includes/birth.php:42 includes/online.php:97
+#: includes/online.php:171 includes/search.php:85 includes/userlist.php:44
+msgid "Total"
+msgstr "Tổng số"
+
+#: includes/admlist.php:45 includes/birth.php:48 includes/online.php:103
+#: includes/online.php:177 includes/search.php:91 includes/userlist.php:50
+msgid "To Page"
+msgstr "Đến trang"
+
+#: includes/admlist.php:49 includes/search.php:28 includes/search.php:35
+#: includes/userlist.php:54
+msgid "User Search"
+msgstr "Tìm người dùng"
+
+#: includes/admlist.php:50 includes/birth.php:55 includes/search.php:102
+#: includes/top.php:104 includes/userlist.php:55 index.php:82
+msgid "Back"
+msgstr "Trở lại"
+
+#: includes/birth.php:13 includes/birth.php:30 index.php:78
+msgid "Birthdays"
+msgstr "Sinh nhật"
+
+#: includes/birth.php:52 includes/online.php:168 includes/top.php:43
+#: includes/top.php:89
+msgid "The list is empty"
+msgstr "Danh sách trống"
+
+#: includes/online.php:14
+msgid "Online"
+msgstr "Trực tuyến"
+
+#: includes/online.php:41 index.php:76
+msgid "Users"
+msgstr "Thành viên"
+
+#: includes/online.php:42
+msgid "History"
+msgstr "Lịch sử"
+
+#: includes/online.php:45
+msgid "Guests"
+msgstr "Khách"
+
+#: includes/online.php:46
+msgid "IP Activity"
+msgstr "Hoạt động IP"
+
+#: includes/online.php:49
+msgid "Who is online?"
+msgstr "Ai đang trực tuyến?"
+
+#: includes/search.php:39 index.php:73
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: includes/search.php:46 includes/search.php:50
+msgid "Nickname"
+msgstr "Biệt danh"
+
+#: includes/search.php:46
+msgid "Invalid length"
+msgstr "Chiều dài không hợp lệ"
+
+#: includes/search.php:50
+msgid "Invalid characters"
+msgstr "Ký tự không hợp lệ"
+
+#: includes/search.php:65
+msgid "Searching results"
+msgstr "Kết quả tìm kiếm"
+
+#: includes/search.php:82
+msgid "Your search did not match any results"
+msgstr "Tìm kiếm của bạn không phù hợp"
+
+#: includes/search.php:98
+msgid "Search by Nickname are case insensitive. For example <strong>UsEr</strong> and <strong>user</strong> are identical."
+msgstr "Tìm kiếm không phân biệt chữ hoa với chữ thường. Ví dụ, <strong>AdMin</strong> và <strong>admin</strong> là giống hệt nhau."
+
+#: includes/search.php:101
+msgid "New search"
+msgstr "Tìm kiếm mới"
+
+#: includes/top.php:14 index.php:80
+msgid "Top Activity"
+msgstr "Hoạt động nhiều nhất"
+
+#: includes/top.php:49 includes/top.php:101
+msgid "Forum"
+msgstr "Diễn đàn"
+
+#: includes/top.php:50 includes/top.php:64
+msgid "Guestbook"
+msgstr "Phòng trò truyện"
+
+#: includes/top.php:51
+msgid "Comments"
+msgstr "Bình luận"
+
+#: includes/top.php:55
+msgid "Karma"
+msgstr "Nghiệp chướng"
+
+#: includes/top.php:61
+msgid "Most active in Guestbook"
+msgstr "Hoạt động nhiều nhất trong Lưu bút"
+
+#: includes/top.php:69
+msgid "Most commentators"
+msgstr "Đầu trang bình luận"
+
+#: includes/top.php:72 includes/top.php:92
+msgid "Home"
+msgstr "Trang chủ"
+
+#: includes/top.php:78
+msgid "Best Karma"
+msgstr "Tốt Nhất Karma"
+
+#: includes/top.php:98
+msgid "Most active in Forum"
+msgstr "Hoạt động nhiều nhất trong Diễn đàn"
+
+#: includes/userlist.php:13 includes/userlist.php:31
+msgid "List of users"
+msgstr "Danh sách người dùng"
+
+#: index.php:38
+msgid "For registered users only"
+msgstr "Chỉ dành cho thành viên đã đăng ký"
+
+#: index.php:71
+msgid "Look for the User"
+msgstr "Tìm kiếm người dùng"
+
+#: index.php:74
+msgid "The search is performed by Nickname and are case-insensitive."
+msgstr "Tìm kiếm được thực hiện bằng biệt hiệu và được quản."
+
+#: index.php:79
+msgid "Photo Albums"
+msgstr "Album"
+

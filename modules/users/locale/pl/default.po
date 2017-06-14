@@ -1,0 +1,176 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: johncms\n"
+"POT-Creation-Date: 2017-06-12 21:15+0400\n"
+"PO-Revision-Date: 2017-06-12 13:36-0400\n"
+"Last-Translator: mobiCMS <dev@mobicms.net>\n"
+"Language-Team: Polish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: crowdin.com\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: pl_PL\n"
+"X-Poedit-KeywordsList: _t;_p:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Crowdin-Project: johncms\n"
+"X-Crowdin-Language: pl\n"
+"X-Crowdin-File: /modules/users/default.pot\n"
+
+#: includes/admlist.php:13 includes/admlist.php:30 index.php:77
+msgid "Administration"
+msgstr "Administracja"
+
+#: includes/admlist.php:30 includes/birth.php:30 includes/search.php:35
+#: includes/top.php:61 includes/top.php:69 includes/top.php:78
+#: includes/top.php:98 includes/userlist.php:31 index.php:63 index.php:69
+msgid "Community"
+msgstr "Społeczność"
+
+#: includes/admlist.php:39 includes/birth.php:42 includes/online.php:97
+#: includes/online.php:171 includes/search.php:85 includes/userlist.php:44
+msgid "Total"
+msgstr "Wszystkich"
+
+#: includes/admlist.php:45 includes/birth.php:48 includes/online.php:103
+#: includes/online.php:177 includes/search.php:91 includes/userlist.php:50
+msgid "To Page"
+msgstr "Do strony"
+
+#: includes/admlist.php:49 includes/search.php:28 includes/search.php:35
+#: includes/userlist.php:54
+msgid "User Search"
+msgstr "Wyszukiwanie użytkowników"
+
+#: includes/admlist.php:50 includes/birth.php:55 includes/search.php:102
+#: includes/top.php:104 includes/userlist.php:55 index.php:82
+msgid "Back"
+msgstr "Powrót"
+
+#: includes/birth.php:13 includes/birth.php:30 index.php:78
+msgid "Birthdays"
+msgstr "Urodziny"
+
+#: includes/birth.php:52 includes/online.php:168 includes/top.php:43
+#: includes/top.php:89
+msgid "The list is empty"
+msgstr "Lista jest pusta"
+
+#: includes/online.php:14
+msgid "Online"
+msgstr "Online"
+
+#: includes/online.php:41 index.php:76
+msgid "Users"
+msgstr "Użytkownicy"
+
+#: includes/online.php:42
+msgid "History"
+msgstr "Historia"
+
+#: includes/online.php:45
+msgid "Guests"
+msgstr "Goście"
+
+#: includes/online.php:46
+msgid "IP Activity"
+msgstr "Aktywność IP"
+
+#: includes/online.php:49
+msgid "Who is online?"
+msgstr "Kto jest online?"
+
+#: includes/search.php:39 index.php:73
+msgid "Search"
+msgstr "Szukaj"
+
+#: includes/search.php:46 includes/search.php:50
+msgid "Nickname"
+msgstr "Nazwa użytkownika"
+
+#: includes/search.php:46
+msgid "Invalid length"
+msgstr "Nieprawidłowa długość"
+
+#: includes/search.php:50
+msgid "Invalid characters"
+msgstr "Nieprawidłowe znaki"
+
+#: includes/search.php:65
+msgid "Searching results"
+msgstr "Wyniki wyszukiwania"
+
+#: includes/search.php:82
+msgid "Your search did not match any results"
+msgstr "Wyszukiwanie nie dało żadnych wyników"
+
+#: includes/search.php:98
+msgid "Search by Nickname are case insensitive. For example <strong>UsEr</strong> and <strong>user</strong> are identical."
+msgstr "Szukaj przez nick jest nie uwzględniana wielkość liter. Na przykład <strong>Użytkownik</strong> i <strong>użytkownik</strong> są identyczne."
+
+#: includes/search.php:101
+msgid "New search"
+msgstr "Nowe szukanie"
+
+#: includes/top.php:14 index.php:80
+msgid "Top Activity"
+msgstr "Najbardziej aktywni"
+
+#: includes/top.php:49 includes/top.php:101
+msgid "Forum"
+msgstr "Forum"
+
+#: includes/top.php:50 includes/top.php:64
+msgid "Guestbook"
+msgstr "Księga gości"
+
+#: includes/top.php:51
+msgid "Comments"
+msgstr "Komentarze"
+
+#: includes/top.php:55
+msgid "Karma"
+msgstr "Karma"
+
+#: includes/top.php:61
+msgid "Most active in Guestbook"
+msgstr "Najbardziej aktywni w księdze gości"
+
+#: includes/top.php:69
+msgid "Most commentators"
+msgstr "Większość komentatorów"
+
+#: includes/top.php:72 includes/top.php:92
+msgid "Home"
+msgstr "Strona główna"
+
+#: includes/top.php:78
+msgid "Best Karma"
+msgstr "Najlepsza karma"
+
+#: includes/top.php:98
+msgid "Most active in Forum"
+msgstr "Najbardziej aktywni na forum"
+
+#: includes/userlist.php:13 includes/userlist.php:31
+msgid "List of users"
+msgstr "Lista użytkowników"
+
+#: index.php:38
+msgid "For registered users only"
+msgstr "Tylko dla zarejestrowanych"
+
+#: index.php:71
+msgid "Look for the User"
+msgstr "Znajdź użytkownika"
+
+#: index.php:74
+msgid "The search is performed by Nickname and are case-insensitive."
+msgstr "Wyszukiwanie jest wykonywane przez nick i jest rozróżniana wielkość liter."
+
+#: index.php:79
+msgid "Photo Albums"
+msgstr "Albumy zdjęć"
+

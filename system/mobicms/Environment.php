@@ -1,14 +1,20 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 namespace Mobicms;
 
+use Mobicms\Http\Request;
 use Psr\Container\ContainerInterface;
 
 class Environment implements Api\EnvironmentInterface
 {
-    private $ip;
-    private $ipViaProxy;
-    private $userAgent;
     private $ipCount = [];
 
     /**
@@ -19,56 +25,9 @@ class Environment implements Api\EnvironmentInterface
     public function __invoke(ContainerInterface $container)
     {
         $this->container = $container;
-        $this->ipLog($this->getIp());
+        $this->ipLog(ip2long($container->get(Request::class)->ip()));
 
         return $this;
-    }
-
-    public function getIp()
-    {
-        if (null === $this->ip) {
-            $ip = filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
-            $ip = ip2long($ip);
-            $this->ip = sprintf("%u", $ip);
-        }
-
-        return $this->ip;
-    }
-
-    public function getIpViaProxy()
-    {
-        if ($this->ipViaProxy !== null) {
-            return $this->ipViaProxy;
-        } elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])
-            && preg_match_all(
-                '#\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}#s',
-                filter_var($_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_SANITIZE_STRING),
-                $vars
-            )
-        ) {
-            foreach ($vars[0] AS $var) {
-                $ipViaProxy = ip2long($var);
-
-                if ($ipViaProxy && $ipViaProxy != $this->getIp() && !preg_match('#^(10|172\.16|192\.168)\.#', $var)) {
-                    return $this->ipViaProxy = sprintf("%u", $ipViaProxy);
-                }
-            }
-        }
-
-        return $this->ipViaProxy = 0;
-    }
-
-    public function getUserAgent()
-    {
-        if ($this->userAgent !== null) {
-            return $this->userAgent;
-        } elseif (isset($_SERVER['HTTP_X_OPERAMINI_PHONE_UA']) && strlen(trim($_SERVER['HTTP_X_OPERAMINI_PHONE_UA'])) > 5) {
-            return $this->userAgent = 'Opera Mini: ' . mb_substr(filter_var($_SERVER['HTTP_X_OPERAMINI_PHONE_UA'], FILTER_SANITIZE_SPECIAL_CHARS), 0, 150);
-        } elseif (isset($_SERVER['HTTP_USER_AGENT'])) {
-            return $this->userAgent = mb_substr(filter_var($_SERVER['HTTP_USER_AGENT'], FILTER_SANITIZE_SPECIAL_CHARS), 0, 150);
-        } else {
-            return $this->userAgent = 'Not Recognised';
-        }
     }
 
     public function getIpLog()
@@ -78,7 +37,7 @@ class Environment implements Api\EnvironmentInterface
 
     private function ipLog($ip)
     {
-        $file = ROOT_PATH . 'files/cache/ip_flood.dat';
+        $file = CACHE_PATH . 'ip_flood.dat';
         $tmp = [];
         $requests = 1;
 

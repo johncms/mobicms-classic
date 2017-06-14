@@ -1,4 +1,12 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 defined('MOBICMS') or die('Error: restricted access');
 
@@ -22,7 +30,7 @@ if (!empty($cms_ads[2])) {
 echo '</div><div class="fmenu">';
 
 if (isset($_GET['err']) || $headmod != "mainpage" || ($headmod == 'mainpage' && isset($_GET['act']))) {
-    echo '<div><a href=\'' . $config->homeurl . '\'>' . $tools->image('menu_home.png') . _t('Home', 'system') . '</a></div>';
+    echo '<div><a href=\'' . $config->homeurl . '\'>' . $tools->image('images/menu_home.png') . _t('Home', 'system') . '</a></div>';
 }
 
 echo '<div>' . $container->get('counters')->online() . '</div>' .

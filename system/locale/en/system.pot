@@ -5,486 +5,475 @@ msgstr ""
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
-"Language-Team: https://crowdin.com/project/johncms <translate@mobicms.net>\n"
+"Language-Team: https://crowdin.com/project/johncms <info@mobicms.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-KeywordsList: _t;_p:1,2\n"
-"X-Poedit-SearchPath-0: login.php\n"
-"X-Poedit-SearchPath-1: go.php\n"
-"X-Poedit-SearchPath-2: exit.php\n"
-"X-Poedit-SearchPath-3: system/johncms\n"
-"X-Poedit-SearchPath-4: system/head.php\n"
-"X-Poedit-SearchPath-5: system/end.php\n"
-"X-Poedit-SearchPath-6: system/mainmenu.php\n"
+"X-Poedit-SearchPath-0: system/mobicms\n"
+"X-Poedit-SearchPath-1: system/head.php\n"
+"X-Poedit-SearchPath-2: system/end.php\n"
+"X-Poedit-SearchPath-3: modules/login\n"
+"X-Poedit-SearchPath-4: modules/homepage\n"
+"X-Poedit-SearchPath-5: go.php\n"
 
-#: exit.php:30
-msgid "Are you sure you want to leave the site?"
-msgstr ""
-
-#: exit.php:31
-msgid "Logout"
-msgstr ""
-
-#: exit.php:32 system/johncms/Comments.php:243
-msgid "Cancel"
-msgstr ""
-
-#: go.php:37
+#: go.php:35
 msgid "Select language"
 msgstr ""
 
-#: go.php:43
+#: go.php:41
 msgid "Default"
 msgstr ""
 
-#: go.php:50
+#: go.php:48
 msgid "Apply"
 msgstr ""
 
-#: go.php:50 go.php:67 system/johncms/Comments.php:112
-#: system/johncms/Comments.php:135 system/johncms/Comments.php:143
-#: system/johncms/Comments.php:146 system/johncms/Comments.php:163
-#: system/johncms/Comments.php:191 system/johncms/Comments.php:200
-#: system/johncms/Comments.php:203 system/johncms/Comments.php:247
-msgid "Back"
-msgstr ""
-
-#: go.php:58
+#: go.php:56
 msgid "External Link"
 msgstr ""
 
-#: go.php:61
+#: go.php:59
 msgid "ATTENTION!"
 msgstr ""
 
-#: go.php:62
+#: go.php:60
 msgid "You are going to leave our site and go to an external link"
 msgstr ""
 
-#: go.php:63
+#: go.php:61
 msgid "Administration of our site is not responsible for the content of external sites"
 msgstr ""
 
-#: go.php:64
+#: go.php:62
 #, php-format
 msgid "It is recommended not to specify your data, relating to %s (Login, Password), on third party sites"
 msgstr ""
 
-#: go.php:65
+#: go.php:63
 msgid "Go to Link"
 msgstr ""
 
-#: login.php:37 system/end.php:35 system/head.php:110
-msgid "Home"
+#: go.php:65 system/mobicms/Comments.php:116 system/mobicms/Comments.php:139
+#: system/mobicms/Comments.php:147 system/mobicms/Comments.php:150
+#: system/mobicms/Comments.php:167 system/mobicms/Comments.php:195
+#: system/mobicms/Comments.php:204 system/mobicms/Comments.php:207
+#: system/mobicms/Comments.php:252
+msgid "Back"
 msgstr ""
 
-#: login.php:39 login.php:158 system/head.php:112
-msgid "Login"
+#: modules/homepage/index.php:35
+msgid "Information"
 msgstr ""
 
-#: login.php:49
-msgid "You have not entered login"
+#: modules/homepage/index.php:37
+msgid "News archive"
 msgstr ""
 
-#: login.php:53
-msgid "You have not entered password"
+#: modules/homepage/index.php:38
+msgid "Information, FAQ"
 msgstr ""
 
-#: login.php:57
-msgid "Nickname"
+#: modules/homepage/index.php:43
+msgid "Communication"
 msgstr ""
 
-#: login.php:57 login.php:61
-msgid "Invalid length"
-msgstr ""
-
-#: login.php:61 login.php:155
-msgid "Password"
-msgstr ""
-
-#: login.php:81
-msgid "The security code is not correct"
-msgstr ""
-
-#: login.php:87
-msgid "Verification code"
-msgstr ""
-
-#: login.php:88
-msgid "Enter verification code"
-msgstr ""
-
-#: login.php:92
-msgid "Continue"
-msgstr ""
-
-#: login.php:104
-msgid "Sorry, but your request for registration is not considered yet. Please, be patient."
-msgstr ""
-
-#: login.php:128
-msgid "Enter site"
-msgstr ""
-
-#: login.php:137 login.php:141
-msgid "Authorization failed"
-msgstr ""
-
-#: login.php:153
-msgid "Username"
-msgstr ""
-
-#: login.php:157
-msgid "Remember"
-msgstr ""
-
-#: login.php:160
-msgid "Registration"
-msgstr ""
-
-#: login.php:161
-msgid "Forgot password?"
-msgstr ""
-
-#: system/head.php:53
-msgid "Site News"
-msgstr ""
-
-#: system/head.php:106
-msgid "Hi"
-msgstr ""
-
-#: system/head.php:106 system/johncms/Tools.php:299
-msgid "Guest"
-msgstr ""
-
-#: system/head.php:111
-msgid "Personal"
-msgstr ""
-
-#: system/head.php:198
-msgid "Ban"
-msgstr ""
-
-#: system/head.php:198
-msgid "Details"
-msgstr ""
-
-#: system/head.php:207
-msgid "System"
-msgstr ""
-
-#: system/head.php:219
-msgid "Mail"
-msgstr ""
-
-#: system/head.php:223 system/johncms/Tools.php:242 system/mainmenu.php:42
+#: modules/homepage/index.php:47 system/head.php:226
+#: system/mobicms/Tools/Utilites.php:260
 msgid "Guestbook"
 msgstr ""
 
-#: system/head.php:229
-msgid "Comments"
-msgstr ""
-
-#: system/head.php:233 system/johncms/Counters.php:164
-msgid "Unread"
-msgstr ""
-
-#: system/johncms/Bbcode.php:164
-msgid "Edit List"
-msgstr ""
-
-#: system/johncms/Bbcode.php:175
-msgid "Add Smilies"
-msgstr ""
-
-#: system/johncms/Bbcode.php:233
-msgid "Bold"
-msgstr ""
-
-#: system/johncms/Bbcode.php:234
-msgid "Italic"
-msgstr ""
-
-#: system/johncms/Bbcode.php:235
-msgid "Underline"
-msgstr ""
-
-#: system/johncms/Bbcode.php:236
-msgid "Strike"
-msgstr ""
-
-#: system/johncms/Bbcode.php:237
-msgid "Text Color"
-msgstr ""
-
-#: system/johncms/Bbcode.php:238
-msgid "Background Color"
-msgstr ""
-
-#: system/johncms/Bbcode.php:239
-msgid "List"
-msgstr ""
-
-#: system/johncms/Bbcode.php:240
-msgid "Spoiler"
-msgstr ""
-
-#: system/johncms/Bbcode.php:241
-msgid "Quote"
-msgstr ""
-
-#: system/johncms/Bbcode.php:242
-msgid "URL"
-msgstr ""
-
-#: system/johncms/Bbcode.php:243
-msgid "Code"
-msgstr ""
-
-#: system/johncms/Bbcode.php:247
-msgid "Smilies"
-msgstr ""
-
-#: system/johncms/Bbcode.php:287
-msgid "Added"
-msgstr ""
-
-#: system/johncms/Comments.php:104 system/johncms/Comments.php:299
-msgid "Reply"
-msgstr ""
-
-#: system/johncms/Comments.php:112
-msgid "Administrator already replied to this message"
-msgstr ""
-
-#: system/johncms/Comments.php:146 system/johncms/Comments.php:200
-msgid "Wrong data"
-msgstr ""
-
-#: system/johncms/Comments.php:154 system/johncms/Comments.php:300
-msgid "Edit"
-msgstr ""
-
-#: system/johncms/Comments.php:163
-msgid "You cannot edit posts of higher administration"
-msgstr ""
-
-#: system/johncms/Comments.php:240 system/johncms/Comments.php:242
-#: system/johncms/Comments.php:301
-msgid "Delete"
-msgstr ""
-
-#: system/johncms/Comments.php:241
-msgid "Do you really want to delete?"
-msgstr ""
-
-#: system/johncms/Comments.php:244
-msgid "Clear all messages from this user"
-msgstr ""
-
-#: system/johncms/Comments.php:245
-msgid "Clear"
-msgstr ""
-
-#: system/johncms/Comments.php:307
-msgid "Edited"
-msgstr ""
-
-#: system/johncms/Comments.php:331
-msgid "The list is empty"
-msgstr ""
-
-#: system/johncms/Comments.php:334
-msgid "Total"
-msgstr ""
-
-#: system/johncms/Comments.php:340
-msgid "To Page"
-msgstr ""
-
-#: system/johncms/Comments.php:399
-msgid "Message"
-msgstr ""
-
-#: system/johncms/Comments.php:402
-msgid "Send"
-msgstr ""
-
-#: system/johncms/Comments.php:422
-msgid "Text is too short"
-msgstr ""
-
-#: system/johncms/Comments.php:428
-msgid "You cannot add the message so often<br>Please, wait"
-msgstr ""
-
-#: system/johncms/Comments.php:428
-msgid "seconds"
-msgstr ""
-
-#: system/johncms/Comments.php:438
-msgid "Message already exists"
-msgstr ""
-
-#: system/johncms/Counters.php:163
-msgid "Show for Period"
-msgstr ""
-
-#: system/johncms/Counters.php:170
-msgid "Last activity"
-msgstr ""
-
-#: system/johncms/NewsWidget.php:63
-msgid "show more"
-msgstr ""
-
-#: system/johncms/NewsWidget.php:98
-msgid "Discuss"
-msgstr ""
-
-#: system/johncms/Tools.php:135
-msgid "Today"
-msgstr ""
-
-#: system/johncms/Tools.php:138
-msgid "Yesterday"
-msgstr ""
-
-#: system/johncms/Tools.php:154
-msgid "ERROR"
-msgstr ""
-
-#: system/johncms/Tools.php:234
-msgid "List of Admins"
-msgstr ""
-
-#: system/johncms/Tools.php:235
-msgid "Watching the photo album"
-msgstr ""
-
-#: system/johncms/Tools.php:236
-msgid "List of birthdays"
-msgstr ""
-
-#: system/johncms/Tools.php:237 system/mainmenu.php:57
-msgid "Downloads"
-msgstr ""
-
-#: system/johncms/Tools.php:238
-msgid "Reading the FAQ"
-msgstr ""
-
-#: system/johncms/Tools.php:239 system/mainmenu.php:47
+#: modules/homepage/index.php:52 system/mobicms/Tools/Utilites.php:257
 msgid "Forum"
 msgstr ""
 
-#: system/johncms/Tools.php:240
-msgid "Forum Files"
+#: modules/homepage/index.php:58
+msgid "Useful"
 msgstr ""
 
-#: system/johncms/Tools.php:241
-msgid "Looking, who in Forum?"
+#: modules/homepage/index.php:62 system/mobicms/Tools/Utilites.php:255
+msgid "Downloads"
 msgstr ""
 
-#: system/johncms/Tools.php:243
-msgid "Here, in the list"
-msgstr ""
-
-#: system/johncms/Tools.php:244
-msgid "On the Homepage"
-msgstr ""
-
-#: system/johncms/Tools.php:245 system/mainmenu.php:62
+#: modules/homepage/index.php:67 system/mobicms/Tools/Utilites.php:263
 msgid "Library"
 msgstr ""
 
-#: system/johncms/Tools.php:246
+#: modules/homepage/index.php:74
+msgid "Community"
+msgstr ""
+
+#: modules/homepage/index.php:75
+msgid "Users"
+msgstr ""
+
+#: modules/homepage/index.php:76
+msgid "Photo Albums"
+msgstr ""
+
+#: modules/login/includes/login.php:37 system/end.php:33 system/head.php:113
+msgid "Home"
+msgstr ""
+
+#: modules/login/includes/login.php:39 modules/login/includes/login.php:159
+#: system/head.php:115
+msgid "Login"
+msgstr ""
+
+#: modules/login/includes/login.php:49
+msgid "You have not entered login"
+msgstr ""
+
+#: modules/login/includes/login.php:53
+msgid "You have not entered password"
+msgstr ""
+
+#: modules/login/includes/login.php:57
+msgid "Nickname"
+msgstr ""
+
+#: modules/login/includes/login.php:57 modules/login/includes/login.php:61
+msgid "Invalid length"
+msgstr ""
+
+#: modules/login/includes/login.php:61 modules/login/includes/login.php:156
+msgid "Password"
+msgstr ""
+
+#: modules/login/includes/login.php:81
+msgid "The security code is not correct"
+msgstr ""
+
+#: modules/login/includes/login.php:93
+msgid "Verification code"
+msgstr ""
+
+#: modules/login/includes/login.php:94
+msgid "Enter verification code"
+msgstr ""
+
+#: modules/login/includes/login.php:99
+msgid "Continue"
+msgstr ""
+
+#: modules/login/includes/login.php:111
+msgid "Sorry, but your request for registration is not considered yet. Please, be patient."
+msgstr ""
+
+#: modules/login/includes/login.php:138 modules/login/includes/login.php:142
+msgid "Authorization failed"
+msgstr ""
+
+#: modules/login/includes/login.php:154
+msgid "Username"
+msgstr ""
+
+#: modules/login/includes/login.php:158
+msgid "Remember"
+msgstr ""
+
+#: modules/login/includes/login.php:161
+msgid "Registration"
+msgstr ""
+
+#: modules/login/includes/logout.php:35
+msgid "Are you sure you want to leave the site?"
+msgstr ""
+
+#: modules/login/includes/logout.php:36
+msgid "Logout"
+msgstr ""
+
+#: modules/login/includes/logout.php:37 system/mobicms/Comments.php:248
+msgid "Cancel"
+msgstr ""
+
+#: system/head.php:51
+msgid "Site News"
+msgstr ""
+
+#: system/head.php:114
+msgid "Personal"
+msgstr ""
+
+#: system/head.php:201
+msgid "Ban"
+msgstr ""
+
+#: system/head.php:201
+msgid "Details"
+msgstr ""
+
+#: system/head.php:210
+msgid "System"
+msgstr ""
+
+#: system/head.php:222
+msgid "Mail"
+msgstr ""
+
+#: system/head.php:232
+msgid "Comments"
+msgstr ""
+
+#: system/head.php:236 system/mobicms/Counters.php:162
+msgid "Unread"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:153
+msgid "Edit List"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:164
+msgid "Add Smilies"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:222
+msgid "Bold"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:223
+msgid "Italic"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:224
+msgid "Underline"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:225
+msgid "Strike"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:226
+msgid "Text Color"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:227
+msgid "Background Color"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:228
+msgid "List"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:229
+msgid "Spoiler"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:230
+msgid "Quote"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:231
+msgid "URL"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:232
+msgid "Code"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:236
+msgid "Smilies"
+msgstr ""
+
+#: system/mobicms/Bbcode.php:276
+msgid "Added"
+msgstr ""
+
+#: system/mobicms/Comments.php:108 system/mobicms/Comments.php:304
+msgid "Reply"
+msgstr ""
+
+#: system/mobicms/Comments.php:116
+msgid "Administrator already replied to this message"
+msgstr ""
+
+#: system/mobicms/Comments.php:150 system/mobicms/Comments.php:204
+msgid "Wrong data"
+msgstr ""
+
+#: system/mobicms/Comments.php:158 system/mobicms/Comments.php:305
+msgid "Edit"
+msgstr ""
+
+#: system/mobicms/Comments.php:167
+msgid "You cannot edit posts of higher administration"
+msgstr ""
+
+#: system/mobicms/Comments.php:245 system/mobicms/Comments.php:247
+#: system/mobicms/Comments.php:306
+msgid "Delete"
+msgstr ""
+
+#: system/mobicms/Comments.php:246
+msgid "Do you really want to delete?"
+msgstr ""
+
+#: system/mobicms/Comments.php:249
+msgid "Clear all messages from this user"
+msgstr ""
+
+#: system/mobicms/Comments.php:250
+msgid "Clear"
+msgstr ""
+
+#: system/mobicms/Comments.php:312
+msgid "Edited"
+msgstr ""
+
+#: system/mobicms/Comments.php:336
+msgid "The list is empty"
+msgstr ""
+
+#: system/mobicms/Comments.php:339
+msgid "Total"
+msgstr ""
+
+#: system/mobicms/Comments.php:345
+msgid "To Page"
+msgstr ""
+
+#: system/mobicms/Comments.php:404
+msgid "Message"
+msgstr ""
+
+#: system/mobicms/Comments.php:407
+msgid "Send"
+msgstr ""
+
+#: system/mobicms/Comments.php:426
+msgid "Text is too short"
+msgstr ""
+
+#: system/mobicms/Comments.php:432
+msgid "You cannot add the message so often<br>Please, wait"
+msgstr ""
+
+#: system/mobicms/Comments.php:432
+msgid "seconds"
+msgstr ""
+
+#: system/mobicms/Comments.php:442
+msgid "Message already exists"
+msgstr ""
+
+#: system/mobicms/Counters.php:161
+msgid "Show for Period"
+msgstr ""
+
+#: system/mobicms/Counters.php:168
+msgid "Last activity"
+msgstr ""
+
+#: system/mobicms/NewsWidget.php:61
+msgid "show more"
+msgstr ""
+
+#: system/mobicms/NewsWidget.php:96
+msgid "Discuss"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:145
+msgid "Today"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:148
+msgid "Yesterday"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:164
+msgid "ERROR"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:252
+msgid "List of Admins"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:253
+msgid "Watching the photo album"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:254
+msgid "List of birthdays"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:256
+msgid "Reading the FAQ"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:258
+msgid "Forum Files"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:259
+msgid "Looking, who in Forum?"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:261
+msgid "Here, in the list"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:262
+msgid "On the Homepage"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:264
 msgid "Personal correspondence"
 msgstr ""
 
-#: system/johncms/Tools.php:247
+#: system/mobicms/Tools/Utilites.php:265
 msgid "Reading the news"
 msgstr ""
 
-#: system/johncms/Tools.php:248
+#: system/mobicms/Tools/Utilites.php:266
 msgid "Who is online?"
 msgstr ""
 
-#: system/johncms/Tools.php:249
+#: system/mobicms/Tools/Utilites.php:267
 msgid "Profile"
 msgstr ""
 
-#: system/johncms/Tools.php:250
+#: system/mobicms/Tools/Utilites.php:268
 msgid "Personal Profile"
 msgstr ""
 
-#: system/johncms/Tools.php:251
+#: system/mobicms/Tools/Utilites.php:269
 msgid "Registered on the site"
 msgstr ""
 
-#: system/johncms/Tools.php:252
+#: system/mobicms/Tools/Utilites.php:270
 msgid "List of users"
 msgstr ""
 
-#: system/johncms/Tools.php:253
+#: system/mobicms/Tools/Utilites.php:271
 msgid "Watching Top 10 Users"
 msgstr ""
 
-#: system/johncms/Tools.php:367
+#: system/mobicms/Tools/Utilites.php:317
+msgid "Guest"
+msgstr ""
+
+#: system/mobicms/Tools/Utilites.php:385
 msgid "Last Visit"
 msgstr ""
 
-#: system/johncms/Tools.php:373
+#: system/mobicms/Tools/Utilites.php:391
 msgid "Browser"
 msgstr ""
 
-#: system/johncms/Tools.php:374
+#: system/mobicms/Tools/Utilites.php:392
 msgid "IP address"
 msgstr ""
 
-#: system/johncms/Tools.php:393
+#: system/mobicms/Tools/Utilites.php:411
 msgid "IP History"
 msgstr ""
 
-#: system/johncms/Tools.php:594
+#: system/mobicms/Tools/Utilites.php:629
 msgid "Day"
 msgid_plural "Days"
 msgstr[0] ""
 msgstr[1] ""
-
-#: system/mainmenu.php:30
-msgid "Information"
-msgstr ""
-
-#: system/mainmenu.php:32
-msgid "News archive"
-msgstr ""
-
-#: system/mainmenu.php:33
-msgid "Information, FAQ"
-msgstr ""
-
-#: system/mainmenu.php:38
-msgid "Communication"
-msgstr ""
-
-#: system/mainmenu.php:53
-msgid "Useful"
-msgstr ""
-
-#: system/mainmenu.php:69
-msgid "Community"
-msgstr ""
-
-#: system/mainmenu.php:70
-msgid "Users"
-msgstr ""
-
-#: system/mainmenu.php:71
-msgid "Photo Albums"
-msgstr ""

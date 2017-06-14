@@ -1,4 +1,12 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 namespace Mobicms;
 
@@ -76,7 +84,7 @@ class NewsWidget
                             $news .= $text;
                             break;
                         default :
-                            $news .= '<b>' . $res['name'] . '</b><br />' . $text;
+                            $news .= '<h2>' . $res['name'] . '</h2>' . $text;
                     }
 
                     // Ссылка на каменты
@@ -85,7 +93,7 @@ class NewsWidget
                         $komm = $mes - 1;
 
                         if ($komm >= 0) {
-                            $news .= '<br /><a href="../forum/?id=' . $res['kom'] . '">' . _t('Discuss', 'system') . '</a> (' . $komm . ')';
+                            $news .= '<div style="margin: .4em 0"><a href="forum/?id=' . $res['kom'] . '">' . _t('Discuss', 'system') . '</a> (' . $komm . ')</div>';
                         }
                     }
                     $news .= '</div>';

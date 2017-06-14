@@ -1,0 +1,321 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: johncms\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"Last-Translator: mobiCMS <dev@mobicms.net>\n"
+"Language-Team: Vietnamese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: crowdin.com\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-KeywordsList: _t;_p:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: johncms\n"
+"X-Crowdin-Language: vi\n"
+"X-Crowdin-File: /modules/help/default.pot\n"
+"Language: vi_VN\n"
+
+#: includes/admsmilies.php:28 includes/set_my_sm.php:33
+msgid "Wrong data"
+msgstr "Lỗi dữ liệu"
+
+#: includes/admsmilies.php:28 includes/admsmilies.php:82
+#: includes/avatars.php:37 includes/avatars.php:83 includes/avatars.php:101
+#: includes/forum.php:59 includes/my_smilies.php:74 includes/smilies.php:51
+#: includes/tags.php:79 includes/usersmilies.php:92 index.php:78
+msgid "Back"
+msgstr "Quay lại"
+
+#: includes/admsmilies.php:33 includes/my_smilies.php:27
+#: includes/set_my_sm.php:33 includes/smilies.php:17
+#: includes/usersmilies.php:43 index.php:77
+msgid "Smilies"
+msgstr "Biểu tượng mặt cười"
+
+#: includes/admsmilies.php:33 includes/smilies.php:25
+msgid "For administration"
+msgstr "Dành Cho Quản Lý"
+
+#: includes/admsmilies.php:40 includes/my_smilies.php:27
+#: includes/smilies.php:21 includes/usersmilies.php:56
+msgid "My smilies"
+msgstr "Biểu tượng mặt cười của tôi"
+
+#: includes/admsmilies.php:66 includes/my_smilies.php:58
+#: includes/usersmilies.php:72
+msgid "or"
+msgstr "hoặc"
+
+#: includes/admsmilies.php:69 includes/avatars.php:70
+#: includes/my_smilies.php:65 includes/usersmilies.php:80
+msgid "The list is empty"
+msgstr "Danh sách này là trống rỗng"
+
+#: includes/admsmilies.php:72 includes/usersmilies.php:77
+msgid "Add"
+msgstr "Thêm"
+
+#: includes/admsmilies.php:73 includes/avatars.php:73 includes/avatars.php:100
+#: includes/my_smilies.php:68 includes/usersmilies.php:83
+msgid "Total"
+msgstr "Tổng số"
+
+#: includes/admsmilies.php:79 includes/avatars.php:79
+#: includes/usersmilies.php:89
+msgid "To Page"
+msgstr "Đến trang"
+
+#: includes/avatars.php:34
+msgid "Avatar has been successfully applied"
+msgstr "Avatar đã được áp dụng thành công"
+
+#: includes/avatars.php:35
+msgid "Continue"
+msgstr "Tiếp tục"
+
+#: includes/avatars.php:37
+msgid "An error occurred"
+msgstr "Đã xảy ra lỗi"
+
+#: includes/avatars.php:40 includes/avatars.php:49 includes/avatars.php:87
+#: index.php:76
+msgid "Avatars"
+msgstr "Avatar"
+
+#: includes/avatars.php:40
+msgid "Set to Profile"
+msgstr "Thiết lập hồ sơ"
+
+#: includes/avatars.php:41
+msgid "Are you sure you want to set yourself this avatar?"
+msgstr "Bạn có chắc chắn muốn đặt mình avatar này?"
+
+#: includes/avatars.php:43
+msgid "Save"
+msgstr "Lưu"
+
+#: includes/avatars.php:45
+msgid "Cancel"
+msgstr "Hủy bỏ"
+
+#: includes/avatars.php:64
+msgid "Select"
+msgstr "Chọn"
+
+#: includes/avatars.php:87 includes/forum.php:14 includes/smilies.php:17
+#: includes/tags.php:16 index.php:73
+msgid "Information, FAQ"
+msgstr "Thông tin, câu hỏi thường gặp"
+
+#: includes/forum.php:14 index.php:74
+msgid "Forum rules"
+msgstr "Nội quy diễn đàn"
+
+#: includes/forum.php:28
+msgid "FORBIDDEN"
+msgstr "BỊ CẤM"
+
+#: includes/forum.php:30
+msgid "Advertising messages"
+msgstr "Thông điệp quảng cáo"
+
+#: includes/forum.php:31
+msgid "The messages containing direct propagation of racial, national and religious animosity"
+msgstr "Các tin nhắn chứa trực tiếp tuyên truyền phân biệt chủng tộc, quốc gia và tôn giáo thù oán"
+
+#: includes/forum.php:32
+msgid "Any abusive, obscene, vulgar, slanderous, hateful, threatening and sexually-oriented messages or any other material that may violate any applicable laws"
+msgstr "Bất kỳ lăng mạ, khiêu dâm thô tục, vu khống, hận thù, đe dọa và tình dục định hướng thư hoặc bất cứ tài liệu khác mà có thể vi phạm pháp luật"
+
+#: includes/forum.php:33
+msgid "The messages obviously offending someone, espcially forum users"
+msgstr "Thông điệp rõ ràng là vi phạm một ai đó, đánh người dùng diễn đàn"
+
+#: includes/forum.php:34
+msgid "Purposely to deform a writing of nicknames of other users for the purpose of giving to the message an offensive shade"
+msgstr "Cố ý để làm biến dạng một viết của nickname của các người sử dụng cho các mục đích của cho các tin nhắn một cuộc tấn công bóng râm"
+
+#: includes/forum.php:35
+msgid "Publishing deleted by moderator messages repeatedly"
+msgstr "Xuất bản đã bị xóa bởi người điều hành thông điệp nhiều lần"
+
+#: includes/forum.php:36
+msgid "Post messages not related to the topic"
+msgstr "Gửi tin nhắn không liên quan đến các chủ đề"
+
+#: includes/forum.php:37
+msgid "Continuing topics that have been closed by moderator"
+msgstr "Tiếp tục chủ đề đã được đóng cửa bởi người điều hành"
+
+#: includes/forum.php:40
+msgid "ABSOLUTELY FORBIDDEN"
+msgstr "HOÀN TOÀN BỊ CẤM"
+
+#: includes/forum.php:42
+msgid "Writing in the public topics a discontent with inappropriate actions of other users and discussing about moderators working. Use private messages for this purpose"
+msgstr "Viết trong các chủ đề khu vực bất mãn với các hành động không phù hợp của người dùng khác và thảo luận về các điều phối viên làm việc. Sử dụng tin nhắn cá nhân cho mục đích này"
+
+#: includes/forum.php:43
+msgid "Register the nicknames having offensive tone for other users"
+msgstr "Đăng ký các biệt danh có giai điệu gây khó chịu cho người dùng khác"
+
+#: includes/forum.php:46
+msgid "UNACCEPTABLE"
+msgstr "KHÔNG THỂ CHẤP NHẬN"
+
+#: includes/forum.php:48
+msgid "Quote full messages of the previous user and quote the messages already containing other quotes"
+msgstr "Trích dẫn đầy đủ thông điệp của người sử dụng trước đây và báo tin nhắn đã có báo giá khác"
+
+#: includes/forum.php:49
+msgid "Post messages only contains external link"
+msgstr "Gửi tin nhắn chỉ chứa bên ngoài liên kết"
+
+#: includes/forum.php:50
+msgid "Post messages written in translite"
+msgstr "Đăng bài viết trong translite"
+
+#: includes/forum.php:51
+msgid "Posting of purposeless messages: consisting of smileys only or posts like \"Ok\", \"What?\", \"Who is there?\", etc."
+msgstr "Gửi tin nhắn purposeless: bao gồm các biểu tượng mặt cười chỉ hoặc bài viết như \"Ok\", \"Cái gì?\", \"Là ai không?\", vv."
+
+#: includes/forum.php:56
+msgid "Message posted despite the above warnings will be changed or deleted."
+msgstr "Thông điệp được đăng mặc dù các cảnh báo trên sẽ được thay đổi hoặc xóa bỏ."
+
+#: includes/forum.php:57
+msgid "This rule applies to all members and moderators, repeated actions will make you get ban or even lose your account."
+msgstr "Quy tắc này áp dụng cho tất cả các thành viên và người kiểm duyệt, lặp đi lặp lại hành động sẽ làm cho bạn có được ban hay thậm chí mất tài khoản của bạn."
+
+#: includes/my_smilies.php:63
+msgid "Delete"
+msgstr "Xóa"
+
+#: includes/my_smilies.php:65
+msgid "Add Smilies"
+msgstr "Thêm biểu tượng mặt cười"
+
+#: includes/tags.php:16 index.php:75
+msgid "bbCode Tags"
+msgstr "Hướng Dẫn Sử Dụng BBcode"
+
+#: includes/tags.php:22
+msgid "PHP code"
+msgstr "Mã PHP"
+
+#: includes/tags.php:25
+msgid "Link name"
+msgstr "Tên liên kết"
+
+#: includes/tags.php:26
+msgid "URL Link"
+msgstr "Liên kết URL"
+
+#: includes/tags.php:29
+msgid "Bold"
+msgstr "In đậm"
+
+#: includes/tags.php:33
+msgid "Italic"
+msgstr "In nghiêng"
+
+#: includes/tags.php:37
+msgid "Underline"
+msgstr "Gạch dưới"
+
+#: includes/tags.php:41
+msgid "Strike"
+msgstr "Tấn công"
+
+#: includes/tags.php:45
+msgid "Red"
+msgstr "Màu đỏ"
+
+#: includes/tags.php:49
+msgid "Green"
+msgstr "Xanh lục"
+
+#: includes/tags.php:53
+msgid "Blue"
+msgstr "Màu xanh"
+
+#: includes/tags.php:57
+msgid "Text Color"
+msgstr "Màu chữ"
+
+#: includes/tags.php:61
+msgid "Background Color"
+msgstr "Màu nền"
+
+#: includes/tags.php:65
+msgid "Quote"
+msgstr "Trích dẫn"
+
+#: includes/tags.php:69
+msgid "Bulleted list"
+msgstr "Danh sách dấu đầu dòng"
+
+#: includes/tags.php:72
+msgid "Title"
+msgstr "Tiêu đề"
+
+#: includes/tags.php:72
+msgid "Text"
+msgstr "Văn bản"
+
+#: includes/tags.php:73
+msgid "Spoiler"
+msgstr "Spoiler"
+
+#: index.php:42
+msgid "Animals"
+msgstr "Động vật"
+
+#: index.php:43
+msgid "Brawl, Weapons"
+msgstr "Cuộc Ẩu Đả, Vũ Khí"
+
+#: index.php:44
+msgid "Emotions"
+msgstr "Cảm xúc"
+
+#: index.php:45
+msgid "Flowers"
+msgstr "Hoa"
+
+#: index.php:46
+msgid "Food, Alcohol"
+msgstr "Thức Ăn, Rượu"
+
+#: index.php:47
+msgid "Gestures"
+msgstr "Cử chỉ"
+
+#: index.php:48
+msgid "Holidays"
+msgstr "Ngày nghỉ"
+
+#: index.php:49
+msgid "Love"
+msgstr "Tình yêu"
+
+#: index.php:50
+msgid "Miscellaneous"
+msgstr "Linh tinh"
+
+#: index.php:51
+msgid "Music, Dancing"
+msgstr "Âm nhạc, khiêu vũ"
+
+#: index.php:52
+msgid "Sports"
+msgstr "Thể thao"
+
+#: index.php:53
+msgid "Technology"
+msgstr "Công nghệ"
+

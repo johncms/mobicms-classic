@@ -1,4 +1,12 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 namespace Mobicms\Tools;
 
@@ -7,6 +15,7 @@ use Mobicms\Api\ConfigInterface;
 use Mobicms\Api\ToolsInterface;
 use Mobicms\Api\UserInterface;
 use Mobicms\Checkpoint\UserConfig;
+use Mobicms\Http\Request;
 use Psr\Container\ContainerInterface;
 
 class Utilites implements ToolsInterface
@@ -20,6 +29,11 @@ class Utilites implements ToolsInterface
      * @var \PDO
      */
     private $db;
+
+    /**
+     * @var Request
+     */
+    private $request;
 
     /**
      * @var UserInterface::class
@@ -41,6 +55,7 @@ class Utilites implements ToolsInterface
         $this->container = $container;
         $this->config = $container->get(ConfigInterface::class);
         $this->db = $container->get(\PDO::class);
+        $this->request = $container->get(Request::class);
         $this->user = $container->get(UserInterface::class);
         $this->userConfig = $this->user->getConfig();
 
@@ -156,58 +171,66 @@ class Utilites implements ToolsInterface
      * За основу взята доработанная функция от форума SMF 2.x.x
      *
      * @param string $url
-     * @param int    $start
      * @param int    $total
-     * @param int    $kmess
+     * @param int    $listSize
+     * @param int    $offset
      * @return string
      */
-    public function displayPagination($url, $start, $total, $kmess)
+    public function displayPagination($url, $total, $listSize = null, $offset = null)
     {
+        if ($offset === null) {
+            $offset = $this->getPgStart();
+        }
+
+        if ($listSize === null) {
+            $listSize = $this->userConfig->kmess;
+        }
+
         $neighbors = 2;
-        if ($start >= $total) {
-            $start = max(0, $total - (($total % $kmess) == 0 ? $kmess : ($total % $kmess)));
+        if ($offset >= $total) {
+            $offset = max(0, $total - (($total % $listSize) == 0 ? $listSize : ($total % $listSize)));
         } else {
-            $start = max(0, (int)$start - ((int)$start % (int)$kmess));
+            $offset = max(0, (int)$offset - ((int)$offset % (int)$listSize));
         }
 
         $base_link = '<a class="pagenav" href="' . strtr($url, ['%' => '%%']) . 'page=%d' . '">%s</a>';
-        $out[] = $start == 0 ? '' : sprintf($base_link, $start / $kmess, '&lt;&lt;');
+        $out[] = $offset == 0 ? '' : sprintf($base_link, $offset / $listSize, '&lt;&lt;');
 
-        if ($start > $kmess * $neighbors) {
+        if ($offset > $listSize * $neighbors) {
             $out[] = sprintf($base_link, 1, '1');
         }
 
-        if ($start > $kmess * ($neighbors + 1)) {
+        if ($offset > $listSize * ($neighbors + 1)) {
             $out[] = '<span style="font-weight: bold;">...</span>';
         }
 
         for ($nCont = $neighbors; $nCont >= 1; $nCont--) {
-            if ($start >= $kmess * $nCont) {
-                $tmpStart = $start - $kmess * $nCont;
-                $out[] = sprintf($base_link, $tmpStart / $kmess + 1, $tmpStart / $kmess + 1);
+            if ($offset >= $listSize * $nCont) {
+                $tmpStart = $offset - $listSize * $nCont;
+                $out[] = sprintf($base_link, $tmpStart / $listSize + 1, $tmpStart / $listSize + 1);
             }
         }
 
-        $out[] = '<span class="currentpage"><b>' . ($start / $kmess + 1) . '</b></span>';
-        $tmpMaxPages = (int)(($total - 1) / $kmess) * $kmess;
+        $out[] = '<span class="currentpage"><b>' . ($offset / $listSize + 1) . '</b></span>';
+        $tmpMaxPages = (int)(($total - 1) / $listSize) * $listSize;
 
         for ($nCont = 1; $nCont <= $neighbors; $nCont++) {
-            if ($start + $kmess * $nCont <= $tmpMaxPages) {
-                $tmpStart = $start + $kmess * $nCont;
-                $out[] = sprintf($base_link, $tmpStart / $kmess + 1, $tmpStart / $kmess + 1);
+            if ($offset + $listSize * $nCont <= $tmpMaxPages) {
+                $tmpStart = $offset + $listSize * $nCont;
+                $out[] = sprintf($base_link, $tmpStart / $listSize + 1, $tmpStart / $listSize + 1);
             }
         }
 
-        if ($start + $kmess * ($neighbors + 1) < $tmpMaxPages) {
+        if ($offset + $listSize * ($neighbors + 1) < $tmpMaxPages) {
             $out[] = '<span style="font-weight: bold;">...</span>';
         }
 
-        if ($start + $kmess * $neighbors < $tmpMaxPages) {
-            $out[] = sprintf($base_link, $tmpMaxPages / $kmess + 1, $tmpMaxPages / $kmess + 1);
+        if ($offset + $listSize * $neighbors < $tmpMaxPages) {
+            $out[] = sprintf($base_link, $tmpMaxPages / $listSize + 1, $tmpMaxPages / $listSize + 1);
         }
 
-        if ($start + $kmess < $total) {
-            $display_page = ($start + $kmess) > $total ? $total : ($start / $kmess + 2);
+        if ($offset + $listSize < $total) {
+            $display_page = ($offset + $listSize) > $total ? $total : ($offset / $listSize + 2);
             $out[] = sprintf($base_link, $display_page, '&gt;&gt;');
         }
 
@@ -264,7 +287,7 @@ class Utilites implements ToolsInterface
             }
         }
 
-        return '<a href="' . $this->config['homeurl'] . '/index.php">' . $placelist['homepage'] . '</a>';
+        return '<a href="' . $this->config['homeurl'] . '/">' . $placelist['homepage'] . '</a>';
     }
 
     /**
@@ -303,18 +326,18 @@ class Utilites implements ToolsInterface
         } else {
             $out .= '<table cellpadding="0" cellspacing="0"><tr><td>';
 
-            if (file_exists((ROOT_PATH . 'files/users/avatar/' . $user['id'] . '.png'))) {
-                $out .= '<img src="' . $homeurl . '/files/users/avatar/' . $user['id'] . '.png" width="32" height="32" alt="" />&#160;';
+            if (file_exists(UPLOAD_PATH . 'users/avatar/' . $user['id'] . '.png')) {
+                $out .= '<img src="' . $homeurl . '/uploads/users/avatar/' . $user['id'] . '.png" width="32" height="32" alt="" />&#160;';
             } else {
-                $out .= '<img src="' . $homeurl . '/images/empty.png" width="32" height="32" alt="" />&#160;';
+                $out .= '<img src="' . $homeurl . '/assets/images/empty.png" width="32" height="32" alt="" />&#160;';
             }
 
             $out .= '</td><td>';
 
             if ($user['sex']) {
-                $out .= $this->image(($user['sex'] == 'm' ? 'm' : 'w') . ($user['datereg'] > time() - 86400 ? '_new' : '') . '.png', ['class' => 'icon-inline']);
+                $out .= $this->image('images/' . ($user['sex'] == 'm' ? 'm' : 'w') . ($user['datereg'] > time() - 86400 ? '_new' : '') . '.png', ['class' => 'icon-inline']);
             } else {
-                $out .= $this->image('del.png');
+                $out .= $this->image('images/del.png');
             }
 
             $out .= !$this->user->isValid() || $this->user->id == $user['id'] ? '<b>' . $user['name'] . '</b>' : '<a href="' . $homeurl . '/profile/?user=' . $user['id'] . '"><b>' . $user['name'] . '</b></a>';
@@ -338,7 +361,7 @@ class Utilites implements ToolsInterface
             }
 
             if (!isset($arg['stshide']) && !empty($user['status'])) {
-                $out .= '<div class="status">' . $this->image('label.png', ['class' => 'icon-inline']) . $user['status'] . '</div>';
+                $out .= '<div class="status">' . $this->image('images/label.png', ['class' => 'icon-inline']) . $user['status'] . '</div>';
             }
 
             $out .= '</td></tr></table>';
@@ -368,7 +391,7 @@ class Utilites implements ToolsInterface
                 $out .= '<div><span class="gray">' . _t('Browser', 'system') . ':</span> ' . htmlspecialchars($user['browser']) . '</div>' .
                     '<div><span class="gray">' . _t('IP address', 'system') . ':</span> ';
                 $hist = $mod == 'history' ? '&amp;mod=history' : '';
-                $ip = long2ip($user['ip']);
+                $ip = $user['ip'];
 
                 if ($this->user->rights && isset($user['ip_via_proxy']) && $user['ip_via_proxy']) {
                     $out .= '<b class="red"><a href="' . $homeurl . '/admin/index.php?act=search_ip&amp;ip=' . $ip . $hist . '">' . $ip . '</a></b>';
@@ -415,6 +438,24 @@ class Utilites implements ToolsInterface
     }
 
     /**
+     * Get Pagination START offset
+     *
+     * @return int|string
+     */
+    public function getPgStart($db = false)
+    {
+        $page = $this->request->paramsGet()->get('page', 1);
+        $start = $this->request->paramsGet()->exists('page')
+            ? $page * $this->userConfig->kmess - $this->userConfig->kmess
+            : $this->request->paramsGet()->get('start', 0);
+        $start = abs(intval($start));
+
+        return $db
+            ? ' LIMIT ' . $this->userConfig->kmess . ' OFFSET ' . $start
+            : $start;
+    }
+
+    /**
      * @return string
      */
     public function getSkin()
@@ -452,12 +493,11 @@ class Utilites implements ToolsInterface
      */
     public function image($name, array $args = [])
     {
-        $homeurl = $this->config['homeurl'];
-
+        //TODO: разобраться с путями картинок в темах
         if (is_file(ROOT_PATH . 'theme/' . $this->getSkin() . '/images/' . $name)) {
-            $src = $homeurl . '/theme/' . $this->getSkin() . '/images/' . $name;
-        } elseif (is_file(ROOT_PATH . 'images/' . $name)) {
-            $src = $homeurl . '/images/' . $name;
+            $src = $this->config->homeurl . '/theme/' . $this->getSkin() . '/images/' . $name;
+        } elseif (is_file(ROOT_PATH . 'assets/' . $name)) {
+            $src = $this->config->homeurl . '/assets/' . $name;
         } else {
             return false;
         }
@@ -557,7 +597,7 @@ class Utilites implements ToolsInterface
         static $smiliesCache = [];
 
         if (empty($smiliesCache)) {
-            $file = ROOT_PATH . 'files/cache/smileys.dat';
+            $file = CACHE_PATH . 'smilies.cache';
 
             if (file_exists($file) && ($smileys = file_get_contents($file)) !== false) {
                 $smiliesCache = unserialize($smileys);

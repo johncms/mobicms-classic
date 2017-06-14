@@ -1,4 +1,12 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 namespace Mobicms;
 
@@ -211,21 +219,21 @@ class Bbcode implements Api\BbcodeInterface
               }
             }
             </script>
-            <a href="javascript:tag(\'[b]\', \'[/b]\')"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/bold.gif" alt="b" title="' . _t('Bold', 'system') . '" /></a>
-            <a href="javascript:tag(\'[i]\', \'[/i]\')"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/italics.gif" alt="i" title="' . _t('Italic', 'system') . '" /></a>
-            <a href="javascript:tag(\'[u]\', \'[/u]\')"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/underline.gif" alt="u" title="' . _t('Underline', 'system') . '" /></a>
-            <a href="javascript:tag(\'[s]\', \'[/s]\')"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/strike.gif" alt="s" title="' . _t('Strike', 'system') . '" /></a>
-            <a href="javascript:show_hide(\'color\');"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/color.gif" title="' . _t('Text Color', 'system') . '" alt="color" /></a>
-            <a href="javascript:show_hide(\'bg\');"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/color_bg.gif" title="' . _t('Background Color', 'system') . '" alt="bg color" /></a>
-            <a href="javascript:tag(\'[*]\', \'[/*]\')"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/list.gif" alt="li" title="' . _t('List', 'system') . '" /></a>
-            <a href="javascript:tag(\'[spoiler=]\', \'[/spoiler]\');"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/sp.gif" alt="spoiler" title="' . _t('Spoiler', 'system') . '" /></a>
-            <a href="javascript:tag(\'[c]\', \'[/c]\')"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/quote.gif" alt="quote" title="' . _t('Quote', 'system') . '" /></a>
-            <a href="javascript:tag(\'[url=]\', \'[/url]\')"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/link.gif" alt="url" title="' . _t('URL', 'system') . '" /></a>
-            <a href="javascript:show_hide(\'code\');"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/php.gif" title="' . _t('Code', 'system') . '" alt="Code" /></a>
-            <a href="javascript:tag(\'[youtube]\', \'[/youtube]\')"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/youtube.gif" title="Youtube" alt="bg youtube" /></a>';
+            <a href="javascript:tag(\'[b]\', \'[/b]\')"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/bold.gif" alt="b" title="' . _t('Bold', 'system') . '" /></a>
+            <a href="javascript:tag(\'[i]\', \'[/i]\')"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/italics.gif" alt="i" title="' . _t('Italic', 'system') . '" /></a>
+            <a href="javascript:tag(\'[u]\', \'[/u]\')"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/underline.gif" alt="u" title="' . _t('Underline', 'system') . '" /></a>
+            <a href="javascript:tag(\'[s]\', \'[/s]\')"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/strike.gif" alt="s" title="' . _t('Strike', 'system') . '" /></a>
+            <a href="javascript:show_hide(\'color\');"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/color.gif" title="' . _t('Text Color', 'system') . '" alt="color" /></a>
+            <a href="javascript:show_hide(\'bg\');"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/color_bg.gif" title="' . _t('Background Color', 'system') . '" alt="bg color" /></a>
+            <a href="javascript:tag(\'[*]\', \'[/*]\')"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/list.gif" alt="li" title="' . _t('List', 'system') . '" /></a>
+            <a href="javascript:tag(\'[spoiler=]\', \'[/spoiler]\');"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/sp.gif" alt="spoiler" title="' . _t('Spoiler', 'system') . '" /></a>
+            <a href="javascript:tag(\'[c]\', \'[/c]\')"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/quote.gif" alt="quote" title="' . _t('Quote', 'system') . '" /></a>
+            <a href="javascript:tag(\'[url=]\', \'[/url]\')"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/link.gif" alt="url" title="' . _t('URL', 'system') . '" /></a>
+            <a href="javascript:show_hide(\'code\');"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/php.gif" title="' . _t('Code', 'system') . '" alt="Code" /></a>
+            <a href="javascript:tag(\'[youtube]\', \'[/youtube]\')"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/youtube.gif" title="Youtube" alt="bg youtube" /></a>';
 
         if ($this->user->isValid()) {
-            $out .= ' <a href="javascript:show_hide(\'sm\');"><img style="border: 0;" src="' . $this->homeUrl . '/images/bb/smileys.gif" alt="sm" title="' . _t('Smilies', 'system') . '" /></a><br />
+            $out .= ' <a href="javascript:show_hide(\'sm\');"><img style="border: 0;" src="' . $this->homeUrl . '/assets/images/bb/smileys.gif" alt="sm" title="' . _t('Smilies', 'system') . '" /></a><br />
                 <div id="sm" style="display:none">' . $bb_smileys . '</div>';
         } else {
             $out .= '<br />';

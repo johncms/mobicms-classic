@@ -1,4 +1,12 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 defined('MOBICMS') or die('Error: restricted access');
 
@@ -13,9 +21,11 @@ if (version_compare(PHP_VERSION, '5.6', '<')) {
 
 define('START_MEMORY', memory_get_usage());
 define('START_TIME', microtime(true));
+
 define('ROOT_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR);
+define('UPLOAD_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR);
 define('CONFIG_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR);
-define('CACHE_PATH', ROOT_PATH . 'files' . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR);
+define('CACHE_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR);
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -88,34 +98,22 @@ class App
     }
 }
 
+// Счетчик активности IP адресов
+App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
+
 // Проверка IP адреса на бан
 try {
-    new Mobicms\Tools\IpBan(App::getContainer());
-} catch (Mobicms\Tools\Exception\IpBanException $e) {
+    new Mobicms\System\IpBan(App::getContainer());
+} catch (Mobicms\System\Exception\IpBanException $e) {
     header($e->getMessage());
     exit;
 }
 
+// Автоочистка системы
+new Mobicms\System\Clean(App::getContainer());
+
 session_name('SESID');
 session_start();
-
-call_user_func(function () {
-    /** @var Psr\Container\ContainerInterface $container */
-    $container = App::getContainer();
-
-    /** @var PDO $db */
-    $db = $container->get(PDO::class);
-
-    // Автоочистка системы
-    $cacheFile = CACHE_PATH . 'cleanup.dat';
-
-    if (!file_exists($cacheFile) || filemtime($cacheFile) < (time() - 86400)) {
-        $db->exec('DELETE FROM `cms_sessions` WHERE `lastdate` < ' . (time() - 86400));
-        $db->exec("DELETE FROM `cms_users_iphistory` WHERE `time` < " . (time() - 7776000));
-        $db->query('OPTIMIZE TABLE `cms_sessions`, `cms_users_iphistory`, `cms_mail`, `cms_contact`');
-        file_put_contents($cacheFile, time());
-    }
-});
 
 /**
  * Translate a message
@@ -142,10 +140,6 @@ function _p($singular, $plural, $number, $textDomain = 'default')
 {
     return App::getTranslator()->translatePlural($singular, $plural, $number, $textDomain);
 }
-
-$kmess = App::getContainer()->get(Mobicms\Api\UserInterface::class)->getConfig()->kmess;
-$page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
-$start = isset($_REQUEST['page']) ? $page * $kmess - $kmess : (isset($_GET['start']) ? abs(intval($_GET['start'])) : 0);
 
 if (extension_loaded('zlib') && !ini_get('zlib.output_compression')) {
     ob_start('ob_gzhandler');

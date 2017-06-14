@@ -1,4 +1,12 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 namespace Mobicms;
 
@@ -45,13 +53,19 @@ class Comments
 
     function __construct($arg = [])
     {
-        global $mod, $start, $kmess;
+        $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 
         /** @var \Psr\Container\ContainerInterface $container */
         $container = \App::getContainer();
         $this->tools = $container->get(Api\ToolsInterface::class);
         $this->db = $container->get(\PDO::class);
         $this->systemUser = $container->get(Api\UserInterface::class );
+
+        /** @var \Mobicms\Http\Response $response */
+        $response = $container->get(\Mobicms\Http\Response::class);
+
+        /** @var \Mobicms\Checkpoint\UserConfig $userConfig */
+        $userConfig = $this->systemUser->getConfig();
 
         $this->comments_table = $arg['comments_table'];
         $this->object_table = !empty($arg['object_table']) ? $arg['object_table'] : false;
@@ -120,7 +134,7 @@ class Comments
                                     $this->item,
                                 ]);
 
-                                header('Location: ' . str_replace('&amp;', '&', $this->url));
+                                $response->redirect(str_replace('&amp;', '&', $this->url))->sendHeaders();
                             } else {
                                 echo $this->tools->displayError($message['error'], '<a href="' . $this->url . '&amp;mod=reply&amp;item=' . $this->item . '">' . _t('Back', 'system') . '</a>');
                             }
@@ -176,7 +190,7 @@ class Comments
                                     $this->item,
                                 ]);
 
-                                header('Location: ' . str_replace('&amp;', '&', $this->url));
+                                $response->redirect(str_replace('&amp;', '&', $this->url))->sendHeaders();
                             } else {
                                 echo $this->tools->displayError($message['error'], '<a href="' . $this->url . '&amp;mod=edit&amp;item=' . $this->item . '">' . _t('Back', 'system') . '</a>');
                             }
@@ -225,7 +239,8 @@ class Comments
                             // Обновляем счетчик комментариев
                             $this->msg_total(1);
                         }
-                        header('Location: ' . str_replace('&amp;', '&', $this->url));
+
+                        $response->redirect(str_replace('&amp;', '&', $this->url))->sendHeaders();
                     } else {
                         echo '<div class="phdr"><a href="' . $this->url . '"><b>' . $arg['title'] . '</b></a> | ' . _t('Delete', 'system') . '</div>' .
                             '<div class="rmenu"><p>' . _t('Do you really want to delete?', 'system') . '<br />' .
@@ -268,14 +283,14 @@ class Comments
                 // Показываем список комментариев
                 echo '<div class="phdr"><b>' . $arg['title'] . '</b></div>';
 
-                if ($this->total > $kmess) {
-                    echo '<div class="topmenu">' . $this->tools->displayPagination($this->url . '&amp;', $start, $this->total, $kmess) . '</div>';
+                if ($this->total > $userConfig->kmess) {
+                    echo '<div class="topmenu">' . $this->tools->displayPagination($this->url . '&amp;', $this->total) . '</div>';
                 }
 
                 if ($this->total) {
                     $req = $this->db->query("SELECT `" . $this->comments_table . "`.*, `" . $this->comments_table . "`.`id` AS `subid`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`, `users`.`id`
                     FROM `" . $this->comments_table . "` LEFT JOIN `users` ON `" . $this->comments_table . "`.`user_id` = `users`.`id`
-                    WHERE `sub_id` = '" . $this->sub_id . "' ORDER BY `subid` DESC LIMIT $start, $kmess");
+                    WHERE `sub_id` = '" . $this->sub_id . "' ORDER BY `subid` DESC" . $this->tools->getPgStart(true));
                     $i = 0;
 
                     while ($res = $req->fetch()) {
@@ -323,8 +338,8 @@ class Comments
 
                 echo '<div class="phdr">' . _t('Total', 'system') . ': ' . $this->total . '</div>';
 
-                if ($this->total > $kmess) {
-                    echo '<div class="topmenu">' . $this->tools->displayPagination($this->url . '&amp;', $start, $this->total, $kmess) . '</div>' .
+                if ($this->total > $userConfig->kmess) {
+                    echo '<div class="topmenu">' . $this->tools->displayPagination($this->url . '&amp;', $this->total) . '</div>' .
                         '<p><form action="' . $this->url . '" method="post">' .
                         '<input type="text" name="page" size="2"/>' .
                         '<input type="submit" value="' . _t('To Page', 'system') . ' &gt;&gt;"/>' .
@@ -343,15 +358,15 @@ class Comments
         /** @var \Psr\Container\ContainerInterface $container */
         $container = \App::getContainer();
 
-        /** @var Api\EnvironmentInterface $env */
-        $env = $container->get(Api\EnvironmentInterface::class);
+        /** @var \Mobicms\Http\Request $request */
+        $request = $container->get(\Mobicms\Http\Request::class);
 
         // Формируем атрибуты сообщения
         $attributes = [
             'author_name' => $this->systemUser->name,
-            'author_ip' => $env->getIp(),
-            'author_ip_via_proxy' => $env->getIpViaProxy(),
-            'author_browser' => $env->getUserAgent(),
+            'author_ip' => $request->ip(),
+            'author_ip_via_proxy' => $request->ipViaProxy(),
+            'author_browser' => $request->userAgent(),
         ];
 
         // Записываем комментарий в базу
@@ -400,7 +415,6 @@ class Comments
         $message = isset($_POST['message']) ? mb_substr(trim($_POST['message']), 0, $this->max_lenght) : false;
         $code = isset($_POST['code']) ? intval($_POST['code']) : null;
         $code_chk = isset($_SESSION['code']) ? $_SESSION['code'] : null;
-        $translit = isset($_POST['translit']);
 
         // Проверяем код
         if ($code == $code_chk) {

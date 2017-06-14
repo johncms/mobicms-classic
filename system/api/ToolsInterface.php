@@ -1,4 +1,12 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 namespace Mobicms\Api;
 
@@ -6,13 +14,13 @@ interface ToolsInterface
 {
     public function antiflood();
 
-    public function checkout($string, $br, $tags);
+    public function checkout($string, $br = 0, $tags = 0);
 
     public function displayDate($var);
 
     public function displayError($error, $link = '');
 
-    public function displayPagination($url, $start, $total, $kmess);
+    public function displayPagination($url, $total, $listSize = null, $offset = null);
 
     public function displayPlace($user_id, $place, $headmod);
 
@@ -20,11 +28,13 @@ interface ToolsInterface
 
     public function getFlag($locale);
 
+    public function getPgStart($db = false);
+
     public function getSkin();
 
     public function getUser($id);
 
-    public function image($name, array $args);
+    public function image($name, array $args = []);
 
     public function isIgnor($id);
 

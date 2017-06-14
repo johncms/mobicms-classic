@@ -1,38 +1,128 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 define('MOBICMS', 1);
 
 require('system/bootstrap.php');
 
-$act = isset($_GET['act']) ? trim($_GET['act']) : '';
+/** @var Psr\Container\ContainerInterface $container */
+$container = App::getContainer();
 
+/** @var Mobicms\Http\Request $request */
+$request = $container->get(Mobicms\Http\Request::class);
 
-if (isset($_SESSION['ref'])) {
-    unset($_SESSION['ref']);
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
+/** @var Mobicms\Http\Router $router */
+$router = $container->get(Mobicms\Http\Router::class);
+
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
+
+// Главная страница
+$router->respond('GET', '/', function () {
+    include ROOT_PATH . 'modules/homepage/index.php';
+});
+
+// Админ панель
+if ($systemUser->isValid() && $systemUser->rights >= 6) {
+    $router->respond(['GET', 'POST'], '@^/admin/', function () {
+        include ROOT_PATH . 'modules/admin/index.php';
+    });
 }
 
-if (isset($_GET['err'])) {
-    $act = 404;
-}
+// Фотоальбомы
+$router->respond(['GET', 'POST'], '@^/album/', function () {
+    include ROOT_PATH . 'modules/album/index.php';
+});
 
-switch ($act) {
-    case '404':
-        /** @var Mobicms\Api\ToolsInterface $tools */
-        $tools = App::getContainer()->get(Mobicms\Api\ToolsInterface::class);
+// Загрузки
+$router->respond(['GET', 'POST'], '@^/downloads/', function () {
+    include ROOT_PATH . 'modules/downloads/index.php';
+});
 
-        $headmod = 'error404';
-        require('system/head.php');
-        echo $tools->displayError(_t('The requested page does not exists'));
-        break;
+// Форум
+$router->respond(['GET', 'POST'], '@^/forum/', function () {
+    include ROOT_PATH . 'modules/forum/index.php';
+});
 
-    default:
-        // Главное меню сайта
-        if (isset($_SESSION['ref'])) {
-            unset($_SESSION['ref']);
-        }
-        $headmod = 'mainpage';
-        require('system/head.php');
-        include 'system/mainmenu.php';
-}
+// Гостевая
+$router->respond(['GET', 'POST'], '@^/guestbook/', function () {
+    include ROOT_PATH . 'modules/guestbook/index.php';
+});
 
-require('system/end.php');
+// Справка
+$router->respond(['GET', 'POST'], '@^/help/', function () {
+    include ROOT_PATH . 'modules/help/index.php';
+});
+
+// Библиотека
+$router->respond(['GET', 'POST'], '@^/library/', function () {
+    include ROOT_PATH . 'modules/library/index.php';
+});
+
+// Вход / выход с сайта
+$router->respond(['GET', 'POST'], '@^/login/', function () {
+    include ROOT_PATH . 'modules/login/index.php';
+});
+
+// Почта
+$router->respond(['GET', 'POST'], '@^/mail/', function () {
+    include ROOT_PATH . 'modules/mail/index.php';
+});
+
+// Новости
+$router->respond(['GET', 'POST'], '@^/news/', function () {
+    include ROOT_PATH . 'modules/news/index.php';
+});
+
+// Пользовательские профили
+$router->respond(['GET', 'POST'], '@^/profile/', function () {
+    include ROOT_PATH . 'modules/profile/index.php';
+});
+
+// Регистрация
+$router->respond(['GET', 'POST'], '@^/registration/', function () {
+    include ROOT_PATH . 'modules/registration/index.php';
+});
+
+// RSS
+$router->respond('GET', '/rss/', function () {
+    include ROOT_PATH . 'modules/rss/index.php';
+});
+
+// Пользователи (актив сайта)
+$router->respond(['GET', 'POST'], '@^/users/', function () {
+    include ROOT_PATH . 'modules/users/index.php';
+});
+
+// Обработка ошибок
+$router->onHttpError(function ($code, $router) use ($response) {
+    switch ($code) {
+        case 404:
+            $response->body(
+                'ERROR 404: Page not found.'
+            );
+            break;
+        case 405:
+            $response->body(
+                'ERROR 404: You can\'t do that!'
+            );
+            break;
+        default:
+            $response->body(
+                'ERROR: Oh no, a bad error happened that caused a ' . $code
+            );
+    }
+});
+
+// Запускаем Роутер
+$router->dispatch($request, $response);

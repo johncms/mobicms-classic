@@ -1,0 +1,156 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: johncms\n"
+"POT-Creation-Date: 2017-06-12 21:14+0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"Last-Translator: mobiCMS <dev@mobicms.net>\n"
+"Language-Team: Lithuanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: crowdin.com\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: lt_LT\n"
+"X-Poedit-KeywordsList: _t;_p:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Crowdin-Project: johncms\n"
+"X-Crowdin-Language: lt\n"
+"X-Crowdin-File: /modules/news/default.pot\n"
+
+#: index.php:41 index.php:48 index.php:186 index.php:244 index.php:290
+#: index.php:308
+msgid "News"
+msgstr "Naujienos"
+
+#: index.php:48 index.php:311
+msgid "Add"
+msgstr "Pridėti"
+
+#: index.php:57 index.php:198
+msgid "You have not entered news title"
+msgstr "Jūs neįrašėte jokio naujienos pavadinimo"
+
+#: index.php:61 index.php:202
+msgid "You have not entered news text"
+msgstr "Jūs neįrašėte jokio naujienos teksto"
+
+#: index.php:67
+#, php-format
+msgid "You cannot add the message so often. Please, wait %d seconds."
+msgstr "Jus negalite rašyti pranešimą taip dažnai. Prašome palaukti %d sekundžių."
+
+#: index.php:148
+msgid "News added"
+msgstr "Naujiena pridėta"
+
+#: index.php:148 index.php:150 index.php:175 index.php:189 index.php:233
+#: index.php:255 index.php:262 index.php:269 index.php:295
+msgid "Back to news"
+msgstr "Atgal į naujienas"
+
+#: index.php:154 index.php:227
+msgid "Title"
+msgstr "Pavadinimas"
+
+#: index.php:156 index.php:229
+msgid "Text"
+msgstr "Tekstas"
+
+#: index.php:158
+msgid "Discussion"
+msgstr "Diskusija"
+
+#: index.php:160
+msgid "Do not discuss"
+msgstr "Nebuvo aptartą"
+
+#: index.php:173 index.php:231
+msgid "Save"
+msgstr "Išsaugoti"
+
+#: index.php:186 index.php:335
+msgid "Edit"
+msgstr "Redaguoti"
+
+#: index.php:189
+msgid "Wrong data"
+msgstr "Klaidingi duomenys"
+
+#: index.php:220
+msgid "Repeat"
+msgstr "Pakartoti"
+
+#: index.php:222
+msgid "Article changed"
+msgstr "Straipsnis pakeistas"
+
+#: index.php:222
+msgid "Continue"
+msgstr "Tęsti"
+
+#: index.php:244 index.php:277 index.php:311
+msgid "Clear"
+msgstr "Išvalyti"
+
+#: index.php:255
+msgid "Delete all news older than 1 week"
+msgstr "Ištrinti naujienas vyresnios nei 1 savaite"
+
+#: index.php:262
+msgid "Delete all news"
+msgstr "Ištrinti visas naujienas"
+
+#: index.php:269
+msgid "Delete all news older than 1 month"
+msgstr "Ištrinti naujienas vyresnios nei 1 menuo"
+
+#: index.php:273
+msgid "Clearing parameters"
+msgstr "Valymo nustatymai"
+
+#: index.php:274
+msgid "Older than 1 month"
+msgstr "Vyresni nei 1 mėnesis"
+
+#: index.php:275
+msgid "Older than 1 week"
+msgstr "Vyresni nei 1 savaite"
+
+#: index.php:276
+msgid "Clear all"
+msgstr "Išvalyti viską"
+
+#: index.php:279 index.php:298
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: index.php:290 index.php:298 index.php:336
+msgid "Delete"
+msgstr "Ištrinti"
+
+#: index.php:295
+msgid "Article deleted"
+msgstr "Straipsnis pašalintas"
+
+#: index.php:297
+msgid "Do you really want to delete?"
+msgstr "Ar tikrai norite ištrinti?"
+
+#: index.php:323
+msgid "Author"
+msgstr "Autorius"
+
+#: index.php:330
+msgid "Discuss in Forum"
+msgstr "Diskutuoti forume"
+
+#: index.php:342
+msgid "Total"
+msgstr "Viso"
+
+#: index.php:348
+msgid "To Page"
+msgstr "Į puslapį"
+

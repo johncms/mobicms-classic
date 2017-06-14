@@ -1,4 +1,12 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 namespace Mobicms\Api;
 
@@ -14,6 +22,7 @@ namespace Mobicms\Api;
  * @property $flsz
  * @property $gzip
  * @property $homeurl
+ * @property $base_path
  * @property $karma
  * @property $lng
  * @property $lng_list

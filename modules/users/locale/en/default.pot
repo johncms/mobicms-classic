@@ -1,0 +1,173 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: JohnCMS 7.0\n"
+"POT-Creation-Date: 2017-06-12 21:15+0400\n"
+"PO-Revision-Date: 2016-08-26 11:27+0400\n"
+"Last-Translator: \n"
+"Language-Team: https://crowdin.com/project/johncms <translate@mobicms.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
+"X-Poedit-KeywordsList: _t;_p:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/admlist.php:13 includes/admlist.php:30 index.php:77
+msgid "Administration"
+msgstr ""
+
+#: includes/admlist.php:30 includes/birth.php:30 includes/search.php:35
+#: includes/top.php:61 includes/top.php:69 includes/top.php:78
+#: includes/top.php:98 includes/userlist.php:31 index.php:63 index.php:69
+msgid "Community"
+msgstr ""
+
+#: includes/admlist.php:39 includes/birth.php:42 includes/online.php:97
+#: includes/online.php:171 includes/search.php:85 includes/userlist.php:44
+msgid "Total"
+msgstr ""
+
+#: includes/admlist.php:45 includes/birth.php:48 includes/online.php:103
+#: includes/online.php:177 includes/search.php:91 includes/userlist.php:50
+msgid "To Page"
+msgstr ""
+
+#: includes/admlist.php:49 includes/search.php:28 includes/search.php:35
+#: includes/userlist.php:54
+msgid "User Search"
+msgstr ""
+
+#: includes/admlist.php:50 includes/birth.php:55 includes/search.php:102
+#: includes/top.php:104 includes/userlist.php:55 index.php:82
+msgid "Back"
+msgstr ""
+
+#: includes/birth.php:13 includes/birth.php:30 index.php:78
+msgid "Birthdays"
+msgstr ""
+
+#: includes/birth.php:52 includes/online.php:168 includes/top.php:43
+#: includes/top.php:89
+msgid "The list is empty"
+msgstr ""
+
+#: includes/online.php:14
+msgid "Online"
+msgstr ""
+
+#: includes/online.php:41 index.php:76
+msgid "Users"
+msgstr ""
+
+#: includes/online.php:42
+msgid "History"
+msgstr ""
+
+#: includes/online.php:45
+msgid "Guests"
+msgstr ""
+
+#: includes/online.php:46
+msgid "IP Activity"
+msgstr ""
+
+#: includes/online.php:49
+msgid "Who is online?"
+msgstr ""
+
+#: includes/search.php:39 index.php:73
+msgid "Search"
+msgstr ""
+
+#: includes/search.php:46 includes/search.php:50
+msgid "Nickname"
+msgstr ""
+
+#: includes/search.php:46
+msgid "Invalid length"
+msgstr ""
+
+#: includes/search.php:50
+msgid "Invalid characters"
+msgstr ""
+
+#: includes/search.php:65
+msgid "Searching results"
+msgstr ""
+
+#: includes/search.php:82
+msgid "Your search did not match any results"
+msgstr ""
+
+#: includes/search.php:98
+msgid "Search by Nickname are case insensitive. For example <strong>UsEr</strong> and <strong>user</strong> are identical."
+msgstr ""
+
+#: includes/search.php:101
+msgid "New search"
+msgstr ""
+
+#: includes/top.php:14 index.php:80
+msgid "Top Activity"
+msgstr ""
+
+#: includes/top.php:49 includes/top.php:101
+msgid "Forum"
+msgstr ""
+
+#: includes/top.php:50 includes/top.php:64
+msgid "Guestbook"
+msgstr ""
+
+#: includes/top.php:51
+msgid "Comments"
+msgstr ""
+
+#: includes/top.php:55
+msgid "Karma"
+msgstr ""
+
+#: includes/top.php:61
+msgid "Most active in Guestbook"
+msgstr ""
+
+#: includes/top.php:69
+msgid "Most commentators"
+msgstr ""
+
+#: includes/top.php:72 includes/top.php:92
+msgid "Home"
+msgstr ""
+
+#: includes/top.php:78
+msgid "Best Karma"
+msgstr ""
+
+#: includes/top.php:98
+msgid "Most active in Forum"
+msgstr ""
+
+#: includes/userlist.php:13 includes/userlist.php:31
+msgid "List of users"
+msgstr ""
+
+#: index.php:38
+msgid "For registered users only"
+msgstr ""
+
+#: index.php:71
+msgid "Look for the User"
+msgstr ""
+
+#: index.php:74
+msgid "The search is performed by Nickname and are case-insensitive."
+msgstr ""
+
+#: index.php:79
+msgid "Photo Albums"
+msgstr ""

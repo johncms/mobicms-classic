@@ -1,8 +1,16 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 namespace Mobicms\Checkpoint;
 
-use Mobicms\Api\EnvironmentInterface;
+use Mobicms\Http\Request;
 use Psr\Container\ContainerInterface;
 
 class UserFactory
@@ -13,16 +21,16 @@ class UserFactory
     private $db;
 
     /**
-     * @var EnvironmentInterface::class
+     * @var Request
      */
-    private $env;
+    private $request;
 
     private $userData;
 
     public function __invoke(ContainerInterface $container)
     {
         $this->db = $container->get(\PDO::class);
-        $this->env = $container->get(EnvironmentInterface::class);
+        $this->request = $container->get(Request::class);
         $this->userData = $this->authorize();
 
         return new User($this->userData, User::ARRAY_AS_PROPS);
@@ -55,8 +63,8 @@ class UserFactory
                 $userData = $req->fetch();
                 $permit = $userData['failed_login'] < 3
                 || $userData['failed_login'] > 2
-                && $userData['ip'] == $this->env->getIp()
-                && $userData['browser'] == $this->env->getUserAgent()
+                && $userData['ip'] == $this->request->ip()
+                && $userData['browser'] == $this->request->userAgent()
                     ? true
                     : false;
 
@@ -70,7 +78,7 @@ class UserFactory
                     }
 
                     // Фиксируем историю IP
-                    if ($userData['ip'] != $this->env->getIp() || $userData['ip_via_proxy'] != $this->env->getIpViaProxy()) {
+                    if ($userData['ip'] != $this->request->ip() || $userData['ip_via_proxy'] != $this->request->ipViaProxy()) {
                         $this->ipHistory($userData);
                     }
 
@@ -117,8 +125,8 @@ class UserFactory
         // Удаляем из истории текущий адрес (если есть)
         $this->db->exec("DELETE FROM `cms_users_iphistory`
           WHERE `user_id` = '" . $userData['id'] . "'
-          AND `ip` = '" . $this->env->getIp() . "'
-          AND `ip_via_proxy` = '" . $this->env->getIpViaProxy() . "'
+          AND `ip` = '" . $this->request->ip() . "'
+          AND `ip_via_proxy` = '" . $this->request->ipViaProxy() . "'
           LIMIT 1
         ");
 
@@ -132,8 +140,8 @@ class UserFactory
 
         // Обновляем текущий адрес в таблице `users`
         $this->db->exec("UPDATE `users` SET
-          `ip` = '" . $this->env->getIp() . "',
-          `ip_via_proxy` = '" . $this->env->getIpViaProxy() . "'
+          `ip` = '" . $this->request->ip() . "',
+          `ip_via_proxy` = '" . $this->request->ipViaProxy() . "'
           WHERE `id` = '" . $userData['id'] . "'
         ");
     }

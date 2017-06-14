@@ -1,4 +1,12 @@
 <?php
+/**
+ * mobiCMS (https://mobicms.org/)
+ * This file is part of mobiCMS Content Management System.
+ *
+ * @license     https://opensource.org/licenses/GPL-3.0 GPL-3.0 (see the LICENSE.md file)
+ * @link        http://mobicms.org mobiCMS Project
+ * @copyright   Copyright (C) mobiCMS Community
+ */
 
 defined('MOBICMS') or die('Error: restricted access');
 
@@ -11,8 +19,8 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-/** @var Mobicms\Api\EnvironmentInterface $env */
-$env = $container->get(Mobicms\Api\EnvironmentInterface::class);
+/** @var Mobicms\Http\Request $request */
+$request = $container->get(Mobicms\Http\Request::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -40,7 +48,7 @@ echo '<!DOCTYPE html>' .
     "\n" . '<meta name="description" content="' . $descriptions . '">' .
     "\n" . '<link rel="stylesheet" href="' . $config->homeurl . '/theme/' . $tools->getSkin() . '/style.css">' .
     "\n" . '<link rel="shortcut icon" href="' . $config->homeurl . '/favicon.ico">' .
-    "\n" . '<link rel="alternate" type="application/rss+xml" title="RSS | ' . _t('Site News', 'system') . '" href="' . $config->homeurl . '/rss/rss.php">' .
+    "\n" . '<link rel="alternate" type="application/rss+xml" title="RSS | ' . _t('Site News', 'system') . '" href="' . $config->homeurl . '/rss/">' .
     "\n" . '<title>' . $textl . '</title>' .
     "\n" . '</head><body>';
 
@@ -88,7 +96,7 @@ if (isset($cms_ads[0])) {
 
 // Выводим логотип и переключатель языков
 echo '<table style="width: 100%;" class="logo"><tr>' .
-    '<td valign="bottom"><a href="' . $config['homeurl'] . '">' . $tools->image('logo.png', ['class' => '']) . '</a></td>';
+    '<td valign="bottom"><a href="' . $config['homeurl'] . '">' . $tools->image('images/logo.png', ['class' => '']) . '</a></td>';
 
 if ($headmod == 'mainpage' && count($config->lng_list) > 1) {
     $locale = App::getTranslator()->getLocale();
@@ -102,9 +110,9 @@ echo '</tr></table>';
 
 // Главное меню пользователя
 echo '<div class="tmn">' .
-    (isset($_GET['err']) || $headmod != "mainpage" || ($headmod == 'mainpage' && $act) ? '<a href=\'' . $config['homeurl'] . '\'>' . $tools->image('menu_home.png') . _t('Home', 'system') . '</a><br>' : '') .
-    ($systemUser->id && $headmod != 'office' ? '<a href="' . $config['homeurl'] . '/profile/?act=office">' . $tools->image('menu_cabinet.png') . $systemUser->name . ' <small style="color: #a8b5c4">(' . _t('Personal', 'system') . ')</small></a><br>' : '') .
-    (!$systemUser->id && $headmod != 'login' ? $tools->image('menu_login.png') . '<a href="' . $config['homeurl'] . '/login.php">' . _t('Login', 'system') . '</a>' : '') .
+    (isset($_GET['err']) || $headmod != "mainpage" || ($headmod == 'mainpage' && $act) ? '<a href=\'' . $config['homeurl'] . '\'>' . $tools->image('images/menu_home.png') . _t('Home', 'system') . '</a><br>' : '') .
+    ($systemUser->id && $headmod != 'office' ? '<a href="' . $config['homeurl'] . '/profile/?act=office">' . $tools->image('images/menu_cabinet.png') . $systemUser->name . ' <small style="color: #a8b5c4">(' . _t('Personal', 'system') . ')</small></a><br>' : '') .
+    (!$systemUser->id && $headmod != 'login' ? $tools->image('images/menu_login.png') . '<a href="' . $config['homeurl'] . '/login/">' . _t('Login', 'system') . '</a>' : '') .
     '</div><div class="maintxt">';
 
 // Рекламный блок сайта
@@ -116,7 +124,7 @@ if (!empty($cms_ads[1])) {
 $sql = '';
 $set_karma = $config['karma'];
 
-if ($systemUser->id) {
+if ($systemUser->isValid()) {
     // Фиксируем местоположение авторизованных
     if (!$systemUser->karma_off && $set_karma['on'] && $systemUser->karma_time <= (time() - 86400)) {
         $sql .= " `karma_time` = " . time() . ", ";
@@ -134,8 +142,8 @@ if ($systemUser->id) {
         $sql .= " `place` = " . $db->quote($headmod) . ", ";
     }
 
-    if ($systemUser->browser != $env->getUserAgent()) {
-        $sql .= " `browser` = " . $db->quote($env->getUserAgent()) . ", ";
+    if ($systemUser->browser != $request->userAgent()) {
+        $sql .= " `browser` = " . $db->quote($request->userAgent()) . ", ";
     }
 
     $totalonsite = $systemUser->total_on_site;
@@ -152,7 +160,7 @@ if ($systemUser->id) {
 } else {
     // Фиксируем местоположение гостей
     $movings = 0;
-    $session = md5($env->getIp() . $env->getIpViaProxy() . $env->getUserAgent());
+    $session = md5($request->ip() . $request->ipViaProxy() . $request->userAgent());
     $req = $db->query("SELECT * FROM `cms_sessions` WHERE `session_id` = " . $db->quote($session) . " LIMIT 1");
 
     if ($req->rowCount()) {
@@ -178,9 +186,9 @@ if ($systemUser->id) {
         // Если еще небыло в базе, то добавляем запись
         $db->exec("INSERT INTO `cms_sessions` SET
             `session_id` = '" . $session . "',
-            `ip` = '" . $env->getIp() . "',
-            `ip_via_proxy` = '" . $env->getIpViaProxy() . "',
-            `browser` = " . $db->quote($env->getUserAgent()) . ",
+            `ip` = '" . $request->ip() . "',
+            `ip_via_proxy` = '" . $request->ipViaProxy() . "',
+            `browser` = " . $db->quote($request->userAgent()) . ",
             `lastdate` = '" . time() . "',
             `sestime` = '" . time() . "',
             `place` = " . $db->quote($headmod) . "

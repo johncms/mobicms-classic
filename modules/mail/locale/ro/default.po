@@ -1,0 +1,307 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: johncms\n"
+"POT-Creation-Date: 2017-06-12 21:13+0400\n"
+"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"Last-Translator: mobiCMS <dev@mobicms.net>\n"
+"Language-Team: Romanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: crowdin.com\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+"Language: ro_RO\n"
+"X-Poedit-KeywordsList: _t;_p:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Crowdin-Project: johncms\n"
+"X-Crowdin-Language: ro\n"
+"X-Crowdin-File: /modules/mail/default.pot\n"
+
+#: includes/delete.php:14 includes/deluser.php:14 includes/files.php:14
+#: includes/ignor.php:14 includes/input.php:13 includes/load.php:13
+#: includes/new.php:13 includes/output.php:13 includes/systems.php:114
+#: includes/write.php:41 includes/write.php:51 includes/write.php:107
+#: includes/write.php:492 index.php:79
+msgid "Mail"
+msgstr "Mesagerie"
+
+#: includes/delete.php:17
+msgid "Deleting messages"
+msgstr "Ștergere mesaje"
+
+#: includes/delete.php:37
+msgid "Message does not exist"
+msgstr "Mesajul nu exista"
+
+#: includes/delete.php:48 includes/delete.php:75
+msgid "Message deleted"
+msgstr "Mesajul a fost sters"
+
+#: includes/delete.php:49 includes/delete.php:76 includes/deluser.php:55
+#: includes/ignor.php:102 includes/write.php:96
+msgid "Back"
+msgstr "Înapoi"
+
+#: includes/delete.php:80
+msgid "You really want to remove the message?"
+msgstr "Într-adevăr doriți să eliminați mesajul?"
+
+#: includes/delete.php:81 includes/deluser.php:48 includes/deluser.php:52
+#: includes/ignor.php:126 includes/input.php:88 includes/new.php:58
+#: includes/output.php:88 includes/systems.php:55 includes/systems.php:90
+#: includes/write.php:91 includes/write.php:459 index.php:141
+msgid "Delete"
+msgstr "Șterge"
+
+#: includes/delete.php:85
+msgid "The message for removal isn't chosen"
+msgstr "Mesajul pentru eliminare nu este ales"
+
+#: includes/delete.php:88 includes/files.php:70 includes/ignor.php:151
+#: includes/input.php:115 includes/new.php:82 includes/output.php:115
+#: includes/systems.php:124 includes/write.php:97 includes/write.php:501
+#: index.php:164
+msgid "Personal"
+msgstr "Personal"
+
+#: includes/deluser.php:46
+msgid "Contact deleted"
+msgstr "Contact sters"
+
+#: includes/deluser.php:46 includes/input.php:78 includes/output.php:78
+#: index.php:113
+msgid "Continue"
+msgstr "Continua"
+
+#: includes/deluser.php:51
+msgid "When you delete a contact is deleted and all correspondence with him.<br>Are you sure you want to delete?"
+msgstr "Cand stergi un prieten, se sterg si toate mesajele primite si trimise de la acesta. <br> Esti sigur ca vrei sa stergi?"
+
+#: includes/deluser.php:58
+msgid "Contact for removal isn't chosen"
+msgstr "Contactul de sters nu este selectat"
+
+#: includes/files.php:14 includes/files.php:32
+msgid "Files"
+msgstr "Fisiere"
+
+#: includes/files.php:56 includes/ignor.php:137 includes/input.php:102
+#: includes/new.php:69 includes/output.php:102 includes/systems.php:100
+#: includes/write.php:477 index.php:152
+msgid "The list is empty"
+msgstr "Lista este goala"
+
+#: includes/files.php:60 includes/ignor.php:140 includes/input.php:105
+#: includes/new.php:72 includes/output.php:105 includes/systems.php:103
+#: includes/write.php:480 index.php:155
+msgid "Total"
+msgstr "Total"
+
+#: includes/files.php:67 includes/ignor.php:147 includes/input.php:112
+#: includes/new.php:79 includes/output.php:112 includes/systems.php:110
+#: includes/write.php:488 index.php:161
+msgid "To Page"
+msgstr "La pagina"
+
+#: includes/ignor.php:32 includes/ignor.php:108 includes/output.php:88
+#: index.php:123
+msgid "Blocklist"
+msgstr "Blocati"
+
+#: includes/ignor.php:40 includes/ignor.php:69 includes/write.php:43
+#: includes/write.php:145 index.php:93
+msgid "User does not exists"
+msgstr "Utilizatorul nu exista"
+
+#: includes/ignor.php:50
+msgid "User not blocked"
+msgstr "Utilizatorul nu este blocat"
+
+#: includes/ignor.php:53
+msgid "User is unblocked"
+msgstr "Utilizatorul este deblocat"
+
+#: includes/ignor.php:57
+msgid "You really want to unblock contact?"
+msgstr "Esti sigur ca vrei sa deblochezi utilizatorul?"
+
+#: includes/ignor.php:58 includes/ignor.php:126
+msgid "Unblock"
+msgstr "Deblocheaza"
+
+#: includes/ignor.php:62 includes/ignor.php:105
+msgid "Contact isn't chosen"
+msgstr "Contactul nu este ales"
+
+#: includes/ignor.php:79
+msgid "This user can not be blocked"
+msgstr "Acest utilizator nu poate fi blocat"
+
+#: includes/ignor.php:95
+msgid "User is blocked"
+msgstr "Utilizatorul este blocat"
+
+#: includes/ignor.php:99
+msgid "You really want to block contact?"
+msgstr "Esti sigur ca vrei sa stergi contactul?"
+
+#: includes/ignor.php:100
+msgid "Block"
+msgstr "Blocheaza"
+
+#: includes/ignor.php:108 index.php:123
+msgid "My Contacts"
+msgstr "Contactele mele"
+
+#: includes/ignor.php:126 includes/input.php:88 includes/new.php:58
+#: includes/output.php:88 index.php:141
+msgid "Correspondence"
+msgstr "Corespondenta"
+
+#: includes/input.php:15
+msgid "Incoming messages"
+msgstr "Mesaje primite"
+
+#: includes/load.php:36 includes/load.php:48
+msgid "Such file does not exist"
+msgstr "Fisierul nu exista"
+
+#: includes/load.php:51
+msgid "No file selected"
+msgstr "Nici in fisier selectat"
+
+#: includes/new.php:31
+msgid "New Messages"
+msgstr "Mesaje noi"
+
+#: includes/new.php:58
+msgid "Block Sender"
+msgstr "Blocheaza "
+
+#: includes/output.php:15
+msgid "Sent messages"
+msgstr "Mesaje trimise"
+
+#: includes/systems.php:49 includes/write.php:86
+msgid "Messages are deleted"
+msgstr "Mesajele sunt sterse"
+
+#: includes/systems.php:52 includes/write.php:90
+msgid "Confirm the deletion of messages"
+msgstr "Confirma stergerea mesajelor"
+
+#: includes/systems.php:116
+msgid "System messages"
+msgstr "Mesaje automate"
+
+#: includes/systems.php:121 includes/write.php:53 includes/write.php:498
+msgid "Clear messages"
+msgstr "Sterge mesaje"
+
+#: includes/write.php:123
+msgid "Specify the recipient's login"
+msgstr "Specifica numele carui vrei sa ii trimiti"
+
+#: includes/write.php:127
+msgid "Message cannot be empty"
+msgstr "Mesajul nu poate fi gol"
+
+#: includes/write.php:131
+msgid "You cannot send messages to yourself"
+msgstr "Nu iti poti trimite mesaje singur"
+
+#: includes/write.php:137
+#, php-format
+msgid "You cannot add the message so often. Please, wait %d sec."
+msgstr "Nu poti trimite mesaje asa des. Te rog, asteapta %d sec."
+
+#: includes/write.php:163
+msgid "To this user can write only contacts"
+msgstr "Acestui utilizator ii pot scrie doar contactele"
+
+#: includes/write.php:170
+msgid "To this user can write only friends"
+msgstr "Acestui utilizator ii pot scrie doar prietenii"
+
+#: includes/write.php:202 includes/write.php:357
+msgid "Error uploading file"
+msgstr "Eroare la incarcarea fisierului"
+
+#: includes/write.php:277
+msgid "It is forbidden to upload files without a name"
+msgstr "Este interzisa incarcarea fisierelor fara nume"
+
+#: includes/write.php:281
+msgid "It is forbidden to upload files without extension"
+msgstr "Este interzisa incarcarea fisierelor fara extensie"
+
+#: includes/write.php:285
+msgid "The size of the file exceeds the maximum allowable upload"
+msgstr "Fisierul este prea mare"
+
+#: includes/write.php:289
+msgid "File name contains invalid characters"
+msgstr "Numele fisierului contine caractere invalide"
+
+#: includes/write.php:293
+msgid "Forbidden file type! By uploading permitted only files with the following extension"
+msgstr "Tipul fisierului este interzis! Sunt premise doar fisiere cu extensiile"
+
+#: includes/write.php:307
+msgid "The user at your ignore list. Sending the message is impossible."
+msgstr "Utilizatorul este blocat. Trimiterea mesajelor catre acesta este imposibila."
+
+#: includes/write.php:317
+msgid "The user added you in the ignore list. Sending the message isn't possible."
+msgstr "Utilizatorul te-a adăugat în lista de ignorare. Trimiterea mesajului nu este posibila."
+
+#: includes/write.php:371
+msgid "Message already exists"
+msgstr "Mesajul exista deja"
+
+#: includes/write.php:404
+msgid "To Whom"
+msgstr "Catre cine"
+
+#: includes/write.php:409
+msgid "Send"
+msgstr "Trimite"
+
+#: includes/write.php:411
+msgid "Personal correspondence with"
+msgstr "Corespondenta personala cu"
+
+#: includes/write.php:411
+msgid "Send a message"
+msgstr "Trimite in mesaj"
+
+#: includes/write.php:456
+msgid "File"
+msgstr "Fisier"
+
+#: index.php:81
+msgid "Contacts"
+msgstr "Contacte"
+
+#: index.php:101
+msgid "You cannot add yourself as a contact"
+msgstr "Nu te poti adauga singur la contacte"
+
+#: index.php:113
+msgid "User has been added to your contact list"
+msgstr "Utilizatorul a fost adaugat la contacte"
+
+#: index.php:117
+msgid "You really want to add contact?"
+msgstr "Esti sigur ca vrei sa adaugi contact?"
+
+#: index.php:118
+msgid "Add"
+msgstr "Adauga"
+
+#: index.php:141
+msgid "Block User"
+msgstr "Blocheaza utilizator"
+
