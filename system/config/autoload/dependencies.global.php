@@ -11,6 +11,7 @@
 return [
     'dependencies' => [
         'factories' => [
+            FastRoute\RouteCollector::class         => Mobicms\Http\RouteCollectorFactory::class,
             Mobicms\Api\BbcodeInterface::class      => Mobicms\Bbcode::class,
             Mobicms\Api\ConfigInterface::class      => Mobicms\Config\ConfigFactory::class,
             Mobicms\Api\EnvironmentInterface::class => Mobicms\Environment::class,

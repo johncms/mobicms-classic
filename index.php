@@ -18,111 +18,49 @@ $container = App::getContainer();
 /** @var Mobicms\Http\Request $request */
 $request = $container->get(Mobicms\Http\Request::class);
 
-/** @var Mobicms\Http\Response $response */
-$response = $container->get(Mobicms\Http\Response::class);
-
-/** @var Mobicms\Http\Router $router */
-$router = $container->get(Mobicms\Http\Router::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-// Главная страница
-$router->respond('GET', '/', function () {
-    include ROOT_PATH . 'modules/homepage/index.php';
-});
+// Эксперименты
 
-// Админ панель
+/** @var FastRoute\RouteCollector $map */
+$map = $container->get(FastRoute\RouteCollector::class);
+
+$map->get('/', 'modules/homepage/index.php');                                                   // Главная страница
+$map->get('/rss/', 'modules/rss/index.php');                                                    // RSS
+$map->addRoute(['GET', 'POST'], '/login/', 'modules/login/index.php');                          // Вход / выход с сайта
+$map->addRoute(['GET', 'POST'], '/album/[index.php]', 'modules/album/index.php');               // Фотоальбомы
+$map->addRoute(['GET', 'POST'], '/downloads/[index.php]', 'modules/downloads/index.php');       // Загрузки
+$map->addRoute(['GET', 'POST'], '/forum/[index.php]', 'modules/forum/index.php');               // Форум
+$map->addRoute(['GET', 'POST'], '/guestbook/[index.php]', 'modules/guestbook/index.php');       // Гостевая
+$map->addRoute(['GET', 'POST'], '/help/', 'modules/help/index.php');                            // Справка
+$map->addRoute(['GET', 'POST'], '/library/[index.php]', 'modules/library/index.php');           // Библиотека
+$map->addRoute(['GET', 'POST'], '/mail/[index.php]', 'modules/mail/index.php');                 // Почта
+$map->addRoute(['GET', 'POST'], '/news/[index.php]', 'modules/news/index.php');                 // Новости
+$map->addRoute(['GET', 'POST'], '/profile/[index.php]', 'modules/profile/index.php');           // Пользовательские профили
+$map->addRoute(['GET', 'POST'], '/registration/[index.php]', 'modules/registration/index.php'); // Регистрация
+$map->addRoute(['GET', 'POST'], '/users/[index.php]', 'modules/users/index.php');               // Пользователи (актив сайта)
+
 if ($systemUser->isValid() && $systemUser->rights >= 6) {
-    $router->respond(['GET', 'POST'], '@^/admin/', function () {
-        include ROOT_PATH . 'modules/admin/index.php';
-    });
+    $map->addRoute(['GET', 'POST'], '/admin/[index.php]', 'modules/admin/index.php');           // Админ панель
 }
 
-// Фотоальбомы
-$router->respond(['GET', 'POST'], '@^/album/', function () {
-    include ROOT_PATH . 'modules/album/index.php';
-});
+$dispatcher = new FastRoute\Dispatcher\GroupCountBased($map->getData());
+$match = $dispatcher->dispatch($request->method(), rawurldecode($request->pathname()));
 
-// Загрузки
-$router->respond(['GET', 'POST'], '@^/downloads/', function () {
-    include ROOT_PATH . 'modules/downloads/index.php';
-});
+switch ($match[0]) {
+    case FastRoute\Dispatcher::FOUND:
+        if (is_callable($match[1])) {
+            call_user_func_array($match[1], $match[2]);
+        } else {
+            include ROOT_PATH . $match[1];
+        }
+        break;
 
-// Форум
-$router->respond(['GET', 'POST'], '@^/forum/', function () {
-    include ROOT_PATH . 'modules/forum/index.php';
-});
+    case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
+        echo '405 Method Not Allowed';
+        break;
 
-// Гостевая
-$router->respond(['GET', 'POST'], '@^/guestbook/', function () {
-    include ROOT_PATH . 'modules/guestbook/index.php';
-});
-
-// Справка
-$router->respond(['GET', 'POST'], '@^/help/', function () {
-    include ROOT_PATH . 'modules/help/index.php';
-});
-
-// Библиотека
-$router->respond(['GET', 'POST'], '@^/library/', function () {
-    include ROOT_PATH . 'modules/library/index.php';
-});
-
-// Вход / выход с сайта
-$router->respond(['GET', 'POST'], '@^/login/', function () {
-    include ROOT_PATH . 'modules/login/index.php';
-});
-
-// Почта
-$router->respond(['GET', 'POST'], '@^/mail/', function () {
-    include ROOT_PATH . 'modules/mail/index.php';
-});
-
-// Новости
-$router->respond(['GET', 'POST'], '@^/news/', function () {
-    include ROOT_PATH . 'modules/news/index.php';
-});
-
-// Пользовательские профили
-$router->respond(['GET', 'POST'], '@^/profile/', function () {
-    include ROOT_PATH . 'modules/profile/index.php';
-});
-
-// Регистрация
-$router->respond(['GET', 'POST'], '@^/registration/', function () {
-    include ROOT_PATH . 'modules/registration/index.php';
-});
-
-// RSS
-$router->respond('GET', '/rss/', function () {
-    include ROOT_PATH . 'modules/rss/index.php';
-});
-
-// Пользователи (актив сайта)
-$router->respond(['GET', 'POST'], '@^/users/', function () {
-    include ROOT_PATH . 'modules/users/index.php';
-});
-
-// Обработка ошибок
-$router->onHttpError(function ($code, $router) use ($response) {
-    switch ($code) {
-        case 404:
-            $response->body(
-                'ERROR 404: Page not found.'
-            );
-            break;
-        case 405:
-            $response->body(
-                'ERROR 404: You can\'t do that!'
-            );
-            break;
-        default:
-            $response->body(
-                'ERROR: Oh no, a bad error happened that caused a ' . $code
-            );
-    }
-});
-
-// Запускаем Роутер
-$router->dispatch($request, $response);
+    default:
+        echo '404 Not Found';
+}
