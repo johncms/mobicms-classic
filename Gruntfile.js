@@ -55,6 +55,14 @@ module.exports = function (grunt) {
                             '!system/vendor/klein/klein/phpunit.xml.dist',
                             '!system/vendor/klein/klein/UPGRADING.md',
 
+                            '!system/vendor/nikic/fast-route/test/**',
+                            '!system/vendor/nikic/fast-route/.gitignore',
+                            '!system/vendor/nikic/fast-route/.hhconfig',
+                            '!system/vendor/nikic/fast-route/.travis.yml',
+                            '!system/vendor/nikic/fast-route/composer.json',
+                            '!system/vendor/nikic/fast-route/FastRoute.hhi',
+                            '!system/vendor/nikic/fast-route/phpunit.xml',
+
                             '!system/vendor/verot/class.upload.php/test/**',
                             '!system/vendor/verot/class.upload.php/composer.json',
 
