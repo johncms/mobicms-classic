@@ -11,11 +11,13 @@
 namespace Mobicms\Http;
 
 use Psr\Container\ContainerInterface;
+use FastRoute\Dispatcher\GroupCountBased;
+use FastRoute\RouteCollector;
 
-class RouterFactory
+class DispatcherFactory
 {
     public function __invoke(ContainerInterface $container)
     {
-        return new Router;
+        return new GroupCountBased($container->get(RouteCollector::class)->getData());
     }
 }

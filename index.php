@@ -45,7 +45,8 @@ if ($systemUser->isValid() && $systemUser->rights >= 6) {
     $map->addRoute(['GET', 'POST'], '/admin/[index.php]', 'modules/admin/index.php');           // Админ панель
 }
 
-$dispatcher = new FastRoute\Dispatcher\GroupCountBased($map->getData());
+/** @var FastRoute\Dispatcher $dispatcher */
+$dispatcher = $container->get(FastRoute\Dispatcher::class);
 $match = $dispatcher->dispatch($request->method(), rawurldecode($request->pathname()));
 
 switch ($match[0]) {
