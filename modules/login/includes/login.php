@@ -13,8 +13,6 @@ defined('MOBICMS') or die('Error: restricted access');
 $headmod = 'login';
 require ROOT_PATH . 'system/head.php';
 
-$id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
@@ -88,7 +86,7 @@ if ($systemUser->isValid()) {
                     $code = $cap->generateCode();
                     $_SESSION['code'] = $code;
 
-                    echo '<form action="login.php' . ($id ? '?id=' . $id : '') . '" method="post">' .
+                    echo '<form action="." method="post">' .
                         '<div class="menu"><p>' .
                         '<img alt="' . _t('Verification code') . '" width="' . $cap->width . '" height="' . $cap->height . '" src="' . $cap->generateImage($code) . '"/><br />' .
                         _t('Enter verification code', 'system') . ':<br>' .
