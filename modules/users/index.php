@@ -78,8 +78,7 @@ if (in_array($act, $array) && file_exists(__DIR__ . '/includes/' . $act . '.php'
         ($brth ? $tools->image('images/award.png', ['width' => 16, 'height' => 16]) . '<a href="?act=birth">' . _t('Birthdays') . '</a> (' . $brth . ')<br>' : '') .
         $tools->image('images/photo.gif', ['width' => 16, 'height' => 16]) . '<a href="../album/">' . _t('Photo Albums') . '</a> (' . $counters->album() . ')<br>' .
         $tools->image('images/rate.gif', ['width' => 16, 'height' => 16]) . '<a href="?act=top">' . _t('Top Activity') . '</a></p>' .
-        '</div>' .
-        '<div class="phdr"><a href="index.php">' . _t('Back') . '</a></div>';
+        '</div>';
 }
 
 require_once ROOT_PATH . 'system/end.php';

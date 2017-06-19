@@ -32,7 +32,7 @@ require ROOT_PATH . 'system/head.php';
 $search_post = isset($_POST['search']) ? trim($_POST['search']) : false;
 $search_get = isset($_GET['search']) ? rawurldecode(trim($_GET['search'])) : '';
 $search = $search_post ? $search_post : $search_get;
-echo '<div class="phdr"><a href="index.php"><b>' . _t('Community') . '</b></a> | ' . _t('User Search') . '</div>' .
+echo '<div class="phdr"><a href="."><b>' . _t('Community') . '</b></a> | ' . _t('User Search') . '</div>' .
     '<form action="?act=search" method="post">' .
     '<div class="gmenu"><p>' .
     '<input type="text" name="search" value="' . $tools->checkout($search) . '" />' .
@@ -98,7 +98,7 @@ if ($search && !$error) {
     echo '<div class="phdr"><small>' . _t('Search by Nickname are case insensitive. For example <strong>UsEr</strong> and <strong>user</strong> are identical.') . '</small></div>';
 }
 
-echo '<p>' . ($search && !$error ? '<a href="search.php">' . _t('New search') . '</a><br />' : '') .
-    '<a href="index.php">' . _t('Back') . '</a></p>';
+echo '<p>' . ($search && !$error ? '<a href="?act=search">' . _t('New search') . '</a><br />' : '') .
+    '<a href=".">' . _t('Back') . '</a></p>';
 
 require ROOT_PATH . 'system/end.php';

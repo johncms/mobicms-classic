@@ -28,10 +28,10 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Выводим список пользователей
 $total = $db->query("SELECT COUNT(*) FROM `users` WHERE `preg` = 1")->fetchColumn();
-echo '<div class="phdr"><a href="index.php"><b>' . _t('Community') . '</b></a> | ' . _t('List of users') . '</div>';
+echo '<div class="phdr"><a href="."><b>' . _t('Community') . '</b></a> | ' . _t('List of users') . '</div>';
 
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=userlist&amp;', $total) . '</div>';
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=userlist&amp;', $total) . '</div>';
 }
 
 $req = $db->query("SELECT `id`, `name`, `sex`, `lastdate`, `datereg`, `status`, `rights`, `ip`, `browser`, `rights` FROM `users` WHERE `preg` = 1 ORDER BY `datereg` DESC" . $tools->getPgStart(true));
@@ -44,12 +44,12 @@ for ($i = 0; ($res = $req->fetch()) !== false; $i++) {
 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 if ($total > $userConfig->kmess) {
-    echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=userlist&amp;', $total) . '</div>' .
-        '<p><form action="index.php?act=userlist" method="post">' .
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=userlist&amp;', $total) . '</div>' .
+        '<p><form action="?act=userlist" method="post">' .
         '<input type="text" name="page" size="2"/>' .
         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .
         '</form></p>';
 }
 
 echo '<p><a href="search.php">' . _t('User Search') . '</a><br />' .
-    '<a href="index.php">' . _t('Back') . '</a></p>';
+    '<a href=".">' . _t('Back') . '</a></p>';

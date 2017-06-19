@@ -249,9 +249,9 @@ class Utilites implements ToolsInterface
         $place = explode(",", $place);
 
         $placelist = [
-            'admlist'          => '<a href="#home#/users/index.php?act=admlist">' . _t('List of Admins', 'system') . '</a>',
+            'admlist'          => '<a href="#home#/users/?act=admlist">' . _t('List of Admins', 'system') . '</a>',
             'album'            => '<a href="#home#/album/index.php">' . _t('Watching the photo album', 'system') . '</a>',
-            'birth'            => '<a href="#home#/users/index.php?act=birth">' . _t('List of birthdays', 'system') . '</a>',
+            'birth'            => '<a href="#home#/users/?act=birth">' . _t('List of birthdays', 'system') . '</a>',
             'downloads'        => '<a href="#home#/downloads/index.php">' . _t('Downloads', 'system') . '</a>',
             'faq'              => '<a href="#home#/help/">' . _t('Reading the FAQ', 'system') . '</a>',
             'forum'            => '<a href="#home#/forum/index.php">' . _t('Forum', 'system') . '</a>&#160;/&#160;<a href="#home#/forum/index.php?act=who">&gt;&gt;</a>',
@@ -263,12 +263,12 @@ class Utilites implements ToolsInterface
             'library'          => '<a href="#home#/library/index.php">' . _t('Library', 'system') . '</a>',
             'mail'             => _t('Personal correspondence', 'system'),
             'news'             => '<a href="#home#/news/index.php">' . _t('Reading the news', 'system') . '</a>',
-            'online'           => '<a href="#home#/users/index.php?act=online">' . _t('Who is online?', 'system') . '</a>',
+            'online'           => '<a href="#home#/users/?act=online">' . _t('Who is online?', 'system') . '</a>',
             'profile'          => _t('Profile', 'system'),
             'profile_personal' => _t('Personal Profile', 'system'),
             'registration'     => _t('Registered on the site', 'system'),
-            'userlist'         => '<a href="#home#/users/index.php?act=userlist">' . _t('List of users', 'system') . '</a>',
-            'userstop'         => '<a href="#home#/users/index.php?act=top">' . _t('Watching Top 10 Users', 'system') . '</a>',
+            'userlist'         => '<a href="#home#/users/?act=userlist">' . _t('List of users', 'system') . '</a>',
+            'userstop'         => '<a href="#home#/users/?act=top">' . _t('Watching Top 10 Users', 'system') . '</a>',
         ];
 
         if (array_key_exists($place[0], $placelist)) {
