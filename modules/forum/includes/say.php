@@ -106,7 +106,7 @@ $type1 = $db->query("SELECT * FROM `forum` WHERE `id` = '$id'")->fetch();
 switch ($type1['type']) {
     case 't':
         // Добавление простого сообщения
-        if (($type1['edit'] == 1 || $type1['close'] == 1) && $systemUser->rights < 7) {
+        if (($type1['edit'] == 1 || $type1['close'] == 1) && $systemUser->rights < 6) {
             // Проверка, закрыта ли тема
             require ROOT_PATH . 'system/head.php';
             echo $tools->displayError(_t('You cannot write in a closed topic'), '<a href="index.php?id=' . $id . '">' . _t('Back') . '</a>');
@@ -228,7 +228,7 @@ switch ($type1['type']) {
             ");
 
             // Вычисляем, на какую страницу попадает добавляемый пост
-            $page = $set_forum['upfp'] ? 1 : ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `refid` = '$id'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'"))->fetchColumn() / $userConfig->kmess);
+            $page = $set_forum['upfp'] ? 1 : ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `refid` = '$id'" . ($systemUser->rights >= 6 ? '' : " AND `close` != '1'"))->fetchColumn() / $userConfig->kmess);
 
             if (isset($_POST['addfiles'])) {
                 if ($update) {
@@ -290,7 +290,7 @@ case
         $th = $type1['refid'];
         $th1 = $db->query("SELECT * FROM `forum` WHERE `id` = '$th'")->fetch();
 
-        if (($th1['edit'] == 1 || $th1['close'] == 1) && $systemUser->rights < 7) {
+        if (($th1['edit'] == 1 || $th1['close'] == 1) && $systemUser->rights < 6) {
             require ROOT_PATH . 'system/head.php';
             echo $tools->displayError(_t('You cannot write in a closed topic'), '<a href="index.php?id=' . $th1['id'] . '">' . _t('Back') . '</a>');
             require ROOT_PATH . 'system/end.php';
@@ -420,7 +420,7 @@ case
             ");
 
             // Вычисляем, на какую страницу попадает добавляемый пост
-            $page = $set_forum['upfp'] ? 1 : ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `refid` = '$th'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'"))->fetchColumn() / $userConfig->kmess);
+            $page = $set_forum['upfp'] ? 1 : ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `refid` = '$th'" . ($systemUser->rights >= 6 ? '' : " AND `close` != '1'"))->fetchColumn() / $userConfig->kmess);
 
             if (isset($_POST['addfiles'])) {
                 $response->redirect("?id=$fadd&act=addfile")->sendHeaders();

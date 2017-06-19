@@ -341,7 +341,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 ////////////////////////////////////////////////////////////
                 // Список топиков                                         //
                 ////////////////////////////////////////////////////////////
-                $total = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='t' AND `refid`='$id'" . ($systemUser->rights >= 7 ? '' : " AND `close`!='1'"))->fetchColumn();
+                $total = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='t' AND `refid`='$id'" . ($systemUser->rights >= 6 ? '' : " AND `close`!='1'"))->fetchColumn();
 
                 if (($systemUser->isValid() && !isset($systemUser->ban['1']) && !isset($systemUser->ban['11']) && $config->mod_forum != 4) || $systemUser->rights) {
                     // Кнопка создания новой темы
@@ -349,7 +349,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 }
 
                 if ($total) {
-                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t'" . ($systemUser->rights >= 7 ? '' : " AND `close`!='1'") . " AND `refid`='$id' ORDER BY `vip` DESC, `time` DESC" . $tools->getPgStart(true));
+                    $req = $db->query("SELECT * FROM `forum` WHERE `type`='t'" . ($systemUser->rights >= 6 ? '' : " AND `close`!='1'") . " AND `refid`='$id' ORDER BY `vip` DESC, `time` DESC" . $tools->getPgStart(true));
                     $i = 0;
 
                     while ($res = $req->fetch()) {
@@ -360,7 +360,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                         }
 
                         $nam = $db->query("SELECT `from` FROM `forum` WHERE `type` = 'm' AND `close` != '1' AND `refid` = '" . $res['id'] . "' ORDER BY `time` DESC LIMIT 1")->fetch();
-                        $colmes = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='m' AND `refid`='" . $res['id'] . "'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'"))->fetchColumn();
+                        $colmes = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='m' AND `refid`='" . $res['id'] . "'" . ($systemUser->rights >= 6 ? '' : " AND `close` != '1'"))->fetchColumn();
                         $cpg = ceil($colmes / $userConfig->kmess);
                         $np = $db->query("SELECT COUNT(*) FROM `cms_forum_rdm` WHERE `time` >= '" . $res['time'] . "' AND `topic_id` = '" . $res['id'] . "' AND `user_id` = " . $systemUser->id)->fetchColumn();
                         // Значки
@@ -437,7 +437,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 }
 
                 // Счетчик постов темы
-                $colmes = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='m'$sql AND `refid`='$id'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'"))->fetchColumn();
+                $colmes = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='m'$sql AND `refid`='$id'" . ($systemUser->rights >= 6 ? '' : " AND `close` != '1'"))->fetchColumn();
 
                 if ($start >= $colmes) {
                     // Исправляем запрос на несуществующую страницу
@@ -454,7 +454,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 // Метка удаления темы
                 if ($type1['close']) {
                     echo '<div class="rmenu">' . _t('Topic deleted by') . ': <b>' . $type1['close_who'] . '</b></div>';
-                } elseif (!empty($type1['close_who']) && $systemUser->rights >= 7) {
+                } elseif (!empty($type1['close_who']) && $systemUser->rights >= 6) {
                     echo '<div class="gmenu"><small>' . _t('Undelete topic') . ': <b>' . $type1['close_who'] . '</b></small></div>';
                 }
 
@@ -521,7 +521,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 if (($set_forum['postclip'] == 2 && ($set_forum['upfp'] ? $start < (ceil($colmes - $userConfig->kmess)) : $start > 0)) || $request->paramsGet()->exists('clip')) {
                     $postres = $db->query("SELECT `forum`.*, `users`.`sex`, `users`.`rights`, `users`.`lastdate`, `users`.`status`, `users`.`datereg`
                     FROM `forum` LEFT JOIN `users` ON `forum`.`user_id` = `users`.`id`
-                    WHERE `forum`.`type` = 'm' AND `forum`.`refid` = '$id'" . ($systemUser->rights >= 7 ? "" : " AND `forum`.`close` != '1'") . "
+                    WHERE `forum`.`type` = 'm' AND `forum`.`refid` = '$id'" . ($systemUser->rights >= 6 ? "" : " AND `forum`.`close` != '1'") . "
                     ORDER BY `forum`.`id` LIMIT 1")->fetch();
                     echo '<div class="topmenu"><p>';
 
@@ -575,11 +575,11 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                   SELECT `forum`.*, `users`.`sex`, `users`.`rights`, `users`.`lastdate`, `users`.`status`, `users`.`datereg`
                   FROM `forum` LEFT JOIN `users` ON `forum`.`user_id` = `users`.`id`
                   WHERE `forum`.`type` = 'm' AND `forum`.`refid` = '$id'"
-                    . ($systemUser->rights >= 7 ? "" : " AND `forum`.`close` != '1'") . "$sql
+                    . ($systemUser->rights >= 6 ? "" : " AND `forum`.`close` != '1'") . "$sql
                   ORDER BY `forum`.`id` $order" . $tools->getPgStart(true));
 
                 // Верхнее поле "Написать"
-                if (($systemUser->isValid() && !$type1['edit'] && $set_forum['upfp'] && $config->mod_forum != 3 && $allow != 4) || ($systemUser->rights >= 7 && $set_forum['upfp'])) {
+                if (($systemUser->isValid() && !$type1['edit'] && $set_forum['upfp'] && $config->mod_forum != 3 && $allow != 4) || ($systemUser->rights >= 6 && $set_forum['upfp'])) {
                     echo '<div class="gmenu"><form name="form1" action="index.php?act=say&amp;id=' . $id . '" method="post">';
 
                     if ($set_forum['farea']) {
@@ -783,7 +783,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 }
 
                 // Нижнее поле "Написать"
-                if (($systemUser->isValid() && !$type1['edit'] && !$set_forum['upfp'] && $config->mod_forum != 3 && $allow != 4) || ($systemUser->rights >= 7 && !$set_forum['upfp'])) {
+                if (($systemUser->isValid() && !$type1['edit'] && !$set_forum['upfp'] && $config->mod_forum != 3 && $allow != 4) || ($systemUser->rights >= 6 && !$set_forum['upfp'])) {
                     echo '<div class="gmenu"><form name="form2" action="index.php?act=say&amp;id=' . $id . '" method="post">';
 
                     if ($set_forum['farea']) {
@@ -832,7 +832,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
                     echo '<p><div class="func">';
 
-                    if ($systemUser->rights >= 7) {
+                    if ($systemUser->rights >= 6) {
                         echo '<a href="index.php?act=curators&amp;id=' . $id . '&amp;start=' . $start . '">' . _t('Curators of the Topic') . '</a><br />';
                     }
 
@@ -886,7 +886,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
         ////////////////////////////////////////////////////////////
         // Список Категорий форума                                //
         ////////////////////////////////////////////////////////////
-        $count = $db->query("SELECT COUNT(*) FROM `cms_forum_files`" . ($systemUser->rights >= 7 ? '' : " WHERE `del` != '1'"))->fetchColumn();
+        $count = $db->query("SELECT COUNT(*) FROM `cms_forum_files`" . ($systemUser->rights >= 6 ? '' : " WHERE `del` != '1'"))->fetchColumn();
         echo '<p>' . $counters->forumNew(1) . '</p>' .
             '<div class="phdr"><b>' . _t('Forum') . '</b></div>' .
             '<div class="topmenu"><a href="index.php?act=search">' . _t('Search') . '</a> | <a href="index.php?act=files">' . _t('Files') . '</a> <span class="red">(' . $count . ')</span></div>';
