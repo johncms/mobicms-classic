@@ -97,7 +97,6 @@ $array = [
     'info',
     'ip',
     'guestbook',
-    'karma',
     'office',
     'password',
     'reset',
@@ -155,48 +154,6 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     // Если юзер ожидает подтверждения регистрации, выводим напоминание
     if ($systemUser->rights >= 7 && !$user['preg'] && empty($user['regadm'])) {
         echo '<div class="rmenu">' . _t('Pending confirmation') . '</div>';
-    }
-
-    // Карма
-    if ($set_karma['on']) {
-        $karma = $user['karma_plus'] - $user['karma_minus'];
-
-        if ($karma > 0) {
-            $images = ($user['karma_minus'] ? ceil($user['karma_plus'] / $user['karma_minus']) : $user['karma_plus']) > 10 ? '2' : '1';
-            echo '<div class="gmenu">';
-        } else {
-            if ($karma < 0) {
-                $images = ($user['karma_plus'] ? ceil($user['karma_minus'] / $user['karma_plus']) : $user['karma_minus']) > 10 ? '-2' : '-1';
-                echo '<div class="rmenu">';
-            } else {
-                $images = 0;
-                echo '<div class="menu">';
-            }
-        }
-
-        echo '<table  width="100%"><tr><td width="22" valign="top"><img src="' . $config['homeurl'] . '/assets/images/k_' . $images . '.gif"/></td><td>' .
-            '<b>' . _t('Karma') . ' (' . $karma . ')</b>' .
-            '<div class="sub">' .
-            '<span class="green"><a href="?act=karma&amp;user=' . $user['id'] . '&amp;type=1">' . _t('For') . ' (' . $user['karma_plus'] . ')</a></span> | ' .
-            '<span class="red"><a href="?act=karma&amp;user=' . $user['id'] . '">' . _t('Against') . ' (' . $user['karma_minus'] . ')</a></span>';
-
-        if ($user['id'] != $systemUser->id) {
-            if (!$systemUser->karma_off && (!$user['rights'] || ($user['rights'] && !$set_karma['adm'])) && $user['ip'] != $systemUser->ip) {
-                $sum = $db->query("SELECT SUM(`points`) FROM `karma_users` WHERE `user_id` = '" . $systemUser->id . "' AND `time` >= '" . $systemUser->karma_time . "'")->fetchColumn();
-                $count = $db->query("SELECT COUNT(*) FROM `karma_users` WHERE `user_id` = '" . $systemUser->id . "' AND `karma_user` = '" . $user['id'] . "' AND `time` > '" . (time() - 86400) . "'")->fetchColumn();
-
-                if (empty($systemUser->ban) && $systemUser->postforum >= $set_karma['forum'] && $systemUser->total_on_site >= $set_karma['karma_time'] && ($set_karma['karma_points'] - $sum) > 0 && !$count) {
-                    echo '<br /><a href="?act=karma&amp;mod=vote&amp;user=' . $user['id'] . '">' . _t('Vote') . '</a>';
-                }
-            }
-        } else {
-            $total_karma = $db->query("SELECT COUNT(*) FROM `karma_users` WHERE `karma_user` = '" . $systemUser->id . "' AND `time` > " . (time() - 86400))->fetchColumn();
-
-            if ($total_karma > 0) {
-                echo '<br /><a href="?act=karma&amp;mod=new">' . _t('New reviews') . '</a> (' . $total_karma . ')';
-            }
-        }
-        echo '</div></td></tr></table></div>';
     }
 
     // Меню выбора

@@ -81,7 +81,6 @@ if (isset($_GET['delavatar'])) {
     // Данные юзера (для Администраторов)
     $user['name'] = isset($_POST['name']) ? htmlspecialchars(mb_substr(trim($_POST['name']), 0, 20)) : $user['name'];
     $user['status'] = isset($_POST['status']) ? htmlspecialchars(mb_substr(trim($_POST['status']), 0, 50)) : '';
-    $user['karma_off'] = isset($_POST['karma_off']) ? 1 : 0;
     $user['sex'] = isset($_POST['sex']) && $_POST['sex'] == 'm' ? 'm' : 'zh';
     $user['rights'] = isset($_POST['rights']) ? abs(intval($_POST['rights'])) : $user['rights'];
 
@@ -150,7 +149,6 @@ if (isset($_GET['delavatar'])) {
             $stmt = $db->prepare('UPDATE `users` SET
               `name` = ?,
               `status` = ?,
-              `karma_off` = ?,
               `sex` = ?,
               `rights` = ?
               WHERE `id` = ?
@@ -159,7 +157,6 @@ if (isset($_GET['delavatar'])) {
             $stmt->execute([
                 $user['name'],
                 $user['status'],
-                $user['karma_off'],
                 $user['sex'],
                 $user['rights'],
                 $user['id'],
@@ -237,7 +234,6 @@ echo '<small><a href="?act=images&amp;mod=up_photo&amp;user=' . $user['id'] . '"
 // Административные функции
 if ($systemUser->rights >= 7) {
     echo '<div class="rmenu"><p><h3><img src="../assets/images/settings.png" width="16" height="16" class="left" />&#160;' . _t('Administrative Functions') . '</h3><ul>';
-    echo '<li><input name="karma_off" type="checkbox" value="1" ' . ($user['karma_off'] ? 'checked="checked"' : '') . ' />&#160;' . _t('Prohibit Karma') . '</li>';
     echo '<li><a href="?act=password&amp;user=' . $user['id'] . '">' . _t('Change Password') . '</a></li>';
 
     if ($systemUser->rights > $user['rights']) {

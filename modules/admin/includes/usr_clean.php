@@ -50,7 +50,6 @@ switch ($mod) {
                 $del->removeAlbum($res['id']);      // Удаляем личные Фотоальбомы
                 $del->removeGuestbook($res['id']);  // Удаляем личную Гостевую
                 $del->removeMail($res['id']);       // Удаляем почту
-                $del->removeKarma($res['id']);      // Удаляем карму
                 $del->cleanComments($res['id']);    // Удаляем комментарии
                 $del->removeUser($res['id']);       // Удаляем пользователя
                 $db->exec("DELETE FROM `cms_forum_rdm` WHERE `user_id` = " . $res['id']);

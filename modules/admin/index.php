@@ -55,7 +55,6 @@ $array = [
     'ipban',
     'antiflood',
     'ban_panel',
-    'karma',
     'reg',
     'mail',
     'search_ip',
@@ -84,7 +83,6 @@ if (!empty($act) && in_array($act, $array) && is_file(__DIR__ . '/includes/' . $
         ($systemUser->rights >= 7 ? '<li><a href="index.php?act=usr_clean">' . _t('Database cleanup') . '</a></li>' : '') .
         '<li><a href="index.php?act=ban_panel">' . _t('Ban Panel') . '</a>&#160;(' . $bantotal . ')</li>' .
         ($systemUser->rights >= 7 ? '<li><a href="index.php?act=antiflood">' . _t('Antiflood') . '</a></li>' : '') .
-        ($systemUser->rights >= 7 ? '<li><a href="index.php?act=karma">' . _t('Karma') . '</a></li>' : '') .
         '<br>' .
         '<li><a href="../users/search.php">' . _t('Search by Nickname') . '</a></li>' .
         '<li><a href="index.php?act=search_ip">' . _t('Search IP') . '</a></li>' .

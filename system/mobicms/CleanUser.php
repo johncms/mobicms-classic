@@ -88,16 +88,6 @@ class CleanUser
         $this->db->exec("DELETE FROM `cms_contact` WHERE `from_id` = '" . $clean_id . "'");
     }
 
-    /**
-     * Удаляем Карму
-     *
-     * @param $clean_id
-     */
-    public function removeKarma($clean_id)
-    {
-        $this->db->exec("DELETE FROM `karma_users` WHERE `karma_user` = '" . $clean_id . "'");
-    }
-
     public function cleanForum($clean_id)
     {
         // Скрываем темы на форуме

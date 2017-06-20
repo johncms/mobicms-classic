@@ -122,14 +122,9 @@ if (!empty($cms_ads[1])) {
 
 // Фиксация местоположений посетителей
 $sql = '';
-$set_karma = $config['karma'];
 
 if ($systemUser->isValid()) {
     // Фиксируем местоположение авторизованных
-    if (!$systemUser->karma_off && $set_karma['on'] && $systemUser->karma_time <= (time() - 86400)) {
-        $sql .= " `karma_time` = " . time() . ", ";
-    }
-
     $movings = $systemUser->movings;
 
     if ($systemUser->lastdate < (time() - 300)) {

@@ -56,10 +56,6 @@ namespace Mobicms\Api;
  * @property $set_user
  * @property $set_forum
  * @property $set_mail
- * @property $karma_plus
- * @property $karma_minus
- * @property $karma_time
- * @property $karma_off
  * @property $comm_count
  * @property $comm_old
  * @property $smileys

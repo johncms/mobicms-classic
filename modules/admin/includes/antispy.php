@@ -230,7 +230,6 @@ class scaner
         '../users/includes/profile/images.php',
         '../users/includes/profile/info.php',
         '../users/includes/profile/ip.php',
-        '../users/includes/profile/karma.php',
         '../users/includes/profile/office.php',
         '../users/includes/profile/password.php',
         '../users/includes/profile/reset.php',

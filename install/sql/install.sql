@@ -550,27 +550,6 @@ CREATE TABLE `guest` (
   DEFAULT CHARSET = utf8mb4;
 
 --
--- Структура таблицы `karma_users`
---
-DROP TABLE IF EXISTS `karma_users`;
-CREATE TABLE `karma_users` (
-  `id`         INT(10) UNSIGNED    NOT NULL AUTO_INCREMENT,
-  `user_id`    INT(10) UNSIGNED    NOT NULL DEFAULT '0',
-  `name`       VARCHAR(50)         NOT NULL DEFAULT '',
-  `karma_user` INT(10) UNSIGNED    NOT NULL DEFAULT '0',
-  `points`     TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
-  `type`       TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
-  `time`       INT(10) UNSIGNED    NOT NULL DEFAULT '0',
-  `text`       TEXT                NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `karma_user` (`karma_user`),
-  KEY `type` (`type`)
-)
-  ENGINE = MyISAM
-  DEFAULT CHARSET = utf8mb4;
-
---
 -- Структура таблицы `library_cats`
 --
 DROP TABLE IF EXISTS `library_cats`;
@@ -722,10 +701,6 @@ CREATE TABLE `users` (
   `set_user`      TEXT                NOT NULL,
   `set_forum`     TEXT                NOT NULL,
   `set_mail`      TEXT                NOT NULL,
-  `karma_plus`    INT(11)             NOT NULL DEFAULT '0',
-  `karma_minus`   INT(11)             NOT NULL DEFAULT '0',
-  `karma_time`    INT(10) UNSIGNED    NOT NULL DEFAULT '0',
-  `karma_off`     TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
   `comm_count`    INT(10) UNSIGNED    NOT NULL DEFAULT '0',
   `comm_old`      INT(10) UNSIGNED    NOT NULL DEFAULT '0',
   `smileys`       TEXT                NOT NULL,

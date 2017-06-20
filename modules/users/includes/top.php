@@ -51,10 +51,6 @@ $menu = [
     ($mod == 'comm' ? '<b>' . _t('Comments') . '</b>' : '<a href="?act=top&amp;mod=comm">' . _t('Comments') . '</a>'),
 ];
 
-if ($set_karma['on']) {
-    $menu[] = $mod == 'karma' ? '<b>' . _t('Karma') . '</b>' : '<a href="?act=top&amp;mod=karma">' . _t('Karma') . '</a>';
-}
-
 switch ($mod) {
     case 'guest':
         // Топ Гостевой
@@ -70,27 +66,6 @@ switch ($mod) {
         echo '<div class="topmenu">' . implode(' | ', $menu) . '</div>';
         echo get_top('komm', $db, $tools);
         echo '<div class="phdr">&#160;</div>';
-        break;
-
-    case 'karma':
-        // Топ Кармы
-        if ($set_karma['on']) {
-            echo '<div class="phdr"><a href="."><b>' . _t('Community') . '</b></a> | ' . _t('Best Karma') . '</div>';
-            echo '<div class="topmenu">' . implode(' | ', $menu) . '</div>';
-            $req = $db->query("SELECT *, (`karma_plus` - `karma_minus`) AS `karma` FROM `users` WHERE (`karma_plus` - `karma_minus`) > 0 ORDER BY `karma` DESC LIMIT 9");
-
-            if ($req->rowCount()) {
-                while ($res = $req->fetch()) {
-                    echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
-                    echo $tools->displayUser($res, ['header' => ('<b>' . $res['karma']) . '</b>']) . '</div>';
-                    ++$i;
-                }
-            } else {
-                echo '<div class="menu"><p>' . _t('The list is empty') . '</p></div>';
-            }
-
-            echo '<div class="phdr">&#160;</div>';
-        }
         break;
 
     default:
