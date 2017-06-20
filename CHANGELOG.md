@@ -15,7 +15,7 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 - Nothing
   
 ### Deleted
-- Nothing
+- Users "Karma"
 
 
 ## mobiCMS Classic 0.2.0  
