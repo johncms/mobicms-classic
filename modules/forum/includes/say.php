@@ -481,4 +481,5 @@ case
         require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('Topic has been deleted or does not exists'), '<a href="index.php">' . _t('Forum') . '</a>');
         require ROOT_PATH . 'system/end.php';
+        exit;
 }
