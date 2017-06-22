@@ -252,7 +252,7 @@ if ($systemUser->isValid()) {
                 echo '&#160;/&#160;' . $nam['from'];
             }
 
-            echo ' <span class="gray">' . date("d.m.y / H:i", $nam['time']) . '</span>';
+            echo ' <span class="gray">(' . $tools->displayDate($nam['time']) . ')</span>';
             echo '</div></div>';
         }
     } else {
