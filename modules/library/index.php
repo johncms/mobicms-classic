@@ -338,7 +338,7 @@ if (in_array($act, $array_includes)) {
                 break;
 
             default:
-                $row = $db->query("SELECT * FROM `library_texts` WHERE `id`=" . $id)->fetch();
+                $row = $db->query('SELECT `id`, `cat_id`, `name`, `announce`, `uploader`, `uploader_id`, `count_views`, `premod`, `comments`, `comm_count`, `time`, CHAR_LENGTH(`text`) as `length` FROM `library_texts` WHERE `id`="' . $id . '" LIMIT 1')->fetch();
 
                 if ($row['premod'] || $adm) {
 
@@ -350,7 +350,7 @@ if (in_array($act, $array_includes)) {
 
                     // Запрашиваем выбранную статью из базы
                     $symbols = 7000;
-                    $count_pages = ceil($db->query("SELECT CHAR_LENGTH(`text`) FROM `library_texts` WHERE `id`= '" . $id . "' LIMIT 1")->fetchColumn() / $symbols);
+                    $count_pages = ceil($row['length'] / $symbols);
                     if ($count_pages) {
 
                         // Чтоб всегда последнюю страницу считал правильно
@@ -369,10 +369,7 @@ if (in_array($act, $array_includes)) {
                         . ($page > 1 ? ' | ' . $tools->checkout($row['name']) : '') . '</div>';
 
                     // Верхняя постраничная навигация
-                    if ($count_pages > 1) {
-                        echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;',
-                                $page == 1 ? 0 : ($page - 1) * 1, $count_pages, 1) . '</div>'; //TODO: разобраться с навигацией
-                    }
+                    echo $nav;
 
                     if ($page == 1) {
                         echo '<div class="list2">';
