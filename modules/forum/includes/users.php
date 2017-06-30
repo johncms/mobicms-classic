@@ -64,5 +64,3 @@ if ($topic_vote == 0 || $systemUser->rights < 7) {
 
     echo '<p><a href="index.php?id=' . $id . '">' . _t('Go to Topic') . '</a></p>';
 }
-
-require ROOT_PATH . 'system/end.php';
