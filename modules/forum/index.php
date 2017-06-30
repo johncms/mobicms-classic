@@ -169,7 +169,6 @@ $mods = [
     'file',
     'files',
     'filter',
-    'loadtem',
     'massdel',
     'new',
     'nt',
