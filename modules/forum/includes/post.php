@@ -106,10 +106,10 @@ $freq = $db->query("SELECT * FROM `cms_forum_files` WHERE `post` = '" . $res['id
 
 if ($freq->rowCount()) {
     $fres = $freq->fetch();
-    $fls = round(@filesize('../uploads/forum/attach/' . $fres['filename']) / 1024, 2);
+    $fls = round(@filesize(UPLOAD_PATH . 'forum/attach/' . $fres['filename']) / 1024, 2);
     echo '<div class="gray" style="font-size: x-small; background-color: rgba(128, 128, 128, 0.1); padding: 2px 4px; margin-top: 4px">' . _t('Attachment') . ':';
     // Предпросмотр изображений
-    $att_ext = strtolower(pathinfo('./uploads/forum/attach/' . $fres['filename'], PATHINFO_EXTENSION));
+    $att_ext = strtolower(pathinfo(UPLOAD_PATH . 'forum/attach/' . $fres['filename'], PATHINFO_EXTENSION));
     $pic_ext = [
         'gif',
         'jpg',
@@ -119,7 +119,7 @@ if ($freq->rowCount()) {
 
     if (in_array($att_ext, $pic_ext)) {
         echo '<div><a href="index.php?act=file&amp;id=' . $fres['id'] . '">';
-        echo '<img src="thumbinal.php?file=' . (urlencode($fres['filename'])) . '" alt="' . _t('Click to view image') . '" /></a></div>';
+        echo '<img src="../assets/modules/forum/thumbinal.php?file=' . (urlencode($fres['filename'])) . '" alt="' . _t('Click to view image') . '" /></a></div>';
     } else {
         echo '<br /><a href="index.php?act=file&amp;id=' . $fres['id'] . '">' . $fres['filename'] . '</a>';
     }
