@@ -101,9 +101,8 @@ if (isset($_POST['submit'])) {
                 }
                 $handle->clean();
             }
-            $sql = "UPDATE `library_texts` SET `name`=" . $db->quote($_POST['name']) . ", " . ($_POST['text'] != 'do_not_change' ? " `text`=" . $db->quote($_POST['text']) . ", " : '') . " " . (isset($_POST['move']) ? '`cat_id`=' . intval($_POST['move']) . ', ' : '') . " `announce`=" . $db->quote(mb_substr(trim($_POST['announce']),
-                    0,
-                    500)) . " " . ($adm ? ", `count_views`=" . intval($_POST['count_views']) . ", `premod`=" . intval($_POST['premod']) . ", `comments`=" . (isset($_POST['comments']) ? intval($_POST['comments']) : 0) : '') . " WHERE `id`=" . $id;
+            $sql = "UPDATE `library_texts` SET `name`=" . $db->quote($_POST['name']) . ", " . ($_POST['text'] != 'do_not_change' ? " `text`=" . $db->quote($_POST['text']) . ", " : '') . " " . (isset($_POST['move']) ? '`cat_id`=' . intval($_POST['move']) . ', ' : '') . " `announce`=" . $db->quote(mb_substr(trim($_POST['announce']), 0, 500))
+                    . " " . ($adm ? ", `count_views`=" . intval($_POST['count_views']) . ", `premod`=" . intval($_POST['premod']) . ", `comments`=" . (isset($_POST['comments']) ? intval($_POST['comments']) : 0) : '') . " WHERE `id`=" . $id;
             break;
     }
     $db->exec($sql);

@@ -28,21 +28,21 @@ if (isset($_GET['tag'])) {
     $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
     $tag = isset($_GET['tag']) ? urldecode($_GET['tag']) : '';
 
-    if ($obj->getAllTagStats($tag)) {
-        $total = sizeof($obj->getAllTagStats($tag));
+    $tags = $obj->getAllTagStats($tag);
+    if ($tags) {
+        $total = sizeof($tags);
         $page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
         $start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
 
         echo '<div class="phdr"><a href="?"><strong>' . _t('Library') . '</strong></a> | ' . _t('Tags') . '</div>';
 
-        if ($total > $userConfig->kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('?act=tags&amp;tag=' . urlencode($tag) . '&amp;', $total) . '</div>';
-        }
+        $nav = $total > $userConfig->kmess ? '<div class="topmenu">' . $tools->displayPagination('?act=tags&amp;tag=' . urlencode($tag) . '&amp;', $total) . '</div>' : '';
+        
+        echo $nav;
 
-        foreach (new LimitIterator(new ArrayIterator($obj->getAllTagStats($tag)), $start, $userConfig->kmess) as $txt) {
-            $query = $db->query("SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `comm_count`, `comments` FROM `library_texts` WHERE `id` = " . $txt)->fetch();
-            if ($query->rowCount()) {
-                $row = $query->fetch();
+        foreach (new LimitIterator(new ArrayIterator($tags), $start, $userConfig->kmess) as $txt) {
+            $row = $db->query("SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `comm_count`, `comments` FROM `library_texts` WHERE `id` = " . $txt)->fetch();
+            if ($row) {
                 $obj = new Library\Hashtags($row['id']);
                 echo '<div class="list' . (++$i % 2 ? 2 : 1) . '">'
                     . (file_exists('../uploads/library/images/small/' . $row['id'] . '.png')
@@ -60,9 +60,8 @@ if (isset($_GET['tag'])) {
 
         echo '<div class="phdr">' . _t('Total') . ': ' . intval($total) . '</div>';
 
-        if ($total > $userConfig->kmess) {
-            echo '<div class="topmenu">' . $tools->displayPagination('?act=tags&amp;tag=' . urlencode($tag) . '&amp;', $total) . '</div>';
-        }
+        echo $nav;
+        
         echo '<p><a href="?">' . _t('To Library') . '</a></p>';
     } else {
         echo '<div class="menu"><p>' . _t('The list is empty') . '</p></div>';

@@ -54,9 +54,7 @@ if (!$total) {
     } else {
         $stmt = $db->query("SELECT `library_texts`.*, COUNT(*) AS `cnt`, AVG(`point`) AS `avg` FROM `cms_library_rating` JOIN `library_texts` ON `cms_library_rating`.`st_id` = `library_texts`.`id` GROUP BY `cms_library_rating`.`st_id` ORDER BY `avg` DESC, `cnt` DESC LIMIT " . $start . ',' . $userConfig->kmess);
     }
-
     $i = 0;
-
     while ($row = $stmt->fetch()) {
         echo '<div class="list' . (++$i % 2 ? 2 : 1) . '">'
             . (file_exists('../uploads/library/images/small/' . $row['id'] . '.png')
