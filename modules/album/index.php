@@ -136,7 +136,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
       LEFT JOIN `users` ON `cms_album_files`.`user_id` = `users`.`id`
       WHERE `users`.`sex` = 'zh'
     ")->fetchColumn();
-    $newcount = $db->query("SELECT COUNT(*) FROM `cms_album_files` WHERE `time` > '" . (time() - 259200) . "' AND `access` > '1'")->fetchColumn();
+    $newcount = $db->query("SELECT COUNT(*) FROM `cms_album_files` WHERE `time` > '" . (time() - 259200) . "' AND `access` = 4")->fetchColumn();
     echo '<div class="phdr"><b>' . _t('Photo Albums') . '</b></div>' .
         '<div class="gmenu"><p>' .
         $tools->image('images/users.png', ['width' => 16, 'height' => 16]) . '<a href="?act=top">' . _t('New Photos') . '</a> (' . $newcount . ')<br>' .

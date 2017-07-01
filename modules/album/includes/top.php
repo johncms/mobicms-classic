@@ -63,7 +63,7 @@ switch ($mod) {
         $title = _t('Top Views');
         $select = "";
         $join = "";
-        $where = "`cms_album_files`.`views` > '0'" . ($systemUser->rights >= 6 ? "" : " AND `cms_album_files`.`access` = '4'");
+        $where = "`cms_album_files`.`views` > '0'" . ($systemUser->rights == 9 ? "" : " AND `cms_album_files`.`access` = '4'");
         $order = "`views` DESC";
         $link = '&amp;mod=views';
         break;
@@ -73,7 +73,7 @@ switch ($mod) {
         $title = _t('Top Downloads');
         $select = "";
         $join = "";
-        $where = "`cms_album_files`.`downloads` > 0" . ($systemUser->rights >= 6 ? "" : " AND `cms_album_files`.`access` = '4'");
+        $where = "`cms_album_files`.`downloads` > 0" . ($systemUser->rights == 9 ? "" : " AND `cms_album_files`.`access` = '4'");
         $order = "`downloads` DESC";
         $link = '&amp;mod=downloads';
         break;
@@ -83,7 +83,7 @@ switch ($mod) {
         $title = _t('Top Comments');
         $select = "";
         $join = "";
-        $where = "`cms_album_files`.`comm_count` > '0'" . ($systemUser->rights >= 6 ? "" : " AND `cms_album_files`.`access` = '4'");
+        $where = "`cms_album_files`.`comm_count` > '0'" . ($systemUser->rights == 9 ? "" : " AND `cms_album_files`.`access` = '4'");
         $order = "`comm_count` DESC";
         $link = '&amp;mod=comments';
         break;
@@ -93,7 +93,7 @@ switch ($mod) {
         $title = _t('Top Votes');
         $select = ", (`vote_plus` - `vote_minus`) AS `rating`";
         $join = "";
-        $where = "(`vote_plus` - `vote_minus`) > 2" . ($systemUser->rights >= 6 ? "" : " AND `cms_album_files`.`access` = '4'");
+        $where = "(`vote_plus` - `vote_minus`) > 2" . ($systemUser->rights == 9 ? "" : " AND `cms_album_files`.`access` = '4'");
         $order = "`rating` DESC";
         $link = '&amp;mod=votes';
         break;
@@ -103,7 +103,7 @@ switch ($mod) {
         $title = _t('Top Worst');
         $select = ", (`vote_plus` - `vote_minus`) AS `rating`";
         $join = "";
-        $where = "(`vote_plus` - `vote_minus`) < -2" . ($systemUser->rights >= 6 ? "" : " AND `cms_album_files`.`access` = '4'");
+        $where = "(`vote_plus` - `vote_minus`) < -2" . ($systemUser->rights == 9 ? "" : " AND `cms_album_files`.`access` = '4'");
         $order = "`rating` ASC";
         $link = '&amp;mod=trash';
         break;
@@ -113,7 +113,7 @@ switch ($mod) {
         $title = _t('New photos');
         $select = "";
         $join = "";
-        $where = "`cms_album_files`.`time` > '" . (time() - 259200) . "'" . ($systemUser->rights >= 6 ? "" : " AND `cms_album_files`.`access` = '4'");
+        $where = "`cms_album_files`.`time` > '" . (time() - 259200) . "'" . ($systemUser->rights == 9 ? "" : " AND `cms_album_files`.`access` = '4'");
         $order = "`cms_album_files`.`time` DESC";
         $link = '';
 }
@@ -146,7 +146,7 @@ if ($total) {
     for ($i = 0; $res = $req->fetch(); ++$i) {
         echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
 
-        if ($res['access'] == 4 || $systemUser->rights >= 7) {
+        if ($res['access'] == 4 || $systemUser->rights == 9) {
             // Если доступ открыт всем, или смотрит Администратор
             echo '<a href="?act=show&amp;al=' . $res['album_id'] . '&amp;img=' . $res['id'] . '&amp;user=' . $res['user_id'] . '&amp;view"><img src="../uploads/users/album/' . $res['user_id'] . '/' . $res['tmb_name'] . '" /></a>';
             if (!empty($res['description']))
@@ -162,7 +162,7 @@ if ($total) {
         echo '<div class="sub">' .
             '<a href="?act=list&amp;user=' . $res['user_id'] . '"><b>' . $res['user_name'] . '</b></a> | <a href="?act=show&amp;al=' . $res['album_id'] . '&amp;user=' . $res['user_id'] . '">' . $tools->checkout($res['album_name']) . '</a>';
 
-        if ($res['access'] == 4 || $systemUser->rights >= 6) {
+        if ($res['access'] == 4 || $systemUser->rights == 9) {
             echo vote_photo($res) .
                 '<div class="gray">' . _t('Views') . ': ' . $res['views'] . ', ' . _t('Downloads') . ': ' . $res['downloads'] . '</div>' .
                 '<div class="gray">' . _t('Date') . ': ' . $tools->displayDate($res['time']) . '</div>' .

@@ -66,7 +66,7 @@ class Counters
         }
 
         $newcount = 0;
-        if ($this->systemUser->rights >= 6 && $new_adm) {
+        if ($this->systemUser->rights == 9 && $new_adm) {
             $newcount = $new_adm;
         } elseif ($new) {
             $newcount = $new;
