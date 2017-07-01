@@ -152,7 +152,6 @@ if (empty($id)) {
         '&gt;'    => '',
         '&#039;'  => '',
     ]);
-    $hdr = mb_substr($hdr, 0, 30);
     $hdr = $tools->checkout($hdr, 2, 2);
     $textl = empty($hdr) ? _t('Forum') : $hdr;
 }
