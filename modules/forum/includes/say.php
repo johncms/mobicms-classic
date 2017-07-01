@@ -93,15 +93,16 @@ function forum_link($m)
 // Проверка на флуд
 $flood = $tools->antiflood();
 
+$type1 = $db->query("SELECT * FROM `forum` WHERE `id` = '$id'")->fetch();
+
 if ($flood) {
     require ROOT_PATH . 'system/head.php';
-    echo $tools->displayError(sprintf(_t('You cannot add the message so often<br>Please, wait %d sec.'), $flood), '<a href="index.php?id=' . $id . '&amp;start=' . $start . '">' . _t('Back') . '</a>');
+    echo $tools->displayError(sprintf(_t('You cannot add the message so often<br>Please, wait %d sec.'), $flood), '<a href="index.php?id=' . ($type1['type'] == 'm' ? $type1['refid'] : $id) . '&amp;start=' . $start . '">' . _t('Back') . '</a>');
     require ROOT_PATH . 'system/end.php';
     exit;
 }
 
 $headmod = 'forum,' . $id . ',1';
-$type1 = $db->query("SELECT * FROM `forum` WHERE `id` = '$id'")->fetch();
 
 switch ($type1['type']) {
     case 't':
