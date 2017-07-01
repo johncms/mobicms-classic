@@ -32,10 +32,10 @@ echo '<div class="phdr"><strong><a href="?">' . _t('Library') . '</a></strong> |
 $total = $db->query("SELECT COUNT(*) FROM `library_texts` WHERE `time` > '" . (time() - 259200) . "' AND `premod`=1")->fetchColumn();
 $page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
 $start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
+if ($total) {
 $sql = $db->query("SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `comments`, `comm_count`, `cat_id`, `announce` FROM `library_texts` WHERE `time` > '" . (time() - 259200) . "' AND `premod`=1 ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
 $nav = ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?act=new&amp;', $total) . '</div>' : '';
 echo $nav;
-if ($total) {
     $i = 0;
     while ($row = $sql->fetch()) {
         echo '<div class="list' . (++$i % 2 ? 2 : 1) . '">'
