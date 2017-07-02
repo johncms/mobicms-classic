@@ -9,11 +9,36 @@
  */
 
 define('MOBICMS', 1);
+$args = [
+         'act' => FILTER_DEFAULT,
+         'mod' => FILTER_DEFAULT,
+         'page' => FILTER_VALIDATE_INT,
+         'do' => FILTER_DEFAULT,
+         'tag' => [
+                    'filter' => FILTER_DEFAULT,
+                    'options' => [
+                                  'default' => null,
+                                  ]
+                    ],
+         'id' => [
+                     'filter' => FILTER_VALIDATE_INT,
+                     'options' => [
+                                   'default' => 0,
+                                   'min_range' => 1
+                                   ]
+                     ],
+         'type' => FILTER_DEFAULT,
+         'yes' => FILTER_DEFAULT,
+         'all' => FILTER_DEFAULT
+         ];
 
-$id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
-$act = isset($_GET['act']) ? trim($_GET['act']) : '';
-$mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
-$do = isset($_REQUEST['do']) ? trim($_REQUEST['do']) : false;
+$input_request = filter_var_array($_REQUEST, $args);
+unset($args);
+
+$id = $input_request['id'];
+$act = isset($input_request['act']) ? trim($input_request['act']) : '';
+$mod = isset($input_request['mod']) ? trim($input_request['mod']) : '';
+$do = $input_request['do'] ? trim($input_request['do']) : false;
 
 $headmod = 'library';
 
@@ -39,7 +64,7 @@ $config = $container->get(Mobicms\Api\ConfigInterface::class);
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
-$page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
+$page = $input_request['page'] ? abs($input_request['page']) : 1;
 $start = $tools->getPgStart();
 
 use Library\Tree;
@@ -49,9 +74,9 @@ use Library\Utils;
 
 /*  php 7+
 use Library\{
-            Tree, 
-            Hashtags, 
-            Rating, 
+            Tree,
+            Hashtags,
+            Rating,
             Links
 }
 */
@@ -88,7 +113,7 @@ switch ($do) {
         $tab = 'library_texts';
 }
 
-if ($id > 0) { 
+if ($id > 0) {
     $hdrsql = $db->query("SELECT `name` FROM `" . $tab . "` WHERE `id`=" . $id . " LIMIT 1");
 
     $hdrres = '';
@@ -192,7 +217,7 @@ if (in_array($act, $array_includes)) {
                 $y++;
                 echo '<div class="list' . (++$i % 2 ? 2 : 1) . '">'
                     . '<a href="?do=dir&amp;id=' . $row['id'] . '">' . $tools->checkout($row['name']) . '</a> ('
-                    . $db->query("SELECT COUNT(*) FROM `" . ($row['dir'] ? 'library_cats' : 'library_texts') . "` WHERE " . ($row['dir'] ? '`parent`=' . $row['id'] : '`cat_id`=' . $row['id']))->fetchColumn() . ')';
+                    . $db->query("SELECT COUNT(*) FROM `" . ($row['dir'] ? 'library_cats' : 'library_texts') . "` WHERE " . ($row['dir'] ? '`parent`=' . $row['id'] : '`cat_id`=' . $row['id'] . ' AND `premod`=1'))->fetchColumn() . ')';
 
                 if (!empty($row['description'])) {
                     echo '<div style="font-size: x-small; padding-top: 2px"><span class="gray">' . $tools->checkout($row['description']) . '</span></div>';
@@ -338,7 +363,7 @@ if (in_array($act, $array_includes)) {
                 break;
 
             default:
-                $row = $db->query('SELECT `id`, `cat_id`, `name`, `announce`, `uploader`, `uploader_id`, `count_views`, `premod`, `comments`, `comm_count`, `time`, CHAR_LENGTH(`text`) as `length` FROM `library_texts` WHERE `id`="' . $id . '" LIMIT 1')->fetch();
+                $row = $db->query("SELECT * FROM `library_texts` WHERE `id`=" . $id)->fetch();
 
                 if ($row['premod'] || $adm) {
 
@@ -350,7 +375,7 @@ if (in_array($act, $array_includes)) {
 
                     // Запрашиваем выбранную статью из базы
                     $symbols = 7000;
-                    $count_pages = ceil($row['length'] / $symbols);
+                    $count_pages = ceil($db->query("SELECT CHAR_LENGTH(`text`) FROM `library_texts` WHERE `id`= '" . $id . "' LIMIT 1")->fetchColumn() / $symbols);
                     if ($count_pages) {
 
                         // Чтоб всегда последнюю страницу считал правильно
@@ -369,7 +394,10 @@ if (in_array($act, $array_includes)) {
                         . ($page > 1 ? ' | ' . $tools->checkout($row['name']) : '') . '</div>';
 
                     // Верхняя постраничная навигация
-                    echo $nav;
+                    if ($count_pages > 1) {
+                        echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;',
+                                $page == 1 ? 0 : ($page - 1) * 1, $count_pages, 1) . '</div>'; //TODO: разобраться с навигацией
+                    }
 
                     if ($page == 1) {
                         echo '<div class="list2">';

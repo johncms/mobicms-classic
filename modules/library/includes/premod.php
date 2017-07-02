@@ -10,34 +10,22 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
-
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Mobicms\Checkpoint\UserConfig $userConfig */
-$userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
-$page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
-
 use Library\Tree;
 
 echo '<div class="phdr"><strong><a href="?">' . _t('Library') . '</a></strong> | ' . _t('Moderation Articles') . '</div>';
 
-if ($id && isset($_GET['yes'])) {
-    $sql = "UPDATE `library_texts` SET `premod`=1 WHERE `id`=" . $id;
-    echo '<div class="rmenu">' . _t('Article') . ' <strong>' . $tools->checkout($db->query("SELECT `name` FROM `library_texts` WHERE `id`=" . $id)->fetchColumn()) . '</strong> ' . _t('Added to the database') . '</div>';
-} elseif (isset($_GET['all'])) {
-    $sql = 'UPDATE `library_texts` SET `premod`=1';
-    echo '<div>' . _t('All Articles added in database') . '</div>';
-}
+if ($db->query('SELECT COUNT(*) FROM `library_texts` WHERE `premod`=0')->fetchColumn()) {
+    if ($id && isset($input_request['yes'])) {
+        $sql = 'UPDATE `library_texts` SET `premod`=1 WHERE `id`=' . $id;
+        echo '<div class="rmenu">' . _t('Article') . ' <strong>' . $tools->checkout($db->query("SELECT `name` FROM `library_texts` WHERE `id`=" . $id)->fetchColumn()) . '</strong> ' . _t('Added to the database') . '</div>';
+    } elseif (isset($input_request['all'])) {
+        $sql = 'UPDATE `library_texts` SET `premod`=1';
+        echo '<div>' . _t('All Articles added in database') . '</div>';
+    }
 
-if (isset($_GET['yes']) || isset($_GET['all'])) {
-    $db->exec($sql);
+    if (isset($input_request['yes']) || isset($input_request['all'])) {
+        $db->exec($sql);
+    }
 }
 
 $total = $db->query('SELECT COUNT(*) FROM `library_texts` WHERE `premod`=0')->fetchColumn();

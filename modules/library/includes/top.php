@@ -10,20 +10,6 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
-
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Mobicms\Checkpoint\UserConfig $userConfig */
-$userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
-$page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
-
 use Library\Hashtags;
 use Library\Rating;
 
@@ -38,11 +24,11 @@ echo '<div class="phdr"><strong><a href="?">' . _t('Library') . '</a></strong> |
     '<div class="topmenu">' . _t('Sort') . ': ' . implode(' | ', $menu) . '</div>';
 
 if ($sort == 'read' || $sort == 'comm') {
-    $total = $db->query('SELECT COUNT(*) FROM `library_texts` WHERE ' . ($sort == 'comm' ? '`comm_count`' : '`count_views`') . ' > 0 ORDER BY ' . ($sort == 'comm' ? '`comm_count`' : '`count_views`') . ' DESC LIMIT 20')->fetchColumn();
+    $total = $db->query('SELECT COUNT(*) FROM `library_texts` WHERE ' . ($sort == 'comm' ? '`comm_count`' : '`count_views`') . ' > 0')->fetchColumn();
 } else {
-    $total = $db->query("SELECT COUNT(*) AS `cnt`, AVG(`point`) AS `avg` FROM `cms_library_rating` GROUP BY `st_id` ORDER BY `avg` DESC, `cnt` DESC LIMIT 20")->fetchColumn(0);
+    $total = $db->query("SELECT COUNT(*) FROM `cms_library_rating` WHERE `point`>0")->fetchColumn();
 }
-
+// TODO: нужна пагинация?
 $page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
 $start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
 
@@ -50,11 +36,22 @@ if (!$total) {
     echo '<div class="menu"><p>' . _t('The list is empty') . '</p></div>';
 } else {
     if ($sort == 'read' || $sort == 'comm') {
-        $stmt = $db->query('SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `cat_id`, `comments`, `comm_count`, `announce` FROM `library_texts` WHERE ' . ($sort == 'comm' ? '`comm_count`' : '`count_views`') . ' > 0 ORDER BY ' . ($sort == 'comm' ? '`comm_count`' : '`count_views`') . ' DESC LIMIT ' . $start . ',' . $userConfig->kmess);
+        $stmt = $db->query('SELECT libtxt.`id`, libtxt.`name`, libtxt.`time`, `uploader`, `uploader_id`, `count_views`, `cat_id`, `comments`, `comm_count`, `announce`, libcat.name as catName
+                           FROM `library_texts` libtxt
+                           LEFT JOIN `library_cats` libcat ON libcat.id=libtxt.cat_id
+                           WHERE ' . ($sort == 'comm' ? '`comm_count`' : '`count_views`') . ' > 0
+                           ORDER BY ' . ($sort == 'comm' ? '`comm_count`' : '`count_views`') . ' DESC LIMIT ' . $start . ',' . $userConfig->kmess);
     } else {
-        $stmt = $db->query("SELECT `library_texts`.*, COUNT(*) AS `cnt`, AVG(`point`) AS `avg` FROM `cms_library_rating` JOIN `library_texts` ON `cms_library_rating`.`st_id` = `library_texts`.`id` GROUP BY `cms_library_rating`.`st_id` ORDER BY `avg` DESC, `cnt` DESC LIMIT " . $start . ',' . $userConfig->kmess);
+        $stmt = $db->query("SELECT `libtxt`.*, libcat.name AS catName, (
+    SELECT COUNT(*) FROM cms_library_rating where st_id=libtxt.id) AS `cnt`, (
+    SELECT AVG(`point`) FROM cms_library_rating where st_id=libtxt.id) AS `avg`
+FROM `library_texts` libtxt
+LEFT JOIN `library_cats` libcat ON libcat.id=libtxt.cat_id
+ORDER BY `avg` DESC, `cnt` DESC LIMIT " . $start . ',' . $userConfig->kmess);
     }
+
     $i = 0;
+
     while ($row = $stmt->fetch()) {
         echo '<div class="list' . (++$i % 2 ? 2 : 1) . '">'
             . (file_exists('../uploads/library/images/small/' . $row['id'] . '.png')
@@ -66,12 +63,12 @@ if (!$total) {
         // Описание к статье
         $obj = new Hashtags($row['id']);
         $rate = new Rating($row['id']);
-        $uploader = $row['uploader_id'] ? '<a href="' . App::getContainer()->get('config')['mobicms']['homeurl'] . '/profile/?user=' . $row['uploader_id'] . '">' . $tools->checkout($row['uploader']) . '</a>' : $tools->checkout($row['uploader']);
+        $uploader = $row['uploader_id'] ? '<a href="' . $container->get('config')['mobicms']['homeurl'] . '/profile/?user=' . $row['uploader_id'] . '">' . $tools->checkout($row['uploader']) . '</a>' : $tools->checkout($row['uploader']);
         echo '<table class="desc">'
             // Раздел
             . '<tr>'
             . '<td class="caption">' . _t('Section') . ':</td>'
-            . '<td><a href="?do=dir&amp;id=' . $row['cat_id'] . '">' . $tools->checkout($db->query("SELECT `name` FROM `library_cats` WHERE `id`=" . $row['cat_id'])->fetchColumn()) . '</a></td>'
+            . '<td><a href="?do=dir&amp;id=' . $row['cat_id'] . '">' . $tools->checkout($row['catName']) . '</a></td>'
             . '</tr>'
             // Тэги
             . ($obj->getAllStatTags() ? '<tr><td class="caption">' . _t('Tags') . ':</td><td>' . $obj->getAllStatTags(1) . '</td></tr>' : '')
