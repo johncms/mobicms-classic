@@ -14,6 +14,18 @@ $obj = new Library\Hashtags(0);
 
 if ($input_request['tag']) {
 
+    /** @var Psr\Container\ContainerInterface $container */
+    $container = App::getContainer();
+
+    /** @var PDO $db */
+    $db = $container->get(PDO::class);
+
+    /** @var Mobicms\Checkpoint\UserConfig $userConfig */
+    $userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
+
+    /** @var Mobicms\Api\ToolsInterface $tools */
+    $tools = $container->get(Mobicms\Api\ToolsInterface::class);
+
     $tag = urldecode($input_request['tag']);
 
     if ($stats = $obj->getAllTagStats($tag)) {

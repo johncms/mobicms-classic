@@ -12,6 +12,18 @@ defined('MOBICMS') or die('Error: restricted access');
 
 use Library\Tree;
 
+/** @var Psr\Container\ContainerInterface $container */
+$container = App::getContainer();
+
+/** @var PDO $db */
+$db = $container->get(PDO::class);
+
+/** @var Mobicms\Checkpoint\UserConfig $userConfig */
+$userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
+
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
+
 echo '<div class="phdr"><strong><a href="?">' . _t('Library') . '</a></strong> | ' . _t('Moderation Articles') . '</div>';
 
 if ($db->query('SELECT COUNT(*) FROM `library_texts` WHERE `premod`=0')->fetchColumn()) {
