@@ -30,21 +30,21 @@ use Library\Tree;
 use Library\Utils;
 
 $obj = new Hashtags($id);
-if (isset($_GET['type']) && in_array($_GET['type'], ['dir', 'article'])) {
-    $type = $_GET['type'];
+if (isset($input_request['type']) && in_array($input_request['type'], ['dir', 'article'])) {
+    $type = $input_request['type'];
 } else {
     Utils::redir404();
 }
 
-$author = ($type == 'article' && $db->query("SELECT `uploader_id` FROM `library_texts` WHERE `id` = " . $id)->fetchColumn() == $systemUser->id && $systemUser->isValid()) ? 1 : 0;
+$author = ($adm || $db->query("SELECT `uploader_id` FROM `library_texts` WHERE `id` = " . $id)->fetchColumn() == $systemUser->id && $systemUser->isValid()) ? 1 : 0;
 
-if (!$adm || (!$author && $type == 'article')) {
+if (!$author) {
     Utils::redir404();
 }
 
 if (isset($_POST['submit'])) {
     switch ($type) {
-        case 'dir':
+        case 'dir': // TODO: bad query
             $sql = "UPDATE `library_cats` SET `name`=" . $db->quote($_POST['name']) . ", `description`=" . $db->quote($_POST['description']) . " " . (isset($_POST['move']) && $db->query("SELECT count(*) FROM `library_cats`")->fetchColumn() > 1 ? ', `parent`=' . intval($_POST['move']) : '') . (isset($_POST['dir']) ? ', `dir`=' . intval($_POST['dir']) : '') . (isset($_POST['user_add']) ? ' , `user_add`=' . intval($_POST['user_add']) : '') . " WHERE `id`=" . $id;
             break;
 

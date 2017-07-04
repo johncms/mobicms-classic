@@ -145,16 +145,16 @@ class Hashtags
     }
 
     /**
-     * Массив тегов с релевантностью
+     * Массив тегов с релевантностью // TODO: ???
      *
      * @return array|bool
      */
     public function arrayCloudTags()
     {
         $result = [];
-        $stmt = $this->db->query('SELECT `library_texts`.`id`, `library_tags`.`lib_text_id`, `library_tags`.`tag_name`, COUNT(*) AS `count` FROM `library_tags` JOIN `library_texts` ON `library_texts`.`id` = `library_tags`.`lib_text_id` GROUP BY `tag_name` ORDER BY `count` DESC;');
-        if ($stmt->rowCount()) {
-            while ($row = $stmt->fetch()) {
+        $stmt = $this->db->query('SELECT COUNT( * ) AS `count`, `tag_name` FROM `library_tags` GROUP BY `tag_name` ORDER BY `count` DESC;');
+        if (count($res = $stmt->fetchAll())) {
+            foreach ($res as $row) {
                 $result[$row['tag_name']] = $row['count'];
             }
 
@@ -247,8 +247,8 @@ class Hashtags
     public function setCache($sort = 'cmpalpha')
     {
         $obj = new self();
-        $tags = $this->db->query('SELECT `id` FROM `library_tags` LIMIT 1')->rowCount();
-        $res = ($tags > 0 ? $obj->cloud($obj->tagRang($sort)) : '<p>' . _t('The list is empty') . '</p>');
+        $tags = $this->db->query('SELECT COUNT( * ) FROM `library_tags`')->fetchColumn();
+        $res = ($tags ? $obj->cloud($obj->tagRang($sort)) : '<p>' . _t('The list is empty') . '</p>');
         file_put_contents(CACHE_PATH . $sort . 'libcloud.dat', $res);
 
         return $this->getCache($sort);
