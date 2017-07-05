@@ -20,7 +20,7 @@
     "vendor-dir": "system/vendor"
   },
   "require": {
-    "php": "^5.6 || ^7.0",
+    "php": "^7.0",
     "erusev/parsedown": "^1.6",
     "geshi/geshi": "dev-master",
     "klein/klein": "^2.1",

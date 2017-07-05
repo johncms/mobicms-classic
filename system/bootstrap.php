@@ -15,7 +15,7 @@ date_default_timezone_set('UTC');
 mb_internal_encoding('UTF-8');
 
 // Check the current PHP version
-if (version_compare(PHP_VERSION, '5.6', '<')) {
+if (version_compare(PHP_VERSION, '7.0', '<')) {
     die('<div style="text-align: center; font-size: xx-large"><strong>ERROR!</strong><br>Your needs PHP 5.6 or higher</div>');
 }
 
