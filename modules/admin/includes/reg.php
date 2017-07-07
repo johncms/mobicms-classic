@@ -65,7 +65,6 @@ switch ($mod) {
 
         if ($req->rowCount()) {
             $db->exec("DELETE FROM `users` WHERE `id` = '$id'");
-            $db->exec("DELETE FROM `cms_users_iphistory` WHERE `user_id` = '$id' LIMIT 1");
         }
 
         echo '<div class="menu"><p>' . _t('User deleted') . '<br><a href="index.php?act=reg">' . _t('Continue') . '</a></p></div>';
@@ -73,7 +72,7 @@ switch ($mod) {
 
     case 'massdel':
         $db->exec("DELETE FROM `users` WHERE `preg` = '0'");
-        $db->query("OPTIMIZE TABLE `cms_users_iphistory` , `users`");
+        $db->query("OPTIMIZE TABLE `users`");
         echo '<div class="menu"><p>' . _t('All unconfirmed registrations were removed') . '<br><a href="index.php?act=reg">' . _t('Continue') . '</a></p></div>';
         break;
 
@@ -82,14 +81,8 @@ switch ($mod) {
         $ip = isset($_GET['ip']) ? intval($_GET['ip']) : false;
 
         if ($ip) {
-            $req = $db->query("SELECT `id` FROM `users` WHERE `preg` = '0' AND `ip` = '$ip'");
-
-            while ($res = $req->fetch()) {
-                $db->exec("DELETE FROM `cms_users_iphistory` WHERE `user_id` = '" . $res['id'] . "'");
-            }
-
             $db->exec("DELETE FROM `users` WHERE `preg` = '0' AND `ip` = '$ip'");
-            $db->query("OPTIMIZE TABLE `cms_users_iphistory` , `users`");
+            $db->query("OPTIMIZE TABLE `users`");
             echo '<div class="menu"><p>' . _t('All unconfirmed registrations with selected IP were deleted') . '<br>' .
                 '<a href="index.php?act=reg">' . _t('Continue') . '</a></p></div>';
         } else {

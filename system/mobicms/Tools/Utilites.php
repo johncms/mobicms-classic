@@ -394,8 +394,8 @@ class Utilites implements ToolsInterface
                     $out .= '<b class="red"><a href="' . $homeurl . '/admin/index.php?act=search_ip&amp;ip=' . $ip . '">' . $ip . '</a></b>';
                     $out .= '&#160;[<a href="' . $homeurl . '/admin/index.php?act=ip_whois&amp;ip=' . $ip . '">?</a>]';
                     $out .= ' / ';
-                    $out .= '<a href="' . $homeurl . '/admin/index.php?act=search_ip&amp;ip=' . long2ip($user['ip_via_proxy']) . '">' . long2ip($user['ip_via_proxy']) . '</a>';
-                    $out .= '&#160;[<a href="' . $homeurl . '/admin/index.php?act=ip_whois&amp;ip=' . long2ip($user['ip_via_proxy']) . '">?</a>]';
+                    $out .= '<a href="' . $homeurl . '/admin/index.php?act=search_ip&amp;ip=' . $user['ip_via_proxy'] . '">' . $user['ip_via_proxy'] . '</a>';
+                    $out .= '&#160;[<a href="' . $homeurl . '/admin/index.php?act=ip_whois&amp;ip=' . $user['ip_via_proxy'] . '">?</a>]';
                 } elseif ($this->user->rights) {
                     $out .= '<a href="' . $homeurl . '/admin/index.php?act=search_ip&amp;ip=' . $ip . '">' . $ip . '</a>';
                     $out .= '&#160;[<a href="' . $homeurl . '/admin/index.php?act=ip_whois&amp;ip=' . $ip . '">?</a>]';

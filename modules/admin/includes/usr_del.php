@@ -104,7 +104,6 @@ if (!$error) {
             // Оптимизируем таблицы
             $db->query("
                 OPTIMIZE TABLE
-                `cms_users_iphistory`,
                 `cms_ban_users`,
                 `guest`,
                 `cms_album_comments`,
