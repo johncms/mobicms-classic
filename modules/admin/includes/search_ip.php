@@ -28,13 +28,7 @@ if (isset($_GET['ip'])) {
     $search = trim($_GET['ip']);
 }
 
-$menu = [
-    (!$mod ? '<b>' . _t('Actual IP') . '</b>' : '<a href="index.php?act=search_ip&amp;search=' . rawurlencode($search) . '">' . _t('Actual IP') . '</a>'),
-    ($mod == 'history' ? '<b>' . _t('IP history') . '</b>' : '<a href="index.php?act=search_ip&amp;mod=history&amp;search=' . rawurlencode($search) . '">' . _t('IP history') . '</a>'),
-];
-
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Admin Panel') . '</b></a> | ' . _t('Search IP') . '</div>' .
-    '<div class="topmenu">' . implode(' | ', $menu) . '</div>' .
     '<form action="index.php?act=search_ip" method="post"><div class="gmenu"><p>' .
     '<input type="text" name="search" value="' . $tools->checkout($search) . '" />' .
     '<input type="submit" value="' . _t('Search') . '" name="submit" /><br>' .
@@ -94,29 +88,16 @@ if ($search && !$error) {
 
     // Выводим результаты поиска
     echo '<div class="phdr">' . _t('Search results') . '</div>';
-
-    if ($mod == 'history') {
-        $total = $db->query("SELECT COUNT(DISTINCT `cms_users_iphistory`.`user_id`) FROM `cms_users_iphistory` WHERE `ip` BETWEEN $ip1 AND $ip2 OR `ip_via_proxy` BETWEEN $ip1 AND $ip2")->fetchColumn();
-    } else {
-        $total = $db->query("SELECT COUNT(*) FROM `users` WHERE `ip` BETWEEN $ip1 AND $ip2 OR `ip_via_proxy` BETWEEN $ip1 AND $ip2")->fetchColumn();
-    }
+    $total = $db->query("SELECT COUNT(*) FROM `users` WHERE `ip` BETWEEN $ip1 AND $ip2 OR `ip_via_proxy` BETWEEN $ip1 AND $ip2")->fetchColumn();
 
     if ($total > $userConfig->kmess) {
         echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=search_ip' . ($mod == 'history' ? '&amp;mod=history' : '') . '&amp;search=' . urlencode($search) . '&amp;', $total) . '</div>';
     }
 
     if ($total) {
-        if ($mod == 'history') {
-            $req = $db->query("SELECT `cms_users_iphistory`.*, `users`.`name`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`, `users`.`id`, `users`.`browser`
-                FROM `cms_users_iphistory` LEFT JOIN `users` ON `cms_users_iphistory`.`user_id` = `users`.`id`
-                WHERE `cms_users_iphistory`.`ip` BETWEEN $ip1 AND $ip2 OR `cms_users_iphistory`.`ip_via_proxy` BETWEEN $ip1 AND $ip2
-                GROUP BY `users`.`id`
-                ORDER BY `ip` ASC, `name` ASC" . $tools->getPgStart(true));
-        } else {
-            $req = $db->query("SELECT * FROM `users`
+        $req = $db->query("SELECT * FROM `users`
             WHERE `ip` BETWEEN $ip1 AND $ip2 OR `ip_via_proxy` BETWEEN $ip1 AND $ip2
             ORDER BY `ip` ASC, `name` ASC" . $tools->getPgStart(true));
-        }
 
         $i = 0;
 

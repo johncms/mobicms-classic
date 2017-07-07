@@ -369,23 +369,6 @@ CREATE TABLE `cms_users_guestbook` (
   DEFAULT CHARSET = utf8mb4;
 
 --
--- Структура таблицы `cms_users_iphistory`
---
-DROP TABLE IF EXISTS `cms_users_iphistory`;
-CREATE TABLE `cms_users_iphistory` (
-  `id`           BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id`      INT(10) UNSIGNED    NOT NULL,
-  `ip`           VARCHAR(20)         NOT NULL DEFAULT '',
-  `ip_via_proxy` VARCHAR(20)         NOT NULL DEFAULT '',
-  `time`         INT(10) UNSIGNED    NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `user_ip` (`ip`)
-)
-  ENGINE = MyISAM
-  DEFAULT CHARSET = utf8mb4;
-
---
 -- Структура таблицы `download__bookmark`
 --
 DROP TABLE IF EXISTS `download__bookmark`;

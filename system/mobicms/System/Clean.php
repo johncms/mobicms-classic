@@ -23,8 +23,7 @@ class Clean
             $db = $container->get(\PDO::class);
 
             $db->exec('DELETE FROM `cms_sessions` WHERE `lastdate` < ' . (time() - 86400));
-            $db->exec("DELETE FROM `cms_users_iphistory` WHERE `time` < " . (time() - 7776000));
-            $db->query('OPTIMIZE TABLE `cms_sessions`, `cms_users_iphistory`, `cms_mail`, `cms_contact`');
+            $db->query('OPTIMIZE TABLE `cms_sessions`, `cms_mail`, `cms_contact`');
             file_put_contents($this->cacheFile, time());
         }
     }

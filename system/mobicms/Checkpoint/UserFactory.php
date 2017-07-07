@@ -77,11 +77,6 @@ class UserFactory
                         $userData['rights'] = 0;
                     }
 
-                    // Фиксируем историю IP
-                    if ($userData['ip'] != $this->request->ip() || $userData['ip_via_proxy'] != $this->request->ipViaProxy()) {
-                        $this->ipHistory($userData);
-                    }
-
                     return $userData;
                 } else {
                     // Если авторизация не прошла
@@ -113,37 +108,6 @@ class UserFactory
         }
 
         return $ban;
-    }
-
-    /**
-     * Фиксация истории IP адресов пользователя
-     *
-     * @param array $userData
-     */
-    protected function ipHistory(array $userData)
-    {
-        // Удаляем из истории текущий адрес (если есть)
-        $this->db->exec("DELETE FROM `cms_users_iphistory`
-          WHERE `user_id` = '" . $userData['id'] . "'
-          AND `ip` = '" . $this->request->ip() . "'
-          AND `ip_via_proxy` = '" . $this->request->ipViaProxy() . "'
-          LIMIT 1
-        ");
-
-        // Вставляем в историю предыдущий адрес IP
-        $this->db->exec("INSERT INTO `cms_users_iphistory` SET
-          `user_id` = '" . $userData['id'] . "',
-          `ip` = '" . $userData['ip'] . "',
-          `ip_via_proxy` = '" . $userData['ip_via_proxy'] . "',
-          `time` = '" . $userData['lastdate'] . "'
-        ");
-
-        // Обновляем текущий адрес в таблице `users`
-        $this->db->exec("UPDATE `users` SET
-          `ip` = '" . $this->request->ip() . "',
-          `ip_via_proxy` = '" . $this->request->ipViaProxy() . "'
-          WHERE `id` = '" . $userData['id'] . "'
-        ");
     }
 
     protected function userTemplate()
