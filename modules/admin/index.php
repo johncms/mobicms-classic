@@ -67,24 +67,25 @@ $array = [
 if (!empty($act) && in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     require(__DIR__ . '/includes/' . $act . '.php');
 } else {
-    $regtotal = $db->query("SELECT COUNT(*) FROM `users` WHERE `preg`='0'")->fetchColumn();
-    $bantotal = $db->query("SELECT COUNT(*) FROM `cms_ban_users` WHERE `ban_time` > '" . time() . "'")->fetchColumn();
+    $cnt = $db->query('SELECT * FROM (
+	SELECT COUNT( * ) `regtotal` FROM `cms_ban_users` WHERE `ban_time` > ' . time() . ')q1, (
+	SELECT COUNT( * ) `bantotal` FROM `users` WHERE `preg` = 0)q2')->fetch(); // TODO: column `preg` нужен индекс
     echo '<div class="phdr"><b>' . _t('Admin Panel') . '</b></div>';
 
     // Блок пользователей
     echo '<div class="user"><p><h3>' . _t('Users') . '</h3><ul>';
 
-    if ($regtotal && $systemUser->rights >= 6) {
-        echo '<li><span class="red"><b><a href="index.php?act=reg">' . _t('On registration') . '</a>&#160;(' . $regtotal . ')</b></span></li>';
+    if ($cnt['regtotal'] && $systemUser->rights >= 6) {
+        echo '<li><span class="red"><b><a href="index.php?act=reg">' . _t('On registration') . '</a>&#160;(' . $cnt['regtotal'] . ')</b></span></li>';
     }
 
     echo '<li><a href="index.php?act=usr">' . _t('Users') . '</a>&#160;(' . $container->get('counters')->users() . ')</li>' .
         '<li><a href="index.php?act=usr_adm">' . _t('Administration') . '</a>&#160;(' . $db->query("SELECT COUNT(*) FROM `users` WHERE `rights` >= '1'")->fetchColumn() . ')</li>' .
         ($systemUser->rights >= 7 ? '<li><a href="index.php?act=usr_clean">' . _t('Database cleanup') . '</a></li>' : '') .
-        '<li><a href="index.php?act=ban_panel">' . _t('Ban Panel') . '</a>&#160;(' . $bantotal . ')</li>' .
+        '<li><a href="index.php?act=ban_panel">' . _t('Ban Panel') . '</a>&#160;(' . $cnt['bantotal'] . ')</li>' .
         ($systemUser->rights >= 7 ? '<li><a href="index.php?act=antiflood">' . _t('Antiflood') . '</a></li>' : '') .
         '<br>' .
-        '<li><a href="../users/search.php">' . _t('Search by Nickname') . '</a></li>' .
+        '<li><a href="/users/?act=search">' . _t('Search by Nickname') . '</a></li>' .
         '<li><a href="index.php?act=search_ip">' . _t('Search IP') . '</a></li>' .
         '</ul></p></div>';
 
