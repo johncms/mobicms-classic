@@ -21,6 +21,8 @@ uploads/*
 
 system/cache/*
 !system/cache/.gitkeep
+system/logs/*
+!system/logs/.gitkeep
 system/vendor
 system/config/autoload/*.local.php
 

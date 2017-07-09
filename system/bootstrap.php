@@ -9,6 +9,7 @@
  */
 
 defined('MOBICMS') or die('Error: restricted access');
+defined('DEBUG') || define('DEBUG', false);
 
 error_reporting(E_ALL & ~E_NOTICE);
 date_default_timezone_set('UTC');
@@ -23,11 +24,25 @@ define('START_MEMORY', memory_get_usage());
 define('START_TIME', microtime(true));
 
 define('ROOT_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR);
-define('UPLOAD_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR);
-define('CONFIG_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR);
 define('CACHE_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR);
+define('CONFIG_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR);
+define('UPLOAD_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR);
+const LOG_PATH = __DIR__ . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR;
 
 require __DIR__ . '/vendor/autoload.php';
+
+// Errors handling
+if (DEBUG) {
+    ini_set('error_reporting', E_ALL);
+    ini_set('display_errors', 'On');
+    ini_set('log_errors', 'On');
+    ini_set('error_log', LOG_PATH . 'errors-' . date('Y-m-d') . '.log');
+    new Mobicms\Exception\Handler\Handler;
+} else {
+    ini_set('error_reporting', E_ALL & ~E_DEPRECATED & ~E_STRICT);
+    ini_set('display_errors', 'Off');
+    ini_set('log_errors', 'Off');
+}
 
 use Zend\ServiceManager\ServiceManager;
 use Zend\ServiceManager\Config;

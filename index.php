@@ -9,6 +9,7 @@
  */
 
 define('MOBICMS', 1);
+define('DEBUG', true);
 
 require('system/bootstrap.php');
 
