@@ -23,11 +23,12 @@ if (version_compare(PHP_VERSION, '7.0', '<')) {
 define('START_MEMORY', memory_get_usage());
 define('START_TIME', microtime(true));
 
-define('ROOT_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR);
-define('CACHE_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR);
-define('CONFIG_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR);
-define('UPLOAD_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR);
-const LOG_PATH = __DIR__ . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR;
+const DS = DIRECTORY_SEPARATOR;
+define('ROOT_PATH', dirname(__DIR__) . DS);
+const CACHE_PATH = __DIR__ . DS . 'cache' . DS;
+const CONFIG_PATH = __DIR__ . DS . 'config' . DS;
+const UPLOAD_PATH = ROOT_PATH . DS . 'uploads' . DS;
+const LOG_PATH = __DIR__ . DS . 'logs' . DS;
 
 require __DIR__ . '/vendor/autoload.php';
 
