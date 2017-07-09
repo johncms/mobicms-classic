@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -929,5 +929,5 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
         }
     }
 }
-echo $_SERVER['base'];
+
 require ROOT_PATH . 'system/end.php';

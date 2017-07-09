@@ -8,7 +8,8 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
+
 $args = [
          'act' => FILTER_DEFAULT,
          'mod' => FILTER_DEFAULT,
