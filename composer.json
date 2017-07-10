@@ -34,8 +34,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Mobicms\\": "system/mobicms/",
-      "Mobicms\\Api\\": "system/api/",
+      "Mobicms\\": "system/src/",
       "Library\\": "modules/library/classes/"
     }
   }
