@@ -8,8 +8,15 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-namespace Mobicms;
+namespace Mobicms\Deprecated;
 
+use Mobicms\Api\BbcodeInterface;
+use Mobicms\Api\ToolsInterface;
+use Mobicms\Api\UserInterface;
+
+/**
+ * @deprecated
+ */
 class Comments
 {
     // Служебные данные
@@ -32,7 +39,7 @@ class Comments
     private $tools;
 
     /**
-     * @var Api\UserInterface::class
+     * @var UserInterface::class
      */
     private $systemUser;
 
@@ -57,9 +64,9 @@ class Comments
 
         /** @var \Psr\Container\ContainerInterface $container */
         $container = \App::getContainer();
-        $this->tools = $container->get(Api\ToolsInterface::class);
+        $this->tools = $container->get(ToolsInterface::class);
         $this->db = $container->get(\PDO::class);
-        $this->systemUser = $container->get(Api\UserInterface::class );
+        $this->systemUser = $container->get(UserInterface::class);
 
         /** @var \Mobicms\Http\Response $response */
         $response = $container->get(\Mobicms\Http\Response::class);
@@ -324,8 +331,8 @@ class Comments
 
                         $user_arg = [
                             'header' => ' <span class="gray">(' . $this->tools->displayDate($res['time']) . ')</span>',
-                            'body' => $text,
-                            'sub' => implode(' | ', array_filter($menu)),
+                            'body'   => $text,
+                            'sub'    => implode(' | ', array_filter($menu)),
                             'iphide' => ($this->systemUser->rights ? false : true),
                         ];
                         echo $this->tools->displayUser($res, $user_arg);
@@ -363,10 +370,10 @@ class Comments
 
         // Формируем атрибуты сообщения
         $attributes = [
-            'author_name' => $this->systemUser->name,
-            'author_ip' => $request->ip(),
+            'author_name'         => $this->systemUser->name,
+            'author_ip'           => $request->ip(),
             'author_ip_via_proxy' => $request->ipViaProxy(),
-            'author_browser' => $request->userAgent(),
+            'author_browser'      => $request->userAgent(),
         ];
 
         // Записываем комментарий в базу
@@ -402,7 +409,7 @@ class Comments
         return '<div class="gmenu"><form name="form" action="' . $this->url . $submit_link . '" method="post"><p>' .
             (!empty($text) ? '<div class="quote">' . $text . '</div></p><p>' : '') .
             '<b>' . _t('Message', 'system') . '</b>: <small>(Max. ' . $this->max_lenght . ')</small><br />' .
-            '</p><p>' . \App::getContainer()->get(Api\BbcodeInterface::class)->buttons('form', 'message') .
+            '</p><p>' . \App::getContainer()->get(BbcodeInterface::class)->buttons('form', 'message') .
             '<textarea rows="' . $this->systemUser->getConfig()->fieldHeight . '" name="message">' . $reply . '</textarea><br>' .
             '<input type="hidden" name="code" value="' . rand(1000, 9999) . '" /><input type="submit" name="submit" value="' . _t('Send', 'system') . '"/></p></form></div>';
     }
@@ -426,7 +433,7 @@ class Comments
             $error[] = _t('Text is too short', 'system');
         } else {
             // Проверка на флуд
-            $flood = \App::getContainer()->get(Api\ToolsInterface::class)->antiflood();
+            $flood = \App::getContainer()->get(ToolsInterface::class)->antiflood();
 
             if ($flood) {
                 $error[] = _t('You cannot add the message so often<br>Please, wait', 'system') . ' ' . $flood . '&#160;' . _t('seconds', 'system');
@@ -445,8 +452,8 @@ class Comments
 
         // Возвращаем результат
         return [
-            'code' => $code,
-            'text' => $message,
+            'code'  => $code,
+            'text'  => $message,
             'error' => $error,
         ];
     }

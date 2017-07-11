@@ -86,7 +86,7 @@ if (!$error) {
 
         case 'del':
             // Удаляем личные данные
-            $del = new Mobicms\CleanUser;
+            $del = new Mobicms\Deprecated\CleanUser;
             $del->removeAlbum($user['id']);         // Удаляем личные Фотоальбомы
             $del->removeGuestbook($user['id']);     // Удаляем личную Гостевую
             $del->removeMail($user['id']);          // Удаляем почту

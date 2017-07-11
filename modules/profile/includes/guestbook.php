@@ -44,7 +44,7 @@ $arg = [
 ];
 
 // Показываем комментарии
-$comm = new Mobicms\Comments($arg);
+$comm = new Mobicms\Deprecated\Comments($arg);
 
 // Обновляем счетчик непрочитанного
 if (!$mod && $user['id'] == $systemUser->id && $user['comm_count'] != $user['comm_old']) {

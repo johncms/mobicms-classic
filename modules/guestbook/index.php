@@ -112,7 +112,7 @@ switch ($act) {
             $error[] = _t('You have not entered the message');
         }
 
-        if ($systemUser->ban['1'] || $systemUser->ban['13']) {
+        if (isset($systemUser->ban['1']) || isset($systemUser->ban['13'])) {
             $error[] = _t('Access forbidden');
         }
 

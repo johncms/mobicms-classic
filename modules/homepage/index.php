@@ -29,7 +29,7 @@ if (isset($_SESSION['ref'])) {
 $headmod = 'mainpage';
 require ROOT_PATH . 'system/head.php';
 
-$mp = new Mobicms\NewsWidget();
+$mp = new Mobicms\Deprecated\NewsWidget;
 
 // Блок информации
 echo '<div class="phdr"><b>' . _t('Information', 'system') . '</b></div>';

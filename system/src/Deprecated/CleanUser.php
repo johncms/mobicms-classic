@@ -8,8 +8,11 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-namespace Mobicms;
+namespace Mobicms\Deprecated;
 
+/**
+ * @deprecated
+ */
 class CleanUser
 {
     /**

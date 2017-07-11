@@ -8,10 +8,15 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-namespace Mobicms;
+namespace Mobicms\Deprecated;
 
+use Mobicms\Api\ToolsInterface;
+use Mobicms\Api\UserInterface;
 use Psr\Container\ContainerInterface;
 
+/**
+ * @deprecated
+ */
 class Counters
 {
     /**
@@ -20,7 +25,7 @@ class Counters
     private $db;
 
     /**
-     * @var Api\UserInterface::class
+     * @var UserInterface::class
      */
     private $systemUser;
 
@@ -35,8 +40,8 @@ class Counters
     {
 
         $this->db = $container->get(\PDO::class);
-        $this->systemUser = $container->get(Api\UserInterface::class);
-        $this->tools = $container->get(Api\ToolsInterface::class);
+        $this->systemUser = $container->get(UserInterface::class);
+        $this->tools = $container->get(ToolsInterface::class);
         $this->homeurl = $container->get('config')['mobicms']['homeurl'];
 
         return $this;

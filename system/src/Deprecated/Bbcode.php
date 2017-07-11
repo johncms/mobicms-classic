@@ -8,19 +8,27 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-namespace Mobicms;
+namespace Mobicms\Deprecated;
 
 use Psr\Container\ContainerInterface;
+use Mobicms\Api\BbcodeInterface;
+use Mobicms\Api\ConfigInterface;
+use Mobicms\Api\ToolsInterface;
+use Mobicms\Api\UserInterface;
+use Mobicms\Checkpoint\UserConfig;
 
-class Bbcode implements Api\BbcodeInterface
+/**
+ * @deprecated
+ */
+class Bbcode implements BbcodeInterface
 {
     /**
-     * @var Api\ConfigInterface
+     * @var ConfigInterface
      */
     protected $config;
 
     /**
-     * @var Api\UserInterface::class
+     * @var UserInterface::class
      */
     protected $user;
 
@@ -42,8 +50,8 @@ class Bbcode implements Api\BbcodeInterface
 
     public function __invoke(ContainerInterface $container)
     {
-        $this->config = $container->get(Api\ConfigInterface::class);
-        $this->user = $container->get(Api\UserInterface::class);
+        $this->config = $container->get(ConfigInterface::class);
+        $this->user = $container->get(UserInterface::class);
         $this->userConfig = $this->user->getConfig();
         $this->homeUrl = $this->config['homeurl'];
 
@@ -156,8 +164,8 @@ class Bbcode implements Api\BbcodeInterface
                 $res_sm .= '<a href="javascript:tag(\':' . $value . '\', \':\'); show_hide(\'sm\');">:' . $value . ':</a> ';
             }
 
-            /** @var Api\ToolsInterface::class $tools */
-            $tools = \App::getContainer()->get(Api\ToolsInterface::class);
+            /** @var ToolsInterface::class $tools */
+            $tools = \App::getContainer()->get(ToolsInterface::class);
 
             $bb_smileys .= $tools->smilies($res_sm, $this->user->rights >= 1 ? 1 : 0);
         } else {
@@ -421,7 +429,7 @@ class Bbcode implements Api\BbcodeInterface
         return $var;
     }
 
-     /**
+    /**
      * Постобработка кода
      *
      * Собирает ранее распарсенное содержимое тега code в результирующую строку
@@ -432,8 +440,8 @@ class Bbcode implements Api\BbcodeInterface
     protected function postprocessCode($var)
     {
         $var = preg_replace_callback(
-                '#\[code\|' . $this->codeId . '\](\d+)\[\/code\]#s',
-                [$this, 'postprocessCodeCallback'], $var);
+            '#\[code\|' . $this->codeId . '\](\d+)\[\/code\]#s',
+            [$this, 'postprocessCodeCallback'], $var);
         $this->codeIndex = 0;
         $this->codeParts = [];
 
@@ -481,6 +489,7 @@ class Bbcode implements Api\BbcodeInterface
     {
         $part = $this->codeParts[$code[1]];
         unset($this->codeParts[$code[1]]);
+
         return '<div class="phpcode" style="overflow-x: auto">' . $part . '</div>';
     }
 

@@ -43,7 +43,7 @@ switch ($mod) {
         ");
 
         if ($req->rowCount()) {
-            $del = new Mobicms\CleanUser;
+            $del = new Mobicms\Deprecated\CleanUser;
 
             // Удаляем всю информацию
             while ($res = $req->fetch()) {

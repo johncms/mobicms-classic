@@ -10,6 +10,9 @@
 
 namespace Mobicms\Api;
 
+/**
+ * @deprecated
+ */
 interface BbcodeInterface
 {
     /**

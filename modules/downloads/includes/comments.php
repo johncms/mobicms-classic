@@ -64,6 +64,6 @@ $arg = [
 ];
 
 // Показываем комментарии
-$comm = new Mobicms\Comments($arg);
+$comm = new Mobicms\Deprecated\Comments($arg);
 
 require ROOT_PATH . 'system/end.php';

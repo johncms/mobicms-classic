@@ -8,8 +8,13 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-namespace Mobicms;
+namespace Mobicms\Deprecated;
 
+use Mobicms\Api\ToolsInterface;
+
+/**
+ * @deprecated
+ */
 class NewsWidget
 {
     public $news;         // Текст новостей
@@ -23,7 +28,7 @@ class NewsWidget
     private $db;
 
     /**
-     * @var Tools\Utilites
+     * @var ToolsInterface
      */
     private $tools;
 
@@ -33,7 +38,7 @@ class NewsWidget
         $container = \App::getContainer();
 
         $this->db = $container->get(\PDO::class);
-        $this->tools = $container->get(Api\ToolsInterface::class);
+        $this->tools = $container->get(ToolsInterface::class);
         $this->settings = $container->get('config')['mobicms']['news'];
         $this->newscount = $this->newscount() . $this->lastnewscount();
         $this->news = $this->news();
