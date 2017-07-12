@@ -51,5 +51,5 @@ if ($total > $userConfig->kmess) {
         '</form></p>';
 }
 
-echo '<p><a href="search.php">' . _t('User Search') . '</a><br />' .
+echo '<p><a href="?act=search">' . _t('User Search') . '</a><br />' .
     '<a href=".">' . _t('Back') . '</a></p>';
