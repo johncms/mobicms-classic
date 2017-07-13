@@ -46,53 +46,11 @@ echo '<!DOCTYPE html>' .
     "\n" . '<meta name="Generator" content="mobiCMS, https://mobicms.org">' .
     "\n" . '<meta name="keywords" content="' . $keywords . '">' .
     "\n" . '<meta name="description" content="' . $descriptions . '">' .
-    "\n" . '<link rel="stylesheet" href="' . $config->homeurl . '/theme/' . $tools->getSkin() . '/style.css">' .
+    "\n" . '<link rel="stylesheet" href="' . $config->homeurl . '/themes/' . $tools->getSkin() . '/css/legacy.css">' .
     "\n" . '<link rel="shortcut icon" href="' . $config->homeurl . '/favicon.ico">' .
     "\n" . '<link rel="alternate" type="application/rss+xml" title="RSS | ' . _t('Site News', 'system') . '" href="' . $config->homeurl . '/rss/">' .
     "\n" . '<title>' . $textl . '</title>' .
     "\n" . '</head><body>';
-
-// Рекламный модуль
-$cms_ads = [];
-
-if (!isset($_GET['err']) && $act != '404' && $headmod != 'admin') {
-    $view = $systemUser->id ? 2 : 1;
-    $layout = ($headmod == 'mainpage' && !$act) ? 1 : 2;
-    $req = $db->query("SELECT * FROM `cms_ads` WHERE `to` = '0' AND (`layout` = '$layout' or `layout` = '0') AND (`view` = '$view' or `view` = '0') ORDER BY  `mesto` ASC");
-
-    if ($req->rowCount()) {
-        while ($res = $req->fetch()) {
-            $name = explode("|", $res['name']);
-            $name = htmlentities($name[mt_rand(0, (count($name) - 1))], ENT_QUOTES, 'UTF-8');
-
-            if (!empty($res['color'])) {
-                $name = '<span style="color:#' . $res['color'] . '">' . $name . '</span>';
-            }
-
-            // Если было задано начертание шрифта, то применяем
-            $font = $res['bold'] ? 'font-weight: bold;' : false;
-            $font .= $res['italic'] ? ' font-style:italic;' : false;
-            $font .= $res['underline'] ? ' text-decoration:underline;' : false;
-
-            if ($font) {
-                $name = '<span style="' . $font . '">' . $name . '</span>';
-            }
-
-            @$cms_ads[$res['type']] .= '<a href="' . ($res['show'] ? $tools->checkout($res['link']) : $config['homeurl'] . '/go.php?id=' . $res['id']) . '">' . $name . '</a><br>';
-
-            if (($res['day'] != 0 && time() >= ($res['time'] + $res['day'] * 3600 * 24))
-                || ($res['count_link'] != 0 && $res['count'] >= $res['count_link'])
-            ) {
-                $db->exec('UPDATE `cms_ads` SET `to` = 1  WHERE `id` = ' . $res['id']);
-            }
-        }
-    }
-}
-
-// Рекламный блок сайта
-if (isset($cms_ads[0])) {
-    echo $cms_ads[0];
-}
 
 // Выводим логотип и переключатель языков
 echo '<table style="width: 100%;" class="logo"><tr>' .
@@ -114,11 +72,6 @@ echo '<div class="tmn">' .
     ($systemUser->id && $headmod != 'office' ? '<a href="' . $config['homeurl'] . '/profile/?act=office">' . $tools->image('images/menu_cabinet.png') . $systemUser->name . ' <small style="color: #a8b5c4">(' . _t('Personal', 'system') . ')</small></a><br>' : '') .
     (!$systemUser->id && $headmod != 'login' ? $tools->image('images/menu_login.png') . '<a href="' . $config['homeurl'] . '/login/">' . _t('Login', 'system') . '</a>' : '') .
     '</div><div class="maintxt">';
-
-// Рекламный блок сайта
-if (!empty($cms_ads[1])) {
-    echo '<div class="gmenu">' . $cms_ads[1] . '</div>';
-}
 
 // Фиксация местоположений посетителей
 $sql = '';

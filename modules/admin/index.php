@@ -43,7 +43,6 @@ require ROOT_PATH . 'system/head.php';
 $array = [
     'forum',
     'news',
-    'ads',
     'counters',
     'ip_whois',
     'languages',
@@ -96,8 +95,7 @@ if (!empty($act) && in_array($act, $array) && is_file(__DIR__ . '/includes/' . $
         echo '<div class="gmenu"><p>';
         echo '<h3>' . _t('Modules') . '</h3><ul>' .
             '<li><a href="index.php?act=forum">' . _t('Forum') . '</a></li>' .
-            '<li><a href="index.php?act=news">' . _t('News') . '</a></li>' .
-            '<li><a href="index.php?act=ads">' . _t('Advertisement') . '</a></li>';
+            '<li><a href="index.php?act=news">' . _t('News') . '</a></li>';
 
         if ($systemUser->rights == 9) {
             echo '<li><a href="index.php?act=counters">' . _t('Counters') . '</a></li>';

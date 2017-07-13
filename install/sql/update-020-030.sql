@@ -1,3 +1,4 @@
+DROP TABLE ` cms_ads`;
 DROP TABLE `karma_users`;
 DROP TABLE ` cms_users_iphistory`;
 ALTER TABLE `users` DROP `karma_off`;

@@ -22,11 +22,6 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-// Рекламный блок сайта
-if (!empty($cms_ads[2])) {
-    echo '<div class="gmenu">' . $cms_ads[2] . '</div>';
-}
-
 echo '</div><div class="fmenu">';
 
 if (isset($_GET['err']) || $headmod != "mainpage" || ($headmod == 'mainpage' && isset($_GET['act']))) {
@@ -51,11 +46,6 @@ if ($req->rowCount()) {
             echo $count;
         }
     }
-}
-
-// Рекламный блок сайта
-if (!empty($cms_ads[3])) {
-    echo '<br />' . $cms_ads[3];
 }
 
 /*
