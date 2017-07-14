@@ -29,7 +29,6 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 $act = isset($_REQUEST['act']) ? trim($_REQUEST['act']) : '';
-$headmod = isset($headmod) ? $headmod : '';
 $textl = isset($textl) ? $textl : $config['copyright'];
 $keywords = isset($keywords) ? htmlspecialchars($keywords) : $config->meta_key;
 $descriptions = isset($descriptions) ? htmlspecialchars($descriptions) : $config->meta_desc;
@@ -56,7 +55,7 @@ echo '<!DOCTYPE html>' .
 echo '<table style="width: 100%;" class="logo"><tr>' .
     '<td valign="bottom"><a href="' . $config['homeurl'] . '">' . $tools->image('images/logo.png', ['class' => '']) . '</a></td>';
 
-if ($headmod == 'mainpage' && count($config->lng_list) > 1) {
+if (count($config->lng_list) > 1) {
     $locale = App::getTranslator()->getLocale();
     echo '<td align="right"><a href="' . $config->homeurl . '/go.php?lng"><b>' . strtoupper($locale) . '</b></a>&#160;<a href="' . $config->homeurl . '/go.php?lng">' . $tools->getFlag($locale) . '</a></td>';
 }
@@ -68,81 +67,10 @@ echo '</tr></table>';
 
 // Главное меню пользователя
 echo '<div class="tmn">' .
-    (isset($_GET['err']) || $headmod != "mainpage" || ($headmod == 'mainpage' && $act) ? '<a href=\'' . $config['homeurl'] . '\'>' . $tools->image('images/menu_home.png') . _t('Home', 'system') . '</a><br>' : '') .
-    ($systemUser->id && $headmod != 'office' ? '<a href="' . $config['homeurl'] . '/profile/?act=office">' . $tools->image('images/menu_cabinet.png') . $systemUser->name . ' <small style="color: #a8b5c4">(' . _t('Personal', 'system') . ')</small></a><br>' : '') .
-    (!$systemUser->id && $headmod != 'login' ? $tools->image('images/menu_login.png') . '<a href="' . $config['homeurl'] . '/login/">' . _t('Login', 'system') . '</a>' : '') .
+    '<a href=\'' . $config['homeurl'] . '\'>' . $tools->image('images/menu_home.png') . _t('Home', 'system') . '</a><br>' .
+    '<a href="' . $config['homeurl'] . '/profile/?act=office">' . $tools->image('images/menu_cabinet.png') . $systemUser->name . ' <small style="color: #a8b5c4">(' . _t('Personal', 'system') . ')</small></a><br>' .
+    (!$systemUser->isValid() ? $tools->image('images/menu_login.png') . '<a href="' . $config['homeurl'] . '/login/">' . _t('Login', 'system') . '</a>' : '') .
     '</div><div class="maintxt">';
-
-// Фиксация местоположений посетителей
-$sql = '';
-
-if ($systemUser->isValid()) {
-    // Фиксируем местоположение авторизованных
-    $movings = $systemUser->movings;
-
-    if ($systemUser->lastdate < (time() - 300)) {
-        $movings = 0;
-        $sql .= " `sestime` = " . time() . ", ";
-    }
-
-    if ($systemUser->place != $headmod) {
-        ++$movings;
-        $sql .= " `place` = " . $db->quote($headmod) . ", ";
-    }
-
-    if ($systemUser->browser != $request->userAgent()) {
-        $sql .= " `browser` = " . $db->quote($request->userAgent()) . ", ";
-    }
-
-    $totalonsite = $systemUser->total_on_site;
-
-    if ($systemUser->lastdate > (time() - 300)) {
-        $totalonsite = $totalonsite + time() - $systemUser->lastdate;
-    }
-
-    $db->query("UPDATE `users` SET $sql
-        `movings` = '$movings',
-        `total_on_site` = '$totalonsite',
-        `lastdate` = '" . time() . "'
-        WHERE `id` = " . $systemUser->id);
-} else {
-    // Фиксируем местоположение гостей
-    $movings = 0;
-    $session = md5($request->ip() . $request->ipViaProxy() . $request->userAgent());
-    $req = $db->query("SELECT * FROM `cms_sessions` WHERE `session_id` = " . $db->quote($session) . " LIMIT 1");
-
-    if ($req->rowCount()) {
-        // Если есть в базе, то обновляем данные
-        $res = $req->fetch();
-        $movings = ++$res['movings'];
-
-        if ($res['sestime'] < (time() - 300)) {
-            $movings = 1;
-            $sql .= " `sestime` = '" . time() . "', ";
-        }
-
-        if ($res['place'] != $headmod) {
-            $sql .= " `place` = " . $db->quote($headmod) . ", ";
-        }
-
-        $db->exec("UPDATE `cms_sessions` SET $sql
-            `movings` = '$movings',
-            `lastdate` = '" . time() . "'
-            WHERE `session_id` = " . $db->quote($session) . "
-        ");
-    } else {
-        // Если еще небыло в базе, то добавляем запись
-        $db->exec("INSERT INTO `cms_sessions` SET
-            `session_id` = '" . $session . "',
-            `ip` = '" . $request->ip() . "',
-            `ip_via_proxy` = '" . $request->ipViaProxy() . "',
-            `browser` = " . $db->quote($request->userAgent()) . ",
-            `lastdate` = '" . time() . "',
-            `sestime` = '" . time() . "',
-            `place` = " . $db->quote($headmod) . "
-        ");
-    }
-}
 
 // Выводим сообщение о Бане
 if (!empty($systemUser->ban)) {

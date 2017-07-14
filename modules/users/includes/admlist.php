@@ -11,7 +11,6 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $textl = _t('Administration');
-$headmod = 'admlist';
 require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */

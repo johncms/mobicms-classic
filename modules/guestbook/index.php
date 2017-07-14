@@ -17,8 +17,6 @@ $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 // но которым разрешено читать и писать в Админ клубе
 $guestAccess = [];
 
-$headmod = 'guestbook';
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 

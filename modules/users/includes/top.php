@@ -10,7 +10,6 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$headmod = 'userstop';
 $textl = _t('Top Activity');
 require ROOT_PATH . 'system/head.php';
 

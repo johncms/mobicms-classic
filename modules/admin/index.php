@@ -36,7 +36,6 @@ if ($systemUser->rights < 6) {
     exit;
 }
 
-$headmod = 'admin';
 $textl = _t('Admin Panel');
 require ROOT_PATH . 'system/head.php';
 

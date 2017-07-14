@@ -10,7 +10,6 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$headmod = 'mail';
 $textl = _t('Mail');
 require ROOT_PATH . 'system/head.php';
 

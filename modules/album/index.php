@@ -30,7 +30,6 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 $textl = _t('Album');
-$headmod = 'album';
 
 $max_album = 20;
 $max_photo = 400;

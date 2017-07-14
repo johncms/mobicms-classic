@@ -10,8 +10,6 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$headmod = 'usersearch';
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 

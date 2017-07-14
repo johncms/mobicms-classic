@@ -135,8 +135,6 @@ if ($error) {
     exit;
 }
 
-$headmod = $id ? 'forum,' . $id : 'forum';
-
 // Заголовки страниц форума
 if (empty($id)) {
     $textl = _t('Forum');

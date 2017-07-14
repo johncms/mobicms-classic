@@ -102,8 +102,6 @@ if ($flood) {
     exit;
 }
 
-$headmod = 'forum,' . $id . ',1';
-
 switch ($type1['type']) {
     case 't':
         // Добавление простого сообщения

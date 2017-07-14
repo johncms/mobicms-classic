@@ -12,8 +12,6 @@ define('MOBICMS', 1);
 
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 
-$headmod = 'forumsearch';
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 

@@ -11,7 +11,6 @@
 define('MOBICMS', 1);
 
 $textl = _t('Birthdays');
-$headmod = 'birth';
 require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */

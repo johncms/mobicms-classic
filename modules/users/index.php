@@ -14,8 +14,6 @@ $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 
-$headmod = 'users';
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 

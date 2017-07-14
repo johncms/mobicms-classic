@@ -10,8 +10,6 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$headmod = 'news';
-
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 $do = isset($_REQUEST['do']) ? trim($_REQUEST['do']) : false;

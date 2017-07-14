@@ -22,7 +22,6 @@ $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
 $textl = 'FAQ';
-$headmod = 'faq';
 require ROOT_PATH . 'system/head.php';
 
 // Обрабатываем ссылку для возврата

@@ -41,8 +41,6 @@ $act = isset($input_request['act']) ? trim($input_request['act']) : '';
 $mod = isset($input_request['mod']) ? trim($input_request['mod']) : '';
 $do = $input_request['do'] ? trim($input_request['do']) : false;
 
-$headmod = 'library';
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 

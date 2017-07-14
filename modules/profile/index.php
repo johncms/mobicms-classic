@@ -108,7 +108,6 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     require __DIR__ . '/includes/' . $act . '.php';
 } else {
     // Анкета пользователя
-    $headmod = 'profile,' . $user['id'];
     $textl = _t('Profile') . ': ' . htmlspecialchars($user['name']);
     require ROOT_PATH . 'system/head.php';
     echo '<div class="phdr"><b>' . ($user['id'] != $systemUser->id ? _t('User Profile') : _t('My Profile')) . '</b></div>';
@@ -145,8 +144,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     ];
 
     if ($user['id'] != $systemUser->id) {
-        $arg['footer'] = '<span class="gray">' . _t('Where?') . ':</span> ' . $tools->displayPlace($user['id'],
-                $user['place']);
+        $arg['footer'] = '<span class="gray">' . _t('Where?') . ':</span> [temporary disabled]';
     }
 
     echo '<div class="user"><p>' . $tools->displayUser($user, $arg) . '</p></div>';

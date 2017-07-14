@@ -238,59 +238,6 @@ class Utilites implements ToolsInterface
     }
 
     /**
-     * Показываем местоположение пользователя
-     *
-     * @param int    $user_id
-     * @param string $place
-     * @return mixed|string
-     */
-    public function displayPlace($user_id = 0, $place = '', $headmod = '')
-    {
-        $place = explode(",", $place);
-
-        $placelist = [
-            'admlist'          => '<a href="#home#/users/?act=admlist">' . _t('List of Admins', 'system') . '</a>',
-            'album'            => '<a href="#home#/album/index.php">' . _t('Watching the photo album', 'system') . '</a>',
-            'birth'            => '<a href="#home#/users/?act=birth">' . _t('List of birthdays', 'system') . '</a>',
-            'downloads'        => '<a href="#home#/downloads/index.php">' . _t('Downloads', 'system') . '</a>',
-            'faq'              => '<a href="#home#/help/">' . _t('Reading the FAQ', 'system') . '</a>',
-            'forum'            => '<a href="#home#/forum/index.php">' . _t('Forum', 'system') . '</a>&#160;/&#160;<a href="#home#/forum/index.php?act=who">&gt;&gt;</a>',
-            'forumfiles'       => '<a href="#home#/forum/index.php?act=files">' . _t('Forum Files', 'system') . '</a>',
-            'forumwho'         => '<a href="#home#/forum/index.php?act=who">' . _t('Looking, who in Forum?', 'system') . '</a>',
-            'guestbook'        => '<a href="#home#/guestbook/index.php">' . _t('Guestbook', 'system') . '</a>',
-            'here'             => _t('Here, in the list', 'system'),
-            'homepage'         => _t('On the Homepage', 'system'),
-            'library'          => '<a href="#home#/library/index.php">' . _t('Library', 'system') . '</a>',
-            'mail'             => _t('Personal correspondence', 'system'),
-            'news'             => '<a href="#home#/news/index.php">' . _t('Reading the news', 'system') . '</a>',
-            'online'           => '<a href="#home#/users/?act=online">' . _t('Who is online?', 'system') . '</a>',
-            'profile'          => _t('Profile', 'system'),
-            'profile_personal' => _t('Personal Profile', 'system'),
-            'registration'     => _t('Registered on the site', 'system'),
-            'userlist'         => '<a href="#home#/users/?act=userlist">' . _t('List of users', 'system') . '</a>',
-            'userstop'         => '<a href="#home#/users/?act=top">' . _t('Watching Top 10 Users', 'system') . '</a>',
-        ];
-
-        if (array_key_exists($place[0], $placelist)) {
-            if ($place[0] == 'profile') {
-                if ($place[1] == $user_id) {
-                    return '<a href="' . $this->config['homeurl'] . '/profile/?user=' . $place[1] . '">' . $placelist['profile_personal'] . '</a>';
-                } else {
-                    $user = $this->getUser($place[1]);
-
-                    return $placelist['profile'] . ': <a href="' . $this->config['homeurl'] . '/profile/?user=' . $user['id'] . '">' . $user['name'] . '</a>';
-                }
-            } elseif ($place[0] == 'online' && !empty($headmod) && $headmod == 'online') {
-                return $placelist['here'];
-            } else {
-                return str_replace('#home#', $this->config['homeurl'], $placelist[$place[0]]);
-            }
-        }
-
-        return '<a href="' . $this->config['homeurl'] . '/">' . $placelist['homepage'] . '</a>';
-    }
-
-    /**
      * Отображения личных данных пользователя
      *
      * @param int   $user Массив запроса в таблицу `users`

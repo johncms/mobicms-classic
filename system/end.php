@@ -23,11 +23,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 echo '</div><div class="fmenu">';
-
-if (isset($_GET['err']) || $headmod != "mainpage" || ($headmod == 'mainpage' && isset($_GET['act']))) {
-    echo '<div><a href=\'' . $config->homeurl . '\'>' . $tools->image('images/menu_home.png') . _t('Home', 'system') . '</a></div>';
-}
-
+echo '<div><a href=\'' . $config->homeurl . '\'>' . $tools->image('images/menu_home.png') . _t('Home', 'system') . '</a></div>';
 echo '<div>' . $container->get('counters')->online() . '</div>' .
     '</div>' .
     '<div style="text-align:center">' .
@@ -40,7 +36,7 @@ if ($req->rowCount()) {
     while ($res = $req->fetch()) {
         $link1 = ($res['mode'] == 1 || $res['mode'] == 2) ? $res['link1'] : $res['link2'];
         $link2 = $res['mode'] == 2 ? $res['link1'] : $res['link2'];
-        $count = ($headmod == 'mainpage') ? $link1 : $link2;
+        $count = $link1; //TODO: доработать показ на главной-остальных страницах
 
         if (!empty($count)) {
             echo $count;

@@ -27,7 +27,6 @@ $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
 $textl = _t('Registration');
-$headmod = 'registration';
 require ROOT_PATH . 'system/head.php';
 
 // Если регистрация закрыта, выводим предупреждение
