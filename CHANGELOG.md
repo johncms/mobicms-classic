@@ -7,15 +7,19 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 
 ### New
 - Integrated [nikic/FastRoute](https://github.com/nikic/FastRoute) package
+- Added errors and exceptions handler (for DEBUG mode)
   
 ### Changed
-- Nothing
+- Refactoring
 
 ### Fixed
 - Nothing
   
 ### Deleted
-- Users "Karma"
+- Old function of fixing of location is removed
+- Old function of fixing of IP history is removed
+- Old advertizing module is removed
+- Users Karma is removed
 
 
 ## mobiCMS Classic 0.2.0  
