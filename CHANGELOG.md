@@ -6,10 +6,13 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 `Release Date: TBD` 
 
 ### New
+- Integrated [Plates](http://platesphp.com/) native template engine
 - Integrated [nikic/FastRoute](https://github.com/nikic/FastRoute) package
 - Added errors and exceptions handler (for DEBUG mode)
   
 ### Changed
+- The files `head.php` and `end.php` have been put into stub mode,
+  old functionality has been removed.
 - Refactoring
 
 ### Fixed
