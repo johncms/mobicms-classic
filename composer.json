@@ -24,6 +24,7 @@
     "erusev/parsedown": "^1.6",
     "geshi/geshi": "dev-master",
     "klein/klein": "^2.1",
+    "league/plates": "^3.3",
     "mobicms/mobicms-captcha": "^1.0",
     "nikic/fast-route": "^1.2",
     "roave/security-advisories": "dev-master",
