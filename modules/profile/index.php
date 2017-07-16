@@ -108,7 +108,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     require __DIR__ . '/includes/' . $act . '.php';
 } else {
     // Анкета пользователя
-    $textl = _t('Profile') . ': ' . htmlspecialchars($user['name']);
+    $pageTitle = _t('Profile') . ': ' . htmlspecialchars($user['name']);
     require ROOT_PATH . 'system/head.php';
     echo '<div class="phdr"><b>' . ($user['id'] != $systemUser->id ? _t('User Profile') : _t('My Profile')) . '</b></div>';
 

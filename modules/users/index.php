@@ -58,7 +58,7 @@ if (in_array($act, $array) && file_exists(__DIR__ . '/includes/' . $act . '.php'
     $counters = $container->get('counters');
 
     // Актив сайта
-    $textl = _t('Community');
+    $pageTitle = _t('Community');
     require ROOT_PATH . 'system/head.php';
 
     $brth = $db->query("SELECT COUNT(*) FROM `users` WHERE `dayb` = '" . date('j', time()) . "' AND `monthb` = '" . date('n', time()) . "' AND `preg` = '1'")->fetchColumn();

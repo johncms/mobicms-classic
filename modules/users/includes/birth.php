@@ -10,7 +10,7 @@
 
 define('MOBICMS', 1);
 
-$textl = _t('Birthdays');
+$pageTitle = _t('Birthdays');
 require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */

@@ -39,7 +39,7 @@ if (!$req_down->rowCount() || !is_file($res_down['dir'] . '/' . $res_down['name'
 }
 
 $title_pages = htmlspecialchars(mb_substr($res_down['rus_name'], 0, 30));
-$textl = mb_strlen($res_down['rus_name']) > 30 ? $title_pages . '...' : $title_pages;
+$pageTitle = mb_strlen($res_down['rus_name']) > 30 ? $title_pages . '...' : $title_pages;
 
 if ($res_down['type'] == 3) {
     echo '<div class="rmenu">' . _t('The file is on moderation') . '</div>';

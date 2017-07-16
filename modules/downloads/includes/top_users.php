@@ -25,8 +25,8 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 require ROOT_PATH . 'system/head.php';
 
 // Топ юзеров
-$textl = _t('Top Users');
-echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $textl . '</div>';
+$pageTitle = _t('Top Users');
+echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $pageTitle . '</div>';
 $req = $db->query("SELECT * FROM `download__files` WHERE `user_id` > 0 GROUP BY `user_id` ORDER BY COUNT(`user_id`)");
 $total = $req->rowCount();
 

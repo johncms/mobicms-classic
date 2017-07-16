@@ -36,7 +36,7 @@ $userConfig = $systemUser->getConfig();
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
-$textl = _t('News');
+$pageTitle = _t('News');
 require(ROOT_PATH . 'system/head.php');
 
 switch ($do) {

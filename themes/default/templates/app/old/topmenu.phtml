@@ -14,12 +14,12 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
     </a>
     <br>
     <?php if ($systemUser->isValid()): ?>
-        <a href="profile/?act=office">
+        <a href="<?= $config->homeurl ?>/profile/?act=office">
             <?= $tools->image('old/menu_cabinet.png') . $systemUser->name ?>
             <small style="color: #a8b5c4">(<?= _t('Personal', 'system') ?>)</small>
         </a>
     <?php else: ?>
-        <a href="login/">
+        <a href="<?= $config->homeurl ?>/login/">
             <?= $tools->image('old/menu_login.png') . _t('Login', 'system') ?>
         </a>
     <?php endif ?>

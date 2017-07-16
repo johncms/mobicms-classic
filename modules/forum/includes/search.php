@@ -30,7 +30,7 @@ $userConfig = $systemUser->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-$textl = _t('Forum search');
+$pageTitle = _t('Forum search');
 require ROOT_PATH . 'system/head.php';
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Forum') . '</b></a> | ' . _t('Search') . '</div>';
 

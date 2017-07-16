@@ -20,7 +20,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Статистика
-$textl = htmlspecialchars($user['name']) . ': ' . _t('Statistic');
+$pageTitle = htmlspecialchars($user['name']) . ': ' . _t('Statistic');
 require ROOT_PATH . 'system/head.php';
 echo '<div class="phdr"><a href="?user=' . $user['id'] . '"><b>' . _t('Profile') . '</b></a> | ' . _t('Statistic') . '</div>' .
     '<div class="user"><p>' . $tools->displayUser($user, ['iphide' => 1,]) . '</p></div>' .

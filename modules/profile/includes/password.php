@@ -29,7 +29,7 @@ if ($user['id'] != $systemUser->id && ($systemUser->rights < 7 || $user['rights'
     exit;
 }
 
-$textl = htmlspecialchars($user['name']) . ': ' . _t('Change Password');
+$pageTitle = htmlspecialchars($user['name']) . ': ' . _t('Change Password');
 require ROOT_PATH . 'system/head.php';
 
 switch ($mod) {

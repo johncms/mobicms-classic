@@ -428,7 +428,7 @@ case
             }
             exit;
         } else {
-            $textl = _t('Forum');
+            $pageTitle = _t('Forum');
             require ROOT_PATH . 'system/head.php';
             $qt = " $type1[text]";
             $msg_pre = $tools->checkout($msg, 1, 1);

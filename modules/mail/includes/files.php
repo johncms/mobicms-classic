@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$textl = _t('Mail') . ' | ' . _t('Files');
+$pageTitle = _t('Mail') . ' | ' . _t('Files');
 require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */

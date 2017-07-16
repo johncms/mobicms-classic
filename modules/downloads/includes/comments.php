@@ -44,7 +44,7 @@ if (!$config['mod_down_comm']) {
 }
 
 $title_pages = htmlspecialchars(mb_substr($res_down['rus_name'], 0, 30));
-$textl = _t('Comments') . ': ' . (mb_strlen($res_down['rus_name']) > 30 ? $title_pages . '...' : $title_pages);
+$pageTitle = _t('Comments') . ': ' . (mb_strlen($res_down['rus_name']) > 30 ? $title_pages . '...' : $title_pages);
 
 // Параметры комментариев
 $arg = [
@@ -59,7 +59,7 @@ $arg = [
     'owner_reply'       => false,                // Возможность владельцу отвечать на комментарий
     'owner_edit'        => false,                // Возможность владельцу редактировать комментарий
     'title'             => _t('Comments'),       // Название раздела
-    'context_top'       => '<div class="phdr"><b>' . $textl . '</b></div>',                       // Выводится вверху списка
+    'context_top'       => '<div class="phdr"><b>' . $pageTitle . '</b></div>',                       // Выводится вверху списка
     'context_bottom'    => '<p><a href="?act=view&amp;id=' . $id . '">' . _t('Back') . '</a></p>' // Выводится внизу списка
 ];
 

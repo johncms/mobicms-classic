@@ -20,7 +20,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Подробная информация, контактные данные
-$textl = htmlspecialchars($user['name']) . ': ' . _t('Information');
+$pageTitle = htmlspecialchars($user['name']) . ': ' . _t('Information');
 require ROOT_PATH . 'system/head.php';
 echo '<div class="phdr"><a href="?user=' . $user['id'] . '"><b>' . _t('Profile') . '</b></a> | ' . _t('Information') . '</div>';
 

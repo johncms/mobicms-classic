@@ -29,7 +29,7 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-$textl = _t('Album');
+$pageTitle = _t('Album');
 
 $max_album = 20;
 $max_photo = 400;

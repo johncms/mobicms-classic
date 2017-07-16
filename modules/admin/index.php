@@ -36,7 +36,7 @@ if ($systemUser->rights < 6) {
     exit;
 }
 
-$textl = _t('Admin Panel');
+$pageTitle = _t('Admin Panel');
 require ROOT_PATH . 'system/head.php';
 
 $array = [

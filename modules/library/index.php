@@ -83,7 +83,7 @@ use Library\{
 $adm = ($systemUser->rights > 4) ? true : false;
 $i = 0;
 
-$textl = _t('Library');
+$pageTitle = _t('Library');
 
 // Ограничиваем доступ к Библиотеке
 
@@ -122,7 +122,7 @@ if ($id > 0) {
 
     $hdr = htmlentities($hdrres, ENT_QUOTES, 'UTF-8');
     if ($hdr) {
-        $textl .=  ' | ' . (mb_strlen($hdr) > 30 ? $hdr . '...' : $hdr);
+        $pageTitle .=  ' | ' . (mb_strlen($hdr) > 30 ? $hdr . '...' : $hdr);
     }
 }
 

@@ -38,7 +38,7 @@ if ($id) {
     $req = $db->query("SELECT * FROM `users` WHERE `id` = '$id' LIMIT 1");
 
     if (!$req->rowCount()) {
-        $textl = _t('Mail');
+        $pageTitle = _t('Mail');
         require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('User does not exists'));
         require ROOT_PATH . 'system/end.php';
@@ -48,7 +48,7 @@ if ($id) {
     $qs = $req->fetch();
 
     if ($mod == 'clear') {
-        $textl = _t('Mail');
+        $pageTitle = _t('Mail');
         require ROOT_PATH . 'system/head.php';
         echo '<div class="phdr"><b>' . _t('Clear messages') . '</b></div>';
 
@@ -489,7 +489,7 @@ if ($id) {
     }
 }
 
-$textl = _t('Mail');
+$pageTitle = _t('Mail');
 require ROOT_PATH . 'system/head.php';
 echo $out;
 echo '<p>';

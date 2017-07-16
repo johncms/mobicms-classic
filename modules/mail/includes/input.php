@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$textl = _t('Mail');
+$pageTitle = _t('Mail');
 require ROOT_PATH . 'system/head.php';
 echo '<div class="phdr"><b>' . _t('Incoming messages') . '</b></div>';
 

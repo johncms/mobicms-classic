@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$textl = _t('Forum') . ' | ' . _t('Unread');
+$pageTitle = _t('Forum') . ' | ' . _t('Unread');
 require ROOT_PATH . 'system/head.php';
 unset($_SESSION['fsort_id']);
 unset($_SESSION['fsort_users']);

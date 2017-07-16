@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$textl = htmlspecialchars($user['name']) . ': ' . _t('Edit Profile');
+$pageTitle = htmlspecialchars($user['name']) . ': ' . _t('Edit Profile');
 require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */

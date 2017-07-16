@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$textl = _t('Profile') . ' | ' . _t('Guestbook');
+$pageTitle = _t('Profile') . ' | ' . _t('Guestbook');
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 
 /** @var Psr\Container\ContainerInterface $container */

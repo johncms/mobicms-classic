@@ -137,7 +137,7 @@ if ($error) {
 
 // Заголовки страниц форума
 if (empty($id)) {
-    $textl = _t('Forum');
+    $pageTitle = _t('Forum');
 } else {
     $res = $db->query("SELECT `text` FROM `forum` WHERE `id`= " . $id)->fetch();
     $hdr = preg_replace('#\[c\](.*?)\[/c\]#si', '', $res['text']);
@@ -151,7 +151,7 @@ if (empty($id)) {
         '&#039;'  => '',
     ]);
     $hdr = $tools->checkout($hdr, 2, 2);
-    $textl = empty($hdr) ? _t('Forum') : $hdr;
+    $pageTitle = empty($hdr) ? _t('Forum') : $hdr;
 }
 
 // Переключаем режимы работы

@@ -23,7 +23,7 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-$textl = _t('User Search');
+$pageTitle = _t('User Search');
 require ROOT_PATH . 'system/head.php';
 
 // Принимаем данные, выводим форму поиска

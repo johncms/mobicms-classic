@@ -74,7 +74,7 @@ $mods = [
 if ($act && ($key = array_search($act, $mods)) !== false && file_exists(__DIR__ . '/includes/' . $mods[$key] . '.php')) {
     require __DIR__ . '/includes/' . $mods[$key] . '.php';
 } else {
-    $textl = _t('Mail');
+    $pageTitle = _t('Mail');
     require ROOT_PATH . 'system/head.php';
     echo '<div class="phdr"><b>' . _t('Contacts') . '</b></div>';
 
