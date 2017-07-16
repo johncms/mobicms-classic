@@ -426,15 +426,15 @@ class Utilites implements ToolsInterface
     }
 
     /**
+     * @deprecated
      * @param string $name
      * @param array  $args
      * @return bool|string
      */
     public function image($name, array $args = [])
     {
-        //TODO: разобраться с путями картинок в темах
-        if (is_file(ROOT_PATH . 'theme/' . $this->getSkin() . '/images/' . $name)) {
-            $src = $this->config->homeurl . '/theme/' . $this->getSkin() . '/images/' . $name;
+        if (is_file(ROOT_PATH . 'themes/default/assets/images/' . $name)) {
+            $src = $this->config->homeurl . '/themes/default/assets/images/' . $name;
         } elseif (is_file(ROOT_PATH . 'assets/' . $name)) {
             $src = $this->config->homeurl . '/assets/' . $name;
         } else {

@@ -11,6 +11,7 @@
 namespace Mobicms\View;
 
 use League\Plates\Engine;
+use Mobicms\Api\ConfigInterface;
 use Psr\Container\ContainerInterface;
 
 class PlatesEngineFactory
@@ -19,7 +20,8 @@ class PlatesEngineFactory
     {
         $plates = new Engine;
         $plates->setFileExtension('phtml');
-        $plates->setDirectory(ROOT_PATH . 'themes/default/templates');
+        $plates->addFolder('system', ROOT_PATH . 'themes/default/templates');
+        $plates->addData(['config' => $container->get(ConfigInterface::class)]);
 
         return $plates;
     }

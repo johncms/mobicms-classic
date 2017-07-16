@@ -267,7 +267,7 @@ class Counters
             file_put_contents($file, serialize(['users' => $users, 'guests' => $guests]), LOCK_EX);
         }
 
-        return '<a href="' . $this->homeurl . '/users/?act=online">' . $this->tools->image('images/menu_online.png') . $users . ' / ' . $guests . '</a>';
+        return '<a href="' . $this->homeurl . '/users/?act=online">' . $this->tools->image('old/menu_online.png') . $users . ' / ' . $guests . '</a>';
     }
 
     /**
