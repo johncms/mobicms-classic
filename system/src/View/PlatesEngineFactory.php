@@ -19,7 +19,7 @@ class PlatesEngineFactory
     {
         $plates = new Engine;
         $plates->setFileExtension('phtml');
-        $plates->setDirectory(ROOT_PATH . '');
+        $plates->setDirectory(ROOT_PATH . 'themes/default/templates');
 
         return $plates;
     }

@@ -13,7 +13,7 @@ return [
         'factories' => [
             FastRoute\RouteCollector::class         => Mobicms\Http\RouteCollectorFactory::class,
             FastRoute\Dispatcher::class             => Mobicms\Http\DispatcherFactory::class,
-            Mobicms\Api\BbcodeInterface::class      => Mobicms\Deprecated\Bbcode::class,
+            League\Plates\Engine::class             => Mobicms\View\PlatesEngineFactory::class,
             Mobicms\Api\ConfigInterface::class      => Mobicms\Config\ConfigFactory::class,
             Mobicms\Api\EnvironmentInterface::class => Mobicms\Environment::class,
             Mobicms\Http\Request::class             => Mobicms\Http\RequestFactory::class,
@@ -22,7 +22,9 @@ return [
             Mobicms\Api\UserInterface::class        => Mobicms\Checkpoint\UserFactory::class,
             PDO::class                              => Mobicms\Database\PdoFactory::class,
 
-            'counters' => Mobicms\Deprecated\Counters::class,
+            // Deprecaded dependencies
+            Mobicms\Api\BbcodeInterface::class      => Mobicms\Deprecated\Bbcode::class,
+            'counters'                              => Mobicms\Deprecated\Counters::class,
         ],
 
         'aliases' => [],
