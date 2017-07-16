@@ -54,18 +54,16 @@ $locale = App::getTranslator()->getLocale();
 </div>
 
 <div class="fmenu">
-    <div>
-        <a href="users/?act=online">
-            <img src="<?= $config->homeurl ?>/themes/default/assets/images/old/menu_online.png" alt="" class="icon"/>
-            <?= $container->get('counters')->online() ?>
-        </a>
-    </div>
+    <!-- Счетчик посетителей онлайн -->
+    <a href="users/?act=online"><?= $container->get('counters')->online() ?></a>
 </div>
 <div style="text-align:center">
     <p><?= $config->copyright ?></p>
-    <!-- Счетчики -->
+    <!-- Внешние счетчики -->
     <?php $this->insert('system::app/old/counters') ?>
-    <div><small>&copy; <a href="https://mobicms.org">mobiCMS</a></small></div>
+    <div>
+        <small>&copy; <a href="https://mobicms.org">mobiCMS</a></small>
+    </div>
 </div>
 </body>
 </html>
