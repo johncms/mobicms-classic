@@ -16,6 +16,7 @@ return [
             League\Plates\Engine::class             => Mobicms\View\PlatesEngineFactory::class,
             Mobicms\Api\ConfigInterface::class      => Mobicms\Config\ConfigFactory::class,
             Mobicms\Api\EnvironmentInterface::class => Mobicms\Environment::class,
+            Mobicms\Asset\Manager::class            => Mobicms\Asset\ManagerFactory::class,
             Mobicms\Http\Request::class             => Mobicms\Http\RequestFactory::class,
             Mobicms\Http\Response::class            => Mobicms\Http\ResponseFactory::class,
             Mobicms\Api\ToolsInterface::class       => Mobicms\Tools\Utilites::class,
