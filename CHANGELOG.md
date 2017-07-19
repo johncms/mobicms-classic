@@ -9,6 +9,7 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 - Integrated [Plates](http://platesphp.com/) native template engine
 - Integrated [nikic/FastRoute](https://github.com/nikic/FastRoute) package
 - Added errors and exceptions handler (for DEBUG mode)
+- Added our own Asset Manager package
   
 ### Changed
 - The files `head.php` and `end.php` have been put into stub mode,
