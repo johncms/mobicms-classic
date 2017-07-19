@@ -10,15 +10,25 @@
 
 namespace Mobicms\Asset;
 
+/**
+ * Class Manager
+ *
+ * @package Mobicms\Asset
+ * @author  Oleg Kasyanov <dev@mobicms.net>
+ */
 class Manager
 {
     private $namespaces = [];
 
-    public function __construct()
+    public function __construct($defaultAssetPath)
     {
-        $this->namespaces['system'] = ROOT_PATH . '';
+        $this->addNamespace('system', $defaultAssetPath);
     }
 
+    /**
+     * @param string $namespace
+     * @param string $path
+     */
     public function addNamespace($namespace, $path)
     {
         if (isset($this->namespaces[$namespace])) {
@@ -28,13 +38,31 @@ class Manager
         $this->namespaces[$namespace] = $path;
     }
 
-    public function asset($file, $namespace = null)
+    /**
+     * @param string      $file
+     * @param null|string $namespace
+     * @return mixed
+     */
+    public function get($file, $namespace = null)
     {
         return $file;
     }
 
     /**
-     * @param $src
+     * @param string      $file
+     * @param null|string $namespace
+     * @return bool
+     */
+    public function has($file, $namespace = null)
+    {
+        return is_file($file);
+    }
+
+    /**
+     * The <img> tag builder
+     *
+     * @param string      $src
+     * @param null|string $namespace
      * @return Img
      */
     public function img($src, $namespace = null)

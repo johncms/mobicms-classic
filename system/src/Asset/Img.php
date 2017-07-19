@@ -3,7 +3,7 @@
 namespace Mobicms\Asset;
 
 /**
- * Class Img
+ * The <img> tag builder
  *
  * @package Mobicms\Asset
  * @author  Oleg Kasyanov <dev@mobicms.net>
@@ -22,10 +22,12 @@ namespace Mobicms\Asset;
 class Img
 {
     private $attribute;
+    private $xhtml;
 
-    public function __construct($src)
+    public function __construct($src, $xhtml = false)
     {
         $this->attribute['src'] = 'src="' . $src . '"';
+        $this->xhtml = $xhtml;
     }
 
     /**
@@ -52,7 +54,8 @@ class Img
 
     public function hidden()
     {
-        $this->attribute['hidden'] = 'hidden';
+        $this->attribute['hidden'] = $this->xhtml ? 'hidden="hidden"' : 'hidden';
+
         return $this;
     }
 }
