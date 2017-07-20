@@ -26,26 +26,58 @@ class Manager
     }
 
     /**
+     * Add namespace path
+     *
      * @param string $namespace
      * @param string $path
      */
     public function addNamespace($namespace, $path)
     {
-        if (isset($this->namespaces[$namespace])) {
+        if ($this->hasNamespace($namespace)) {
             throw new \InvalidArgumentException('The namespace "' . $namespace . '" is already registered.');
         }
 
-        $this->namespaces[$namespace] = $path;
+        $this->namespaces[$namespace] = empty($path) ? '' : rtrim($path, '/') . '/';
     }
 
     /**
+     * Get namespace path
+     *
+     * @param string $namespace
+     * @return string
+     */
+    public function getNamespace($namespace)
+    {
+        if (null === $namespace) {
+            $namespace = 'system';
+        }
+
+        if (!$this->hasNamespace($namespace)) {
+            throw new \InvalidArgumentException('The namespace "' . $namespace . '" does not exist.');
+        }
+
+        return $this->namespaces[$namespace];
+    }
+
+    public function hasNamespace($namespace)
+    {
+        return array_key_exists($namespace, $this->namespaces);
+    }
+
+    /**
+     * Get a link to the asset file
+     *
      * @param string      $file
      * @param null|string $namespace
      * @return mixed
      */
-    public function get($file, $namespace = null)
+    public function getAsset($file, $namespace = null)
     {
-        return $file;
+        if (!$this->hasAsset($file, $namespace)) {
+            throw new \InvalidArgumentException('Invalid image file "' . $this->getNamespace($namespace) . $file . '"');
+        }
+
+        return $this->getNamespace($namespace) . $file;
     }
 
     /**
@@ -53,9 +85,9 @@ class Manager
      * @param null|string $namespace
      * @return bool
      */
-    public function has($file, $namespace = null)
+    public function hasAsset($file, $namespace = null)
     {
-        return is_file($file);
+        return is_file($this->getNamespace($namespace) . $file);
     }
 
     /**
@@ -67,6 +99,6 @@ class Manager
      */
     public function img($src, $namespace = null)
     {
-        return new Img($src);
+        return new Img($this->getAsset($src, $namespace));
     }
 }

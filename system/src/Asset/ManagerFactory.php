@@ -16,6 +16,6 @@ class ManagerFactory
 {
     public function __invoke(ContainerInterface $container)
     {
-        return new Manager;
+        return new Manager('system/assets');
     }
 }
