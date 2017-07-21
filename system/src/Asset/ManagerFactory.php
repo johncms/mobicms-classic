@@ -19,6 +19,9 @@ class ManagerFactory
         $config = $container->get('config');
         $assetsPath = isset($config['mobicms_global']['assets_url']) ? $config['mobicms_global']['assets_url'] : '';
 
-        return new Manager($assetsPath);
+        $manager = new Manager($config['mobicms']['homeurl']);
+        $manager->addNamespace('system', $assetsPath);
+
+        return $manager;
     }
 }

@@ -38,7 +38,7 @@ if (DEBUG) {
     ini_set('display_errors', 'On');
     ini_set('log_errors', 'On');
     ini_set('error_log', LOG_PATH . 'errors-' . date('Y-m-d') . '.log');
-    new Mobicms\Exception\Handler\Handler;
+    //new Mobicms\Exception\Handler\Handler;
 } else {
     ini_set('error_reporting', E_ALL & ~E_DEPRECATED & ~E_STRICT);
     ini_set('display_errors', 'Off');

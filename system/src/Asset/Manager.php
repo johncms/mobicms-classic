@@ -18,11 +18,12 @@ namespace Mobicms\Asset;
  */
 class Manager
 {
+    private $homeUrl;
     private $namespaces = [];
 
-    public function __construct($defaultAssetPath)
+    public function __construct($homeUrl)
     {
-        $this->addNamespace('system', $defaultAssetPath);
+        $this->homeUrl = $homeUrl;
     }
 
     /**
@@ -37,7 +38,7 @@ class Manager
             throw new \InvalidArgumentException('The namespace "' . $namespace . '" is already registered.');
         }
 
-        $this->namespaces[$namespace] = empty($path) ? '' : rtrim($path, '/') . '/';
+        $this->namespaces[$namespace] = empty($path) ? '' : trim($path, '/') . '/';
     }
 
     /**
@@ -77,7 +78,7 @@ class Manager
             throw new \InvalidArgumentException('Invalid image file "' . $this->getNamespace($namespace) . $file . '"');
         }
 
-        return $this->getNamespace($namespace) . $file;
+        return $this->homeUrl . '/' . $this->getNamespace($namespace) . $file;
     }
 
     /**
@@ -87,7 +88,7 @@ class Manager
      */
     public function hasAsset($file, $namespace = null)
     {
-        return is_file($this->getNamespace($namespace) . $file);
+        return is_file(ROOT_PATH . $this->getNamespace($namespace) . $file);
     }
 
     /**
