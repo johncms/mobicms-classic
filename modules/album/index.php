@@ -19,6 +19,9 @@ $img = isset($_REQUEST['img']) ? abs(intval($_REQUEST['img'])) : null;
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -138,8 +141,8 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     $newcount = $db->query("SELECT COUNT(*) FROM `cms_album_files` WHERE `time` > '" . (time() - 259200) . "' AND `access` = 4")->fetchColumn();
     echo '<div class="phdr"><b>' . _t('Photo Albums') . '</b></div>' .
         '<div class="gmenu"><p>' .
-        $tools->image('images/users.png', ['width' => 16, 'height' => 16]) . '<a href="?act=top">' . _t('New Photos') . '</a> (' . $newcount . ')<br>' .
-        $tools->image('images/talk.gif', ['width' => 16, 'height' => 16]) . '<a href="?act=top&amp;mod=last_comm">' . _t('New Comments') . '</a>' .
+        $asset->img('images/users.png')->class('icon') . '<a href="?act=top">' . _t('New Photos') . '</a> (' . $newcount . ')<br>' .
+        $asset->img('images/talk.gif')->class('icon') . '<a href="?act=top&amp;mod=last_comm">' . _t('New Comments') . '</a>' .
         '</p></div>' .
         '<div class="menu">' .
         '<p><h3><img src="' . $config->homeurl . '/assets/images/users.png" width="16" height="16" class="left" />&#160;' . _t('Albums') . '</h3><ul>' .
@@ -151,7 +154,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     }
 
     echo '</ul></p>' .
-        '<p><h3>' . $tools->image('images/rate.gif') . _t('Rating') . '</h3><ul>' .
+        '<p><h3>' . $asset->img('images/rate.gif')->class('icon') . _t('Rating') . '</h3><ul>' .
         '<li><a href="?act=top&amp;mod=votes">' . _t('Top Votes') . '</a></li>' .
         '<li><a href="?act=top&amp;mod=downloads">' . _t('Top Downloads') . '</a></li>' .
         '<li><a href="?act=top&amp;mod=views">' . _t('Top Views') . '</a></li>' .

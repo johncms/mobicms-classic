@@ -14,12 +14,18 @@ use Mobicms\Api\BbcodeInterface;
 use Mobicms\Api\ConfigInterface;
 use Mobicms\Api\ToolsInterface;
 use Mobicms\Api\UserInterface;
+use Mobicms\Asset\Manager as Asset;
 use Mobicms\Checkpoint\UserConfig;
 use Mobicms\Http\Request;
 use Psr\Container\ContainerInterface;
 
 class Utilites implements ToolsInterface
 {
+    /**
+     * @var Asset
+     */
+    private $asset;
+
     /**
      * @var ContainerInterface
      */
@@ -53,6 +59,7 @@ class Utilites implements ToolsInterface
     public function __invoke(ContainerInterface $container)
     {
         $this->container = $container;
+        $this->asset = $container->get(Asset::class);
         $this->config = $container->get(ConfigInterface::class);
         $this->db = $container->get(\PDO::class);
         $this->request = $container->get(Request::class);
@@ -282,9 +289,9 @@ class Utilites implements ToolsInterface
             $out .= '</td><td>';
 
             if ($user['sex']) {
-                $out .= $this->image('images/' . ($user['sex'] == 'm' ? 'm' : 'w') . ($user['datereg'] > time() - 86400 ? '_new' : '') . '.png', ['class' => 'icon-inline']);
+                $out .= $this->asset->img('images/' . ($user['sex'] == 'm' ? 'm' : 'w') . ($user['datereg'] > time() - 86400 ? '_new' : '') . '.png')->class('icon-inline');
             } else {
-                $out .= $this->image('images/del.png');
+                $out .= $this->asset->img('images/del.png')->class('icon');
             }
 
             $out .= !$this->user->isValid() || $this->user->id == $user['id'] ? '<b>' . $user['name'] . '</b>' : '<a href="' . $homeurl . '/profile/?user=' . $user['id'] . '"><b>' . $user['name'] . '</b></a>';
@@ -308,7 +315,7 @@ class Utilites implements ToolsInterface
             }
 
             if (!isset($arg['stshide']) && !empty($user['status'])) {
-                $out .= '<div class="status">' . $this->image('images/label.png', ['class' => 'icon-inline']) . $user['status'] . '</div>';
+                $out .= '<div class="status">' . $this->asset->img('images/label.png')->class('icon-inline') . $user['status'] . '</div>';
             }
 
             $out .= '</td></tr></table>';
@@ -333,7 +340,8 @@ class Utilites implements ToolsInterface
             }
 
             if ($ipinf) {
-                $out .= '<div><span class="gray">' . _t('Browser', 'system') . ':</span> ' . htmlspecialchars($user['browser']) . '</div>' .
+                $out .= '<div><span class="gray">' . _t('Browser',
+                        'system') . ':</span> ' . htmlspecialchars($user['browser']) . '</div>' .
                     '<div><span class="gray">' . _t('IP address', 'system') . ':</span> ';
                 $ip = $user['ip'];
 
@@ -541,7 +549,8 @@ class Utilites implements ToolsInterface
             if (file_exists($file) && ($smileys = file_get_contents($file)) !== false) {
                 $smiliesCache = unserialize($smileys);
 
-                return strtr($str, ($adm ? array_merge($smiliesCache['usr'], $smiliesCache['adm']) : $smiliesCache['usr']));
+                return strtr($str,
+                    ($adm ? array_merge($smiliesCache['usr'], $smiliesCache['adm']) : $smiliesCache['usr']));
             } else {
                 return $str;
             }

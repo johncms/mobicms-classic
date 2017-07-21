@@ -13,6 +13,9 @@ defined('MOBICMS') or die('Error: restricted access');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -53,7 +56,8 @@ switch ($mod) {
     case 'del':
         // Удаление категории, или раздела
         if (!$id) {
-            echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
+            echo $tools->displayError(_t('Wrong data'),
+                '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
             require ROOT_PATH . 'system/end.php';
             exit;
         }
@@ -127,7 +131,8 @@ switch ($mod) {
                         $subcat = isset($_POST['subcat']) ? intval($_POST['subcat']) : 0;
 
                         if (!$subcat || $subcat == $id) {
-                            echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
+                            echo $tools->displayError(_t('Wrong data'),
+                                '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
                             require ROOT_PATH . 'system/end.php';
                             exit;
                         }
@@ -135,7 +140,8 @@ switch ($mod) {
                         $check = $db->query("SELECT COUNT(*) FROM `forum` WHERE `id` = '$subcat' AND `type` = 'r'")->fetchColumn();
 
                         if (!$check) {
-                            echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
+                            echo $tools->displayError(_t('Wrong data'),
+                                '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
                             require ROOT_PATH . 'system/end.php';
                             exit;
                         }
@@ -238,7 +244,8 @@ switch ($mod) {
                 $res = $req->fetch();
                 $cat_name = $res['text'];
             } else {
-                echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
+                echo $tools->displayError(_t('Wrong data'),
+                    '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
                 require ROOT_PATH . 'system/end.php';
                 exit;
             }
@@ -333,7 +340,8 @@ switch ($mod) {
     case 'edit':
         // Редактирование выбранной категории, или раздела
         if (!$id) {
-            echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
+            echo $tools->displayError(_t('Wrong data'),
+                '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
             require ROOT_PATH . 'system/end.php';
             exit;
         }
@@ -398,7 +406,8 @@ switch ($mod) {
                             $db->exec("UPDATE `cms_forum_files` SET `cat` = '$category' WHERE `cat` = '" . $res['refid'] . "'");
                         }
 
-                        $response->header('Location', '?act=forum&mod=cat' . ($res['type'] == 'r' ? '&id=' . $res['refid'] : ''));
+                        $response->header('Location',
+                            '?act=forum&mod=cat' . ($res['type'] == 'r' ? '&id=' . $res['refid'] : ''));
                         $response->send();
                     } else {
                         // Выводим сообщение об ошибках
@@ -413,7 +422,8 @@ switch ($mod) {
                         '<input type="text" name="name" value="' . $res['text'] . '"/>' .
                         '<br><small>' . _t('Min. 2, Max. 30 characters') . '</small></p>' .
                         '<p><h3>' . _t('Description') . '</h3>' .
-                        '<textarea name="desc" rows="' . $userConfig->fieldHeight . '">' . str_replace('<br>', "\r\n", $res['soft']) . '</textarea>' .
+                        '<textarea name="desc" rows="' . $userConfig->fieldHeight . '">' . str_replace('<br>', "\r\n",
+                            $res['soft']) . '</textarea>' .
                         '<br><small>' . _t('Optional field') . '<br>' . _t('Min. 2, Max. 500 characters') . '</small></p>';
 
                     if ($res['type'] == 'r') {
@@ -609,7 +619,8 @@ switch ($mod) {
             $total = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 't' AND `close` = '1' $sort")->fetchColumn();
 
             if ($total > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=htopics&amp;', $total) . '</div>';
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=htopics&amp;',
+                        $total) . '</div>';
             }
 
             $req = $db->query("SELECT `forum`.*, `forum`.`id` AS `fid`, `forum`.`user_id` AS `id`, `forum`.`from` AS `name`, `forum`.`soft` AS `browser`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`
@@ -651,7 +662,8 @@ switch ($mod) {
             echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
             if ($total > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=htopics&amp;', $total) . '</div>' .
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=htopics&amp;',
+                        $total) . '</div>' .
                     '<p><form action="index.php?act=forum&amp;mod=htopics" method="post">' .
                     '<input type="text" name="page" size="2"/>' .
                     '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .
@@ -705,7 +717,8 @@ switch ($mod) {
             $total = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `close` = '1' $sort")->fetchColumn();
 
             if ($total > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=hposts&amp;', $total) . '</div>';
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=hposts&amp;',
+                        $total) . '</div>';
             }
 
             $req = $db->query("SELECT `forum`.*, `forum`.`id` AS `fid`, `forum`.`user_id` AS `id`, `forum`.`from` AS `name`, `forum`.`soft` AS `browser`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`
@@ -747,7 +760,8 @@ switch ($mod) {
             echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
             if ($total > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=hposts&amp;', $total) . '</div>' .
+                echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=forum&amp;mod=hposts&amp;',
+                        $total) . '</div>' .
                     '<p><form action="index.php?act=forum&amp;mod=hposts" method="post">' .
                     '<input type="text" name="page" size="2"/>' .
                     '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .
@@ -768,7 +782,7 @@ switch ($mod) {
         $total_votes = $db->query("SELECT COUNT(*) FROM `cms_forum_vote` WHERE `type` = '1'")->fetchColumn();
 
         echo '<div class="phdr"><a href="index.php"><b>' . _t('Admin Panel') . '</b></a> | ' . _t('Forum Management') . '</div>' .
-            '<div class="gmenu"><p><h3>' . $tools->image('images/rate.gif') . _t('Statistic') . '</h3><ul>' .
+            '<div class="gmenu"><p><h3>' . $asset->img('images/rate.gif')->class('icon') . _t('Statistic') . '</h3><ul>' .
             '<li>' . _t('Categories') . ':&#160;' . $total_cat . '</li>' .
             '<li>' . _t('Sections') . ':&#160;' . $total_sub . '</li>' .
             '<li>' . _t('Topics') . ':&#160;' . $total_thm . '&#160;/&#160;<span class="red">' . $total_thm_del . '</span></li>' .

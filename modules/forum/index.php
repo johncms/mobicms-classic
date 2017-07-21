@@ -13,6 +13,9 @@ defined('MOBICMS') or die('Error: restricted access');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -31,7 +34,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-/** @var Mobicms\Counters $counters */
+/** @var Mobicms\Deprecated\Counters $counters */
 $counters = App::getContainer()->get('counters');
 
 /** @var Zend\I18n\Translator\Translator $translator */
@@ -210,7 +213,8 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
         if (!$type->rowCount()) {
             // Если темы не существует, показываем ошибку
-            echo $tools->displayError(_t('Topic has been deleted or does not exists'), '<a href="index.php">' . _t('Forum') . '</a>');
+            echo $tools->displayError(_t('Topic has been deleted or does not exists'),
+                '<a href="index.php">' . _t('Forum') . '</a>');
             require ROOT_PATH . 'system/end.php';
             exit;
         }
@@ -361,10 +365,10 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                         $np = $db->query("SELECT COUNT(*) FROM `cms_forum_rdm` WHERE `time` >= '" . $res['time'] . "' AND `topic_id` = '" . $res['id'] . "' AND `user_id` = " . $systemUser->id)->fetchColumn();
                         // Значки
                         $icons = [
-                            ($np ? (!$res['vip'] ? $tools->image('modules/forum/op.gif') : '') : $tools->image('modules/forum/np.gif')),
-                            ($res['vip'] ? $tools->image('modules/forum/pt.gif') : ''),
-                            ($res['realid'] ? $tools->image('images/rate.gif') : ''),
-                            ($res['edit'] ? $tools->image('modules/forum/tz.gif') : ''),
+                            ($np ? (!$res['vip'] ? $asset->img('images/op.gif')->class('icon') : '') : $asset->img('images/np.gif')->class('icon')),
+                            ($res['vip'] ? $asset->img('images/pt.gif')->class('icon') : ''),
+                            ($res['realid'] ? $asset->img('images/rate.gif')->class('icon') : ''),
+                            ($res['edit'] ? $asset->img('images/tz.gif')->class('icon') : ''),
                         ];
                         echo implode('', array_filter($icons));
                         echo '<a href="index.php?id=' . $res['id'] . '">' . (empty($res['text']) ? '-----' : $res['text']) . '</a> [' . $colmes . ']';
@@ -392,7 +396,8 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
                 if ($total > $userConfig->kmess) {
-                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;', $total) . '</div>' .
+                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;',
+                            $total) . '</div>' .
                         '<p><form action="index.php?id=' . $id . '" method="post">' .
                         '<input type="text" name="page" size="2"/>' .
                         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .
@@ -437,14 +442,16 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                 if ($start >= $colmes) {
                     // Исправляем запрос на несуществующую страницу
-                    $start = max(0, $colmes - (($colmes % $userConfig->kmess) == 0 ? $userConfig->kmess : ($colmes % $userConfig->kmess)));
+                    $start = max(0,
+                        $colmes - (($colmes % $userConfig->kmess) == 0 ? $userConfig->kmess : ($colmes % $userConfig->kmess)));
                 }
 
                 // Выводим название топика
-                echo '<div class="phdr"><a href="#down">' . $tools->image('images/down.png', ['class' => '']) . '</a>&#160;&#160;<b>' . (empty($type1['text']) ? '-----' : $type1['text']) . '</b></div>';
+                echo '<div class="phdr"><a href="#down">' . $asset->img('images/down.png') . '</a>&#160;&#160;<b>' . (empty($type1['text']) ? '-----' : $type1['text']) . '</b></div>';
 
                 if ($colmes > $userConfig->kmess) {
-                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;', $colmes) . '</div>';
+                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;',
+                            $colmes) . '</div>';
                 }
 
                 // Метка удаления темы
@@ -472,7 +479,8 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                         echo '<form action="index.php?act=vote&amp;id=' . $id . '" method="post">';
 
                         while ($vote = $vote_result->fetch()) {
-                            echo '<input type="radio" value="' . $vote['id'] . '" name="vote"/> ' . $tools->checkout($vote['name'], 0, 1) . '<br />';
+                            echo '<input type="radio" value="' . $vote['id'] . '" name="vote"/> ' . $tools->checkout($vote['name'],
+                                    0, 1) . '<br />';
                         }
 
                         echo '<p><input type="submit" name="submit" value="' . _t('Vote') . '"/><br /><a href="index.php?id=' . $id . '&amp;start=' . $start . '&amp;vote_result' . $clip_forum .
@@ -623,9 +631,9 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                     // Метка пола
                     if ($res['sex']) {
-                        echo $tools->image('images/' . ($res['sex'] == 'm' ? 'm' : 'w') . ($res['datereg'] > time() - 86400 ? '_new' : '') . '.png', ['class' => 'icon-inline']);
+                        echo $asset->img('images/' . ($res['sex'] == 'm' ? 'm' : 'w') . ($res['datereg'] > time() - 86400 ? '_new' : '') . '.png')->class('icon-inline');
                     } else {
-                        echo $tools->image('images/del.png');
+                        echo $asset->img('images/del.png');
                     }
 
                     // Ник юзера и ссылка на его анкету
@@ -661,7 +669,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                     // Статус пользователя
                     if (!empty($res['status'])) {
-                        echo '<div class="status">' . $tools->image('images/label.png', ['class' => 'icon-inline']) . $res['status'] . '</div>';
+                        echo '<div class="status">' . $asset->img('images/label.png')->class('icon-inline') . $res['status'] . '</div>';
                     }
 
                     // Закрываем таблицу с аватаром
@@ -702,7 +710,8 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                             $fls = round(@filesize(ROOT_PATH . 'uploads/forum/attach/' . $fres['filename']) / 1024, 2);
                             echo '<div class="gray" style="font-size: x-small;background-color: rgba(128, 128, 128, 0.1);padding: 2px 4px;float: left;margin: 4px 4px 0 0;">' . _t('Attachment') . ':';
                             // Предпросмотр изображений
-                            $att_ext = strtolower(pathinfo(ROOT_PATH . 'uploads/forum/attach/' . $fres['filename'], PATHINFO_EXTENSION));
+                            $att_ext = strtolower(pathinfo(ROOT_PATH . 'uploads/forum/attach/' . $fres['filename'],
+                                PATHINFO_EXTENSION));
                             $pic_ext = [
                                 'gif',
                                 'jpg',
@@ -799,12 +808,12 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                     }
                 }
 
-                echo '<div class="phdr"><a id="down"></a><a href="#up">' . $tools->image('modules/forum/up.png', ['class' => '']) . '</a>' .
-                    '&#160;&#160;' . _t('Total') . ': ' . $colmes . '</div>';
+                echo '<div class="phdr"><a id="down"></a><a href="#up">' . $asset->img('images/up.png') . '</a>' . '&#160;&#160;' . _t('Total') . ': ' . $colmes . '</div>';
 
                 // Постраничная навигация
                 if ($colmes > $userConfig->kmess) {
-                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;', $colmes) . '</div>' .
+                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;',
+                            $colmes) . '</div>' .
                         '<p><form action="index.php?id=' . $id . '" method="post">' .
                         '<input type="text" name="page" size="2"/>' .
                         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .
