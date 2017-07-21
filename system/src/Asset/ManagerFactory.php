@@ -16,6 +16,9 @@ class ManagerFactory
 {
     public function __invoke(ContainerInterface $container)
     {
-        return new Manager('system/assets');
+        $config = $container->get('config');
+        $assetsPath = isset($config['mobicms_global']['assets_url']) ? $config['mobicms_global']['assets_url'] : '';
+
+        return new Manager($assetsPath);
     }
 }
