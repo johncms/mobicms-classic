@@ -30,7 +30,7 @@ $locale = App::getTranslator()->getLocale();
     <tr>
         <td valign="bottom">
             <a href="<?= $config->homeurl ?>">
-                <img src="<?= $config->homeurl ?>/themes/default/assets/images/logo.png" alt="<?= $this->e($config->copyright) ?>" class="icon"/>
+                <img src="<?= $this->asset('images/logo.png') ?>" alt="<?= $this->e($config->copyright) ?>" class="icon"/>
             </a>
         </td>
         <?php if (count($config->lng_list) > 1): ?>

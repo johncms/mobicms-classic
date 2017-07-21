@@ -12,6 +12,7 @@ namespace Mobicms\Deprecated;
 
 use Mobicms\Api\ToolsInterface;
 use Mobicms\Api\UserInterface;
+use Mobicms\Asset\Manager as Asset;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -19,6 +20,11 @@ use Psr\Container\ContainerInterface;
  */
 class Counters
 {
+    /**
+     * @var Asset
+     */
+    private $asset;
+
     /**
      * @var \PDO
      */
@@ -38,7 +44,7 @@ class Counters
 
     public function __invoke(ContainerInterface $container)
     {
-
+        $this->asset = $container->get(Asset::class);
         $this->db = $container->get(\PDO::class);
         $this->systemUser = $container->get(UserInterface::class);
         $this->tools = $container->get(ToolsInterface::class);
@@ -267,7 +273,7 @@ class Counters
             file_put_contents($file, serialize(['users' => $users, 'guests' => $guests]), LOCK_EX);
         }
 
-        return '<a href="' . $this->homeurl . '/users/?act=online">' . $this->tools->image('old/menu_online.png') . $users . ' / ' . $guests . '</a>';
+        return '<a href="' . $this->homeurl . '/users/?act=online">' . $this->asset->img('images/menu_online.png')->class('icon') . $users . ' / ' . $guests . '</a>';
     }
 
     /**
