@@ -12,7 +12,7 @@
 
 namespace Mobicms\Exception\Handler;
 
-use Exception;
+use Throwable;
 
 /**
  * Class Handler
@@ -50,7 +50,7 @@ class Handler
         $this->display([]);
     }
 
-    public function exceptions(Exception $e)
+    public function exceptions(Throwable $e)
     {
         $this->handlerType = 'exception';
         $this->message = $e->getMessage();
