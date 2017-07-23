@@ -22,10 +22,11 @@
   "require": {
     "php": "^7.0",
     "erusev/parsedown": "^1.6",
-    "geshi/geshi": "dev-master",
+    "geshi/geshi": "^1.0",
     "klein/klein": "^2.1",
     "league/plates": "^3.3",
     "mobicms/mobicms-captcha": "^1.0",
+    "mobicms/mobicms-error-handler": "^1.0",
     "nikic/fast-route": "^1.2",
     "roave/security-advisories": "dev-master",
     "verot/class.upload.php": "dev-master",
