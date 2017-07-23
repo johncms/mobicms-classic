@@ -8,6 +8,7 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 ### New
 - Integrated [Plates](http://platesphp.com/) native template engine
 - Integrated [nikic/FastRoute](https://github.com/nikic/FastRoute) package
+- Integrated [mobicms/mobicms-error-handler](https://github.com/mobicms/mobicms-error-handler) package
 - Added errors and exceptions handler (for DEBUG mode)
 - Added our own Asset Manager package
   
