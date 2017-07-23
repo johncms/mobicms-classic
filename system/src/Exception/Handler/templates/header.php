@@ -14,7 +14,7 @@
             font-family: "Myriad Pro", "Segoe UI", Helvetica, Arial, sans-serif;
         }
 
-        h1, p {
+        h1, h2, h3, p {
             margin: 10px;
         }
 
@@ -91,5 +91,5 @@
     <div id="message">
         <h1><?= strtoupper($this->handlerType) ?>: <?= $this->type ?></h1>
 
-        <p><?= $this->message ?></p>
+        <h2><?= $this->message ?></h2>
     </div>

@@ -18,6 +18,9 @@ unset($_SESSION['fsort_users']);
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -105,15 +108,15 @@ if ($systemUser->isValid()) {
                     $nick = $colmes->fetch();
 
                     if ($res['edit']) {
-                        echo $tools->image('modules/forum/tz.gif');
+                        echo $asset->img('images/tz.gif')->class('icon');
                     } elseif ($res['close']) {
-                        echo $tools->image('modules/forum/dl.gif');
+                        echo $asset->img('images/dl.gif')->class('icon');
                     } else {
-                        echo $tools->image('modules/forum/np.gif');
+                        echo $asset->img('images/np.gif')->class('icon');
                     }
 
                     if ($res['realid'] == 1) {
-                        echo $tools->image('images/rate.gif');
+                        echo $asset->img('images/rate.gif')->class('icon');
                     }
 
                     echo '&#160;<a href="index.php?id=' . $res['id'] . ($cpg > 1 && $set_forum['upfp'] && $set_forum['postclip'] ? '&amp;clip' : '') . ($set_forum['upfp'] && $cpg > 1 ? '&amp;page=' . $cpg : '') . '">' . (empty($res['text']) ? '-----' : $res['text']) .
@@ -159,7 +162,7 @@ if ($systemUser->isValid()) {
                 $req = $db->query("SELECT * FROM `forum`
                 LEFT JOIN `cms_forum_rdm` ON `forum`.`id` = `cms_forum_rdm`.`topic_id` AND `cms_forum_rdm`.`user_id` = '" . $systemUser->id . "'
                 WHERE `forum`.`type`='t'" . ($systemUser->rights >= 6 ? "" : " AND `forum`.`close` != '1'") . "
-                AND (`cms_forum_rdm`.`topic_id` Is Null
+                AND (`cms_forum_rdm`.`topic_id` IS NULL
                 OR `forum`.`time` > `cms_forum_rdm`.`time`)
                 ORDER BY `forum`.`time` DESC" . $tools->getPgStart(true));
 
@@ -179,10 +182,10 @@ if ($systemUser->isValid()) {
 
                     // Значки
                     $icons = [
-                        (isset($np) ? (!$res['vip'] ? $tools->image('modules/forum/op.gif') : '') : $tools->image('modules/forum/np.gif')),
-                        ($res['vip'] ? $tools->image('modules/forum/pt.gif') : ''),
-                        ($res['realid'] ? $tools->image('images/rate.gif') : ''),
-                        ($res['edit'] ? $tools->image('modules/forum/tz.gif') : ''),
+                        (isset($np) ? (!$res['vip'] ? $asset->img('images/op.gif')->class('icon') : '') : $asset->img('images/np.gif')->class('icon')),
+                        ($res['vip'] ? $asset->img('images/pt.gif')->class('icon') : ''),
+                        ($res['realid'] ? $asset->img('images/rate.gif')->class('icon') : ''),
+                        ($res['edit'] ? $asset->img('images/tz.gif')->class('icon') : ''),
                     ];
                     echo implode('', array_filter($icons));
                     echo '<a href="index.php?id=' . $res['id'] . ($cpg > 1 && $set_forum['upfp'] && $set_forum['postclip'] ? '&amp;clip' : '') . ($set_forum['upfp'] && $cpg > 1 ? '&amp;page=' . $cpg : '') . '">' . (empty($res['text']) ? '-----' : $res['text']) .
@@ -233,9 +236,9 @@ if ($systemUser->isValid()) {
             echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
             // Значки
             $icons = [
-                ($res['vip'] ? $tools->image('modules/forum/pt.gif') : ''),
-                ($res['realid'] ? $tools->image('images/rate.gif') : ''),
-                ($res['edit'] ? $tools->image('modules/forum/tz.gif') : ''),
+                ($res['vip'] ? $asset->img('images/pt.gif')->class('icon') : ''),
+                ($res['realid'] ? $asset->img('images/rate.gif')->class('icon') : ''),
+                ($res['edit'] ? $asset->img('images/tz.gif')->class('icon') : ''),
             ];
             echo implode('', array_filter($icons));
             echo '<a href="index.php?id=' . $res['id'] . '">' . (empty($res['text']) ? '-----' : $res['text']) . '</a>&#160;[' . $colmes1 . ']';

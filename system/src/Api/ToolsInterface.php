@@ -32,14 +32,6 @@ interface ToolsInterface
 
     public function getUser($id);
 
-    /**
-     * @deprecated
-     * @param string $name
-     * @param array  $args
-     * @return mixed
-     */
-    public function image($name, array $args = []);
-
     public function isIgnor($id);
 
     public function rusLat($str);

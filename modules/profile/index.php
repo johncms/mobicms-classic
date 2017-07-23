@@ -17,6 +17,9 @@ $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -157,34 +160,34 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     // Меню выбора
     $total_photo = $db->query("SELECT COUNT(*) FROM `cms_album_files` WHERE `user_id` = '" . $user['id'] . "'")->fetchColumn();
     echo '<div class="list2"><p>' .
-        '<div>' . $tools->image('images/contacts.png') . '<a href="?act=info&amp;user=' . $user['id'] . '">' . _t('Information') . '</a></div>' .
-        '<div>' . $tools->image('images/activity.gif') . '<a href="?act=activity&amp;user=' . $user['id'] . '">' . _t('Activity') . '</a></div>' .
-        '<div>' . $tools->image('images/rate.gif') . '<a href="?act=stat&amp;user=' . $user['id'] . '">' . _t('Statistic') . '</a></div>';
+        '<div>' . $asset->img('images/contacts.png')->class('icon') . '<a href="?act=info&amp;user=' . $user['id'] . '">' . _t('Information') . '</a></div>' .
+        '<div>' . $asset->img('images/activity.gif')->class('icon') . '<a href="?act=activity&amp;user=' . $user['id'] . '">' . _t('Activity') . '</a></div>' .
+        '<div>' . $asset->img('images/rate.gif')->class('icon') . '<a href="?act=stat&amp;user=' . $user['id'] . '">' . _t('Statistic') . '</a></div>';
     $bancount = $db->query("SELECT COUNT(*) FROM `cms_ban_users` WHERE `user_id` = '" . $user['id'] . "'")->fetchColumn();
 
     if ($bancount) {
-        echo '<div>' . $tools->image('images/block.gif') . '&#160;<a href="?act=ban&amp;user=' . $user['id'] . '">' . _t('Violations') . '</a> (' . $bancount . ')</div>';
+        echo '<div>' . $asset->img('images/block.gif')->class('icon') . '&#160;<a href="?act=ban&amp;user=' . $user['id'] . '">' . _t('Violations') . '</a> (' . $bancount . ')</div>';
     }
 
     echo '<br />' .
-        '<div>' . $tools->image('images/photo.gif') . '<a href="../album/index.php?act=list&amp;user=' . $user['id'] . '">' . _t('Photo Album') . '</a>&#160;(' . $total_photo . ')</div>' .
-        '<div>' . $tools->image('images/guestbook.gif') . '<a href="?act=guestbook&amp;user=' . $user['id'] . '">' . _t('Guestbook') . '</a>&#160;(' . $user['comm_count'] . ')</div>' .
+        '<div>' . $asset->img('images/photo.gif')->class('icon') . '<a href="../album/index.php?act=list&amp;user=' . $user['id'] . '">' . _t('Photo Album') . '</a>&#160;(' . $total_photo . ')</div>' .
+        '<div>' . $asset->img('images/guestbook.gif')->class('icon') . '<a href="?act=guestbook&amp;user=' . $user['id'] . '">' . _t('Guestbook') . '</a>&#160;(' . $user['comm_count'] . ')</div>' .
         '</p></div>';
     if ($user['id'] != $systemUser->id) {
         echo '<div class="menu"><p>';
         // Контакты
         if (is_contact($user['id'], $db, $systemUser) != 2) {
             if (!is_contact($user['id'], $db, $systemUser)) {
-                echo '<div>' . $tools->image('images/users.png') . '&#160;<a href="../mail/index.php?id=' . $user['id'] . '">' . _t('Add to Contacts') . '</a></div>';
+                echo '<div>' . $asset->img('images/users.png')->class('icon') . '&#160;<a href="../mail/index.php?id=' . $user['id'] . '">' . _t('Add to Contacts') . '</a></div>';
             } else {
-                echo '<div>' . $tools->image('images/users.png') . '&#160;<a href="../mail/index.php?act=deluser&amp;id=' . $user['id'] . '">' . _t('Remove from Contacts') . '</a></div>';
+                echo '<div>' . $asset->img('images/users.png')->class('icon') . '&#160;<a href="../mail/index.php?act=deluser&amp;id=' . $user['id'] . '">' . _t('Remove from Contacts') . '</a></div>';
             }
         }
 
         if (is_contact($user['id'], $db, $systemUser) != 2) {
-            echo '<div>' . $tools->image('images/del.png') . '&#160;<a href="../mail/index.php?act=ignor&amp;id=' . $user['id'] . '&amp;add">' . _t('Block User') . '</a></div>';
+            echo '<div>' . $asset->img('images/del.png')->class('icon') . '&#160;<a href="../mail/index.php?act=ignor&amp;id=' . $user['id'] . '&amp;add">' . _t('Block User') . '</a></div>';
         } else {
-            echo '<div>' . $tools->image('images/del.png') . '&#160;<a href="../mail/index.php?act=ignor&amp;id=' . $user['id'] . '&amp;del">' . _t('Unlock User') . '</a></div>';
+            echo '<div>' . $asset->img('images/del.png')->class('icon') . '&#160;<a href="../mail/index.php?act=ignor&amp;id=' . $user['id'] . '&amp;del">' . _t('Unlock User') . '</a></div>';
         }
 
         echo '</p>';

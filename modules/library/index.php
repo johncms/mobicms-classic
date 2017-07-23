@@ -11,27 +11,27 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $args = [
-         'act' => FILTER_DEFAULT,
-         'mod' => FILTER_DEFAULT,
-         'page' => FILTER_VALIDATE_INT,
-         'do' => FILTER_DEFAULT,
-         'tag' => [
-                    'filter' => FILTER_DEFAULT,
-                    'options' => [
-                                  'default' => null,
-                                  ]
-                    ],
-         'id' => [
-                     'filter' => FILTER_VALIDATE_INT,
-                     'options' => [
-                                   'default' => 0,
-                                   'min_range' => 1
-                                   ]
-                     ],
-         'type' => FILTER_DEFAULT,
-         'yes' => FILTER_DEFAULT,
-         'all' => FILTER_DEFAULT
-         ];
+    'act'  => FILTER_DEFAULT,
+    'mod'  => FILTER_DEFAULT,
+    'page' => FILTER_VALIDATE_INT,
+    'do'   => FILTER_DEFAULT,
+    'tag'  => [
+        'filter'  => FILTER_DEFAULT,
+        'options' => [
+            'default' => null,
+        ],
+    ],
+    'id'   => [
+        'filter'  => FILTER_VALIDATE_INT,
+        'options' => [
+            'default'   => 0,
+            'min_range' => 1,
+        ],
+    ],
+    'type' => FILTER_DEFAULT,
+    'yes'  => FILTER_DEFAULT,
+    'all'  => FILTER_DEFAULT,
+];
 
 $input_request = filter_var_array($_REQUEST, $args);
 unset($args);
@@ -43,6 +43,9 @@ $do = $input_request['do'] ? trim($input_request['do']) : false;
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
+
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
@@ -122,7 +125,7 @@ if ($id > 0) {
 
     $hdr = htmlentities($hdrres, ENT_QUOTES, 'UTF-8');
     if ($hdr) {
-        $pageTitle .=  ' | ' . (mb_strlen($hdr) > 30 ? $hdr . '...' : $hdr);
+        $pageTitle .= ' | ' . (mb_strlen($hdr) > 30 ? $hdr . '...' : $hdr);
     }
 }
 
@@ -195,15 +198,12 @@ if (in_array($act, $array_includes)) {
 
         $res = $db->query("SELECT COUNT(*) FROM `library_texts` WHERE `time` > '" . (time() - 259200) . "' AND `premod`=1")->fetchColumn();
 
-        if ($res) {
-            echo $tools->image('images/new.png', [
-                    'width' => 16,
-                    'height' => 16
-                ]) . '<a href="?act=new">' . _t('New Articles') . '</a> (' . $res . ')<br>';
+        if (!$res) {
+            echo $asset->img('images/add.gif')->class('icon') . '<a href="?act=new">' . _t('New Articles') . '</a> (' . $res . ')<br>';
         }
 
-        echo $tools->image('images/rate.gif', ['width' => 16, 'height' => 16]) . '<a href="?act=top">' . _t('Rating articles') . '</a><br>' .
-            $tools->image('images/talk.gif', ['width' => 16, 'height' => 16]) . '<a href="?act=lastcom">' . _t('Latest comments') . '</a>' .
+        echo $asset->img('images/rate.gif')->class('icon') . '<a href="?act=top">' . _t('Rating articles') . '</a><br>' .
+            $asset->img('images/talk.gif')->class('icon') . '<a href="?act=lastcom">' . _t('Latest comments') . '</a>' .
             '</p></div>';
 
         $total = $db->query("SELECT COUNT(*) FROM `library_cats` WHERE `parent`=0")->fetchColumn();

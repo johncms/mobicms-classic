@@ -15,6 +15,9 @@ require ROOT_PATH . 'system/head.php';
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -55,9 +58,9 @@ if (file_exists(UPLOAD_PATH . 'users/avatar/' . $res['user_id'] . '.png')) {
 echo '</td><td>';
 
 if ($res['sex']) {
-    echo $tools->image('images/' . ($res['sex'] == 'm' ? 'm' : 'w') . ($res['datereg'] > time() - 86400 ? '_new' : '') . '.png', ['class' => 'icon-inline']);
+    echo $asset->img('images/' . ($res['sex'] == 'm' ? 'm' : 'w') . ($res['datereg'] > time() - 86400 ? '_new' : '') . '.png')->class('icon-inline');
 } else {
-    echo $tools->image('images/del.png');
+    echo $asset->img('images/del.png')->class('icon');
 }
 
 // Ник юзера и ссылка на его анкету
@@ -91,7 +94,7 @@ echo ' <span class="gray">(' . $tools->displayDate($res['time']) . ')</span><br 
 
 // Статус юзера
 if (!empty($res['status'])) {
-    echo '<div class="status">' . $tools->image('images/label.png', ['class' => 'icon-inline']) . $res['status'] . '</div>';
+    echo '<div class="status">' . $asset->img('images/label.png')->class('icon-inline') . $res['status'] . '</div>';
 }
 
 echo '</td></tr></table>';

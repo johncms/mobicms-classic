@@ -51,10 +51,13 @@ $array = [
 if (in_array($act, $array) && file_exists(__DIR__ . '/includes/' . $act . '.php')) {
     require_once __DIR__ . '/includes/' . $act . '.php';
 } else {
+    /** @var Mobicms\Asset\Manager $asset */
+    $asset = $container->get(Mobicms\Asset\Manager::class);
+
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
-    /** @var Mobicms\Counters $counters */
+    /** @var Mobicms\Deprecated\Counters $counters */
     $counters = $container->get('counters');
 
     // Актив сайта
@@ -71,11 +74,11 @@ if (in_array($act, $array) && file_exists(__DIR__ . '/includes/' . $act . '.php'
         '<input type="submit" value="' . _t('Search') . '" name="submit" /><br />' .
         '<small>' . _t('The search is performed by Nickname and are case-insensitive.') . '</small></p></form></div>' .
         '<div class="menu"><p>' .
-        $tools->image('images/contacts.png', ['width' => 16, 'height' => 16]) . '<a href="?act=userlist">' . _t('Users') . '</a> (' . $container->get('counters')->users() . ')<br />' .
-        $tools->image('images/users.png', ['width' => 16, 'height' => 16]) . '<a href="?act=admlist">' . _t('Administration') . '</a> (' . $count_adm . ')<br>' .
-        ($brth ? $tools->image('images/award.png', ['width' => 16, 'height' => 16]) . '<a href="?act=birth">' . _t('Birthdays') . '</a> (' . $brth . ')<br>' : '') .
-        $tools->image('images/photo.gif', ['width' => 16, 'height' => 16]) . '<a href="../album/">' . _t('Photo Albums') . '</a> (' . $counters->album() . ')<br>' .
-        $tools->image('images/rate.gif', ['width' => 16, 'height' => 16]) . '<a href="?act=top">' . _t('Top Activity') . '</a></p>' .
+        $asset->img('images/contacts.png')->class('icon') . '<a href="?act=userlist">' . _t('Users') . '</a> (' . $container->get('counters')->users() . ')<br />' .
+        $asset->img('images/users.png')->class('icon') . '<a href="?act=admlist">' . _t('Administration') . '</a> (' . $count_adm . ')<br>' .
+        ($brth ? $asset->img('images/award.png')->class('icon') . '<a href="?act=birth">' . _t('Birthdays') . '</a> (' . $brth . ')<br>' : '') .
+        $asset->img('images/photo.gif')->class('icon') . '<a href="../album/">' . _t('Photo Albums') . '</a> (' . $counters->album() . ')<br>' .
+        $asset->img('images/rate.gif')->class('icon') . '<a href="?act=top">' . _t('Top Activity') . '</a></p>' .
         '</div>';
 }
 

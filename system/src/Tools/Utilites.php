@@ -283,7 +283,7 @@ class Utilites implements ToolsInterface
             if (file_exists(UPLOAD_PATH . 'users/avatar/' . $user['id'] . '.png')) {
                 $out .= '<img src="' . $homeurl . '/uploads/users/avatar/' . $user['id'] . '.png" width="32" height="32" alt="" />&#160;';
             } else {
-                $out .= '<img src="' . $homeurl . '/assets/images/empty.png" width="32" height="32" alt="" />&#160;';
+                $out .= '<img src="' . $this->asset->getAsset('images/empty.png') . '" width="32" height="32" alt="" />&#160;';
             }
 
             $out .= '</td><td>';
@@ -431,28 +431,6 @@ class Utilites implements ToolsInterface
         } else {
             return $this->user;
         }
-    }
-
-    /**
-     * @deprecated
-     * @param string $name
-     * @param array  $args
-     * @return bool|string
-     */
-    public function image($name, array $args = [])
-    {
-        if (is_file(ROOT_PATH . 'themes/default/assets/images/' . $name)) {
-            $src = $this->config->homeurl . '/themes/default/assets/images/' . $name;
-        } elseif (is_file(ROOT_PATH . 'assets/' . $name)) {
-            $src = $this->config->homeurl . '/assets/' . $name;
-        } else {
-            return false;
-        }
-
-        return '<img src="' . $src . '" alt="' . (isset($args['alt']) ? $args['alt'] : '') . '"' .
-            (isset($args['width']) ? ' width="' . $args['width'] . '"' : '') .
-            (isset($args['height']) ? ' height="' . $args['height'] . '"' : '') .
-            ' class="' . (isset($args['class']) ? $args['class'] : 'icon') . '"/>';
     }
 
     /**

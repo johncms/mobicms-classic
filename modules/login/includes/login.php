@@ -15,6 +15,9 @@ require ROOT_PATH . 'system/head.php';
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -155,7 +158,7 @@ if ($systemUser->isValid()) {
             '<p><input type="checkbox" name="mem" value="1" checked="checked"/>' . _t('Remember', 'system') . '</p>' .
             '<p><input type="submit" value="' . _t('Login', 'system') . '"/></p>' .
             '</form></div>' .
-            '<div class="menu"><p>' . $tools->image('images/user.png') . '<a href="../registration/">' . _t('Registration', 'system') . '</a></p></div>';
+            '<div class="menu"><p>' . $asset->img('images/user.png')->class('icon') . '<a href="../registration/">' . _t('Registration', 'system') . '</a></p></div>';
     }
 }
 
