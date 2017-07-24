@@ -199,11 +199,11 @@ if (in_array($act, $array_includes)) {
         $res = $db->query("SELECT COUNT(*) FROM `library_texts` WHERE `time` > '" . (time() - 259200) . "' AND `premod`=1")->fetchColumn();
 
         if (!$res) {
-            echo $asset->img('images/add.gif')->class('icon') . '<a href="?act=new">' . _t('New Articles') . '</a> (' . $res . ')<br>';
+            echo $asset->img('add.gif')->class('icon') . '<a href="?act=new">' . _t('New Articles') . '</a> (' . $res . ')<br>';
         }
 
-        echo $asset->img('images/rate.gif')->class('icon') . '<a href="?act=top">' . _t('Rating articles') . '</a><br>' .
-            $asset->img('images/talk.gif')->class('icon') . '<a href="?act=lastcom">' . _t('Latest comments') . '</a>' .
+        echo $asset->img('rate.gif')->class('icon') . '<a href="?act=top">' . _t('Rating articles') . '</a><br>' .
+            $asset->img('talk.gif')->class('icon') . '<a href="?act=lastcom">' . _t('Latest comments') . '</a>' .
             '</p></div>';
 
         $total = $db->query("SELECT COUNT(*) FROM `library_cats` WHERE `parent`=0")->fetchColumn();

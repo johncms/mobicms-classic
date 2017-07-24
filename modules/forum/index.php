@@ -365,10 +365,10 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                         $np = $db->query("SELECT COUNT(*) FROM `cms_forum_rdm` WHERE `time` >= '" . $res['time'] . "' AND `topic_id` = '" . $res['id'] . "' AND `user_id` = " . $systemUser->id)->fetchColumn();
                         // Значки
                         $icons = [
-                            ($np ? (!$res['vip'] ? $asset->img('images/op.gif')->class('icon') : '') : $asset->img('images/np.gif')->class('icon')),
-                            ($res['vip'] ? $asset->img('images/pt.gif')->class('icon') : ''),
-                            ($res['realid'] ? $asset->img('images/rate.gif')->class('icon') : ''),
-                            ($res['edit'] ? $asset->img('images/tz.gif')->class('icon') : ''),
+                            ($np ? (!$res['vip'] ? $asset->img('op.gif')->class('icon') : '') : $asset->img('images/np.gif')->class('icon')),
+                            ($res['vip'] ? $asset->img('pt.gif')->class('icon') : ''),
+                            ($res['realid'] ? $asset->img('rate.gif')->class('icon') : ''),
+                            ($res['edit'] ? $asset->img('tz.gif')->class('icon') : ''),
                         ];
                         echo implode('', array_filter($icons));
                         echo '<a href="index.php?id=' . $res['id'] . '">' . (empty($res['text']) ? '-----' : $res['text']) . '</a> [' . $colmes . ']';
@@ -447,7 +447,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 }
 
                 // Выводим название топика
-                echo '<div class="phdr"><a href="#down">' . $asset->img('images/down.png') . '</a>&#160;&#160;<b>' . (empty($type1['text']) ? '-----' : $type1['text']) . '</b></div>';
+                echo '<div class="phdr"><a href="#down">' . $asset->img('down.png') . '</a>&#160;&#160;<b>' . (empty($type1['text']) ? '-----' : $type1['text']) . '</b></div>';
 
                 if ($colmes > $userConfig->kmess) {
                     echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;',
@@ -631,9 +631,9 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                     // Метка пола
                     if ($res['sex']) {
-                        echo $asset->img('images/' . ($res['sex'] == 'm' ? 'm' : 'w') . ($res['datereg'] > time() - 86400 ? '_new' : '') . '.png')->class('icon-inline');
+                        echo $asset->img(($res['sex'] == 'm' ? 'm' : 'w') . ($res['datereg'] > time() - 86400 ? '_new' : '') . '.png')->class('icon-inline');
                     } else {
-                        echo $asset->img('images/del.png');
+                        echo $asset->img('del.png');
                     }
 
                     // Ник юзера и ссылка на его анкету
@@ -669,7 +669,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                     // Статус пользователя
                     if (!empty($res['status'])) {
-                        echo '<div class="status">' . $asset->img('images/label.png')->class('icon-inline') . $res['status'] . '</div>';
+                        echo '<div class="status">' . $asset->img('label.png')->class('icon-inline') . $res['status'] . '</div>';
                     }
 
                     // Закрываем таблицу с аватаром
@@ -808,7 +808,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                     }
                 }
 
-                echo '<div class="phdr"><a id="down"></a><a href="#up">' . $asset->img('images/up.png') . '</a>' . '&#160;&#160;' . _t('Total') . ': ' . $colmes . '</div>';
+                echo '<div class="phdr"><a id="down"></a><a href="#up">' . $asset->img('up.png') . '</a>' . '&#160;&#160;' . _t('Total') . ': ' . $colmes . '</div>';
 
                 // Постраничная навигация
                 if ($colmes > $userConfig->kmess) {

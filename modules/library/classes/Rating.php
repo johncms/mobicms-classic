@@ -111,7 +111,7 @@ class Rating
 
         $stmt = $this->db->prepare('SELECT COUNT(*) FROM `cms_library_rating` WHERE `st_id` = ?');
         $stmt->execute([$this->lib_id]);
-        $res = ($anchor ? '<a href="#rating">' : '') . $asset->img('images/star.' . (str_replace('.', '-', (string)$this->getRate())) . '.gif')->class('icon') . ($anchor ? '</a>' : '') . ' (' . $stmt->fetchColumn() . ')';
+        $res = ($anchor ? '<a href="#rating">' : '') . $asset->img('star.' . (str_replace('.', '-', (string)$this->getRate())) . '.gif')->class('icon') . ($anchor ? '</a>' : '') . ' (' . $stmt->fetchColumn() . ')';
 
         return $res;
     }

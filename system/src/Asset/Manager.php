@@ -100,6 +100,8 @@ class Manager
      */
     public function img($src, $namespace = null)
     {
-        return new Img($this->getAsset($src, $namespace));
+        $src = trim($src, '/');
+
+        return new Img($this->getAsset('images/' . $src, $namespace));
     }
 }

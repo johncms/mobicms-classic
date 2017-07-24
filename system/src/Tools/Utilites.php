@@ -289,9 +289,9 @@ class Utilites implements ToolsInterface
             $out .= '</td><td>';
 
             if ($user['sex']) {
-                $out .= $this->asset->img('images/' . ($user['sex'] == 'm' ? 'm' : 'w') . ($user['datereg'] > time() - 86400 ? '_new' : '') . '.png')->class('icon-inline');
+                $out .= $this->asset->img(($user['sex'] == 'm' ? 'm' : 'w') . ($user['datereg'] > time() - 86400 ? '_new' : '') . '.png')->class('icon-inline');
             } else {
-                $out .= $this->asset->img('images/del.png')->class('icon');
+                $out .= $this->asset->img('del.png')->class('icon');
             }
 
             $out .= !$this->user->isValid() || $this->user->id == $user['id'] ? '<b>' . $user['name'] . '</b>' : '<a href="' . $homeurl . '/profile/?user=' . $user['id'] . '"><b>' . $user['name'] . '</b></a>';
@@ -315,7 +315,7 @@ class Utilites implements ToolsInterface
             }
 
             if (!isset($arg['stshide']) && !empty($user['status'])) {
-                $out .= '<div class="status">' . $this->asset->img('images/label.png')->class('icon-inline') . $user['status'] . '</div>';
+                $out .= '<div class="status">' . $this->asset->img('label.png')->class('icon-inline') . $user['status'] . '</div>';
             }
 
             $out .= '</td></tr></table>';

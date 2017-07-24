@@ -74,11 +74,11 @@ if (in_array($act, $array) && file_exists(__DIR__ . '/includes/' . $act . '.php'
         '<input type="submit" value="' . _t('Search') . '" name="submit" /><br />' .
         '<small>' . _t('The search is performed by Nickname and are case-insensitive.') . '</small></p></form></div>' .
         '<div class="menu"><p>' .
-        $asset->img('images/contacts.png')->class('icon') . '<a href="?act=userlist">' . _t('Users') . '</a> (' . $container->get('counters')->users() . ')<br />' .
-        $asset->img('images/users.png')->class('icon') . '<a href="?act=admlist">' . _t('Administration') . '</a> (' . $count_adm . ')<br>' .
-        ($brth ? $asset->img('images/award.png')->class('icon') . '<a href="?act=birth">' . _t('Birthdays') . '</a> (' . $brth . ')<br>' : '') .
-        $asset->img('images/photo.gif')->class('icon') . '<a href="../album/">' . _t('Photo Albums') . '</a> (' . $counters->album() . ')<br>' .
-        $asset->img('images/rate.gif')->class('icon') . '<a href="?act=top">' . _t('Top Activity') . '</a></p>' .
+        $asset->img('contacts.png')->class('icon') . '<a href="?act=userlist">' . _t('Users') . '</a> (' . $container->get('counters')->users() . ')<br />' .
+        $asset->img('users.png')->class('icon') . '<a href="?act=admlist">' . _t('Administration') . '</a> (' . $count_adm . ')<br>' .
+        ($brth ? $asset->img('award.png')->class('icon') . '<a href="?act=birth">' . _t('Birthdays') . '</a> (' . $brth . ')<br>' : '') .
+        $asset->img('photo.gif')->class('icon') . '<a href="../album/">' . _t('Photo Albums') . '</a> (' . $counters->album() . ')<br>' .
+        $asset->img('rate.gif')->class('icon') . '<a href="?act=top">' . _t('Top Activity') . '</a></p>' .
         '</div>';
 }
 

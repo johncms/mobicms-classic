@@ -158,7 +158,7 @@ if ($systemUser->isValid()) {
             '<p><input type="checkbox" name="mem" value="1" checked="checked"/>' . _t('Remember', 'system') . '</p>' .
             '<p><input type="submit" value="' . _t('Login', 'system') . '"/></p>' .
             '</form></div>' .
-            '<div class="menu"><p>' . $asset->img('images/user.png')->class('icon') . '<a href="../registration/">' . _t('Registration', 'system') . '</a></p></div>';
+            '<div class="menu"><p>' . $asset->img('user.png')->class('icon') . '<a href="../registration/">' . _t('Registration', 'system') . '</a></p></div>';
     }
 }
 

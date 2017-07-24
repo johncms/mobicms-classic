@@ -132,7 +132,7 @@ class Download
         /** @var Mobicms\Api\ConfigInterface $config */
         $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-        $out .= $asset->img('images/system/' . $icon_id . '.png')->class('icon') . '&nbsp;';
+        $out .= $asset->img('system/' . $icon_id . '.png')->class('icon') . '&nbsp;';
         $out .= '<a href="?act=view&amp;id=' . $res_down['id'] . '">' . htmlspecialchars($res_down['rus_name']) . '</a> (' . $res_down['field'] . ')';
 
         if ($res_down['time'] > $old) {
@@ -209,7 +209,7 @@ class Download
         $morelink = isset($array['more']) ? '&amp;more=' . $array['more'] : '';
         $out = '<table  width="100%"><tr><td width="16" valign="top">';
         $icon_id = isset(self::$extensions[$array['format']]) ? self::$extensions[$array['format']] : 9;
-        $out .= $asset->img('images/system/' . $icon_id . '.png')->class('icon') . '&nbsp;';
+        $out .= $asset->img('system/' . $icon_id . '.png')->class('icon') . '&nbsp;';
         $out .= '</td><td><a href="?act=load_file&amp;id=' . $id . $morelink . '">' . $array['res']['text'] . '</a> (' . Download::displayFileSize((isset($array['res']['size']) ? $array['res']['size'] : filesize($array['res']['dir'] . '/' . $array['res']['name']))) . ')';
 
         if ($array['res']['time'] > $old) {

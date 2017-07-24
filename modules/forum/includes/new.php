@@ -108,15 +108,15 @@ if ($systemUser->isValid()) {
                     $nick = $colmes->fetch();
 
                     if ($res['edit']) {
-                        echo $asset->img('images/tz.gif')->class('icon');
+                        echo $asset->img('tz.gif')->class('icon');
                     } elseif ($res['close']) {
-                        echo $asset->img('images/dl.gif')->class('icon');
+                        echo $asset->img('dl.gif')->class('icon');
                     } else {
-                        echo $asset->img('images/np.gif')->class('icon');
+                        echo $asset->img('np.gif')->class('icon');
                     }
 
                     if ($res['realid'] == 1) {
-                        echo $asset->img('images/rate.gif')->class('icon');
+                        echo $asset->img('rate.gif')->class('icon');
                     }
 
                     echo '&#160;<a href="index.php?id=' . $res['id'] . ($cpg > 1 && $set_forum['upfp'] && $set_forum['postclip'] ? '&amp;clip' : '') . ($set_forum['upfp'] && $cpg > 1 ? '&amp;page=' . $cpg : '') . '">' . (empty($res['text']) ? '-----' : $res['text']) .
@@ -182,10 +182,10 @@ if ($systemUser->isValid()) {
 
                     // Значки
                     $icons = [
-                        (isset($np) ? (!$res['vip'] ? $asset->img('images/op.gif')->class('icon') : '') : $asset->img('images/np.gif')->class('icon')),
-                        ($res['vip'] ? $asset->img('images/pt.gif')->class('icon') : ''),
-                        ($res['realid'] ? $asset->img('images/rate.gif')->class('icon') : ''),
-                        ($res['edit'] ? $asset->img('images/tz.gif')->class('icon') : ''),
+                        (isset($np) ? (!$res['vip'] ? $asset->img('op.gif')->class('icon') : '') : $asset->img('np.gif')->class('icon')),
+                        ($res['vip'] ? $asset->img('pt.gif')->class('icon') : ''),
+                        ($res['realid'] ? $asset->img('rate.gif')->class('icon') : ''),
+                        ($res['edit'] ? $asset->img('tz.gif')->class('icon') : ''),
                     ];
                     echo implode('', array_filter($icons));
                     echo '<a href="index.php?id=' . $res['id'] . ($cpg > 1 && $set_forum['upfp'] && $set_forum['postclip'] ? '&amp;clip' : '') . ($set_forum['upfp'] && $cpg > 1 ? '&amp;page=' . $cpg : '') . '">' . (empty($res['text']) ? '-----' : $res['text']) .
@@ -236,9 +236,9 @@ if ($systemUser->isValid()) {
             echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
             // Значки
             $icons = [
-                ($res['vip'] ? $asset->img('images/pt.gif')->class('icon') : ''),
-                ($res['realid'] ? $asset->img('images/rate.gif')->class('icon') : ''),
-                ($res['edit'] ? $asset->img('images/tz.gif')->class('icon') : ''),
+                ($res['vip'] ? $asset->img('pt.gif')->class('icon') : ''),
+                ($res['realid'] ? $asset->img('rate.gif')->class('icon') : ''),
+                ($res['edit'] ? $asset->img('tz.gif')->class('icon') : ''),
             ];
             echo implode('', array_filter($icons));
             echo '<a href="index.php?id=' . $res['id'] . '">' . (empty($res['text']) ? '-----' : $res['text']) . '</a>&#160;[' . $colmes1 . ']';

@@ -28,7 +28,7 @@ require ROOT_PATH . 'system/head.php';
 echo '<div class="phdr"><a href="?user=' . $user['id'] . '"><b>' . _t('Profile') . '</b></a> | ' . _t('Statistic') . '</div>' .
     '<div class="user"><p>' . $tools->displayUser($user, ['iphide' => 1,]) . '</p></div>' .
     '<div class="list2">' .
-    '<p><h3>' . $asset->img('images/rate.gif')->class('icon') . _t('Statistic') . '</h3><ul>';
+    '<p><h3>' . $asset->img('rate.gif')->class('icon') . _t('Statistic') . '</h3><ul>';
 
 if ($systemUser->rights >= 7) {
     if (!$user['preg'] && empty($user['regadm'])) {
@@ -49,12 +49,12 @@ if ($lastvisit) {
 }
 
 echo '</ul></p><p>' .
-    '<h3>' . $asset->img('images/activity.gif')->class('icon') . _t('Activity') . '</h3><ul>' .
+    '<h3>' . $asset->img('activity.gif')->class('icon') . _t('Activity') . '</h3><ul>' .
     '<li><span class="gray">' . _t('Forum') . ':</span> <a href="?act=activity&amp;user=' . $user['id'] . '">' . $user['postforum'] . '</a></li>' .
     '<li><span class="gray">' . _t('Guestbook') . ':</span> <a href="?act=activity&amp;mod=comments&amp;user=' . $user['id'] . '">' . $user['postguest'] . '</a></li>' .
     '<li><span class="gray">' . _t('Comments') . ':</span> ' . $user['komm'] . '</li>' .
     '</ul></p>' .
-    '<p><h3>' . $asset->img('images/award.png')->class('icon') . _t('Achievements') . '</h3>';
+    '<p><h3>' . $asset->img('award.png')->class('icon') . _t('Achievements') . '</h3>';
 $num = [
     50,
     100,
@@ -79,7 +79,7 @@ foreach ($query as $key => $val) {
     echo '<tr>';
 
     foreach ($num as $achieve) {
-        echo '<td align="center">' . $asset->img('images/' . ($user[$key] >= $achieve ? 'green' : 'red') . '.gif')->class('icon') . '</td>';
+        echo '<td align="center">' . $asset->img(($user[$key] >= $achieve ? 'green' : 'red') . '.gif')->class('icon') . '</td>';
     }
 
     echo '<td><small><b>' . $val . '</b></small></td></tr>';
