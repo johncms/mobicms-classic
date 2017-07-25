@@ -6,15 +6,15 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 `Release Date: TBD` 
 
 ### New
-- Integrated [Plates](http://platesphp.com/) native template engine
 - Integrated [nikic/FastRoute](https://github.com/nikic/FastRoute) package
+- Integrated [Plates](http://platesphp.com/) native template engine
 - Integrated [mobicms/mobicms-error-handler](https://github.com/mobicms/mobicms-error-handler) package
-- Added errors and exceptions handler (for DEBUG mode)
 - Added our own Asset Manager package
   
 ### Changed
-- The files `head.php` and `end.php` have been put into stub mode,
-  old functionality has been removed.
+- Old functionality of `head.php` and `end.php` has been removed
+- The files `head.php` and `end.php` have been put into stub mode
+- All pictures are moved to the default theme
 - Refactoring
 
 ### Fixed
