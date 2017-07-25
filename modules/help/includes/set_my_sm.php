@@ -19,6 +19,9 @@ $cat = isset($_GET['cat']) ? trim($_GET['cat']) : '';
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var PDO $db */
+$db = $container->get(PDO::class);
+
 /** @var Mobicms\Http\Response $response */
 $response = $container->get(Mobicms\Http\Response::class);
 
