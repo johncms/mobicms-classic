@@ -22,7 +22,7 @@ $locale = App::getTranslator()->getLocale();
     <link rel="stylesheet" href="<?= $config->homeurl ?>/themes/default/assets/css/legacy.css">
     <link rel="shortcut icon" href="<?= $config->homeurl ?>/themes/default/assets/images/favicon.ico">
     <link rel="alternate" type="application/rss+xml" title="RSS | Новости ресурса" href="<?= $config->homeurl ?>/rss/">
-    <title><?= (isset($title) ? $this->e($title) : $config->copyright) ?></title>
+    <title><?= (isset($title) ? $this->e($title) . ' | ' : '') . $config->copyright ?></title>
 </head>
 <body>
 <!-- Логотип и переключатель языков -->
@@ -35,8 +35,8 @@ $locale = App::getTranslator()->getLocale();
         </td>
         <?php if (count($config->lng_list) > 1): ?>
             <td align="right">
-                <a href="go.php?lng"><strong><?= strtoupper($locale) ?></strong></a>&#160;
-                <a href="go.php?lng"><?= $tools->getFlag($locale) ?></a>
+                <a href="language/"><strong><?= strtoupper($locale) ?></strong></a>&#160;
+                <a href="language/"><?= $tools->getFlag($locale) ?></a>
             </td>
         <?php endif ?>
     </tr>
@@ -58,7 +58,7 @@ $locale = App::getTranslator()->getLocale();
     <a href="users/?act=online"><?= $container->get('counters')->online() ?></a>
 </div>
 <div style="text-align:center">
-    <p><?= $config->copyright ?></p>
+    <p><?= $this->e($config->copyright) ?></p>
     <!-- Внешние счетчики -->
     <?php $this->insert('system::app/old/counters') ?>
     <div>
