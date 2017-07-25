@@ -17,37 +17,13 @@ $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 $referer = isset($_SERVER['HTTP_REFERER']) ? htmlspecialchars($_SERVER['HTTP_REFERER']) : $config->homeurl;
 $url = isset($_REQUEST['url']) ? strip_tags(rawurldecode(trim($_REQUEST['url']))) : false;
 
-if (isset($_GET['lng'])) {
-    // Переключатель языков
-    require('system/head.php');
-    echo '<div class="menu"><form method="post"><p>';
-
-    if (count($config->lng_list) > 1) {
-        echo '<p><h3>' . _t('Select language', 'system') . '</h3>';
-
-        foreach ($config->lng_list as $key => $val) {
-            echo '<div><input type="radio" value="' . $key . '" name="setlng" ' . ($key == App::getTranslator()->getLocale() ? 'checked="checked"' : '') . '/>&#160;' .
-                $tools->getFlag($key) .
-                $val .
-                ($key == $config->lng ? ' <small class="red">[' . _t('Default', 'system') . ']</small>' : '') .
-                '</div>';
-        }
-
-        echo '</p>';
-    }
-
-    echo '</p><p><input type="submit" name="submit" value="' . _t('Apply', 'system') . '" /></p></form></div>';
-    require('system/end.php');
-} elseif ($url) {
+if ($url) {
     // Редирект по ссылкам в текстах, обработанным функцией tags()
     if (isset($_POST['submit'])) {
         header('Location: ' . $url);
