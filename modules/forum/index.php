@@ -625,8 +625,9 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                     if (file_exists(UPLOAD_PATH . 'users/avatar/' . $res['user_id'] . '.png')) {
                         echo '<img src="../uploads/users/avatar/' . $res['user_id'] . '.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
                     } else {
-                        echo '<img src="../assets/images/empty.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
+                        echo $asset->img('empty.png')->alt($res['from']) . '&#160;';
                     }
+
                     echo '</td><td>';
 
                     // Метка пола

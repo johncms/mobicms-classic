@@ -50,11 +50,13 @@ echo '<div class="phdr"><b>' . _t('Topic') . ':</b> ' . $them['text'] . '</div><
 
 // Данные пользователя
 echo '<table cellpadding="0" cellspacing="0"><tr><td>';
+
 if (file_exists(UPLOAD_PATH . 'users/avatar/' . $res['user_id'] . '.png')) {
     echo '<img src="../uploads/users/avatar/' . $res['user_id'] . '.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
 } else {
-    echo '<img src="../assets/images/empty.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
+    echo $asset->img('empty.png')->alt($res['from']) . '&#160;';
 }
+
 echo '</td><td>';
 
 if ($res['sex']) {
