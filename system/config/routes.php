@@ -30,6 +30,7 @@ $map->addRoute(['GET', 'POST'], '/library[/[index.php]]', 'modules/library/index
 $map->addRoute(['GET', 'POST'], '/mail[/[index.php]]', 'modules/mail/index.php');                 // Почта
 $map->addRoute(['GET', 'POST'], '/news[/[index.php]]', 'modules/news/index.php');                 // Новости
 $map->addRoute(['GET', 'POST'], '/profile[/[index.php]]', 'modules/profile/index.php');           // Пользовательские профили
+$map->addRoute(['GET', 'POST'], '/redirect/', 'modules/redirect/index.php');                      // Регистрация
 $map->addRoute(['GET', 'POST'], '/registration[/[index.php]]', 'modules/registration/index.php'); // Регистрация
 $map->addRoute(['GET', 'POST'], '/users[/]', 'modules/users/index.php');                          // Пользователи (актив сайта)
 
