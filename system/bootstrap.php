@@ -114,22 +114,28 @@ class App
     }
 }
 
-// Счетчик активности IP адресов
-App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
+call_user_func(function () {
+    /** @var Psr\Container\ContainerInterface $container */
+    $container = App::getContainer();
 
-// Проверка IP адреса на бан
-try {
-    new Mobicms\System\IpBan(App::getContainer());
-} catch (Mobicms\System\Exception\IpBanException $e) {
-    header($e->getMessage());
-    exit;
-}
+    // Проверка IP адреса на бан
+    try {
+        new Mobicms\System\IpBan(App::getContainer());
+    } catch (Mobicms\System\Exception\IpBanException $e) {
+        header($e->getMessage());
+        exit;
+    }
 
-// Автоочистка системы
-new Mobicms\System\Clean(App::getContainer());
+    // Стартуем сессию
+    session_name('SESID');
+    session_start();
 
-session_name('SESID');
-session_start();
+    // Автоочистка системы
+    new Mobicms\System\Clean($container);
+
+    // Запись статистики посетителя
+    new Mobicms\System\UserStat($container);
+});
 
 /**
  * Translate a message
@@ -148,7 +154,7 @@ function _t($message, $textDomain = 'default')
  *
  * @param string $singular
  * @param string $plural
- * @param int    $number
+ * @param int $number
  * @param string $textDomain
  * @return string
  */
