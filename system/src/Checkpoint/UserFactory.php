@@ -33,7 +33,7 @@ class UserFactory
         $this->request = $container->get(Request::class);
         $this->userData = $this->authorize();
 
-        return new User($this->userData, User::ARRAY_AS_PROPS);
+        return new User($this->userData);
     }
 
     /**
