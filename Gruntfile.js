@@ -55,6 +55,12 @@ module.exports = function (grunt) {
                             '!system/vendor/klein/klein/phpunit.xml.dist',
                             '!system/vendor/klein/klein/UPGRADING.md',
 
+                            '!system/vendor/league/plates/docs/**',
+                            '!system/vendor/league/plates/example/**',
+                            '!system/vendor/league/plates/composer.json',
+                            '!system/vendor/league/plates/CONTRIBUTING.md',
+                            '!system/vendor/league/plates/phpunit.xml.dist',
+
                             '!system/vendor/nikic/fast-route/test/**',
                             '!system/vendor/nikic/fast-route/.gitignore',
                             '!system/vendor/nikic/fast-route/.hhconfig',
