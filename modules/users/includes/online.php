@@ -16,6 +16,9 @@ require ROOT_PATH . 'system/head.php';
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -158,7 +161,7 @@ if ($total) {
             $arg['header'] .= $res['movings'] . ' - ' . $tools->timecount(time() - $res['sestime']);
         }
 
-        $arg['header'] .= ')</span><br /><img src="../assets/images/info.png" width="16" height="16" align="middle" />&#160;Display of location is temporarily closed';
+        $arg['header'] .= ')</span><br />' . $asset->img('info.png') . '&#160;Display of location is temporarily closed';
         echo $tools->displayUser($res, $arg);
         echo '</div>';
         ++$i;

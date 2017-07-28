@@ -54,10 +54,11 @@ class UserStat
             $sql .= " `sestime` = " . time() . ", ";
         }
 
-        //if ($this->systemUser->place != $headmod) {
-        //    ++$movings;
-        //    $sql .= " `place` = " . $this->db->quote($headmod) . ", ";
-        //}
+        $place = $this->formatPath();
+        if ($this->systemUser->place != $place) {
+            ++$movings;
+            $sql .= " `place` = " . $this->db->quote($place) . ", ";
+        }
 
         if ($this->systemUser->ip != $this->request->ip()
             || $this->systemUser->ip_via_proxy != $this->request->ipViaProxy()
@@ -87,7 +88,6 @@ class UserStat
     private function processGuest()
     {
         $sql = '';
-        $movings = 0;
         $session = md5($this->request->ip() . $this->request->ipViaProxy() . $this->request->userAgent());
         $req = $this->db->query("SELECT * FROM `cms_sessions` WHERE `session_id` = " . $this->db->quote($session) . " LIMIT 1");
 
@@ -101,9 +101,10 @@ class UserStat
                 $sql .= " `sestime` = '" . time() . "', ";
             }
 
-            //if ($res['place'] != $headmod) {
-            //    $sql .= " `place` = " . $db->quote($headmod) . ", ";
-            //}
+            $place = $this->formatPath();
+            if ($res['place'] != $place) {
+                $sql .= " `place` = " . $this->db->quote($place) . ", ";
+            }
 
             $this->db->exec("UPDATE `cms_sessions` SET $sql
             `movings` = '$movings',
@@ -119,8 +120,16 @@ class UserStat
             `browser` = " . $this->db->quote($this->request->userAgent()) . ",
             `lastdate` = '" . time() . "',
             `sestime` = '" . time() . "',
-            `place` = " . $this->db->quote('') . "
+            `place` = " . $this->db->quote($this->formatPath()) . "
         ");
         }
+    }
+
+    private function formatPath()
+    {
+        $path = str_ireplace('index.php', '', $this->request->pathname());
+        $path = trim($path, '/');
+
+        return $path;
     }
 }
