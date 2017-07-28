@@ -90,7 +90,7 @@ class App
             /** @var Mobicms\Api\ConfigInterface $config */
             $config = self::getContainer()->get(Mobicms\Api\ConfigInterface::class);
 
-            /** @var Mobicms\Checkpoint\UserConfig $userConfig */ //TODO: Переделать на UserConfigInterface
+            /** @var Mobicms\Checkpoint\UserConfig $userConfig */
             $userConfig = self::getContainer()->get(Mobicms\Api\UserInterface::class)->getConfig();
 
             if (isset($_POST['setlng']) && array_key_exists($_POST['setlng'], $config->lng_list)) {
@@ -120,7 +120,7 @@ call_user_func(function () {
 
     // Проверка IP адреса на бан
     try {
-        new Mobicms\System\IpBan(App::getContainer());
+        new Mobicms\System\IpBan($container);
     } catch (Mobicms\System\Exception\IpBanException $e) {
         header($e->getMessage());
         exit;
@@ -134,7 +134,7 @@ call_user_func(function () {
     new Mobicms\System\Clean($container);
 
     // Запись статистики посетителя
-    new Mobicms\System\UserStat($container);
+    new Mobicms\Checkpoint\UserStat($container);
 });
 
 /**

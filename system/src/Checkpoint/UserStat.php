@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-namespace Mobicms\System;
+namespace Mobicms\Checkpoint;
 
 use Mobicms\Api\UserInterface;
 use Mobicms\Http\Request;
