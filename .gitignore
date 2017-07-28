@@ -6,7 +6,6 @@ uploads/*
 !uploads/downloads/screen/index.php
 !uploads/forum/index.php
 !uploads/forum/attach/index.php
-!uploads/forum/topics/index.php
 !uploads/library/index.php
 !uploads/library/images/index.php
 !uploads/library/images/big/index.php
