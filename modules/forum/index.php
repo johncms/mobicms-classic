@@ -214,7 +214,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
         if (!$type->rowCount()) {
             // Если темы не существует, показываем ошибку
             echo $tools->displayError(_t('Topic has been deleted or does not exists'),
-                '<a href="index.php">' . _t('Forum') . '</a>');
+                '<a href="?">' . _t('Forum') . '</a>');
             require ROOT_PATH . 'system/end.php';
             exit;
         }
@@ -245,7 +245,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
             $res = $db->query("SELECT * FROM `forum` WHERE `id` = '$parent' LIMIT 1")->fetch();
 
             if ($res['type'] == 'f' || $res['type'] == 'r') {
-                $tree[] = '<a href="index.php?id=' . $parent . '">' . $res['text'] . '</a>';
+                $tree[] = '<a href="?id=' . $parent . '">' . $res['text'] . '</a>';
 
                 if ($res['type'] == 'r' && !empty($res['edit'])) {
                     $allow = intval($res['edit']);
@@ -254,7 +254,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
             $parent = $res['refid'];
         }
 
-        $tree[] = '<a href="index.php">' . _t('Forum') . '</a>';
+        $tree[] = '<a href="?">' . _t('Forum') . '</a>';
         krsort($tree);
 
         if ($type1['type'] != 't' && $type1['type'] != 'm') {
@@ -268,19 +268,19 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
             $count = $db->query("SELECT COUNT(*) FROM `cms_forum_files` WHERE `cat` = '$id'" . $sql)->fetchColumn();
 
             if ($count > 0) {
-                $filelink = '<a href="index.php?act=files&amp;c=' . $id . '">' . _t('Category Files') . '</a>';
+                $filelink = '<a href="?act=files&amp;c=' . $id . '">' . _t('Category Files') . '</a>';
             }
         } elseif ($type1['type'] == 'r') {
             $count = $db->query("SELECT COUNT(*) FROM `cms_forum_files` WHERE `subcat` = '$id'" . $sql)->fetchColumn();
 
             if ($count > 0) {
-                $filelink = '<a href="index.php?act=files&amp;s=' . $id . '">' . _t('Section Files') . '</a>';
+                $filelink = '<a href="?act=files&amp;s=' . $id . '">' . _t('Section Files') . '</a>';
             }
         } elseif ($type1['type'] == 't') {
             $count = $db->query("SELECT COUNT(*) FROM `cms_forum_files` WHERE `topic` = '$id'" . $sql)->fetchColumn();
 
             if ($count > 0) {
-                $filelink = '<a href="index.php?act=files&amp;t=' . $id . '">' . _t('Topic Files') . '</a>';
+                $filelink = '<a href="?act=files&amp;t=' . $id . '">' . _t('Topic Files') . '</a>';
             }
         }
 
@@ -290,15 +290,15 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
         $wholink = false;
 
         if ($systemUser->isValid() && $type1['type'] == 't') {
-            $online_u = $db->query("SELECT COUNT(*) FROM `users` WHERE `lastdate` > " . (time() - 300) . " AND `place` = 'forum,$id'")->fetchColumn();
-            $online_g = $db->query("SELECT COUNT(*) FROM `cms_sessions` WHERE `lastdate` > " . (time() - 300) . " AND `place` = 'forum,$id'")->fetchColumn();
-            $wholink = '<a href="index.php?act=who&amp;id=' . $id . '">' . _t('Who is here') . '?</a>&#160;<span class="red">(' . $online_u . '&#160;/&#160;' . $online_g . ')</span><br>';
+            $online_u = $db->query("SELECT COUNT(*) FROM `users` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%id=$id'")->fetchColumn();
+            $online_g = $db->query("SELECT COUNT(*) FROM `cms_sessions` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%id=$id'")->fetchColumn();
+            $wholink = '<a href="?act=who&amp;id=' . $id . '">' . _t('Who is here') . '?</a>&#160;<span class="red">(' . $online_u . '&#160;/&#160;' . $online_g . ')</span><br>';
         }
 
         // Выводим верхнюю панель навигации
         echo '<a id="up"></a><p>' . $counters->forumNew(1) . '</p>' .
             '<div class="phdr">' . implode(' / ', $tree) . '</div>' .
-            '<div class="topmenu"><a href="index.php?act=search&amp;id=' . $id . '">' . _t('Search') . '</a>' . ($filelink ? ' | ' . $filelink : '') . ($wholink ? ' | ' . $wholink : '') . '</div>';
+            '<div class="topmenu"><a href="?act=search&amp;id=' . $id . '">' . _t('Search') . '</a>' . ($filelink ? ' | ' . $filelink : '') . ($wholink ? ' | ' . $wholink : '') . '</div>';
 
         switch ($type1['type']) {
             case 'f':
@@ -345,7 +345,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                 if (($systemUser->isValid() && !isset($systemUser->ban['1']) && !isset($systemUser->ban['11']) && $config->mod_forum != 4) || $systemUser->rights) {
                     // Кнопка создания новой темы
-                    echo '<div class="gmenu"><form action="index.php?act=nt&amp;id=' . $id . '" method="post"><input type="submit" value="' . _t('New Topic') . '" /></form></div>';
+                    echo '<div class="gmenu"><form action="?act=nt&amp;id=' . $id . '" method="post"><input type="submit" value="' . _t('New Topic') . '" /></form></div>';
                 }
 
                 if ($total) {
@@ -365,16 +365,16 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                         $np = $db->query("SELECT COUNT(*) FROM `cms_forum_rdm` WHERE `time` >= '" . $res['time'] . "' AND `topic_id` = '" . $res['id'] . "' AND `user_id` = " . $systemUser->id)->fetchColumn();
                         // Значки
                         $icons = [
-                            ($np ? (!$res['vip'] ? $asset->img('op.gif')->class('icon') : '') : $asset->img('images/np.gif')->class('icon')),
+                            ($np ? (!$res['vip'] ? $asset->img('op.gif')->class('icon') : '') : $asset->img('np.gif')->class('icon')),
                             ($res['vip'] ? $asset->img('pt.gif')->class('icon') : ''),
                             ($res['realid'] ? $asset->img('rate.gif')->class('icon') : ''),
                             ($res['edit'] ? $asset->img('tz.gif')->class('icon') : ''),
                         ];
                         echo implode('', array_filter($icons));
-                        echo '<a href="index.php?id=' . $res['id'] . '">' . (empty($res['text']) ? '-----' : $res['text']) . '</a> [' . $colmes . ']';
+                        echo '<a href="?id=' . $res['id'] . '">' . (empty($res['text']) ? '-----' : $res['text']) . '</a> [' . $colmes . ']';
 
                         if ($cpg > 1) {
-                            echo '<a href="index.php?id=' . $res['id'] . '&amp;page=' . $cpg . '">&#160;&gt;&gt;</a>';
+                            echo '<a href="?id=' . $res['id'] . '&amp;page=' . $cpg . '">&#160;&gt;&gt;</a>';
                         }
 
                         echo '<div class="sub">';
@@ -396,9 +396,9 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
                 if ($total > $userConfig->kmess) {
-                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;',
+                    echo '<div class="topmenu">' . $tools->displayPagination('?id=' . $id . '&amp;',
                             $total) . '</div>' .
-                        '<p><form action="index.php?id=' . $id . '" method="post">' .
+                        '<p><form action="?id=' . $id . '" method="post">' .
                         '<input type="text" name="page" size="2"/>' .
                         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .
                         '</form></p>';
@@ -450,7 +450,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 echo '<div class="phdr"><a href="#down">' . $asset->img('down.png') . '</a>&#160;&#160;<b>' . (empty($type1['text']) ? '-----' : $type1['text']) . '</b></div>';
 
                 if ($colmes > $userConfig->kmess) {
-                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;',
+                    echo '<div class="topmenu">' . $tools->displayPagination('?id=' . $id . '&amp;',
                             $colmes) . '</div>';
                 }
 
@@ -476,14 +476,14 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                     if (!$type1['edit'] && !$request->paramsGet()->exists('vote_result') && $systemUser->isValid() && $vote_user == 0) {
                         // Выводим форму с опросами
-                        echo '<form action="index.php?act=vote&amp;id=' . $id . '" method="post">';
+                        echo '<form action="?act=vote&amp;id=' . $id . '" method="post">';
 
                         while ($vote = $vote_result->fetch()) {
                             echo '<input type="radio" value="' . $vote['id'] . '" name="vote"/> ' . $tools->checkout($vote['name'],
                                     0, 1) . '<br />';
                         }
 
-                        echo '<p><input type="submit" name="submit" value="' . _t('Vote') . '"/><br /><a href="index.php?id=' . $id . '&amp;start=' . $start . '&amp;vote_result' . $clip_forum .
+                        echo '<p><input type="submit" name="submit" value="' . _t('Vote') . '"/><br /><a href="?id=' . $id . '&amp;start=' . $start . '&amp;vote_result' . $clip_forum .
                             '">' . _t('Results') . '</a></p></form></div>';
                     } else {
                         // Выводим результаты голосования
@@ -498,7 +498,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                         echo '</small></div><div class="bmenu">' . _t('Total votes') . ': ';
 
                         if ($systemUser->rights > 6) {
-                            echo '<a href="index.php?act=users&amp;id=' . $id . '">' . $topic_vote['count'] . '</a>';
+                            echo '<a href="?act=users&amp;id=' . $id . '">' . $topic_vote['count'] . '</a>';
                         } else {
                             echo $topic_vote['count'];
                         }
@@ -506,7 +506,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                         echo '</div>';
 
                         if ($systemUser->isValid() && $vote_user == 0) {
-                            echo '<div class="bmenu"><a href="index.php?id=' . $id . '&amp;start=' . $start . $clip_forum . '">' . _t('Vote') . '</a></div>';
+                            echo '<div class="bmenu"><a href="?id=' . $id . '&amp;start=' . $start . $clip_forum . '">' . _t('Vote') . '</a></div>';
                         }
                     }
                 }
@@ -531,8 +531,8 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                     if ($systemUser->isValid() && $systemUser->id != $postres['user_id']) {
                         echo '<a href="../profile/?user=' . $postres['user_id'] . '&amp;fid=' . $postres['id'] . '"><b>' . $postres['from'] . '</b></a> ' .
-                            '<a href="index.php?act=say&amp;id=' . $postres['id'] . '&amp;start=' . $start . '"> ' . _t('[r]') . '</a> ' .
-                            '<a href="index.php?act=say&amp;id=' . $postres['id'] . '&amp;start=' . $start . '&amp;cyt"> ' . _t('[q]') . '</a> ';
+                            '<a href="?act=say&amp;id=' . $postres['id'] . '&amp;start=' . $start . '"> ' . _t('[r]') . '</a> ' .
+                            '<a href="?act=say&amp;id=' . $postres['id'] . '&amp;start=' . $start . '&amp;cyt"> ' . _t('[q]') . '</a> ';
                     } else {
                         echo '<b>' . $postres['from'] . '</b> ';
                     }
@@ -554,7 +554,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                     echo $tools->checkout(mb_substr($postres['text'], 0, 500), 0, 2);
 
                     if (mb_strlen($postres['text']) > 500) {
-                        echo '...<a href="index.php?act=post&amp;id=' . $postres['id'] . '">' . _t('Read more') . '</a>';
+                        echo '...<a href="?act=post&amp;id=' . $postres['id'] . '">' . _t('Read more') . '</a>';
                     }
 
                     echo '</p></div>';
@@ -584,7 +584,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                 // Верхнее поле "Написать"
                 if (($systemUser->isValid() && !$type1['edit'] && $set_forum['upfp'] && $config->mod_forum != 3 && $allow != 4) || ($systemUser->rights >= 6 && $set_forum['upfp'])) {
-                    echo '<div class="gmenu"><form name="form1" action="index.php?act=say&amp;id=' . $id . '" method="post">';
+                    echo '<div class="gmenu"><form name="form1" action="?act=say&amp;id=' . $id . '" method="post">';
 
                     if ($set_forum['farea']) {
                         $token = mt_rand(1000, 100000);
@@ -604,7 +604,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                 // Для администрации включаем форму массового удаления постов
                 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
-                    echo '<form action="index.php?act=massdel" method="post">';
+                    echo '<form action="?act=massdel" method="post">';
                 }
                 $i = 1;
 
@@ -657,12 +657,12 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                     echo(time() > $res['lastdate'] + 300 ? '<span class="red"> [Off]</span> ' : '<span class="green"> [ON]</span> ');
 
                     // Ссылка на пост
-                    echo '<a href="index.php?act=post&amp;id=' . $res['id'] . '" title="Link to post">[#]</a>';
+                    echo '<a href="?act=post&amp;id=' . $res['id'] . '" title="Link to post">[#]</a>';
 
                     // Ссылки на ответ и цитирование
                     if ($systemUser->isValid() && $systemUser->id != $res['user_id']) {
-                        echo '&#160;<a href="index.php?act=say&amp;id=' . $res['id'] . '&amp;start=' . $start . '">' . _t('[r]') . '</a>&#160;' .
-                            '<a href="index.php?act=say&amp;id=' . $res['id'] . '&amp;start=' . $start . '&amp;cyt">' . _t('[q]') . '</a> ';
+                        echo '&#160;<a href="?act=say&amp;id=' . $res['id'] . '&amp;start=' . $start . '">' . _t('[r]') . '</a>&#160;' .
+                            '<a href="?act=say&amp;id=' . $res['id'] . '&amp;start=' . $start . '&amp;cyt">' . _t('[q]') . '</a> ';
                     }
 
                     // Время поста
@@ -721,10 +721,10 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                             ];
 
                             if (in_array($att_ext, $pic_ext)) {
-                                echo '<div><a href="index.php?act=file&amp;id=' . $fres['id'] . '">';
+                                echo '<div><a href="?act=file&amp;id=' . $fres['id'] . '">';
                                 echo '<img src="../assets/modules/forum/thumbinal.php?file=' . (urlencode($fres['filename'])) . '" alt="' . _t('Click to view image') . '" /></a></div>';
                             } else {
-                                echo '<br><a href="index.php?act=file&amp;id=' . $fres['id'] . '">' . $fres['filename'] . '</a>';
+                                echo '<br><a href="?act=file&amp;id=' . $fres['id'] . '">' . $fres['filename'] . '</a>';
                             }
 
                             echo ' (' . $fls . ' кб.)<br>';
@@ -751,9 +751,9 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                         // Служебное меню поста
                         $menu = [
-                            '<a href="index.php?act=editpost&amp;id=' . $res['id'] . '">' . _t('Edit') . '</a>',
-                            ($systemUser->rights >= 7 && $res['close'] == 1 ? '<a href="index.php?act=editpost&amp;do=restore&amp;id=' . $res['id'] . '">' . _t('Restore') . '</a>' : ''),
-                            ($res['close'] == 1 ? '' : '<a href="index.php?act=editpost&amp;do=del&amp;id=' . $res['id'] . '">' . _t('Delete') . '</a>'),
+                            '<a href="?act=editpost&amp;id=' . $res['id'] . '">' . _t('Edit') . '</a>',
+                            ($systemUser->rights >= 7 && $res['close'] == 1 ? '<a href="?act=editpost&amp;do=restore&amp;id=' . $res['id'] . '">' . _t('Restore') . '</a>' : ''),
+                            ($res['close'] == 1 ? '' : '<a href="?act=editpost&amp;do=del&amp;id=' . $res['id'] . '">' . _t('Delete') . '</a>'),
                         ];
                         echo implode(' | ', array_filter($menu));
 
@@ -767,11 +767,11 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                         // Показываем IP и Useragent
                         if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
                             if (!empty($res['ip_via_proxy'])) {
-                                echo '<div class="gray"><b class="red"><a href="' . $config->homeurl . '/admin/index.php?act=search_ip&amp;ip=' . $res['ip'] . '">' . $res['ip'] . '</a></b> - ' .
-                                    '<a href="' . $config->homeurl . '/admin/index.php?act=search_ip&amp;ip=' . $res['ip_via_proxy'] . '">' . $res['ip_via_proxy'] . '</a>' .
+                                echo '<div class="gray"><b class="red"><a href="' . $config->homeurl . '/admin/?act=search_ip&amp;ip=' . $res['ip'] . '">' . $res['ip'] . '</a></b> - ' .
+                                    '<a href="' . $config->homeurl . '/admin/?act=search_ip&amp;ip=' . $res['ip_via_proxy'] . '">' . $res['ip_via_proxy'] . '</a>' .
                                     ' - ' . $res['soft'] . '</div>';
                             } else {
-                                echo '<div class="gray"><a href="' . $config->homeurl . '/admin/index.php?act=search_ip&amp;ip=' . $res['ip'] . '">' . $res['ip'] . '</a> - ' . $res['soft'] . '</div>';
+                                echo '<div class="gray"><a href="' . $config->homeurl . '/admin/?act=search_ip&amp;ip=' . $res['ip'] . '">' . $res['ip'] . '</a> - ' . $res['soft'] . '</div>';
                             }
                         }
 
@@ -790,7 +790,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                 // Нижнее поле "Написать"
                 if (($systemUser->isValid() && !$type1['edit'] && !$set_forum['upfp'] && $config->mod_forum != 3 && $allow != 4) || ($systemUser->rights >= 6 && !$set_forum['upfp'])) {
-                    echo '<div class="gmenu"><form name="form2" action="index.php?act=say&amp;id=' . $id . '" method="post">';
+                    echo '<div class="gmenu"><form name="form2" action="?act=say&amp;id=' . $id . '" method="post">';
 
                     if ($set_forum['farea']) {
                         $token = mt_rand(1000, 100000);
@@ -813,9 +813,9 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                 // Постраничная навигация
                 if ($colmes > $userConfig->kmess) {
-                    echo '<div class="topmenu">' . $tools->displayPagination('index.php?id=' . $id . '&amp;',
+                    echo '<div class="topmenu">' . $tools->displayPagination('?id=' . $id . '&amp;',
                             $colmes) . '</div>' .
-                        '<p><form action="index.php?id=' . $id . '" method="post">' .
+                        '<p><form action="?id=' . $id . '" method="post">' .
                         '<input type="text" name="page" size="2"/>' .
                         '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .
                         '</form></p>';
@@ -839,35 +839,35 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                     echo '<p><div class="func">';
 
                     if ($systemUser->rights >= 6) {
-                        echo '<a href="index.php?act=curators&amp;id=' . $id . '&amp;start=' . $start . '">' . _t('Curators of the Topic') . '</a><br />';
+                        echo '<a href="?act=curators&amp;id=' . $id . '&amp;start=' . $start . '">' . _t('Curators of the Topic') . '</a><br />';
                     }
 
                     echo isset($topic_vote) && $topic_vote > 0
-                        ? '<a href="index.php?act=editvote&amp;id=' . $id . '">' . _t('Edit Poll') . '</a><br><a href="index.php?act=delvote&amp;id=' . $id . '">' . _t('Delete Poll') . '</a><br>'
-                        : '<a href="index.php?act=addvote&amp;id=' . $id . '">' . _t('Add Poll') . '</a><br>';
-                    echo '<a href="index.php?act=ren&amp;id=' . $id . '">' . _t('Rename Topic') . '</a><br>';
+                        ? '<a href="?act=editvote&amp;id=' . $id . '">' . _t('Edit Poll') . '</a><br><a href="?act=delvote&amp;id=' . $id . '">' . _t('Delete Poll') . '</a><br>'
+                        : '<a href="?act=addvote&amp;id=' . $id . '">' . _t('Add Poll') . '</a><br>';
+                    echo '<a href="?act=ren&amp;id=' . $id . '">' . _t('Rename Topic') . '</a><br>';
 
                     // Закрыть - открыть тему
                     if ($type1['edit'] == 1) {
-                        echo '<a href="index.php?act=close&amp;id=' . $id . '">' . _t('Open Topic') . '</a><br>';
+                        echo '<a href="?act=close&amp;id=' . $id . '">' . _t('Open Topic') . '</a><br>';
                     } else {
-                        echo '<a href="index.php?act=close&amp;id=' . $id . '&amp;closed">' . _t('Close Topic') . '</a><br>';
+                        echo '<a href="?act=close&amp;id=' . $id . '&amp;closed">' . _t('Close Topic') . '</a><br>';
                     }
 
                     // Удалить - восстановить тему
                     if ($type1['close'] == 1) {
-                        echo '<a href="index.php?act=restore&amp;id=' . $id . '">' . _t('Restore Topic') . '</a><br>';
+                        echo '<a href="?act=restore&amp;id=' . $id . '">' . _t('Restore Topic') . '</a><br>';
                     }
 
-                    echo '<a href="index.php?act=deltema&amp;id=' . $id . '">' . _t('Delete Topic') . '</a><br>';
+                    echo '<a href="?act=deltema&amp;id=' . $id . '">' . _t('Delete Topic') . '</a><br>';
 
                     if ($type1['vip'] == 1) {
-                        echo '<a href="index.php?act=vip&amp;id=' . $id . '">' . _t('Unfix Topic') . '</a>';
+                        echo '<a href="?act=vip&amp;id=' . $id . '">' . _t('Unfix Topic') . '</a>';
                     } else {
-                        echo '<a href="index.php?act=vip&amp;id=' . $id . '&amp;vip">' . _t('Pin Topic') . '</a>';
+                        echo '<a href="?act=vip&amp;id=' . $id . '&amp;vip">' . _t('Pin Topic') . '</a>';
                     }
 
-                    echo '<br><a href="index.php?act=per&amp;id=' . $id . '">' . _t('Move Topic') . '</a></div></p>';
+                    echo '<br><a href="?act=per&amp;id=' . $id . '">' . _t('Move Topic') . '</a></div></p>';
                 }
 
                 // Ссылка на список "Кто в теме"
@@ -877,9 +877,9 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                 // Ссылка на фильтр постов
                 if ($filter) {
-                    echo '<div><a href="index.php?act=filter&amp;id=' . $id . '&amp;do=unset">' . _t('Cancel Filter') . '</a></div>';
+                    echo '<div><a href="?act=filter&amp;id=' . $id . '&amp;do=unset">' . _t('Cancel Filter') . '</a></div>';
                 } else {
-                    echo '<div><a href="index.php?act=filter&amp;id=' . $id . '&amp;start=' . $start . '">' . _t('Filter by author') . '</a></div>';
+                    echo '<div><a href="?act=filter&amp;id=' . $id . '&amp;start=' . $start . '">' . _t('Filter by author') . '</a></div>';
                 }
                 break;
 
@@ -895,14 +895,14 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
         $count = $db->query("SELECT COUNT(*) FROM `cms_forum_files`" . ($systemUser->rights >= 6 ? '' : " WHERE `del` != '1'"))->fetchColumn();
         echo '<p>' . $counters->forumNew(1) . '</p>' .
             '<div class="phdr"><b>' . _t('Forum') . '</b></div>' .
-            '<div class="topmenu"><a href="index.php?act=search">' . _t('Search') . '</a> | <a href="index.php?act=files">' . _t('Files') . '</a> <span class="red">(' . $count . ')</span></div>';
+            '<div class="topmenu"><a href="?act=search">' . _t('Search') . '</a> | <a href="?act=files">' . _t('Files') . '</a> <span class="red">(' . $count . ')</span></div>';
         $req = $db->query("SELECT `id`, `text`, `soft` FROM `forum` WHERE `type`='f' ORDER BY `realid`");
         $i = 0;
 
         while ($res = $req->fetch()) {
             echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
             $count = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='r' AND `refid`='" . $res['id'] . "'")->fetchColumn();
-            echo '<a href="index.php?id=' . $res['id'] . '">' . $res['text'] . '</a> [' . $count . ']';
+            echo '<a href="?id=' . $res['id'] . '">' . $res['text'] . '</a> [' . $count . ']';
 
             if (!empty($res['soft'])) {
                 echo '<div class="sub"><span class="gray">' . $res['soft'] . '</span></div>';
@@ -911,15 +911,15 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
             echo '</div>';
             ++$i;
         }
-        $online_u = $db->query("SELECT COUNT(*) FROM `users` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE 'forum%'")->fetchColumn();
-        $online_g = $db->query("SELECT COUNT(*) FROM `cms_sessions` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE 'forum%'")->fetchColumn();
-        echo '<div class="phdr">' . ($systemUser->isValid() ? '<a href="index.php?act=who">' . _t('Who in Forum') . '</a>' : _t('Who in Forum')) . '&#160;(' . $online_u . '&#160;/&#160;' . $online_g . ')</div>';
+        $online_u = $db->query("SELECT COUNT(*) FROM `users` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%'")->fetchColumn();
+        $online_g = $db->query("SELECT COUNT(*) FROM `cms_sessions` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%'")->fetchColumn();
+        echo '<div class="phdr">' . ($systemUser->isValid() ? '<a href="?act=who">' . _t('Who in Forum') . '</a>' : _t('Who in Forum')) . '&#160;(' . $online_u . '&#160;/&#160;' . $online_g . ')</div>';
         unset($_SESSION['fsort_id']);
         unset($_SESSION['fsort_users']);
     }
 
     // Навигация внизу страницы
-    echo '<p>' . ($id ? '<a href="index.php">' . _t('Forum') . '</a><br />' : '');
+    echo '<p>' . ($id ? '<a href="?">' . _t('Forum') . '</a><br />' : '');
 
     if (!$id) {
         echo '<a href="../help/?act=forum">' . _t('Forum rules') . '</a>';
@@ -931,9 +931,9 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
         $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
 
         if ((empty($_SESSION['uppost'])) || ($_SESSION['uppost'] == 0)) {
-            echo '<a href="index.php?id=' . $id . '&amp;page=' . $page . '&amp;newup">' . _t('New at the top') . '</a>';
+            echo '<a href="?id=' . $id . '&amp;page=' . $page . '&amp;newup">' . _t('New at the top') . '</a>';
         } else {
-            echo '<a href="index.php?id=' . $id . '&amp;page=' . $page . '&amp;newdown">' . _t('New at the bottom') . '</a>';
+            echo '<a href="?id=' . $id . '&amp;page=' . $page . '&amp;newdown">' . _t('New at the bottom') . '</a>';
         }
     }
 }

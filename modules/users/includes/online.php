@@ -161,7 +161,7 @@ if ($total) {
             $arg['header'] .= $tools->timecount(time() - $res['sestime']);
         }
 
-        $arg['header'] .= ')</span><br />' . $asset->img('info.png')->class('icon') . '&#160;' . $tools->displayPlace($res['place'], $res['id']);
+        $arg['header'] .= ')</span><br />' . $asset->img('info.png')->class('icon') . $tools->displayPlace($res['place'], $res['id']);
         echo $tools->displayUser($res, $arg);
         echo '</div>';
         ++$i;
