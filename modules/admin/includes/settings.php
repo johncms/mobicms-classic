@@ -84,19 +84,6 @@ echo '<p>' .
     '&#160;' . _t('Description') . '<br>&#160;<textarea rows="' . $userConfig->fieldHeight . '" name="meta_desc">' . $config['meta_desc'] . '</textarea>' .
     '</p>';
 
-// Выбор темы оформления
-echo '<p><h3>' . _t('Themes') . '</h3>&#160;<select name="skindef">';
-$dir = opendir(ROOT_PATH . 'theme');
-
-while ($skindef = readdir($dir)) {
-    if (($skindef != '.') && ($skindef != '..') && ($skindef != '.svn')) {
-        $skindef = str_replace('.css', '', $skindef);
-        echo '<option' . ($config['skindef'] == $skindef ? ' selected="selected">' : '>') . $skindef . '</option>';
-    }
-}
-
-closedir($dir);
-
 echo '</select>' .
     '</p><br><p><input type="submit" name="submit" value="' . _t('Save') . '"/></p></div></form>' .
     '<div class="phdr">&#160;</div>' .
