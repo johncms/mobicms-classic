@@ -145,7 +145,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
         $asset->img('talk.gif')->class('icon') . '<a href="?act=top&amp;mod=last_comm">' . _t('New Comments') . '</a>' .
         '</p></div>' .
         '<div class="menu">' .
-        '<p><h3><img src="' . $config->homeurl . '/assets/images/users.png" width="16" height="16" class="left" />&#160;' . _t('Albums') . '</h3><ul>' .
+        '<p><h3>' . $asset->img('users.png')->class('left') . '&#160;' . _t('Albums') . '</h3><ul>' .
         '<li><a href="?act=users&amp;mod=boys">' . _t('Guys') . '</a> (' . $total_mans . ')</li>' .
         '<li><a href="?act=users&amp;mod=girls">' . _t('Girls') . '</a> (' . $total_womans . ')</li>';
 
