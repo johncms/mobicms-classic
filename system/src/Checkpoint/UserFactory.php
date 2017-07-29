@@ -149,7 +149,6 @@ class UserFactory
             'lastpost'      => '',
             'rest_code'     => '',
             'rest_time'     => '',
-            'movings'       => '',
             'place'         => '',
             'set_user'      => '',
             'set_forum'     => '',

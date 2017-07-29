@@ -297,11 +297,10 @@ CREATE TABLE `cms_sessions` (
   `lastdate`     INT(10) UNSIGNED     NOT NULL DEFAULT '0',
   `sestime`      INT(10) UNSIGNED     NOT NULL DEFAULT '0',
   `views`        INT(10) UNSIGNED     NOT NULL DEFAULT '0',
-  `movings`      SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
   `place`        VARCHAR(100)         NOT NULL DEFAULT '',
   PRIMARY KEY (`session_id`),
   KEY `lastdate` (`lastdate`),
-  KEY `place` (`place`(10))
+  KEY `place` (`place`)
 )
   ENGINE = MyISAM
   DEFAULT CHARSET = utf8mb4;
@@ -652,7 +651,6 @@ CREATE TABLE `users` (
   `lastpost`      INT(10) UNSIGNED    NOT NULL DEFAULT '0',
   `rest_code`     VARCHAR(32)         NOT NULL DEFAULT '',
   `rest_time`     INT(10) UNSIGNED    NOT NULL DEFAULT '0',
-  `movings`       INT(10) UNSIGNED    NOT NULL DEFAULT '0',
   `place`         VARCHAR(30)         NOT NULL DEFAULT '',
   `set_user`      TEXT                NOT NULL,
   `set_forum`     TEXT                NOT NULL,

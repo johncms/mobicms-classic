@@ -47,16 +47,13 @@ class UserStat
     private function processUser()
     {
         $sql = '';
-        $movings = $this->systemUser->movings;
 
         if ($this->systemUser->lastdate < (time() - 300)) {
-            $movings = 0;
             $sql .= " `sestime` = " . time() . ", ";
         }
 
         $place = $this->formatPlace();
         if ($this->systemUser->place != $place) {
-            ++$movings;
             $this->systemUser->offsetSet('place', $place);
             $sql .= " `place` = " . $this->db->quote($place) . ", ";
         }
@@ -80,7 +77,6 @@ class UserStat
 
         $this->db->query("UPDATE `users` SET
           $sql
-          `movings` = '$movings',
           `total_on_site` = '$totalonsite',
           `lastdate` = '" . time() . "'
           WHERE `id` = " . $this->systemUser->id);
@@ -95,21 +91,19 @@ class UserStat
         if ($req->rowCount()) {
             // Если есть в базе, то обновляем данные
             $res = $req->fetch();
-            $movings = ++$res['movings'];
 
             if ($res['sestime'] < (time() - 300)) {
-                $movings = 1;
                 $sql .= " `sestime` = '" . time() . "', ";
             }
 
             $place = $this->formatPlace();
             $this->systemUser->offsetSet('place', $place);
+
             if ($res['place'] != $place) {
                 $sql .= " `place` = " . $this->db->quote($place) . ", ";
             }
 
             $this->db->exec("UPDATE `cms_sessions` SET $sql
-            `movings` = '$movings',
             `lastdate` = '" . time() . "'
             WHERE `session_id` = " . $this->db->quote($session) . "
         ");

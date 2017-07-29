@@ -66,7 +66,7 @@ if ($id) {
         }
 
         if ($total) {
-            $req = $db->query("SELECT * FROM `" . ($do == 'guest' ? 'cms_sessions' : 'users') . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%id=$id' ORDER BY " . ($do == 'guest' ? "`movings` DESC" : "`name` ASC") . " LIMIT $start, $userConfig->kmess");
+            $req = $db->query("SELECT * FROM `" . ($do == 'guest' ? 'cms_sessions' : 'users') . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%id=$id' " . ($do == 'guest' ? '' : "ORDER BY `name` ASC") . " LIMIT $start, $userConfig->kmess");
 
             for ($i = 0; $res = $req->fetch(); ++$i) {
                 echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
@@ -111,7 +111,7 @@ if ($id) {
     }
 
     if ($total) {
-        $req = $db->query("SELECT * FROM `" . ($do == 'guest' ? "cms_sessions" : "users") . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%' ORDER BY " . ($do == 'guest' ? "`movings` DESC" : "`name` ASC") . " LIMIT $start, $userConfig->kmess");
+        $req = $db->query("SELECT * FROM `" . ($do == 'guest' ? "cms_sessions" : "users") . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%' " . ($do == 'guest' ? '' : "ORDER BY `name` ASC") . " LIMIT $start, $userConfig->kmess");
 
         for ($i = 0; $res = $req->fetch(); ++$i) {
             if ($res['id'] == $systemUser->id) {

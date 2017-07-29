@@ -51,7 +51,6 @@ namespace Mobicms\Api;
  * @property $lastpost
  * @property $rest_code
  * @property $rest_time
- * @property $movings
  * @property $place
  * @property $set_user
  * @property $set_forum
