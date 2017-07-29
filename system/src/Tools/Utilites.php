@@ -244,6 +244,41 @@ class Utilites implements ToolsInterface
         return implode(' ', $out);
     }
 
+    public function displayPlace($place, $userId = 0)
+    {
+        $place = rtrim($place, '/');
+
+        if (empty($place)) {
+            $place = '/';
+        }
+
+        $part = explode('?', $place);
+
+        $placelist = [
+            '/'                 => '<a href="#home#/">' . _t('On the Hmepage', 'system') . '</a>',
+            '/users?act=online' => '<a href="#home#/users/?act=online">' . _t('Who is online?', 'system') . '</a>',
+            '/news'             => '<a href="#home#/news/">' . _t('Reading the news', 'system') . '</a>',
+            '/users'            => '<a href="#home#/users/">' . _t('List of Users', 'system') . '</a>',
+            '/album'            => '<a href="#home#/album/">' . _t('Watching the photo album', 'system') . '</a>',
+            '/downloads'        => '<a href="#home#/downloads/">' . _t('Downloads', 'system') . '</a>',
+            '/help'             => '<a href="#home#/help/">' . _t('Reading the FAQ', 'system') . '</a>',
+            '/forum'            => '<a href="#home#/forum/">' . _t('Forum', 'system') . '</a>&#160;/&#160;<a href="#home#/forum/?act=who">&gt;&gt;</a>',
+            '/guestbook'        => '<a href="#home#/guestbook/">' . _t('Guestbook', 'system') . '</a>',
+            '/library'          => '<a href="#home#/library/">' . _t('Library', 'system') . '</a>',
+            '/mail'             => _t('Personal correspondence', 'system'),
+            '/profile'          => _t('Profile', 'system'),
+            '/registration'     => _t('Registered on the site', 'system'),
+        ];
+
+        if (array_key_exists($place, $placelist)) {
+            return str_replace('#home#', $this->config->homeurl, $placelist[$place]);
+        } elseif (array_key_exists($part[0], $placelist)) {
+            return str_replace('#home#', $this->config->homeurl, $placelist[$part[0]]);
+        }
+
+        return '<a href="' . $this->config->homeurl . '/">' . _t('Somewhere on the site', 'system') . '</a> [' . ($place) . ']';
+    }
+
     /**
      * Отображения личных данных пользователя
      *

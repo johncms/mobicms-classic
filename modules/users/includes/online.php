@@ -156,12 +156,12 @@ if ($total) {
         $arg['header'] = ' <span class="gray">(';
 
         if ($mod == 'history') {
-            $arg['header'] .= $tools->displayDate($res['sestime']);
+            $arg['header'] .= $tools->displayDate($res['lastdate']);
         } else {
-            $arg['header'] .= $res['movings'] . ' - ' . $tools->timecount(time() - $res['sestime']);
+            $arg['header'] .= $tools->timecount(time() - $res['sestime']);
         }
 
-        $arg['header'] .= ')</span><br />' . $asset->img('info.png') . '&#160;Display of location is temporarily closed';
+        $arg['header'] .= ')</span><br />' . $asset->img('info.png')->class('icon') . '&#160;' . $tools->displayPlace($res['place'], $res['id']);
         echo $tools->displayUser($res, $arg);
         echo '</div>';
         ++$i;

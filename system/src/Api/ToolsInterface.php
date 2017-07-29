@@ -22,6 +22,8 @@ interface ToolsInterface
 
     public function displayPagination($url, $total, $listSize = null, $offset = null);
 
+    public function displayPlace($place, $userId = 0);
+
     public function displayUser($user, array $arg = []);
 
     public function getFlag($locale);
