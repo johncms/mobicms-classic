@@ -54,9 +54,10 @@ class UserStat
             $sql .= " `sestime` = " . time() . ", ";
         }
 
-        $place = $this->formatPath();
+        $place = $this->formatPlace();
         if ($this->systemUser->place != $place) {
             ++$movings;
+            $this->systemUser->offsetSet('place', $place);
             $sql .= " `place` = " . $this->db->quote($place) . ", ";
         }
 
@@ -101,7 +102,8 @@ class UserStat
                 $sql .= " `sestime` = '" . time() . "', ";
             }
 
-            $place = $this->formatPath();
+            $place = $this->formatPlace();
+            $this->systemUser->offsetSet('place', $place);
             if ($res['place'] != $place) {
                 $sql .= " `place` = " . $this->db->quote($place) . ", ";
             }
@@ -120,16 +122,27 @@ class UserStat
             `browser` = " . $this->db->quote($this->request->userAgent()) . ",
             `lastdate` = '" . time() . "',
             `sestime` = '" . time() . "',
-            `place` = " . $this->db->quote($this->formatPath()) . "
+            `place` = " . $this->db->quote($this->formatPlace()) . "
         ");
         }
     }
 
-    private function formatPath()
+    private function formatPlace()
     {
-        $path = str_ireplace('index.php', '', $this->request->pathname());
-        $path = trim($path, '/');
+        $path = trim(str_ireplace('index.php', '', $this->request->pathname()), '/');
+        $act = $this->request->param('act');
+        $id = $this->request->param('id');
 
-        return $path;
+        $query = [];
+
+        if (!empty($act)) {
+            $query[] = 'act=' . substr($act, 0, 15);
+        }
+
+        if (!empty($id)) {
+            $query[] = 'id=' . abs(intval($id));
+        }
+
+        return '/' . $path . (!empty($query) ? '?' . implode('&', $query) : '');
     }
 }
