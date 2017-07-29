@@ -14,6 +14,7 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 ### Changed
 - Old functionality of `head.php` and `end.php` has been removed
 - The files `head.php` and `end.php` have been put into stub mode
+- New algorithm for determining the user's location on the site
 - All pictures are moved to the default theme
 - Refactoring
 
@@ -21,6 +22,7 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 - Nothing
   
 ### Deleted
+- Temporarily removed theme selector
 - Old function of fixing of location is removed
 - Old function of fixing of IP history is removed
 - Old advertizing module is removed
