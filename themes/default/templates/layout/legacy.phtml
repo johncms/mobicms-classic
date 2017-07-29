@@ -55,7 +55,8 @@ $locale = App::getTranslator()->getLocale();
 
 <div class="fmenu">
     <!-- Счетчик посетителей онлайн -->
-    <a href="users/?act=online"><?= $container->get('counters')->online() ?></a>
+    <img src="<?= $this->asset('images/menu_online.png') ?>" class="icon">
+    <a href="<?= $config->homeurl ?>/users/?act=online"><?= $container->get('counters')->online() ?></a>
 </div>
 <div style="text-align:center">
     <p><?= $this->e($config->copyright) ?></p>
