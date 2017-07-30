@@ -265,6 +265,7 @@ class Utilites implements ToolsInterface
             '/forum'            => '<a href="#home#/forum/">' . _t('Forum', 'system') . '</a>&#160;/&#160;<a href="#home#/forum/?act=who">&gt;&gt;</a>',
             '/guestbook'        => '<a href="#home#/guestbook/">' . _t('Guestbook', 'system') . '</a>',
             '/library'          => '<a href="#home#/library/">' . _t('Library', 'system') . '</a>',
+            '/redirect'         => _t('Redirect on external link to another site', 'system'),
             '/mail'             => _t('Personal correspondence', 'system'),
             '/profile'          => _t('Profile', 'system'),
             '/registration'     => _t('Registered on the site', 'system'),
