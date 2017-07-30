@@ -147,7 +147,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     ];
 
     if ($user['id'] != $systemUser->id) {
-        $arg['footer'] = '<span class="gray">' . _t('Where?') . ':</span> [temporary disabled]';
+        $arg['footer'] = '<span class="gray">' . _t('Where?') . ':</span> ' . $tools->displayPlace($user['place'], $user['id']);
     }
 
     echo '<div class="user"><p>' . $tools->displayUser($user, $arg) . '</p></div>';
