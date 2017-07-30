@@ -113,7 +113,7 @@ switch ($mod) {
     case 'guest':
         // Список гостей Онлайн
         $sql_total = "SELECT COUNT(*) FROM `cms_sessions` WHERE `lastdate` > " . (time() - 300);
-        $sql_list = "SELECT * FROM `cms_sessions` WHERE `lastdate` > " . (time() - 300) . " ORDER BY `movings` DESC LIMIT ";
+        $sql_list = "SELECT * FROM `cms_sessions` WHERE `lastdate` > " . (time() - 300) . " LIMIT ";
         break;
 
     case 'history':
