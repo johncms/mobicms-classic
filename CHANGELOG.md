@@ -3,7 +3,7 @@ This list contains only most important changes.
 Detailed change in the [repository log](https://github.com/mobicms/mobicms-classic/commits).
 
 ## mobiCMS Classic 0.3.0  
-`Release Date: TBD` 
+`Release Date: 30.07.2017` 
 
 ### New
 - Integrated [nikic/FastRoute](https://github.com/nikic/FastRoute) package

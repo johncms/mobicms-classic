@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-const MOBICMS = '0.2.0';
+const MOBICMS = '0.3.0';
 
 // Check the current PHP version
 if (version_compare(PHP_VERSION, '5.6', '<')) {
@@ -27,7 +27,7 @@ class install
     public static function checkPhpErrors()
     {
         $error = [];
-        if (version_compare(phpversion(), '5.5.0', '<')) {
+        if (version_compare(phpversion(), '7.0.0', '<')) {
             $error[] = 'PHP ' . phpversion();
         }
 

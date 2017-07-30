@@ -1,4 +1,4 @@
-# [mobiCMS Classic 0.3.0](http://mobicms.org)
+# [mobiCMS Classic](http://mobicms.org)
 
 Система управления сайтом mobiCMS Classic предназначена для построения сайтов, которые будут просматриваться с мобильных телефонов.
 

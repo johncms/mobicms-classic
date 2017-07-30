@@ -122,7 +122,7 @@ if (!empty($act) && in_array($act, $array) && is_file(__DIR__ . '/includes/' . $
             '</ul>' .
             '</p></div>';
     }
-    echo '<div class="phdr" style="font-size: x-small"><b>mobiCMS 0.2.0</b></div>';
+    echo '<div class="phdr" style="font-size: x-small"><b>mobiCMS 0.3.0</b></div>';
 }
 
 require ROOT_PATH . 'system/end.php';
