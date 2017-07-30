@@ -2,6 +2,22 @@
 This list contains only most important changes.  
 Detailed change in the [repository log](https://github.com/mobicms/mobicms-classic/commits).
 
+## mobiCMS Classic 0.4.0  
+`Release Date: TBD` 
+
+### New
+- Nothing
+  
+### Changed
+- Nothing
+
+### Fixed
+- Nothing
+  
+### Deleted
+- Nothing
+
+
 ## mobiCMS Classic 0.3.0  
 `Release Date: 30.07.2017` 
 
@@ -18,9 +34,6 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 - All pictures are moved to the default theme
 - Refactoring
 
-### Fixed
-- Nothing
-  
 ### Deleted
 - Temporarily removed theme selector
 - Old function of fixing of location is removed
