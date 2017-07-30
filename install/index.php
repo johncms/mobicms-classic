@@ -251,6 +251,7 @@ switch ($act) {
     case 'changelog':
         echo '<a href="?">&lt;&lt; ' . $lng['back'] . '</a><br><br><br>';
         if (($changelog = file_get_contents('../CHANGELOG.md')) !== false) {
+            require __DIR__ . '/includes/parsedown/Parsedown.php';
             $parsedown = new Parsedown();
             echo $parsedown->text($changelog);
         }
@@ -259,6 +260,7 @@ switch ($act) {
     case 'license':
         echo '<a href="?">&lt;&lt; ' . $lng['back'] . '</a><br><br><br>';
         if (($changelog = file_get_contents('../LICENSE.md')) !== false) {
+            require __DIR__ . '/includes/parsedown/Parsedown.php';
             $parsedown = new Parsedown();
             echo $parsedown->text($changelog);
         }
@@ -451,7 +453,7 @@ switch ($act) {
                             'kom'      => true,
                         ],
                         'skindef'       => 'default',
-                        'timeshift' => 0,
+                        'timeshift'     => 0,
                     ],
                 ];
                 $configFile = "<?php\n\n" . 'return ' . var_export($systemSettings, true) . ";\n";

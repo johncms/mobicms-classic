@@ -21,7 +21,6 @@
   },
   "require": {
     "php": "^7.0",
-    "erusev/parsedown": "^1.6",
     "geshi/geshi": "^1.0",
     "klein/klein": "^2.1",
     "league/plates": "^3.3",
