@@ -8,4 +8,4 @@ ALTER TABLE `users` DROP `karma_plus`;
 # 29.07.2017
 ALTER TABLE `users` DROP `movings`;
 ALTER TABLE `cms_sessions` DROP `movings`;
-ALTER TABLE `mobicms_classic`.`cms_sessions` DROP INDEX `place`, ADD INDEX `place` (`place`) USING BTREE;
+ALTER TABLE `cms_sessions` DROP INDEX `place`, ADD INDEX `place` (`place`) USING BTREE;
