@@ -114,6 +114,10 @@ if ($id) {
         $req = $db->query("SELECT * FROM `" . ($do == 'guest' ? "cms_sessions" : "users") . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%' " . ($do == 'guest' ? '' : "ORDER BY `name` ASC") . " LIMIT $start, $userConfig->kmess");
 
         for ($i = 0; $res = $req->fetch(); ++$i) {
+            if(!isset($res['id'])){
+                $res['id'] = 0;
+            }
+
             if ($res['id'] == $systemUser->id) {
                 echo '<div class="gmenu">';
             } else {
