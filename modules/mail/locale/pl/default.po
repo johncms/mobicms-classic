@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
-"POT-Creation-Date: 2017-06-12 21:13+0400\n"
-"PO-Revision-Date: 2017-06-12 13:36-0400\n"
+"POT-Creation-Date: 2017-07-30 15:43+0400\n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -19,144 +19,144 @@ msgstr ""
 "X-Crowdin-Language: pl\n"
 "X-Crowdin-File: /modules/mail/default.pot\n"
 
-#: includes/delete.php:14 includes/deluser.php:14 includes/files.php:14
-#: includes/ignor.php:14 includes/input.php:13 includes/load.php:13
+#: includes/delete.php:13 includes/deluser.php:13 includes/files.php:13
+#: includes/ignor.php:13 includes/input.php:13 includes/load.php:13
 #: includes/new.php:13 includes/output.php:13 includes/systems.php:114
 #: includes/write.php:41 includes/write.php:51 includes/write.php:107
-#: includes/write.php:492 index.php:79
+#: includes/write.php:492 index.php:77
 msgid "Mail"
 msgstr "Wiadomości"
 
-#: includes/delete.php:17
+#: includes/delete.php:16
 msgid "Deleting messages"
 msgstr "Usunięte wiadomości"
 
-#: includes/delete.php:37
+#: includes/delete.php:36
 msgid "Message does not exist"
 msgstr "Ta wiadomość nie istnieje"
 
-#: includes/delete.php:48 includes/delete.php:75
+#: includes/delete.php:47 includes/delete.php:74
 msgid "Message deleted"
 msgstr "Wiadomość sksowana"
 
-#: includes/delete.php:49 includes/delete.php:76 includes/deluser.php:55
-#: includes/ignor.php:102 includes/write.php:96
+#: includes/delete.php:48 includes/delete.php:75 includes/deluser.php:54
+#: includes/ignor.php:101 includes/write.php:96
 msgid "Back"
 msgstr "Powrót"
 
-#: includes/delete.php:80
+#: includes/delete.php:79
 msgid "You really want to remove the message?"
 msgstr "Czy chcesz usunąć tę wiadomość?"
 
-#: includes/delete.php:81 includes/deluser.php:48 includes/deluser.php:52
-#: includes/ignor.php:126 includes/input.php:88 includes/new.php:58
+#: includes/delete.php:80 includes/deluser.php:47 includes/deluser.php:51
+#: includes/ignor.php:125 includes/input.php:88 includes/new.php:58
 #: includes/output.php:88 includes/systems.php:55 includes/systems.php:90
-#: includes/write.php:91 includes/write.php:459 index.php:141
+#: includes/write.php:91 includes/write.php:459 index.php:139
 msgid "Delete"
 msgstr "Usuń"
 
-#: includes/delete.php:85
+#: includes/delete.php:84
 msgid "The message for removal isn't chosen"
 msgstr "Wiadomość do usuwania nie jest wybrana"
 
-#: includes/delete.php:88 includes/files.php:70 includes/ignor.php:151
+#: includes/delete.php:87 includes/files.php:69 includes/ignor.php:150
 #: includes/input.php:115 includes/new.php:82 includes/output.php:115
 #: includes/systems.php:124 includes/write.php:97 includes/write.php:501
-#: index.php:164
+#: index.php:162
 msgid "Personal"
 msgstr "Panel"
 
-#: includes/deluser.php:46
+#: includes/deluser.php:45
 msgid "Contact deleted"
 msgstr "Kontakt usunięty"
 
-#: includes/deluser.php:46 includes/input.php:78 includes/output.php:78
-#: index.php:113
+#: includes/deluser.php:45 includes/input.php:78 includes/output.php:78
+#: index.php:111
 msgid "Continue"
 msgstr "Kontynuuj"
 
-#: includes/deluser.php:51
+#: includes/deluser.php:50
 msgid "When you delete a contact is deleted and all correspondence with him.<br>Are you sure you want to delete?"
 msgstr "Po usunięciu kontaktu zostanie usunięta wszelka korespondencja z nim.<br>Czy jesteś pewien, że chcesz usunąć?"
 
-#: includes/deluser.php:58
+#: includes/deluser.php:57
 msgid "Contact for removal isn't chosen"
 msgstr "Kontakt do usuwania nie jest wybrany"
 
-#: includes/files.php:14 includes/files.php:32
+#: includes/files.php:13 includes/files.php:31
 msgid "Files"
 msgstr "Pliki"
 
-#: includes/files.php:56 includes/ignor.php:137 includes/input.php:102
+#: includes/files.php:55 includes/ignor.php:136 includes/input.php:102
 #: includes/new.php:69 includes/output.php:102 includes/systems.php:100
-#: includes/write.php:477 index.php:152
+#: includes/write.php:477 index.php:150
 msgid "The list is empty"
 msgstr "Lista jest pusta"
 
-#: includes/files.php:60 includes/ignor.php:140 includes/input.php:105
+#: includes/files.php:59 includes/ignor.php:139 includes/input.php:105
 #: includes/new.php:72 includes/output.php:105 includes/systems.php:103
-#: includes/write.php:480 index.php:155
+#: includes/write.php:480 index.php:153
 msgid "Total"
 msgstr "Wszystkich"
 
-#: includes/files.php:67 includes/ignor.php:147 includes/input.php:112
+#: includes/files.php:66 includes/ignor.php:146 includes/input.php:112
 #: includes/new.php:79 includes/output.php:112 includes/systems.php:110
-#: includes/write.php:488 index.php:161
+#: includes/write.php:488 index.php:159
 msgid "To Page"
 msgstr "Do strony"
 
-#: includes/ignor.php:32 includes/ignor.php:108 includes/output.php:88
-#: index.php:123
+#: includes/ignor.php:31 includes/ignor.php:107 includes/output.php:88
+#: index.php:121
 msgid "Blocklist"
 msgstr "Czarna lista"
 
-#: includes/ignor.php:40 includes/ignor.php:69 includes/write.php:43
-#: includes/write.php:145 index.php:93
+#: includes/ignor.php:39 includes/ignor.php:68 includes/write.php:43
+#: includes/write.php:145 index.php:91
 msgid "User does not exists"
 msgstr "Użytkownik nie istnieje"
 
-#: includes/ignor.php:50
+#: includes/ignor.php:49
 msgid "User not blocked"
 msgstr "Użytkownik jest zablokowany"
 
-#: includes/ignor.php:53
+#: includes/ignor.php:52
 msgid "User is unblocked"
 msgstr "Użytkownik odblokowany"
 
-#: includes/ignor.php:57
+#: includes/ignor.php:56
 msgid "You really want to unblock contact?"
 msgstr "Czy napewno chcesz usunąć kontakt?"
 
-#: includes/ignor.php:58 includes/ignor.php:126
+#: includes/ignor.php:57 includes/ignor.php:125
 msgid "Unblock"
 msgstr "Odblokuj"
 
-#: includes/ignor.php:62 includes/ignor.php:105
+#: includes/ignor.php:61 includes/ignor.php:104
 msgid "Contact isn't chosen"
 msgstr "Kontakt nie jest wybrany"
 
-#: includes/ignor.php:79
+#: includes/ignor.php:78
 msgid "This user can not be blocked"
 msgstr "Ten użytkownik nie może być zablokowany"
 
-#: includes/ignor.php:95
+#: includes/ignor.php:94
 msgid "User is blocked"
 msgstr "Użytkownik jest zablokowany"
 
-#: includes/ignor.php:99
+#: includes/ignor.php:98
 msgid "You really want to block contact?"
 msgstr "Czy na pewno chcesz zablokować kontakt?"
 
-#: includes/ignor.php:100
+#: includes/ignor.php:99
 msgid "Block"
 msgstr "Zablokuj"
 
-#: includes/ignor.php:108 index.php:123
+#: includes/ignor.php:107 index.php:121
 msgid "My Contacts"
 msgstr "Moje kontakty"
 
-#: includes/ignor.php:126 includes/input.php:88 includes/new.php:58
-#: includes/output.php:88 index.php:141
+#: includes/ignor.php:125 includes/input.php:88 includes/new.php:58
+#: includes/output.php:88 index.php:139
 msgid "Correspondence"
 msgstr "Korespondencja"
 
@@ -281,27 +281,27 @@ msgstr "Wyślij prywatną wiadomość"
 msgid "File"
 msgstr "Plik"
 
-#: index.php:81
+#: index.php:79
 msgid "Contacts"
 msgstr "Kontakty"
 
-#: index.php:101
+#: index.php:99
 msgid "You cannot add yourself as a contact"
 msgstr "Nie można dodać siebie do znajomych"
 
-#: index.php:113
+#: index.php:111
 msgid "User has been added to your contact list"
 msgstr "Użytkownik został dodany do listy kontaktów"
 
-#: index.php:117
+#: index.php:115
 msgid "You really want to add contact?"
 msgstr "Czy na pewno chcesz dodać ten kontakt?"
 
-#: index.php:118
+#: index.php:116
 msgid "Add"
 msgstr "Dodaj"
 
-#: index.php:141
+#: index.php:139
 msgid "Block User"
 msgstr "Blokuj użytkownika"
 

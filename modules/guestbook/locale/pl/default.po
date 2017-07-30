@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-06-12 13:36-0400\n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -19,153 +19,153 @@ msgstr ""
 "X-Crowdin-File: /modules/guestbook/default.pot\n"
 "Language: pl_PL\n"
 
-#: index.php:63 index.php:344
+#: index.php:61 index.php:342
 msgid "Admin Club"
 msgstr "Klub Admina"
 
-#: index.php:63 index.php:82 index.php:210 index.php:265 index.php:306
-#: index.php:309 index.php:339 index.php:343
+#: index.php:61 index.php:80 index.php:208 index.php:263 index.php:304
+#: index.php:307 index.php:337 index.php:341
 msgid "Guestbook"
 msgstr "Księga gości"
 
-#: index.php:68
+#: index.php:66
 msgid "Guestbook is closed"
 msgstr "Księga gości jest zamknięta"
 
-#: index.php:82
+#: index.php:80
 msgid "Delete message"
 msgstr "Usuń wiadomość"
 
-#: index.php:83
+#: index.php:81
 msgid "Do you really want to delete?"
 msgstr "Czy na pewno chcesz usunąć?"
 
-#: index.php:84 index.php:454
+#: index.php:82 index.php:452
 msgid "Delete"
 msgstr "Usuń"
 
-#: index.php:85 index.php:318
+#: index.php:83 index.php:316
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: index.php:104
+#: index.php:102
 msgid "Wrong data"
 msgstr "Nieprawidłowe dane"
 
-#: index.php:108
+#: index.php:106
 msgid "You have not entered a name"
 msgstr "Nie wpisałeś nazwy"
 
-#: index.php:112
+#: index.php:110
 msgid "You have not entered the message"
 msgstr "Wpisz wiadomość!"
 
-#: index.php:116
+#: index.php:114
 msgid "Access forbidden"
 msgstr "Dostęp zabroniony"
 
-#: index.php:123
+#: index.php:121
 msgid "The security code is not correct"
 msgstr "Kod zabezpieczający nie jest poprawny"
 
-#: index.php:142
+#: index.php:140
 #, php-format
 msgid "You cannot add the message so often. Please, wait %d seconds."
 msgstr "Nie wolno pisać wiadomość tak szybko!<br>Proszę, odczekać."
 
-#: index.php:187 index.php:225 index.php:274
+#: index.php:185 index.php:223 index.php:272
 msgid "Back"
 msgstr "Powrót"
 
-#: index.php:210 index.php:220 index.php:222 index.php:453
+#: index.php:208 index.php:218 index.php:220 index.php:451
 msgid "Reply"
 msgstr "Odpowiedź"
 
-#: index.php:265 index.php:454
+#: index.php:263 index.php:452
 msgid "Edit"
 msgstr "Edytuj"
 
-#: index.php:268
+#: index.php:266
 msgid "Author"
 msgstr "Autor"
 
-#: index.php:271
+#: index.php:269
 msgid "Save"
 msgstr "Zapisz"
 
-#: index.php:291
+#: index.php:289
 msgid "All messages older than 1 day were deleted"
 msgstr "Wszystkie wiadomości starsze niż 1 dzień zostały usunięte"
 
-#: index.php:297
+#: index.php:295
 msgid "Full clearing is finished"
 msgstr "Pełne czyszczenie zostało zakończone"
 
-#: index.php:302
+#: index.php:300
 msgid "All messages older than 1 week were deleted"
 msgstr "Wszystkie wiadomości starsze niż 1 tydzień zostały usunięte"
 
-#: index.php:309 index.php:316 index.php:345
+#: index.php:307 index.php:314 index.php:343
 msgid "Clear"
 msgstr "Wyczyść"
 
-#: index.php:312
+#: index.php:310
 msgid "Clearing parameters"
 msgstr "Usuwanie parametrów"
 
-#: index.php:313
+#: index.php:311
 msgid "Older than 1 week"
 msgstr "Starsze niż 1 tydzień"
 
-#: index.php:314
+#: index.php:312
 msgid "Older than 1 day"
 msgstr "Starsze niż 1 dzień"
 
-#: index.php:315
+#: index.php:313
 msgid "Clear all"
 msgstr "Wyczyść wszystko"
 
-#: index.php:336
+#: index.php:334
 msgid "The guestbook is closed"
 msgstr "Księga gości jest zamknięta"
 
-#: index.php:357
+#: index.php:355
 msgid "Name"
 msgstr "Imię"
 
-#: index.php:360
+#: index.php:358
 msgid "Message"
 msgstr "Wiadomość"
 
-#: index.php:370
+#: index.php:368
 msgid "Verification code"
 msgstr "Kod weryfikacyjny"
 
-#: index.php:371
+#: index.php:369
 msgid "Symbols on the picture"
 msgstr "Symbole na zdjęcie"
 
-#: index.php:374
+#: index.php:372
 msgid "Send"
 msgstr "Wysłać"
 
-#: index.php:376
+#: index.php:374
 msgid "For registered users only"
 msgstr "Tylko dla zarejestrowanych"
 
-#: index.php:380
+#: index.php:378
 msgid "Comments"
 msgstr "Komentarze"
 
-#: index.php:469
+#: index.php:467
 msgid "The guestbook is empty.<br><strong>Be the first! :)</strong>"
 msgstr "Księga gości jest pusta.<br><b>Bądź pierwszy i dodaj wpis! :)</b>"
 
-#: index.php:472
+#: index.php:470
 msgid "Total"
 msgstr "Wszystkich"
 
-#: index.php:477
+#: index.php:475
 msgid "To Page"
 msgstr "Do strony"
 

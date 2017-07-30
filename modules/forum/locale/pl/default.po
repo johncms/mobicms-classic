@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
-"POT-Creation-Date: 2017-06-12 21:12+0400\n"
-"PO-Revision-Date: 2017-06-12 13:36-0400\n"
+"POT-Creation-Date: 2017-07-30 15:42+0400\n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -21,12 +21,12 @@ msgstr ""
 
 #: includes/addfile.php:36 includes/addfile.php:45 includes/addvote.php:31
 #: includes/deltema.php:31 includes/delvote.php:30 includes/editpost.php:36
-#: includes/editvote.php:33 includes/files.php:86 includes/filter.php:26
-#: includes/filter.php:84 includes/loadtem.php:24 includes/loadtem.php:45
-#: includes/nt.php:101 includes/per.php:31 includes/per.php:40
-#: includes/per.php:50 includes/per.php:59 includes/post.php:34
-#: includes/ren.php:31 includes/ren.php:40 includes/users.php:33
-#: includes/vip.php:31 includes/vip.php:41 includes/vote.php:33 index.php:882
+#: includes/editvote.php:33 includes/files.php:88 includes/filter.php:26
+#: includes/filter.php:84 includes/nt.php:104 includes/per.php:31
+#: includes/per.php:40 includes/per.php:50 includes/per.php:59
+#: includes/post.php:37 includes/ren.php:31 includes/ren.php:40
+#: includes/users.php:33 includes/vip.php:31 includes/vip.php:41
+#: includes/vote.php:33 index.php:888
 msgid "Wrong data"
 msgstr "Nieprawidłowe dane"
 
@@ -38,11 +38,11 @@ msgstr "Czas przeznaczony na przesyłanie pliku wygasł"
 #: includes/curators.php:80 includes/editpost.php:68 includes/editpost.php:75
 #: includes/editpost.php:95 includes/editpost.php:99 includes/editpost.php:152
 #: includes/editpost.php:281 includes/filter.php:44 includes/massdel.php:38
-#: includes/massdel.php:41 includes/nt.php:92 includes/nt.php:272
-#: includes/per.php:107 includes/ren.php:77 includes/say.php:98
-#: includes/say.php:112 includes/say.php:130 includes/say.php:142
-#: includes/say.php:284 includes/say.php:295 includes/say.php:302
-#: includes/say.php:355 includes/say.php:368 includes/say.php:477
+#: includes/massdel.php:41 includes/nt.php:95 includes/nt.php:275
+#: includes/per.php:107 includes/ren.php:77 includes/say.php:100
+#: includes/say.php:111 includes/say.php:129 includes/say.php:141
+#: includes/say.php:283 includes/say.php:294 includes/say.php:301
+#: includes/say.php:354 includes/say.php:367 includes/say.php:476
 #: includes/vote.php:41
 msgid "Back"
 msgstr "Powrót"
@@ -72,8 +72,8 @@ msgid "Error uploading file"
 msgstr "Błąd podczas przesyłania pliku"
 
 #: includes/addfile.php:159 includes/addfile.php:162 includes/addvote.php:72
-#: includes/editpost.php:241 includes/nt.php:237 includes/ren.php:50
-#: includes/ren.php:60 includes/say.php:347
+#: includes/editpost.php:241 includes/nt.php:240 includes/ren.php:50
+#: includes/ren.php:60 includes/say.php:346
 msgid "Repeat"
 msgstr "Powtórz"
 
@@ -82,8 +82,8 @@ msgstr "Powtórz"
 msgid "Continue"
 msgstr "Kontynuuj"
 
-#: includes/addfile.php:170 includes/nt.php:263 includes/say.php:272
-#: includes/say.php:466 index.php:591 index.php:795
+#: includes/addfile.php:170 includes/nt.php:266 includes/say.php:271
+#: includes/say.php:465 index.php:595 index.php:801
 msgid "Add File"
 msgstr "Dodaj plik"
 
@@ -120,30 +120,30 @@ msgid "Delete last"
 msgstr "Usuń ostatnie"
 
 #: includes/addvote.php:98 includes/editpost.php:277 includes/editvote.php:137
-#: includes/nt.php:267 includes/ren.php:75
+#: includes/nt.php:270 includes/ren.php:75
 msgid "Save"
 msgstr "Zapisz"
 
-#: includes/curators.php:32 includes/deltema.php:41 includes/say.php:482
-#: index.php:217
+#: includes/curators.php:32 includes/deltema.php:41 includes/say.php:481
+#: index.php:216
 msgid "Topic has been deleted or does not exists"
 msgstr "Wątek został usunięty, lub nie istnieje"
 
 #: includes/curators.php:42 includes/deltema.php:76 includes/editpost.php:105
 #: includes/editpost.php:134 includes/editpost.php:217
 #: includes/editpost.php:266 includes/editvote.php:95 includes/file.php:48
-#: includes/files.php:86 includes/files.php:194 includes/filter.php:26
-#: includes/filter.php:69 includes/new.php:13 includes/new.php:65
-#: includes/new.php:80 includes/new.php:153 includes/new.php:223
-#: includes/new.php:261 includes/nt.php:247 includes/per.php:83
-#: includes/post.php:137 includes/ren.php:71 includes/say.php:432
-#: includes/say.php:482 includes/search.php:37 includes/search.php:225
-#: includes/who.php:95 includes/who.php:203 index.php:142 index.php:157
-#: index.php:217 index.php:257 index.php:891 index.php:916
+#: includes/files.php:88 includes/files.php:195 includes/filter.php:26
+#: includes/filter.php:69 includes/new.php:13 includes/new.php:67
+#: includes/new.php:82 includes/new.php:155 includes/new.php:225
+#: includes/new.php:263 includes/nt.php:250 includes/per.php:83
+#: includes/post.php:142 includes/ren.php:71 includes/say.php:431
+#: includes/say.php:481 includes/search.php:35 includes/search.php:223
+#: includes/who.php:95 includes/who.php:201 index.php:143 index.php:157
+#: index.php:217 index.php:257 index.php:897 index.php:922
 msgid "Forum"
 msgstr "Forum"
 
-#: includes/curators.php:42 index.php:828
+#: includes/curators.php:42 index.php:834
 msgid "Curators"
 msgstr "Moderatorzy"
 
@@ -151,19 +151,19 @@ msgstr "Moderatorzy"
 msgid "Assign"
 msgstr "Przydziel"
 
-#: includes/curators.php:77 includes/files.php:164 includes/new.php:202
-#: includes/new.php:259 includes/who.php:76 includes/who.php:191
+#: includes/curators.php:77 includes/files.php:165 includes/new.php:204
+#: includes/new.php:261 includes/who.php:78 includes/who.php:189
 msgid "The list is empty"
 msgstr "Lista jest pusta"
 
-#: includes/curators.php:79 includes/files.php:153 includes/files.php:189
-#: includes/new.php:140 includes/new.php:205 includes/search.php:164
-#: includes/users.php:56 includes/who.php:82 includes/who.php:194 index.php:337
-#: index.php:396 index.php:807
+#: includes/curators.php:79 includes/files.php:154 includes/files.php:190
+#: includes/new.php:142 includes/new.php:207 includes/search.php:162
+#: includes/users.php:56 includes/who.php:82 includes/who.php:192 index.php:337
+#: index.php:396 index.php:812
 msgid "Total"
 msgstr "Wszystkich"
 
-#: includes/deltema.php:76 index.php:856
+#: includes/deltema.php:76 index.php:862
 msgid "Delete Topic"
 msgstr "Usuń Temat"
 
@@ -178,7 +178,7 @@ msgstr "Ukryj"
 
 #: includes/deltema.php:80 includes/delvote.php:42 includes/editpost.php:137
 #: includes/editpost.php:225 includes/editvote.php:58 includes/massdel.php:52
-#: index.php:728 index.php:750 index.php:781
+#: index.php:734 index.php:756 index.php:787
 msgid "Delete"
 msgstr "Usuń"
 
@@ -188,7 +188,7 @@ msgstr "Wykonaj"
 
 #: includes/deltema.php:82 includes/delvote.php:43 includes/editpost.php:138
 #: includes/editpost.php:225 includes/editvote.php:59 includes/editvote.php:139
-#: includes/massdel.php:53 includes/search.php:59
+#: includes/massdel.php:53 includes/search.php:57
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -236,7 +236,7 @@ msgstr "OSTRZEŻENIE!<br>To jest ostatni post w temacie. Usuwając go, cały tem
 msgid "After deleting, one point will be subtracted from the counter of forum posts"
 msgstr "Po usunięciu, jeden punkt zostanie odjęty od liczby postów"
 
-#: includes/editpost.php:241 includes/nt.php:131 includes/say.php:347
+#: includes/editpost.php:241 includes/nt.php:134 includes/say.php:346
 msgid "You have not entered the message"
 msgstr "Wpisz wiadomość!"
 
@@ -244,13 +244,13 @@ msgstr "Wpisz wiadomość!"
 msgid "Edit Message"
 msgstr "Edytuj wiadomość"
 
-#: includes/editpost.php:278 includes/nt.php:268 includes/say.php:278
-#: includes/say.php:471 index.php:593 index.php:798
+#: includes/editpost.php:278 includes/nt.php:271 includes/say.php:277
+#: includes/say.php:470 index.php:597 index.php:804
 msgid "Preview"
 msgstr "Podgląd"
 
-#: includes/editpost.php:280 includes/nt.php:271 includes/say.php:283
-#: includes/say.php:476
+#: includes/editpost.php:280 includes/nt.php:274 includes/say.php:282
+#: includes/say.php:475
 msgid "Smilies"
 msgstr "Emotikonki"
 
@@ -262,7 +262,7 @@ msgstr "Na pewno chcesz usunąć odpowiedź?"
 msgid "Poll changed"
 msgstr "Ankieta została zmieniona"
 
-#: includes/editvote.php:95 index.php:840
+#: includes/editvote.php:95 index.php:846
 msgid "Edit Poll"
 msgstr "Edytuj ankietę"
 
@@ -274,93 +274,93 @@ msgstr "Dodaj"
 msgid "File does not exist"
 msgstr "Plik nie istnieje"
 
-#: includes/files.php:34
+#: includes/files.php:36
 msgid "Windows applications"
 msgstr "Aplikacje systemu Windows"
 
-#: includes/files.php:35
+#: includes/files.php:37
 msgid "Java applications"
 msgstr "Aplikacje Java"
 
-#: includes/files.php:36
+#: includes/files.php:38
 msgid "SIS"
 msgstr "SIS"
 
-#: includes/files.php:37
+#: includes/files.php:39
 msgid "txt"
 msgstr "txt"
 
-#: includes/files.php:38
+#: includes/files.php:40
 msgid "Pictures"
 msgstr "Zdjęcia"
 
-#: includes/files.php:39
+#: includes/files.php:41
 msgid "Archive"
 msgstr "Archiwum"
 
-#: includes/files.php:40
+#: includes/files.php:42
 msgid "Videos"
 msgstr "Filmy"
 
-#: includes/files.php:41
+#: includes/files.php:43
 msgid "MP3"
 msgstr "MP3"
 
-#: includes/files.php:42
+#: includes/files.php:44
 msgid "Other"
 msgstr "Inne"
 
-#: includes/files.php:56 index.php:271
+#: includes/files.php:58 index.php:271
 msgid "Category Files"
 msgstr "Kategorie plików"
 
-#: includes/files.php:62
+#: includes/files.php:64
 msgid "Section files"
 msgstr "Sekcja plików"
 
-#: includes/files.php:68 index.php:283
+#: includes/files.php:70 index.php:283
 msgid "Topic Files"
 msgstr "Pliki tematu"
 
-#: includes/files.php:74
+#: includes/files.php:76
 msgid "Forum Files"
 msgstr "Pliki forum"
 
-#: includes/files.php:98 includes/files.php:170
+#: includes/files.php:100 includes/files.php:171
 msgid "New Files"
 msgstr "Nowe pliki"
 
-#: includes/files.php:117 includes/search.php:153 index.php:553
+#: includes/files.php:119 includes/search.php:151 index.php:557
 msgid "Read more"
 msgstr "Czytaj więcej"
 
-#: includes/files.php:134 includes/post.php:122 index.php:719
+#: includes/files.php:136 includes/post.php:127 index.php:725
 msgid "Click to view image"
 msgstr "Kliknij aby zobaczyć zdjęcie"
 
-#: includes/files.php:142
+#: includes/files.php:143
 msgid "Size"
 msgstr "Rozmiar"
 
-#: includes/files.php:142
+#: includes/files.php:143
 msgid "Downloaded"
 msgstr "Pobrane"
 
-#: includes/files.php:142 index.php:725
+#: includes/files.php:143 index.php:731
 msgid "Time"
 msgstr "Czas"
 
-#: includes/files.php:161 includes/new.php:146 includes/new.php:212
-#: includes/search.php:221 includes/users.php:62 includes/who.php:88
-#: includes/who.php:200 index.php:402 index.php:814
+#: includes/files.php:162 includes/new.php:148 includes/new.php:214
+#: includes/search.php:219 includes/users.php:62 includes/who.php:88
+#: includes/who.php:198 index.php:403 index.php:820
 msgid "To Page"
 msgstr "Do strony"
 
-#: includes/files.php:171
+#: includes/files.php:172
 msgid "No new files"
 msgstr "Brak nowych plików"
 
-#: includes/files.php:193
+#: includes/files.php:194
 msgid "List of sections"
 msgstr "Spis sekcji"
 
@@ -368,7 +368,7 @@ msgstr "Spis sekcji"
 msgid "You have not selected any author"
 msgstr "Nie wybrałeś żadnego autora"
 
-#: includes/filter.php:69 index.php:876
+#: includes/filter.php:69 index.php:882
 msgid "Filter by author"
 msgstr "Sortuj według autora"
 
@@ -380,7 +380,7 @@ msgstr "Filtr"
 msgid "Filter will be display posts from selected authors only"
 msgstr "Filtr wyświetla tylko wybranych autorów"
 
-#: includes/filter.php:88 includes/post.php:136
+#: includes/filter.php:88 includes/post.php:141
 msgid "Back to topic"
 msgstr "Powrót do tematu"
 
@@ -392,81 +392,81 @@ msgstr "Oznaczone posty są usuwane"
 msgid "You did not choose something to delete"
 msgstr "Nie wybrałeś niczego do usunięcia"
 
-#: includes/new.php:13 includes/new.php:153
+#: includes/new.php:13 includes/new.php:155
 msgid "Unread"
 msgstr "Nieprzeczytane"
 
-#: includes/new.php:65
+#: includes/new.php:67
 msgid "All topics marked as read"
 msgstr "Wszystkie tematy oznaczono jako przeczytane"
 
-#: includes/new.php:80
+#: includes/new.php:82
 #, php-format
 msgid "All for period %d hours"
 msgstr "Wszystko dla okresu %d godzin"
 
-#: includes/new.php:85
+#: includes/new.php:87
 msgid "Show period"
 msgstr "Pokaż okres"
 
-#: includes/new.php:137
+#: includes/new.php:139
 msgid "There is nothing new in this forum for selected period"
 msgstr "Nie ma nic nowego na tym forum dla wybranego okresu"
 
-#: includes/new.php:217
+#: includes/new.php:219
 msgid "Mark as read"
 msgstr "Zaznacz jako przeczytane"
 
-#: includes/new.php:223
+#: includes/new.php:225
 msgid "Last 10"
 msgstr "Ostatnie 10"
 
-#: includes/nt.php:42 includes/say.php:48
+#: includes/nt.php:45 includes/say.php:48
 msgid "Access forbidden"
 msgstr "Dostęp zabroniony"
 
-#: includes/nt.php:92 includes/say.php:98
+#: includes/nt.php:95 includes/say.php:100
 #, php-format
 msgid "You cannot add the message so often<br>Please, wait %d sec."
 msgstr "Nie wolno pisać wiadomość tak szybko!<br>Proszę, odczekać."
 
-#: includes/nt.php:123 includes/ren.php:50
+#: includes/nt.php:126 includes/ren.php:50
 msgid "You have not entered topic name"
 msgstr "Nie podałeś nazwy tematu"
 
-#: includes/nt.php:127
+#: includes/nt.php:130
 msgid "Topic name too short"
 msgstr "Tytuł tematu jest zbyt krótki"
 
-#: includes/nt.php:135 includes/say.php:130 includes/say.php:355
+#: includes/nt.php:138 includes/say.php:129 includes/say.php:354
 msgid "Text is too short"
 msgstr "Tekst jest za krótki"
 
-#: includes/nt.php:143 includes/ren.php:60
+#: includes/nt.php:146 includes/ren.php:60
 msgid "Topic with same name already exists in this section"
 msgstr "Temat o tej samej nazwie już istnieje w tej sekcji"
 
-#: includes/nt.php:153 includes/say.php:142 includes/say.php:368
+#: includes/nt.php:156 includes/say.php:141 includes/say.php:367
 msgid "Message already exists"
 msgstr "Taka wiadomość już istnieje"
 
-#: includes/nt.php:247 index.php:348
+#: includes/nt.php:250 index.php:348
 msgid "New Topic"
 msgstr "Nowy temat"
 
-#: includes/nt.php:256 includes/per.php:87
+#: includes/nt.php:259 includes/per.php:87
 msgid "Section"
 msgstr "Sekcja"
 
-#: includes/nt.php:258
+#: includes/nt.php:261
 msgid "Title(max. 100)"
 msgstr "Tytuł (max. 100)"
 
-#: includes/nt.php:260 includes/say.php:256 includes/say.php:463
+#: includes/nt.php:263 includes/say.php:255 includes/say.php:462
 msgid "Message"
 msgstr "Wiadomość"
 
-#: includes/per.php:83 index.php:864
+#: includes/per.php:83 index.php:870
 msgid "Move Topic"
 msgstr "Przesuń wątek"
 
@@ -482,27 +482,27 @@ msgstr "Przenieś"
 msgid "Other categories"
 msgstr "Inne kategorie"
 
-#: includes/post.php:46 includes/say.php:249 includes/say.php:438
+#: includes/post.php:49 includes/say.php:248 includes/say.php:437
 msgid "Topic"
 msgstr "Temat"
 
-#: includes/post.php:85 index.php:530 index.php:659
+#: includes/post.php:90 index.php:534 index.php:664
 msgid "[r]"
 msgstr "[r]"
 
-#: includes/post.php:86 index.php:531 index.php:660
+#: includes/post.php:91 index.php:535 index.php:665
 msgid "[q]"
 msgstr "[q]"
 
-#: includes/post.php:110 index.php:707
+#: includes/post.php:115 index.php:712
 msgid "Attachment"
 msgstr "Załącznik"
 
-#: includes/post.php:128 index.php:725
+#: includes/post.php:133 index.php:731
 msgid "Downloads"
 msgstr "Pliki do pobrania"
 
-#: includes/ren.php:71 index.php:842
+#: includes/ren.php:71 index.php:848
 msgid "Rename Topic"
 msgstr "Zmień nazwę tematu"
 
@@ -514,91 +514,91 @@ msgstr "Nazwa tematu"
 msgid "Access denied"
 msgstr "Dostęp zabroniony"
 
-#: includes/say.php:112 includes/say.php:295
+#: includes/say.php:111 includes/say.php:294
 msgid "You cannot write in a closed topic"
 msgstr "Nie możesz pisać w zamkniętym temacie"
 
-#: includes/say.php:268
+#: includes/say.php:267
 msgid "Merge with previous message"
 msgstr "Połączyć z poprzednim komunikatem"
 
-#: includes/say.php:277 includes/say.php:470
+#: includes/say.php:276 includes/say.php:469
 msgid "Send"
 msgstr "Wyslij"
 
-#: includes/say.php:302
+#: includes/say.php:301
 msgid "You can not reply to your own message"
 msgstr "Nie można odpowiadać na własną wiadomość"
 
-#: includes/say.php:324 includes/say.php:459
+#: includes/say.php:323 includes/say.php:458
 msgid "I am glad to answer you"
 msgstr "Będzie mi miło, mogąc Ci odpowiedzieć"
 
-#: includes/say.php:328 includes/say.php:460
+#: includes/say.php:327 includes/say.php:459
 msgid "respond to Your message"
 msgstr "odpowiedzieć na Twoją wiadomość"
 
-#: includes/say.php:452
+#: includes/say.php:451
 msgid "Quote"
 msgstr "Cytat"
 
-#: includes/say.php:454
+#: includes/say.php:453
 msgid "Only allowed 200 characters, other text will be cropped."
 msgstr "Dozwolone tylko 200 znaków, pozostały tekst zostanie przycięty."
 
-#: includes/say.php:457
+#: includes/say.php:456
 msgid "Appeal"
 msgstr "Apelacja"
 
-#: includes/search.php:35 includes/who.php:144
+#: includes/search.php:33 includes/who.php:140
 msgid "Forum search"
 msgstr "Przeszukaj forum"
 
-#: includes/search.php:37 includes/search.php:76 index.php:301 index.php:892
+#: includes/search.php:35 includes/search.php:74 index.php:301 index.php:898
 msgid "Search"
 msgstr "Szukaj"
 
-#: includes/search.php:57
+#: includes/search.php:55
 msgid "Do you really want to clear the search history?"
 msgstr "Czy na pewno chcesz wyczyścić historię wyszukiwania?"
 
-#: includes/search.php:58
+#: includes/search.php:56
 msgid "Clear"
 msgstr "Wyczyść"
 
-#: includes/search.php:77
+#: includes/search.php:75
 msgid "Search in the topic names"
 msgstr "Szukaj w nazwach tematu"
 
-#: includes/search.php:93
+#: includes/search.php:91
 msgid "Search results"
 msgstr "Wyniki wyszukiwania"
 
-#: includes/search.php:156 includes/users.php:65 includes/who.php:92
+#: includes/search.php:154 includes/users.php:65 includes/who.php:92
 msgid "Go to Topic"
 msgstr "Idź do tematu"
 
-#: includes/search.php:157
+#: includes/search.php:155
 msgid "Go to Message"
 msgstr "Przejdź do wiadomości"
 
-#: includes/search.php:162
+#: includes/search.php:160
 msgid "Your search did not match any results"
 msgstr "Wyszukiwanie nie dało żadnych wyników"
 
-#: includes/search.php:167
+#: includes/search.php:165
 msgid "Invalid length"
 msgstr "Nieprawidłowa długość"
 
-#: includes/search.php:170
+#: includes/search.php:168
 msgid "Length of query: 4min., 64maks.<br>Search is case insensitive <br>Results are sorted by relevance."
 msgstr "Długość zapytania: 4min, 64maks..<br>Szukaj po wielkość liter <br>Wyniki są sortowane według trafności."
 
-#: includes/search.php:203
+#: includes/search.php:201
 msgid "Search History"
 msgstr "Historia wyszukiwania"
 
-#: includes/search.php:225
+#: includes/search.php:223
 msgid "New Search"
 msgstr "Nowe wyszukiwanie"
 
@@ -614,19 +614,19 @@ msgstr "Nikt jeszcze nie oddał głosu w tej ankiecie"
 msgid "Vote accepted"
 msgstr "Głos został dodany"
 
-#: includes/who.php:13 includes/who.php:95 index.php:910
+#: includes/who.php:13 includes/who.php:95 index.php:916
 msgid "Who in Forum"
 msgstr "Kto na forum"
 
-#: includes/who.php:47
+#: includes/who.php:49
 msgid "Who in Topic"
 msgstr "Kto w temacie"
 
-#: includes/who.php:51
+#: includes/who.php:53
 msgid "Authorized"
 msgstr "Zalogowani"
 
-#: includes/who.php:51 includes/who.php:98 includes/who.php:99
+#: includes/who.php:53 includes/who.php:98 includes/who.php:99
 msgid "Guests"
 msgstr "Goście"
 
@@ -643,42 +643,38 @@ msgid "Here, in the List"
 msgstr "Tutaj, na liście"
 
 #: includes/who.php:136
-msgid "Looking forum files"
-msgstr "Przegląda pliki forum"
-
-#: includes/who.php:140
 msgid "In the unreads"
 msgstr "Nieprzeczytane"
 
-#: includes/who.php:158
+#: includes/who.php:156
 msgid "In the Category"
 msgstr "W kategorii"
 
-#: includes/who.php:162
+#: includes/who.php:160
 msgid "In the Section"
 msgstr "W sekcji"
 
-#: includes/who.php:166
+#: includes/who.php:164
 msgid "Writes in the Topic"
 msgstr "Pisze w temacie"
 
-#: includes/who.php:166 includes/who.php:174
+#: includes/who.php:164 includes/who.php:172
 msgid "In the Topic"
 msgstr "W temacie"
 
-#: includes/who.php:174
+#: includes/who.php:172
 msgid "Answers in the Topic"
 msgstr "Odpowiedzi w temacie"
 
-#: index.php:126 index.php:196
+#: index.php:129 index.php:195
 msgid "Forum is closed"
 msgstr "Forum jest zamknięte"
 
-#: index.php:128
+#: index.php:131
 msgid "For registered users only"
 msgstr "Tylko dla zarejestrowanych"
 
-#: index.php:198
+#: index.php:197
 msgid "Read only"
 msgstr "Tylko do odczytu"
 
@@ -698,119 +694,119 @@ msgstr "Brak sekcji w tej kategorii"
 msgid "No topics in this section"
 msgstr "Brak tematów w tej sekcji"
 
-#: index.php:434
+#: index.php:435
 msgid "Topic deleted"
 msgstr "Temat usunięty"
 
-#: index.php:434
+#: index.php:435
 msgid "Go to Section"
 msgstr "Idż do sekcji"
 
-#: index.php:456
+#: index.php:459
 msgid "Topic deleted by"
 msgstr "Temat usunięty przez"
 
-#: index.php:458
+#: index.php:461
 msgid "Undelete topic"
 msgstr "Przywróć temat"
 
-#: index.php:463
+#: index.php:466
 msgid "Topic closed"
 msgstr "Temat zamknięty"
 
-#: index.php:482 index.php:505
+#: index.php:486 index.php:509
 msgid "Vote"
 msgstr "Głosuj"
 
-#: index.php:483
+#: index.php:487
 msgid "Results"
 msgstr "Wyniki"
 
-#: index.php:491
+#: index.php:495
 msgid "Rating"
 msgstr "Ocena"
 
-#: index.php:494
+#: index.php:498
 msgid "Total votes"
 msgstr "Liczba głosów"
 
-#: index.php:547 index.php:756
+#: index.php:551 index.php:762
 msgid "Post deleted"
 msgstr "Post został usunięty"
 
-#: index.php:561
+#: index.php:565
 msgid "Filter by author is activated"
 msgstr "Filtr według autora jest aktywowany"
 
-#: index.php:592 index.php:597 index.php:797 index.php:802
+#: index.php:596 index.php:601 index.php:803 index.php:808
 msgid "Write"
 msgstr "Napisz"
 
-#: index.php:685
+#: index.php:690
 msgid "Edited"
 msgstr "Edytowano"
 
-#: index.php:748
+#: index.php:754
 msgid "Edit"
 msgstr "Edytuj"
 
-#: index.php:749
+#: index.php:755
 msgid "Restore"
 msgstr "Przywróć"
 
-#: index.php:758
+#: index.php:764
 msgid "Post restored by"
 msgstr "Wiadomość przywrócona przez"
 
-#: index.php:836
+#: index.php:842
 msgid "Curators of the Topic"
 msgstr "Moderatorzy tematu"
 
-#: index.php:840
+#: index.php:846
 msgid "Delete Poll"
 msgstr "Usuń ankietę"
 
-#: index.php:841
+#: index.php:847
 msgid "Add Poll"
 msgstr "Dodaj ankietę"
 
-#: index.php:846
+#: index.php:852
 msgid "Open Topic"
 msgstr "Otwórz temat"
 
-#: index.php:848
+#: index.php:854
 msgid "Close Topic"
 msgstr "Zamknij temat"
 
-#: index.php:853
+#: index.php:859
 msgid "Restore Topic"
 msgstr "Przywróć temat"
 
-#: index.php:859
+#: index.php:865
 msgid "Unfix Topic"
 msgstr "Odklej temat"
 
-#: index.php:861
+#: index.php:867
 msgid "Pin Topic"
 msgstr "Przyklej temat"
 
-#: index.php:874
+#: index.php:880
 msgid "Cancel Filter"
 msgstr "Anuluj filtr"
 
-#: index.php:892
+#: index.php:898
 msgid "Files"
 msgstr "Pliki"
 
-#: index.php:919
+#: index.php:925
 msgid "Forum rules"
 msgstr "Regulamin forum"
 
-#: index.php:928
+#: index.php:934
 msgid "New at the top"
 msgstr "Nowe na górze"
 
-#: index.php:930
+#: index.php:936
 msgid "New at the bottom"
 msgstr "Nowe na dole"
 

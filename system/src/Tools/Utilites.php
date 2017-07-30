@@ -255,7 +255,7 @@ class Utilites implements ToolsInterface
         $part = explode('?', $place);
 
         $placelist = [
-            '/'                 => '<a href="#home#/">' . _t('On the Hmepage', 'system') . '</a>',
+            '/'                 => '<a href="#home#/">' . _t('On the Homepage', 'system') . '</a>',
             '/users?act=online' => '<a href="#home#/users/?act=online">' . _t('Who is online?', 'system') . '</a>',
             '/news'             => '<a href="#home#/news/">' . _t('Reading the news', 'system') . '</a>',
             '/users'            => '<a href="#home#/users/">' . _t('List of Users', 'system') . '</a>',

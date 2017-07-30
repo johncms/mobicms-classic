@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -19,153 +19,153 @@ msgstr ""
 "X-Crowdin-File: /modules/guestbook/default.pot\n"
 "Language: id_ID\n"
 
-#: index.php:63 index.php:344
+#: index.php:61 index.php:342
 msgid "Admin Club"
 msgstr "Klub Admin"
 
-#: index.php:63 index.php:82 index.php:210 index.php:265 index.php:306
-#: index.php:309 index.php:339 index.php:343
+#: index.php:61 index.php:80 index.php:208 index.php:263 index.php:304
+#: index.php:307 index.php:337 index.php:341
 msgid "Guestbook"
 msgstr "Buku tamu"
 
-#: index.php:68
+#: index.php:66
 msgid "Guestbook is closed"
 msgstr "Buku tamu ditutup"
 
-#: index.php:82
+#: index.php:80
 msgid "Delete message"
 msgstr "Hapus pesan"
 
-#: index.php:83
+#: index.php:81
 msgid "Do you really want to delete?"
 msgstr "Apakah Anda yakin menghapus ini?"
 
-#: index.php:84 index.php:454
+#: index.php:82 index.php:452
 msgid "Delete"
 msgstr "Hapus"
 
-#: index.php:85 index.php:318
+#: index.php:83 index.php:316
 msgid "Cancel"
 msgstr "Batal"
 
-#: index.php:104
+#: index.php:102
 msgid "Wrong data"
 msgstr "Data salah"
 
-#: index.php:108
+#: index.php:106
 msgid "You have not entered a name"
 msgstr "Anda belum memasukkan nama"
 
-#: index.php:112
+#: index.php:110
 msgid "You have not entered the message"
 msgstr "Anda belum memasukkan pesan"
 
-#: index.php:116
+#: index.php:114
 msgid "Access forbidden"
 msgstr "Akses ditolak"
 
-#: index.php:123
+#: index.php:121
 msgid "The security code is not correct"
 msgstr "Kode verifikasi salah"
 
-#: index.php:142
+#: index.php:140
 #, php-format
 msgid "You cannot add the message so often. Please, wait %d seconds."
 msgstr "Anda tidak dapat mengirim pesan terlalu sering, mohon tunggu %d detik."
 
-#: index.php:187 index.php:225 index.php:274
+#: index.php:185 index.php:223 index.php:272
 msgid "Back"
 msgstr "Kembali"
 
-#: index.php:210 index.php:220 index.php:222 index.php:453
+#: index.php:208 index.php:218 index.php:220 index.php:451
 msgid "Reply"
 msgstr "Balas"
 
-#: index.php:265 index.php:454
+#: index.php:263 index.php:452
 msgid "Edit"
 msgstr "Sunting"
 
-#: index.php:268
+#: index.php:266
 msgid "Author"
 msgstr "Oleh"
 
-#: index.php:271
+#: index.php:269
 msgid "Save"
 msgstr "Simpan"
 
-#: index.php:291
+#: index.php:289
 msgid "All messages older than 1 day were deleted"
 msgstr "Semua pesan lebih dari 1 hari berhasil dihapus"
 
-#: index.php:297
+#: index.php:295
 msgid "Full clearing is finished"
 msgstr "Semua pesan berhasil dihapus"
 
-#: index.php:302
+#: index.php:300
 msgid "All messages older than 1 week were deleted"
 msgstr "Semua pesan lebih dari 1 minggu berhasil dihapus"
 
-#: index.php:309 index.php:316 index.php:345
+#: index.php:307 index.php:314 index.php:343
 msgid "Clear"
 msgstr "Hapus"
 
-#: index.php:312
+#: index.php:310
 msgid "Clearing parameters"
 msgstr "Pilih metode penghapusan"
 
-#: index.php:313
+#: index.php:311
 msgid "Older than 1 week"
 msgstr "Lebih dari 1 minggu"
 
-#: index.php:314
+#: index.php:312
 msgid "Older than 1 day"
 msgstr "Lebih dari 1 hari"
 
-#: index.php:315
+#: index.php:313
 msgid "Clear all"
 msgstr "Hapus semua"
 
-#: index.php:336
+#: index.php:334
 msgid "The guestbook is closed"
 msgstr "Buku tamu ditutup"
 
-#: index.php:357
+#: index.php:355
 msgid "Name"
 msgstr "Nama"
 
-#: index.php:360
+#: index.php:358
 msgid "Message"
 msgstr "Pesan"
 
-#: index.php:370
+#: index.php:368
 msgid "Verification code"
 msgstr "Kode verifikasi"
 
-#: index.php:371
+#: index.php:369
 msgid "Symbols on the picture"
 msgstr "Kode verifikasi"
 
-#: index.php:374
+#: index.php:372
 msgid "Send"
 msgstr "Kirim"
 
-#: index.php:376
+#: index.php:374
 msgid "For registered users only"
 msgstr "Hanya untuk pengguna terdaftar"
 
-#: index.php:380
+#: index.php:378
 msgid "Comments"
 msgstr "Komentar"
 
-#: index.php:469
+#: index.php:467
 msgid "The guestbook is empty.<br><strong>Be the first! :)</strong>"
 msgstr "Buku tamu kosong<br><strong>Jadilah orang pertama :)</strong>"
 
-#: index.php:472
+#: index.php:470
 msgid "Total"
 msgstr "Total"
 
-#: index.php:477
+#: index.php:475
 msgid "To Page"
 msgstr "Ke halaman"
 
