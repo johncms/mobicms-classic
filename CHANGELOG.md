@@ -2,6 +2,33 @@
 This list contains only most important changes.  
 Detailed change in the [repository log](https://github.com/mobicms/mobicms-classic/commits).
 
+## mobiCMS Classic 0.3.0  
+`Release Date: 30.07.2017` 
+
+### New
+- Integrated [nikic/FastRoute](https://github.com/nikic/FastRoute) package
+- Integrated [Plates](http://platesphp.com/) native template engine
+- Integrated [mobicms/mobicms-error-handler](https://github.com/mobicms/mobicms-error-handler) package
+- Added our own Asset Manager package
+  
+### Changed
+- Old functionality of `head.php` and `end.php` has been removed
+- The files `head.php` and `end.php` have been put into stub mode
+- New algorithm for determining the user's location on the site
+- All pictures are moved to the default theme
+- Refactoring
+
+### Fixed
+- Nothing
+  
+### Deleted
+- Temporarily removed theme selector
+- Old function of fixing of location is removed
+- Old function of fixing of IP history is removed
+- Old advertizing module is removed
+- Users Karma is removed
+
+
 ## mobiCMS Classic 0.2.0  
 `Release Date: 14.06.2017` 
 

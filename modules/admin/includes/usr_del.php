@@ -86,11 +86,10 @@ if (!$error) {
 
         case 'del':
             // Удаляем личные данные
-            $del = new Mobicms\CleanUser;
+            $del = new Mobicms\Deprecated\CleanUser;
             $del->removeAlbum($user['id']);         // Удаляем личные Фотоальбомы
             $del->removeGuestbook($user['id']);     // Удаляем личную Гостевую
             $del->removeMail($user['id']);          // Удаляем почту
-            $del->removeKarma($user['id']);         // Удаляем карму
 
             if (isset($_POST['comments'])) {
                 $del->cleanComments($user['id']);   // Удаляем комментарии
@@ -105,12 +104,10 @@ if (!$error) {
             // Оптимизируем таблицы
             $db->query("
                 OPTIMIZE TABLE
-                `cms_users_iphistory`,
                 `cms_ban_users`,
                 `guest`,
                 `cms_album_comments`,
                 `cms_users_guestbook`,
-                `karma_users`,
                 `cms_album_votes`,
                 `cms_album_views`,
                 `cms_album_downloads`,

@@ -28,10 +28,10 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 require ROOT_PATH . 'system/head.php';
 require dirname(__DIR__) . '/classes/download.php';
 
-$textl = _t('Files on moderation');
+$pageTitle = _t('Files on moderation');
 
 if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
-    echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $textl . '</div>';
+    echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $pageTitle . '</div>';
 
     if ($id) {
         $db->exec("UPDATE `download__files` SET `type` = 2 WHERE `id` = '" . $id . "' LIMIT 1");

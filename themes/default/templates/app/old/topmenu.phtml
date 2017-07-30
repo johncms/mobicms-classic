@@ -1,0 +1,23 @@
+<?php
+/** @var Psr\Container\ContainerInterface $container */
+$container = App::getContainer();
+
+/** @var Mobicms\Api\UserInterface $systemUser */
+$systemUser = $container->get(Mobicms\Api\UserInterface::class);
+?>
+<div class="tmn">
+    <a href="<?= $config->homeurl ?>">
+        <img src="<?= $this->asset('images/menu_home.png') ?>" class="icon"><?= _t('Home', 'system') ?>
+    </a>
+    <br>
+    <?php if ($systemUser->isValid()): ?>
+        <a href="<?= $config->homeurl ?>/profile/?act=office">
+            <img src="<?= $this->asset('images/menu_cabinet.png') ?>" class="icon"><?= $systemUser->name ?>
+            <small style="color: #a8b5c4">(<?= _t('Personal', 'system') ?>)</small>
+        </a>
+    <?php else: ?>
+        <a href="<?= $config->homeurl ?>/login/">
+            <img src="<?= $this->asset('images/menu_login.png') ?>" class="icon"><?= _t('Login', 'system') ?>
+        </a>
+    <?php endif ?>
+</div>

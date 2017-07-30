@@ -9,25 +9,41 @@
  */
 
 defined('MOBICMS') or die('Error: restricted access');
+defined('DEBUG') || define('DEBUG', false);
 
 error_reporting(E_ALL & ~E_NOTICE);
 date_default_timezone_set('UTC');
 mb_internal_encoding('UTF-8');
 
 // Check the current PHP version
-if (version_compare(PHP_VERSION, '5.6', '<')) {
-    die('<div style="text-align: center; font-size: xx-large"><strong>ERROR!</strong><br>Your needs PHP 5.6 or higher</div>');
+if (version_compare(PHP_VERSION, '7.0', '<')) {
+    die('<div style="text-align: center; font-size: xx-large"><strong>ERROR!</strong><br>Your needs PHP 7.0 or higher</div>');
 }
 
 define('START_MEMORY', memory_get_usage());
 define('START_TIME', microtime(true));
 
-define('ROOT_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR);
-define('UPLOAD_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR);
-define('CONFIG_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR);
-define('CACHE_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR);
+const DS = DIRECTORY_SEPARATOR;
+define('ROOT_PATH', dirname(__DIR__) . DS);
+const CACHE_PATH = __DIR__ . DS . 'cache' . DS;
+const CONFIG_PATH = __DIR__ . DS . 'config' . DS;
+const UPLOAD_PATH = ROOT_PATH . DS . 'uploads' . DS;
+const LOG_PATH = __DIR__ . DS . 'logs' . DS;
 
 require __DIR__ . '/vendor/autoload.php';
+
+// Errors handling
+if (DEBUG) {
+    ini_set('error_reporting', E_ALL);
+    ini_set('display_errors', 'On');
+    ini_set('log_errors', 'On');
+    ini_set('error_log', LOG_PATH . 'errors-' . date('Y-m-d') . '.log');
+    new Mobicms\Error\Handler;
+} else {
+    ini_set('error_reporting', E_ALL & ~E_DEPRECATED & ~E_STRICT);
+    ini_set('display_errors', 'Off');
+    ini_set('log_errors', 'Off');
+}
 
 use Zend\ServiceManager\ServiceManager;
 use Zend\ServiceManager\Config;
@@ -74,7 +90,7 @@ class App
             /** @var Mobicms\Api\ConfigInterface $config */
             $config = self::getContainer()->get(Mobicms\Api\ConfigInterface::class);
 
-            /** @var Mobicms\Checkpoint\UserConfig $userConfig */ //TODO: Переделать на UserConfigInterface
+            /** @var Mobicms\Checkpoint\UserConfig $userConfig */
             $userConfig = self::getContainer()->get(Mobicms\Api\UserInterface::class)->getConfig();
 
             if (isset($_POST['setlng']) && array_key_exists($_POST['setlng'], $config->lng_list)) {
@@ -98,22 +114,28 @@ class App
     }
 }
 
-// Счетчик активности IP адресов
-App::getContainer()->get(Mobicms\Api\EnvironmentInterface::class);
+call_user_func(function () {
+    /** @var Psr\Container\ContainerInterface $container */
+    $container = App::getContainer();
 
-// Проверка IP адреса на бан
-try {
-    new Mobicms\System\IpBan(App::getContainer());
-} catch (Mobicms\System\Exception\IpBanException $e) {
-    header($e->getMessage());
-    exit;
-}
+    // Проверка IP адреса на бан
+    try {
+        new Mobicms\System\IpBan($container);
+    } catch (Mobicms\System\Exception\IpBanException $e) {
+        header($e->getMessage());
+        exit;
+    }
 
-// Автоочистка системы
-new Mobicms\System\Clean(App::getContainer());
+    // Стартуем сессию
+    session_name('SESID');
+    session_start();
 
-session_name('SESID');
-session_start();
+    // Автоочистка системы
+    new Mobicms\System\Clean($container);
+
+    // Запись статистики посетителя
+    new Mobicms\Checkpoint\UserStat($container);
+});
 
 /**
  * Translate a message
@@ -132,7 +154,7 @@ function _t($message, $textDomain = 'default')
  *
  * @param string $singular
  * @param string $plural
- * @param int    $number
+ * @param int $number
  * @param string $textDomain
  * @return string
  */

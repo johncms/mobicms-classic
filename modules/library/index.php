@@ -8,17 +8,44 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
 
-$id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
-$act = isset($_GET['act']) ? trim($_GET['act']) : '';
-$mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
-$do = isset($_REQUEST['do']) ? trim($_REQUEST['do']) : false;
+$args = [
+    'act'  => FILTER_DEFAULT,
+    'mod'  => FILTER_DEFAULT,
+    'page' => FILTER_VALIDATE_INT,
+    'do'   => FILTER_DEFAULT,
+    'tag'  => [
+        'filter'  => FILTER_DEFAULT,
+        'options' => [
+            'default' => null,
+        ],
+    ],
+    'id'   => [
+        'filter'  => FILTER_VALIDATE_INT,
+        'options' => [
+            'default'   => 0,
+            'min_range' => 1,
+        ],
+    ],
+    'type' => FILTER_DEFAULT,
+    'yes'  => FILTER_DEFAULT,
+    'all'  => FILTER_DEFAULT,
+];
 
-$headmod = 'library';
+$input_request = filter_var_array($_REQUEST, $args);
+unset($args);
+
+$id = $input_request['id'];
+$act = isset($input_request['act']) ? trim($input_request['act']) : '';
+$mod = isset($input_request['mod']) ? trim($input_request['mod']) : '';
+$do = $input_request['do'] ? trim($input_request['do']) : false;
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
+
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
@@ -39,7 +66,7 @@ $config = $container->get(Mobicms\Api\ConfigInterface::class);
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
-$page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
+$page = $input_request['page'] ? abs($input_request['page']) : 1;
 $start = $tools->getPgStart();
 
 use Library\Tree;
@@ -49,9 +76,9 @@ use Library\Utils;
 
 /*  php 7+
 use Library\{
-            Tree, 
-            Hashtags, 
-            Rating, 
+            Tree,
+            Hashtags,
+            Rating,
             Links
 }
 */
@@ -59,7 +86,7 @@ use Library\{
 $adm = ($systemUser->rights > 4) ? true : false;
 $i = 0;
 
-$textl = _t('Library');
+$pageTitle = _t('Library');
 
 // Ограничиваем доступ к Библиотеке
 
@@ -88,7 +115,7 @@ switch ($do) {
         $tab = 'library_texts';
 }
 
-if ($id > 0) { 
+if ($id > 0) {
     $hdrsql = $db->query("SELECT `name` FROM `" . $tab . "` WHERE `id`=" . $id . " LIMIT 1");
 
     $hdrres = '';
@@ -98,7 +125,7 @@ if ($id > 0) {
 
     $hdr = htmlentities($hdrres, ENT_QUOTES, 'UTF-8');
     if ($hdr) {
-        $textl .=  ' | ' . (mb_strlen($hdr) > 30 ? $hdr . '...' : $hdr);
+        $pageTitle .= ' | ' . (mb_strlen($hdr) > 30 ? $hdr . '...' : $hdr);
     }
 }
 
@@ -171,15 +198,12 @@ if (in_array($act, $array_includes)) {
 
         $res = $db->query("SELECT COUNT(*) FROM `library_texts` WHERE `time` > '" . (time() - 259200) . "' AND `premod`=1")->fetchColumn();
 
-        if ($res) {
-            echo $tools->image('images/new.png', [
-                    'width' => 16,
-                    'height' => 16
-                ]) . '<a href="?act=new">' . _t('New Articles') . '</a> (' . $res . ')<br>';
+        if (!$res) {
+            echo $asset->img('add.gif')->class('icon') . '<a href="?act=new">' . _t('New Articles') . '</a> (' . $res . ')<br>';
         }
 
-        echo $tools->image('images/rate.gif', ['width' => 16, 'height' => 16]) . '<a href="?act=top">' . _t('Rating articles') . '</a><br>' .
-            $tools->image('images/talk.gif', ['width' => 16, 'height' => 16]) . '<a href="?act=lastcom">' . _t('Latest comments') . '</a>' .
+        echo $asset->img('rate.gif')->class('icon') . '<a href="?act=top">' . _t('Rating articles') . '</a><br>' .
+            $asset->img('talk.gif')->class('icon') . '<a href="?act=lastcom">' . _t('Latest comments') . '</a>' .
             '</p></div>';
 
         $total = $db->query("SELECT COUNT(*) FROM `library_cats` WHERE `parent`=0")->fetchColumn();
@@ -192,7 +216,7 @@ if (in_array($act, $array_includes)) {
                 $y++;
                 echo '<div class="list' . (++$i % 2 ? 2 : 1) . '">'
                     . '<a href="?do=dir&amp;id=' . $row['id'] . '">' . $tools->checkout($row['name']) . '</a> ('
-                    . $db->query("SELECT COUNT(*) FROM `" . ($row['dir'] ? 'library_cats' : 'library_texts') . "` WHERE " . ($row['dir'] ? '`parent`=' . $row['id'] : '`cat_id`=' . $row['id']))->fetchColumn() . ')';
+                    . $db->query("SELECT COUNT(*) FROM `" . ($row['dir'] ? 'library_cats' : 'library_texts') . "` WHERE " . ($row['dir'] ? '`parent`=' . $row['id'] : '`cat_id`=' . $row['id'] . ' AND `premod`=1'))->fetchColumn() . ')';
 
                 if (!empty($row['description'])) {
                     echo '<div style="font-size: x-small; padding-top: 2px"><span class="gray">' . $tools->checkout($row['description']) . '</span></div>';

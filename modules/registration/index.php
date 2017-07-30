@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -26,8 +26,7 @@ $config = $container->get(Mobicms\Api\ConfigInterface::class);
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
-$textl = _t('Registration');
-$headmod = 'registration';
+$pageTitle = _t('Registration');
 require ROOT_PATH . 'system/head.php';
 
 // Если регистрация закрыта, выводим предупреждение

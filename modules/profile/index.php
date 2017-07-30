@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
 
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
@@ -16,6 +16,9 @@ $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
+
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
@@ -97,7 +100,6 @@ $array = [
     'info',
     'ip',
     'guestbook',
-    'karma',
     'office',
     'password',
     'reset',
@@ -109,8 +111,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     require __DIR__ . '/includes/' . $act . '.php';
 } else {
     // Анкета пользователя
-    $headmod = 'profile,' . $user['id'];
-    $textl = _t('Profile') . ': ' . htmlspecialchars($user['name']);
+    $pageTitle = _t('Profile') . ': ' . htmlspecialchars($user['name']);
     require ROOT_PATH . 'system/head.php';
     echo '<div class="phdr"><b>' . ($user['id'] != $systemUser->id ? _t('User Profile') : _t('My Profile')) . '</b></div>';
 
@@ -146,8 +147,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     ];
 
     if ($user['id'] != $systemUser->id) {
-        $arg['footer'] = '<span class="gray">' . _t('Where?') . ':</span> ' . $tools->displayPlace($user['id'],
-                $user['place']);
+        $arg['footer'] = '<span class="gray">' . _t('Where?') . ':</span> ' . $tools->displayPlace($user['place'], $user['id']);
     }
 
     echo '<div class="user"><p>' . $tools->displayUser($user, $arg) . '</p></div>';
@@ -157,79 +157,37 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
         echo '<div class="rmenu">' . _t('Pending confirmation') . '</div>';
     }
 
-    // Карма
-    if ($set_karma['on']) {
-        $karma = $user['karma_plus'] - $user['karma_minus'];
-
-        if ($karma > 0) {
-            $images = ($user['karma_minus'] ? ceil($user['karma_plus'] / $user['karma_minus']) : $user['karma_plus']) > 10 ? '2' : '1';
-            echo '<div class="gmenu">';
-        } else {
-            if ($karma < 0) {
-                $images = ($user['karma_plus'] ? ceil($user['karma_minus'] / $user['karma_plus']) : $user['karma_minus']) > 10 ? '-2' : '-1';
-                echo '<div class="rmenu">';
-            } else {
-                $images = 0;
-                echo '<div class="menu">';
-            }
-        }
-
-        echo '<table  width="100%"><tr><td width="22" valign="top"><img src="' . $config['homeurl'] . '/assets/images/k_' . $images . '.gif"/></td><td>' .
-            '<b>' . _t('Karma') . ' (' . $karma . ')</b>' .
-            '<div class="sub">' .
-            '<span class="green"><a href="?act=karma&amp;user=' . $user['id'] . '&amp;type=1">' . _t('For') . ' (' . $user['karma_plus'] . ')</a></span> | ' .
-            '<span class="red"><a href="?act=karma&amp;user=' . $user['id'] . '">' . _t('Against') . ' (' . $user['karma_minus'] . ')</a></span>';
-
-        if ($user['id'] != $systemUser->id) {
-            if (!$systemUser->karma_off && (!$user['rights'] || ($user['rights'] && !$set_karma['adm'])) && $user['ip'] != $systemUser->ip) {
-                $sum = $db->query("SELECT SUM(`points`) FROM `karma_users` WHERE `user_id` = '" . $systemUser->id . "' AND `time` >= '" . $systemUser->karma_time . "'")->fetchColumn();
-                $count = $db->query("SELECT COUNT(*) FROM `karma_users` WHERE `user_id` = '" . $systemUser->id . "' AND `karma_user` = '" . $user['id'] . "' AND `time` > '" . (time() - 86400) . "'")->fetchColumn();
-
-                if (empty($systemUser->ban) && $systemUser->postforum >= $set_karma['forum'] && $systemUser->total_on_site >= $set_karma['karma_time'] && ($set_karma['karma_points'] - $sum) > 0 && !$count) {
-                    echo '<br /><a href="?act=karma&amp;mod=vote&amp;user=' . $user['id'] . '">' . _t('Vote') . '</a>';
-                }
-            }
-        } else {
-            $total_karma = $db->query("SELECT COUNT(*) FROM `karma_users` WHERE `karma_user` = '" . $systemUser->id . "' AND `time` > " . (time() - 86400))->fetchColumn();
-
-            if ($total_karma > 0) {
-                echo '<br /><a href="?act=karma&amp;mod=new">' . _t('New reviews') . '</a> (' . $total_karma . ')';
-            }
-        }
-        echo '</div></td></tr></table></div>';
-    }
-
     // Меню выбора
     $total_photo = $db->query("SELECT COUNT(*) FROM `cms_album_files` WHERE `user_id` = '" . $user['id'] . "'")->fetchColumn();
     echo '<div class="list2"><p>' .
-        '<div>' . $tools->image('images/contacts.png') . '<a href="?act=info&amp;user=' . $user['id'] . '">' . _t('Information') . '</a></div>' .
-        '<div>' . $tools->image('images/activity.gif') . '<a href="?act=activity&amp;user=' . $user['id'] . '">' . _t('Activity') . '</a></div>' .
-        '<div>' . $tools->image('images/rate.gif') . '<a href="?act=stat&amp;user=' . $user['id'] . '">' . _t('Statistic') . '</a></div>';
+        '<div>' . $asset->img('contacts.png')->class('icon') . '<a href="?act=info&amp;user=' . $user['id'] . '">' . _t('Information') . '</a></div>' .
+        '<div>' . $asset->img('activity.gif')->class('icon') . '<a href="?act=activity&amp;user=' . $user['id'] . '">' . _t('Activity') . '</a></div>' .
+        '<div>' . $asset->img('rate.gif')->class('icon') . '<a href="?act=stat&amp;user=' . $user['id'] . '">' . _t('Statistic') . '</a></div>';
     $bancount = $db->query("SELECT COUNT(*) FROM `cms_ban_users` WHERE `user_id` = '" . $user['id'] . "'")->fetchColumn();
 
     if ($bancount) {
-        echo '<div>' . $tools->image('images/block.gif') . '&#160;<a href="?act=ban&amp;user=' . $user['id'] . '">' . _t('Violations') . '</a> (' . $bancount . ')</div>';
+        echo '<div>' . $asset->img('block.gif')->class('icon') . '&#160;<a href="?act=ban&amp;user=' . $user['id'] . '">' . _t('Violations') . '</a> (' . $bancount . ')</div>';
     }
 
     echo '<br />' .
-        '<div>' . $tools->image('images/photo.gif') . '<a href="../album/index.php?act=list&amp;user=' . $user['id'] . '">' . _t('Photo Album') . '</a>&#160;(' . $total_photo . ')</div>' .
-        '<div>' . $tools->image('images/guestbook.gif') . '<a href="?act=guestbook&amp;user=' . $user['id'] . '">' . _t('Guestbook') . '</a>&#160;(' . $user['comm_count'] . ')</div>' .
+        '<div>' . $asset->img('photo.gif')->class('icon') . '<a href="../album/index.php?act=list&amp;user=' . $user['id'] . '">' . _t('Photo Album') . '</a>&#160;(' . $total_photo . ')</div>' .
+        '<div>' . $asset->img('guestbook.gif')->class('icon') . '<a href="?act=guestbook&amp;user=' . $user['id'] . '">' . _t('Guestbook') . '</a>&#160;(' . $user['comm_count'] . ')</div>' .
         '</p></div>';
     if ($user['id'] != $systemUser->id) {
         echo '<div class="menu"><p>';
         // Контакты
         if (is_contact($user['id'], $db, $systemUser) != 2) {
             if (!is_contact($user['id'], $db, $systemUser)) {
-                echo '<div>' . $tools->image('images/users.png') . '&#160;<a href="../mail/index.php?id=' . $user['id'] . '">' . _t('Add to Contacts') . '</a></div>';
+                echo '<div>' . $asset->img('users.png')->class('icon') . '&#160;<a href="../mail/index.php?id=' . $user['id'] . '">' . _t('Add to Contacts') . '</a></div>';
             } else {
-                echo '<div>' . $tools->image('images/users.png') . '&#160;<a href="../mail/index.php?act=deluser&amp;id=' . $user['id'] . '">' . _t('Remove from Contacts') . '</a></div>';
+                echo '<div>' . $asset->img('users.png')->class('icon') . '&#160;<a href="../mail/index.php?act=deluser&amp;id=' . $user['id'] . '">' . _t('Remove from Contacts') . '</a></div>';
             }
         }
 
         if (is_contact($user['id'], $db, $systemUser) != 2) {
-            echo '<div>' . $tools->image('images/del.png') . '&#160;<a href="../mail/index.php?act=ignor&amp;id=' . $user['id'] . '&amp;add">' . _t('Block User') . '</a></div>';
+            echo '<div>' . $asset->img('del.png')->class('icon') . '&#160;<a href="../mail/index.php?act=ignor&amp;id=' . $user['id'] . '&amp;add">' . _t('Block User') . '</a></div>';
         } else {
-            echo '<div>' . $tools->image('images/del.png') . '&#160;<a href="../mail/index.php?act=ignor&amp;id=' . $user['id'] . '&amp;del">' . _t('Unlock User') . '</a></div>';
+            echo '<div>' . $asset->img('del.png')->class('icon') . '&#160;<a href="../mail/index.php?act=ignor&amp;id=' . $user['id'] . '&amp;del">' . _t('Unlock User') . '</a></div>';
         }
 
         echo '</p>';

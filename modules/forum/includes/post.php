@@ -15,6 +15,9 @@ require ROOT_PATH . 'system/head.php';
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -47,17 +50,19 @@ echo '<div class="phdr"><b>' . _t('Topic') . ':</b> ' . $them['text'] . '</div><
 
 // Данные пользователя
 echo '<table cellpadding="0" cellspacing="0"><tr><td>';
+
 if (file_exists(UPLOAD_PATH . 'users/avatar/' . $res['user_id'] . '.png')) {
     echo '<img src="../uploads/users/avatar/' . $res['user_id'] . '.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
 } else {
-    echo '<img src="../assets/images/empty.png" width="32" height="32" alt="' . $res['from'] . '" />&#160;';
+    echo $asset->img('empty.png')->alt($res['from']) . '&#160;';
 }
+
 echo '</td><td>';
 
 if ($res['sex']) {
-    echo $tools->image('images/' . ($res['sex'] == 'm' ? 'm' : 'w') . ($res['datereg'] > time() - 86400 ? '_new' : '') . '.png', ['class' => 'icon-inline']);
+    echo $asset->img(($res['sex'] == 'm' ? 'm' : 'w') . ($res['datereg'] > time() - 86400 ? '_new' : '') . '.png')->class('icon-inline');
 } else {
-    echo $tools->image('images/del.png');
+    echo $asset->img('del.png')->class('icon');
 }
 
 // Ник юзера и ссылка на его анкету
@@ -91,7 +96,7 @@ echo ' <span class="gray">(' . $tools->displayDate($res['time']) . ')</span><br 
 
 // Статус юзера
 if (!empty($res['status'])) {
-    echo '<div class="status">' . $tools->image('images/label.png', ['class' => 'icon-inline']) . $res['status'] . '</div>';
+    echo '<div class="status">' . $asset->img('label.png')->class('icon-inline') . $res['status'] . '</div>';
 }
 
 echo '</td></tr></table>';
@@ -106,10 +111,10 @@ $freq = $db->query("SELECT * FROM `cms_forum_files` WHERE `post` = '" . $res['id
 
 if ($freq->rowCount()) {
     $fres = $freq->fetch();
-    $fls = round(@filesize('../uploads/forum/attach/' . $fres['filename']) / 1024, 2);
+    $fls = round(@filesize(UPLOAD_PATH . 'forum/attach/' . $fres['filename']) / 1024, 2);
     echo '<div class="gray" style="font-size: x-small; background-color: rgba(128, 128, 128, 0.1); padding: 2px 4px; margin-top: 4px">' . _t('Attachment') . ':';
     // Предпросмотр изображений
-    $att_ext = strtolower(pathinfo('./uploads/forum/attach/' . $fres['filename'], PATHINFO_EXTENSION));
+    $att_ext = strtolower(pathinfo(UPLOAD_PATH . 'forum/attach/' . $fres['filename'], PATHINFO_EXTENSION));
     $pic_ext = [
         'gif',
         'jpg',
@@ -119,7 +124,7 @@ if ($freq->rowCount()) {
 
     if (in_array($att_ext, $pic_ext)) {
         echo '<div><a href="index.php?act=file&amp;id=' . $fres['id'] . '">';
-        echo '<img src="thumbinal.php?file=' . (urlencode($fres['filename'])) . '" alt="' . _t('Click to view image') . '" /></a></div>';
+        echo '<img src="../assets/modules/forum/thumbinal.php?file=' . (urlencode($fres['filename'])) . '" alt="' . _t('Click to view image') . '" /></a></div>';
     } else {
         echo '<br /><a href="index.php?act=file&amp;id=' . $fres['id'] . '">' . $fres['filename'] . '</a>';
     }

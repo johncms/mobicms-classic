@@ -10,7 +10,6 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$headmod = 'userban';
 require ROOT_PATH . 'system/head.php';
 $ban = isset($_GET['ban']) ? intval($_GET['ban']) : 0;
 
@@ -122,29 +121,6 @@ switch ($mod) {
                         $systemUser->name,
                         $reason,
                     ]);
-
-                    if ($set_karma['on']) {
-                        $points = $set_karma['karma_points'] * 2;
-                        $stmt = $db->prepare('INSERT INTO `karma_users` SET
-                          `user_id` = 0,
-                          `name` = ?,
-                          `karma_user` = ?,
-                          `points` = ?,
-                          `type` = 0,
-                          `time` = ?,
-                          `text` = ?
-                        ');
-
-                        $stmt->execute([
-                            _t('System'),
-                            $user['id'],
-                            $points,
-                            time(),
-                            _t('Ban'),
-                        ]);
-
-                        $db->exec("UPDATE `users` SET `karma_minus` = " . intval($user['karma_minus'] + $points) . " WHERE `id` = " . $user['id']);
-                    }
 
                     echo '<div class="rmenu"><p><h3>' . _t('User banned') . '</h3></p></div>';
                 } else {
@@ -258,11 +234,6 @@ switch ($mod) {
                     '<div class="gmenu"><p>' . $tools->displayUser($user) . '</p></div>';
 
                 if (isset($_POST['submit'])) {
-                    $db->exec("DELETE FROM `karma_users` WHERE `karma_user` = '" . $user['id'] . "' AND `user_id` = '0' AND `time` = '" . $res['ban_while'] . "' LIMIT 1");
-                    $points = $set_karma['karma_points'] * 2;
-                    $db->exec("UPDATE `users` SET
-                        `karma_minus` = '" . ($user['karma_minus'] > $points ? $user['karma_minus'] - $points : 0) . "'
-                        WHERE `id` = " . $user['id']);
                     $db->exec("DELETE FROM `cms_ban_users` WHERE `id` = '$ban'");
                     echo '<div class="gmenu"><p><h3>' . _t('Ban deleted') . '</h3><a href="?act=ban&amp;user=' . $user['id'] . '">' . _t('Continue') . '</a></p></div>';
                 } else {
@@ -299,7 +270,7 @@ switch ($mod) {
                 '<p>' . ($total
                     ? '<a href="?act=ban&amp;user=' . $user['id'] . '">' . _t('Violations history') . '</a><br />'
                     : '') .
-                '<a href="../admin/index.php?act=ban_panel">' . _t('Ban Panel') . '</a></p>';
+                '<a href="../admin/?act=ban_panel">' . _t('Ban Panel') . '</a></p>';
         } else {
             echo $tools->displayError(_t('Violations history can be cleared by Supervisor only'));
         }

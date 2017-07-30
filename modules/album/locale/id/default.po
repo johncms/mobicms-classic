@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
-"POT-Creation-Date: 2017-06-12 21:11+0400\n"
-"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"POT-Creation-Date: 2017-07-30 15:42+0400\n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Crowdin-Language: id\n"
 "X-Crowdin-File: /modules/album/default.pot\n"
 
-#: includes/comments.php:34 index.php:51
+#: includes/comments.php:34 index.php:53
 msgid "User does not exists"
 msgstr "Pengguna tidak ada"
 
@@ -32,12 +32,12 @@ msgstr "Akses ditolak"
 msgid "Album List"
 msgstr "Daftar Album"
 
-#: includes/comments.php:52 includes/list.php:32 includes/show.php:48
-#: includes/top.php:124 includes/users.php:47 index.php:140
+#: includes/comments.php:52 includes/list.php:35 includes/show.php:48
+#: includes/top.php:124 includes/users.php:47 index.php:142
 msgid "Photo Albums"
 msgstr "Album foto"
 
-#: includes/comments.php:53 includes/list.php:32 includes/show.php:48
+#: includes/comments.php:53 includes/list.php:35 includes/show.php:48
 msgid "Personal"
 msgstr "Personal"
 
@@ -74,7 +74,7 @@ msgid "Photo Album"
 msgstr "Album Foto"
 
 #: includes/delete.php:33 includes/delete.php:58 includes/image_delete.php:54
-#: includes/list.php:55 includes/show.php:165
+#: includes/list.php:58 includes/show.php:165
 msgid "Delete"
 msgstr "Hapus"
 
@@ -88,7 +88,7 @@ msgstr "Album berhasil dihapus"
 msgid "Continue"
 msgstr "Lanjutkan"
 
-#: includes/delete.php:56 includes/show.php:55 index.php:32
+#: includes/delete.php:56 includes/show.php:55 index.php:35
 msgid "Album"
 msgstr "Album"
 
@@ -105,7 +105,7 @@ msgstr "Batal"
 msgid "Edit Album"
 msgstr "Sunting Album"
 
-#: includes/edit.php:45 includes/list.php:37
+#: includes/edit.php:45 includes/list.php:40
 msgid "Create Album"
 msgstr "Buat Album"
 
@@ -276,24 +276,24 @@ msgstr "Unggah"
 msgid "Allowed format image JPG, JPEG, PNG, GIF<br>File size should not exceed %d kb."
 msgstr "Diizinkan format gambar JPG, JPEG, PNG, GIF<br>Ukuran berkas tidak melebihi %d kb."
 
-#: includes/list.php:52
+#: includes/list.php:55
 msgid "Up"
 msgstr "Naik"
 
-#: includes/list.php:53
+#: includes/list.php:56
 msgid "Down"
 msgstr "Turun"
 
-#: includes/list.php:54 includes/show.php:163
+#: includes/list.php:57 includes/show.php:163
 msgid "Edit"
 msgstr "Sunting"
 
-#: includes/list.php:67 includes/show.php:182 includes/top.php:176
+#: includes/list.php:70 includes/show.php:182 includes/top.php:176
 #: includes/users.php:68
 msgid "The list is empty"
 msgstr "Daftar ini kosong"
 
-#: includes/list.php:70 includes/show.php:185 includes/top.php:179
+#: includes/list.php:73 includes/show.php:185 includes/top.php:179
 #: includes/users.php:70
 msgid "Total"
 msgstr "Total"
@@ -338,23 +338,23 @@ msgstr "Komentar belum dibaca"
 msgid "Recent comments"
 msgstr "Komentar terbaru"
 
-#: includes/top.php:63 index.php:158
+#: includes/top.php:63 index.php:160
 msgid "Top Views"
 msgstr "Paling banyak dilihat"
 
-#: includes/top.php:73 index.php:157
+#: includes/top.php:73 index.php:159
 msgid "Top Downloads"
 msgstr "Paling banyak diunduh"
 
-#: includes/top.php:83 index.php:159
+#: includes/top.php:83 index.php:161
 msgid "Top Comments"
 msgstr "Komentar teratas"
 
-#: includes/top.php:93 index.php:156
+#: includes/top.php:93 index.php:158
 msgid "Top Votes"
 msgstr "Nilai teratas"
 
-#: includes/top.php:103 index.php:160
+#: includes/top.php:103 index.php:162
 msgid "Top Worst"
 msgstr "Paling buruk"
 
@@ -366,11 +366,11 @@ msgstr "Foto baru"
 msgid "All"
 msgstr "Semua"
 
-#: includes/users.php:44 index.php:147
+#: includes/users.php:44 index.php:149
 msgid "Guys"
 msgstr "Pria"
 
-#: includes/users.php:45 index.php:148
+#: includes/users.php:45 index.php:150
 msgid "Girls"
 msgstr "Wanita"
 
@@ -378,43 +378,43 @@ msgstr "Wanita"
 msgid "List"
 msgstr "Daftar"
 
-#: index.php:41
+#: index.php:43
 msgid "For registered users only"
 msgstr "Hanya untuk pengguna terdaftar"
 
-#: index.php:83 index.php:155
+#: index.php:85 index.php:157
 msgid "Rating"
 msgstr "Rating"
 
-#: index.php:84
+#: index.php:86
 msgid "Against"
 msgstr "Buruk"
 
-#: index.php:84
+#: index.php:86
 msgid "For"
 msgstr "Untuk"
 
-#: index.php:91
+#: index.php:93
 msgid "Vote"
 msgstr "Beri nilai"
 
-#: index.php:142
+#: index.php:144
 msgid "New Photos"
 msgstr "Foto baru"
 
-#: index.php:143
+#: index.php:145
 msgid "New Comments"
 msgstr "Komentar baru"
 
-#: index.php:146
+#: index.php:148
 msgid "Albums"
 msgstr "Album"
 
-#: index.php:151
+#: index.php:153
 msgid "My Album"
 msgstr "Album Saya"
 
-#: index.php:163
+#: index.php:165
 msgid "Users"
 msgstr "Pengguna"
 

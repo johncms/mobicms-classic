@@ -36,6 +36,16 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $desc = $_POST['description'];
     $type = intval($_POST['type']);
+    $stmt = $db->prepare('SELECT COUNT(*) FROM `library_cats` WHERE `name`=? AND `parent`=?'); //TODO: For discussion
+    $stmt->execute([$name, $id]);
+
+    if ($stmt->fetchColumn()) {
+        echo $tools->displayError(_t('This name already exists'),
+            '<a href="?act=mkdir&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
+        require ROOT_PATH . 'system/end.php';
+        exit;
+    }
+
     $stmt = $db->prepare('INSERT INTO `library_cats` (`parent`, `name`, `description`, `dir`, `pos`) VALUES (?, ?, ?, ?, ?)');
     $stmt->execute([$id, $name, $desc, $type, $lastinsert]);
 

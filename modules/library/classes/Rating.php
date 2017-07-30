@@ -13,6 +13,7 @@ namespace Library;
 /**
  * Звездный рейтинг статей
  * Class Rating
+ *
  * @package Library
  * @author  Koenig(Compolomus)
  */
@@ -20,6 +21,7 @@ class Rating
 {
     /**
      * обязательный аргумент, индификатор статьи
+     *
      * @var int
      */
     private $lib_id = false;
@@ -36,6 +38,7 @@ class Rating
 
     /**
      * Rating constructor.
+     *
      * @param $id
      */
     public function __construct($id)
@@ -60,6 +63,7 @@ class Rating
 
     /**
      * Добавление|обновление рейтинговой звезды
+     *
      * @param $point (0 - 5)
      * @return redirect на страницу для голосования
      */
@@ -83,6 +87,7 @@ class Rating
 
     /**
      * Получение средней оценки (количество закрашенных звезд)
+     *
      * @return float|int
      */
     private function getRate()
@@ -95,22 +100,25 @@ class Rating
 
     /**
      * Вывод закрашенных звезд по рейтингу
+     *
      * @param int $anchor
      * @return string
      */
     public function viewRate($anchor = 0)
     {
+        /** @var \Mobicms\Asset\Manager $asset */
+        $asset = \App::getContainer()->get(\Mobicms\Asset\Manager::class);
+
         $stmt = $this->db->prepare('SELECT COUNT(*) FROM `cms_library_rating` WHERE `st_id` = ?');
         $stmt->execute([$this->lib_id]);
-        $res = ($anchor ? '<a href="#rating">' : '') . $this->tools->image('modules/library/star.' . (str_replace('.', '-',
-                    (string) $this->getRate())) . '.gif',
-                ['alt' => 'rating ' . $this->lib_id . ' article']) . ($anchor ? '</a>' : '') . ' (' . $stmt->fetchColumn() . ')';
+        $res = ($anchor ? '<a href="#rating">' : '') . $asset->img('star.' . (str_replace('.', '-', (string)$this->getRate())) . '.gif')->class('icon') . ($anchor ? '</a>' : '') . ' (' . $stmt->fetchColumn() . ')';
 
         return $res;
     }
 
     /**
      * Вывод формы для голосования
+     *
      * @return string
      */
     public function printVote()
@@ -119,7 +127,7 @@ class Rating
 
         $stmt = $this->db->prepare('SELECT `point` FROM `cms_library_rating` WHERE `user_id` = ? AND `st_id` = ? LIMIT 1');
         $userVote = $stmt->execute([$systemUser->id, $this->lib_id]) ? $stmt->fetchColumn() : -1;
-        
+
         $return = PHP_EOL;
 
         $return .= '<form action="index.php?id=' . $this->lib_id . '&amp;vote" method="post"><div class="gmenu" style="padding: 8px">' . PHP_EOL;

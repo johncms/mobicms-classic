@@ -26,7 +26,7 @@ $userConfig = $systemUser->getConfig();
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Файлы юзера
-$textl = _t('User Files');
+$pageTitle = _t('User Files');
 
 require ROOT_PATH . 'system/head.php';
 require dirname(__DIR__) . '/classes/download.php';

@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
 
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
@@ -16,8 +16,6 @@ $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 // Сюда можно (через запятую) добавить ID тех юзеров, кто не в администрации,
 // но которым разрешено читать и писать в Админ клубе
 $guestAccess = [];
-
-$headmod = 'guestbook';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -60,7 +58,7 @@ if (isset($_SESSION['ga']) && $systemUser->rights < 1 && !in_array($systemUser->
 }
 
 // Задаем заголовки страницы
-$textl = isset($_SESSION['ga']) ? _t('Admin Club') : _t('Guestbook');
+$pageTitle = isset($_SESSION['ga']) ? _t('Admin Club') : _t('Guestbook');
 require ROOT_PATH . 'system/head.php';
 
 // Если гостевая закрыта, выводим сообщение и закрываем доступ (кроме Админов)
@@ -112,7 +110,7 @@ switch ($act) {
             $error[] = _t('You have not entered the message');
         }
 
-        if ($systemUser->ban['1'] || $systemUser->ban['13']) {
+        if (isset($systemUser->ban['1']) || isset($systemUser->ban['13'])) {
             $error[] = _t('Access forbidden');
         }
 

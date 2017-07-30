@@ -26,7 +26,7 @@ $userConfig = $systemUser->getConfig();
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Закладки
-$textl = _t('Favorites');
+$pageTitle = _t('Favorites');
 require dirname(__DIR__) . '/classes/download.php';
 require ROOT_PATH . 'system/head.php';
 
@@ -36,7 +36,7 @@ if (!$systemUser->isValid()) {
     exit;
 }
 
-echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $textl . '</div>';
+echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $pageTitle . '</div>';
 $total = $db->query("SELECT COUNT(*) FROM `download__bookmark` WHERE `user_id` = " . $systemUser->id)->fetchColumn();
 
 // Навигация

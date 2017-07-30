@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$textl = _t('Settings');
+$pageTitle = _t('Settings');
 require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
@@ -157,13 +157,6 @@ switch ($mod) {
                 $set_user['fieldHeight'] = 9;
             }
 
-            // Устанавливаем скин
-            foreach (glob('../theme/*/*.css') as $val) {
-                $theme_list[] = array_pop(explode('/', dirname($val)));
-            }
-
-            $set_user['skin'] = isset($_POST['skin']) && in_array($_POST['skin'], $theme_list) ? htmlspecialchars(trim($_POST['skin'])) : $config['skindef'];
-
             // Устанавливаем язык
             $lng_select = isset($_POST['iso']) ? trim($_POST['iso']) : false;
 
@@ -208,16 +201,6 @@ switch ($mod) {
             '<input type="text" name="fieldHeight" size="2" maxlength="1" value="' . $userConfig->fieldHeight . '"/> ' . _t('Height of field') . ' (1-9)<br />';
 
         echo '</p><p><h3>' . _t('Appearance') . '</h3>';
-        // Выбор темы оформления
-        echo '<select name="skin">';
-
-        foreach (glob('../theme/*/*.css') as $val) {
-            $dir = explode('/', dirname($val));
-            $theme = array_pop($dir);
-            echo '<option' . ($userConfig->skin == $theme ? ' selected="selected">' : '>') . $theme . '</option>';
-        }
-
-        echo '</select> ' . _t('Theme') . '</p>';
         echo '<p><input type="text" name="kmess" size="2" maxlength="2" value="' . $userConfig->kmess . '"/> ' . _t('Size of Lists') . ' (5-99)' .
             '</p>';
 

@@ -28,13 +28,7 @@ if (isset($_GET['ip'])) {
     $search = trim($_GET['ip']);
 }
 
-$menu = [
-    (!$mod ? '<b>' . _t('Actual IP') . '</b>' : '<a href="index.php?act=search_ip&amp;search=' . rawurlencode($search) . '">' . _t('Actual IP') . '</a>'),
-    ($mod == 'history' ? '<b>' . _t('IP history') . '</b>' : '<a href="index.php?act=search_ip&amp;mod=history&amp;search=' . rawurlencode($search) . '">' . _t('IP history') . '</a>'),
-];
-
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Admin Panel') . '</b></a> | ' . _t('Search IP') . '</div>' .
-    '<div class="topmenu">' . implode(' | ', $menu) . '</div>' .
     '<form action="index.php?act=search_ip" method="post"><div class="gmenu"><p>' .
     '<input type="text" name="search" value="' . $tools->checkout($search) . '" />' .
     '<input type="submit" value="' . _t('Search') . '" name="submit" /><br>' .
@@ -49,7 +43,7 @@ if ($search) {
         if (!preg_match('#^(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$#', $ip)) {
             $error[] = _t('First IP is entered incorrectly');
         } else {
-            $ip1 = ip2long($ip);
+            $ip1 = $ip;
         }
 
         $ip = trim($array[1]);
@@ -57,7 +51,7 @@ if ($search) {
         if (!preg_match('#^(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$#', $ip)) {
             $error[] = _t('Second IP is entered incorrectly');
         } else {
-            $ip2 = ip2long($ip);
+            $ip2 = $ip;
         }
     } elseif (strstr($search, '*')) {
         // Обрабатываем адреса с маской
@@ -74,15 +68,15 @@ if ($search) {
                 $error = _t('Invalid IP');
             }
 
-            $ip1 = ip2long($ipt1[0] . '.' . $ipt1[1] . '.' . $ipt1[2] . '.' . $ipt1[3]);
-            $ip2 = ip2long($ipt2[0] . '.' . $ipt2[1] . '.' . $ipt2[2] . '.' . $ipt2[3]);
+            $ip1 = $ipt1[0] . '.' . $ipt1[1] . '.' . $ipt1[2] . '.' . $ipt1[3];
+            $ip2 = $ipt2[0] . '.' . $ipt2[1] . '.' . $ipt2[2] . '.' . $ipt2[3];
         }
     } else {
         // Обрабатываем одиночный адрес
         if (!preg_match('#^(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$#', $search)) {
             $error = _t('Invalid IP');
         } else {
-            $ip1 = ip2long($search);
+            $ip1 = $search;
             $ip2 = $ip1;
         }
     }
@@ -94,30 +88,18 @@ if ($search && !$error) {
 
     // Выводим результаты поиска
     echo '<div class="phdr">' . _t('Search results') . '</div>';
-
-    if ($mod == 'history') {
-        $total = $db->query("SELECT COUNT(DISTINCT `cms_users_iphistory`.`user_id`) FROM `cms_users_iphistory` WHERE `ip` BETWEEN $ip1 AND $ip2 OR `ip_via_proxy` BETWEEN $ip1 AND $ip2")->fetchColumn();
-    } else {
-        $total = $db->query("SELECT COUNT(*) FROM `users` WHERE `ip` BETWEEN $ip1 AND $ip2 OR `ip_via_proxy` BETWEEN $ip1 AND $ip2")->fetchColumn();
-    }
+    $data = [$ip1, $ip2, $ip1, $ip2];
+    $req = $db->prepare('SELECT COUNT(*) FROM `users` WHERE `ip` BETWEEN ? AND ? OR `ip_via_proxy` BETWEEN ? AND ?');
+    $req->execute($data);
+    $total = $req->fetchColumn();
 
     if ($total > $userConfig->kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=search_ip' . ($mod == 'history' ? '&amp;mod=history' : '') . '&amp;search=' . urlencode($search) . '&amp;', $total) . '</div>';
+        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=search_ip&amp;search=' . urlencode($search) . '&amp;', $total) . '</div>';
     }
 
     if ($total) {
-        if ($mod == 'history') {
-            $req = $db->query("SELECT `cms_users_iphistory`.*, `users`.`name`, `users`.`rights`, `users`.`lastdate`, `users`.`sex`, `users`.`status`, `users`.`datereg`, `users`.`id`, `users`.`browser`
-                FROM `cms_users_iphistory` LEFT JOIN `users` ON `cms_users_iphistory`.`user_id` = `users`.`id`
-                WHERE `cms_users_iphistory`.`ip` BETWEEN $ip1 AND $ip2 OR `cms_users_iphistory`.`ip_via_proxy` BETWEEN $ip1 AND $ip2
-                GROUP BY `users`.`id`
-                ORDER BY `ip` ASC, `name` ASC" . $tools->getPgStart(true));
-        } else {
-            $req = $db->query("SELECT * FROM `users`
-            WHERE `ip` BETWEEN $ip1 AND $ip2 OR `ip_via_proxy` BETWEEN $ip1 AND $ip2
-            ORDER BY `ip` ASC, `name` ASC" . $tools->getPgStart(true));
-        }
-
+        $req = $db->prepare('SELECT * FROM `users` WHERE `ip` BETWEEN ? AND ? OR `ip_via_proxy` BETWEEN ? AND ? ORDER BY `ip` ASC, `name` ASC' . $tools->getPgStart(true));
+        $req->execute($data);
         $i = 0;
 
         while ($res = $req->fetch()) {
@@ -134,8 +116,8 @@ if ($search && !$error) {
 
     if ($total > $userConfig->kmess) {
         // Навигация по страницам
-        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=search_ip' . ($mod == 'history' ? '&amp;mod=history' : '') . '&amp;search=' . urlencode($search) . '&amp;', $total) . '</div>' .
-            '<p><form action="index.php?act=search_ip' . ($mod == 'history' ? '&amp;mod=history' : '') . '&amp;search=' . urlencode($search) . '" method="post">' .
+        echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=search_ip&amp;search=' . urlencode($search) . '&amp;', $total) . '</div>' .
+            '<p><form action="index.php?act=search_ip&amp;search=' . urlencode($search) . '" method="post">' .
             '<input type="text" name="page" size="2"/><input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .
             '</form></p>';
     }

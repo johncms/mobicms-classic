@@ -12,7 +12,8 @@ defined('MOBICMS') or die('Error: restricted access');
 
 $obj = new Library\Hashtags(0);
 
-if (isset($_GET['tag'])) {
+if ($input_request['tag']) {
+
     /** @var Psr\Container\ContainerInterface $container */
     $container = App::getContainer();
 
@@ -25,11 +26,10 @@ if (isset($_GET['tag'])) {
     /** @var Mobicms\Api\ToolsInterface $tools */
     $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-    $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
-    $tag = isset($_GET['tag']) ? urldecode($_GET['tag']) : '';
+    $tag = urldecode($input_request['tag']);
 
-    if ($obj->getAllTagStats($tag)) {
-        $total = sizeof($obj->getAllTagStats($tag));
+    if ($stats = $obj->getAllTagStats($tag)) {
+        $total = sizeof($stats);
         $page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
         $start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
 
@@ -39,17 +39,16 @@ if (isset($_GET['tag'])) {
             echo '<div class="topmenu">' . $tools->displayPagination('?act=tags&amp;tag=' . urlencode($tag) . '&amp;', $total) . '</div>';
         }
 
-        foreach (new LimitIterator(new ArrayIterator($obj->getAllTagStats($tag)), $start, $userConfig->kmess) as $txt) {
-            $query = $db->query("SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `comm_count`, `comments` FROM `library_texts` WHERE `id` = " . $txt)->fetch();
-            if ($query->rowCount()) {
-                $row = $query->fetch();
+        foreach (new LimitIterator(new ArrayIterator($stats), $start, $userConfig->kmess) as $txt) {
+            $row = $db->query("SELECT `id`, `name`, SUBSTRING( `text` , 1, 200 ) as 'text', `time`, `uploader`, `uploader_id`, `count_views`, `comm_count`, `comments` FROM `library_texts` WHERE `id` = " . $txt)->fetch();
+            if ($row) {
                 $obj = new Library\Hashtags($row['id']);
                 echo '<div class="list' . (++$i % 2 ? 2 : 1) . '">'
                     . (file_exists('../uploads/library/images/small/' . $row['id'] . '.png')
                         ? '<div class="avatar"><img src="../uploads/library/images/small/' . $row['id'] . '.png" alt="screen" /></div>'
                         : '')
                     . '<div class="righttable"><a href="index.php?id=' . $row['id'] . '">' . $tools->checkout($row['name']) . '</a>'
-                    . '<div>' . $tools->checkout($db->query("SELECT SUBSTRING(`text`, 1 , 200) FROM `library_texts` WHERE `id`=" . $row['id'])->fetchColumn(), 0, 2) . '</div></div>'
+                    . '<div>' . $tools->checkout($row['text']) . '</div></div>'
                     . '<div class="sub">' . _t('Who added') . ': ' . '<a href="' . App::getContainer()->get('config')['mobicms']['homeurl'] . '/profile/?user=' . $row['uploader_id'] . '">' . $tools->checkout($row['uploader']) . '</a>' . ' (' . $tools->displayDate($row['time']) . ')</div>'
                     . '<div><span class="gray">' . _t('Number of readings') . ':</span> ' . $row['count_views'] . '</div>'
                     . '<div>' . ($obj->getAllStatTags() ? _t('Tags') . ' [ ' . $obj->getAllStatTags(1) . ' ]' : '') . '</div>'
@@ -65,7 +64,9 @@ if (isset($_GET['tag'])) {
         }
         echo '<p><a href="?">' . _t('To Library') . '</a></p>';
     } else {
-        echo '<div class="menu"><p>' . _t('The list is empty') . '</p></div>';
+        echo '<div class="menu"><p>' . _t('The list is empty') . '</p>'
+        . '<p><a href="?">' . _t('To Library') . '</a></p>'.
+        '</div>';
     }
 } else {
     Library\Utils::redir404();

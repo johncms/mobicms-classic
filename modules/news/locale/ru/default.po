@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
-"POT-Creation-Date: 2017-06-12 21:14+0400\n"
-"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"POT-Creation-Date: 2017-07-30 15:43+0400\n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -19,138 +19,138 @@ msgstr ""
 "X-Crowdin-Language: ru\n"
 "X-Crowdin-File: /modules/news/default.pot\n"
 
-#: index.php:41 index.php:48 index.php:186 index.php:244 index.php:290
-#: index.php:308
+#: index.php:39 index.php:46 index.php:184 index.php:242 index.php:288
+#: index.php:306
 msgid "News"
 msgstr "Новости"
 
-#: index.php:48 index.php:311
+#: index.php:46 index.php:309
 msgid "Add"
 msgstr "Добавить"
 
-#: index.php:57 index.php:198
+#: index.php:55 index.php:196
 msgid "You have not entered news title"
 msgstr "Вы не ввели заголовок статьи"
 
-#: index.php:61 index.php:202
+#: index.php:59 index.php:200
 msgid "You have not entered news text"
 msgstr "Вы не ввели текст статьи"
 
-#: index.php:67
+#: index.php:65
 #, php-format
 msgid "You cannot add the message so often. Please, wait %d seconds."
 msgstr "Вы не можете так часто добавлять сообщения. Пожалуйста, подождите %d секунд."
 
-#: index.php:148
+#: index.php:146
 msgid "News added"
 msgstr "Новость добавлена"
 
-#: index.php:148 index.php:150 index.php:175 index.php:189 index.php:233
-#: index.php:255 index.php:262 index.php:269 index.php:295
+#: index.php:146 index.php:148 index.php:173 index.php:187 index.php:231
+#: index.php:253 index.php:260 index.php:267 index.php:293
 msgid "Back to news"
 msgstr "К новостям"
 
-#: index.php:154 index.php:227
+#: index.php:152 index.php:225
 msgid "Title"
 msgstr "Заголовок"
 
-#: index.php:156 index.php:229
+#: index.php:154 index.php:227
 msgid "Text"
 msgstr "Текст"
 
-#: index.php:158
+#: index.php:156
 msgid "Discussion"
 msgstr "Обсуждение"
 
-#: index.php:160
+#: index.php:158
 msgid "Do not discuss"
 msgstr "Не обсуждать"
 
-#: index.php:173 index.php:231
+#: index.php:171 index.php:229
 msgid "Save"
 msgstr "Сохранить"
 
-#: index.php:186 index.php:335
+#: index.php:184 index.php:333
 msgid "Edit"
 msgstr "Изменить"
 
-#: index.php:189
+#: index.php:187
 msgid "Wrong data"
 msgstr "Неверные данные"
 
-#: index.php:220
+#: index.php:218
 msgid "Repeat"
 msgstr "Повторить"
 
-#: index.php:222
+#: index.php:220
 msgid "Article changed"
 msgstr "Статья добавлена"
 
-#: index.php:222
+#: index.php:220
 msgid "Continue"
 msgstr "Продолжить"
 
-#: index.php:244 index.php:277 index.php:311
+#: index.php:242 index.php:275 index.php:309
 msgid "Clear"
 msgstr "Очистить"
 
-#: index.php:255
+#: index.php:253
 msgid "Delete all news older than 1 week"
 msgstr "Удалены все новости, старше 1 недели"
 
-#: index.php:262
+#: index.php:260
 msgid "Delete all news"
 msgstr "Удалены все новости"
 
-#: index.php:269
+#: index.php:267
 msgid "Delete all news older than 1 month"
 msgstr "Удалены все новости, старше 1 месяца"
 
-#: index.php:273
+#: index.php:271
 msgid "Clearing parameters"
 msgstr "Параметры очистки"
 
-#: index.php:274
+#: index.php:272
 msgid "Older than 1 month"
 msgstr "Старше 1 месяца"
 
-#: index.php:275
+#: index.php:273
 msgid "Older than 1 week"
 msgstr "Старше 1 недели"
 
-#: index.php:276
+#: index.php:274
 msgid "Clear all"
 msgstr "Очищаем все"
 
-#: index.php:279 index.php:298
+#: index.php:277 index.php:296
 msgid "Cancel"
 msgstr "Отмена"
 
-#: index.php:290 index.php:298 index.php:336
+#: index.php:288 index.php:296 index.php:334
 msgid "Delete"
 msgstr "Удалить"
 
-#: index.php:295
+#: index.php:293
 msgid "Article deleted"
 msgstr "Статья удалена"
 
-#: index.php:297
+#: index.php:295
 msgid "Do you really want to delete?"
 msgstr "Действительно хотите удалить?"
 
-#: index.php:323
+#: index.php:321
 msgid "Author"
 msgstr "Автор"
 
-#: index.php:330
+#: index.php:328
 msgid "Discuss in Forum"
 msgstr "Обсудить на форуме"
 
-#: index.php:342
+#: index.php:340
 msgid "Total"
 msgstr "Всего"
 
-#: index.php:348
+#: index.php:346
 msgid "To Page"
 msgstr "На страницу"
 

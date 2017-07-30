@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Lithuanian\n"
 "MIME-Version: 1.0\n"
@@ -19,127 +19,127 @@ msgstr ""
 "X-Crowdin-File: /modules/registration/default.pot\n"
 "Language: lt_LT\n"
 
-#: index.php:29 index.php:48 index.php:207
+#: index.php:29 index.php:47 index.php:206
 msgid "Registration"
 msgstr "Registracija"
 
-#: index.php:35
+#: index.php:34
 msgid "Registration is temporarily closed"
 msgstr "Registracija laikinai uždarytą"
 
-#: index.php:59
+#: index.php:58
 msgid "You have not entered Nickname"
 msgstr "Jus neįvedėte slapyvardžio"
 
-#: index.php:61
+#: index.php:60
 msgid "Nickname wrong length"
 msgstr "Neteisingas slapyvardžio ilgis"
 
-#: index.php:65
+#: index.php:64
 msgid "Invalid characters"
 msgstr "Klaidingi simboliai"
 
-#: index.php:70
+#: index.php:69
 msgid "You have not entered password"
 msgstr "Jus neįvedėte slaptažodžio"
 
-#: index.php:72
+#: index.php:71
 msgid "Invalid length"
 msgstr "Neleistinas ilgis"
 
-#: index.php:77
+#: index.php:76
 msgid "You have not selected genger"
 msgstr "Jūs neesate pasirinkę jokio turinio"
 
-#: index.php:86
+#: index.php:85
 msgid "The security code is not correct"
 msgstr "Neteisingas apsaugos kodas"
 
-#: index.php:101
+#: index.php:100
 msgid "Selected Nickname is already in use"
 msgstr "Šitas slapyvardis jau naudojamas"
 
-#: index.php:148
+#: index.php:147
 msgid "Your registratiton data"
 msgstr "Jus sėkmingai užregistruotas"
 
-#: index.php:149
+#: index.php:148
 msgid "Your ID"
 msgstr "Jūsų ID"
 
-#: index.php:150
+#: index.php:149
 msgid "Your Username"
 msgstr "Jūsų vartotojo vardas"
 
-#: index.php:151
+#: index.php:150
 msgid "Your Password"
 msgstr "Jūsų slaptažodis"
 
-#: index.php:154
+#: index.php:153
 msgid "Please, wait until a moderator approves your registration"
 msgstr "Prašome palaukti, kol moderatorius patvirtins jūsų registraciją"
 
-#: index.php:158
+#: index.php:157
 msgid "Enter"
 msgstr "Įeiti"
 
-#: index.php:169
+#: index.php:168
 msgid "You can get authorized on the site after confirmation of your registration."
 msgstr "Jūs galite autorizotis svetainėje tik tada, kada patvirtins jūsų registraciją."
 
-#: index.php:177
+#: index.php:176
 msgid "Choose Nickname"
 msgstr "Pasirinkite Slapyvardį"
 
-#: index.php:181
+#: index.php:180
 msgid "Min. 2, Max. 20 characters.<br />Allowed letters of the russian and latin alphabets, numbers and symbols - = @ ! ? ~ _ ( ) [ ] . * (Except zero)"
 msgstr "Min. 2, maks. 20 simbolių. < br / > leidžiama rusų ir lotynų abėcėlės, skaičių ir simbolių raštai - = @!? ~ _ ( ) [ ] . * (Išskyrus nulį)"
 
-#: index.php:182
+#: index.php:181
 msgid "Assign a password"
 msgstr "Priskirti slaptažodį"
 
-#: index.php:186
+#: index.php:185
 msgid "Min. 3 characters"
 msgstr "Min. 3 simbolių"
 
-#: index.php:187
+#: index.php:186
 msgid "Select Gender"
 msgstr "Pasirinkite lytį"
 
-#: index.php:191
+#: index.php:190
 msgid "Man"
 msgstr "Vyras"
 
-#: index.php:192
+#: index.php:191
 msgid "Woman"
 msgstr "Moteris"
 
-#: index.php:195
+#: index.php:194
 msgid "Your name"
 msgstr "Jūsų vardas"
 
-#: index.php:197
+#: index.php:196
 msgid "Max. 50 characters"
 msgstr "Maks. 50 simbolių"
 
-#: index.php:198
+#: index.php:197
 msgid "Tell us a little about yourself"
 msgstr "Papasakokite šiek tiek apie save"
 
-#: index.php:200
+#: index.php:199
 msgid "Max. 1000 characters"
 msgstr "Maks. 1000 simbolių"
 
-#: index.php:202 index.php:203
+#: index.php:201 index.php:202
 msgid "Verification code"
 msgstr "Patvirtinimo kodas"
 
-#: index.php:206
+#: index.php:205
 msgid "If you cannot see the image code, enable graphics in your browser and refresh this page"
 msgstr "Jeigu jūs nematote vaizdo kodo, įjunkite grafika jūsų naršyklėję ir atnaujinkitę šį puslapį"
 
-#: index.php:208
+#: index.php:207
 msgid "Please, do not register names like 111, shhhh, uuuu, etc. They will be deleted. <br /> Also all the profiles registered via proxy servers will be deleted"
 msgstr "Prašome, ne registroti slapyvardžių, kaip 111, shhhh, uuuu, ir kt. Jie bus ištrinti. <br /> Taip pat neregistruokite svetainėję per proxy serverius. Jie iškart bus ištrinti"
 

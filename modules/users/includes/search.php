@@ -8,9 +8,7 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
-
-$headmod = 'usersearch';
+defined('MOBICMS') or die('Error: restricted access');
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -25,14 +23,14 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-$textl = _t('User Search');
+$pageTitle = _t('User Search');
 require ROOT_PATH . 'system/head.php';
 
 // Принимаем данные, выводим форму поиска
 $search_post = isset($_POST['search']) ? trim($_POST['search']) : false;
 $search_get = isset($_GET['search']) ? rawurldecode(trim($_GET['search'])) : '';
 $search = $search_post ? $search_post : $search_get;
-echo '<div class="phdr"><a href="index.php"><b>' . _t('Community') . '</b></a> | ' . _t('User Search') . '</div>' .
+echo '<div class="phdr"><a href="."><b>' . _t('Community') . '</b></a> | ' . _t('User Search') . '</div>' .
     '<form action="?act=search" method="post">' .
     '<div class="gmenu"><p>' .
     '<input type="text" name="search" value="' . $tools->checkout($search) . '" />' .
@@ -65,7 +63,7 @@ if ($search && !$error) {
     echo '<div class="phdr"><b>' . _t('Searching results') . '</b></div>';
 
     if ($total > $userConfig->kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('search.php?search=' . urlencode($search) . '&amp;', $total) . '</div>';
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=search&amp;search=' . urlencode($search) . '&amp;', $total) . '</div>';
     }
 
     if ($total) {
@@ -85,8 +83,8 @@ if ($search && !$error) {
     echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
     if ($total > $userConfig->kmess) {
-        echo '<div class="topmenu">' . $tools->displayPagination('search.php?search=' . urlencode($search) . '&amp;', $total) . '</div>' .
-            '<p><form action="search.php?search=' . urlencode($search) . '" method="post">' .
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=search&amp;search=' . urlencode($search) . '&amp;', $total) . '</div>' .
+            '<p><form action="?act=search&amp;search=' . urlencode($search) . '" method="post">' .
             '<input type="text" name="page" size="2"/>' .
             '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/>' .
             '</form></p>';
@@ -98,7 +96,7 @@ if ($search && !$error) {
     echo '<div class="phdr"><small>' . _t('Search by Nickname are case insensitive. For example <strong>UsEr</strong> and <strong>user</strong> are identical.') . '</small></div>';
 }
 
-echo '<p>' . ($search && !$error ? '<a href="search.php">' . _t('New search') . '</a><br />' : '') .
-    '<a href="index.php">' . _t('Back') . '</a></p>';
+echo '<p>' . ($search && !$error ? '<a href="?act=search">' . _t('New search') . '</a><br />' : '') .
+    '<a href=".">' . _t('Back') . '</a></p>';
 
 require ROOT_PATH . 'system/end.php';

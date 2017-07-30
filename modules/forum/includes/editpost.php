@@ -47,7 +47,7 @@ if ($req->rowCount()) {
     $topic = $db->query("SELECT `refid`, `curators` FROM `forum` WHERE `id` = " . $res['refid'])->fetch();
     $curators = !empty($topic['curators']) ? unserialize($topic['curators']) : [];
 
-    if (array_key_exists($systemUser->id, $curators)) {
+    if ($systemUser->rights < 3 && array_key_exists($systemUser->id, $curators)) {
         $systemUser->rights = 3;
     }
 

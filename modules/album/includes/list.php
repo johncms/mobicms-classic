@@ -20,6 +20,9 @@ if (isset($_SESSION['ap'])) {
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -44,7 +47,7 @@ if ($total) {
     while ($res = $req->fetch()) {
         $count = $db->query("SELECT COUNT(*) FROM `cms_album_files` WHERE `album_id` = '" . $res['id'] . "'")->fetchColumn();
         echo ($i % 2 ? '<div class="list2">' : '<div class="list1">') .
-            '<img src="../assets/modules/album/album-' . $res['access'] . '.gif" width="16" height="16" class="left" />&#160;' .
+            $asset->img('album-' . $res['access'] . '.gif')->class('left') .'&#160;' .
             '<a href="?act=show&amp;al=' . $res['id'] . '&amp;user=' . $user['id'] . '"><b>' . $tools->checkout($res['name']) . '</b></a>&#160;(' . $count . ')';
 
         if ($user['id'] == $systemUser->id || $systemUser->rights >= 6 || !empty($res['description'])) {

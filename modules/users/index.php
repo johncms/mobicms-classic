@@ -8,13 +8,11 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
 
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
-
-$headmod = 'users';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -53,14 +51,17 @@ $array = [
 if (in_array($act, $array) && file_exists(__DIR__ . '/includes/' . $act . '.php')) {
     require_once __DIR__ . '/includes/' . $act . '.php';
 } else {
+    /** @var Mobicms\Asset\Manager $asset */
+    $asset = $container->get(Mobicms\Asset\Manager::class);
+
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
-    /** @var Mobicms\Counters $counters */
+    /** @var Mobicms\Deprecated\Counters $counters */
     $counters = $container->get('counters');
 
     // Актив сайта
-    $textl = _t('Community');
+    $pageTitle = _t('Community');
     require ROOT_PATH . 'system/head.php';
 
     $brth = $db->query("SELECT COUNT(*) FROM `users` WHERE `dayb` = '" . date('j', time()) . "' AND `monthb` = '" . date('n', time()) . "' AND `preg` = '1'")->fetchColumn();
@@ -68,18 +69,17 @@ if (in_array($act, $array) && file_exists(__DIR__ . '/includes/' . $act . '.php'
 
     echo '<div class="phdr"><b>' . _t('Community') . '</b></div>' .
         '<div class="gmenu"><form action="?act=search" method="post">' .
-        '<p><h3><img src="../assets/images/search.png" width="16" height="16" class="left" />&#160;' . _t('Look for the User') . '</h3>' .
+        '<p><h3>' . $asset->img('search.png')->class('left') . '&#160;' . _t('Look for the User') . '</h3>' .
         '<input type="text" name="search"/>' .
         '<input type="submit" value="' . _t('Search') . '" name="submit" /><br />' .
         '<small>' . _t('The search is performed by Nickname and are case-insensitive.') . '</small></p></form></div>' .
         '<div class="menu"><p>' .
-        $tools->image('images/contacts.png', ['width' => 16, 'height' => 16]) . '<a href="?act=userlist">' . _t('Users') . '</a> (' . $container->get('counters')->users() . ')<br />' .
-        $tools->image('images/users.png', ['width' => 16, 'height' => 16]) . '<a href="?act=admlist">' . _t('Administration') . '</a> (' . $count_adm . ')<br>' .
-        ($brth ? $tools->image('images/award.png', ['width' => 16, 'height' => 16]) . '<a href="?act=birth">' . _t('Birthdays') . '</a> (' . $brth . ')<br>' : '') .
-        $tools->image('images/photo.gif', ['width' => 16, 'height' => 16]) . '<a href="../album/">' . _t('Photo Albums') . '</a> (' . $counters->album() . ')<br>' .
-        $tools->image('images/rate.gif', ['width' => 16, 'height' => 16]) . '<a href="?act=top">' . _t('Top Activity') . '</a></p>' .
-        '</div>' .
-        '<div class="phdr"><a href="index.php">' . _t('Back') . '</a></div>';
+        $asset->img('contacts.png')->class('icon') . '<a href="?act=userlist">' . _t('Users') . '</a> (' . $container->get('counters')->users() . ')<br />' .
+        $asset->img('users.png')->class('icon') . '<a href="?act=admlist">' . _t('Administration') . '</a> (' . $count_adm . ')<br>' .
+        ($brth ? $asset->img('award.png')->class('icon') . '<a href="?act=birth">' . _t('Birthdays') . '</a> (' . $brth . ')<br>' : '') .
+        $asset->img('photo.gif')->class('icon') . '<a href="../album/">' . _t('Photo Albums') . '</a> (' . $counters->album() . ')<br>' .
+        $asset->img('rate.gif')->class('icon') . '<a href="?act=top">' . _t('Top Activity') . '</a></p>' .
+        '</div>';
 }
 
 require_once ROOT_PATH . 'system/end.php';

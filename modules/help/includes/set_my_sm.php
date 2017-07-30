@@ -19,6 +19,9 @@ $cat = isset($_GET['cat']) ? trim($_GET['cat']) : '';
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var PDO $db */
+$db = $container->get(PDO::class);
+
 /** @var Mobicms\Http\Response $response */
 $response = $container->get(Mobicms\Http\Response::class);
 
@@ -30,7 +33,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 $start = $tools->getPgStart();
 
 if (($adm && !$systemUser->rights) || ($add && !$adm && !$cat) || ($delete && !$_POST['delete_sm']) || ($add && !$_POST['add_sm'])) {
-    echo $tools->displayError(_t('Wrong data'), '<a href="faq.php?act=smileys">' . _t('Smilies') . '</a>');
+    echo $tools->displayError(_t('Wrong data'), '<a href="?act=smilies">' . _t('Smilies') . '</a>');
     require ROOT_PATH . 'system/end.php';
     exit;
 }

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
-"POT-Creation-Date: 2017-06-12 21:11+0400\n"
-"PO-Revision-Date: 2017-06-12 13:31-0400\n"
+"POT-Creation-Date: 2017-07-30 15:42+0400\n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Arabic\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Crowdin-Language: ar\n"
 "X-Crowdin-File: /modules/album/default.pot\n"
 
-#: includes/comments.php:34 index.php:51
+#: includes/comments.php:34 index.php:53
 msgid "User does not exists"
 msgstr "المستخدم غير موجود"
 
@@ -32,12 +32,12 @@ msgstr "الوصول محظور"
 msgid "Album List"
 msgstr "قائمة الألبومات"
 
-#: includes/comments.php:52 includes/list.php:32 includes/show.php:48
-#: includes/top.php:124 includes/users.php:47 index.php:140
+#: includes/comments.php:52 includes/list.php:35 includes/show.php:48
+#: includes/top.php:124 includes/users.php:47 index.php:142
 msgid "Photo Albums"
 msgstr "ألبومات الصور"
 
-#: includes/comments.php:53 includes/list.php:32 includes/show.php:48
+#: includes/comments.php:53 includes/list.php:35 includes/show.php:48
 msgid "Personal"
 msgstr "الملف الشخصي"
 
@@ -74,7 +74,7 @@ msgid "Photo Album"
 msgstr "ألبوم الصور"
 
 #: includes/delete.php:33 includes/delete.php:58 includes/image_delete.php:54
-#: includes/list.php:55 includes/show.php:165
+#: includes/list.php:58 includes/show.php:165
 msgid "Delete"
 msgstr "حذف"
 
@@ -88,7 +88,7 @@ msgstr "حذف الألبوم"
 msgid "Continue"
 msgstr "متابعه"
 
-#: includes/delete.php:56 includes/show.php:55 index.php:32
+#: includes/delete.php:56 includes/show.php:55 index.php:35
 msgid "Album"
 msgstr "الألبوم"
 
@@ -105,7 +105,7 @@ msgstr "الغاء"
 msgid "Edit Album"
 msgstr "تحرير ألبوم"
 
-#: includes/edit.php:45 includes/list.php:37
+#: includes/edit.php:45 includes/list.php:40
 msgid "Create Album"
 msgstr "إنشاء الألبوم"
 
@@ -276,24 +276,24 @@ msgstr "تحميل"
 msgid "Allowed format image JPG, JPEG, PNG, GIF<br>File size should not exceed %d kb."
 msgstr "يسمح تنسيق الصورة JPG، JPEG، PNG، GIF <br>حجم الملف يجب أن لا تتجاوز %d كيلو بايت."
 
-#: includes/list.php:52
+#: includes/list.php:55
 msgid "Up"
 msgstr "فوق"
 
-#: includes/list.php:53
+#: includes/list.php:56
 msgid "Down"
 msgstr "تحت"
 
-#: includes/list.php:54 includes/show.php:163
+#: includes/list.php:57 includes/show.php:163
 msgid "Edit"
 msgstr "تحرير"
 
-#: includes/list.php:67 includes/show.php:182 includes/top.php:176
+#: includes/list.php:70 includes/show.php:182 includes/top.php:176
 #: includes/users.php:68
 msgid "The list is empty"
 msgstr "القائمة فارغة"
 
-#: includes/list.php:70 includes/show.php:185 includes/top.php:179
+#: includes/list.php:73 includes/show.php:185 includes/top.php:179
 #: includes/users.php:70
 msgid "Total"
 msgstr "مجموع"
@@ -338,23 +338,23 @@ msgstr "تعليقات غير مقروءة"
 msgid "Recent comments"
 msgstr "التعليقات الأخيرة"
 
-#: includes/top.php:63 index.php:158
+#: includes/top.php:63 index.php:160
 msgid "Top Views"
 msgstr "أعلى المشاهدات"
 
-#: includes/top.php:73 index.php:157
+#: includes/top.php:73 index.php:159
 msgid "Top Downloads"
 msgstr "أعلى 5 تنزيل"
 
-#: includes/top.php:83 index.php:159
+#: includes/top.php:83 index.php:161
 msgid "Top Comments"
 msgstr "أعلى تعليقات"
 
-#: includes/top.php:93 index.php:156
+#: includes/top.php:93 index.php:158
 msgid "Top Votes"
 msgstr "أعلى الأصوات"
 
-#: includes/top.php:103 index.php:160
+#: includes/top.php:103 index.php:162
 msgid "Top Worst"
 msgstr "أعلى أسوأ"
 
@@ -366,11 +366,11 @@ msgstr "صور جديدة"
 msgid "All"
 msgstr "كـُـلّها"
 
-#: includes/users.php:44 index.php:147
+#: includes/users.php:44 index.php:149
 msgid "Guys"
 msgstr "الرجال"
 
-#: includes/users.php:45 index.php:148
+#: includes/users.php:45 index.php:150
 msgid "Girls"
 msgstr "البنات"
 
@@ -378,43 +378,43 @@ msgstr "البنات"
 msgid "List"
 msgstr "قائمة"
 
-#: index.php:41
+#: index.php:43
 msgid "For registered users only"
 msgstr "للمستخدمين المسجلين فقط"
 
-#: index.php:83 index.php:155
+#: index.php:85 index.php:157
 msgid "Rating"
 msgstr "تصنيف"
 
-#: index.php:84
+#: index.php:86
 msgid "Against"
 msgstr "ضد"
 
-#: index.php:84
+#: index.php:86
 msgid "For"
 msgstr "لـ"
 
-#: index.php:91
+#: index.php:93
 msgid "Vote"
 msgstr "صوت"
 
-#: index.php:142
+#: index.php:144
 msgid "New Photos"
 msgstr "صور جديدة"
 
-#: index.php:143
+#: index.php:145
 msgid "New Comments"
 msgstr "تعليق جديد"
 
-#: index.php:146
+#: index.php:148
 msgid "Albums"
 msgstr "ألبومات"
 
-#: index.php:151
+#: index.php:153
 msgid "My Album"
 msgstr "ألبومي"
 
-#: index.php:163
+#: index.php:165
 msgid "Users"
 msgstr "الاعضاء"
 

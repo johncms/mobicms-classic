@@ -47,7 +47,8 @@ class Download
         } elseif ($format_file == 'thm') {
             require_once('Tar.php');
             $theme = new Archive_Tar($file);
-            if (!$file_th = $theme->extractInString('Theme.xml') or !$file_th = $theme->extractInString(pathinfo($file, PATHINFO_FILENAME) . '.xml')) {
+            if (!$file_th = $theme->extractInString('Theme.xml') or !$file_th = $theme->extractInString(pathinfo($file,
+                        PATHINFO_FILENAME) . '.xml')) {
                 $list = $theme->listContent();
                 $all = sizeof($list);
                 for ($i = 0; $i < $all; ++$i) {
@@ -119,6 +120,9 @@ class Download
         /** @var Psr\Container\ContainerInterface $container */
         $container = App::getContainer();
 
+        /** @var Mobicms\Asset\Manager $asset */
+        $asset = $container->get(Mobicms\Asset\Manager::class);
+
         /** @var Mobicms\Api\UserInterface $systemUser */
         $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -128,7 +132,7 @@ class Download
         /** @var Mobicms\Api\ConfigInterface $config */
         $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-        $out .= $tools->image('images/system/' . $icon_id . '.png') . '&nbsp;';
+        $out .= $asset->img('system/' . $icon_id . '.png')->class('icon') . '&nbsp;';
         $out .= '<a href="?act=view&amp;id=' . $res_down['id'] . '">' . htmlspecialchars($res_down['rus_name']) . '</a> (' . $res_down['field'] . ')';
 
         if ($res_down['time'] > $old) {
@@ -192,14 +196,20 @@ class Download
     {
         global $old;
 
+        /** @var Psr\Container\ContainerInterface $container */
+        $container = App::getContainer();
+
+        /** @var Mobicms\Asset\Manager $asset */
+        $asset = $container->get(Mobicms\Asset\Manager::class);
+
         /** @var Mobicms\Api\ToolsInterface $tools */
-        $tools = App::getContainer()->get(Mobicms\Api\ToolsInterface::class);
+        $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
         $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
         $morelink = isset($array['more']) ? '&amp;more=' . $array['more'] : '';
         $out = '<table  width="100%"><tr><td width="16" valign="top">';
         $icon_id = isset(self::$extensions[$array['format']]) ? self::$extensions[$array['format']] : 9;
-        $out .= $tools->image('images/system/' . $icon_id . '.png') . '&nbsp;';
+        $out .= $asset->img('system/' . $icon_id . '.png')->class('icon') . '&nbsp;';
         $out .= '</td><td><a href="?act=load_file&amp;id=' . $id . $morelink . '">' . $array['res']['text'] . '</a> (' . Download::displayFileSize((isset($array['res']['size']) ? $array['res']['size'] : filesize($array['res']['dir'] . '/' . $array['res']['name']))) . ')';
 
         if ($array['res']['time'] > $old) {
@@ -281,7 +291,8 @@ class Download
             if ($sql) {
                 /** @var PDO $db */
                 $db = App::getContainer()->get(PDO::class);
-                $req_cat = $db->query("SELECT * FROM `download__category` WHERE `dir` IN ('" . implode("','", $sql) . "') ORDER BY `id` ASC");
+                $req_cat = $db->query("SELECT * FROM `download__category` WHERE `dir` IN ('" . implode("','",
+                        $sql) . "') ORDER BY `id` ASC");
                 while ($res_cat = $req_cat->fetch()) {
                     $category[] = '<a href="?id=' . $res_cat['id'] . '">' . htmlspecialchars($res_cat['rus_name']) . '</a>';
                 }

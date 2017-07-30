@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -50,7 +53,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
                 $id,
             ]);
 
-            header('Location: ?act=view&id=' . $id);
+            $response->redirect('?act=view&id=' . $id)->sendHeaders();
         } else {
             echo _t('The required fields are not filled') . ' <a href="?act=edit_file&amp;id=' . $id . '">' . _t('Repeat') . '</a>';
         }

@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-const MOBICMS = '0.2.0';
+const MOBICMS = '0.3.0';
 
 // Check the current PHP version
 if (version_compare(PHP_VERSION, '5.6', '<')) {
@@ -27,7 +27,7 @@ class install
     public static function checkPhpErrors()
     {
         $error = [];
-        if (version_compare(phpversion(), '5.5.0', '<')) {
+        if (version_compare(phpversion(), '7.0.0', '<')) {
             $error[] = 'PHP ' . phpversion();
         }
 
@@ -74,20 +74,19 @@ class install
     {
         $folders = [
             '/system/cache/',
-            '/files/downloads/files/',
-            '/files/downloads/screen/',
-            '/files/forum/attach/',
-            '/files/forum/topics/',
-            '/files/library/',
-            '/files/library/tmp',
-            '/files/library/images',
-            '/files/library/images/big',
-            '/files/library/images/orig',
-            '/files/library/images/small',
-            '/files/users/album/',
-            '/files/users/avatar/',
-            '/files/users/photo/',
-            '/files/mail/',
+            '/uploads/downloads/files/',
+            '/uploads/downloads/screen/',
+            '/uploads/forum/attach/',
+            '/uploads/library/',
+            '/uploads/library/tmp',
+            '/uploads/library/images',
+            '/uploads/library/images/big',
+            '/uploads/library/images/orig',
+            '/uploads/library/images/small',
+            '/uploads/users/album/',
+            '/uploads/users/avatar/',
+            '/uploads/users/photo/',
+            '/uploads/mail/',
             '/system/config/autoload/',
         ];
         $error = [];
@@ -275,8 +274,8 @@ switch ($act) {
             '<hr />';
         echo '<h3 class="blue">' . $lng['congratulations'] . '</h3>' .
             $lng['installation_completed'] . '<p><ul>' .
-            '<li><a href="../admin">' . $lng['admin_panel'] . '</a></li>' .
-            '<li><a href="../index.php">' . $lng['to_site'] . '</a></li>' .
+            '<li><a href="../admin/">' . $lng['admin_panel'] . '</a></li>' .
+            '<li><a href="../">' . $lng['to_site'] . '</a></li>' .
             '</ul></p>' .
             $lng['final_warning'];
         break;
@@ -430,14 +429,6 @@ switch ($act) {
                         'flsz'          => '16000',
                         'gzip'          => 1,
                         'homeurl'       => $site_url,
-                        'karma'         => [
-                            'karma_points' => 5,
-                            'karma_time'   => 86400,
-                            'forum'        => 20,
-                            'time'         => 0,
-                            'on'           => 1,
-                            'adm'          => 0,
-                        ],
                         'lng'           => $language,
                         'lng_list'      => $lng_list,
                         'mod_reg'       => 2,

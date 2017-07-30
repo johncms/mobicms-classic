@@ -10,14 +10,16 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$textl = _t('Forum') . ' | ' . _t('Unread');
-$headmod = 'forumnew';
+$pageTitle = _t('Forum') . ' | ' . _t('Unread');
 require ROOT_PATH . 'system/head.php';
 unset($_SESSION['fsort_id']);
 unset($_SESSION['fsort_users']);
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
+
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
@@ -70,7 +72,7 @@ if ($systemUser->isValid()) {
             $vr = isset($_REQUEST['vr']) ? abs(intval($_REQUEST['vr'])) : 24;
             $vr1 = time() - $vr * 3600;
 
-            if ($systemUser->rights == 9) {
+            if ($systemUser->rights >= 6) {
                 $req = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='t' AND `time` > '$vr1'");
             } else {
                 $req = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='t' AND `time` > '$vr1' AND `close` != '1'");
@@ -90,7 +92,7 @@ if ($systemUser->isValid()) {
             }
 
             if ($count) {
-                if ($systemUser->rights == 9) {
+                if ($systemUser->rights >= 6) {
                     $req = $db->query("SELECT * FROM `forum` WHERE `type`='t' AND `time` > '" . $vr1 . "' ORDER BY `time` DESC" . $tools->getPgStart(true));
                 } else {
                     $req = $db->query("SELECT * FROM `forum` WHERE `type`='t' AND `time` > '" . $vr1 . "' AND `close` != '1' ORDER BY `time` DESC" . $tools->getPgStart(true));
@@ -100,21 +102,21 @@ if ($systemUser->isValid()) {
                     echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
                     $razd = $db->query("SELECT `id`, `refid`, `text` FROM `forum` WHERE `type`='r' AND `id`='" . $res['refid'] . "'")->fetch();
                     $frm = $db->query("SELECT `text` FROM `forum` WHERE `type`='f' AND `id`='" . $razd['refid'] . "'")->fetch();
-                    $colmes = $db->query("SELECT * FROM `forum` WHERE `refid` = '" . $res['id'] . "' AND `type` = 'm'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'") . " ORDER BY `time` DESC");
+                    $colmes = $db->query("SELECT * FROM `forum` WHERE `refid` = '" . $res['id'] . "' AND `type` = 'm'" . ($systemUser->rights >= 6 ? '' : " AND `close` != '1'") . " ORDER BY `time` DESC");
                     $colmes1 = $colmes->rowCount();
                     $cpg = ceil($colmes1 / $userConfig->kmess);
                     $nick = $colmes->fetch();
 
                     if ($res['edit']) {
-                        echo $tools->image('modules/forum/tz.gif');
+                        echo $asset->img('tz.gif')->class('icon');
                     } elseif ($res['close']) {
-                        echo $tools->image('modules/forum/dl.gif');
+                        echo $asset->img('dl.gif')->class('icon');
                     } else {
-                        echo $tools->image('modules/forum/np.gif');
+                        echo $asset->img('np.gif')->class('icon');
                     }
 
                     if ($res['realid'] == 1) {
-                        echo $tools->image('images/rate.gif');
+                        echo $asset->img('rate.gif')->class('icon');
                     }
 
                     echo '&#160;<a href="index.php?id=' . $res['id'] . ($cpg > 1 && $set_forum['upfp'] && $set_forum['postclip'] ? '&amp;clip' : '') . ($set_forum['upfp'] && $cpg > 1 ? '&amp;page=' . $cpg : '') . '">' . (empty($res['text']) ? '-----' : $res['text']) .
@@ -159,8 +161,8 @@ if ($systemUser->isValid()) {
             if ($total > 0) {
                 $req = $db->query("SELECT * FROM `forum`
                 LEFT JOIN `cms_forum_rdm` ON `forum`.`id` = `cms_forum_rdm`.`topic_id` AND `cms_forum_rdm`.`user_id` = '" . $systemUser->id . "'
-                WHERE `forum`.`type`='t'" . ($systemUser->rights >= 7 ? "" : " AND `forum`.`close` != '1'") . "
-                AND (`cms_forum_rdm`.`topic_id` Is Null
+                WHERE `forum`.`type`='t'" . ($systemUser->rights >= 6 ? "" : " AND `forum`.`close` != '1'") . "
+                AND (`cms_forum_rdm`.`topic_id` IS NULL
                 OR `forum`.`time` > `cms_forum_rdm`.`time`)
                 ORDER BY `forum`.`time` DESC" . $tools->getPgStart(true));
 
@@ -173,17 +175,17 @@ if ($systemUser->isValid()) {
 
                     $razd = $db->query("SELECT `id`, `refid`, `text` FROM `forum` WHERE `type` = 'r' AND `id` = '" . $res['refid'] . "' LIMIT 1")->fetch();
                     $frm = $db->query("SELECT `id`, `text` FROM `forum` WHERE `type`='f' AND `id` = '" . $razd['refid'] . "' LIMIT 1")->fetch();
-                    $colmes = $db->query("SELECT `from`, `time` FROM `forum` WHERE `refid` = '" . $res['id'] . "' AND `type` = 'm'" . ($systemUser->rights >= 7 ? '' : " AND `close` != '1'") . " ORDER BY `time` DESC");
+                    $colmes = $db->query("SELECT `from`, `time` FROM `forum` WHERE `refid` = '" . $res['id'] . "' AND `type` = 'm'" . ($systemUser->rights >= 6 ? '' : " AND `close` != '1'") . " ORDER BY `time` DESC");
                     $colmes1 = $colmes->rowCount();
                     $cpg = ceil($colmes1 / $userConfig->kmess);
                     $nick = $colmes->fetch();
 
                     // Значки
                     $icons = [
-                        (isset($np) ? (!$res['vip'] ? $tools->image('modules/forum/op.gif') : '') : $tools->image('modules/forum/np.gif')),
-                        ($res['vip'] ? $tools->image('modules/forum/pt.gif') : ''),
-                        ($res['realid'] ? $tools->image('images/rate.gif') : ''),
-                        ($res['edit'] ? $tools->image('modules/forum/tz.gif') : ''),
+                        (isset($np) ? (!$res['vip'] ? $asset->img('op.gif')->class('icon') : '') : $asset->img('np.gif')->class('icon')),
+                        ($res['vip'] ? $asset->img('pt.gif')->class('icon') : ''),
+                        ($res['realid'] ? $asset->img('rate.gif')->class('icon') : ''),
+                        ($res['edit'] ? $asset->img('tz.gif')->class('icon') : ''),
                     ];
                     echo implode('', array_filter($icons));
                     echo '<a href="index.php?id=' . $res['id'] . ($cpg > 1 && $set_forum['upfp'] && $set_forum['postclip'] ? '&amp;clip' : '') . ($set_forum['upfp'] && $cpg > 1 ? '&amp;page=' . $cpg : '') . '">' . (empty($res['text']) ? '-----' : $res['text']) .
@@ -234,9 +236,9 @@ if ($systemUser->isValid()) {
             echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
             // Значки
             $icons = [
-                ($res['vip'] ? $tools->image('modules/forum/pt.gif') : ''),
-                ($res['realid'] ? $tools->image('images/rate.gif') : ''),
-                ($res['edit'] ? $tools->image('modules/forum/tz.gif') : ''),
+                ($res['vip'] ? $asset->img('pt.gif')->class('icon') : ''),
+                ($res['realid'] ? $asset->img('rate.gif')->class('icon') : ''),
+                ($res['edit'] ? $asset->img('tz.gif')->class('icon') : ''),
             ];
             echo implode('', array_filter($icons));
             echo '<a href="index.php?id=' . $res['id'] . '">' . (empty($res['text']) ? '-----' : $res['text']) . '</a>&#160;[' . $colmes1 . ']';
@@ -252,7 +254,7 @@ if ($systemUser->isValid()) {
                 echo '&#160;/&#160;' . $nam['from'];
             }
 
-            echo ' <span class="gray">' . date("d.m.y / H:i", $nam['time']) . '</span>';
+            echo ' <span class="gray">(' . $tools->displayDate($nam['time']) . ')</span>';
             echo '</div></div>';
         }
     } else {

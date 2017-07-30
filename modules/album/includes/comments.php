@@ -92,7 +92,7 @@ if ($req_obj->rowCount()) {
 
     // Показываем комментарии
     require ROOT_PATH . 'system/head.php';
-    $comm = new Mobicms\Comments($arg);
+    $comm = new Mobicms\Deprecated\Comments($arg);
 
     // Обрабатываем метки непрочитанных комментариев
     if ($comm->added && $systemUser->id != $owner['id']) {

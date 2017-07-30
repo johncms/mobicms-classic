@@ -8,9 +8,7 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
-
-$headmod = 'news';
+defined('MOBICMS') or die('Error: restricted access');
 
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
@@ -38,7 +36,7 @@ $userConfig = $systemUser->getConfig();
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
-$textl = _t('News');
+$pageTitle = _t('News');
 require(ROOT_PATH . 'system/head.php');
 
 switch ($do) {

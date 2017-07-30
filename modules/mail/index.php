@@ -8,13 +8,11 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
 
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
-
-$headmod = 'mail';
 
 if (isset($_SESSION['ref'])) {
     unset($_SESSION['ref']);
@@ -76,7 +74,7 @@ $mods = [
 if ($act && ($key = array_search($act, $mods)) !== false && file_exists(__DIR__ . '/includes/' . $mods[$key] . '.php')) {
     require __DIR__ . '/includes/' . $mods[$key] . '.php';
 } else {
-    $textl = _t('Mail');
+    $pageTitle = _t('Mail');
     require ROOT_PATH . 'system/head.php';
     echo '<div class="phdr"><b>' . _t('Contacts') . '</b></div>';
 

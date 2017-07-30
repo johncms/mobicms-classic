@@ -20,21 +20,23 @@
     "vendor-dir": "system/vendor"
   },
   "require": {
-    "php": "^5.6 || ^7.0",
-    "roave/security-advisories": "dev-master",
+    "php": "^7.0",
+    "erusev/parsedown": "^1.6",
+    "geshi/geshi": "^1.0",
     "klein/klein": "^2.1",
+    "league/plates": "^3.3",
     "mobicms/mobicms-captcha": "^1.0",
-    "zendframework/zend-stdlib": "^3.1",
-    "zendframework/zend-servicemanager": "^3.3",
-    "zendframework/zend-i18n": "^2.7",
+    "mobicms/mobicms-error-handler": "^1.0",
+    "nikic/fast-route": "^1.2",
+    "roave/security-advisories": "dev-master",
     "verot/class.upload.php": "dev-master",
-    "geshi/geshi": "dev-master",
-    "erusev/parsedown": "^1.6"
+    "zendframework/zend-i18n": "^2.7",
+    "zendframework/zend-servicemanager": "^3.3",
+    "zendframework/zend-stdlib": "^3.1"
   },
   "autoload": {
     "psr-4": {
-      "Mobicms\\": "system/mobicms/",
-      "Mobicms\\Api\\": "system/api/",
+      "Mobicms\\": "system/src/",
       "Library\\": "modules/library/classes/"
     }
   }

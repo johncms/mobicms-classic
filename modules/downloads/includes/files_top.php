@@ -27,15 +27,15 @@ require dirname(__DIR__) . '/classes/download.php';
 
 // Топ файлов
 if ($id == 2) {
-    $textl = _t('Most Commented');
+    $pageTitle = _t('Most Commented');
 } elseif ($id == 1) {
-    $textl = _t('Most Downloaded');
+    $pageTitle = _t('Most Downloaded');
 } else {
-    $textl = _t('Popular Files');
+    $pageTitle = _t('Popular Files');
 }
 
 $linkTopComments = $config['mod_down_comm'] || $systemUser->rights >= 7 ? '<br><a href="?act=top_files&amp;id=2">' . _t('Most Commented') . '</a>' : '';
-echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $textl . ' (' . $set_down['top'] . ')</div>';
+echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $pageTitle . ' (' . $set_down['top'] . ')</div>';
 
 if ($id == 2 && ($config['mod_down_comm'] || $systemUser->rights >= 7)) {
     echo '<div class="gmenu"><a href="?act=top_files&amp;id=0">' . _t('Popular Files') . '</a><br>' .

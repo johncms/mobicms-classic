@@ -10,8 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$headmod = 'my_guest';
-$textl = _t('Profile') . ' | ' . _t('Guestbook');
+$pageTitle = _t('Profile') . ' | ' . _t('Guestbook');
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 
 /** @var Psr\Container\ContainerInterface $container */
@@ -44,7 +43,7 @@ $arg = [
 ];
 
 // Показываем комментарии
-$comm = new Mobicms\Comments($arg);
+$comm = new Mobicms\Deprecated\Comments($arg);
 
 // Обновляем счетчик непрочитанного
 if (!$mod && $user['id'] == $systemUser->id && $user['comm_count'] != $user['comm_old']) {

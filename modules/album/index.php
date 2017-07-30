@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
 
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
@@ -18,6 +18,9 @@ $img = isset($_REQUEST['img']) ? abs(intval($_REQUEST['img'])) : null;
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
+
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -29,8 +32,7 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-$textl = _t('Album');
-$headmod = 'album';
+$pageTitle = _t('Album');
 
 $max_album = 20;
 $max_photo = 400;
@@ -136,14 +138,14 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
       LEFT JOIN `users` ON `cms_album_files`.`user_id` = `users`.`id`
       WHERE `users`.`sex` = 'zh'
     ")->fetchColumn();
-    $newcount = $db->query("SELECT COUNT(*) FROM `cms_album_files` WHERE `time` > '" . (time() - 259200) . "' AND `access` > '1'")->fetchColumn();
+    $newcount = $db->query("SELECT COUNT(*) FROM `cms_album_files` WHERE `time` > '" . (time() - 259200) . "' AND `access` = 4")->fetchColumn();
     echo '<div class="phdr"><b>' . _t('Photo Albums') . '</b></div>' .
         '<div class="gmenu"><p>' .
-        $tools->image('images/users.png', ['width' => 16, 'height' => 16]) . '<a href="?act=top">' . _t('New Photos') . '</a> (' . $newcount . ')<br>' .
-        $tools->image('images/talk.gif', ['width' => 16, 'height' => 16]) . '<a href="?act=top&amp;mod=last_comm">' . _t('New Comments') . '</a>' .
+        $asset->img('users.png')->class('icon') . '<a href="?act=top">' . _t('New Photos') . '</a> (' . $newcount . ')<br>' .
+        $asset->img('talk.gif')->class('icon') . '<a href="?act=top&amp;mod=last_comm">' . _t('New Comments') . '</a>' .
         '</p></div>' .
         '<div class="menu">' .
-        '<p><h3><img src="' . $config->homeurl . '/assets/images/users.png" width="16" height="16" class="left" />&#160;' . _t('Albums') . '</h3><ul>' .
+        '<p><h3>' . $asset->img('users.png')->class('left') . '&#160;' . _t('Albums') . '</h3><ul>' .
         '<li><a href="?act=users&amp;mod=boys">' . _t('Guys') . '</a> (' . $total_mans . ')</li>' .
         '<li><a href="?act=users&amp;mod=girls">' . _t('Girls') . '</a> (' . $total_womans . ')</li>';
 
@@ -152,7 +154,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     }
 
     echo '</ul></p>' .
-        '<p><h3>' . $tools->image('images/rate.gif') . _t('Rating') . '</h3><ul>' .
+        '<p><h3>' . $asset->img('rate.gif')->class('icon') . _t('Rating') . '</h3><ul>' .
         '<li><a href="?act=top&amp;mod=votes">' . _t('Top Votes') . '</a></li>' .
         '<li><a href="?act=top&amp;mod=downloads">' . _t('Top Downloads') . '</a></li>' .
         '<li><a href="?act=top&amp;mod=views">' . _t('Top Views') . '</a></li>' .

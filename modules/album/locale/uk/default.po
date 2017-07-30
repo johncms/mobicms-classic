@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
-"POT-Creation-Date: 2017-06-12 21:11+0400\n"
-"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"POT-Creation-Date: 2017-07-30 15:42+0400\n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Crowdin-Language: uk\n"
 "X-Crowdin-File: /modules/album/default.pot\n"
 
-#: includes/comments.php:34 index.php:51
+#: includes/comments.php:34 index.php:53
 msgid "User does not exists"
 msgstr "Такого користувача не існує"
 
@@ -32,12 +32,12 @@ msgstr "Доступ заборонено"
 msgid "Album List"
 msgstr "Список альбомів"
 
-#: includes/comments.php:52 includes/list.php:32 includes/show.php:48
-#: includes/top.php:124 includes/users.php:47 index.php:140
+#: includes/comments.php:52 includes/list.php:35 includes/show.php:48
+#: includes/top.php:124 includes/users.php:47 index.php:142
 msgid "Photo Albums"
 msgstr "Фотоальбоми"
 
-#: includes/comments.php:53 includes/list.php:32 includes/show.php:48
+#: includes/comments.php:53 includes/list.php:35 includes/show.php:48
 msgid "Personal"
 msgstr "Персональні"
 
@@ -74,7 +74,7 @@ msgid "Photo Album"
 msgstr "Фотоальбом"
 
 #: includes/delete.php:33 includes/delete.php:58 includes/image_delete.php:54
-#: includes/list.php:55 includes/show.php:165
+#: includes/list.php:58 includes/show.php:165
 msgid "Delete"
 msgstr "Видалити"
 
@@ -88,7 +88,7 @@ msgstr "Альбом видалено"
 msgid "Continue"
 msgstr "Продовжити"
 
-#: includes/delete.php:56 includes/show.php:55 index.php:32
+#: includes/delete.php:56 includes/show.php:55 index.php:35
 msgid "Album"
 msgstr "Альбом"
 
@@ -105,7 +105,7 @@ msgstr "Скасувати"
 msgid "Edit Album"
 msgstr "Редагувати альбом"
 
-#: includes/edit.php:45 includes/list.php:37
+#: includes/edit.php:45 includes/list.php:40
 msgid "Create Album"
 msgstr "Створити альбом"
 
@@ -276,24 +276,24 @@ msgstr "Завантажити"
 msgid "Allowed format image JPG, JPEG, PNG, GIF<br>File size should not exceed %d kb."
 msgstr "Для додавання дозволені зображення JPG, JPEG, PNG, GIF<br>Розмір файлу не повинен перевищувати %d kb."
 
-#: includes/list.php:52
+#: includes/list.php:55
 msgid "Up"
 msgstr "Вгору"
 
-#: includes/list.php:53
+#: includes/list.php:56
 msgid "Down"
 msgstr "Вниз"
 
-#: includes/list.php:54 includes/show.php:163
+#: includes/list.php:57 includes/show.php:163
 msgid "Edit"
 msgstr "Редагувати"
 
-#: includes/list.php:67 includes/show.php:182 includes/top.php:176
+#: includes/list.php:70 includes/show.php:182 includes/top.php:176
 #: includes/users.php:68
 msgid "The list is empty"
 msgstr "Список порожній"
 
-#: includes/list.php:70 includes/show.php:185 includes/top.php:179
+#: includes/list.php:73 includes/show.php:185 includes/top.php:179
 #: includes/users.php:70
 msgid "Total"
 msgstr "Всього"
@@ -338,23 +338,23 @@ msgstr "Непрочитані коментарі"
 msgid "Recent comments"
 msgstr "Останні коментарі"
 
-#: includes/top.php:63 index.php:158
+#: includes/top.php:63 index.php:160
 msgid "Top Views"
 msgstr "ТОП переглядів"
 
-#: includes/top.php:73 index.php:157
+#: includes/top.php:73 index.php:159
 msgid "Top Downloads"
 msgstr "ТОП завантажень"
 
-#: includes/top.php:83 index.php:159
+#: includes/top.php:83 index.php:161
 msgid "Top Comments"
 msgstr "ТОП коментарів"
 
-#: includes/top.php:93 index.php:156
+#: includes/top.php:93 index.php:158
 msgid "Top Votes"
 msgstr "ТОП голосів"
 
-#: includes/top.php:103 index.php:160
+#: includes/top.php:103 index.php:162
 msgid "Top Worst"
 msgstr "ТОП найгірших"
 
@@ -366,11 +366,11 @@ msgstr "Нові фото"
 msgid "All"
 msgstr "Всі"
 
-#: includes/users.php:44 index.php:147
+#: includes/users.php:44 index.php:149
 msgid "Guys"
 msgstr "Хлопці"
 
-#: includes/users.php:45 index.php:148
+#: includes/users.php:45 index.php:150
 msgid "Girls"
 msgstr "Дівчата"
 
@@ -378,43 +378,43 @@ msgstr "Дівчата"
 msgid "List"
 msgstr "Список"
 
-#: index.php:41
+#: index.php:43
 msgid "For registered users only"
 msgstr "Тільки для зареєстрованих користувачів"
 
-#: index.php:83 index.php:155
+#: index.php:85 index.php:157
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: index.php:84
+#: index.php:86
 msgid "Against"
 msgstr "Проти"
 
-#: index.php:84
+#: index.php:86
 msgid "For"
 msgstr "Для"
 
-#: index.php:91
+#: index.php:93
 msgid "Vote"
 msgstr "Голосувати"
 
-#: index.php:142
+#: index.php:144
 msgid "New Photos"
 msgstr "Нові фото"
 
-#: index.php:143
+#: index.php:145
 msgid "New Comments"
 msgstr "Нові коментарі"
 
-#: index.php:146
+#: index.php:148
 msgid "Albums"
 msgstr "Альбоми"
 
-#: index.php:151
+#: index.php:153
 msgid "My Album"
 msgstr "Мій альбом"
 
-#: index.php:163
+#: index.php:165
 msgid "Users"
 msgstr "Користувачі"
 

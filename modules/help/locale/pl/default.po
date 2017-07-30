@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-06-12 13:36-0400\n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -19,20 +19,20 @@ msgstr ""
 "X-Crowdin-File: /modules/help/default.pot\n"
 "Language: pl_PL\n"
 
-#: includes/admsmilies.php:28 includes/set_my_sm.php:33
+#: includes/admsmilies.php:28 includes/set_my_sm.php:36
 msgid "Wrong data"
 msgstr "Nieprawidłowe dane"
 
 #: includes/admsmilies.php:28 includes/admsmilies.php:82
 #: includes/avatars.php:37 includes/avatars.php:83 includes/avatars.php:101
 #: includes/forum.php:59 includes/my_smilies.php:74 includes/smilies.php:51
-#: includes/tags.php:79 includes/usersmilies.php:92 index.php:78
+#: includes/tags.php:79 includes/usersmilies.php:92 index.php:77
 msgid "Back"
 msgstr "Powrót"
 
 #: includes/admsmilies.php:33 includes/my_smilies.php:27
-#: includes/set_my_sm.php:33 includes/smilies.php:17
-#: includes/usersmilies.php:43 index.php:77
+#: includes/set_my_sm.php:36 includes/smilies.php:17
+#: includes/usersmilies.php:43 index.php:76
 msgid "Smilies"
 msgstr "Emotikonki"
 
@@ -82,7 +82,7 @@ msgid "An error occurred"
 msgstr "Wystąpił błąd"
 
 #: includes/avatars.php:40 includes/avatars.php:49 includes/avatars.php:87
-#: index.php:76
+#: index.php:75
 msgid "Avatars"
 msgstr "Avatary"
 
@@ -107,11 +107,11 @@ msgid "Select"
 msgstr "Wybierz"
 
 #: includes/avatars.php:87 includes/forum.php:14 includes/smilies.php:17
-#: includes/tags.php:16 index.php:73
+#: includes/tags.php:16 index.php:72
 msgid "Information, FAQ"
 msgstr "Informacje, pytania i odpowiedzi"
 
-#: includes/forum.php:14 index.php:74
+#: includes/forum.php:14 index.php:73
 msgid "Forum rules"
 msgstr "Regulamin forum"
 
@@ -199,7 +199,7 @@ msgstr "Usuń"
 msgid "Add Smilies"
 msgstr "Dodaj emotikone"
 
-#: includes/tags.php:16 index.php:75
+#: includes/tags.php:16 index.php:74
 msgid "bbCode Tags"
 msgstr "Tagi BBCode"
 
@@ -271,51 +271,51 @@ msgstr "Tekst"
 msgid "Spoiler"
 msgstr "Spoiler"
 
-#: index.php:42
+#: index.php:41
 msgid "Animals"
 msgstr "Zwierzęta"
 
-#: index.php:43
+#: index.php:42
 msgid "Brawl, Weapons"
 msgstr "Bijatyka, Broń"
 
-#: index.php:44
+#: index.php:43
 msgid "Emotions"
 msgstr "Emotikony"
 
-#: index.php:45
+#: index.php:44
 msgid "Flowers"
 msgstr "Kwiaty"
 
-#: index.php:46
+#: index.php:45
 msgid "Food, Alcohol"
 msgstr "Jedzenie, Alkohol"
 
-#: index.php:47
+#: index.php:46
 msgid "Gestures"
 msgstr "Gesty"
 
-#: index.php:48
+#: index.php:47
 msgid "Holidays"
 msgstr "Wakacje"
 
-#: index.php:49
+#: index.php:48
 msgid "Love"
 msgstr "Miłość"
 
-#: index.php:50
+#: index.php:49
 msgid "Miscellaneous"
 msgstr "Różne"
 
-#: index.php:51
+#: index.php:50
 msgid "Music, Dancing"
 msgstr "Muzyka, Taniec"
 
-#: index.php:52
+#: index.php:51
 msgid "Sports"
 msgstr "Sport"
 
-#: index.php:53
+#: index.php:52
 msgid "Technology"
 msgstr "Technologia"
 

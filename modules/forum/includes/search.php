@@ -8,11 +8,9 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
 
 $act = isset($_GET['act']) ? trim($_GET['act']) : '';
-
-$headmod = 'forumsearch';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
@@ -32,7 +30,7 @@ $userConfig = $systemUser->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-$textl = _t('Forum search');
+$pageTitle = _t('Forum search');
 require ROOT_PATH . 'system/head.php';
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Forum') . '</b></a> | ' . _t('Search') . '</div>';
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-06-12 13:32-0400\n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
@@ -19,18 +19,16 @@ msgstr ""
 "X-Crowdin-File: /modules/profile/default.pot\n"
 "Language: uk_UA\n"
 
-#: includes/activity.php:14 includes/activity.php:35 includes/stat.php:49
-#: index.php:206
+#: includes/activity.php:14 includes/activity.php:35 includes/stat.php:52
+#: index.php:164
 msgid "Activity"
 msgstr "Активність"
 
-#: includes/activity.php:35 includes/ban.php:206 includes/ban.php:310
-#: includes/edit.php:54 includes/guestbook.php:14 includes/guestbook.php:29
+#: includes/activity.php:35 includes/ban.php:182 includes/ban.php:281
+#: includes/edit.php:54 includes/guestbook.php:13 includes/guestbook.php:28
 #: includes/images.php:40 includes/images.php:81 includes/info.php:25
-#: includes/ip.php:42 includes/karma.php:129 includes/karma.php:216
-#: includes/karma.php:227 includes/karma.php:288 includes/office.php:44
-#: includes/password.php:101 includes/reset.php:31 includes/stat.php:25
-#: index.php:113
+#: includes/office.php:46 includes/password.php:101 includes/reset.php:31
+#: includes/stat.php:28 index.php:114
 msgid "Profile"
 msgstr "Профіль"
 
@@ -42,229 +40,217 @@ msgstr "Повідомлення"
 msgid "Themes"
 msgstr "Теми"
 
-#: includes/activity.php:39 includes/activity.php:48 includes/ban.php:164
-#: includes/guestbook.php:42 includes/stat.php:52 includes/stat.php:65
+#: includes/activity.php:39 includes/activity.php:48 includes/ban.php:140
+#: includes/guestbook.php:41 includes/stat.php:55 includes/stat.php:68
 msgid "Comments"
 msgstr "Коментарі"
 
 #: includes/activity.php:65 includes/activity.php:100 includes/activity.php:137
-#: includes/ban.php:388 includes/ip.php:64 includes/karma.php:205
-#: includes/karma.php:275
+#: includes/ban.php:359
 msgid "The list is empty"
 msgstr "Список порожній"
 
-#: includes/activity.php:72 includes/activity.php:107 includes/ban.php:172
-#: includes/settings.php:46 includes/settings.php:77 includes/stat.php:50
-#: includes/stat.php:63
+#: includes/activity.php:72 includes/activity.php:107 includes/ban.php:148
+#: includes/settings.php:46 includes/settings.php:77 includes/stat.php:53
+#: includes/stat.php:66
 msgid "Forum"
 msgstr "Форум"
 
-#: includes/activity.php:141 includes/ban.php:298 includes/ban.php:391
-#: includes/ip.php:67 includes/karma.php:207 includes/karma.php:278
+#: includes/activity.php:141 includes/ban.php:269 includes/ban.php:362
 msgid "Total"
 msgstr "Разом"
 
-#: includes/activity.php:147 includes/ban.php:397 includes/ip.php:73
-#: includes/karma.php:213 includes/karma.php:284
+#: includes/activity.php:147 includes/ban.php:368
 msgid "To Page"
 msgstr "До сторінки"
 
-#: includes/ban.php:39
+#: includes/ban.php:38
 msgid "You do not have enought rights to ban this user"
 msgstr "Ви не маєте достатньо прав, щоб забанити цього користувача"
 
-#: includes/ban.php:41
+#: includes/ban.php:40
 msgid "Ban the User"
 msgstr "Забанити користувача"
 
-#: includes/ban.php:53
+#: includes/ban.php:52
 msgid "Reason not specified"
 msgstr "Причина не вказана"
 
-#: includes/ban.php:57
+#: includes/ban.php:56
 msgid "There is no required data"
 msgstr "Немає необхідних даних"
 
-#: includes/ban.php:61
+#: includes/ban.php:60
 msgid "You have no rights to ban in this section"
 msgstr "Ви не маєте права банити у цьому розділі"
 
-#: includes/ban.php:65
+#: includes/ban.php:64
 msgid "Ban already active"
 msgstr "Бан вже діє"
 
-#: includes/ban.php:139 includes/office.php:82
-msgid "System"
-msgstr "Система"
-
-#: includes/ban.php:143 index.php:129
-msgid "Ban"
-msgstr "Бан"
-
-#: includes/ban.php:149
+#: includes/ban.php:125
 msgid "User banned"
 msgstr "Користувач забанений"
 
-#: includes/ban.php:156
+#: includes/ban.php:132
 msgid "Ban type"
 msgstr "Тип бану"
 
-#: includes/ban.php:160
+#: includes/ban.php:136
 msgid "Full block"
 msgstr "Повний блок"
 
-#: includes/ban.php:162
+#: includes/ban.php:138
 msgid "Private messages"
 msgstr "Приватні повідомлення"
 
-#: includes/ban.php:166 includes/guestbook.php:14 includes/guestbook.php:29
-#: includes/office.php:47 includes/stat.php:51 includes/stat.php:64
-#: index.php:216
+#: includes/ban.php:142 includes/guestbook.php:13 includes/guestbook.php:28
+#: includes/office.php:49 includes/stat.php:54 includes/stat.php:67
+#: index.php:174
 msgid "Guestbook"
 msgstr "Гостьова"
 
-#: includes/ban.php:177
+#: includes/ban.php:153
 msgid "Library"
 msgstr "Бібліотека"
 
-#: includes/ban.php:180
+#: includes/ban.php:156
 msgid "Ban time"
 msgstr "Термін бану"
 
-#: includes/ban.php:182
+#: includes/ban.php:158
 msgid "Minutes (60 max.)"
 msgstr "Хвилин (макс. 60)"
 
-#: includes/ban.php:183
+#: includes/ban.php:159
 msgid "Hours (24 max.)"
 msgstr "Годин (макс. 24)"
 
-#: includes/ban.php:186
+#: includes/ban.php:162
 msgid "Days (30 max.)"
 msgstr "Днів (макс. 30)"
 
-#: includes/ban.php:190 includes/ban.php:363
+#: includes/ban.php:166 includes/ban.php:334
 msgid "Till cancel"
 msgstr "До відміни"
 
-#: includes/ban.php:193
+#: includes/ban.php:169
 msgid "Reason"
 msgstr "Причина"
 
-#: includes/ban.php:198
+#: includes/ban.php:174
 msgid "Violation"
 msgstr "Порушення"
 
-#: includes/ban.php:203
+#: includes/ban.php:179
 msgid "Apply Ban"
 msgstr "Застосувати бан"
 
-#: includes/ban.php:213 includes/ban.php:243 includes/ban.php:251
-#: includes/ban.php:276
+#: includes/ban.php:189 includes/ban.php:219 includes/ban.php:227
+#: includes/ban.php:247
 msgid "Wrong data"
 msgstr "Невірні дані"
 
-#: includes/ban.php:222
+#: includes/ban.php:198
 msgid "Ban not active"
 msgstr "Бан не активний"
 
-#: includes/ban.php:226
+#: includes/ban.php:202
 msgid "Ban termination"
 msgstr "Скасування бану"
 
-#: includes/ban.php:231
+#: includes/ban.php:207
 msgid "Ban terminated"
 msgstr "Бан скасовано"
 
-#: includes/ban.php:234
+#: includes/ban.php:210
 msgid "Ban time is going to the end. Infrigement will be saved in the bans history"
 msgstr "Припиняється дія бану. Порушення буде збережено в історії банів"
 
-#: includes/ban.php:235
+#: includes/ban.php:211
 msgid "Terminate Ban"
 msgstr "Скасувати бан"
 
-#: includes/ban.php:237 includes/ban.php:273 includes/edit.php:49
-#: includes/info.php:59 includes/karma.php:78 includes/karma.php:133
-#: includes/stat.php:85
+#: includes/ban.php:213 includes/ban.php:244 includes/edit.php:49
+#: includes/info.php:59 includes/stat.php:88
 msgid "Back"
 msgstr "Назад"
 
-#: includes/ban.php:257 includes/ban.php:377
+#: includes/ban.php:233 includes/ban.php:348
 msgid "Delete Ban"
 msgstr "Видалити бан"
 
-#: includes/ban.php:267
+#: includes/ban.php:238
 msgid "Ban deleted"
 msgstr "Бан видалений"
 
-#: includes/ban.php:267 includes/images.php:61 includes/images.php:112
-#: includes/karma.php:110 includes/password.php:79
+#: includes/ban.php:238 includes/images.php:61 includes/images.php:112
+#: includes/password.php:79
 msgid "Continue"
 msgstr "Продовжити"
 
-#: includes/ban.php:270
+#: includes/ban.php:241
 msgid "Removing ban along with a record in the bans history"
 msgstr "Видалення бану разом із записом в історії порушень"
 
-#: includes/ban.php:271 includes/edit.php:196 includes/edit.php:211
-#: includes/karma.php:161 includes/karma.php:178 index.php:125
+#: includes/ban.php:242 includes/edit.php:193 includes/edit.php:208
+#: index.php:126
 msgid "Delete"
 msgstr "Видалити"
 
-#: includes/ban.php:284 includes/ban.php:300
+#: includes/ban.php:255 includes/ban.php:271
 msgid "Violations history"
 msgstr "Історія порушень"
 
-#: includes/ban.php:289
+#: includes/ban.php:260
 msgid "Violations history cleared"
 msgstr "Історію порушень очищено"
 
-#: includes/ban.php:292
+#: includes/ban.php:263
 msgid "Are you sure want to clean entire history of user violations?"
 msgstr "Ви дійсно хочете очистити всю історію порушень даного користувача?"
 
-#: includes/ban.php:293
+#: includes/ban.php:264
 msgid "Clear"
 msgstr "Очистити"
 
-#: includes/ban.php:302 includes/ban.php:315
+#: includes/ban.php:273 includes/ban.php:286
 msgid "Ban Panel"
 msgstr "Бан панель"
 
-#: includes/ban.php:304
+#: includes/ban.php:275
 msgid "Violations history can be cleared by Supervisor only"
 msgstr "Очищати історію порушень можуть тільки Супервайзори"
 
-#: includes/ban.php:310
+#: includes/ban.php:281
 msgid "Violations History"
 msgstr "Історія порушень"
 
-#: includes/ban.php:319
+#: includes/ban.php:290
 msgid "Clear history"
 msgstr "Очистити історію"
 
-#: includes/ban.php:329
+#: includes/ban.php:300
 msgid "My Violations"
 msgstr "Мої порушення"
 
-#: includes/ban.php:359
+#: includes/ban.php:330
 msgid "Who applied the Ban?"
 msgstr "Хто наклав бан?"
 
-#: includes/ban.php:362
+#: includes/ban.php:333
 msgid "Time"
 msgstr "Час"
 
-#: includes/ban.php:366
+#: includes/ban.php:337
 msgid "Remains"
 msgstr "Залишилося"
 
-#: includes/ban.php:373
+#: includes/ban.php:344
 msgid "Cancel Ban"
 msgstr "Скасувати бан"
 
-#: includes/edit.php:13 includes/images.php:13 includes/office.php:106
+#: includes/edit.php:13 includes/images.php:13 includes/office.php:116
 #: includes/reset.php:24
 msgid "Edit Profile"
 msgstr "Редагувати профіль"
@@ -273,15 +259,15 @@ msgstr "Редагувати профіль"
 msgid "You cannot edit profile of higher administration"
 msgstr "Ви не можете редагувати профіль вищої адміністрації"
 
-#: includes/edit.php:49 includes/settings.php:112 includes/settings.php:195
+#: includes/edit.php:49 includes/settings.php:112 includes/settings.php:188
 msgid "Default settings are set"
 msgstr "Встановлено стандартні налаштування"
 
-#: includes/edit.php:54 index.php:115
+#: includes/edit.php:54 index.php:116
 msgid "My Profile"
 msgstr "Мій профіль"
 
-#: includes/edit.php:54 includes/info.php:28 index.php:121
+#: includes/edit.php:54 includes/info.php:28 index.php:122
 msgid "Edit"
 msgstr "Редагувати"
 
@@ -293,167 +279,163 @@ msgstr "Аватар був успішно видалений"
 msgid "Photo is successfully removed"
 msgstr "Фото було успішно видалено"
 
-#: includes/edit.php:95
+#: includes/edit.php:94
 msgid "Min. nick length 2, max. 20 characters"
 msgstr "Мін. довжина ніку 2, макс. 20 символів"
 
-#: includes/edit.php:101
+#: includes/edit.php:100
 msgid "Nick contains invalid characters"
 msgstr "Нік містить неприпустимі символи"
 
-#: includes/edit.php:106
+#: includes/edit.php:105
 msgid "Invalid format date of birth"
 msgstr "Невірний формат дати народження"
 
-#: includes/edit.php:111
+#: includes/edit.php:110
 msgid "ICQ number must be at least 5 digits and max. 10"
 msgstr "ICQ номер повинен складатися мінімум з 5 цифр і максимум з 10"
 
-#: includes/edit.php:169
+#: includes/edit.php:166
 msgid "Data saved"
 msgstr "Дані збережені"
 
-#: includes/edit.php:181
+#: includes/edit.php:178
 msgid "Username"
 msgstr "Ім'я користувача"
 
-#: includes/edit.php:184 includes/edit.php:187
+#: includes/edit.php:181 includes/edit.php:184
 msgid "Nickname"
 msgstr "Нікнейм"
 
-#: includes/edit.php:184
+#: includes/edit.php:181
 msgid "Min.2, Max. 20"
 msgstr "Мін.2, макс. 20"
 
-#: includes/edit.php:185 includes/edit.php:188
+#: includes/edit.php:182 includes/edit.php:185
 msgid "Status"
 msgstr "Статус"
 
-#: includes/edit.php:185
+#: includes/edit.php:182
 msgid "Max. 50"
 msgstr "Макс. 50"
 
-#: includes/edit.php:191
+#: includes/edit.php:188
 msgid "Avatar"
 msgstr "Аватар"
 
-#: includes/edit.php:199 includes/edit.php:214 includes/images.php:72
+#: includes/edit.php:196 includes/edit.php:211 includes/images.php:72
 #: includes/images.php:125
 msgid "Upload"
 msgstr "Завантажити"
 
-#: includes/edit.php:202
+#: includes/edit.php:199
 msgid "Select in Catalog"
 msgstr "Виберіть в каталозі"
 
-#: includes/edit.php:206
+#: includes/edit.php:203
 msgid "Photo"
 msgstr "Фото"
 
-#: includes/edit.php:217 includes/info.php:33
+#: includes/edit.php:214 includes/info.php:33
 msgid "Personal info"
 msgstr "Особисті дані"
 
-#: includes/edit.php:218
+#: includes/edit.php:215
 msgid "Your name"
 msgstr "Ваше ім'я"
 
-#: includes/edit.php:219
+#: includes/edit.php:216
 msgid "Date of birth (d.m.y)"
 msgstr "Дата народження (д.м.р)"
 
-#: includes/edit.php:223 includes/info.php:42
+#: includes/edit.php:220 includes/info.php:42
 msgid "City, Country"
 msgstr "Місто, Країна"
 
-#: includes/edit.php:224 includes/info.php:43
+#: includes/edit.php:221 includes/info.php:43
 msgid "About myself"
 msgstr "Про себе"
 
-#: includes/edit.php:225 includes/info.php:45 includes/office.php:93
-#: includes/office.php:97
+#: includes/edit.php:222 includes/info.php:45 includes/office.php:103
+#: includes/office.php:107
 msgid "Contacts"
 msgstr "Контакти"
 
-#: includes/edit.php:226 includes/info.php:46
+#: includes/edit.php:223 includes/info.php:46
 msgid "Phone number"
 msgstr "Номер телефону"
 
-#: includes/edit.php:229
+#: includes/edit.php:226
 msgid "Show in Profile"
 msgstr "Показати у профілі"
 
-#: includes/edit.php:230
+#: includes/edit.php:227
 msgid "Warning! Write your e-mail correctly. Your password will be sent to the email address on record for this account."
 msgstr "Увага! Правильно вказуйте свою адресу електронної пошти! Саме на неї висилатиметься Ваш пароль."
 
-#: includes/edit.php:234 includes/info.php:57
+#: includes/edit.php:231 includes/info.php:57
 msgid "Site"
 msgstr "Сайт"
 
-#: includes/edit.php:239
+#: includes/edit.php:236
 msgid "Administrative Functions"
 msgstr "Функції адміністрації"
 
-#: includes/edit.php:240
-msgid "Prohibit Karma"
-msgstr "Заборонити карму"
-
-#: includes/edit.php:241 includes/office.php:107 includes/password.php:32
+#: includes/edit.php:237 includes/office.php:117 includes/password.php:32
 #: includes/password.php:89
 msgid "Change Password"
 msgstr "Змінити пароль"
 
-#: includes/edit.php:244
+#: includes/edit.php:240
 msgid "Reset User options to default"
 msgstr "Скинути параметри користувача до стандартних"
 
-#: includes/edit.php:247
+#: includes/edit.php:243
 msgid "Select gender"
 msgstr "Виберіть стать"
 
-#: includes/edit.php:248
+#: includes/edit.php:244
 msgid "Man"
 msgstr "Чоловік"
 
-#: includes/edit.php:249
+#: includes/edit.php:245
 msgid "Woman"
 msgstr "Жінка"
 
-#: includes/edit.php:253
+#: includes/edit.php:249
 msgid "Position on the Site"
 msgstr "Положення на сайті"
 
-#: includes/edit.php:254
+#: includes/edit.php:250
 msgid "User"
 msgstr "Користувач"
 
-#: includes/edit.php:255
+#: includes/edit.php:251
 msgid "Forum Moderator"
 msgstr "Модератор форуму"
 
-#: includes/edit.php:256
+#: includes/edit.php:252
 msgid "Download Moderator"
 msgstr "Модератор по завантаженням"
 
-#: includes/edit.php:257
+#: includes/edit.php:253
 msgid "Library Moderator"
 msgstr "Модератор бібліотеки"
 
-#: includes/edit.php:258
+#: includes/edit.php:254
 msgid "Super Modererator"
 msgstr "Супермодератор"
 
-#: includes/edit.php:261
+#: includes/edit.php:257
 msgid "Administrator"
 msgstr "Адміністратор"
 
-#: includes/edit.php:262
+#: includes/edit.php:258
 msgid "Supervisor"
 msgstr "Супервайзор"
 
-#: includes/edit.php:269 includes/password.php:99 includes/settings.php:71
-#: includes/settings.php:124 includes/settings.php:239
+#: includes/edit.php:265 includes/password.php:99 includes/settings.php:71
+#: includes/settings.php:124 includes/settings.php:222
 msgid "Save"
 msgstr "Зберегти"
 
@@ -486,7 +468,7 @@ msgstr "Фото успішно завантажено"
 msgid "Select image"
 msgstr "Виберіть зображення"
 
-#: includes/info.php:23 includes/info.php:25 index.php:205
+#: includes/info.php:23 includes/info.php:25 index.php:163
 msgid "Information"
 msgstr "Інформація"
 
@@ -494,7 +476,7 @@ msgstr "Інформація"
 msgid "Name"
 msgstr "Ім'я"
 
-#: includes/info.php:41 index.php:138
+#: includes/info.php:41 index.php:139
 msgid "Birthday"
 msgstr "День народження"
 
@@ -502,180 +484,72 @@ msgstr "День народження"
 msgid "hidden"
 msgstr "прихований"
 
-#: includes/ip.php:13 includes/ip.php:42
-msgid "IP History"
-msgstr "Історія IP"
-
-#: includes/ip.php:33 includes/office.php:31 includes/password.php:27
-#: includes/settings.php:39
-msgid "Access forbidden"
-msgstr "Доступ заборонено"
-
-#: includes/karma.php:13 includes/karma.php:187 includes/karma.php:227
-#: includes/karma.php:246 index.php:178
-msgid "Karma"
-msgstr "Карма"
-
-#: includes/karma.php:50
-msgid "It is forbidden to vote for administration"
-msgstr "Забороняється голосувати за адміністрацію"
-
-#: includes/karma.php:54
-msgid "Cheating karma is forbidden"
-msgstr "Накрутка карми заборонена"
-
-#: includes/karma.php:59
-#, php-format
-msgid "Users can take part in voting if they have stayed on a site not less %s and their score on the forum %d posts."
-msgstr "Користувачі можуть взяти участь в голосуванні, якщо вони присутні на сайті не менше %s та вони набрали на форумі %d постів."
-
-#: includes/karma.php:60
-msgid "hours"
-msgstr "годин"
-
-#: includes/karma.php:60
-msgid "days"
-msgstr "днів"
-
-#: includes/karma.php:68
-msgid "You can vote for single user just one time for 24 hours\""
-msgstr "Ви можете голосувати за одного користувача тільки один раз протягом 24 годин\""
-
-#: includes/karma.php:74
-#, php-format
-msgid "You have exceeded the limit of votes. New voices will be added %s"
-msgstr "Ви перевищили ліміт голосів. Нові голоси будуть додані %s"
-
-#: includes/karma.php:110
-msgid "You have successfully voted"
-msgstr "Ви успішно проголосували"
-
-#: includes/karma.php:112
-msgid "Vote for"
-msgstr "Голосувати за"
-
-#: includes/karma.php:114
-msgid "Type of vote"
-msgstr "Тип голосу"
-
-#: includes/karma.php:115 includes/karma.php:224
-msgid "Positive"
-msgstr "Позитивний"
-
-#: includes/karma.php:116 includes/karma.php:225
-msgid "Negative"
-msgstr "Негативний"
-
-#: includes/karma.php:117
-msgid "Votes quantity"
-msgstr "Кількість голосів"
-
-#: includes/karma.php:124
-msgid "Comment"
-msgstr "Коментар"
-
-#: includes/karma.php:126
-msgid "Min. 2, Max. 500 characters"
-msgstr "Мін. 2, макс. 500 символів"
-
-#: includes/karma.php:127 index.php:189
-msgid "Vote"
-msgstr "Голосувати"
-
-#: includes/karma.php:133
-msgid "You are not allowed to vote for users"
-msgstr "Ви не можете голосувати за користувачів"
-
-#: includes/karma.php:160
-msgid "Do you really want to delete comment?"
-msgstr "Ви дійсно бажаєте видалити коментар?"
-
-#: includes/karma.php:162 includes/karma.php:179
-msgid "Cancel"
-msgstr "Скасувати"
-
-#: includes/karma.php:177
-msgid "Do you really want to delete all reviews about user?"
-msgstr "Ви дійсно хочете видалити всі відгуки про користувача?"
-
-#: includes/karma.php:187
-msgid "New responses"
-msgstr "Нові відповіді"
-
-#: includes/karma.php:223
-msgid "All"
-msgstr "Всі"
-
-#: includes/karma.php:248 index.php:180
-msgid "For"
-msgstr "Для"
-
-#: includes/karma.php:249 index.php:181
-msgid "Against"
-msgstr "Проти"
-
-#: includes/karma.php:287
-msgid "Reset Karma"
-msgstr "Скинути карму"
-
-#: includes/office.php:14
+#: includes/office.php:13
 msgid "My Account"
 msgstr "Мій аккаунт"
 
-#: includes/office.php:43
+#: includes/office.php:33 includes/password.php:27 includes/settings.php:39
+msgid "Access forbidden"
+msgstr "Доступ заборонено"
+
+#: includes/office.php:45
 msgid "My Pages"
 msgstr "Мої сторінки"
 
-#: includes/office.php:45
+#: includes/office.php:47
 msgid "Statistics"
 msgstr "Статистика"
 
-#: includes/office.php:46 index.php:215
+#: includes/office.php:48 index.php:173
 msgid "Photo Album"
 msgstr "Фотоальбом"
 
-#: includes/office.php:51
+#: includes/office.php:53
 msgid "Admin-Club"
 msgstr "Адмін-клуб"
 
-#: includes/office.php:56
+#: includes/office.php:58
 msgid "My Mailbox"
 msgstr "Моя пошта"
 
-#: includes/office.php:68
+#: includes/office.php:78
 msgid "Received"
 msgstr "Отримано"
 
-#: includes/office.php:77
+#: includes/office.php:87
 msgid "Sent"
 msgstr "Відправлені"
 
-#: includes/office.php:86
+#: includes/office.php:92
+msgid "System"
+msgstr "Система"
+
+#: includes/office.php:96
 msgid "Files"
 msgstr "Файли"
 
-#: includes/office.php:89 index.php:242
+#: includes/office.php:99 index.php:200
 msgid "Write"
 msgstr "Написати"
 
-#: includes/office.php:101
+#: includes/office.php:111
 msgid "Blocked"
 msgstr "Заблокований"
 
-#: includes/office.php:105 includes/settings.php:13 includes/settings.php:53
+#: includes/office.php:115 includes/settings.php:13 includes/settings.php:53
 #: includes/settings.php:77 includes/settings.php:129
 msgid "Settings"
 msgstr "Налаштування"
 
-#: includes/office.php:108
+#: includes/office.php:118
 msgid "System Settings"
 msgstr "Системні налаштування"
 
-#: includes/office.php:111
+#: includes/office.php:121
 msgid "Admin Panel"
 msgstr "Адмін-панель"
 
-#: includes/office.php:116
+#: includes/office.php:126
 msgid "Exit"
 msgstr "Вихід"
 
@@ -740,7 +614,7 @@ msgstr "Усі можуть писати"
 msgid "Only my contacts"
 msgstr "Тільки мої контакти"
 
-#: includes/settings.php:97 includes/settings.php:190
+#: includes/settings.php:97 includes/settings.php:183
 msgid "Settings saved successfully"
 msgstr "Налаштування успішно збережено"
 
@@ -780,135 +654,131 @@ msgstr "Ніколи"
 msgid "Reset settings"
 msgstr "Скинути налаштування"
 
-#: includes/settings.php:200
+#: includes/settings.php:193
 msgid "Time settings"
 msgstr "Налаштування часу"
 
-#: includes/settings.php:201
+#: includes/settings.php:194
 msgid "Shift of time"
 msgstr "Зсув часу"
 
-#: includes/settings.php:203
+#: includes/settings.php:196
 msgid "System time"
 msgstr "Системний час"
 
-#: includes/settings.php:204
+#: includes/settings.php:197
 msgid "System Functions"
 msgstr "Системні функції"
 
-#: includes/settings.php:205
+#: includes/settings.php:198
 msgid "Direct URL"
 msgstr "Прямий URL"
 
-#: includes/settings.php:206
+#: includes/settings.php:199
 msgid "Youtube Player"
 msgstr "Програвач YouTube"
 
-#: includes/settings.php:207
+#: includes/settings.php:200
 msgid "Text entering"
 msgstr "Введення тексту"
 
-#: includes/settings.php:208
+#: includes/settings.php:201
 msgid "Height of field"
 msgstr "Висота поля"
 
-#: includes/settings.php:210
+#: includes/settings.php:203
 msgid "Appearance"
 msgstr "Відображення"
 
-#: includes/settings.php:220
-msgid "Theme"
-msgstr "Тема"
-
-#: includes/settings.php:221
+#: includes/settings.php:204
 msgid "Size of Lists"
 msgstr "Розмір списків"
 
-#: includes/settings.php:226
+#: includes/settings.php:209
 msgid "Select Language"
 msgstr "Виберіть мову"
 
-#: includes/settings.php:232
+#: includes/settings.php:215
 msgid "Site Default"
 msgstr "Сайт за замовчуванням"
 
-#: includes/settings.php:240
+#: includes/settings.php:223
 msgid "Reset Settings"
 msgstr "Скинути налаштування"
 
-#: includes/stat.php:23 includes/stat.php:25 includes/stat.php:28 index.php:207
+#: includes/stat.php:26 includes/stat.php:28 includes/stat.php:31 index.php:165
 msgid "Statistic"
 msgstr "Статистика"
 
-#: includes/stat.php:32 index.php:157
+#: includes/stat.php:35 index.php:157
 msgid "Pending confirmation"
 msgstr "Чекає підтвердження"
 
-#: includes/stat.php:34
+#: includes/stat.php:37
 msgid "Registration confirmed"
 msgstr "Реєстрація підтверджена"
 
-#: includes/stat.php:36
+#: includes/stat.php:39
 msgid "Free registration"
 msgstr "Вільна реєстрація"
 
-#: includes/stat.php:40
+#: includes/stat.php:43
 msgid "Registered"
 msgstr "Зареєстрований"
 
-#: includes/stat.php:41
+#: includes/stat.php:44
 msgid "He stay on the site"
 msgstr "Пробув на сайті"
 
-#: includes/stat.php:41
+#: includes/stat.php:44
 msgid "She stay on the site"
 msgstr "Пробула на сайті"
 
-#: includes/stat.php:45
+#: includes/stat.php:48
 msgid "Last visit"
 msgstr "Останній візит"
 
-#: includes/stat.php:54
+#: includes/stat.php:57
 msgid "Achievements"
 msgstr "Досягнення"
 
-#: index.php:39
+#: index.php:42
 msgid "For registered users only"
 msgstr "Тільки для зареєстрованих користувачів"
 
-#: index.php:49
+#: index.php:52
 msgid "This User does not exists"
 msgstr "Такого користувача не існує"
 
-#: index.php:115
+#: index.php:116
 msgid "User Profile"
 msgstr "Профіль користувача"
 
-#: index.php:149
+#: index.php:130
+msgid "Ban"
+msgstr "Бан"
+
+#: index.php:150
 msgid "Where?"
 msgstr "Де?"
 
-#: index.php:196
-msgid "New reviews"
-msgstr "Нові відгуки"
-
-#: index.php:211
+#: index.php:169
 msgid "Violations"
 msgstr "Порушення"
 
-#: index.php:223
+#: index.php:181
 msgid "Add to Contacts"
 msgstr "Додати в контакти"
 
-#: index.php:225
+#: index.php:183
 msgid "Remove from Contacts"
 msgstr "Видалити з контактів"
 
-#: index.php:230
+#: index.php:188
 msgid "Block User"
 msgstr "Заблокувати користувача"
 
-#: index.php:232
+#: index.php:190
 msgid "Unlock User"
 msgstr "Розблокувати користувача"
 

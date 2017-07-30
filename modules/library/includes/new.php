@@ -22,20 +22,26 @@ $userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-$page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
-
 use Library\Hashtags;
 use Library\Rating;
 
 echo '<div class="phdr"><strong><a href="?">' . _t('Library') . '</a></strong> | ' . _t('New Articles') . '</div>';
 
 $total = $db->query("SELECT COUNT(*) FROM `library_texts` WHERE `time` > '" . (time() - 259200) . "' AND `premod`=1")->fetchColumn();
-$page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
-$start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
-$sql = $db->query("SELECT `id`, `name`, `time`, `uploader`, `uploader_id`, `count_views`, `comments`, `comm_count`, `cat_id`, `announce` FROM `library_texts` WHERE `time` > '" . (time() - 259200) . "' AND `premod`=1 ORDER BY `time` DESC LIMIT " . $start . "," . $userConfig->kmess);
-$nav = ($total > $userConfig->kmess) ? '<div class="topmenu">' . $tools->displayPagination('?act=new&amp;', $total) . '</div>' : '';
-echo $nav;
+
 if ($total) {
+    $page = $page >= ceil($total / $userConfig->kmess) ? ceil($total / $userConfig->kmess) : $page;
+    $start = $page == 1 ? 0 : ($page - 1) * $userConfig->kmess;
+
+    if ($total > $userConfig->kmess) {
+        echo '<div class="topmenu">' . $tools->displayPagination('?act=new&amp;', $total) . '</div>';
+    }
+
+    $sql = $db->prepare("SELECT libtxt.`id`, libtxt.`name`, libtxt.`time`, `uploader`, `uploader_id`, `count_views`, `comments`, `comm_count`, `cat_id`, `announce`, libcat.name AS catName
+                    FROM `library_texts` libtxt
+                    JOIN library_cats libcat ON libtxt.cat_id=libcat.id
+                    WHERE libtxt.`time`>? AND `premod`=? ORDER BY libtxt.`time` DESC LIMIT " . $start . "," . $userConfig->kmess);
+    $sql->execute([(time() - 259200), 1]);
     $i = 0;
     while ($row = $sql->fetch()) {
         echo '<div class="list' . (++$i % 2 ? 2 : 1) . '">'
@@ -52,14 +58,14 @@ if ($total) {
             // Раздел
             . '<tr>'
             . '<td class="caption">' . _t('Section') . ':</td>'
-            . '<td><a href="?do=dir&amp;id=' . $row['cat_id'] . '">' . $tools->checkout($db->query("SELECT `name` FROM `library_cats` WHERE `id`=" . $row['cat_id'])->fetchColumn()) . '</a></td>'
+            . '<td><a href="?do=dir&amp;id=' . $row['cat_id'] . '">' . $tools->checkout($row['catName']) . '</a></td>'
             . '</tr>'
             // Тэги
             . ($obj->getAllStatTags() ? '<tr><td class="caption">' . _t('Tags') . ':</td><td>' . $obj->getAllStatTags(1) . '</td></tr>' : '')
             // Кто добавил?
             . '<tr>'
             . '<td class="caption">' . _t('Who added') . ':</td>'
-            . '<td><a href="' . App::getContainer()->get('config')['mobicms']['homeurl'] . '/profile/?user=' . $row['uploader_id'] . '">' . $tools->checkout($row['uploader']) . '</a> (' . $tools->displayDate($row['time']) . ')</td>'
+            . '<td><a href="' . $container->get('config')['mobicms']['homeurl'] . '/profile/?user=' . $row['uploader_id'] . '">' . $tools->checkout($row['uploader']) . '</a> (' . $tools->displayDate($row['time']) . ')</td>'
             . '</tr>'
             // Рейтинг
             . '<tr>'
@@ -82,7 +88,14 @@ if ($total) {
 
         echo '</div>';
     }
+} else {
+    echo '<div class="menu"><p>' . _t('The list is empty') . '</p></div>';
 }
-echo '<div class="phdr">' . _t('Total') . ': ' . intval($total) . '</div>';
-echo $nav;
+
+echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
+
+if ($total > $userConfig->kmess) {
+    echo '<div class="topmenu">' . $tools->displayPagination('?act=new&amp;', $total) . '</div>';
+}
+
 echo '<p><a href="?">' . _t('To Library') . '</a></p>';

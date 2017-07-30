@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Mobicms\Http\Response $response */
+$response = $container->get(Mobicms\Http\Response::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -45,7 +48,7 @@ if (isset($_POST['submit'])) {
         $id,
     ]);
 
-    header('Location: ?act=view&id=' . $id);
+    $response->redirect('?act=view&id=' . $id)->sendHeaders();
 } else {
     echo '<div class="phdr"><b>' . _t('Description') . ':</b> ' . htmlspecialchars($res_down['rus_name']) . '</div>' .
         '<div class="list1"><form action="?act=edit_about&amp;id=' . $id . '" method="post"><p>' .

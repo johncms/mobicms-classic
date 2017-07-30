@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: johncms\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-06-14 07:30-0400\n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
 "Last-Translator: mobiCMS <dev@mobicms.net>\n"
 "Language-Team: Romanian\n"
 "MIME-Version: 1.0\n"
@@ -12,118 +12,25 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-KeywordsList: _t;_p:1,2\n"
-"X-Poedit-SearchPath-0: system/mobicms\n"
-"X-Poedit-SearchPath-1: system/head.php\n"
-"X-Poedit-SearchPath-2: system/end.php\n"
-"X-Poedit-SearchPath-3: modules/login\n"
-"X-Poedit-SearchPath-4: modules/homepage\n"
-"X-Poedit-SearchPath-5: go.php\n"
+"X-Poedit-SearchPath-0: modules/login\n"
+"X-Poedit-SearchPath-1: modules/homepage\n"
+"X-Poedit-SearchPath-2: system/src\n"
+"X-Poedit-SearchPath-3: themes/default/templates\n"
+"X-Poedit-SearchPath-4: modules/language\n"
+"X-Poedit-SearchPath-5: modules/redirect\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
 "X-Crowdin-Project: johncms\n"
 "X-Crowdin-Language: ro\n"
 "X-Crowdin-File: /system/system.pot\n"
 "Language: ro_RO\n"
 
-#: go.php:35
-msgid "Select language"
-msgstr "Selecteaza Limba"
-
-#: go.php:41
-msgid "Default"
-msgstr "Default"
-
-#: go.php:48
-msgid "Apply"
-msgstr "Aplica"
-
-#: go.php:56
-msgid "External Link"
-msgstr "Link extern"
-
-#: go.php:59
-msgid "ATTENTION!"
-msgstr "ATENTIE!"
-
-#: go.php:60
-msgid "You are going to leave our site and go to an external link"
-msgstr "Esti pe cale sa paraseti acest site"
-
-#: go.php:61
-msgid "Administration of our site is not responsible for the content of external sites"
-msgstr "Administratorul site-ului nu este responsabil de continutul link-uri-lor externe"
-
-#: go.php:62
-#, php-format
-msgid "It is recommended not to specify your data, relating to %s (Login, Password), on third party sites"
-msgstr "Este recomandat sa nu divulgi date, precum %s (Numele si/sau Parola), pe alte site-uri"
-
-#: go.php:63
-msgid "Go to Link"
-msgstr "Du-te pe site"
-
-#: go.php:65 system/mobicms/Comments.php:116 system/mobicms/Comments.php:139
-#: system/mobicms/Comments.php:147 system/mobicms/Comments.php:150
-#: system/mobicms/Comments.php:167 system/mobicms/Comments.php:195
-#: system/mobicms/Comments.php:204 system/mobicms/Comments.php:207
-#: system/mobicms/Comments.php:252
-msgid "Back"
-msgstr "Inapoi"
-
-#: modules/homepage/index.php:35
-msgid "Information"
-msgstr "Informatii"
-
-#: modules/homepage/index.php:37
-msgid "News archive"
-msgstr "Arhiva Stiri"
-
-#: modules/homepage/index.php:38
-msgid "Information, FAQ"
-msgstr "Informatii, Reguli"
-
-#: modules/homepage/index.php:43
-msgid "Communication"
-msgstr "Comunicare"
-
-#: modules/homepage/index.php:47 system/head.php:226
-#: system/mobicms/Tools/Utilites.php:260
-msgid "Guestbook"
-msgstr "Guestbook"
-
-#: modules/homepage/index.php:52 system/mobicms/Tools/Utilites.php:257
-msgid "Forum"
-msgstr "Forum"
-
-#: modules/homepage/index.php:58
-msgid "Useful"
-msgstr "Utile"
-
-#: modules/homepage/index.php:62 system/mobicms/Tools/Utilites.php:255
-msgid "Downloads"
-msgstr "Descarcari"
-
-#: modules/homepage/index.php:67 system/mobicms/Tools/Utilites.php:263
-msgid "Library"
-msgstr "Librarie"
-
-#: modules/homepage/index.php:74
-msgid "Community"
-msgstr "Comunitate"
-
-#: modules/homepage/index.php:75
-msgid "Users"
-msgstr "Utilizatori"
-
-#: modules/homepage/index.php:76
-msgid "Photo Albums"
-msgstr "Albume Foto"
-
-#: modules/login/includes/login.php:37 system/end.php:33 system/head.php:113
+#: modules/login/includes/login.php:37
+#: themes/default/templates/app/old/topmenu.phtml:10
 msgid "Home"
 msgstr "Acasa"
 
 #: modules/login/includes/login.php:39 modules/login/includes/login.php:159
-#: system/head.php:115
+#: themes/default/templates/app/old/topmenu.phtml:20
 msgid "Login"
 msgstr "Logare"
 
@@ -191,295 +98,375 @@ msgstr "Esti sigur ca vrei sa parasesti site-ul?"
 msgid "Logout"
 msgstr "Iesire"
 
-#: modules/login/includes/logout.php:37 system/mobicms/Comments.php:248
+#: modules/login/includes/logout.php:37 system/src/Deprecated/Comments.php:255
 msgid "Cancel"
 msgstr "Anuleaza"
 
-#: system/head.php:51
-msgid "Site News"
-msgstr "Stiri"
-
-#: system/head.php:114
-msgid "Personal"
-msgstr "Personal"
-
-#: system/head.php:201
-msgid "Ban"
-msgstr "Ban"
-
-#: system/head.php:201
-msgid "Details"
-msgstr "Detalii"
-
-#: system/head.php:210
-msgid "System"
-msgstr "Sistem"
-
-#: system/head.php:222
-msgid "Mail"
-msgstr "Mail"
-
-#: system/head.php:232
-msgid "Comments"
-msgstr "Comentarii"
-
-#: system/head.php:236 system/mobicms/Counters.php:162
-msgid "Unread"
-msgstr "Necitite"
-
-#: system/mobicms/Bbcode.php:153
+#: system/src/Deprecated/Bbcode.php:170
 msgid "Edit List"
 msgstr "Editeaza Lista"
 
-#: system/mobicms/Bbcode.php:164
+#: system/src/Deprecated/Bbcode.php:181
 msgid "Add Smilies"
 msgstr "Adauga Smilies"
 
-#: system/mobicms/Bbcode.php:222
+#: system/src/Deprecated/Bbcode.php:239
 msgid "Bold"
 msgstr "Ingrosat"
 
-#: system/mobicms/Bbcode.php:223
+#: system/src/Deprecated/Bbcode.php:240
 msgid "Italic"
 msgstr "Italic"
 
-#: system/mobicms/Bbcode.php:224
+#: system/src/Deprecated/Bbcode.php:241
 msgid "Underline"
 msgstr "Subliniat"
 
-#: system/mobicms/Bbcode.php:225
+#: system/src/Deprecated/Bbcode.php:242
 msgid "Strike"
 msgstr "Taiat"
 
-#: system/mobicms/Bbcode.php:226
+#: system/src/Deprecated/Bbcode.php:243
 msgid "Text Color"
 msgstr "Culoare Text"
 
-#: system/mobicms/Bbcode.php:227
+#: system/src/Deprecated/Bbcode.php:244
 msgid "Background Color"
 msgstr "Culoare Fundal"
 
-#: system/mobicms/Bbcode.php:228
+#: system/src/Deprecated/Bbcode.php:245
 msgid "List"
 msgstr "Lista"
 
-#: system/mobicms/Bbcode.php:229
+#: system/src/Deprecated/Bbcode.php:246
 msgid "Spoiler"
 msgstr "Spoiler"
 
-#: system/mobicms/Bbcode.php:230
+#: system/src/Deprecated/Bbcode.php:247
 msgid "Quote"
 msgstr "Citat"
 
-#: system/mobicms/Bbcode.php:231
+#: system/src/Deprecated/Bbcode.php:248
 msgid "URL"
 msgstr "URL"
 
-#: system/mobicms/Bbcode.php:232
+#: system/src/Deprecated/Bbcode.php:249
 msgid "Code"
 msgstr "Cod"
 
-#: system/mobicms/Bbcode.php:236
+#: system/src/Deprecated/Bbcode.php:253
 msgid "Smilies"
 msgstr "Emoticon"
 
-#: system/mobicms/Bbcode.php:276
+#: system/src/Deprecated/Bbcode.php:293
 msgid "Added"
 msgstr "Adaugat"
 
-#: system/mobicms/Comments.php:108 system/mobicms/Comments.php:304
+#: system/src/Deprecated/Comments.php:115
+#: system/src/Deprecated/Comments.php:311
 msgid "Reply"
 msgstr "Raspunde"
 
-#: system/mobicms/Comments.php:116
+#: system/src/Deprecated/Comments.php:123
 msgid "Administrator already replied to this message"
 msgstr "Administratorul a raspund deja la acest mesaj"
 
-#: system/mobicms/Comments.php:150 system/mobicms/Comments.php:204
+#: system/src/Deprecated/Comments.php:123
+#: system/src/Deprecated/Comments.php:146
+#: system/src/Deprecated/Comments.php:154
+#: system/src/Deprecated/Comments.php:157
+#: system/src/Deprecated/Comments.php:174
+#: system/src/Deprecated/Comments.php:202
+#: system/src/Deprecated/Comments.php:211
+#: system/src/Deprecated/Comments.php:214
+#: system/src/Deprecated/Comments.php:259
+#: modules/redirect/templates/index.phtml:21
+msgid "Back"
+msgstr "Inapoi"
+
+#: system/src/Deprecated/Comments.php:157
+#: system/src/Deprecated/Comments.php:211
 msgid "Wrong data"
 msgstr "Eroare date"
 
-#: system/mobicms/Comments.php:158 system/mobicms/Comments.php:305
+#: system/src/Deprecated/Comments.php:165
+#: system/src/Deprecated/Comments.php:312
 msgid "Edit"
 msgstr "Editeaza"
 
-#: system/mobicms/Comments.php:167
+#: system/src/Deprecated/Comments.php:174
 msgid "You cannot edit posts of higher administration"
 msgstr "Nu poti edita postarile celor cu functii mai mari"
 
-#: system/mobicms/Comments.php:245 system/mobicms/Comments.php:247
-#: system/mobicms/Comments.php:306
+#: system/src/Deprecated/Comments.php:252
+#: system/src/Deprecated/Comments.php:254
+#: system/src/Deprecated/Comments.php:313
 msgid "Delete"
 msgstr "Sterge"
 
-#: system/mobicms/Comments.php:246
+#: system/src/Deprecated/Comments.php:253
 msgid "Do you really want to delete?"
 msgstr "Sigur vrei sa stergi?"
 
-#: system/mobicms/Comments.php:249
+#: system/src/Deprecated/Comments.php:256
 msgid "Clear all messages from this user"
 msgstr "Sterge toate mesajele de la acest user"
 
-#: system/mobicms/Comments.php:250
+#: system/src/Deprecated/Comments.php:257
 msgid "Clear"
 msgstr "Sterge"
 
-#: system/mobicms/Comments.php:312
+#: system/src/Deprecated/Comments.php:319
 msgid "Edited"
 msgstr "Editat"
 
-#: system/mobicms/Comments.php:336
+#: system/src/Deprecated/Comments.php:343
 msgid "The list is empty"
 msgstr "Lista este goala"
 
-#: system/mobicms/Comments.php:339
+#: system/src/Deprecated/Comments.php:346
 msgid "Total"
 msgstr "Total"
 
-#: system/mobicms/Comments.php:345
+#: system/src/Deprecated/Comments.php:352
 msgid "To Page"
 msgstr "La Pagina"
 
-#: system/mobicms/Comments.php:404
+#: system/src/Deprecated/Comments.php:411
 msgid "Message"
 msgstr "Mesaj"
 
-#: system/mobicms/Comments.php:407
+#: system/src/Deprecated/Comments.php:414
 msgid "Send"
 msgstr "Trimite"
 
-#: system/mobicms/Comments.php:426
+#: system/src/Deprecated/Comments.php:433
 msgid "Text is too short"
 msgstr "Textul este prea scurt"
 
-#: system/mobicms/Comments.php:432
+#: system/src/Deprecated/Comments.php:439
 msgid "You cannot add the message so often<br>Please, wait"
 msgstr "Nu poti adauga alt mesaj asa de repede<br>Te rugam sa astepti"
 
-#: system/mobicms/Comments.php:432
+#: system/src/Deprecated/Comments.php:439
 msgid "seconds"
 msgstr "secunde"
 
-#: system/mobicms/Comments.php:442
+#: system/src/Deprecated/Comments.php:449
 msgid "Message already exists"
 msgstr "Mesajul deja exista"
 
-#: system/mobicms/Counters.php:161
+#: system/src/Deprecated/Counters.php:172
 msgid "Show for Period"
 msgstr "Arata pe perioade"
 
-#: system/mobicms/Counters.php:168
+#: system/src/Deprecated/Counters.php:173
+#: themes/default/templates/app/old/notifications.phtml:48
+msgid "Unread"
+msgstr "Necitite"
+
+#: system/src/Deprecated/Counters.php:179
 msgid "Last activity"
 msgstr "Ultima activitate"
 
-#: system/mobicms/NewsWidget.php:61
+#: system/src/Deprecated/NewsWidget.php:66
 msgid "show more"
 msgstr "arata mai multe"
 
-#: system/mobicms/NewsWidget.php:96
+#: system/src/Deprecated/NewsWidget.php:101
 msgid "Discuss"
 msgstr "Discuta"
 
-#: system/mobicms/Tools/Utilites.php:145
+#: system/src/Tools/Utilites.php:152
 msgid "Today"
 msgstr "Astazi"
 
-#: system/mobicms/Tools/Utilites.php:148
+#: system/src/Tools/Utilites.php:155
 msgid "Yesterday"
 msgstr "Ieri"
 
-#: system/mobicms/Tools/Utilites.php:164
+#: system/src/Tools/Utilites.php:171
 msgid "ERROR"
 msgstr "EROARE"
 
-#: system/mobicms/Tools/Utilites.php:252
-msgid "List of Admins"
-msgstr "Lista Admini"
-
-#: system/mobicms/Tools/Utilites.php:253
-msgid "Watching the photo album"
-msgstr "Se uita in albume foto"
-
-#: system/mobicms/Tools/Utilites.php:254
-msgid "List of birthdays"
-msgstr "Lista zilelor de nastere"
-
-#: system/mobicms/Tools/Utilites.php:256
-msgid "Reading the FAQ"
-msgstr "Cisteste Regulile"
-
-#: system/mobicms/Tools/Utilites.php:258
-msgid "Forum Files"
-msgstr "Fisiere Forum"
-
-#: system/mobicms/Tools/Utilites.php:259
-msgid "Looking, who in Forum?"
-msgstr "Cine este in Forum?"
-
-#: system/mobicms/Tools/Utilites.php:261
-msgid "Here, in the list"
-msgstr "Aici,in lista"
-
-#: system/mobicms/Tools/Utilites.php:262
+#: system/src/Tools/Utilites.php:258
 msgid "On the Homepage"
 msgstr "Pe pagina principala"
 
-#: system/mobicms/Tools/Utilites.php:264
-msgid "Personal correspondence"
-msgstr "Corespondenta personala"
-
-#: system/mobicms/Tools/Utilites.php:265
-msgid "Reading the news"
-msgstr "Citeste stirile"
-
-#: system/mobicms/Tools/Utilites.php:266
+#: system/src/Tools/Utilites.php:259
 msgid "Who is online?"
 msgstr "Cine este online?"
 
-#: system/mobicms/Tools/Utilites.php:267
+#: system/src/Tools/Utilites.php:260
+msgid "Reading the news"
+msgstr "Citeste stirile"
+
+#: system/src/Tools/Utilites.php:261
+msgid "List of Users"
+msgstr "Lista utilizatorilor"
+
+#: system/src/Tools/Utilites.php:262
+msgid "Watching the photo album"
+msgstr "Se uita in albume foto"
+
+#: system/src/Tools/Utilites.php:263
+#: modules/homepage/templates/mainmenu.phtml:16
+msgid "Downloads"
+msgstr "Descarcari"
+
+#: system/src/Tools/Utilites.php:264
+msgid "Reading the FAQ"
+msgstr "Cisteste Regulile"
+
+#: system/src/Tools/Utilites.php:265
+#: modules/homepage/templates/mainmenu.phtml:12
+msgid "Forum"
+msgstr "Forum"
+
+#: system/src/Tools/Utilites.php:266
+#: modules/homepage/templates/mainmenu.phtml:9
+#: themes/default/templates/app/old/notifications.phtml:38
+msgid "Guestbook"
+msgstr "Guestbook"
+
+#: system/src/Tools/Utilites.php:267
+#: modules/homepage/templates/mainmenu.phtml:19
+msgid "Library"
+msgstr "Librarie"
+
+#: system/src/Tools/Utilites.php:268
+msgid "Personal correspondence"
+msgstr "Corespondenta personala"
+
+#: system/src/Tools/Utilites.php:269
 msgid "Profile"
 msgstr "Profil"
 
-#: system/mobicms/Tools/Utilites.php:268
-msgid "Personal Profile"
-msgstr "Profil personal"
-
-#: system/mobicms/Tools/Utilites.php:269
+#: system/src/Tools/Utilites.php:270
 msgid "Registered on the site"
 msgstr "Inregistrati pe site"
 
-#: system/mobicms/Tools/Utilites.php:270
-msgid "List of users"
-msgstr "Lista de utilizatori"
+#: system/src/Tools/Utilites.php:279
+msgid "Somewhere on the site"
+msgstr "Undeva pe site-ul"
 
-#: system/mobicms/Tools/Utilites.php:271
-msgid "Watching Top 10 Users"
-msgstr "Priveste primii 10 Utilizatori"
-
-#: system/mobicms/Tools/Utilites.php:317
+#: system/src/Tools/Utilites.php:306
 msgid "Guest"
 msgstr "Oaspete"
 
-#: system/mobicms/Tools/Utilites.php:385
+#: system/src/Tools/Utilites.php:374
 msgid "Last Visit"
 msgstr "Ultima Vizita"
 
-#: system/mobicms/Tools/Utilites.php:391
+#: system/src/Tools/Utilites.php:378
 msgid "Browser"
 msgstr "Browser"
 
-#: system/mobicms/Tools/Utilites.php:392
+#: system/src/Tools/Utilites.php:380
 msgid "IP address"
 msgstr "Adresa IP"
 
-#: system/mobicms/Tools/Utilites.php:411
-msgid "IP History"
-msgstr "Istoric IP"
-
-#: system/mobicms/Tools/Utilites.php:629
+#: system/src/Tools/Utilites.php:590
 msgid "Day"
 msgid_plural "Days"
 msgstr[0] "Ziua"
 msgstr[1] "Zile"
 msgstr[2] "Zilele"
+
+#: modules/homepage/templates/mainmenu.phtml:1
+msgid "Welcome"
+msgstr "Bine ati venit"
+
+#: modules/homepage/templates/mainmenu.phtml:3
+msgid "Information"
+msgstr "Informatii"
+
+#: modules/homepage/templates/mainmenu.phtml:5
+msgid "News archive"
+msgstr "Arhiva Stiri"
+
+#: modules/homepage/templates/mainmenu.phtml:6
+msgid "Information, FAQ"
+msgstr "Informatii, Reguli"
+
+#: modules/homepage/templates/mainmenu.phtml:7
+msgid "Communication"
+msgstr "Comunicare"
+
+#: modules/homepage/templates/mainmenu.phtml:14
+msgid "Useful"
+msgstr "Utile"
+
+#: modules/homepage/templates/mainmenu.phtml:22
+msgid "Community"
+msgstr "Comunitate"
+
+#: modules/homepage/templates/mainmenu.phtml:23
+msgid "Users"
+msgstr "Utilizatori"
+
+#: modules/homepage/templates/mainmenu.phtml:24
+msgid "Photo Albums"
+msgstr "Albume Foto"
+
+#: modules/language/templates/index.phtml:1
+#: modules/language/templates/index.phtml:5
+msgid "Select language"
+msgstr "Selecteaza Limba"
+
+#: modules/language/templates/index.phtml:16
+msgid "Apply"
+msgstr "Aplica"
+
+#: modules/redirect/templates/index.phtml:1
+msgid "Redirect to an external link"
+msgstr "Redirecționa la un link extern"
+
+#: modules/redirect/templates/index.phtml:4
+msgid "External Link"
+msgstr "Link extern"
+
+#: modules/redirect/templates/index.phtml:8
+msgid "ATTENTION!"
+msgstr "ATENTIE!"
+
+#: modules/redirect/templates/index.phtml:10
+msgid "You are going to leave our site and go to an external link"
+msgstr "Esti pe cale sa paraseti acest site"
+
+#: modules/redirect/templates/index.phtml:14
+msgid "Administration of our site is not responsible for the content of external sites"
+msgstr "Administratorul site-ului nu este responsabil de continutul link-uri-lor externe"
+
+#: modules/redirect/templates/index.phtml:15
+msgid "It is recommended not to specify your data (Login, Password) on third party sites"
+msgstr "Se recomandă să nu pentru a specifica datele dvs. (Login, Parola) pe site-uri terțe părți"
+
+#: modules/redirect/templates/index.phtml:17
+msgid "Go to Link"
+msgstr "Du-te pe site"
+
+#: themes/default/templates/app/old/notifications.phtml:15
+msgid "Ban"
+msgstr "Ban"
+
+#: themes/default/templates/app/old/notifications.phtml:15
+msgid "Details"
+msgstr "Detalii"
+
+#: themes/default/templates/app/old/notifications.phtml:22
+msgid "System"
+msgstr "Sistem"
+
+#: themes/default/templates/app/old/notifications.phtml:34
+msgid "Mail"
+msgstr "Mail"
+
+#: themes/default/templates/app/old/notifications.phtml:44
+msgid "Comments"
+msgstr "Comentarii"
+
+#: themes/default/templates/app/old/topmenu.phtml:16
+msgid "Personal"
+msgstr "Personal"
 

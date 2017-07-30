@@ -10,12 +10,14 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$textl = _t('Who in Forum');
-$headmod = $id ? 'forum,' . $id : 'forumwho';
+$pageTitle = _t('Who in Forum');
 require ROOT_PATH . 'system/head.php';
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
+
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
@@ -52,7 +54,7 @@ if ($id) {
                 '</div>';
         }
 
-        $total = $db->query("SELECT COUNT(*) FROM `" . ($do == 'guest' ? 'cms_sessions' : 'users') . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` = 'forum,$id'")->fetchColumn();
+        $total = $db->query("SELECT COUNT(*) FROM `" . ($do == 'guest' ? 'cms_sessions' : 'users') . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%id=$id'")->fetchColumn();
 
         if ($start >= $total) {
             // Исправляем запрос на несуществующую страницу
@@ -64,7 +66,7 @@ if ($id) {
         }
 
         if ($total) {
-            $req = $db->query("SELECT * FROM `" . ($do == 'guest' ? 'cms_sessions' : 'users') . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` = 'forum,$id' ORDER BY " . ($do == 'guest' ? "`movings` DESC" : "`name` ASC") . " LIMIT $start, $userConfig->kmess");
+            $req = $db->query("SELECT * FROM `" . ($do == 'guest' ? 'cms_sessions' : 'users') . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%id=$id' " . ($do == 'guest' ? '' : "ORDER BY `name` ASC") . " LIMIT $start, $userConfig->kmess");
 
             for ($i = 0; $res = $req->fetch(); ++$i) {
                 echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
@@ -75,8 +77,6 @@ if ($id) {
         } else {
             echo '<div class="menu"><p>' . _t('The list is empty') . '</p></div>';
         }
-    } else {
-        $response->redirect('.')->sendHeaders();
     }
 
     echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
@@ -99,7 +99,7 @@ if ($id) {
                 : '<b>' . _t('Users') . '</b> | <a href="index.php?act=who&amp;do=guest">' . _t('Guests') . '</a>') . '</div>';
     }
 
-    $total = $db->query("SELECT COUNT(*) FROM `" . ($do == 'guest' ? "cms_sessions" : "users") . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE 'forum%'")->fetchColumn();
+    $total = $db->query("SELECT COUNT(*) FROM `" . ($do == 'guest' ? "cms_sessions" : "users") . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%'")->fetchColumn();
 
     if ($start >= $total) {
         // Исправляем запрос на несуществующую страницу
@@ -111,9 +111,13 @@ if ($id) {
     }
 
     if ($total) {
-        $req = $db->query("SELECT * FROM `" . ($do == 'guest' ? "cms_sessions" : "users") . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE 'forum%' ORDER BY " . ($do == 'guest' ? "`movings` DESC" : "`name` ASC") . " LIMIT $start, $userConfig->kmess");
+        $req = $db->query("SELECT * FROM `" . ($do == 'guest' ? "cms_sessions" : "users") . "` WHERE `lastdate` > " . (time() - 300) . " AND `place` LIKE '/forum%' " . ($do == 'guest' ? '' : "ORDER BY `name` ASC") . " LIMIT $start, $userConfig->kmess");
 
         for ($i = 0; $res = $req->fetch(); ++$i) {
+            if(!isset($res['id'])){
+                $res['id'] = 0;
+            }
+
             if ($res['id'] == $systemUser->id) {
                 echo '<div class="gmenu">';
             } else {
@@ -123,35 +127,33 @@ if ($id) {
             // Вычисляем местоположение
             $place = '';
 
-            switch ($res['place']) {
-                case 'forum':
+            switch (rtrim($res['place'], '/')) {
+                case '/forum':
                     $place = '<a href="index.php">' . _t('In the forum Main') . '</a>';
                     break;
 
-                case 'forumwho':
+                case '/forum?act=who':
                     $place = _t('Here, in the List');
                     break;
 
-                case 'forumfiles':
-                    $place = '<a href="index.php?act=files">' . _t('Looking forum files') . '</a>';
-                    break;
-
-                case 'forumnew':
+                case '/forum?act=new':
                     $place = '<a href="index.php?act=new">' . _t('In the unreads') . '</a>';
                     break;
 
-                case 'forumsearch':
+                case '/forum?act=search':
                     $place = '<a href="search.php">' . _t('Forum search') . '</a>';
                     break;
 
                 default:
-                    $where = explode(",", $res['place']);
-                    if ($where[0] == 'forum' && intval($where[1])) {
-                        $req_t = $db->query("SELECT `type`, `refid`, `text` FROM `forum` WHERE `id` = '$where[1]'");
+                    $where = explode("?", $res['place']);
+                    parse_str($where[1], $tmp);
+
+                    if ($where[0] == '/forum' && isset($tmp['id'])) {
+                        $req_t = $db->query("SELECT `type`, `refid`, `text` FROM `forum` WHERE `id` = " . intval($tmp['id']));
 
                         if ($req_t->rowCount()) {
                             $res_t = $req_t->fetch();
-                            $link = '<a href="index.php?id=' . $where[1] . '">' . (empty($res_t['text']) ? '-----' : $res_t['text']) . '</a>';
+                            $link = '<a href="?id=' . $tmp['id'] . '">' . (empty($res_t['text']) ? '-----' : $res_t['text']) . '</a>';
 
                             switch ($res_t['type']) {
                                 case 'f':
@@ -163,7 +165,7 @@ if ($id) {
                                     break;
 
                                 case 't':
-                                    $place = (isset($where[2]) ? _t('Writes in the Topic') . ' &quot;' : _t('In the Topic') . ' &quot;') . $link . '&quot;';
+                                    $place = (isset($tmp['act']) && $tmp['act'] == 'say' ? _t('Writes in the Topic') . ' &quot;' : _t('In the Topic') . ' &quot;') . $link . '&quot;';
                                     break;
 
                                 case 'm':
@@ -171,7 +173,7 @@ if ($id) {
 
                                     if ($req_m->rowCount()) {
                                         $res_m = $req_m->fetch();
-                                        $place = (isset($where[2]) ? _t('Answers in the Topic') : _t('In the Topic')) . ' &quot;<a href="index.php?id=' . $res_t['refid'] . '">' . (empty($res_m['text']) ? '-----' : $res_m['text']) . '</a>&quot;';
+                                        $place = (isset($where[2]) ? _t('Answers in the Topic') : _t('In the Topic')) . ' &quot;<a href="?id=' . $res_t['refid'] . '">' . (empty($res_m['text']) ? '-----' : $res_m['text']) . '</a>&quot;';
                                     }
 
                                     break;
@@ -182,7 +184,7 @@ if ($id) {
 
             $arg = [
                 'stshide' => 1,
-                'header'  => ('<br /><img src="../assets/images/info.png" width="16" height="16" align="middle" />&#160;' . $place),
+                'header'  => ('<br />' . $asset->img('info.png')->class('icon') . $place),
             ];
             echo $tools->displayUser($res, $arg);
             echo '</div>';

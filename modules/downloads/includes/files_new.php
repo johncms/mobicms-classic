@@ -26,7 +26,7 @@ require ROOT_PATH . 'system/head.php';
 require dirname(__DIR__) . '/classes/download.php';
 
 // Новые файлы
-$textl = _t('New Files');
+$pageTitle = _t('New Files');
 $sql_down = '';
 
 if ($id) {
@@ -39,11 +39,11 @@ if ($id) {
     }
 
     $title_pages = htmlspecialchars(mb_substr($res_down_cat['rus_name'], 0, 30));
-    $textl = _t('New Files') . ': ' . (mb_strlen($res_down_cat['rus_name']) > 30 ? $title_pages . '...' : $title_pages);
+    $pageTitle = _t('New Files') . ': ' . (mb_strlen($res_down_cat['rus_name']) > 30 ? $title_pages . '...' : $title_pages);
     $sql_down = ' AND `dir` LIKE \'' . ($res_down_cat['dir']) . '%\' ';
 }
 
-echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $textl . '</div>';
+echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $pageTitle . '</div>';
 $total = $db->query("SELECT COUNT(*) FROM `download__files` WHERE `type` = '2'  AND `time` > $old $sql_down")->fetchColumn();
 
 // Навигация

@@ -10,13 +10,13 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$headmod = 'login';
 require ROOT_PATH . 'system/head.php';
-
-$id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
+
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
@@ -88,7 +88,7 @@ if ($systemUser->isValid()) {
                     $code = $cap->generateCode();
                     $_SESSION['code'] = $code;
 
-                    echo '<form action="login.php' . ($id ? '?id=' . $id : '') . '" method="post">' .
+                    echo '<form action="." method="post">' .
                         '<div class="menu"><p>' .
                         '<img alt="' . _t('Verification code') . '" width="' . $cap->width . '" height="' . $cap->height . '" src="' . $cap->generateImage($code) . '"/><br />' .
                         _t('Enter verification code', 'system') . ':<br>' .
@@ -158,7 +158,7 @@ if ($systemUser->isValid()) {
             '<p><input type="checkbox" name="mem" value="1" checked="checked"/>' . _t('Remember', 'system') . '</p>' .
             '<p><input type="submit" value="' . _t('Login', 'system') . '"/></p>' .
             '</form></div>' .
-            '<div class="menu"><p>' . $tools->image('images/user.png') . '<a href="../registration/">' . _t('Registration', 'system') . '</a></p></div>';
+            '<div class="menu"><p>' . $asset->img('user.png')->class('icon') . '<a href="../registration/">' . _t('Registration', 'system') . '</a></p></div>';
     }
 }
 

@@ -36,13 +36,13 @@ if (!$config['mod_down_comm'] && $systemUser->rights < 7) {
     exit;
 }
 
-$textl = _t('Review comments');
+$pageTitle = _t('Review comments');
 
 if (!$config['mod_down_comm']) {
     echo '<div class="rmenu">' . _t('Comments are disabled') . '</div>';
 }
 
-echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $textl . '</div>';
+echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $pageTitle . '</div>';
 $total = $db->query("SELECT COUNT(*) FROM `download__comments`")->fetchColumn();
 
 if ($total) {
