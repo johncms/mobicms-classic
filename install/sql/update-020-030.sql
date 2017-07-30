@@ -9,3 +9,4 @@ ALTER TABLE `users` DROP `karma_plus`;
 ALTER TABLE `users` DROP `movings`;
 ALTER TABLE `cms_sessions` DROP `movings`;
 ALTER TABLE `cms_sessions` DROP INDEX `place`, ADD INDEX `place` (`place`) USING BTREE;
+UPDATE `users` SET `place`='';
