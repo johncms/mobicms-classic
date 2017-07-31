@@ -236,21 +236,21 @@ class Bbcode implements BbcodeInterface
               }
             }
             </script>
-            <a href="javascript:tag(\'[b]\', \'[/b]\')">' . $asset->img('bb/bold.gif')->alt('b')->title(_t('Bold', 'system')) . '</a>
-            <a href="javascript:tag(\'[i]\', \'[/i]\')">' . $asset->img('bb/italics.gif')->alt('i')->title(_t('Italic', 'system')) . '</a>
-            <a href="javascript:tag(\'[u]\', \'[/u]\')">' . $asset->img('bb/underline.gif')->alt('u')->title(_t('Underline', 'system')) . '</a>
-            <a href="javascript:tag(\'[s]\', \'[/s]\')">' . $asset->img('bb/strike.gif')->alt('s')->title(_t('Strike', 'system')) . '</a>
-            <a href="javascript:show_hide(\'color\');">' . $asset->img('bb/color.gif')->alt('color')->title(_t('Text Color', 'system')) . '</a>
-            <a href="javascript:show_hide(\'bg\');">' . $asset->img('bb/color_bg.gif')->alt('bg color')->title(_t('Background Color', 'system')) . '</a>
-            <a href="javascript:tag(\'[*]\', \'[/*]\')">' . $asset->img('bb/list.gif')->alt('li')->title(_t('List', 'system')) . '</a>
-            <a href="javascript:tag(\'[spoiler=]\', \'[/spoiler]\');">' . $asset->img('bb/sp.gif')->alt('spoiler')->title(_t('Spoiler', 'system')) . '</a>
-            <a href="javascript:tag(\'[c]\', \'[/c]\')">' . $asset->img('bb/quote.gif')->alt('quote')->title(_t('Quote', 'system')) . '</a>
-            <a href="javascript:tag(\'[url=]\', \'[/url]\')">' . $asset->img('bb/link.gif')->alt('url')->title(_t('URL', 'system')) . '</a>
-            <a href="javascript:show_hide(\'code\');">' . $asset->img('bb/php.gif')->alt('Code')->title(_t('Code', 'system')) . '</a>
-            <a href="javascript:tag(\'[youtube]\', \'[/youtube]\')">' . $asset->img('bb/youtube.gif')->alt('Youtube')->title('Youtube') . '</a>';
+            <a href="#_NotJS" onclick="tag(\'[b]\', \'[/b]\')">' . $asset->img('bb/bold.gif')->alt('b')->title(_t('Bold', 'system')) . '</a>
+            <a href="#_NotJS" onclick="tag(\'[i]\', \'[/i]\')">' . $asset->img('bb/italics.gif')->alt('i')->title(_t('Italic', 'system')) . '</a>
+            <a href="#_NotJS" onclick="tag(\'[u]\', \'[/u]\')">' . $asset->img('bb/underline.gif')->alt('u')->title(_t('Underline', 'system')) . '</a>
+            <a href="#_NotJS" onclick="tag(\'[s]\', \'[/s]\')">' . $asset->img('bb/strike.gif')->alt('s')->title(_t('Strike', 'system')) . '</a>
+            <a href="/help/?act=tags" onclick="show_hide(\'color\'); return false;">' . $asset->img('bb/color.gif')->alt('color')->title(_t('Text Color', 'system')) . '</a>
+            <a href="/help/?act=tags" onclick="show_hide(\'bg\'); return false;">' . $asset->img('bb/color_bg.gif')->alt('bg color')->title(_t('Background Color', 'system')) . '</a>
+            <a href="#_NotJS" onclick="tag(\'[*]\', \'[/*]\')">' . $asset->img('bb/list.gif')->alt('li')->title(_t('List', 'system')) . '</a>
+            <a href="#_NotJS" onclick="tag(\'[spoiler=]\', \'[/spoiler]\');">' . $asset->img('bb/sp.gif')->alt('spoiler')->title(_t('Spoiler', 'system')) . '</a>
+            <a href="#_NotJS" onclick="tag(\'[c]\', \'[/c]\')">' . $asset->img('bb/quote.gif')->alt('quote')->title(_t('Quote', 'system')) . '</a>
+            <a href="#_NotJS" onclick="tag(\'[url=]\', \'[/url]\')">' . $asset->img('bb/link.gif')->alt('url')->title(_t('URL', 'system')) . '</a>
+            <a href="/help/?act=tags" onclick="show_hide(\'code\'); return false;">' . $asset->img('bb/php.gif')->alt('Code')->title(_t('Code', 'system')) . '</a>
+            <a href="#_NotJS" onclick="tag(\'[youtube]\', \'[/youtube]\')">' . $asset->img('bb/youtube.gif')->alt('Youtube')->title('Youtube') . '</a>';
 
         if ($this->user->isValid()) {
-            $out .= ' <a href="javascript:show_hide(\'sm\');">' . $asset->img('bb/smileys.gif')->alt('Smilies')->title(_t('Smilies', 'system')) . '</a><br />
+            $out .= ' <a href="/help/?act=my_smilies" onclick="show_hide(\'sm\'); return false;"><span>' . $asset->img('bb/smileys.gif')->alt('Smilies')->title(_t('Smilies', 'system')) . '</span></a><br />
                 <div id="sm" style="display:none">' . $bb_smileys . '</div>';
         } else {
             $out .= '<br />';
