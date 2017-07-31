@@ -79,7 +79,7 @@ $user_rights = [
     7 => '(Adm)',
     9 => '(SV!)',
 ];
-echo @$user_rights[$res['rights']];
+echo $user_rights[$res['rights']] ?? null;
 
 // Метка Онлайн / Офлайн
 echo(time() > $res['lastdate'] + 300 ? '<span class="red"> [Off]</span> ' : '<span class="green"> [ON]</span> ');
@@ -107,20 +107,22 @@ $text = $tools->smilies($text, ($res['rights'] >= 1) ? 1 : 0);
 echo $text . '';
 
 // Если есть прикрепленный файл, выводим его описание
-$freq = $db->query("SELECT * FROM `cms_forum_files` WHERE `post` = '" . $res['id'] . "'");
-
-if ($freq->rowCount()) {
-    $fres = $freq->fetch();
-    $fls = round(@filesize(UPLOAD_PATH . 'forum/attach/' . $fres['filename']) / 1024, 2);
-    echo '<div class="gray" style="font-size: x-small; background-color: rgba(128, 128, 128, 0.1); padding: 2px 4px; margin-top: 4px">' . _t('Attachment') . ':';
-    // Предпросмотр изображений
-    $att_ext = strtolower(pathinfo(UPLOAD_PATH . 'forum/attach/' . $fres['filename'], PATHINFO_EXTENSION));
+$q = $db->prepare('SELECT * FROM `cms_forum_files` WHERE `post`=?');
+$q->execute([$res['id']]);
+$freq = $q->fetchAll();
+if (count($freq)) {
+    echo '<div class="post-files">';
     $pic_ext = [
         'gif',
         'jpg',
         'jpeg',
         'png',
     ];
+   foreach ($freq as $fres) {
+    $fls = round(@filesize(UPLOAD_PATH . 'forum/attach/' . $fres['filename']) / 1024, 2);
+    echo '<div class="gray" style="font-size: x-small;background-color: rgba(128, 128, 128, 0.1);padding: 2px 4px;float: left;margin: 4px 4px 0 0;">' . _t('Attachment') . ':';
+    // Предпросмотр изображений
+    $att_ext = strtolower(pathinfo(UPLOAD_PATH . 'forum/attach/' . $fres['filename'], PATHINFO_EXTENSION));
 
     if (in_array($att_ext, $pic_ext)) {
         echo '<div><a href="index.php?act=file&amp;id=' . $fres['id'] . '">';
@@ -132,6 +134,8 @@ if ($freq->rowCount()) {
     echo ' (' . $fls . ' кб.)<br>';
     echo _t('Downloads') . ': ' . $fres['dlcount'] . '</div>';
     $file_id = $fres['id'];
+   }
+   echo '<div style="clear: both;"></div></div>';
 }
 
 echo '</div>';

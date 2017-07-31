@@ -35,8 +35,8 @@ $locale = App::getTranslator()->getLocale();
         </td>
         <?php if (count($config->lng_list) > 1): ?>
             <td align="right">
-                <a href="language/"><strong><?= strtoupper($locale) ?></strong></a>&#160;
-                <a href="language/"><?= $tools->getFlag($locale) ?></a>
+                <a href="/language/"><strong><?= strtoupper($locale) ?></strong></a>&#160;
+                <a href="/language/"><?= $tools->getFlag($locale) ?></a>
             </td>
         <?php endif ?>
     </tr>

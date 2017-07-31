@@ -543,7 +543,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                         7 => '(Adm)',
                         9 => '(SV!)',
                     ];
-                    echo @$user_rights[$postres['rights']];
+                    echo $user_rights[$postres['rights']] ?? null;
                     echo(time() > $postres['lastdate'] + 300 ? '<span class="red"> [Off]</span>' : '<span class="green"> [ON]</span>');
                     echo ' <span class="gray">(' . $tools->displayDate($postres['time']) . ')</span><br>';
 
