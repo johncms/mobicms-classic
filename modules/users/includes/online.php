@@ -52,75 +52,79 @@ echo '<div class="phdr"><b>' . _t('Who is online?') . '</b></div>' .
     '<div class="topmenu">' . implode(' | ', $menu) . '</div>';
 
 switch ($mod) {
-    case 'ip':
-        // Список активных IP, со счетчиком обращений
-        $ip_array = array_count_values($env->getIpLog());
-        $total = count($ip_array);
-        $requestip = ip2long($container->get(Mobicms\Http\Request::class)->ip());
-
-        if ($start >= $total) {
-            // Исправляем запрос на несуществующую страницу
-            $start = max(0, $total - (($total % $userConfig->kmess) == 0 ? $userConfig->kmess : ($total % $userConfig->kmess)));
-        }
-
-        $end = $start + $userConfig->kmess;
-
-        if ($end > $total) {
-            $end = $total;
-        }
-
-        arsort($ip_array);
-        $i = 0;
-
-        foreach ($ip_array as $key => $val) {
-            $ip_list[$i] = [$key => $val];
-            ++$i;
-        }
-
-        if ($total && $systemUser->rights) {
-            if ($total > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('?act=online&amp;mod=ip&amp;', $total, null, $start) . '</div>';
-            }
-
-            for ($i = $start; $i < $end; $i++) {
-                $out = each($ip_list[$i]);
-                $ip = long2ip($out[0]);
-
-                if ($out[0] == $requestip) {
-                    echo '<div class="gmenu">';
-                } else {
-                    echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
-                }
-
-                echo '[' . $out[1] . ']&#160;&#160;<a href="' . $config->homeurl . '/admin/?act=search_ip&amp;ip=' . $ip . '">' . $ip . '</a>' .
-                    '&#160;&#160;<small>[<a href="' . $config->homeurl . '/admin/?act=ip_whois&amp;ip=' . $ip . '">?</a>]</small></div>';
-            }
-
-            echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
-
-            if ($total > $userConfig->kmess) {
-                echo '<div class="topmenu">' . $tools->displayPagination('?act=online&amp;mod=ip&amp;', $total) . '</div>' .
-                    '<p><form action="?act=online&amp;mod=ip" method="post">' .
-                    '<input type="text" name="page" size="2"/>' .
-                    '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';
-            }
-        }
-
-        require ROOT_PATH . 'system/end.php';
-        exit;
-        break;
-
-    case 'guest':
-        // Список гостей Онлайн
-        $sql_total = "SELECT COUNT(*) FROM `cms_sessions` WHERE `lastdate` > " . (time() - 300);
-        $sql_list = "SELECT * FROM `cms_sessions` WHERE `lastdate` > " . (time() - 300) . " LIMIT ";
-        break;
-
     case 'history':
         // История посетилелей за последние 2 суток
         $sql_total = "SELECT COUNT(*) FROM `users` WHERE `lastdate` > " . (time() - 172800 . " AND `lastdate` < " . (time() - 310));
         $sql_list = "SELECT * FROM `users` WHERE `lastdate` > " . (time() - 172800) . " AND `lastdate` < " . (time() - 310) . " ORDER BY `sestime` DESC LIMIT ";
         break;
+
+    case 'ip':
+        if ($systemUser->rights) {
+            // Список активных IP, со счетчиком обращений
+            $ip_array = array_count_values($env->getIpLog());
+            $total = count($ip_array);
+            $requestip = ip2long($container->get(Mobicms\Http\Request::class)->ip());
+
+            if ($start >= $total) {
+                // Исправляем запрос на несуществующую страницу
+                $start = max(0, $total - (($total % $userConfig->kmess) == 0 ? $userConfig->kmess : ($total % $userConfig->kmess)));
+            }
+
+            $end = $start + $userConfig->kmess;
+
+            if ($end > $total) {
+                $end = $total;
+            }
+
+            arsort($ip_array);
+            $i = 0;
+
+            foreach ($ip_array as $key => $val) {
+                $ip_list[$i] = [$key => $val];
+                ++$i;
+            }
+
+            if ($total && $systemUser->rights) {
+                if ($total > $userConfig->kmess) {
+                    echo '<div class="topmenu">' . $tools->displayPagination('?act=online&amp;mod=ip&amp;', $total, null, $start) . '</div>';
+                }
+
+                for ($i = $start; $i < $end; $i++) {
+                    $out = each($ip_list[$i]);
+                    $ip = long2ip($out[0]);
+
+                    if ($out[0] == $requestip) {
+                        echo '<div class="gmenu">';
+                    } else {
+                        echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
+                    }
+
+                    echo '[' . $out[1] . ']&#160;&#160;<a href="' . $config->homeurl . '/admin/?act=search_ip&amp;ip=' . $ip . '">' . $ip . '</a>' .
+                        '&#160;&#160;<small>[<a href="' . $config->homeurl . '/admin/?act=ip_whois&amp;ip=' . $ip . '">?</a>]</small></div>';
+                }
+
+                echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
+
+                if ($total > $userConfig->kmess) {
+                    echo '<div class="topmenu">' . $tools->displayPagination('?act=online&amp;mod=ip&amp;', $total) . '</div>' .
+                        '<p><form action="?act=online&amp;mod=ip" method="post">' .
+                        '<input type="text" name="page" size="2"/>' .
+                        '<input type="submit" value="' . _t('To Page') . ' &gt;&gt;"/></form></p>';
+                }
+            }
+
+            require ROOT_PATH . 'system/end.php';
+            exit;
+            break;
+        }
+
+    case 'guest':
+        if ($systemUser->rights) {
+            // Список гостей Онлайн
+            $sql_total = "SELECT COUNT(*) FROM `cms_sessions` WHERE `lastdate` > " . (time() - 300);
+            $sql_list = "SELECT * FROM `cms_sessions` WHERE `lastdate` > " . (time() - 300) . " LIMIT ";
+            break;
+        }
 
     default:
         // Список посетителей Онлайн
