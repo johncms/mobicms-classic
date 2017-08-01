@@ -124,7 +124,7 @@ require ROOT_PATH . 'system/head.php';
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Photo Albums') . '</b></a> | ' . $title . '</div>';
 
 if ($mod == 'my_new_comm') {
-    $total = $new_album_comm;
+    $total = $db->query('SELECT COUNT(*) FROM `cms_album_files` WHERE `user_id` = ' . $systemUser->id . ' AND `unread_comments` = 1')->fetchColumn();
 } elseif (!isset($total)) {
     $total = $db->query("SELECT COUNT(*) FROM `cms_album_files` WHERE $where")->fetchColumn();
 }
