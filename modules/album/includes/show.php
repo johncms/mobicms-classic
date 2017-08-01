@@ -121,7 +121,7 @@ if ($total > $userConfig->kmess) {
 }
 
 if ($total) {
-    $req = $db->query("SELECT * FROM `cms_album_files` WHERE `user_id` = '" . $user['id'] . "' AND `album_id` = '$al' ORDER BY `id` DESC" . $tools->getPgStart(true));
+    $req = $db->query("SELECT * FROM `cms_album_files` WHERE `user_id` = '" . $user['id'] . "' AND `album_id` = '$al' ORDER BY `id` DESC LIMIT $start, " . $userConfig->kmess);
     $i = 0;
 
     while ($res = $req->fetch()) {
