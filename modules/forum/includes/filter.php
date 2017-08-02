@@ -15,8 +15,8 @@ require ROOT_PATH . 'system/head.php';
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Mobicms\Http\Response $response */
-$response = $container->get(Mobicms\Http\Response::class);
+/** @var Mobicms\Deprecated\Response $response */
+$response = $container->get(Mobicms\Deprecated\Response::class);
 
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);

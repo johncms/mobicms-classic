@@ -102,8 +102,8 @@ if (isset($_POST['submit'])) {
     }
 
     if (empty($error)) {
-        /** @var Mobicms\Http\Request $request */
-        $request = $container->get(Mobicms\Http\Request::class);
+        /** @var Mobicms\Deprecated\Request $request */
+        $request = $container->get(Mobicms\Deprecated\Request::class);
 
         $preg = $config->mod_reg > 1 ? 1 : 0;
         $db->prepare('

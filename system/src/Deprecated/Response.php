@@ -8,14 +8,17 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-namespace Mobicms\Http;
+namespace Mobicms\Deprecated;
 
-use Psr\Container\ContainerInterface;
+use Klein\Response as KleinResponse;
 
-class ResponseFactory
+/**
+ * Class Response
+ *
+ * @package Mobicms\Deprecated
+ * @deprecated
+ */
+class Response extends KleinResponse
 {
-    public function __invoke(ContainerInterface $container)
-    {
-        return new Response;
-    }
+
 }

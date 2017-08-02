@@ -17,13 +17,13 @@ return [
             Mobicms\Api\ConfigInterface::class      => Mobicms\Config\ConfigFactory::class,
             Mobicms\Api\EnvironmentInterface::class => Mobicms\Environment::class,
             Mobicms\Asset\Manager::class            => Mobicms\Asset\ManagerFactory::class,
-            Mobicms\Http\Request::class             => Mobicms\Http\RequestFactory::class,
-            Mobicms\Http\Response::class            => Mobicms\Http\ResponseFactory::class,
             Mobicms\Api\ToolsInterface::class       => Mobicms\Tools\Utilites::class,
             Mobicms\Api\UserInterface::class        => Mobicms\Checkpoint\UserFactory::class,
             PDO::class                              => Mobicms\Database\PdoFactory::class,
 
             // Deprecaded dependencies
+            Mobicms\Deprecated\Request::class       => Mobicms\Deprecated\RequestFactory::class,
+            Mobicms\Deprecated\Response::class      => Mobicms\Deprecated\ResponseFactory::class,
             Mobicms\Api\BbcodeInterface::class      => Mobicms\Deprecated\Bbcode::class,
             'counters'                              => Mobicms\Deprecated\Counters::class,
         ],

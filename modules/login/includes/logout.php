@@ -16,8 +16,8 @@ $container = App::getContainer();
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-/** @var Mobicms\Http\Response $response */
-$response = $container->get(Mobicms\Http\Response::class);
+/** @var Mobicms\Deprecated\Response $response */
+$response = $container->get(Mobicms\Deprecated\Response::class);
 
 $referer = isset($_SERVER['HTTP_REFERER']) ? htmlspecialchars($_SERVER['HTTP_REFERER']) : $config->homeurl;
 

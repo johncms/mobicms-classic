@@ -10,7 +10,7 @@
 
 namespace Mobicms;
 
-use Mobicms\Http\Request;
+use Mobicms\Deprecated\Request;
 use Psr\Container\ContainerInterface;
 
 class Environment implements Api\EnvironmentInterface

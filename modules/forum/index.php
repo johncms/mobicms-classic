@@ -19,8 +19,8 @@ $asset = $container->get(Mobicms\Asset\Manager::class);
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Http\Request $request */
-$request = $container->get(Mobicms\Http\Request::class);
+/** @var Mobicms\Deprecated\Request $request */
+$request = $container->get(Mobicms\Deprecated\Request::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);

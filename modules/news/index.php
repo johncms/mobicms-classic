@@ -20,8 +20,8 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Http\Response $response */
-$response = $container->get(Mobicms\Http\Response::class);
+/** @var Mobicms\Deprecated\Response $response */
+$response = $container->get(Mobicms\Deprecated\Response::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -98,8 +98,8 @@ switch ($do) {
                                     $name,
                                 ]);
 
-                                /** @var Mobicms\Http\Request $request */
-                                $request = $container->get(Mobicms\Http\Request::class);
+                                /** @var Mobicms\Deprecated\Request $request */
+                                $request = $container->get(Mobicms\Deprecated\Request::class);
                                 $rid = $db->lastInsertId();
 
                                 $db->prepare('

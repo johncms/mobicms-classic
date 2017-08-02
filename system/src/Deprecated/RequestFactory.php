@@ -8,11 +8,14 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-namespace Mobicms\Http;
+namespace Mobicms\Deprecated;
 
 use Mobicms\Api\ConfigInterface;
 use Psr\Container\ContainerInterface;
 
+/**
+ * @deprecated
+ */
 class RequestFactory
 {
     public function __invoke(ContainerInterface $container)

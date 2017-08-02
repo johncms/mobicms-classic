@@ -68,8 +68,8 @@ class Comments
         $this->db = $container->get(\PDO::class);
         $this->systemUser = $container->get(UserInterface::class);
 
-        /** @var \Mobicms\Http\Response $response */
-        $response = $container->get(\Mobicms\Http\Response::class);
+        /** @var \Mobicms\Deprecated\Response $response */
+        $response = $container->get(\Mobicms\Deprecated\Response::class);
 
         /** @var \Mobicms\Checkpoint\UserConfig $userConfig */
         $userConfig = $this->systemUser->getConfig();
@@ -365,8 +365,8 @@ class Comments
         /** @var \Psr\Container\ContainerInterface $container */
         $container = \App::getContainer();
 
-        /** @var \Mobicms\Http\Request $request */
-        $request = $container->get(\Mobicms\Http\Request::class);
+        /** @var \Mobicms\Deprecated\Request $request */
+        $request = $container->get(\Mobicms\Deprecated\Request::class);
 
         // Формируем атрибуты сообщения
         $attributes = [

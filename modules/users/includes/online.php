@@ -63,7 +63,7 @@ switch ($mod) {
             // Список активных IP, со счетчиком обращений
             $ip_array = array_count_values($env->getIpLog());
             $total = count($ip_array);
-            $requestip = ip2long($container->get(Mobicms\Http\Request::class)->ip());
+            $requestip = ip2long($container->get(Mobicms\Deprecated\Request::class)->ip());
 
             if ($start >= $total) {
                 // Исправляем запрос на несуществующую страницу

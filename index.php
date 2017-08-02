@@ -16,8 +16,8 @@ require('system/bootstrap.php');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Mobicms\Http\Request $request */
-$request = $container->get(Mobicms\Http\Request::class);
+/** @var Mobicms\Deprecated\Request $request */
+$request = $container->get(Mobicms\Deprecated\Request::class);
 
 require CONFIG_PATH . 'routes.php';
 

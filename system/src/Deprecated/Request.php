@@ -8,10 +8,16 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-namespace Mobicms\Http;
+namespace Mobicms\Deprecated;
 
 use Klein\Request as KleinRequest;
 
+/**
+ * Class Request
+ *
+ * @package Mobicms\Deprecated
+ * @deprecated
+ */
 class Request extends KleinRequest
 {
     protected $ipViaProxy;

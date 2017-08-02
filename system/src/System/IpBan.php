@@ -10,7 +10,7 @@
 
 namespace Mobicms\System;
 
-use Mobicms\Http\Request;
+use Mobicms\Deprecated\Request;
 use Mobicms\System\Exception\IpBanException;
 use Psr\Container\ContainerInterface;
 

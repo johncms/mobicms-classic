@@ -11,7 +11,7 @@
 namespace Mobicms\Checkpoint;
 
 use Mobicms\Api\UserInterface;
-use Mobicms\Http\Request;
+use Mobicms\Deprecated\Request;
 use Psr\Container\ContainerInterface;
 
 class UserStat

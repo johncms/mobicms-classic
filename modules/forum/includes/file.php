@@ -17,8 +17,8 @@ if ($id) {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
-    /** @var Mobicms\Http\Response $response */
-    $response = $container->get(Mobicms\Http\Response::class);
+    /** @var Mobicms\Deprecated\Response $response */
+    $response = $container->get(Mobicms\Deprecated\Response::class);
 
     /** @var Mobicms\Api\ToolsInterface $tools */
     $tools = $container->get(Mobicms\Api\ToolsInterface::class);
