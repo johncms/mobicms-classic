@@ -13,7 +13,6 @@ namespace Mobicms\Http;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\ServerRequestFactory as Factory;
-use UnexpectedValueException;
 
 /**
  * Class ServerRequestFactory
@@ -24,23 +23,58 @@ class ServerRequestFactory
 {
     public function __invoke(ContainerInterface $container)
     {
-        $server = Factory::normalizeServer($_SERVER);
-        $headers = Factory::marshalHeaders($server);
+        $request = Factory::fromGlobals();
+        $request = $this->normalizeBasePath($request, $container);
+        $request = $this->determineIp($request);
+        $request = $this->determineIpViaProxy($request);
 
-        $request = new ServerRequest(
-            $server,
-            Factory::normalizeFiles($_FILES),
-            Factory::marshalUriFromServer($server, $headers),
-            Factory::get('REQUEST_METHOD', $server, 'GET'),
-            'php://input',
-            $headers,
-            $_COOKIE,
-            $_GET,
-            $_POST,
-            $this->marshalProtocolVersion($server)
-        );
+        return $request;
+    }
 
-        return $this->setBasePath($request, $container);
+    /**
+     * Determine the client IP address and stores it as an ServerRequest attribute
+     *
+     * @param ServerRequestInterface $request
+     * @return ServerRequestInterface
+     */
+    private function determineIp(ServerRequestInterface $request)
+    {
+        $serverParams = $request->getServerParams();
+        $ipAddress = isset($serverParams['REMOTE_ADDR']) && $this->isValidIpAddress($serverParams['REMOTE_ADDR'])
+            ? $serverParams['REMOTE_ADDR']
+            : null;
+
+        return $request->withAttribute('ip', $ipAddress);
+    }
+
+    /**
+     * Determine the client IP via Proxy address and stores it as an ServerRequest attribute
+     *
+     * @param ServerRequestInterface $request
+     * @return ServerRequestInterface
+     */
+    private function determineIpViaProxy(ServerRequestInterface $request)
+    {
+        $ipAddress = null;
+
+        if ($request->hasHeader('X-Forwarded-For')
+            && preg_match_all('#\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}#s',
+                $request->getHeader('X-Forwarded-For'),
+                $vars
+            )
+        ) {
+            foreach ($vars[0] AS $var) {
+                if ($this->isValidIpAddress($var)
+                    && $var != $request->getAttribute('ip')
+                    && !preg_match('#^(10|172\.16|192\.168)\.#', $var)
+                ) {
+                    $ipAddress = $var;
+                    break;
+                }
+            }
+        }
+
+        return $request->withAttribute('ip_via_proxy', $ipAddress);
     }
 
     /**
@@ -50,7 +84,7 @@ class ServerRequestFactory
      * @param ContainerInterface     $container
      * @return ServerRequestInterface
      */
-    private function setBasePath(ServerRequestInterface $request, ContainerInterface $container)
+    private function normalizeBasePath(ServerRequestInterface $request, ContainerInterface $container)
     {
         $config = $container->get('config');
 
@@ -68,24 +102,15 @@ class ServerRequestFactory
     }
 
     /**
-     * Return HTTP protocol version (X.Y)
+     * Check that a given string is a valid IP address
      *
-     * @param array $server
-     * @return string
+     * @param  string $ip
+     * @return boolean
      */
-    private function marshalProtocolVersion(array $server)
+    private function isValidIpAddress($ip)
     {
-        if (!isset($server['SERVER_PROTOCOL'])) {
-            return '1.1';
-        }
+        $flags = FILTER_FLAG_IPV4;
 
-        if (!preg_match('#^(HTTP/)?(?P<version>[1-9]\d*(?:\.\d)?)$#', $server['SERVER_PROTOCOL'], $matches)) {
-            throw new UnexpectedValueException(sprintf(
-                'Unrecognized protocol version (%s)',
-                $server['SERVER_PROTOCOL']
-            ));
-        }
-
-        return $matches['version'];
+        return filter_var($ip, FILTER_VALIDATE_IP, $flags) === false ?: true;
     }
 }
