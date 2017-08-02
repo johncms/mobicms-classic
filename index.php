@@ -16,14 +16,19 @@ require('system/bootstrap.php');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Mobicms\Deprecated\Request $request */
-$request = $container->get(Mobicms\Deprecated\Request::class);
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
 
 require CONFIG_PATH . 'routes.php';
 
-/** @var FastRoute\Dispatcher $dispatcher */
-$dispatcher = $container->get(FastRoute\Dispatcher::class);
-$match = $dispatcher->dispatch($request->method(), rawurldecode($request->pathname()));
+$dispatcher = new FastRoute\Dispatcher\GroupCountBased(
+    $container->get(FastRoute\RouteCollector::class)->getData()
+);
+
+$match = $dispatcher->dispatch(
+    $request->getMethod(),
+    $request->getUri()->getPath()
+);
 
 switch ($match[0]) {
     case FastRoute\Dispatcher::FOUND:

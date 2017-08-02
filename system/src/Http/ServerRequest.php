@@ -10,14 +10,9 @@
 
 namespace Mobicms\Http;
 
-use Psr\Container\ContainerInterface;
-use FastRoute\Dispatcher\GroupCountBased;
-use FastRoute\RouteCollector;
+use Zend\Diactoros\ServerRequest as Request;
 
-class DispatcherFactory
+class ServerRequest extends Request
 {
-    public function __invoke(ContainerInterface $container)
-    {
-        return new GroupCountBased($container->get(RouteCollector::class)->getData());
-    }
+
 }
