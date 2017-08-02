@@ -27,6 +27,7 @@ class ServerRequestFactory
         $request = $this->normalizeBasePath($request, $container);
         $request = $this->determineIp($request);
         $request = $this->determineIpViaProxy($request);
+        $request = $this->determineUserAgent($request);
 
         return $request;
     }
@@ -75,6 +76,30 @@ class ServerRequestFactory
         }
 
         return $request->withAttribute('ip_via_proxy', $ipAddress);
+    }
+
+    /**
+     * Determine the client User Agent and stores it as an ServerRequest attribute
+     *
+     * @param ServerRequestInterface $request
+     * @return ServerRequestInterface
+     */
+    private function determineUserAgent(ServerRequestInterface $request)
+    {
+        $userAgent = 'Not Recognised';
+        $checkHeaders = [
+            'X-OperaMini-Phone-UA',
+            'User-Agent',
+        ];
+
+        foreach ($checkHeaders as $val) {
+            if($request->hasHeader($val)){
+                $userAgent = filter_var($request->getHeaderLine($val), FILTER_SANITIZE_STRING);
+                break;
+            }
+        }
+
+        return $request->withAttribute('user_agent', $userAgent);
     }
 
     /**
