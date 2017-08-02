@@ -16,8 +16,8 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Request $request */
-$request = $container->get(Mobicms\Deprecated\Request::class);
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
 
 /** @var Mobicms\Deprecated\Response $response */
 $response = $container->get(Mobicms\Deprecated\Response::class);
@@ -150,8 +150,9 @@ switch ($mod) {
             }
 
             // Проверяем, не попадает ли IP администратора в диапазон
-            $requestproxy = !empty($request->ipViaProxy()) ? ip2long($request->ipViaProxy()) : 0;
-            $requestip = ip2long($request->ip());
+            $ipViaProxy = $request->getAttribute('ip_via_proxy');
+            $requestproxy = null !== $ipViaProxy ? ip2long($ipViaProxy) : 0;
+            $requestip = ip2long($request->getAttribute('ip'));
 
             if (($requestip >= $ip1 && $requestip <= $ip2) || ($requestproxy >= $ip1 && $requestproxy <= $ip2)) {
                 $error = _t('Ban impossible. Your own IP address in the range');
