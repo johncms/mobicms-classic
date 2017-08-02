@@ -6,13 +6,13 @@ Detailed change in the [repository log](https://github.com/mobicms/mobicms-class
 `Release Date: TBD` 
 
 ### New
-- Nothing
+- Integrated [zend-diactoros](https://github.com/zendframework/zend-diactoros) PSR-7 implementation package
   
 ### Changed
 - Nothing
 
 ### Fixed
-- Nothing
+- Fixed known bugs
   
 ### Deleted
 - Nothing
