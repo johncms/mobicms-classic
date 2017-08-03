@@ -229,7 +229,7 @@ if (isset($_POST['submit'])
             `time`='" . time() . "'
         ");
 
-        if ($_POST['addfiles'] == 1) {
+        if (isset($_POST['addfiles'])) {
             $response->redirect("?id=$postid&act=addfile")->sendHeaders();
         } else {
             $response->redirect("?id=$rid")->sendHeaders();
