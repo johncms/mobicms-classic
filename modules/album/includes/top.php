@@ -13,6 +13,9 @@ defined('MOBICMS') or die('Error: restricted access');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -156,7 +159,7 @@ if ($total) {
             echo 'Только для друзей';
         } elseif ($res['access'] == 2) {
             // Если доступ по паролю
-            echo '<a href="?act=show&amp;al=' . $res['album_id'] . '&amp;img=' . $res['id'] . '&amp;user=' . $res['user_id'] . '"><img src="' . $config['homeurl'] . '/assets/modules/album/stop.gif" width="50" height="50"/></a>';
+            echo '<a href="?act=show&amp;al=' . $res['album_id'] . '&amp;img=' . $res['id'] . '&amp;user=' . $res['user_id'] . '">' . $asset->img('stop.gif') . '</a>';
         }
 
         echo '<div class="sub">' .

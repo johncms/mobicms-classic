@@ -13,6 +13,9 @@ defined('MOBICMS') or die('Error: restricted access');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -30,7 +33,7 @@ if ($user['id'] == $systemUser->id || ($systemUser->rights >= 7 && $systemUser->
 
 echo '<div class="user"><p>' . $tools->displayUser($user) . '</p></div>' .
     '<div class="list2"><p>' .
-    '<h3><img src="../assets/images/contacts.png" width="16" height="16" class="left" />&#160;' . _t('Personal info') . '</h3>' .
+    '<h3>' . $asset->img('contacts.png')->class('left') . '&#160;' . _t('Personal info') . '</h3>' .
     '<ul>';
 
 if (file_exists(UPLOAD_PATH . 'users/photo/' . $user['id'] . '_small.jpg')) {
@@ -42,7 +45,7 @@ echo '<li><span class="gray">' . _t('Name') . ':</span> ' . (empty($user['imname
     '<li><span class="gray">' . _t('City, Country') . ':</span> ' . (empty($user['live']) ? '' : $user['live']) . '</li>' .
     '<li><span class="gray">' . _t('About myself') . ':</span> ' . (empty($user['about']) ? '' : '<br />' . $tools->smilies($tools->checkout($user['about'], 1, 1))) . '</li>' .
     '</ul></p><p>' .
-    '<h3><img src="../assets/images/mail.png" width="16" height="16" class="left" />&#160;' . _t('Contacts') . '</h3><ul>' .
+    '<h3>' . $asset->img('mail.png')->class('left') . '&#160;' . _t('Contacts') . '</h3><ul>' .
     '<li><span class="gray">' . _t('Phone number') . ':</span> ' . (empty($user['mibile']) ? '' : $user['mibile']) . '</li>' .
     '<li><span class="gray">E-mail:</span> ';
 

@@ -16,6 +16,9 @@ $ban = isset($_GET['ban']) ? intval($_GET['ban']) : 0;
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -319,8 +322,7 @@ switch ($mod) {
                 $remain = $res['ban_time'] - time();
                 $period = $res['ban_time'] - $res['ban_while'];
                 echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
-                echo '<img src="../images/' . ($remain > 0 ? 'red'
-                        : 'green') . '.gif" width="16" height="16" align="left" />&#160;' .
+                echo $asset->img(($remain > 0 ? 'red' : 'green') . '.gif')->class('left') . '&#160;' .
                     '<b>' . $types[$res['ban_type']] . '</b>' .
                     ' <span class="gray">(' . date("d.m.Y / H:i", $res['ban_while']) . ')</span>' .
                     '<br />' . $tools->checkout($res['ban_reason']) .

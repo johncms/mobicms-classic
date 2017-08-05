@@ -13,6 +13,9 @@ defined('MOBICMS') or die('Error: restricted access');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -310,7 +313,7 @@ switch ($mod) {
 
             while ($res = $req->fetch()) {
                 echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
-                echo '<img src="../images/' . ($res['switch'] == 1 ? 'green' : 'red') . '.gif" width="16" height="16" class="left"/>&#160;';
+                echo $asset->img(($res['switch'] == 1 ? 'green' : 'red') . '.gif')->class('left') . '&#160;';
                 echo '<a href="index.php?act=counters&amp;mod=view&amp;id=' . $res['id'] . '"><b>' . $res['name'] . '</b></a><br>';
                 echo '<div class="sub"><a href="index.php?act=counters&amp;mod=up&amp;id=' . $res['id'] . '">' . _t('Up') . '</a> | ';
                 echo '<a href="index.php?act=counters&amp;mod=down&amp;id=' . $res['id'] . '">' . _t('Down') . '</a> | ';

@@ -13,6 +13,9 @@ defined('MOBICMS') or die('Error: restricted access');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Mobicms\Asset\Manager $asset */
+$asset = $container->get(Mobicms\Asset\Manager::class);
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -93,7 +96,7 @@ switch ($mod) {
             while ($res = $req->fetch()) {
                 echo '<div class="' . ($res['bantime'] > time() ? 'r' : '') . 'menu">';
                 $arg = [
-                    'header' => '<br><img src="../images/block.gif" width="16" height="16" align="middle" />&#160;<small><a href="../profile/?act=ban&amp;user=' . $res['id'] . '">' . _t('Violations history') . '</a> [' . $res['bancount'] . ']</small>',
+                    'header' => '<br>' . $asset->img('info.png')->class('icon') . '&#160;<small><a href="../profile/?act=ban&amp;user=' . $res['id'] . '">' . _t('Violations history') . '</a> [' . $res['bancount'] . ']</small>',
                 ];
                 echo $tools->displayUser($res, $arg);
                 echo '</div>';
