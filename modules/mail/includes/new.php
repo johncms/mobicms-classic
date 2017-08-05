@@ -69,7 +69,7 @@ if ($total) {
     echo '<div class="menu"><p>' . _t('The list is empty') . '</p></div>';
 }
 
-echo '<div class="phdr">' . _t('Total') . ': ' . $new_mail . '</div>';
+echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 
 if ($total > $userConfig->kmess) {
     echo '<div class="topmenu">' . $tools->displayPagination('index.php?act=new&amp;', $total) . '</div>';
