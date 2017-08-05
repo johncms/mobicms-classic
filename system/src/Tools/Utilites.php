@@ -277,7 +277,9 @@ class Utilites implements ToolsInterface
             return str_replace('#home#', $this->config->homeurl, $placelist[$part[0]]);
         }
 
-        return '<a href="' . $this->config->homeurl . '/">' . _t('Somewhere on the site', 'system') . '</a> [' . ($place) . ']';
+        return '<a href="' . $this->config->homeurl . '/">'
+            . ($this->user->rights >= 6 ? '[' . ($place) . ']' : _t('Somewhere on the site', 'system'))
+            . '</a>';
     }
 
     /**
