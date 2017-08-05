@@ -21,10 +21,23 @@ use Zend\Diactoros\ServerRequestFactory as Factory;
  */
 class ServerRequestFactory
 {
+    /**
+     * @var array HTTP headers to determine the client User Agent
+     */
+    private $uaCheckHeaders = [
+        'X-OperaMini-Phone-UA',
+        'User-Agent',
+    ];
+
     public function __invoke(ContainerInterface $container)
     {
+        $config = $container->get('config');
         $request = Factory::fromGlobals();
-        $request = $this->normalizeBasePath($request, $container);
+
+        if (!empty($config['mobicms']['base_path'])) {
+            $request = $this->normalizeBasePath($request, $config['mobicms']['base_path']);
+        }
+
         $request = $this->determineIp($request);
         $request = $this->determineIpViaProxy($request);
         $request = $this->determineUserAgent($request);
@@ -87,13 +100,9 @@ class ServerRequestFactory
     private function determineUserAgent(ServerRequestInterface $request)
     {
         $userAgent = 'Not Recognised';
-        $checkHeaders = [
-            'X-OperaMini-Phone-UA',
-            'User-Agent',
-        ];
 
-        foreach ($checkHeaders as $val) {
-            if($request->hasHeader($val)){
+        foreach ($this->uaCheckHeaders as $val) {
+            if ($request->hasHeader($val)) {
                 $userAgent = filter_var($request->getHeaderLine($val), FILTER_SANITIZE_STRING);
                 break;
             }
@@ -106,24 +115,16 @@ class ServerRequestFactory
      * Remove a path prefix from a request uri
      *
      * @param ServerRequestInterface $request
-     * @param ContainerInterface     $container
+     * @param string                 $basePath
      * @return ServerRequestInterface
      */
-    private function normalizeBasePath(ServerRequestInterface $request, ContainerInterface $container)
+    private function normalizeBasePath(ServerRequestInterface $request, $basePath)
     {
-        $config = $container->get('config');
-
-        if (empty($config['mobicms']['base_path'])) {
-            return $request;
-        }
-
-        $basePath = '/' . trim($config['mobicms']['base_path'], '/');
-
+        $basePath = '/' . trim($basePath, '/');
         $uri = $request->getUri();
         $path = substr($uri->getPath(), strlen($basePath)) ?: '/';
-        $request = $request->withUri($uri->withPath($path));
 
-        return $request;
+        return $request->withUri($uri->withPath($path));
     }
 
     /**
