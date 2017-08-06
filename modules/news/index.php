@@ -10,18 +10,16 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
-$mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
-$do = isset($_REQUEST['do']) ? trim($_REQUEST['do']) : false;
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
+$queryParams = $request->getQueryParams();
+$postParams = $request->getParsedBody();
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -36,6 +34,10 @@ $userConfig = $systemUser->getConfig();
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
+$id = isset($queryParams['id']) ? abs(intval($queryParams['id'])) : 0;
+$mod = $queryParams['mod'] ?? '';
+$do = $queryParams['do'] ?? '';
+
 $pageTitle = _t('News');
 require(ROOT_PATH . 'system/head.php');
 
@@ -46,10 +48,10 @@ switch ($do) {
             echo '<div class="phdr"><a href="index.php"><b>' . _t('News') . '</b></a> | ' . _t('Add') . '</div>';
             $old = 20;
 
-            if (isset($_POST['submit'])) {
+            if (isset($postParams['submit'])) {
                 $error = [];
-                $name = isset($_POST['name']) ? htmlspecialchars(trim($_POST['name'])) : false;
-                $text = isset($_POST['text']) ? trim($_POST['text']) : false;
+                $name = isset($postParams['name']) ? htmlspecialchars(trim($postParams['name'])) : false;
+                $text = isset($postParams['text']) ? trim($postParams['text']) : false;
 
                 if (!$name) {
                     $error[] = _t('You have not entered news title');
@@ -68,9 +70,9 @@ switch ($do) {
                 if (!$error) {
                     $rid = 0;
 
-                    if (!empty($_POST['pf']) && ($_POST['pf'] != '0')) {
-                        $pf = intval($_POST['pf']);
-                        $rz = $_POST['rz'];
+                    if (!empty($postParams['pf']) && ($postParams['pf'] != '0')) {
+                        $pf = intval($postParams['pf']);
+                        $rz = $postParams['rz'];
                         $pr = $db->query("SELECT * FROM `forum` WHERE `refid` = '$pf' AND `type` = 'r'");
 
                         while ($pr1 = $pr->fetch()) {
@@ -98,8 +100,6 @@ switch ($do) {
                                     $name,
                                 ]);
 
-                                /** @var Mobicms\Deprecated\Request $request */
-                                $request = $container->get(Mobicms\Deprecated\Request::class);
                                 $rid = $db->lastInsertId();
 
                                 $db->prepare('
@@ -119,8 +119,8 @@ switch ($do) {
                                     time(),
                                     $systemUser->id,
                                     $systemUser->name,
-                                    $request->ip(),
-                                    $request->userAgent(),
+                                    $request->getAttribute('ip'),
+                                    $request->getAttribute('user_agent'),
                                     $text,
                                 ]);
                             }
@@ -172,9 +172,6 @@ switch ($do) {
                     '</div></form>' .
                     '<p><a href="index.php">' . _t('Back to news') . '</a></p>';
             }
-        } else {
-            $response->header('Location', '.');
-            $response->send();
         }
         break;
 
@@ -189,19 +186,19 @@ switch ($do) {
                 exit;
             }
 
-            if (isset($_POST['submit'])) {
+            if (isset($postParams['submit'])) {
                 $error = [];
 
-                if (empty($_POST['name'])) {
+                if (empty($postParams['name'])) {
                     $error[] = _t('You have not entered news title');
                 }
 
-                if (empty($_POST['text'])) {
+                if (empty($postParams['text'])) {
                     $error[] = _t('You have not entered news text');
                 }
 
-                $name = htmlspecialchars(trim($_POST['name']));
-                $text = trim($_POST['text']);
+                $name = htmlspecialchars(trim($postParams['name']));
+                $text = trim($postParams['text']);
 
                 if (!$error) {
                     $db->prepare('
@@ -230,9 +227,6 @@ switch ($do) {
                     '</form></div>' .
                     '<div class="phdr"><a href="index.php">' . _t('Back to news') . '</a></div>';
             }
-        } else {
-            $response->header('Location', '.');
-            $response->send();
         }
         break;
 
@@ -241,8 +235,8 @@ switch ($do) {
         if ($systemUser->rights >= 7) {
             echo '<div class="phdr"><a href="index.php"><b>' . _t('News') . '</b></a> | ' . _t('Clear') . '</div>';
 
-            if (isset($_POST['submit'])) {
-                $cl = isset($_POST['cl']) ? intval($_POST['cl']) : '';
+            if (isset($postParams['submit'])) {
+                $cl = isset($postParams['cl']) ? intval($postParams['cl']) : '';
 
                 switch ($cl) {
                     case '1':
@@ -276,9 +270,6 @@ switch ($do) {
                     '</form></div>' .
                     '<div class="phdr"><a href="index.php">' . _t('Cancel') . '</a></div>';
             }
-        } else {
-            $response->header('Location', '.');
-            $response->send();
         }
         break;
 
@@ -287,7 +278,7 @@ switch ($do) {
         if ($systemUser->rights >= 6) {
             echo '<div class="phdr"><a href="index.php"><b>' . _t('News') . '</b></a> | ' . _t('Delete') . '</div>';
 
-            if (isset($_GET['yes'])) {
+            if (isset($queryParams['yes'])) {
                 $db->query("DELETE FROM `news` WHERE `id` = '$id'");
 
                 echo '<p>' . _t('Article deleted') . '<br><a href="index.php">' . _t('Back to news') . '</a></p>';
@@ -295,9 +286,6 @@ switch ($do) {
                 echo '<p>' . _t('Do you really want to delete?') . '<br>' .
                     '<a href="index.php?do=del&amp;id=' . $id . '&amp;yes">' . _t('Delete') . '</a> | <a href="index.php">' . _t('Cancel') . '</a></p>';
             }
-        } else {
-            $response->header('Location', '.');
-            $response->send();
         }
         break;
 
