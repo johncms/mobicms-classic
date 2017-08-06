@@ -22,8 +22,6 @@ return [
             PDO::class                                     => Mobicms\Database\PdoFactory::class,
 
             // Deprecaded dependencies
-            Mobicms\Deprecated\Request::class              => Mobicms\Deprecated\RequestFactory::class,
-            Mobicms\Deprecated\Response::class             => Mobicms\Deprecated\ResponseFactory::class,
             Mobicms\Api\BbcodeInterface::class             => Mobicms\Deprecated\Bbcode::class,
             'counters'                                     => Mobicms\Deprecated\Counters::class,
         ],

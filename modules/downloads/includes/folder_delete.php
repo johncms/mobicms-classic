@@ -19,9 +19,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -73,7 +70,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
         $db->query("OPTIMIZE TABLE `download__bookmark`, `download__files`, `download__comments`, `download__more`, `download__category`");
 
         rmdir($res['dir']);
-        $response->redirect('?id=' . $res['refid'])->sendHeaders();
+        header('Location: ?id=' . $res['refid']);
     } else {
         require ROOT_PATH . 'system/head.php';
         echo '<div class="phdr"><b>' . _t('Delete Folder') . '</b></div>' .

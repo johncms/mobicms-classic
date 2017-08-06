@@ -16,9 +16,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -65,9 +62,7 @@ if (!$error) {
     }
 
     // Отдаем файл
-    //TODO: переделать на отдачу файла через Response
-    $response->header('Location', $config['homeurl'] . '/uploads/users/album/' . $res['user_id'] . '/' . $res['img_name']);
-    $response->send();
+    header('Location: ' . $config['homeurl'] . '/uploads/users/album/' . $res['user_id'] . '/' . $res['img_name']);
 } else {
     require ROOT_PATH . 'system/head.php';
     echo $tools->displayError($error, '<a href="index.php">' . _t('Back') . '</a>');

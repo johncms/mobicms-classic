@@ -16,9 +16,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -55,5 +52,5 @@ if ($error) {
         $_SESSION['down_' . $id] = 1;
     }
 
-    $response->redirect($config->homeurl . '/' .$link)->sendHeaders();
+    header('Location: ' . $config->homeurl . '/' .$link);
 }

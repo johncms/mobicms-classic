@@ -68,9 +68,6 @@ class Comments
         $this->db = $container->get(\PDO::class);
         $this->systemUser = $container->get(UserInterface::class);
 
-        /** @var \Mobicms\Deprecated\Response $response */
-        $response = $container->get(\Mobicms\Deprecated\Response::class);
-
         /** @var \Mobicms\Checkpoint\UserConfig $userConfig */
         $userConfig = $this->systemUser->getConfig();
 
@@ -141,7 +138,7 @@ class Comments
                                     $this->item,
                                 ]);
 
-                                $response->redirect(str_replace('&amp;', '&', $this->url))->sendHeaders();
+                                header('Location: ' . str_replace('&amp;', '&', $this->url));
                             } else {
                                 echo $this->tools->displayError($message['error'], '<a href="' . $this->url . '&amp;mod=reply&amp;item=' . $this->item . '">' . _t('Back', 'system') . '</a>');
                             }
@@ -197,7 +194,7 @@ class Comments
                                     $this->item,
                                 ]);
 
-                                $response->redirect(str_replace('&amp;', '&', $this->url))->sendHeaders();
+                                header('Location: ' . str_replace('&amp;', '&', $this->url));
                             } else {
                                 echo $this->tools->displayError($message['error'], '<a href="' . $this->url . '&amp;mod=edit&amp;item=' . $this->item . '">' . _t('Back', 'system') . '</a>');
                             }
@@ -247,7 +244,7 @@ class Comments
                             $this->msg_total(1);
                         }
 
-                        $response->redirect(str_replace('&amp;', '&', $this->url))->sendHeaders();
+                        header('Location: ' . str_replace('&amp;', '&', $this->url));
                     } else {
                         echo '<div class="phdr"><a href="' . $this->url . '"><b>' . $arg['title'] . '</b></a> | ' . _t('Delete', 'system') . '</div>' .
                             '<div class="rmenu"><p>' . _t('Do you really want to delete?', 'system') . '<br />' .
@@ -365,15 +362,15 @@ class Comments
         /** @var \Psr\Container\ContainerInterface $container */
         $container = \App::getContainer();
 
-        /** @var \Mobicms\Deprecated\Request $request */
-        $request = $container->get(\Mobicms\Deprecated\Request::class);
+        /** @var \Psr\Http\Message\ServerRequestInterface $request */
+        $request = $container->get(\Psr\Http\Message\ServerRequestInterface::class);
 
         // Формируем атрибуты сообщения
         $attributes = [
             'author_name'         => $this->systemUser->name,
-            'author_ip'           => $request->ip(),
-            'author_ip_via_proxy' => $request->ipViaProxy(),
-            'author_browser'      => $request->userAgent(),
+            'author_ip'           => $request->getAttribute('ip'),
+            'author_ip_via_proxy' => $request->getAttribute('ip_via_proxy'),
+            'author_browser'      => $request->getAttribute('user_agent'),
         ];
 
         // Записываем комментарий в базу

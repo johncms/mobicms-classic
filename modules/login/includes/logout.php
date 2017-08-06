@@ -16,18 +16,13 @@ $container = App::getContainer();
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 $referer = isset($_SERVER['HTTP_REFERER']) ? htmlspecialchars($_SERVER['HTTP_REFERER']) : $config->homeurl;
 
 if (isset($_POST['submit'])) {
     session_destroy();
-    $response
-        ->cookie('cuid', '', strtotime('-1 Year', time()), '/')
-        ->cookie('cups', '', strtotime('-1 Year', time()), '/')
-        ->redirect($config->homeurl)
-        ->send();
+    setcookie('cuid', '', strtotime('-1 Year', time()), '/');
+    setcookie('cups', '', strtotime('-1 Year', time()), '/');
+    header('Location: ' . $config->homeurl);
     exit;
 } else {
     require ROOT_PATH . 'system/head.php';

@@ -19,9 +19,6 @@ $asset = $container->get(Mobicms\Asset\Manager::class);
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -100,9 +97,7 @@ switch ($mod) {
                 }
             }
         }
-
-        $response->header('Location', '?act=counters');
-        $response->send();
+        header('Location: ?act=counters');
         break;
 
     case 'down':
@@ -124,9 +119,7 @@ switch ($mod) {
                 }
             }
         }
-
-        $response->header('Location', '?act=counters');
-        $response->send();
+        header('Location: ?act=counters');
         break;
 
     case 'del':

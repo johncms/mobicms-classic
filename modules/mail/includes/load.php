@@ -19,9 +19,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -42,7 +39,7 @@ if ($id) {
 
     if (file_exists(UPLOAD_PATH . 'mail/' . $res['file_name'])) {
         $db->exec("UPDATE `cms_mail` SET `count` = `count`+1 WHERE `id` = '$id' LIMIT 1");
-        $response->redirect('../uploads/mail/' . $res['file_name'])->sendHeaders();
+        header('Location: ' . '../uploads/mail/' . $res['file_name']);
         exit;
     } else {
         echo $tools->displayError(_t('Such file does not exist'));

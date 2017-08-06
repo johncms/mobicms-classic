@@ -19,9 +19,6 @@ $db = $container->get(PDO::class);
 /** @var Psr\Http\Message\ServerRequestInterface $request */
 $request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -258,17 +255,14 @@ switch ($mod) {
             $reason,
             time(),
         ]);
-
-        $response->header('Location', '?act=ipban');
-        $response->send();
+        header('Location: ?act=ipban');
         break;
 
     case 'clear':
         // Очистка таблицы банов по IP
         if (isset($_GET['yes'])) {
             $db->query("TRUNCATE TABLE `cms_ban_ip`");
-            $response->header('Location', '?act=ipban');
-            $response->send();
+            header('Location: ?act=ipban');
         } else {
             echo '<div class="rmenu"><p>' . _t('Are you sure you wan to unban all IP?') . '</p>' .
                 '<p><a href="index.php?act=ipban&amp;mod=clear&amp;yes=yes">' . _t('Perform') . '</a> | ' .

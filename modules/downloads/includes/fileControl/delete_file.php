@@ -16,9 +16,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -81,7 +78,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
         $db->exec("UPDATE `download__category` SET `total` = (`total`-1) WHERE $sql");
         $db->exec("DELETE FROM `download__files` WHERE `id` = " . $id);
         $db->query("OPTIMIZE TABLE `download__files`");
-        $response->redirect('?id=' . $res_down['refid'])->sendHeaders();
+        header('Location: ?id=' . $res_down['refid']);
     } else {
         echo '<div class="phdr"><b>' . _t('Delete File') . '</b></div>' .
             '<div class="rmenu"><p><a href="?act=delete_file&amp;id=' . $id . '&amp;yes"><b>' . _t('Delete') . '</b></a></p></div>' .

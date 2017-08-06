@@ -21,9 +21,6 @@ $asset = $container->get(Mobicms\Asset\Manager::class);
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -125,7 +122,7 @@ if ($systemUser->isValid()) {
 
                         $db->exec("UPDATE `users` SET `sestime` = '" . time() . "' WHERE `id` = " . $systemUser['id']);
                         $set_user = unserialize($systemUser['set_user']);
-                        $response->redirect($config->homeurl)->sendHeaders();
+                        header('Location: ' . $config->homeurl);
                         exit;
                     }
                 } else {

@@ -10,7 +10,7 @@
 
 namespace Mobicms\System;
 
-use Mobicms\Deprecated\Request;
+use Psr\Http\Message\ServerRequestInterface;
 use Mobicms\System\Exception\IpBanException;
 use Psr\Container\ContainerInterface;
 
@@ -21,11 +21,11 @@ class IpBan
         /** @var \PDO $db */
         $db = $container->get(\PDO::class);
 
-        /** @var Request $request */
-        $request = $container->get(Request::class);
+        /** @var ServerRequestInterface $request */
+        $request = $container->get(ServerRequestInterface::class);
 
-        $proxy = !empty($request->ipViaProxy()) ? ip2long($request->ipViaProxy()) : false;
-        $ip = ip2long($request->ip());
+        $proxy = !empty($request->getAttribute('ip_via_proxy')) ? ip2long($request->getAttribute('ip_via_proxy')) : false;
+        $ip = ip2long($request->getAttribute('ip'));
 
         $req = $db->query("SELECT `ban_type`, `link` FROM `cms_ban_ip`
           WHERE '" . $ip . "' BETWEEN `ip1` AND `ip2`

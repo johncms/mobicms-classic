@@ -22,9 +22,6 @@ $config = $container->get(Mobicms\Api\ConfigInterface::class);
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -168,13 +165,13 @@ switch ($mod) {
             // Записываем настройки
             $db->prepare('UPDATE `users` SET `set_user` = ? WHERE `id` = ?')->execute([serialize($set_user), $systemUser->id]);
             $_SESSION['set_ok'] = 1;
-            $response->redirect('?act=settings')->sendHeaders();
+            header('Location: ?act=settings');
             exit;
         } elseif (isset($_GET['reset'])) {
             // Задаем настройки по-умолчанию
             $db->exec("UPDATE `users` SET `set_user` = '' WHERE `id` = " . $systemUser->id);
             $_SESSION['reset_ok'] = 1;
-            $response->redirect('?act=settings')->sendHeaders();
+            header('Location: ?act=settings');
             exit;
         }
 

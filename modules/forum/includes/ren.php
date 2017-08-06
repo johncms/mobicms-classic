@@ -16,9 +16,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -63,8 +60,7 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
         }
 
         $db->exec("UPDATE `forum` SET  text=" . $db->quote($nn) . " WHERE id='" . $id . "'");
-
-        $response->redirect('?id=' . $id)->sendHeaders();
+        header('Location: ?id=' . $id);
     } else {
         // Переименовываем тему
         require ROOT_PATH . 'system/head.php';

@@ -16,8 +16,8 @@ use Mobicms\Api\ToolsInterface;
 use Mobicms\Api\UserInterface;
 use Mobicms\Asset\Manager as Asset;
 use Mobicms\Checkpoint\UserConfig;
-use Mobicms\Deprecated\Request;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class Utilites implements ToolsInterface
 {
@@ -37,7 +37,7 @@ class Utilites implements ToolsInterface
     private $db;
 
     /**
-     * @var Request
+     * @var ServerRequestInterface
      */
     private $request;
 
@@ -62,7 +62,7 @@ class Utilites implements ToolsInterface
         $this->asset = $container->get(Asset::class);
         $this->config = $container->get(ConfigInterface::class);
         $this->db = $container->get(\PDO::class);
-        $this->request = $container->get(Request::class);
+        $this->request = $container->get(ServerRequestInterface::class);
         $this->user = $container->get(UserInterface::class);
         $this->userConfig = $this->user->getConfig();
 
@@ -429,10 +429,11 @@ class Utilites implements ToolsInterface
      */
     public function getPgStart($db = false)
     {
-        $page = $this->request->paramsGet()->get('page', 1);
-        $start = $this->request->paramsGet()->exists('page')
+        $queryParams = $this->request->getQueryParams();
+        $page = $queryParams['page'] ?? 1;
+        $start = isset($queryParams['page'])
             ? $page * $this->userConfig->kmess - $this->userConfig->kmess
-            : $this->request->paramsGet()->get('start', 0);
+            : $queryParams['start'] ?? 0;
         $start = abs(intval($start));
 
         return $db

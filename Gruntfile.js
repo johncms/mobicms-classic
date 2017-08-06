@@ -47,14 +47,6 @@ module.exports = function (grunt) {
                             '!system/vendor/geshi/geshi/phpunit.xml',
                             '!system/vendor/geshi/geshi/composer.json',
 
-                            '!system/vendor/klein/klein/tests/**',
-                            '!system/vendor/klein/klein/composer.json',
-                            '!system/vendor/klein/klein/CHANGELOG.md',
-                            '!system/vendor/klein/klein/CONTRIBUTING.md',
-                            '!system/vendor/klein/klein/phpdoc.dist.xml',
-                            '!system/vendor/klein/klein/phpunit.xml.dist',
-                            '!system/vendor/klein/klein/UPGRADING.md',
-
                             '!system/vendor/league/plates/docs/**',
                             '!system/vendor/league/plates/example/**',
                             '!system/vendor/league/plates/composer.json',

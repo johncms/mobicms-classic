@@ -10,8 +10,8 @@
 
 namespace Mobicms\Checkpoint;
 
-use Mobicms\Deprecated\Request;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class UserFactory
 {
@@ -21,7 +21,7 @@ class UserFactory
     private $db;
 
     /**
-     * @var Request
+     * @var ServerRequestInterface
      */
     private $request;
 
@@ -30,7 +30,7 @@ class UserFactory
     public function __invoke(ContainerInterface $container)
     {
         $this->db = $container->get(\PDO::class);
-        $this->request = $container->get(Request::class);
+        $this->request = $container->get(ServerRequestInterface::class);
         $this->userData = $this->authorize();
 
         return new User($this->userData);
@@ -63,8 +63,8 @@ class UserFactory
                 $userData = $req->fetch();
                 $permit = $userData['failed_login'] < 3
                 || $userData['failed_login'] > 2
-                && $userData['ip'] == $this->request->ip()
-                && $userData['browser'] == $this->request->userAgent()
+                && $userData['ip'] == $this->request->getAttribute('ip')
+                && $userData['browser'] == $this->request->getAttribute('user_agent')
                     ? true
                     : false;
 

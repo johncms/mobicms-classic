@@ -15,9 +15,6 @@ require ROOT_PATH . 'system/head.php';
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 $start = $tools->getPgStart();
@@ -33,7 +30,7 @@ switch ($do) {
         // Удаляем фильтр
         unset($_SESSION['fsort_id']);
         unset($_SESSION['fsort_users']);
-        $response->redirect('?id=' . $id)->sendHeaders();
+        header('Location: ?id=' . $id);
         break;
 
     case 'set':
@@ -54,7 +51,7 @@ switch ($do) {
 
         $_SESSION['fsort_id'] = $id;
         $_SESSION['fsort_users'] = serialize($array);
-        $response->redirect('?id=' . $id)->sendHeaders();
+        header('Location: ?id=' . $id);
         break;
 
     default :

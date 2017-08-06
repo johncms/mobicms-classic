@@ -22,9 +22,6 @@ $asset = $container->get(Mobicms\Asset\Manager::class);
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -36,7 +33,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 $start = $tools->getPgStart();
 
 if (!$systemUser->isValid()) {
-    $response->redirect('.')->sendHeaders();
+    header('Location: ?');
     exit;
 }
 

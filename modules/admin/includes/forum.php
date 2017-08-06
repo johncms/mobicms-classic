@@ -19,9 +19,6 @@ $asset = $container->get(Mobicms\Asset\Manager::class);
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -228,8 +225,7 @@ switch ($mod) {
             }
             echo '<div class="phdr"><a href="index.php?act=forum&amp;mod=cat">' . _t('Back') . '</a></div>';
         } else {
-            $response->header('Location', '?act=forum&mod=cat');
-            $response->send();
+            header('Location: ?act=forum&mod=cat');
         }
 
         break;
@@ -300,9 +296,7 @@ switch ($mod) {
                     $allow,
                     $sort,
                 ]);
-
-                $response->header('Location', '?act=forum&mod=cat' . ($id ? '&id=' . $id : ''));
-                $response->send();
+                header('Location: ?act=forum&mod=cat' . ($id ? '&id=' . $id : ''));
             } else {
                 // Выводим сообщение об ошибках
                 echo $tools->displayError($error);
@@ -405,10 +399,7 @@ switch ($mod) {
                             // Меняем категорию для прикрепленных файлов
                             $db->exec("UPDATE `cms_forum_files` SET `cat` = '$category' WHERE `cat` = '" . $res['refid'] . "'");
                         }
-
-                        $response->header('Location',
-                            '?act=forum&mod=cat' . ($res['type'] == 'r' ? '&id=' . $res['refid'] : ''));
-                        $response->send();
+                        header('Location: ?act=forum&mod=cat' . ($res['type'] == 'r' ? '&id=' . $res['refid'] : ''));
                     } else {
                         // Выводим сообщение об ошибках
                         echo $tools->displayError($error);
@@ -446,12 +437,10 @@ switch ($mod) {
                         '<div class="phdr"><a href="index.php?act=forum&amp;mod=cat' . ($res['type'] == 'r' ? '&amp;id=' . $res['refid'] : '') . '">' . _t('Back') . '</a></div>';
                 }
             } else {
-                $response->header('Location', '?act=forum&mod=cat');
-                $response->send();
+                header('Location: ?act=forum&mod=cat');
             }
         } else {
-            $response->header('Location', '?act=forum&mod=cat');
-            $response->send();
+            header('Location: ?act=forum&mod=cat');
         }
         break;
 
@@ -474,9 +463,7 @@ switch ($mod) {
                 }
             }
         }
-
-        $response->header('Location', '?act=forum&mod=cat' . ($res1['type'] == 'r' ? '&id=' . $res1['refid'] : ''));
-        $response->send();
+        header('Location: ?act=forum&mod=cat' . ($res1['type'] == 'r' ? '&id=' . $res1['refid'] : ''));
         break;
 
     case 'down':
@@ -498,9 +485,7 @@ switch ($mod) {
                 }
             }
         }
-
-        $response->header('Location', '?act=forum&mod=cat' . ($res1['type'] == 'r' ? '&id=' . $res1['refid'] : ''));
-        $response->send();
+        header('Location: ?act=forum&mod=cat' . ($res1['type'] == 'r' ? '&id=' . $res1['refid'] : ''));
         break;
 
     case 'cat':
@@ -613,8 +598,7 @@ switch ($mod) {
 
             // Удаляем темы
             $db->exec("DELETE FROM `forum` WHERE `type` = 't' AND `close` = '1' $sort");
-            $response->header('Location', '?act=forum&mod=htopics');
-            $response->send();
+            header('Location: ?act=forum&mod=htopics');
         } else {
             $total = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 't' AND `close` = '1' $sort")->fetchColumn();
 
@@ -711,8 +695,7 @@ switch ($mod) {
 
             // Удаляем посты
             $db->exec("DELETE FROM `forum` WHERE `type` = 'm' AND `close` = '1' $sort");
-            $response->header('Location', '?act=forum&mod=hposts');
-            $response->send();
+            header('Location: ?act=forum&mod=hposts');
         } else {
             $total = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `close` = '1' $sort")->fetchColumn();
 

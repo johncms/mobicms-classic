@@ -25,9 +25,6 @@ $db = $container->get(PDO::class);
 /** @var Psr\Http\Message\ServerRequestInterface $request */
 $request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -230,9 +227,9 @@ if (isset($_POST['submit'])
         ");
 
         if (isset($_POST['addfiles'])) {
-            $response->redirect("?id=$postid&act=addfile")->sendHeaders();
+            header("Location: ?id=$postid&act=addfile");
         } else {
-            $response->redirect("?id=$rid")->sendHeaders();
+            header('Location: ?id=' . $rid);
         }
     } else {
         // Выводим сообщение об ошибке

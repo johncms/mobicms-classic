@@ -11,8 +11,8 @@
 namespace Mobicms\Checkpoint;
 
 use Mobicms\Api\UserInterface;
-use Mobicms\Deprecated\Request;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class UserStat
 {
@@ -22,7 +22,7 @@ class UserStat
     private $db;
 
     /**
-     * @var Request
+     * @var ServerRequestInterface
      */
     private $request;
 
@@ -34,7 +34,7 @@ class UserStat
     public function __construct(ContainerInterface $container)
     {
         $this->db = $container->get(\PDO::class);
-        $this->request = $container->get(Request::class);
+        $this->request = $container->get(ServerRequestInterface::class);
         $this->systemUser = $container->get(UserInterface::class);
 
         if ($this->systemUser->isValid()) {
@@ -58,15 +58,14 @@ class UserStat
             $sql .= " `place` = " . $this->db->quote($place) . ", ";
         }
 
-        if ($this->systemUser->ip != $this->request->ip()
-            || $this->systemUser->ip_via_proxy != $this->request->ipViaProxy()
+        if ($this->systemUser->ip != $this->request->getAttribute('ip')
+            || $this->systemUser->ip_via_proxy != $this->request->getAttribute('ip_via_proxy')
         ) {
-            $sql .= " `ip` = " . $this->db->quote($this->request->ip())
-                . ", `ip_via_proxy` = " . $this->db->quote($this->request->ipViaProxy()) . ", ";
+            $sql .= " `ip` = " . $this->db->quote($this->request->getAttribute('ip')) . ", `ip_via_proxy` = " . $this->db->quote($this->request->getAttribute('ip_via_proxy')) . ", ";
         }
 
-        if ($this->systemUser->browser != $this->request->userAgent()) {
-            $sql .= " `browser` = " . $this->db->quote($this->request->userAgent()) . ", ";
+        if ($this->systemUser->browser != $this->request->getAttribute('user_agent')) {
+            $sql .= " `browser` = " . $this->db->quote($this->request->getAttribute('user_agent')) . ", ";
         }
 
         $totalonsite = $this->systemUser->total_on_site;
@@ -85,7 +84,7 @@ class UserStat
     private function processGuest()
     {
         $sql = '';
-        $session = md5($this->request->ip() . $this->request->ipViaProxy() . $this->request->userAgent());
+        $session = md5($this->request->getAttribute('ip') . $this->request->getAttribute('ip_via_proxy') . $this->request->getAttribute('user_agent'));
         $req = $this->db->query("SELECT * FROM `cms_sessions` WHERE `session_id` = " . $this->db->quote($session) . " LIMIT 1");
 
         if ($req->rowCount()) {
@@ -111,9 +110,9 @@ class UserStat
             // Если еще небыло в базе, то добавляем запись
             $this->db->exec("INSERT INTO `cms_sessions` SET
             `session_id` = '" . $session . "',
-            `ip` = '" . $this->request->ip() . "',
-            `ip_via_proxy` = '" . $this->request->ipViaProxy() . "',
-            `browser` = " . $this->db->quote($this->request->userAgent()) . ",
+            `ip` = '" . $this->request->getAttribute('ip') . "',
+            `ip_via_proxy` = '" . $this->request->getAttribute('ip_via_proxy') . "',
+            `browser` = " . $this->db->quote($this->request->getAttribute('user_agent')) . ",
             `lastdate` = '" . time() . "',
             `sestime` = '" . time() . "',
             `place` = " . $this->db->quote($this->formatPlace()) . "
@@ -123,9 +122,10 @@ class UserStat
 
     private function formatPlace()
     {
-        $path = trim(str_ireplace('index.php', '', $this->request->pathname()), '/');
-        $act = $this->request->param('act');
-        $id = $this->request->param('id');
+        $path = trim(str_ireplace('index.php', '', $this->request->getUri()->getPath()), '/');
+        $queryParams = $this->request->getQueryParams();
+        $act = $queryParams['act'] ?? '';
+        $id = $queryParams['id'] ?? '';
 
         $query = [];
 

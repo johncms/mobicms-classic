@@ -17,9 +17,6 @@ if ($id) {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
-    /** @var Mobicms\Deprecated\Response $response */
-    $response = $container->get(Mobicms\Deprecated\Response::class);
-
     /** @var Mobicms\Api\ToolsInterface $tools */
     $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
@@ -34,7 +31,7 @@ if ($id) {
         if (file_exists(ROOT_PATH . 'uploads/forum/attach/' . $res['filename'])) {
             $dlcount = $res['dlcount'] + 1;
             $db->exec("UPDATE `cms_forum_files` SET  `dlcount` = '$dlcount' WHERE `id` = '$id'");
-            $response->redirect('../uploads/forum/attach/' . $res['filename'])->send();
+            header('Location: ../uploads/forum/attach/' . $res['filename']);
             exit;
         } else {
             $error = true;

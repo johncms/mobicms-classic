@@ -16,9 +16,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -40,11 +37,11 @@ if ($req->rowCount()) {
     $db->exec("UPDATE `forum` SET `close` = '0', `close_who` = '" . $systemUser->name . "' WHERE `id` = '$id'");
 
     if ($res['type'] == 't') {
-        $response->redirect('?id=' . $id)->sendHeaders();
+        header('Location: ?id=' . $id);
     } else {
         $page = ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `refid` = '" . $res['refid'] . "' AND `id` " . ($set_forum['upfp'] ? ">=" : "<=") . " '" . $id . "'")->fetchColumn() / $userConfig->kmess);
-        $response->redirect('?id=' . $res['refid'] . '&page=' . $page)->sendHeaders();
+        header('Location: ?id=' . $res['refid'] . '&page=' . $page);
     }
 } else {
-    $response->redirect('.')->sendHeaders();
+    header('Location: ?');
 }

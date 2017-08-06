@@ -16,9 +16,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -109,7 +106,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
             $id,
         ]);
 
-        $response->redirect('?id=' . $id)->sendHeaders();
+        header('Location: ?id=' . $id);
     } else {
         $name = htmlspecialchars($res['rus_name']);
         echo '<div class="phdr"><b>' . _t('Change Folder') . ':</b> ' . $name . '</div>' .

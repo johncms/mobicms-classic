@@ -16,9 +16,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -64,5 +61,4 @@ switch ($mod) {
         break;
 }
 
-$response->header('Location', '?act=list&user=' . $user['id']);
-$response->send();
+header('Location: ?act=list&user=' . $user['id']);

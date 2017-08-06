@@ -16,9 +16,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -44,7 +41,7 @@ if ($do && is_file(DOWNLOADS_SCR . $id . DIRECTORY_SEPARATOR . $do)) {
     //TODO: Переделать форму удаления на POST запрос
     // Удаление скриншота
     unlink(DOWNLOADS_SCR . $id . DIRECTORY_SEPARATOR . $do);
-    $response->redirect('?act=edit_screen&id=' . $id)->sendHeaders();
+    header('Location: ?act=edit_screen&id=' . $id);
     exit;
 } else {
     if (isset($_POST['submit'])) {

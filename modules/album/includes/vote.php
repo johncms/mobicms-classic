@@ -19,9 +19,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -38,8 +35,7 @@ if (!$img) {
 $check = $db->query("SELECT * FROM `cms_album_votes` WHERE `user_id` = '" . $systemUser->id . "' AND `file_id` = '$img' LIMIT 1");
 
 if ($check->rowCount()) {
-    $response->header('Location', $ref);
-    $response->send();
+    header('Location: ' . $ref);
     exit;
 }
 
@@ -74,8 +70,7 @@ if ($req->rowCount()) {
             break;
     }
 
-    $response->header('Location', $ref);
-    $response->send();
+    header('Location: ' . $ref);
 } else {
     echo $tools->displayError(_t('Wrong data'));
 }

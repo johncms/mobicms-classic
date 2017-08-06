@@ -24,9 +24,6 @@ $request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
 $queryParams = $request->getQueryParams();
 $postParams = $request->getParsedBody();
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -234,12 +231,12 @@ switch ($type1['type']) {
 
             if (isset($postParams['addfiles'])) {
                 if ($update) {
-                    $response->redirect('?id=' . $res['id'] . '&act=addfile')->sendHeaders();
+                    header('Location: ?id=' . $res['id'] . '&act=addfile');
                 } else {
-                    $response->redirect('?id=' . $fadd . '&act=addfile')->sendHeaders();
+                    header('Location: ?id=' . $fadd . '&act=addfile');
                 }
             } else {
-                $response->redirect('?id=' . $id . '&page=' . $page)->sendHeaders();
+                header('Location: ?id=' . $id . '&page=' . $page);
             }
             exit;
         } else {
@@ -423,9 +420,9 @@ switch ($type1['type']) {
             $page = $set_forum['upfp'] ? 1 : ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `refid` = '$th'" . ($systemUser->rights >= 6 ? '' : " AND `close` != '1'"))->fetchColumn() / $userConfig->kmess);
 
             if (isset($postParams['addfiles'])) {
-                $response->redirect("?id=$fadd&act=addfile")->sendHeaders();
+                header("Location: ?id=$fadd&act=addfile");
             } else {
-                $response->redirect("?id=$th&page=$page")->sendHeaders();
+                header("Location: ?id=$th&page=$page");
             }
             exit;
         } else {

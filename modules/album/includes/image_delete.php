@@ -18,9 +18,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -46,8 +43,7 @@ if ($img && $user['id'] == $systemUser->id || $systemUser->rights >= 6) {
             $db->exec("DELETE FROM `cms_album_votes` WHERE `file_id` = '$img'");
             $db->exec("DELETE FROM `cms_album_comments` WHERE `sub_id` = '$img'");
 
-            $response->header('Location', '?act=show&al=' . $album . '&user=' . $user['id']);
-            $response->send();
+            header('Location: ?act=show&al=' . $album . '&user=' . $user['id']);
         } else {
             echo '<div class="rmenu"><form action="?act=image_delete&amp;img=' . $img . '&amp;user=' . $user['id'] . '" method="post">' .
                 '<p>' . _t('Are you sure you want to delete this image?') . '</p>' .

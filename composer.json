@@ -22,7 +22,6 @@
   "require": {
     "php": "^7.0",
     "geshi/geshi": "^1.0",
-    "klein/klein": "^2.1",
     "league/plates": "^3.3",
     "mobicms/mobicms-captcha": "^1.0",
     "mobicms/mobicms-error-handler": "^1.0",

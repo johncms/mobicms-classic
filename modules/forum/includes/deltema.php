@@ -16,9 +16,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -69,7 +66,7 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
             $db->exec("UPDATE `cms_forum_files` SET `del` = '1' WHERE `topic` = '$id'");
         }
 
-        $response->redirect('?id=' . $res['refid'])->sendHeaders();
+        header('Location: ?id=' . $res['refid']);
     } else {
         // Меню выбора режима удаления темы
         require ROOT_PATH . 'system/head.php';

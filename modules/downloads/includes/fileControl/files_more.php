@@ -16,9 +16,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -60,7 +57,7 @@ if ($edit) {
             $edit,
         ]);
 
-        $response->redirect('?act=files_more&id=' . $id)->sendHeaders();
+        header('Location: ?act=files_more&id=' . $id);
     } else {
         $res_file_more = $req_file_more->fetch();
         echo '<div class="phdr"><b>' . htmlspecialchars($res_down['rus_name']) . '</b></div>' .

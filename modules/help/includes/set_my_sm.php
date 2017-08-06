@@ -22,9 +22,6 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -61,9 +58,7 @@ if (count($smileys) > $user_smileys) {
 $db->query("UPDATE `users` SET `smileys` = " . $db->quote(serialize($smileys)) . " WHERE `id` = " . $systemUser->id);
 
 if ($delete || isset($_GET['clean'])) {
-    $response->header('Location', '?act=my_smilies&start=' . $start);
+    header('Location: ?act=my_smilies&start=' . $start);
 } else {
-    $response->header('Location', '?act=' . ($adm ? 'admsmilies' : 'usersmilies&cat=' . urlencode($cat) . '') . '&start=' . $start);
+    header('Location: ?act=' . ($adm ? 'admsmilies' : 'usersmilies&cat=' . urlencode($cat) . '') . '&start=' . $start);
 }
-
-$response->send();

@@ -22,9 +22,6 @@ $asset = $container->get(Mobicms\Asset\Manager::class);
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
-
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -171,7 +168,7 @@ if (isset($_GET['delavatar'])) {
         echo $tools->displayError($error);
     }
 
-    $response->redirect('?act=edit&user=' . $user['id'])->sendHeaders();
+    header('Location: ?act=edit&user=' . $user['id']);
     exit;
 }
 
