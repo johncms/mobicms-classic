@@ -10,9 +10,6 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
-$act = isset($_GET['act']) ? trim($_GET['act']) : '';
-
 // Сюда можно (через запятую) добавить ID тех юзеров, кто не в администрации,
 // но которым разрешено читать и писать в Админ клубе
 $guestAccess = [];
@@ -29,11 +26,10 @@ $config = $container->get(Mobicms\Api\ConfigInterface::class);
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Request $request */
-$request = $container->get(Mobicms\Deprecated\Request::class);
-
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
+$queryParams = $request->getQueryParams();
+$postParams = $request->getParsedBody();
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -47,6 +43,9 @@ $userConfig = $systemUser->getConfig();
 /** @var Zend\I18n\Translator\Translator $translator */
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
+
+$id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
+$act = isset($queryParams['act']) ? trim($queryParams['act']) : '';
 
 if (isset($_SESSION['ref'])) {
     unset($_SESSION['ref']);
@@ -72,10 +71,9 @@ switch ($act) {
     case 'delpost':
         // Удаление отдельного поста
         if ($systemUser->rights >= 6 && $id) {
-            if (isset($_GET['yes'])) {
+            if (isset($queryParams['yes'])) {
                 $db->exec('DELETE FROM `guest` WHERE `id` = ' . $id);
-                $response->header('Location', '.');
-                $response->send();
+                header('Location: ?');
             } else {
                 echo '<div class="phdr"><a href="index.php"><b>' . _t('Guestbook') . '</b></a> | ' . _t('Delete message') . '</div>' .
                     '<div class="rmenu"><p>' . _t('Do you really want to delete?') . '?<br>' .
@@ -89,16 +87,16 @@ switch ($act) {
         // Добавление нового поста
         $admset = isset($_SESSION['ga']) ? 1 : 0; // Задаем куда вставляем, в Админ клуб (1), или в Гастивуху (0)
         // Принимаем и обрабатываем данные
-        $name = isset($_POST['name']) ? mb_substr(trim($_POST['name']), 0, 20) : '';
-        $msg = isset($_POST['msg']) ? mb_substr(trim($_POST['msg']), 0, 5000) : '';
-        $trans = isset($_POST['msgtrans']) ? 1 : 0;
-        $code = isset($_POST['code']) ? trim($_POST['code']) : '';
+        $name = isset($postParams['name']) ? mb_substr(trim($postParams['name']), 0, 20) : '';
+        $msg = isset($postParams['msg']) ? mb_substr(trim($postParams['msg']), 0, 5000) : '';
+        $trans = isset($postParams['msgtrans']) ? 1 : 0;
+        $code = isset($postParams['code']) ? trim($postParams['code']) : '';
         $from = $systemUser->isValid() ? $systemUser->name : $name;
         // Проверяем на ошибки
         $error = [];
         $flood = false;
 
-        if (!isset($_POST['token']) || !isset($_SESSION['token']) || $_POST['token'] != $_SESSION['token']) {
+        if (!isset($postParams['token']) || !isset($_SESSION['token']) || $postParams['token'] != $_SESSION['token']) {
             $error[] = _t('Wrong data');
         }
 
@@ -128,7 +126,7 @@ switch ($act) {
             $flood = $tools->antiflood();
         } else {
             // Антифлуд для гостей
-            $req = $db->query("SELECT `time` FROM `guest` WHERE `ip` = '" . $request->ip() . "' AND `browser` = " . $db->quote($request->userAgent()) . " AND `time` > '" . (time() - 60) . "'");
+            $req = $db->query("SELECT `time` FROM `guest` WHERE `ip` = '" . $db->quote($request->getAttribute('ip')) . "' AND `browser` = " . $db->quote($request->getAttribute('user_agent')) . " AND `time` > '" . (time() - 60) . "'");
 
             if ($req->rowCount()) {
                 $res = $req->fetch();
@@ -146,8 +144,7 @@ switch ($act) {
             $res = $req->fetch();
 
             if ($res['text'] == $msg) {
-                $response->header('Location', '.');
-                $response->send();
+                header('Location: ?');
                 exit;
             }
         }
@@ -169,8 +166,8 @@ switch ($act) {
                 $systemUser->id,
                 $from,
                 $msg,
-                $request->ip(),
-                $request->userAgent(),
+                $request->getAttribute('ip'),
+                $request->getAttribute('user_agent'),
             ]);
 
             // Фиксируем время последнего поста (антиспам)
@@ -179,8 +176,7 @@ switch ($act) {
                 $db->exec("UPDATE `users` SET `postguest` = '$postguest', `lastpost` = '" . time() . "' WHERE `id` = " . $systemUser->id);
             }
 
-            $response->header('Location', '.');
-            $response->send();
+            header('Location: ?');
         } else {
             echo $tools->displayError($error, '<a href="index.php">' . _t('Back') . '</a>');
         }
@@ -189,21 +185,19 @@ switch ($act) {
     case 'otvet':
         // Добавление "ответа Админа"
         if ($systemUser->rights >= 6 && $id) {
-            if (isset($_POST['submit'])
-                && isset($_POST['token'])
+            if (isset($postParams['submit'])
+                && isset($postParams['token'])
                 && isset($_SESSION['token'])
-                && $_POST['token'] == $_SESSION['token']
+                && $postParams['token'] == $_SESSION['token']
             ) {
-                $reply = isset($_POST['otv']) ? mb_substr(trim($_POST['otv']), 0, 5000) : '';
+                $reply = isset($postParams['otv']) ? mb_substr(trim($postParams['otv']), 0, 5000) : '';
                 $db->exec("UPDATE `guest` SET
                     `admin` = '" . $systemUser->name . "',
                     `otvet` = " . $db->quote($reply) . ",
                     `otime` = '" . time() . "'
                     WHERE `id` = '$id'
                 ");
-
-                $response->header('Location', '.');
-                $response->send();
+                header('Location: ?');
             } else {
                 echo '<div class="phdr"><a href="index.php"><b>' . _t('Guestbook') . '</b></a> | ' . _t('Reply') . '</div>';
                 $req = $db->query("SELECT * FROM `guest` WHERE `id` = '$id'");
@@ -229,14 +223,14 @@ switch ($act) {
     'edit':
         // Редактирование поста
         if ($systemUser->rights >= 6 && $id) {
-            if (isset($_POST['submit'])
-                && isset($_POST['token'])
+            if (isset($postParams['submit'])
+                && isset($postParams['token'])
                 && isset($_SESSION['token'])
-                && $_POST['token'] == $_SESSION['token']
+                && $postParams['token'] == $_SESSION['token']
             ) {
                 $res = $db->query("SELECT `edit_count` FROM `guest` WHERE `id`='$id'")->fetch();
                 $edit_count = $res['edit_count'] + 1;
-                $msg = isset($_POST['msg']) ? mb_substr(trim($_POST['msg']), 0, 5000) : '';
+                $msg = isset($postParams['msg']) ? mb_substr(trim($postParams['msg']), 0, 5000) : '';
 
                 $db->prepare('
                   UPDATE `guest` SET
@@ -252,9 +246,7 @@ switch ($act) {
                     $edit_count,
                     $id,
                 ]);
-
-                $response->header('Location', '.');
-                $response->send();
+                header('Location: ?');
             } else {
                 $token = mt_rand(1000, 100000);
                 $_SESSION['token'] = $token;
@@ -277,10 +269,10 @@ switch ($act) {
     case 'clean':
         // Очистка Гостевой
         if ($systemUser->rights >= 7) {
-            if (isset($_POST['submit'])) {
+            if (isset($postParams['submit'])) {
                 // Проводим очистку Гостевой, согласно заданным параметрам
                 $adm = isset($_SESSION['ga']) ? 1 : 0;
-                $cl = isset($_POST['cl']) ? intval($_POST['cl']) : '';
+                $cl = isset($postParams['cl']) ? intval($postParams['cl']) : '';
 
                 switch ($cl) {
                     case '1':
@@ -321,7 +313,7 @@ switch ($act) {
     case 'ga':
         // Переключение режима работы Гостевая / Админ-клуб
         if ($systemUser->rights >= 1 || in_array($systemUser->id, $guestAccess)) {
-            if (isset($_GET['do']) && $_GET['do'] == 'set') {
+            if (isset($queryParams['do']) && $queryParams['do'] == 'set') {
                 $_SESSION['ga'] = 1;
             } else {
                 unset($_SESSION['ga']);
