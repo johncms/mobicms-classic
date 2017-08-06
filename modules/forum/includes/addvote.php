@@ -23,6 +23,8 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
+    $vote_count = abs(intval($_POST['count_vote'] ?? 2));
+
     $topic = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='t' AND `id`='$id' AND `edit` != '1'")->fetchColumn();
     $topic_vote = $db->query("SELECT COUNT(*) FROM `cms_forum_vote` WHERE `type`='1' AND `topic`='$id'")->fetchColumn();
     require ROOT_PATH . 'system/head.php';
@@ -44,7 +46,6 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
                 `topic`='$id'
             ");
             $db->exec("UPDATE `forum` SET  `realid` = '1'  WHERE `id` = '$id'");
-            $vote_count = abs(intval($_POST['count_vote']));
 
             if ($vote_count > 20) {
                 $vote_count = 20;
@@ -74,27 +75,27 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     } else {
         echo '<form action="index.php?act=addvote&amp;id=' . $id . '" method="post">' .
             '<br />' . _t('Poll (max. 150)') . ':<br>' .
-            '<input type="text" size="20" maxlength="150" name="name_vote" value="' . htmlentities($_POST['name_vote'], ENT_QUOTES, 'UTF-8') . '"/><br>';
+            '<input type="text" size="20" maxlength="150" name="name_vote" value="' . htmlentities(($_POST['name_vote'] ?? ''), ENT_QUOTES, 'UTF-8') . '"/><br>';
 
         if (isset($_POST['plus'])) {
-            ++$_POST['count_vote'];
+            ++$vote_count;
         } elseif (isset($_POST['minus'])) {
-            --$_POST['count_vote'];
+            --$vote_count;
         }
 
-        if ($_POST['count_vote'] < 2 || empty($_POST['count_vote'])) {
-            $_POST['count_vote'] = 2;
-        } elseif ($_POST['count_vote'] > 20) {
-            $_POST['count_vote'] = 20;
+        if ($vote_count < 2) {
+            $vote_count = 2;
+        } elseif ($vote_count > 20) {
+            $vote_count = 20;
         }
 
-        for ($vote = 0; $vote < $_POST['count_vote']; $vote++) {
-            echo _t('Answer') . ' ' . ($vote + 1) . '(max. 50): <br><input type="text" name="' . $vote . '" value="' . htmlentities($_POST[$vote], ENT_QUOTES, 'UTF-8') . '"/><br>';
+        for ($vote = 0; $vote < $vote_count; $vote++) {
+            echo _t('Answer') . ' ' . ($vote + 1) . '(max. 50): <br><input type="text" name="' . $vote . '" value="' . htmlentities(($_POST[$vote] ?? ''), ENT_QUOTES, 'UTF-8') . '"/><br>';
         }
 
-        echo '<input type="hidden" name="count_vote" value="' . abs(intval($_POST['count_vote'])) . '"/>';
-        echo ($_POST['count_vote'] < 20) ? '<br><input type="submit" name="plus" value="' . _t('Add Answer') . '"/>' : '';
-        echo $_POST['count_vote'] > 2 ? '<input type="submit" name="minus" value="' . _t('Delete last') . '"/><br>' : '<br>';
+        echo '<input type="hidden" name="count_vote" value="' . abs(intval($vote_count)) . '"/>';
+        echo ($vote_count < 20) ? '<br><input type="submit" name="plus" value="' . _t('Add Answer') . '"/>' : '';
+        echo $vote_count > 2 ? '<input type="submit" name="minus" value="' . _t('Delete last') . '"/><br>' : '<br>';
         echo '<p><input type="submit" name="submit" value="' . _t('Save') . '"/></p></form>';
         echo '<a href="index.php?id=' . $id . '">' . _t('Back') . '</a>';
     }
