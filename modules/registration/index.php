@@ -13,6 +13,10 @@ defined('MOBICMS') or die('Error: restricted access');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
+$postParams = $request->getParsedBody();
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -36,17 +40,17 @@ if (!$config->mod_reg || $systemUser->isValid()) {
     exit;
 }
 
-$captcha = isset($_POST['captcha']) ? trim($_POST['captcha']) : null;
-$reg_nick = isset($_POST['nick']) ? trim($_POST['nick']) : '';
+$captcha = isset($postParams['captcha']) ? trim($postParams['captcha']) : null;
+$reg_nick = isset($postParams['nick']) ? trim($postParams['nick']) : '';
 $lat_nick = $tools->rusLat($reg_nick);
-$reg_pass = isset($_POST['password']) ? trim($_POST['password']) : '';
-$reg_name = isset($_POST['imname']) ? trim($_POST['imname']) : '';
-$reg_about = isset($_POST['about']) ? trim($_POST['about']) : '';
-$reg_sex = isset($_POST['sex']) ? trim($_POST['sex']) : '';
+$reg_pass = isset($postParams['password']) ? trim($postParams['password']) : '';
+$reg_name = isset($postParams['imname']) ? trim($postParams['imname']) : '';
+$reg_about = isset($postParams['about']) ? trim($postParams['about']) : '';
+$reg_sex = isset($postParams['sex']) ? trim($postParams['sex']) : '';
 
 echo '<div class="phdr"><b>' . _t('Registration') . '</b></div>';
 
-if (isset($_POST['submit'])) {
+if (isset($postParams['submit'])) {
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
@@ -102,9 +106,6 @@ if (isset($_POST['submit'])) {
     }
 
     if (empty($error)) {
-        /** @var Mobicms\Deprecated\Request $request */
-        $request = $container->get(Mobicms\Deprecated\Request::class);
-
         $preg = $config->mod_reg > 1 ? 1 : 0;
         $db->prepare('
           INSERT INTO `users` SET
@@ -133,9 +134,9 @@ if (isset($_POST['submit'])) {
             $reg_name,
             $reg_about,
             $reg_sex,
-            $request->ip(),
-            $request->ipViaProxy(),
-            $request->userAgent(),
+            $request->getAttribute('ip'),
+            $request->getAttribute('ip_via_proxy'),
+            $request->getAttribute('user_agent'),
             time(),
             time(),
             time(),
