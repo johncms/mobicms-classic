@@ -13,6 +13,10 @@ defined('MOBICMS') or die('Error: restricted access');
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
+$queryParams = $request->getQueryParams();
+
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
@@ -32,7 +36,7 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
         exit;
     }
 
-    if (isset($_GET['yes'])) {
+    if (isset($queryParams['yes'])) {
         $db->exec("DELETE FROM `cms_forum_vote` WHERE `topic` = '$id'");
         $db->exec("DELETE FROM `cms_forum_vote_users` WHERE `topic` = '$id'");
         $db->exec("UPDATE `forum` SET  `realid` = '0'  WHERE `id` = '$id'");

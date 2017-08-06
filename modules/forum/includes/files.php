@@ -21,6 +21,10 @@ $asset = $container->get(Mobicms\Asset\Manager::class);
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
+$queryParams = $request->getQueryParams();
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -46,10 +50,10 @@ $types = [
 $new = time() - 86400; // Сколько времени файлы считать новыми?
 
 // Получаем ID раздела и подготавливаем запрос
-$c = isset($_GET['c']) ? abs(intval($_GET['c'])) : false; // ID раздела
-$s = isset($_GET['s']) ? abs(intval($_GET['s'])) : false; // ID подраздела
-$t = isset($_GET['t']) ? abs(intval($_GET['t'])) : false; // ID топика
-$do = isset($_GET['do']) && intval($_GET['do']) > 0 && intval($_GET['do']) < 10 ? intval($_GET['do']) : 0;
+$c = isset($queryParams['c']) ? abs(intval($queryParams['c'])) : false; // ID раздела
+$s = isset($queryParams['s']) ? abs(intval($queryParams['s'])) : false; // ID подраздела
+$t = isset($queryParams['t']) ? abs(intval($queryParams['t'])) : false; // ID топика
+$do = isset($queryParams['do']) && intval($queryParams['do']) > 0 && intval($queryParams['do']) < 10 ? intval($queryParams['do']) : 0;
 
 if ($c) {
     $id = $c;
@@ -91,18 +95,18 @@ if ($c || $s || $t) {
     }
 }
 
-if ($do || isset($_GET['new'])) {
+if ($do || isset($queryParams['new'])) {
     // Выводим список файлов нужного раздела
-    $total = $db->query("SELECT COUNT(*) FROM `cms_forum_files` WHERE " . (isset($_GET['new']) ? " `time` > '$new'" : " `filetype` = '$do'") . $sql)->fetchColumn();
+    $total = $db->query("SELECT COUNT(*) FROM `cms_forum_files` WHERE " . (isset($queryParams['new']) ? " `time` > '$new'" : " `filetype` = '$do'") . $sql)->fetchColumn();
 
     if ($total) {
         // Заголовок раздела
-        echo '<div class="phdr">' . $caption . (isset($_GET['new']) ? '<br />' . _t('New Files') : '') . '</div>' . ($do ? '<div class="bmenu">' . $types[$do] . '</div>' : '');
+        echo '<div class="phdr">' . $caption . (isset($queryParams['new']) ? '<br />' . _t('New Files') : '') . '</div>' . ($do ? '<div class="bmenu">' . $types[$do] . '</div>' : '');
         $req = $db->query("SELECT `cms_forum_files`.*, `forum`.`user_id`, `forum`.`text`, `topicname`.`text` AS `topicname`
             FROM `cms_forum_files`
             LEFT JOIN `forum` ON `cms_forum_files`.`post` = `forum`.`id`
             LEFT JOIN `forum` AS `topicname` ON `cms_forum_files`.`topic` = `topicname`.`id`
-            WHERE " . (isset($_GET['new']) ? " `cms_forum_files`.`time` > '$new'" : " `filetype` = '$do'") . ($systemUser->rights >= 7 ? '' : " AND `del` != '1'") . $sql .
+            WHERE " . (isset($queryParams['new']) ? " `cms_forum_files`.`time` > '$new'" : " `filetype` = '$do'") . ($systemUser->rights >= 7 ? '' : " AND `del` != '1'") . $sql .
             "ORDER BY `time` DESC" . $tools->getPgStart(true));
 
         for ($i = 0; $res = $req->fetch(); ++$i) {
@@ -155,7 +159,7 @@ if ($do || isset($_GET['new'])) {
 
         if ($total > $userConfig->kmess) {
             // Постраничная навигация
-            echo '<p>' . $tools->displayPagination('index.php?act=files&amp;' . (isset($_GET['new']) ? 'new' : 'do=' . $do) . $lnk . '&amp;', $total) . '</p>' .
+            echo '<p>' . $tools->displayPagination('index.php?act=files&amp;' . (isset($queryParams['new']) ? 'new' : 'do=' . $do) . $lnk . '&amp;', $total) . '</p>' .
                 '<p><form action="index.php" method="get">' .
                 '<input type="hidden" name="act" value="files"/>' .
                 '<input type="hidden" name="do" value="' . $do . '"/>' . $input . '<input type="text" name="page" size="2"/>' .
@@ -190,6 +194,6 @@ if ($do || isset($_GET['new'])) {
     echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
 }
 
-echo '<p>' . (($do || isset($_GET['new']))
+echo '<p>' . (($do || isset($queryParams['new']))
         ? '<a href="index.php?act=files' . $lnk . '">' . _t('List of sections') . '</a><br />'
         : '') . '<a href="index.php' . ($id ? '?id=' . $id : '') . '">' . _t('Forum') . '</a></p>';

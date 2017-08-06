@@ -16,8 +16,10 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
+$queryParams = $request->getQueryParams();
+$postParams = $request->getParsedBody();
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -42,8 +44,8 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
         exit;
     }
 
-    if (isset($_POST['submit'])) {
-        $razd = isset($_POST['razd']) ? abs(intval($_POST['razd'])) : false;
+    if (isset($postParams['submit'])) {
+        $razd = isset($postParams['razd']) ? abs(intval($postParams['razd'])) : false;
 
         if (!$razd) {
             require ROOT_PATH . 'system/head.php';
@@ -65,18 +67,17 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
             `refid` = '$razd'
             WHERE `id` = '$id'
         ");
-
-        $response->redirect('?id=' . $id)->sendHeaders();
+        header('Location: ?id=' . $id);
     } else {
         // Перенос темы
         $ms = $typ->fetch();
         require ROOT_PATH . 'system/head.php';
 
-        if (empty($_GET['other'])) {
+        if (empty($queryParams['other'])) {
             $rz1 = $db->query("SELECT * FROM `forum` WHERE id='" . $ms['refid'] . "'")->fetch();
             $other = $rz1['refid'];
         } else {
-            $other = intval($_GET['other']);
+            $other = intval($queryParams['other']);
         }
 
         $fr1 = $db->query("SELECT * FROM `forum` WHERE id='" . $other . "'")->fetch();

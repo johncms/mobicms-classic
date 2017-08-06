@@ -16,6 +16,11 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
+$queryParams = $request->getQueryParams();
+$postParams = $request->getParsedBody();
+
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
@@ -23,7 +28,7 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     // Массовое удаление выбранных постов форума
     require ROOT_PATH . 'system/head.php';
 
-    if (isset($_GET['yes'])) {
+    if (isset($queryParams['yes'])) {
         $dc = $_SESSION['dc'];
         $prd = $_SESSION['prd'];
 
@@ -37,13 +42,13 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
 
         echo _t('Marked posts are deleted') . '<br><a href="' . $prd . '">' . _t('Back') . '</a><br>';
     } else {
-        if (empty($_POST['delch'])) {
+        if (empty($postParams['delch'])) {
             echo '<p>' . _t('You did not choose something to delete') . '<br><a href="' . htmlspecialchars(getenv("HTTP_REFERER")) . '">' . _t('Back') . '</a></p>';
             require ROOT_PATH . 'system/end.php';
             exit;
         }
 
-        foreach ($_POST['delch'] as $v) {
+        foreach ($postParams['delch'] as $v) {
             $dc[] = intval($v);
         }
 

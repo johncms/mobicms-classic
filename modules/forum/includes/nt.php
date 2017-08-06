@@ -22,8 +22,8 @@ $config = $container->get(Mobicms\Api\ConfigInterface::class);
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Request $request */
-$request = $container->get(Mobicms\Deprecated\Request::class);
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
 
 /** @var Mobicms\Deprecated\Response $response */
 $response = $container->get(Mobicms\Deprecated\Response::class);
@@ -206,9 +206,9 @@ if (isset($_POST['submit'])
             time(),
             $systemUser->id,
             $systemUser->name,
-            $request->ip(),
-            $request->ipViaProxy(),
-            $request->userAgent(),
+            $request->getAttribute('ip'),
+            $request->getAttribute('ip_via_proxy'),
+            $request->getAttribute('user_agent'),
             $msg,
         ]);
 

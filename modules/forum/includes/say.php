@@ -19,8 +19,10 @@ $config = $container->get(Mobicms\Api\ConfigInterface::class);
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Request $request */
-$request = $container->get(Mobicms\Deprecated\Request::class);
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
+$queryParams = $request->getQueryParams();
+$postParams = $request->getParsedBody();
 
 /** @var Mobicms\Deprecated\Response $response */
 $response = $container->get(Mobicms\Deprecated\Response::class);
@@ -97,7 +99,8 @@ $type1 = $db->query("SELECT * FROM `forum` WHERE `id` = '$id'")->fetch();
 
 if ($flood) {
     require ROOT_PATH . 'system/head.php';
-    echo $tools->displayError(sprintf(_t('You cannot add the message so often<br>Please, wait %d sec.'), $flood), '<a href="index.php?id=' . ($type1['type'] == 'm' ? $type1['refid'] : $id) . '&amp;start=' . $start . '">' . _t('Back') . '</a>');
+    echo $tools->displayError(sprintf(_t('You cannot add the message so often<br>Please, wait %d sec.'), $flood),
+        '<a href="index.php?id=' . ($type1['type'] == 'm' ? $type1['refid'] : $id) . '&amp;start=' . $start . '">' . _t('Back') . '</a>');
     require ROOT_PATH . 'system/end.php';
     exit;
 }
@@ -113,15 +116,15 @@ switch ($type1['type']) {
             exit;
         }
 
-        $msg = isset($_POST['msg']) ? trim($_POST['msg']) : '';
+        $msg = isset($postParams['msg']) ? trim($postParams['msg']) : '';
         //Обрабатываем ссылки
         $msg = preg_replace_callback('~\\[url=(http://.+?)\\](.+?)\\[/url\\]|(http://(www.)?[0-9a-zA-Z\.-]+\.[0-9a-zA-Z]{2,6}[0-9a-zA-Z/\?\.\~&amp;_=/%-:#]*)~', 'forum_link', $msg);
 
-        if (isset($_POST['submit'])
-            && !empty($_POST['msg'])
-            && isset($_POST['token'])
+        if (isset($postParams['submit'])
+            && !empty($postParams['msg'])
+            && isset($postParams['token'])
             && isset($_SESSION['token'])
-            && $_POST['token'] == $_SESSION['token']
+            && $postParams['token'] == $_SESSION['token']
         ) {
             // Проверяем на минимальную длину
             if (mb_strlen($msg) < 4) {
@@ -161,8 +164,8 @@ switch ($type1['type']) {
                 $update = true;
                 $res = $req->fetch();
 
-                if ($request->paramsPost()->exists('merge')
-                    && !$request->paramsPost()->exists('addfiles')
+                if (isset($postParams['merge'])
+                    && !isset($postParams['addfiles'])
                     && $res['time'] + 3600 < strtotime('+ 1 hour')
                     && $res['strlen'] + strlen($msg) < 65536
                     && $res['user_id'] == $systemUser->id
@@ -203,9 +206,9 @@ switch ($type1['type']) {
                         time(),
                         $systemUser->id,
                         $systemUser->name,
-                        $request->ip(),
-                        $request->ipViaProxy(),
-                        $request->userAgent(),
+                        $request->getAttribute('ip'),
+                        $request->getAttribute('ip_via_proxy'),
+                        $request->getAttribute('user_agent'),
                         $msg,
                     ]);
 
@@ -229,7 +232,7 @@ switch ($type1['type']) {
             // Вычисляем, на какую страницу попадает добавляемый пост
             $page = $set_forum['upfp'] ? 1 : ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `refid` = '$id'" . ($systemUser->rights >= 6 ? '' : " AND `close` != '1'"))->fetchColumn() / $userConfig->kmess);
 
-            if (isset($_POST['addfiles'])) {
+            if (isset($postParams['addfiles'])) {
                 if ($update) {
                     $response->redirect('?id=' . $res['id'] . '&act=addfile')->sendHeaders();
                 } else {
@@ -239,52 +242,50 @@ switch ($type1['type']) {
                 $response->redirect('?id=' . $id . '&page=' . $page)->sendHeaders();
             }
             exit;
-}
-else {
-    require ROOT_PATH . 'system/head.php';
-    $msg_pre = $tools->checkout($msg, 1, 1);
-    $msg_pre = $tools->smilies($msg_pre, $systemUser->rights ? 1 : 0);
-    $msg_pre = preg_replace('#\[c\](.*?)\[/c\]#si', '<div class="quote">\1</div>', $msg_pre);
-    echo '<div class="phdr"><b>' . _t('Topic') . ':</b> ' . $type1['text'] . '</div>';
+        } else {
+            require ROOT_PATH . 'system/head.php';
+            $msg_pre = $tools->checkout($msg, 1, 1);
+            $msg_pre = $tools->smilies($msg_pre, $systemUser->rights ? 1 : 0);
+            $msg_pre = preg_replace('#\[c\](.*?)\[/c\]#si', '<div class="quote">\1</div>', $msg_pre);
+            echo '<div class="phdr"><b>' . _t('Topic') . ':</b> ' . $type1['text'] . '</div>';
 
-    if ($msg && !isset($_POST['submit'])) {
-        echo '<div class="list1">' . $tools->displayUser($systemUser, ['iphide' => 1, 'header' => '<span class="gray">(' . $tools->displayDate(time()) . ')</span>', 'body' => $msg_pre]) . '</div>';
-    }
+            if ($msg && !isset($postParams['submit'])) {
+                echo '<div class="list1">' . $tools->displayUser($systemUser, ['iphide' => 1, 'header' => '<span class="gray">(' . $tools->displayDate(time()) . ')</span>', 'body' => $msg_pre]) . '</div>';
+            }
 
-    echo '<form name="form" action="index.php?act=say&amp;id=' . $id . '&amp;start=' . $start . '" method="post"><div class="gmenu">' .
-        '<p><h3>' . _t('Message') . '</h3>';
-    echo '</p><p>' . $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form', 'msg');
-    echo '<textarea rows="' . $userConfig->fieldHeight . '" name="msg">' . (empty($_POST['msg']) ? '' : $tools->checkout($msg)) . '</textarea></p><p>';
+            echo '<form name="form" action="index.php?act=say&amp;id=' . $id . '&amp;start=' . $start . '" method="post"><div class="gmenu">' .
+                '<p><h3>' . _t('Message') . '</h3>';
+            echo '</p><p>' . $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form', 'msg');
+            echo '<textarea rows="' . $userConfig->fieldHeight . '" name="msg">' . (empty($postParams['msg']) ? '' : $tools->checkout($msg)) . '</textarea></p><p>';
 
-    // Проверяем, было ли последнее сообщение от того же автора?
-    $req = $db->query("SELECT *, CHAR_LENGTH(`text`) AS `strlen` FROM `forum` WHERE `type` = 'm' AND `refid` = " . $id . " AND `close` != 1 ORDER BY `time` DESC LIMIT 1");
+            // Проверяем, было ли последнее сообщение от того же автора?
+            $req = $db->query("SELECT *, CHAR_LENGTH(`text`) AS `strlen` FROM `forum` WHERE `type` = 'm' AND `refid` = " . $id . " AND `close` != 1 ORDER BY `time` DESC LIMIT 1");
 
-    if ($req->rowCount()) {
-        $res = $req->fetch();
+            if ($req->rowCount()) {
+                $res = $req->fetch();
 
-        // Показываем чекбокс объединения постов
-        if ($res['strlen'] + strlen($msg) < 65536 && $res['user_id'] == $systemUser->id) {
-            echo '<input type="checkbox" name="merge" value="1" checked="checked"/> ' . _t('Merge with previous message') . '<br>';
+                // Показываем чекбокс объединения постов
+                if ($res['strlen'] + strlen($msg) < 65536 && $res['user_id'] == $systemUser->id) {
+                    echo '<input type="checkbox" name="merge" value="1" checked="checked"/> ' . _t('Merge with previous message') . '<br>';
+                }
+            }
+
+            echo '<input type="checkbox" name="addfiles" value="1" ' . (isset($postParams['addfiles']) ? 'checked="checked" ' : '') . '/> ' . _t('Add File');
+
+            $token = mt_rand(1000, 100000);
+            $_SESSION['token'] = $token;
+            echo '</p><p>' .
+                '<input type="submit" name="submit" value="' . _t('Send') . '" style="width: 107px; cursor: pointer"/> ' .
+                ($set_forum['preview'] ? '<input type="submit" value="' . _t('Preview') . '" style="width: 107px; cursor: pointer"/>' : '') .
+                '<input type="hidden" name="token" value="' . $token . '"/>' .
+                '</p></div></form>';
         }
-    }
 
-    echo '<input type="checkbox" name="addfiles" value="1" ' . (isset($_POST['addfiles']) ? 'checked="checked" ' : '') . '/> ' . _t('Add File');
+        echo '<div class="phdr"><a href="../help/?act=smileys">' . _t('Smilies') . '</a></div>' .
+            '<p><a href="index.php?id=' . $id . '&amp;start=' . $start . '">' . _t('Back') . '</a></p>';
+        break;
 
-    $token = mt_rand(1000, 100000);
-    $_SESSION['token'] = $token;
-    echo '</p><p>' .
-        '<input type="submit" name="submit" value="' . _t('Send') . '" style="width: 107px; cursor: pointer"/> ' .
-        ($set_forum['preview'] ? '<input type="submit" value="' . _t('Preview') . '" style="width: 107px; cursor: pointer"/>' : '') .
-        '<input type="hidden" name="token" value="' . $token . '"/>' .
-        '</p></div></form>';
-}
-
-echo '<div class="phdr"><a href="../help/?act=smileys">' . _t('Smilies') . '</a></div>' .
-    '<p><a href="index.php?id=' . $id . '&amp;start=' . $start . '">' . _t('Back') . '</a></p>';
-break;
-
-case
-'m':
+    case 'm':
         // Добавление сообщения с цитированием поста
         $th = $type1['refid'];
         $th1 = $db->query("SELECT * FROM `forum` WHERE `id` = '$th'")->fetch();
@@ -305,18 +306,18 @@ case
 
         $shift = ($config['timeshift'] + $userConfig->timeshift) * 3600;
         $vr = date("d.m.Y / H:i", $type1['time'] + $shift);
-        $msg = isset($_POST['msg']) ? trim($_POST['msg']) : '';
-        $txt = isset($_POST['txt']) ? intval($_POST['txt']) : false;
+        $msg = isset($postParams['msg']) ? trim($postParams['msg']) : '';
+        $txt = isset($postParams['txt']) ? intval($postParams['txt']) : false;
 
-        if (!empty($_POST['citata'])) {
+        if (!empty($postParams['citata'])) {
             // Если была цитата, форматируем ее и обрабатываем
-            $citata = isset($_POST['citata']) ? trim($_POST['citata']) : '';
+            $citata = isset($postParams['citata']) ? trim($postParams['citata']) : '';
             $citata = $container->get(Mobicms\Api\BbcodeInterface::class)->notags($citata);
             $citata = preg_replace('#\[c\](.*?)\[/c\]#si', '', $citata);
             $citata = mb_substr($citata, 0, 200);
             $tp = date("d.m.Y H:i", $type1['time']);
             $msg = '[c][url=' . $config['homeurl'] . '/forum/index.php?act=post&id=' . $type1['id'] . ']#[/url] ' . $type1['from'] . ' ([time]' . $tp . "[/time])\n" . $citata . '[/c]' . $msg;
-        } elseif (isset($_POST['txt'])) {
+        } elseif (isset($postParams['txt'])) {
             // Если был ответ, обрабатываем реплику
             switch ($txt) {
                 case 2:
@@ -336,14 +337,14 @@ case
         //Обрабатываем ссылки
         $msg = preg_replace_callback('~\\[url=(http://.+?)\\](.+?)\\[/url\\]|(http://(www.)?[0-9a-zA-Z\.-]+\.[0-9a-zA-Z]{2,6}[0-9a-zA-Z/\?\.\~&amp;_=/%-:#]*)~', 'forum_link', $msg);
 
-        if (isset($_POST['submit'])
-            && isset($_POST['token'])
+        if (isset($postParams['submit'])
+            && isset($postParams['token'])
             && isset($_SESSION['token'])
-            && $_POST['token'] == $_SESSION['token']
+            && $postParams['token'] == $_SESSION['token']
         ) {
-            if (empty($_POST['msg'])) {
+            if (empty($postParams['msg'])) {
                 require ROOT_PATH . 'system/head.php';
-                echo $tools->displayError(_t('You have not entered the message'), '<a href="index.php?act=say&amp;id=' . $th . (isset($_GET['cyt']) ? '&amp;cyt' : '') . '">' . _t('Repeat') . '</a>');
+                echo $tools->displayError(_t('You have not entered the message'), '<a href="index.php?act=say&amp;id=' . $th . (isset($queryParams['cyt']) ? '&amp;cyt' : '') . '">' . _t('Repeat') . '</a>');
                 require ROOT_PATH . 'system/end.php';
                 exit;
             }
@@ -397,9 +398,9 @@ case
                 time(),
                 $systemUser->id,
                 $systemUser->name,
-                $request->ip(),
-                $request->ipViaProxy(),
-                $request->userAgent(),
+                $request->getAttribute('ip'),
+                $request->getAttribute('ip_via_proxy'),
+                $request->getAttribute('user_agent'),
                 $msg,
             ]);
 
@@ -421,7 +422,7 @@ case
             // Вычисляем, на какую страницу попадает добавляемый пост
             $page = $set_forum['upfp'] ? 1 : ceil($db->query("SELECT COUNT(*) FROM `forum` WHERE `type` = 'm' AND `refid` = '$th'" . ($systemUser->rights >= 6 ? '' : " AND `close` != '1'"))->fetchColumn() / $userConfig->kmess);
 
-            if (isset($_POST['addfiles'])) {
+            if (isset($postParams['addfiles'])) {
                 $response->redirect("?id=$fadd&act=addfile")->sendHeaders();
             } else {
                 $response->redirect("?id=$th&page=$page")->sendHeaders();
@@ -439,17 +440,17 @@ case
             $qt = trim(preg_replace('#\[c\](.*?)\[/c\]#si', '', $qt));
             $qt = $tools->checkout($qt, 0, 2);
 
-            if (!empty($_POST['msg']) && !isset($_POST['submit'])) {
+            if (!empty($postParams['msg']) && !isset($postParams['submit'])) {
                 echo '<div class="list1">' . $tools->displayUser($systemUser, ['iphide' => 1, 'header' => '<span class="gray">(' . $tools->displayDate(time()) . ')</span>', 'body' => $msg_pre]) . '</div>';
             }
 
-            echo '<form name="form" action="index.php?act=say&amp;id=' . $id . '&amp;start=' . $start . (isset($_GET['cyt']) ? '&amp;cyt' : '') . '" method="post"><div class="gmenu">';
+            echo '<form name="form" action="index.php?act=say&amp;id=' . $id . '&amp;start=' . $start . (isset($queryParams['cyt']) ? '&amp;cyt' : '') . '" method="post"><div class="gmenu">';
 
-            if (isset($_GET['cyt'])) {
+            if (isset($queryParams['cyt'])) {
                 // Форма с цитатой
                 echo '<p><b>' . $type1['from'] . '</b> <span class="gray">(' . $vr . ')</span></p>' .
                     '<p><h3>' . _t('Quote') . '</h3>' .
-                    '<textarea rows="' . $userConfig->fieldHeight . '" name="citata">' . (empty($_POST['citata']) ? $qt : $tools->checkout($_POST['citata'])) . '</textarea>' .
+                    '<textarea rows="' . $userConfig->fieldHeight . '" name="citata">' . (empty($postParams['citata']) ? $qt : $tools->checkout($postParams['citata'])) . '</textarea>' .
                     '<br /><small>' . _t('Only allowed 200 characters, other text will be cropped.') . '</small></p>';
             } else {
                 // Форма с репликой
@@ -461,8 +462,8 @@ case
 
             echo '<p><h3>' . _t('Message') . '</h3>';
             echo '</p><p>' . $container->get(Mobicms\Api\BbcodeInterface::class)->buttons('form', 'msg');
-            echo '<textarea rows="' . $userConfig->fieldHeight . '" name="msg">' . (empty($_POST['msg']) ? '' : $tools->checkout($_POST['msg'])) . '</textarea></p>' .
-                '<p><input type="checkbox" name="addfiles" value="1" ' . (isset($_POST['addfiles']) ? 'checked="checked" ' : '') . '/> ' . _t('Add File');
+            echo '<textarea rows="' . $userConfig->fieldHeight . '" name="msg">' . (empty($postParams['msg']) ? '' : $tools->checkout($postParams['msg'])) . '</textarea></p>' .
+                '<p><input type="checkbox" name="addfiles" value="1" ' . (isset($postParams['addfiles']) ? 'checked="checked" ' : '') . '/> ' . _t('Add File');
 
             $token = mt_rand(1000, 100000);
             $_SESSION['token'] = $token;

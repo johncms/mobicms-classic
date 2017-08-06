@@ -16,8 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
+$queryParams = $request->getQueryParams();
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -28,11 +29,12 @@ if (($systemUser->rights != 3 && $systemUser->rights < 6) || !$id) {
 }
 
 if ($db->query("SELECT COUNT(*) FROM `forum` WHERE `id` = '$id' AND `type` = 't'")->fetchColumn()) {
-    if (isset($_GET['closed'])) {
+    if (isset($queryParams['closed'])) {
         $db->exec("UPDATE `forum` SET `edit` = '1' WHERE `id` = '$id'");
     } else {
         $db->exec("UPDATE `forum` SET `edit` = '0' WHERE `id` = '$id'");
     }
 }
 
-$response->redirect('?id=' . $id)->sendHeaders();
+header('Location: ?id=' . $id);
+

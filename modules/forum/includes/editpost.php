@@ -18,8 +18,10 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
+$queryParams = $request->getQueryParams();
+$postParams = $request->getParsedBody();
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -105,7 +107,7 @@ if ($req->rowCount()) {
     $error = _t('Message does not exists or has been deleted') . '<br /><a href="index.php">' . _t('Forum') . '</a>';
 }
 
-$fid = isset($_GET['fid']) && $_GET['fid'] > 0 ? abs(intval($_GET['fid'])) : false;
+$fid = isset($queryParams['fid']) && $queryParams['fid'] > 0 ? abs(intval($queryParams['fid'])) : false;
 
 if (!$error) {
     switch ($do) {
@@ -126,7 +128,7 @@ if (!$error) {
                 $db->exec("UPDATE `cms_forum_files` SET `del` = '0' WHERE `post` = '$id'");
             }
 
-            $response->redirect($link)->sendHeaders();
+            header('Location: ' . $link);
             break;
 
         case 'delfile':
@@ -140,14 +142,14 @@ if (!$error) {
             break;
 
         case 'deletefile':
-            if (isset($_POST['delfile'])) {
+            if (isset($postParams['delfile'])) {
                 $req_f = $db->query("SELECT * FROM `cms_forum_files` WHERE `id` = " . $fid);
                 $res_f = $req_f->fetch();
 
                 if ($req_f->rowCount()) {
                     $db->exec("DELETE FROM `cms_forum_files` WHERE `id` = " . $fid);
                     unlink(UPLOAD_PATH . 'forum/attach/' . $res_f['filename']);
-                    $response->redirect($link)->sendHeaders();
+                    header('Location: ' . $link);
                 } else {
                     echo $tools->displayError(_t('You cannot edit your posts after 5 minutes') . '<br /><a href="' . $link . '">' . _t('Back') . '</a>');
                     require ROOT_PATH . 'system/end.php';
@@ -169,7 +171,7 @@ if (!$error) {
                 }
             }
 
-            if ($systemUser->rights == 9 && !isset($_GET['hide'])) {
+            if ($systemUser->rights == 9 && !isset($queryParams['hide'])) {
                 // Удаление поста (для Супервизоров)
                 $req_f = $db->query("SELECT * FROM `cms_forum_files` WHERE `post` = '$id'");
 
@@ -187,9 +189,9 @@ if (!$error) {
 
                 if ($posts < 2) {
                     // Пересылка на удаление всей темы
-                    $response->redirect('?act=deltema&id=' . $res['refid'])->sendHeaders();
+                    header('Location: ?act=deltema&id=' . $res['refid']);
                 } else {
-                    $response->redirect('?id=' . $res['refid'] . '&page=' . $page)->sendHeaders();
+                    header('Location: ?id=' . $res['refid'] . '&page=' . $page);
                 }
             } else {
                 // Скрытие поста
@@ -204,10 +206,10 @@ if (!$error) {
                     // Если это был последний пост темы, то скрываем саму тему
                     $res_l = $db->query("SELECT `refid` FROM `forum` WHERE `id` = '" . $res['refid'] . "'")->fetch();
                     $db->exec("UPDATE `forum` SET `close` = '1', `close_who` = '" . $systemUser->name . "' WHERE `id` = '" . $res['refid'] . "' AND `type` = 't'");
-                    $response->redirect('?id=' . $res_l['refid'])->sendHeaders();
+                    header('Location: ?id=' . $res_l['refid']);
                 } else {
                     $db->exec("UPDATE `forum` SET `close` = '1', `close_who` = '" . $systemUser->name . "' WHERE `id` = '$id'");
-                    $response->redirect('?id=' . $res['refid'] . '&page=' . $page)->sendHeaders();
+                    header('Location: ?id=' . $res['refid'] . '&page=' . $page);
                 }
             }
             break;
@@ -234,10 +236,10 @@ if (!$error) {
 
         default:
             // Редактирование поста
-            $msg = isset($_POST['msg']) ? trim($_POST['msg']) : '';
+            $msg = isset($postParams['msg']) ? trim($postParams['msg']) : '';
 
-            if (isset($_POST['submit'])) {
-                if (empty($_POST['msg'])) {
+            if (isset($postParams['submit'])) {
+                if (empty($postParams['msg'])) {
                     echo $tools->displayError(_t('You have not entered the message'), '<a href="index.php?act=editpost&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
                     require ROOT_PATH . 'system/end.php';
                     exit;
@@ -258,21 +260,21 @@ if (!$error) {
                     $id,
                 ]);
 
-                $response->redirect('?id=' . $res['refid'] . '&page=' . $page)->sendHeaders();
+                header('Location: ?id=' . $res['refid'] . '&page=' . $page);
             } else {
                 $msg_pre = $tools->checkout($msg, 1, 1);
                 $msg_pre = $tools->smilies($msg_pre, $systemUser->rights ? 1 : 0);
                 $msg_pre = preg_replace('#\[c\](.*?)\[/c\]#si', '<div class="quote">\1</div>', $msg_pre);
                 echo '<div class="phdr"><a href="' . $link . '"><b>' . _t('Forum') . '</b></a> | ' . _t('Edit Message') . '</div>';
 
-                if ($msg && !isset($_POST['submit'])) {
+                if ($msg && !isset($postParams['submit'])) {
                     $user = $db->query("SELECT * FROM `users` WHERE `id` = '" . $res['user_id'] . "' LIMIT 1")->fetch();
                     echo '<div class="list1">' . $tools->displayUser($user, ['iphide' => 1, 'header' => '<span class="gray">(' . $tools->displayDate($res['time']) . ')</span>', 'body' => $msg_pre]) . '</div>';
                 }
 
                 echo '<div class="rmenu"><form name="form" action="?act=editpost&amp;id=' . $id . '&amp;start=' . $tools->getPgStart() . '" method="post"><p>';
                 echo App::getContainer()->get(Mobicms\Api\BbcodeInterface::class)->buttons('form', 'msg');
-                echo '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="msg">' . (empty($_POST['msg']) ? htmlentities($res['text'], ENT_QUOTES, 'UTF-8') : $tools->checkout($_POST['msg'])) . '</textarea><br>';
+                echo '<textarea rows="' . $systemUser->getConfig()->fieldHeight . '" name="msg">' . (empty($postParams['msg']) ? htmlentities($res['text'], ENT_QUOTES, 'UTF-8') : $tools->checkout($postParams['msg'])) . '</textarea><br>';
 
                 echo '</p><p><input type="submit" name="submit" value="' . _t('Save') . '" style="width: 107px; cursor: pointer;"/> ' .
                     ($set_forum['preview'] ? '<input type="submit" value="' . _t('Preview') . '" style="width: 107px; cursor: pointer;"/>' : '') .

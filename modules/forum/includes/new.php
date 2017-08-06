@@ -33,15 +33,6 @@ $userConfig = $systemUser->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-if (empty($_SESSION['uid'])) {
-    if (isset($_GET['newup'])) {
-        $_SESSION['uppost'] = 1;
-    }
-    if (isset($_GET['newdown'])) {
-        $_SESSION['uppost'] = 0;
-    }
-}
-
 if ($systemUser->isValid()) {
     switch ($do) {
         case 'reset':

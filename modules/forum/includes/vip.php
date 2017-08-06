@@ -16,8 +16,9 @@ $container = App::getContainer();
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
+$queryParams = $request->getQueryParams();
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -26,7 +27,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
-    if (empty($_GET['id'])) {
+    if (!$id) {
         require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('Wrong data'));
         require ROOT_PATH . 'system/end.php';
@@ -34,8 +35,8 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     }
 
     if ($db->query("SELECT COUNT(*) FROM `forum` WHERE `id` = '" . $id . "' AND `type` = 't'")->fetchColumn()) {
-        $db->exec("UPDATE `forum` SET  `vip` = '" . (isset($_GET['vip']) ? '1' : '0') . "' WHERE `id` = '$id'");
-        $response->redirect('?id=' . $id)->sendHeaders();
+        $db->exec("UPDATE `forum` SET  `vip` = '" . (isset($queryParams['vip']) ? '1' : '0') . "' WHERE `id` = '$id'");
+        header('Location: ?id=' . $id);
     } else {
         require ROOT_PATH . 'system/head.php';
         echo $tools->displayError(_t('Wrong data'));

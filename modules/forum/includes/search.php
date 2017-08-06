@@ -10,16 +10,16 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$act = isset($_GET['act']) ? trim($_GET['act']) : '';
-
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Response $response */
-$response = $container->get(Mobicms\Deprecated\Response::class);
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
+$queryParams = $request->getQueryParams();
+$postParams = $request->getParsedBody();
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -46,9 +46,9 @@ switch ($do) {
     case 'reset':
         // Очищаем историю личных поисковых запросов
         if ($systemUser->isValid()) {
-            if (isset($_POST['submit'])) {
+            if (isset($postParams['submit'])) {
                 $db->exec("DELETE FROM `cms_users_data` WHERE `user_id` = '" . $systemUser->id . "' AND `key` = 'forum_search' LIMIT 1");
-                $response->redirect('index.php?act=search')->sendHeaders();
+                header('Location: ?act=search');
             } else {
                 echo '<form action="index.php?act=search&amp;do=reset" method="post">' .
                     '<div class="rmenu">' .
@@ -63,10 +63,9 @@ switch ($do) {
 
     default:
         // Принимаем данные, выводим форму поиска
-        $search_post = isset($_POST['search']) ? trim($_POST['search']) : false;
-        $search_get = isset($_GET['search']) ? rawurldecode(trim($_GET['search'])) : false;
+        $search_post = isset($postParams['search']) ? trim($postParams['search']) : false;
+        $search_get = isset($queryParams['search']) ? rawurldecode(trim($queryParams['search'])) : false;
         $search = $search_post ? $search_post : $search_get;
-        //$search = preg_replace("/[^\w\x7F-\xFF\s]/", " ", $search);
         $search_t = isset($_REQUEST['t']);
         $to_history = false;
         echo '<div class="gmenu"><form action="index.php?act=search" method="post"><p>' .

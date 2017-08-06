@@ -19,8 +19,8 @@ $asset = $container->get(Mobicms\Asset\Manager::class);
 /** @var PDO $db */
 $db = $container->get(PDO::class);
 
-/** @var Mobicms\Deprecated\Request $request */
-$request = $container->get(Mobicms\Deprecated\Request::class);
+/** @var Psr\Http\Message\ServerRequestInterface $request */
+$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
 
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
@@ -41,10 +41,11 @@ $counters = App::getContainer()->get('counters');
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
-$id = abs(intval($request->param('id', 0)));
-$act = $request->paramsGet()->get('act');
-$mod = $request->paramsGet()->get('mod');
-$do = $request->param('do');
+$queryParams = $request->getQueryParams();
+$id = abs(intval($queryParams['id'] ?? 0));
+$act = $queryParams['act'] ?? '';
+$mod = $queryParams['mod'] ?? '';
+$do = $queryParams['do'] ?? '';
 $start = $tools->getPgStart();
 
 if (isset($_SESSION['ref'])) {
@@ -198,11 +199,11 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
     }
 
     if (!$systemUser->isValid()) {
-        if ($request->paramsGet()->exists('newup')) {
+        if (isset($queryParams['newup'])) {
             $_SESSION['uppost'] = 1;
         }
 
-        if ($request->paramsGet()->exists('newdown')) {
+        if (isset($queryParams['newdown'])) {
             $_SESSION['uppost'] = 0;
         }
     }
@@ -468,13 +469,13 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                 // Блок голосований
                 if ($type1['realid']) {
-                    $clip_forum = $request->paramsGet()->exists('clip') ? '&amp;clip' : '';
+                    $clip_forum = isset($queryParams['clip']) ? '&amp;clip' : '';
                     $vote_user = $db->query("SELECT COUNT(*) FROM `cms_forum_vote_users` WHERE `user`='" . $systemUser->id . "' AND `topic`='$id'")->fetchColumn();
                     $topic_vote = $db->query("SELECT `name`, `time`, `count` FROM `cms_forum_vote` WHERE `type`='1' AND `topic`='$id' LIMIT 1")->fetch();
                     echo '<div  class="gmenu"><b>' . $tools->checkout($topic_vote['name']) . '</b><br />';
                     $vote_result = $db->query("SELECT `id`, `name`, `count` FROM `cms_forum_vote` WHERE `type`='2' AND `topic`='" . $id . "' ORDER BY `id` ASC");
 
-                    if (!$type1['edit'] && !$request->paramsGet()->exists('vote_result') && $systemUser->isValid() && $vote_user == 0) {
+                    if (!$type1['edit'] && !isset($queryParams['vote_result']) && $systemUser->isValid() && $vote_user == 0) {
                         // Выводим форму с опросами
                         echo '<form action="?act=vote&amp;id=' . $id . '" method="post">';
 
@@ -522,7 +523,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
                 }
 
                 // Фиксация первого поста в теме
-                if (($set_forum['postclip'] == 2 && ($set_forum['upfp'] ? $start < (ceil($colmes - $userConfig->kmess)) : $start > 0)) || $request->paramsGet()->exists('clip')) {
+                if (($set_forum['postclip'] == 2 && ($set_forum['upfp'] ? $start < (ceil($colmes - $userConfig->kmess)) : $start > 0)) || isset($queryParams['clip'])) {
                     $postres = $db->query("SELECT `forum`.*, `users`.`sex`, `users`.`rights`, `users`.`lastdate`, `users`.`status`, `users`.`datereg`
                     FROM `forum` LEFT JOIN `users` ON `forum`.`user_id` = `users`.`id`
                     WHERE `forum`.`type` = 'm' AND `forum`.`refid` = '$id'" . ($systemUser->rights >= 6 ? "" : " AND `forum`.`close` != '1'") . "
