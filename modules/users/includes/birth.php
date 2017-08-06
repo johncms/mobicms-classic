@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-define('MOBICMS', 1);
+defined('MOBICMS') or die('Error: restricted access');
 
 $pageTitle = _t('Birthdays');
 require ROOT_PATH . 'system/head.php';
@@ -31,7 +31,7 @@ $total = $db->query("SELECT COUNT(*) FROM `users` WHERE `dayb` = '" . date('j', 
 
 if ($total) {
     $req = $db->query("SELECT * FROM `users` WHERE `dayb` = '" . date('j', time()) . "' AND `monthb` = '" . date('n', time()) . "' AND `preg` = '1'" . $tools->getPgStart(true));
-
+    $i = 0;
     while ($res = $req->fetch()) {
         echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
         echo $tools->displayUser($res) . '</div>';
