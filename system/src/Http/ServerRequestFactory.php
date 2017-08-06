@@ -69,7 +69,7 @@ class ServerRequestFactory
      */
     private function determineIpViaProxy(ServerRequestInterface $request)
     {
-        $ipAddress = null;
+        $ipAddress = '';
 
         if ($request->hasHeader('X-Forwarded-For')
             && preg_match_all('#\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}#s',
