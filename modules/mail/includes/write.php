@@ -351,8 +351,7 @@ if (isset($_POST['submit']) && empty($systemUser->ban['1']) && empty($systemUser
 
     if (empty($error) && $do_file) {
         if ((move_uploaded_file($_FILES['fail']['tmp_name'], UPLOAD_PATH . 'mail/' . $newfile)) === true) {
-            @ chmod(UPLOAD_PATH . 'mail/' . $newfile, 0666);
-            @unlink($_FILES['fail']['tmp_name']);
+            chmod(UPLOAD_PATH . 'mail/' . $newfile, 0666);
         } else {
             $error[] = _t('Error uploading file');
         }
