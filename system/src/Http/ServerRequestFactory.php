@@ -73,7 +73,7 @@ class ServerRequestFactory
 
         if ($request->hasHeader('X-Forwarded-For')
             && preg_match_all('#\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}#s',
-                $request->getHeader('X-Forwarded-For'),
+                $request->getHeaderLine('X-Forwarded-For'),
                 $vars
             )
         ) {
