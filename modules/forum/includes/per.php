@@ -98,7 +98,7 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
             '</div></form>' .
             '<div class="phdr">' . _t('Other categories') . '</div>';
         $frm = $db->query("SELECT * FROM `forum` WHERE `type` = 'f' AND `id` != '$other' ORDER BY `realid` ASC");
-
+        $i = 0;
         while ($frm1 = $frm->fetch()) {
             echo $i % 2 ? '<div class="list2">' : '<div class="list1">';
             echo '<a href="index.php?act=per&amp;id=' . $id . '&amp;other=' . $frm1['id'] . '">' . $frm1['text'] . '</a></div>';
