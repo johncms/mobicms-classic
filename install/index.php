@@ -8,14 +8,12 @@
  * @copyright   Copyright (C) mobiCMS Community
  */
 
-const MOBICMS = '0.3.0';
+const MOBICMS = '0.4.0';
 
 // Check the current PHP version
-if (version_compare(PHP_VERSION, '5.6', '<')) {
-    die('<div style="text-align: center; font-size: xx-large"><strong>ERROR!</strong><br>Your needs PHP 5.6 or higher</div>');
+if (version_compare(PHP_VERSION, '7.0', '<')) {
+    die('<div style="text-align: center; font-size: xx-large"><strong>ERROR!</strong><br>Your needs PHP 7.0 or higher</div>');
 }
-
-require '../system/vendor/autoload.php';
 
 class install
 {
@@ -27,9 +25,6 @@ class install
     public static function checkPhpErrors()
     {
         $error = [];
-        if (version_compare(phpversion(), '7.0.0', '<')) {
-            $error[] = 'PHP ' . phpversion();
-        }
 
         if (!class_exists(PDO::class)) {
             $error[] = 'PDO';
@@ -236,7 +231,7 @@ echo '<!DOCTYPE html>' . "\n" .
     '<body>' . "\n" .
     '<h1>mobiCMS ' . MOBICMS . '</h1><hr />';
 if (!$act) {
-    echo '<form action="index.php" method="post">' .
+    echo '<form action="?" method="post">' .
         '<p><h3 class="green">' . $lng['change_language'] . '</h3>' .
         '<div><input type="radio" name="lng" value="en" ' . ($language == 'en' ? 'checked="checked"' : '') . ' />&#160;English</div>' .
         '<div><input type="radio" name="lng" value="ru" ' . ($language == 'ru' ? 'checked="checked"' : '') . ' />&#160;Русский</div>' .
@@ -289,12 +284,21 @@ switch ($act) {
         $site_error = [];
         $admin_error = [];
 
+        $protocol = isset($_SERVER["HTTPS"]) ? 'https' : 'http';
+        $host = $_SERVER['HTTP_HOST'];
+        $query = explode('?', $_SERVER['REQUEST_URI']);
+        $path = dirname(trim($query[0], '/'));
+
         // Принимаем данные формы
         $db_host = isset($_POST['dbhost']) ? htmlentities(trim($_POST['dbhost'])) : 'localhost';
-        $db_name = isset($_POST['dbname']) ? htmlentities(trim($_POST['dbname'])) : 'mobicms';
+        $db_name = isset($_POST['dbname']) ? htmlentities(trim($_POST['dbname'])) : 'mobicms_classic';
         $db_user = isset($_POST['dbuser']) ? htmlentities(trim($_POST['dbuser'])) : 'root';
         $db_pass = isset($_POST['dbpass']) ? htmlentities(trim($_POST['dbpass'])) : '';
-        $site_url = isset($_POST['siteurl']) ? preg_replace("#/$#", '', htmlentities(trim($_POST['siteurl']), ENT_QUOTES, 'UTF-8')) : 'http://' . $_SERVER["SERVER_NAME"];
+
+        $site_url = isset($_POST['siteurl'])
+            ? preg_replace("#/$#", '', htmlspecialchars(trim($_POST['siteurl'])))
+            : $protocol . '://' . $host . '/' . $path;
+
         $site_mail = isset($_POST['sitemail']) ? htmlentities(trim($_POST['sitemail']), ENT_QUOTES, 'UTF-8') : '@';
         $admin_user = isset($_POST['admin']) ? trim($_POST['admin']) : 'admin';
         $admin_pass = isset($_POST['password']) ? trim($_POST['password']) : '';
@@ -431,6 +435,7 @@ switch ($act) {
                         'flsz'          => '16000',
                         'gzip'          => 1,
                         'homeurl'       => $site_url,
+                        'base_path'     => $path,
                         'lng'           => $language,
                         'lng_list'      => $lng_list,
                         'mod_reg'       => 2,
@@ -506,7 +511,7 @@ switch ($act) {
                 }
 
                 // Установка завершена
-                header('Location: index.php?act=final');
+                header('Location: ?act=final');
             }
         }
 
@@ -522,7 +527,7 @@ switch ($act) {
 
         echo '<span class="gray">' . $lng['final'] . '</span>' .
             '<hr />' .
-            '<form action="index.php?act=set" method="post">' .
+            '<form action="?act=set" method="post">' .
             show_errors($db_error) .
             '<small class="blue"><b>MySQL Host:</b></small><br />' .
             '<input type="text" name="dbhost" value="' . $db_host . '"' . ($db_check ? ' readonly="readonly" style="background-color: #CCFFCC"' : '') . (isset($db_error['host']) ? ' style="background-color: #FFCCCC"' : '') . '><br />' .
@@ -557,7 +562,7 @@ switch ($act) {
         }
 
         echo '</form>';
-        echo '<p><a href="index.php?act=set">' . $lng['reset_form'] . '</a></p>';
+        echo '<p><a href="?act=set">' . $lng['reset_form'] . '</a></p>';
         break;
 
     default:
@@ -615,13 +620,13 @@ switch ($act) {
 
             if ($php_errors || $folders || $files) {
                 echo '<h3 class="red">' . $lng['critical_errors'] . '</h3>' .
-                    '<h3><a href="index.php">' . $lng['check_again'] . '</a></h3>';
+                    '<h3><a href="?">' . $lng['check_again'] . '</a></h3>';
             } elseif ($php_warnings) {
                 echo '<h3 class="red">' . $lng['are_warnings'] . '</h3>' .
-                    '<h3><a href="index.php">' . $lng['check_again'] . '</a></h3>' .
-                    '<a href="index.php?act=set">' . $lng['ignore_warnings'] . '</a>';
+                    '<h3><a href="?">' . $lng['check_again'] . '</a></h3>' .
+                    '<a href="?act=set">' . $lng['ignore_warnings'] . '</a>';
             } else {
-                echo '<form action="index.php?act=set" method="post"><p><input type="submit" value="' . $lng['install'] . '"/></p></form>';
+                echo '<form action="?act=set" method="post"><p><input type="submit" value="' . $lng['install'] . '"/></p></form>';
             }
         }
 }
