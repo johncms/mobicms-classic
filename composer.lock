@@ -134,22 +134,22 @@
         },
         {
             "name": "mobicms/mobicms-captcha",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mobicms/mobicms-captcha.git",
-                "reference": "2db730aa24593c18bac4ab3ea537e72414acd776"
+                "reference": "78c3d09137093ab273bc28a03db84e2b1c43e340"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mobicms/mobicms-captcha/zipball/2db730aa24593c18bac4ab3ea537e72414acd776",
-                "reference": "2db730aa24593c18bac4ab3ea537e72414acd776",
+                "url": "https://api.github.com/repos/mobicms/mobicms-captcha/zipball/78c3d09137093ab273bc28a03db84e2b1c43e340",
+                "reference": "78c3d09137093ab273bc28a03db84e2b1c43e340",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.6 || ^7.0"
             },
-            "type": "library",
+            "type": "mobicms-core",
             "autoload": {
                 "psr-4": {
                     "Mobicms\\Captcha\\": "src/"
@@ -165,27 +165,27 @@
                 "captcha",
                 "mobicms"
             ],
-            "time": "2017-05-26T22:57:56+00:00"
+            "time": "2017-08-10T19:13:00+00:00"
         },
         {
             "name": "mobicms/mobicms-error-handler",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mobicms/mobicms-error-handler.git",
-                "reference": "66a2518d616257c8ae358829810cc9bf321faa66"
+                "reference": "6ec07ffeb5f222d99dd19cbc163fc2bbd066799a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mobicms/mobicms-error-handler/zipball/66a2518d616257c8ae358829810cc9bf321faa66",
-                "reference": "66a2518d616257c8ae358829810cc9bf321faa66",
+                "url": "https://api.github.com/repos/mobicms/mobicms-error-handler/zipball/6ec07ffeb5f222d99dd19cbc163fc2bbd066799a",
+                "reference": "6ec07ffeb5f222d99dd19cbc163fc2bbd066799a",
                 "shasum": ""
             },
             "require": {
                 "geshi/geshi": "^1.0",
                 "php": "^7.0"
             },
-            "type": "library",
+            "type": "mobicms-core",
             "autoload": {
                 "psr-4": {
                     "Mobicms\\Error\\": "src/"
@@ -209,7 +209,7 @@
                 "exception",
                 "mobicms"
             ],
-            "time": "2017-07-23T11:23:13+00:00"
+            "time": "2017-08-10T19:39:29+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -359,12 +359,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "626c97bd5b45a08db902a0fb0b13f58f3785b439"
+                "reference": "9df1a9e73fc7caa573adaf98d159623048a7feed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/626c97bd5b45a08db902a0fb0b13f58f3785b439",
-                "reference": "626c97bd5b45a08db902a0fb0b13f58f3785b439",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/9df1a9e73fc7caa573adaf98d159623048a7feed",
+                "reference": "9df1a9e73fc7caa573adaf98d159623048a7feed",
                 "shasum": ""
             },
             "conflict": {
@@ -419,7 +419,7 @@
                 "silverstripe/framework": ">=3,<3.3",
                 "silverstripe/userforms": "<3",
                 "simplesamlphp/saml2": "<1.8.1|>=1.9,<1.9.1|>=1.10,<1.10.3|>=2,<2.3.3",
-                "simplesamlphp/simplesamlphp": "<1.14.12",
+                "simplesamlphp/simplesamlphp": "<1.14.15",
                 "simplesamlphp/simplesamlphp-module-infocard": "<1.0.1",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "squizlabs/php_codesniffer": ">=1,<2.8.1",
@@ -488,7 +488,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2017-07-28T07:54:11+00:00"
+            "time": "2017-08-08T18:44:50+00:00"
         },
         {
             "name": "verot/class.upload.php",
