@@ -26,6 +26,7 @@ system/cache/*
 system/logs/*
 !system/logs/.gitkeep
 system/config/autoload/*.local.php
+system/mobicms-core
 system/vendor
 
 dist

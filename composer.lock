@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "88fc73f8a53d740bef4f8d5ec57dea74",
+    "content-hash": "5b519320b98d3127779328a0ab1c6f98",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -210,6 +210,54 @@
                 "mobicms"
             ],
             "time": "2017-08-10T19:39:29+00:00"
+        },
+        {
+            "name": "mobicms/mobicms-installer",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mobicms/mobicms-installer.git",
+                "reference": "f1123edbe27d6875f614fe5bedfaac4b57900c87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mobicms/mobicms-installer/zipball/f1123edbe27d6875f614fe5bedfaac4b57900c87",
+                "reference": "f1123edbe27d6875f614fe5bedfaac4b57900c87",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.5"
+            },
+            "type": "composer-installer",
+            "extra": {
+                "class": "Mobicms\\Composer\\Installer"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mobicms\\Composer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Kasyanov",
+                    "email": "dev@mobicms.net",
+                    "homepage": "http://mobicms.net"
+                }
+            ],
+            "description": "mobiCMS components installer",
+            "homepage": "https://github.com/mobicms/mobicms-installer",
+            "keywords": [
+                "installer",
+                "mobicms-classic"
+            ],
+            "time": "2017-08-11 19:57:55"
         },
         {
             "name": "nikic/fast-route",
@@ -763,6 +811,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "mobicms/mobicms-installer": 20,
         "roave/security-advisories": 20,
         "verot/class.upload.php": 20
     },

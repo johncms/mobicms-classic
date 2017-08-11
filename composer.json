@@ -25,6 +25,7 @@
     "league/plates": "^3.3",
     "mobicms/mobicms-captcha": "^1.1",
     "mobicms/mobicms-error-handler": "^1.1",
+    "mobicms/mobicms-installer": "dev-develop",
     "nikic/fast-route": "^1.2",
     "roave/security-advisories": "dev-master",
     "verot/class.upload.php": "dev-master",
