@@ -20,7 +20,7 @@ class PdoFactory
      */
     public function __invoke(ContainerInterface $container)
     {
-        $config = $container->get('config')['pdo'];
+        $config = $container->get('config')['pdo'] ?? [];
 
         $dbHost = isset($config['db_host']) ? $config['db_host'] : 'localhost';
         $dbUser = isset($config['db_user']) ? $config['db_user'] : 'root';
