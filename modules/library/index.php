@@ -66,6 +66,9 @@ $config = $container->get(Mobicms\Api\ConfigInterface::class);
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 $page = $input_request['page'] ? abs($input_request['page']) : 1;
 $start = $tools->getPgStart();
 
@@ -99,9 +102,10 @@ if (!$config['mod_lib'] && $systemUser->rights < 7) {
 }
 
 if ($error) {
-    ob_start();
-    echo $tools->displayError($error);
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Library'),
+        'content' => $tools->displayError($error),
+    ]);
     exit;
 }
 
@@ -485,4 +489,7 @@ if (in_array($act, $array_includes)) {
     } // end else !id
 } // end else $act
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Library'),
+    'content' => ob_get_clean(),
+]);

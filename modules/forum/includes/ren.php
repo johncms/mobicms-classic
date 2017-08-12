@@ -22,40 +22,39 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     if (!$id) {
-        ob_start();
-        echo $tools->displayError(_t('Wrong data'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Wrong data'));
     }
 
     $ms = $db->query("SELECT * FROM `forum` WHERE `id` = '$id'")->fetch();
 
     if ($ms['type'] != "t") {
-        ob_start();
-        echo $tools->displayError(_t('Wrong data'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Wrong data'));
     }
 
     if (isset($_POST['submit'])) {
         $nn = isset($_POST['nn']) ? trim($_POST['nn']) : '';
 
         if (!$nn) {
-            ob_start();
-            echo $tools->displayError(_t('You have not entered topic name'), '<a href="index.php?act=ren&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Forum'),
+                'content' => $tools->displayError(_t('You have not entered topic name'), '<a href="index.php?act=ren&amp;id=' . $id . '">' . _t('Repeat') . '</a>'),
+            ]);
             exit;
         }
 
         // Проверяем, есть ли тема с таким же названием?
-        $pt = $db->query("SELECT * FROM `forum` WHERE `type` = 't' AND `refid` = '" . $ms['refid'] . "' and text=" . $db->quote($nn) . " LIMIT 1");
+        $pt = $db->query("SELECT * FROM `forum` WHERE `type` = 't' AND `refid` = '" . $ms['refid'] . "' AND TEXT=" . $db->quote($nn) . " LIMIT 1");
 
         if ($pt->rowCount()) {
-            ob_start();
-            echo $tools->displayError(_t('Topic with same name already exists in this section'), '<a href="index.php?act=ren&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Forum'),
+                'content' => $tools->displayError(_t('Topic with same name already exists in this section'), '<a href="index.php?act=ren&amp;id=' . $id . '">' . _t('Repeat') . '</a>'),
+            ]);
             exit;
         }
 

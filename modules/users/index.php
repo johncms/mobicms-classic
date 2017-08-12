@@ -30,11 +30,14 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 // Закрываем от неавторизованных юзеров
 if (!$systemUser->isValid() && !$config->active) {
-    ob_start();
-    echo $tools->displayError(_t('For registered users only'));
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'content' => $tools->displayError(_t('For registered users only')),
+    ]);
     exit;
 }
 
@@ -61,7 +64,6 @@ if (in_array($act, $array) && file_exists(__DIR__ . '/includes/' . $act . '.php'
     $counters = $container->get('counters');
 
     // Актив сайта
-    $pageTitle = _t('Community');
     ob_start();
 
     $brth = $db->query("SELECT COUNT(*) FROM `users` WHERE `dayb` = '" . date('j', time()) . "' AND `monthb` = '" . date('n', time()) . "' AND `preg` = '1'")->fetchColumn();
@@ -82,4 +84,7 @@ if (in_array($act, $array) && file_exists(__DIR__ . '/includes/' . $act . '.php'
         '</div>';
 }
 
-require_once ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Community'),
+    'content' => ob_get_clean(),
+]);

@@ -28,19 +28,13 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     if (!$id) {
-        ob_start();
-        echo $tools->displayError(_t('Wrong data'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Wrong data'));
     }
 
     if ($db->query("SELECT COUNT(*) FROM `forum` WHERE `id` = '" . $id . "' AND `type` = 't'")->fetchColumn()) {
         $db->exec("UPDATE `forum` SET  `vip` = '" . (isset($queryParams['vip']) ? '1' : '0') . "' WHERE `id` = '$id'");
         header('Location: ?id=' . $id);
     } else {
-        ob_start();
-        echo $tools->displayError(_t('Wrong data'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Wrong data'));
     }
 }

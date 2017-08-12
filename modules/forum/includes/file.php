@@ -41,9 +41,6 @@ if ($id) {
     }
 
     if ($error) {
-        ob_start();
-        echo $tools->displayError(_t('File does not exist'), '<a href="index.php">' . _t('Forum') . '</a>');
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('File does not exist'));
     }
 }

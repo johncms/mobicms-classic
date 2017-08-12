@@ -30,9 +30,10 @@ if ($req_obj->rowCount()) {
     $owner = $tools->getUser($res_obj['user_id']);
 
     if (!$owner) {
-        ob_start();
-        echo $tools->displayError(_t('User does not exists'));
-        require ROOT_PATH . 'system/end.php';
+        echo $view->render('system::app/legacy', [
+            'title'   => _t('Album'),
+            'content' => $tools->displayError(_t('User does not exists')),
+        ]);
         exit;
     }
 
@@ -42,10 +43,10 @@ if ($req_obj->rowCount()) {
 
     if (($res_a['access'] == 1 && $owner['id'] != $systemUser->id && $systemUser->rights < 7) || ($res_a['access'] == 2 && $systemUser->rights < 7 && (!isset($_SESSION['ap']) || $_SESSION['ap'] != $res_a['password']) && $owner['id'] != $systemUser->id)) {
         // Если доступ закрыт
-        ob_start();
-        echo $tools->displayError(_t('Access forbidden')) .
-            '<div class="phdr"><a href="?act=list&amp;user=' . $owner['id'] . '">' . _t('Album List') . '</a></div>';
-        require ROOT_PATH . 'system/end.php';
+        echo $view->render('system::app/legacy', [
+            'title'   => _t('Album'),
+            'content' => $tools->displayError(_t('Access forbidden')) . '<div class="phdr"><a href="?act=list&amp;user=' . $owner['id'] . '">' . _t('Album List') . '</a></div>',
+        ]);
         exit;
     }
 

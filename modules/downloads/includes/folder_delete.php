@@ -22,15 +22,22 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
+
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 // Удаление каталога
 if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     $del_cat = $db->query("SELECT COUNT(*) FROM `download__category` WHERE `refid` = " . $id)->fetchColumn();
     $req = $db->query("SELECT * FROM `download__category` WHERE `id` = " . $id);
 
     if (!$req->rowCount() || $del_cat) {
-        ob_start();
-        echo ($del_cat ? _t('Before removing, delete subdirectories') : _t('The directory does not exist')) . ' <a href="?">' . _t('Downloads') . '</a>';
-        require ROOT_PATH . 'system/end.php';
+        echo $view->render('system::app/legacy', [
+            'title'   => _t('Downloads'),
+            'content' => $tools->displayError(($del_cat ? _t('Before removing, delete subdirectories') : _t('The directory does not exist')), '<a href="?">' . _t('Downloads') . '</a>'),
+        ]);
         exit;
     }
 
@@ -79,6 +86,10 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
             '<form act="?act=folder_delete&amp;id=' . $id . '" method="post"><input type="submit" name="delete" value="' . _t('Delete') . '"></form>' .
             '</p></div>' .
             '<div class="phdr"><a href="?id=' . $id . '">' . _t('Back') . '</a></div>';
-        require ROOT_PATH . 'system/end.php';
+
+        echo $view->render('system::app/legacy', [
+            'title'   => _t('Downloads'),
+            'content' => ob_get_clean(),
+        ]);
     }
 }

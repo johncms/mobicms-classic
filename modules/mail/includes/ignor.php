@@ -28,6 +28,9 @@ $userConfig = $systemUser->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 echo '<div class="phdr"><b>' . _t('Blocklist') . '</b></div>';
 
 if (isset($_GET['del'])) {
@@ -36,8 +39,10 @@ if (isset($_GET['del'])) {
         $req = $db->query('SELECT * FROM `users` WHERE `id` = ' . $id);
 
         if (!$req->rowCount()) {
-            echo $tools->displayError(_t('User does not exists'));
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Mail'),
+                'content' => $tools->displayError(_t('User does not exists')),
+            ]);
             exit;
         }
 
@@ -65,8 +70,10 @@ if (isset($_GET['del'])) {
         $req = $db->query('SELECT * FROM `users` WHERE `id` = ' . $id);
 
         if (!$req->rowCount()) {
-            echo $tools->displayError(_t('User does not exists'));
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Mail'),
+                'content' => $tools->displayError(_t('User does not exists')),
+            ]);
             exit;
         }
 

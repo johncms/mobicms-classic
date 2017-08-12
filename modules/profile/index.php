@@ -36,11 +36,15 @@ $config = $container->get(Mobicms\Api\ConfigInterface::class);
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 // Закрываем от неавторизованных юзеров
 if (!$systemUser->isValid()) {
-    ob_start();
-    echo $tools->displayError(_t('For registered users only'));
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Profile'),
+        'content' => $tools->displayError(_t('For registered users only')),
+    ]);
     exit;
 }
 
@@ -48,9 +52,10 @@ if (!$systemUser->isValid()) {
 $user = $tools->getUser(isset($_REQUEST['user']) ? abs(intval($_REQUEST['user'])) : 0);
 
 if (!$user) {
-    ob_start();
-    echo $tools->displayError(_t('This User does not exists'));
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Profile'),
+        'content' => $tools->displayError(_t('This User does not exists')),
+    ]);
     exit;
 }
 
@@ -204,4 +209,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     }
 }
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => $pageTitle,
+    'content' => ob_get_clean(),
+]);

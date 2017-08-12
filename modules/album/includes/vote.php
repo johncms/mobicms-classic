@@ -27,9 +27,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Голосуем за фотографию
 if (!$img) {
-    echo $tools->displayError(_t('Wrong data'));
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Wrong data'));
 }
 
 $check = $db->query("SELECT * FROM `cms_album_votes` WHERE `user_id` = '" . $systemUser->id . "' AND `file_id` = '$img' LIMIT 1");

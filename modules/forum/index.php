@@ -41,6 +41,9 @@ $counters = App::getContainer()->get('counters');
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 $queryParams = $request->getQueryParams();
 $id = abs(intval($queryParams['id'] ?? 0));
 $act = $queryParams['act'] ?? '';
@@ -133,9 +136,10 @@ if (!$config->mod_forum && $systemUser->rights < 7) {
 }
 
 if ($error) {
-    ob_start();
-    echo '<div class="rmenu"><p>' . $error . '</p></div>';
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Forum'),
+        'content' => $tools->displayError($error),
+    ]);
     exit;
 }
 
@@ -214,9 +218,10 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
         if (!$type->rowCount()) {
             // Если темы не существует, показываем ошибку
-            echo $tools->displayError(_t('Topic has been deleted or does not exists'),
-                '<a href="?">' . _t('Forum') . '</a>');
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Forum'),
+                'content' => $tools->displayError(_t('Topic has been deleted or does not exists'), '<a href="?">' . _t('Forum') . '</a>'),
+            ]);
             exit;
         }
 
@@ -433,8 +438,10 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
 
                 // Если тема помечена для удаления, разрешаем доступ только администрации
                 if ($systemUser->rights < 6 && $type1['close'] == 1) {
-                    echo '<div class="rmenu"><p>' . _t('Topic deleted') . '<br><a href="?id=' . $type1['refid'] . '">' . _t('Go to Section') . '</a></p></div>';
-                    require ROOT_PATH . 'system/end.php';
+                    echo $view->render('system::app/legacy', [
+                        'title'   => _t('Forum'),
+                        'content' => $tools->displayError(_t('Topic deleted'), '<a href="?id=' . $type1['refid'] . '">' . _t('Go to Section') . '</a>'),
+                    ]);
                     exit;
                 }
 
@@ -939,4 +946,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/
     }
 }
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Forum'),
+    'content' => ob_get_clean(),
+]);

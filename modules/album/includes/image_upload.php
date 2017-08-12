@@ -33,9 +33,7 @@ if ($al && $user['id'] == $systemUser->id && empty($systemUser->ban) || $systemU
 
     if (!$req_a->rowCount()) {
         // Если альбома не существует, завершаем скрипт
-        echo $tools->displayError(_t('Wrong data'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Wrong data'));
     }
 
     $res_a = $req_a->fetch();

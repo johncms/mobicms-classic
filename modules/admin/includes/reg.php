@@ -27,9 +27,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Проверяем права доступа
 if ($systemUser->rights < 6) {
-    echo _t('Access denied');
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Admin Panel') . '</b></a> | ' . _t('Registration confirmation') . '</div>';
@@ -38,9 +36,7 @@ switch ($mod) {
     case 'approve':
         // Подтверждаем регистрацию выбранного пользователя
         if (!$id) {
-            echo $tools->displayError(_t('Wrong data'));
-            require ROOT_PATH . 'system/end.php';
-            exit;
+            exit(_t('Wrong data'));
         }
 
         $db->exec('UPDATE `users` SET `preg` = 1, `regadm` = ' . $db->quote($systemUser->name) . ' WHERE `id` = ' . $id);
@@ -56,9 +52,7 @@ switch ($mod) {
     case 'del':
         // Удаляем регистрацию выбранного пользователя
         if (!$id) {
-            echo $tools->displayError(_t('Wrong data'));
-            require ROOT_PATH . 'system/end.php';
-            exit;
+            exit(_t('Wrong data'));
         }
 
         $req = $db->query("SELECT `id` FROM `users` WHERE `id` = '$id' AND `preg` = '0'");
@@ -86,9 +80,7 @@ switch ($mod) {
             echo '<div class="menu"><p>' . _t('All unconfirmed registrations with selected IP were deleted') . '<br>' .
                 '<a href="index.php?act=reg">' . _t('Continue') . '</a></p></div>';
         } else {
-            echo $tools->displayError(_t('Wrong data'));
-            require ROOT_PATH . 'system/end.php';
-            exit;
+            exit(_t('Wrong data'));
         }
         break;
 

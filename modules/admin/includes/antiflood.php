@@ -23,9 +23,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 $config = $container->get('config')['mobicms'];
 
 if ($systemUser->rights < 7) {
-    echo _t('Access denied');
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
 $set_af = $config['antiflood'];

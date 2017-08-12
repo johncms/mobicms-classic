@@ -29,9 +29,7 @@ if ($systemUser->rights >= 7) {
     $req = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 't'");
 
     if (!$req->rowCount() || $systemUser->rights < 7) {
-        echo $tools->displayError(_t('Topic has been deleted or does not exists'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Topic has been deleted or does not exists'));
     }
 
     $topic = $req->fetch();

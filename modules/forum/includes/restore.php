@@ -25,9 +25,7 @@ $userConfig = $systemUser->getConfig();
 $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
 
 if (($systemUser->rights != 3 && $systemUser->rights < 6) || !$id) {
-    echo _t('Access denied');
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
 $req = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND (`type` = 't' OR `type` = 'm')");

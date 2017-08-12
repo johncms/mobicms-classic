@@ -26,9 +26,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
 if (!$systemUser->isValid()) {
-    echo $tools->displayError(_t('Access forbidden'));
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
 // Проверяем наличие комментируемого объекта
@@ -38,9 +36,7 @@ if ($req_obj->rowCount()) {
     $res_obj = $req_obj->fetch();
 
     if (!$res_obj) {
-        echo $tools->displayError(_t('Access forbidden'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Access denied'));
     }
 
     $obj = new Library\Hashtags($id);

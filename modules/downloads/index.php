@@ -26,9 +26,15 @@ $userConfig = $systemUser->getConfig();
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
+
 /** @var Zend\I18n\Translator\Translator $translator */
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
+
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
 
 $url = $config['homeurl'] . '/downloads/';
 
@@ -61,9 +67,10 @@ if (!$config['mod_down'] && $systemUser->rights < 7) {
 }
 
 if ($error) {
-    ob_start();
-    echo '<div class="rmenu"><p>' . $error . '</p></div>';
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Downloads'),
+        'content' => $tools->displayError($error),
+    ]);
     exit;
 }
 
@@ -362,5 +369,8 @@ if (isset($actions[$act]) && is_file(__DIR__ . '/includes/' . $actions[$act])) {
 
     echo '</p>';
 
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Downloads'),
+        'content' => ob_get_clean(),
+    ]);
 }

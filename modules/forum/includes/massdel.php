@@ -24,6 +24,12 @@ $postParams = $request->getParsedBody();
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
+
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     // Массовое удаление выбранных постов форума
     ob_start();
@@ -43,8 +49,10 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
         echo _t('Marked posts are deleted') . '<br><a href="' . $prd . '">' . _t('Back') . '</a><br>';
     } else {
         if (empty($postParams['delch'])) {
-            echo '<p>' . _t('You did not choose something to delete') . '<br><a href="' . htmlspecialchars(getenv("HTTP_REFERER")) . '">' . _t('Back') . '</a></p>';
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Forum'),
+                'content' => $tools->displayError(_t('You did not choose something to delete'), '<a href="' . htmlspecialchars(getenv("HTTP_REFERER")) . '">' . _t('Back') . '</a>'),
+            ]);
             exit;
         }
 

@@ -25,18 +25,18 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 /** @var Zend\I18n\Translator\Translator $translator */
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
 // Проверяем права доступа
 if ($systemUser->rights < 6) {
-    echo _t('Access denied');
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
-$pageTitle = _t('Admin Panel');
 ob_start();
 
 $array = [
@@ -125,4 +125,7 @@ if (!empty($act) && in_array($act, $array) && is_file(__DIR__ . '/includes/' . $
     echo '<div class="phdr" style="font-size: x-small"><b>mobiCMS 0.3.0</b></div>';
 }
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Admin Panel'),
+    'content' => ob_get_clean(),
+]);

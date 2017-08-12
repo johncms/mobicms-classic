@@ -25,6 +25,9 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 ob_start();
 
 // Дополнительные файлы
@@ -33,7 +36,10 @@ $res_down = $req_down->fetch();
 
 if (!$req_down->rowCount() || !is_file($res_down['dir'] . '/' . $res_down['name']) || ($systemUser->rights < 6 && $systemUser->rights != 4)) {
     echo '<a href="?">' . _t('Downloads') . '</a>';
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Downloads'),
+        'content' => ob_get_clean(),
+    ]);
     exit;
 }
 
@@ -232,4 +238,7 @@ if ($edit) {
     }
 }
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Downloads'),
+    'content' => ob_get_clean(),
+]);

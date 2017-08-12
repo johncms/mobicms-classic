@@ -19,6 +19,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 // Обновление файлов
 if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     ob_start();
@@ -210,8 +213,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
                                         ++$i_two;
                                     }
                                 } else {
-                                    $isFile = $start ? is_file($val) : true;
-                                    if ($isFile) {
+                                    if (is_file($val)) {
                                         $dir = dirname($val);
                                         $refid = (int)$array_id[$dir];
 
@@ -223,35 +225,6 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
                                             $name,
                                             $systemUser->id,
                                         ]);
-
-                                        if ($start) {
-                                            $fileId = $db->lastInsertId();
-                                            $screenFile = false;
-
-                                            if (is_file($val . '.jpg')) {
-                                                $screenFile = $val . '.jpg';
-                                            } elseif (is_file($val . '.gif')) {
-                                                $screenFile = $val . '.gif';
-                                            } elseif (is_file($val . '.png')) {
-                                                $screenFile = $val . '.png';
-                                            }
-
-                                            if ($screenFile) {
-                                                $is_dir = mkdir($screens_path . '/' . $fileId, 0777);
-
-                                                if ($is_dir == true) {
-                                                    @chmod($screens_path . '/' . $fileId, 0777);
-                                                }
-
-                                                @copy($screenFile, $screens_path . '/' . $fileId . '/' . str_replace($val, $fileId, $screenFile));
-                                                unlink($screenFile);
-                                            }
-
-                                            if (is_file($val . '.txt')) {
-                                                @copy($val . '.txt', DOWNLOADS . 'about/' . $fileId . '.txt');
-                                                unlink($val . '.txt');
-                                            }
-                                        }
 
                                         ++$i_three;
                                     }
@@ -296,5 +269,8 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
             echo '<div class="phdr"><a href="?id=' . $id . '">' . _t('Back') . '</a></div>';
     }
 
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Downloads'),
+        'content' => ob_get_clean(),
+    ]);
 }

@@ -25,6 +25,9 @@ $userConfig = $systemUser->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 ob_start();
 require dirname(__DIR__) . '/classes/download.php';
 
@@ -78,4 +81,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     echo '<p><a href="?">' . _t('Downloads') . '</a></p>';
 }
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => $pageTitle,
+    'content' => ob_get_clean(),
+]);

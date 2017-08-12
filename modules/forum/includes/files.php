@@ -89,9 +89,7 @@ if ($c || $s || $t) {
         $res = $req->fetch();
         $caption .= $res['text'];
     } else {
-        echo $tools->displayError(_t('Wrong data'), '<a href="index.php">' . _t('Forum') . '</a>');
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Wrong data'));
     }
 }
 

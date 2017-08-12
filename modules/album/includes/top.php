@@ -37,9 +37,7 @@ switch ($mod) {
     case 'my_new_comm':
         // Непрочитанные комментарии в личных альбомах
         if (!$systemUser->isValid() || $systemUser->id != $user['id']) {
-            echo $tools->displayError(_t('Wrong data'));
-            require ROOT_PATH . 'system/end.php';
-            exit;
+            exit(_t('Wrong data'));
         }
 
         $title = _t('Unread Comments');

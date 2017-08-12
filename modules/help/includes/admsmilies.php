@@ -25,9 +25,7 @@ $start = $tools->getPgStart();
 
 // Каталог Админских Смайлов
 if ($systemUser->rights < 1) {
-    echo $tools->displayError(_t('Wrong data'), '<a href="?act=smilies">' . _t('Back') . '</a>');
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Wrong data'));
 }
 
 echo '<div class="phdr"><a href="?act=smilies"><b>' . _t('Smilies') . '</b></a> | ' . _t('For administration') . '</div>';

@@ -27,9 +27,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Проверяем права доступа
 if ($systemUser->rights < 9) {
-    echo _t('Access denied');
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
 switch ($mod) {
@@ -125,9 +123,7 @@ switch ($mod) {
     case 'del':
         // Удаление счетчика
         if (!$id) {
-            echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=counters">' . _t('Back') . '</a>');
-            require ROOT_PATH . 'system/end.php';
-            exit;
+            exit(_t('Wrong data'));
         }
 
         $req = $db->query('SELECT * FROM `cms_counters` WHERE `id` = ' . $id);
@@ -135,8 +131,10 @@ switch ($mod) {
         if ($req->rowCount()) {
             if (isset($_POST['submit'])) {
                 $db->exec('DELETE FROM `cms_counters` WHERE `id` = ' . $id);
-                echo '<p>' . _t('Counter deleted') . '<br><a href="index.php?act=counters">' . _t('Continue') . '</a></p>';
-                require ROOT_PATH . 'system/end.php';
+                echo $view->render('system::app/legacy', [
+                    'title'   => _t('Admin Panel'),
+                    'content' => '<p>' . _t('Counter deleted') . '<br><a href="index.php?act=counters">' . _t('Continue') . '</a></p>',
+                ]);
                 exit;
             } else {
                 echo '<form action="index.php?act=counters&amp;mod=del&amp;id=' . $id . '" method="post">';
@@ -146,9 +144,7 @@ switch ($mod) {
                 echo '<div class="phdr"><a href="index.php?act=counters">' . _t('Cancel') . '</a></div></form>';
             }
         } else {
-            echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=counters">' . _t('Back') . '</a>');
-            require ROOT_PATH . 'system/end.php';
-            exit;
+            exit(_t('Wrong data'));
         }
         break;
 
@@ -162,8 +158,10 @@ switch ($mod) {
             $mode = isset($_POST['mode']) ? intval($_POST['mode']) : 1;
 
             if (empty($name) || empty($link1)) {
-                echo $tools->displayError(_t('The required fields are not filled'), '<a href="index.php?act=counters&amp;mod=edit' . ($id ? '&amp;id=' . $id : '') . '">' . _t('Back') . '</a>');
-                require ROOT_PATH . 'system/end.php';
+                echo $view->render('system::app/legacy', [
+                    'title'   => _t('Admin Panel'),
+                    'content' => $tools->displayError(_t('The required fields are not filled'), '<a href="index.php?act=counters&amp;mod=edit' . ($id ? '&amp;id=' . $id : '') . '">' . _t('Back') . '</a>'),
+                ]);
                 exit;
             }
 
@@ -202,9 +200,7 @@ switch ($mod) {
                     $mode = $res['mode'];
                     $switch = 1;
                 } else {
-                    echo $tools->displayError(_t('Wrong data'), '<a href="index.php?act=counters">' . _t('Back') . '</a>');
-                    require ROOT_PATH . 'system/end.php';
-                    exit;
+                    exit(_t('Wrong data'));
                 }
             }
 
@@ -236,8 +232,10 @@ switch ($mod) {
         $mode = isset($_POST['mode']) ? intval($_POST['mode']) : 1;
 
         if (empty($name) || empty($link1)) {
-            echo $tools->displayError(_t('The required fields are not filled'), '<a href="index.php?act=counters&amp;mod=edit' . ($id ? '&amp;id=' . $id : '') . '">' . _t('Back') . '</a>');
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Admin Panel'),
+                'content' => $tools->displayError(_t('The required fields are not filled'), '<a href="index.php?act=counters&amp;mod=edit' . ($id ? '&amp;id=' . $id : '') . '">' . _t('Back') . '</a>'),
+            ]);
             exit;
         }
 
@@ -246,9 +244,7 @@ switch ($mod) {
             $req = $db->query('SELECT * FROM `cms_counters` WHERE `id` = ' . $id);
 
             if (!$req->rowCount()) {
-                echo $tools->displayError(_t('Wrong data'));
-                require ROOT_PATH . 'system/end.php';
-                exit;
+                exit(_t('Wrong data'));
             }
 
             $db->prepare('

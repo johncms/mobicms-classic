@@ -30,9 +30,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Проверяем права доступа
 if ($systemUser->rights < 7) {
-    echo _t('Access denied');
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
 // Задаем пользовательские настройки форума
@@ -53,10 +51,7 @@ switch ($mod) {
     case 'del':
         // Удаление категории, или раздела
         if (!$id) {
-            echo $tools->displayError(_t('Wrong data'),
-                '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
-            require ROOT_PATH . 'system/end.php';
-            exit;
+            exit(_t('Wrong data'));
         }
 
         $req = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND (`type` = 'f' OR `type` = 'r')");
@@ -74,17 +69,13 @@ switch ($mod) {
                         $category = isset($_POST['category']) ? intval($_POST['category']) : 0;
 
                         if (!$category || $category == $id) {
-                            echo $tools->displayError(_t('Wrong data'));
-                            require ROOT_PATH . 'system/end.php';
-                            exit;
+                            exit(_t('Wrong data'));
                         }
 
                         $check = $db->query("SELECT COUNT(*) FROM `forum` WHERE `id` = '$category' AND `type` = 'f'")->fetchColumn();
 
                         if (!$check) {
-                            echo $tools->displayError(_t('Wrong data'));
-                            require ROOT_PATH . 'system/end.php';
-                            exit;
+                            exit(_t('Wrong data'));
                         }
 
                         // Вычисляем правила сортировки и перемещаем разделы
@@ -128,19 +119,13 @@ switch ($mod) {
                         $subcat = isset($_POST['subcat']) ? intval($_POST['subcat']) : 0;
 
                         if (!$subcat || $subcat == $id) {
-                            echo $tools->displayError(_t('Wrong data'),
-                                '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
-                            require ROOT_PATH . 'system/end.php';
-                            exit;
+                            exit(_t('Wrong data'));
                         }
 
                         $check = $db->query("SELECT COUNT(*) FROM `forum` WHERE `id` = '$subcat' AND `type` = 'r'")->fetchColumn();
 
                         if (!$check) {
-                            echo $tools->displayError(_t('Wrong data'),
-                                '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
-                            require ROOT_PATH . 'system/end.php';
-                            exit;
+                            exit(_t('Wrong data'));
                         }
 
                         $db->exec("UPDATE `forum` SET `refid` = '$subcat' WHERE `refid` = '$id'");
@@ -150,9 +135,7 @@ switch ($mod) {
                             '</p></div>';
                     } elseif (isset($_POST['delete'])) {
                         if ($systemUser->rights != 9) {
-                            echo $tools->displayError(_t('Access forbidden'));
-                            require_once ROOT_PATH . 'system/end.php';
-                            exit;
+                            exit(_t('Access forbidden'));
                         }
 
                         // Удаляем файлы
@@ -240,10 +223,7 @@ switch ($mod) {
                 $res = $req->fetch();
                 $cat_name = $res['text'];
             } else {
-                echo $tools->displayError(_t('Wrong data'),
-                    '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
-                require ROOT_PATH . 'system/end.php';
-                exit;
+                exit(_t('Wrong data'));
             }
         }
 
@@ -334,10 +314,7 @@ switch ($mod) {
     case 'edit':
         // Редактирование выбранной категории, или раздела
         if (!$id) {
-            echo $tools->displayError(_t('Wrong data'),
-                '<a href="index.php?act=forum">' . _t('Forum Management') . '</a>');
-            require ROOT_PATH . 'system/end.php';
-            exit;
+            exit(_t('Wrong data'));
         }
 
         $req = $db->query("SELECT * FROM `forum` WHERE `id` = '$id'");
@@ -575,9 +552,7 @@ switch ($mod) {
 
         if (isset($_POST['deltopic'])) {
             if ($systemUser->rights != 9) {
-                echo $tools->displayError(_t('Access forbidden'));
-                require ROOT_PATH . 'system/end.php';
-                exit;
+                exit(_t('Access forbidden'));
             }
 
             $req = $db->query("SELECT `id` FROM `forum` WHERE `type` = 't' AND `close` = '1' $sort");
@@ -674,9 +649,7 @@ switch ($mod) {
 
         if (isset($_POST['delpost'])) {
             if ($systemUser->rights != 9) {
-                echo $tools->displayError(_t('Access forbidden'));
-                require ROOT_PATH . 'system/end.php';
-                exit;
+                exit(_t('Access denied'));
             }
 
             $req = $db->query("SELECT `id` FROM `forum` WHERE `type` = 'm' AND `close` = '1' $sort");

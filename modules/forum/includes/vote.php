@@ -30,9 +30,7 @@ if ($systemUser->isValid()) {
     ob_start();
 
     if ($topic_vote == 0 || $vote_user > 0 || $topic == 0) {
-        echo $tools->displayError(_t('Wrong data'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Wrong data'));
     }
 
     $db->exec("INSERT INTO `cms_forum_vote_users` SET `topic` = '$id', `user` = '" . $systemUser->id . "', `vote` = '$vote'");

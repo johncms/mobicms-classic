@@ -22,6 +22,12 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
+
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     ob_start();
 
@@ -29,8 +35,10 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     $res = $req->fetch();
 
     if (!$req->rowCount() || !is_dir($res['dir'])) {
-        echo _t('The directory does not exist') . '<a href="?">' . _t('Downloads') . '</a>';
-        require ROOT_PATH . 'system/end.php';
+        echo $view->render('system::app/legacy', [
+            'title'   => _t('Downloads'),
+            'content' => $tools->displayError(_t('The directory does not exist'), '<a href="?">' . _t('Downloads') . '</a>'),
+        ]);
         exit;
     }
 
@@ -182,5 +190,8 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
             '<p><a href="?id=' . $id . '">' . _t('Back') . '</a></p>';
     }
 
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Downloads'),
+        'content' => ob_get_clean(),
+    ]);
 }

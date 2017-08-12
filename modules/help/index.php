@@ -21,7 +21,9 @@ $container = App::getContainer();
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
-$pageTitle = 'FAQ';
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 ob_start();
 
 // Обрабатываем ссылку для возврата
@@ -77,4 +79,7 @@ if ($act && ($key = array_search($act, $array)) !== false && file_exists(__DIR__
         '<div class="phdr"><a href="' . $_SESSION['ref'] . '">' . _t('Back') . '</a></div>';
 }
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Information, FAQ'),
+    'content' => ob_get_clean(),
+]);

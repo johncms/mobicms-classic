@@ -34,11 +34,13 @@ $userConfig = $systemUser->getConfig();
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 $id = isset($queryParams['id']) ? abs(intval($queryParams['id'])) : 0;
 $mod = $queryParams['mod'] ?? '';
 $do = $queryParams['do'] ?? '';
 
-$pageTitle = _t('News');
 ob_start();
 
 switch ($do) {
@@ -181,9 +183,7 @@ switch ($do) {
             echo '<div class="phdr"><a href="index.php"><b>' . _t('News') . '</b></a> | ' . _t('Edit') . '</div>';
 
             if (!$id) {
-                echo $tools->displayError(_t('Wrong data'), '<a href="index.php">' . _t('Back to news') . '</a>');
-                require('../system/end.php');
-                exit;
+                exit(_t('Wrong data'));
             }
 
             if (isset($postParams['submit'])) {
@@ -335,4 +335,7 @@ switch ($do) {
         }
 }
 
-require(ROOT_PATH . 'system/end.php');
+echo $view->render('system::app/legacy', [
+    'title'   => _t('News'),
+    'content' => ob_get_clean(),
+]);

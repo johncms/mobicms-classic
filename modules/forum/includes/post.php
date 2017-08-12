@@ -34,9 +34,7 @@ $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['pa
 $start = $tools->getPgStart();
 
 if (!$id) {
-    echo $tools->displayError(_t('Wrong data'));
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Wrong data'));
 }
 
 // Запрос сообщения

@@ -24,10 +24,14 @@ if (isset($_POST['submit'])) {
     /** @var Mobicms\Api\ToolsInterface $tools */
     $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
+    /** @var League\Plates\Engine $view */
+    $view = $container->get(League\Plates\Engine::class);
+
     if (empty($_POST['name'])) {
-        echo $tools->displayError(_t('You have not entered the name'),
-            '<a href="?act=mkdir&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
-        require ROOT_PATH . 'system/end.php';
+        echo $view->render('system::app/legacy', [
+            'title'   => _t('Library'),
+            'content' => $tools->displayError(_t('You have not entered the name'), '<a href="?act=mkdir&amp;id=' . $id . '">' . _t('Repeat') . '</a>'),
+        ]);
         exit;
     }
 
@@ -40,9 +44,10 @@ if (isset($_POST['submit'])) {
     $stmt->execute([$name, $id]);
 
     if ($stmt->fetchColumn()) {
-        echo $tools->displayError(_t('This name already exists'),
-            '<a href="?act=mkdir&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
-        require ROOT_PATH . 'system/end.php';
+        echo $view->render('system::app/legacy', [
+            'title'   => _t('Library'),
+            'content' => $tools->displayError(_t('This name already exists'), '<a href="?act=mkdir&amp;id=' . $id . '">' . _t('Repeat') . '</a>'),
+        ]);
         exit;
     }
 

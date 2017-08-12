@@ -29,38 +29,26 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     if (!$id) {
-        ob_start();
-        echo $tools->displayError(_t('Wrong data'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Wrong data'));
     }
 
     $typ = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 't'");
 
     if (!$typ->rowCount()) {
-        ob_start();
-        echo $tools->displayError(_t('Wrong data'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Wrong data'));
     }
 
     if (isset($postParams['submit'])) {
         $razd = isset($postParams['razd']) ? abs(intval($postParams['razd'])) : false;
 
         if (!$razd) {
-            ob_start();
-            echo $tools->displayError(_t('Wrong data'));
-            require ROOT_PATH . 'system/end.php';
-            exit;
+            exit(_t('Wrong data'));
         }
 
         $typ1 = $db->query("SELECT * FROM `forum` WHERE `id` = '$razd' AND `type` = 'r'");
 
         if (!$typ1->rowCount()) {
-            ob_start();
-            echo $tools->displayError(_t('Wrong data'));
-            require ROOT_PATH . 'system/end.php';
-            exit;
+            exit(_t('Wrong data'));
         }
 
         $db->exec("UPDATE `forum` SET

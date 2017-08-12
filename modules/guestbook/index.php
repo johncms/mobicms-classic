@@ -44,6 +44,9 @@ $userConfig = $systemUser->getConfig();
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 $id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $act = isset($queryParams['act']) ? trim($queryParams['act']) : '';
 
@@ -62,8 +65,10 @@ ob_start();
 
 // Если гостевая закрыта, выводим сообщение и закрываем доступ (кроме Админов)
 if (!$config->mod_guest && $systemUser->rights < 7) {
-    echo '<div class="rmenu"><p>' . _t('Guestbook is closed') . '</p></div>';
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Guestbook'),
+        'content' => $tools->displayError(_t('Guestbook is closed')),
+    ]);
     exit;
 }
 
@@ -470,4 +475,7 @@ switch ($act) {
         break;
 }
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Guestbook'),
+    'content' => ob_get_clean(),
+]);

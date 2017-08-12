@@ -28,18 +28,22 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 // Проверяем права доступа для редактирования Профиля
 if ($systemUser->rights != 9
     && $user['id'] != $systemUser->id
     && ($systemUser->rights < 7 || $user['rights'] >= $systemUser->rights)
 ) {
-    echo $tools->displayError(_t('You cannot edit profile of higher administration'));
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => $pageTitle,
+        'content' => $tools->displayError(_t('You cannot edit profile of higher administration')),
+    ]);
     exit;
 }
 
 if (!empty($systemUser->ban)) {
-    require ROOT_PATH . 'system/end.php';
     exit;
 }
 
@@ -47,7 +51,11 @@ if (!empty($systemUser->ban)) {
 if ($systemUser->rights >= 7 && $systemUser->rights > $user['rights'] && $act == 'reset') {
     $db->exec("UPDATE `users` SET `set_user` = '', `set_forum` = '' WHERE `id` = " . $user['id']);
     echo '<div class="gmenu"><p>' . _t('Default settings are set') . '<br><a href="?user=' . $user['id'] . '">' . _t('Back') . '</a></p></div>';
-    require ROOT_PATH . 'system/end.php';
+
+    echo $view->render('system::app/legacy', [
+        'title'   => $pageTitle,
+        'content' => ob_get_clean(),
+    ]);
     exit;
 }
 

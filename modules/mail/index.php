@@ -30,6 +30,9 @@ $userConfig = $systemUser->getConfig();
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 //Проверка авторизации
 if (!$systemUser->isValid()) {
     header('Location: ' . $config->homeurl . '/?err');
@@ -74,7 +77,6 @@ $mods = [
 if ($act && ($key = array_search($act, $mods)) !== false && file_exists(__DIR__ . '/includes/' . $mods[$key] . '.php')) {
     require __DIR__ . '/includes/' . $mods[$key] . '.php';
 } else {
-    $pageTitle = _t('Mail');
     ob_start();
     echo '<div class="phdr"><b>' . _t('Contacts') . '</b></div>';
 
@@ -88,8 +90,10 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists(__DIR__ 
         $req = $db->query("SELECT * FROM `users` WHERE `id` = '$id'");
 
         if (!$req->rowCount()) {
-            echo $tools->displayError(_t('User does not exists'));
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Mail'),
+                'content' => $tools->displayError(_t('User does not exists')),
+            ]);
             exit;
         }
 
@@ -163,4 +167,7 @@ if ($act && ($key = array_search($act, $mods)) !== false && file_exists(__DIR__ 
     }
 }
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Mail'),
+    'content' => ob_get_clean(),
+]);

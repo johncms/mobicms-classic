@@ -17,9 +17,7 @@ $systemUser = App::getContainer()->get(Mobicms\Api\UserInterface::class);
 
 // Проверяем права доступа
 if ($systemUser->rights < 7) {
-    echo _t('Access denied');
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
 class scaner
@@ -158,7 +156,6 @@ class scaner
         '../incfiles/classes/sitemap.php',
         '../system/bootstrap.php',
         '../incfiles/db.php',
-        '../system/end.php',
         '../incfiles/func.php',
         '../incfiles/index.php',
         '../incfiles/lib/mp3.php',

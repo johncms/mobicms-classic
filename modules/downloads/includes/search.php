@@ -10,9 +10,13 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
+/** @var Psr\Container\ContainerInterface $container */
+$container = App::getContainer();
 
-// Поиск файлов
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
+$id = isset($_REQUEST['id']) ? abs(intval($_REQUEST['id'])) : 0;
 $search_post = isset($_POST['search']) ? trim($_POST['search']) : false;
 $search_get = isset($_GET['search']) ? rawurldecode(trim($_GET['search'])) : '';
 $search = $search_post ? $search_post : $search_get;
@@ -37,9 +41,6 @@ if (!empty($search) && mb_strlen($search) < 2 || mb_strlen($search) > 64) {
 
 // Выводим результаты поиска
 if ($search && !$error) {
-    /** @var Psr\Container\ContainerInterface $container */
-    $container = App::getContainer();
-
     /** @var PDO $db */
     $db = $container->get(PDO::class);
 
@@ -98,4 +99,8 @@ if ($search && !$error) {
 }
 
 echo '<p><a href="?">' . _t('Downloads') . '</a></p>';
-require ROOT_PATH . 'system/end.php';
+
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Downloads'),
+    'content' => ob_get_clean(),
+]);

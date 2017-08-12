@@ -31,6 +31,9 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 // Закрываем доступ для определенных ситуаций
 if (!$id
     || !$systemUser->isValid()
@@ -38,10 +41,7 @@ if (!$id
     || isset($systemUser->ban['11'])
     || (!$systemUser->rights && $config['mod_forum'] == 3)
 ) {
-    ob_start();
-    echo $tools->displayError(_t('Access forbidden'));
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
 // Вспомогательная Функция обработки ссылок форума
@@ -88,19 +88,17 @@ function forum_link($m)
 $flood = $tools->antiflood();
 
 if ($flood) {
-    ob_start();
-    echo $tools->displayError(sprintf(_t('You cannot add the message so often<br>Please, wait %d sec.'), $flood) . ', <a href="index.php?id=' . $id . '&amp;start=' . $tools->getPgStart() . '">' . _t('Back') . '</a>');
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Forum'),
+        'content' => $tools->displayError(sprintf(_t('You cannot add the message so often<br>Please, wait %d sec.'), $flood), '<a href="index.php?id=' . $id . '&amp;start=' . $tools->getPgStart() . '">' . _t('Back') . '</a>'),
+    ]);
     exit;
 }
 
 $req_r = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 'r' LIMIT 1");
 
 if (!$req_r->rowCount()) {
-    ob_start();
-    echo $tools->displayError(_t('Wrong data'));
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Wrong data'));
 }
 
 $res_r = $req_r->fetch();
@@ -233,9 +231,10 @@ if (isset($_POST['submit'])
         }
     } else {
         // Выводим сообщение об ошибке
-        ob_start();
-        echo $tools->displayError($error, '<a href="index.php?act=nt&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
-        require ROOT_PATH . 'system/end.php';
+        echo $view->render('system::app/legacy', [
+            'title'   => _t('Forum'),
+            'content' => $tools->displayError($error, '<a href="index.php?act=nt&amp;id=' . $id . '">' . _t('Repeat') . '</a>'),
+        ]);
         exit;
     }
 } else {

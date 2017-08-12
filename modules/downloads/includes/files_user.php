@@ -25,17 +25,23 @@ $userConfig = $systemUser->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 // Файлы юзера
 $pageTitle = _t('User Files');
 
-ob_start();
 require dirname(__DIR__) . '/classes/download.php';
 
 if (($user = $tools->getUser($id)) === false) {
-    echo _t('User does not exists');
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => $pageTitle,
+        'content' => $tools->displayError(_t('User does not exists')),
+    ]);
     exit;
 }
+
+ob_start();
 
 echo '<div class="phdr"><a href="/profile?user=' . $id . '">' . _t('Profile') . '</a></div>' .
     '<div class="user"><p>' . $tools->displayUser($user, ['iphide' => 0]) . '</p></div>' .
@@ -73,4 +79,8 @@ if ($total > $userConfig->kmess) {
 }
 
 echo '<p><a href="?">' . _t('Downloads') . '</a></p>';
-require ROOT_PATH . 'system/end.php';
+
+echo $view->render('system::app/legacy', [
+    'title'   => $pageTitle,
+    'content' => ob_get_clean(),
+]);

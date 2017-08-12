@@ -33,9 +33,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Проверяем права доступа
 if ($user['id'] != $systemUser->id) {
-    echo $tools->displayError(_t('Access forbidden'));
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
 $menu = [

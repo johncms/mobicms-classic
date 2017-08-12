@@ -25,10 +25,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 if (($systemUser->id != $user['id'] && $systemUser->rights < 7)
     || $user['rights'] > $systemUser->rights
 ) {
-    // Если не хватает прав, выводим ошибку
-    echo $tools->displayError(_t('You cannot edit profile of higher administration'));
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit($tools->displayError(_t('You cannot edit profile of higher administration')));
 }
 
 /** @var Mobicms\Api\ConfigInterface $config */

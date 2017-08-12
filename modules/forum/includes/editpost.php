@@ -32,12 +32,13 @@ $userConfig = $systemUser->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
 
 if (!$systemUser->isValid() || !$id) {
-    echo $tools->displayError(_t('Wrong data'));
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Wrong data'));
 }
 
 $req = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 'm' " . ($systemUser->rights >= 7 ? "" : " AND `close` != '1'"));
@@ -151,8 +152,10 @@ if (!$error) {
                     unlink(UPLOAD_PATH . 'forum/attach/' . $res_f['filename']);
                     header('Location: ' . $link);
                 } else {
-                    echo $tools->displayError(_t('You cannot edit your posts after 5 minutes') . '<br /><a href="' . $link . '">' . _t('Back') . '</a>');
-                    require ROOT_PATH . 'system/end.php';
+                    echo $view->render('system::app/legacy', [
+                        'title'   => _t('Forum'),
+                        'content' => $tools->displayError(_t('You cannot edit your posts after 5 minutes'), '<a href="' . $link . '">' . _t('Back') . '</a>'),
+                    ]);
                     exit;
                 }
             }
@@ -240,8 +243,10 @@ if (!$error) {
 
             if (isset($postParams['submit'])) {
                 if (empty($postParams['msg'])) {
-                    echo $tools->displayError(_t('You have not entered the message'), '<a href="index.php?act=editpost&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
-                    require ROOT_PATH . 'system/end.php';
+                    echo $view->render('system::app/legacy', [
+                        'title'   => _t('Forum'),
+                        'content' => $tools->displayError(_t('You have not entered the message'), '<a href="index.php?act=editpost&amp;id=' . $id . '">' . _t('Repeat') . '</a>'),
+                    ]);
                     exit;
                 }
 

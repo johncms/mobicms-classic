@@ -24,20 +24,14 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     if (!$id) {
-        ob_start();
-        echo $tools->displayError(_t('Wrong data'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Wrong data'));
     }
 
     // Проверяем, существует ли тема
     $req = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 't'");
 
     if (!$req->rowCount()) {
-        ob_start();
-        echo $tools->displayError(_t('Topic has been deleted or does not exists'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Topic has been deleted or does not exists'));
     }
 
     $res = $req->fetch();

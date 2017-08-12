@@ -32,10 +32,7 @@ if ($id) {
     $req = $db->query("SELECT * FROM `cms_mail` WHERE (`user_id`='" . $systemUser->id . "' OR `from_id`='" . $systemUser->id . "') AND `id` = '$id' AND `delete`!='" . $systemUser->id . "' LIMIT 1");
 
     if (!$req->rowCount()) {
-        //Выводим ошибку
-        echo $tools->displayError(_t('Message does not exist'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Message does not exist'));
     }
 
     $res = $req->fetch();

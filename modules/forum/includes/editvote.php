@@ -32,9 +32,7 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     ob_start();
 
     if ($topic_vote == 0) {
-        echo $tools->displayError(_t('Wrong data'));
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Wrong data'));
     }
 
     if (isset($queryParams['delvote']) && !empty($queryParams['vote'])) {

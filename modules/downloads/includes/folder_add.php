@@ -19,6 +19,12 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var Mobicms\Api\ToolsInterface $tools */
+$tools = $container->get(Mobicms\Api\ToolsInterface::class);
+
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     ob_start();
 
@@ -62,9 +68,10 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
         }
 
         if ($error) {
-            echo '<div class="phdr"><b>' . _t('Create Folder') . '</b></div>';
-            echo '<div class="rmenu"><p>' . implode('<br>', $error) . '<br><a href="?act=add_cat&amp;id=' . $id . '">' . _t('Repeat') . '</a></p></div>';
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Create Folder'),
+                'content' => $tools->displayError($error, '<a href="?act=add_cat&amp;id=' . $id . '">' . _t('Repeat') . '</a>'),
+            ]);
             exit;
         }
 
@@ -129,5 +136,9 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     }
 
     echo '<a href="?">' . _t('Back') . '</a></div>';
-    require ROOT_PATH . 'system/end.php';
+
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Create Folder'),
+        'content' => ob_get_clean(),
+    ]);
 }

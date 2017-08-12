@@ -22,6 +22,9 @@ $userConfig = $container->get(Mobicms\Api\UserInterface::class)->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 ob_start();
 
 // Топ юзеров
@@ -61,4 +64,8 @@ if ($total > $userConfig->kmess) {
 }
 
 echo '<p><a href="?">' . _t('Downloads') . '</a></p>';
-require ROOT_PATH . 'system/end.php';
+
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Downloads'),
+    'content' => ob_get_clean(),
+]);

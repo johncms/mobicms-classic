@@ -30,9 +30,7 @@ $userConfig = $systemUser->getConfig();
 
 // Проверяем права доступа
 if ($systemUser->rights < 9) {
-    echo _t('Access denied');
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
 switch ($mod) {
@@ -48,9 +46,10 @@ switch ($mod) {
             $reason = isset($_POST['reason']) ? htmlentities(trim($_POST['reason']), ENT_QUOTES, 'UTF-8') : '';
 
             if (empty($get_ip)) {
-                echo $tools->displayError(_t('Invalid IP'),
-                    '<a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a>');
-                require ROOT_PATH . 'system/end.php';
+                echo $view->render('system::app/legacy', [
+                    'title'   => _t('Admin Panel'),
+                    'content' => $tools->displayError(_t('Invalid IP'), '<a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a>'),
+                ]);
                 exit;
             }
 
@@ -141,7 +140,10 @@ switch ($mod) {
 
                     echo '<div class="phdr">' . _t('Total') . ': ' . $total . '</div>';
                     echo '<p><a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a><br><a href="index.php">' . _t('Admin Panel') . '</a></p>';
-                    require ROOT_PATH . 'system/end.php';
+                    echo $view->render('system::app/legacy', [
+                        'title'   => _t('Admin Panel'),
+                        'content' => ob_get_clean(),
+                    ]);
                     exit;
                 }
             }
@@ -231,9 +233,10 @@ switch ($mod) {
         $reason = isset($_POST['reason']) ? htmlspecialchars(trim($_POST['reason'])) : '';
 
         if (!$ip1 || !$ip2) {
-            echo $tools->displayError(_t('Invalid IP'),
-                '<a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a>');
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Admin Panel'),
+                'content' => $tools->displayError(_t('Invalid IP'), '<a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a>'),
+            ]);
             exit;
         }
 
@@ -283,24 +286,29 @@ switch ($mod) {
             $get_ip = ip2long($_POST['ip']);
 
             if (!$get_ip) {
-                echo $tools->displayError(_t('Invalid IP'),
-                    '<a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a>');
-                require ROOT_PATH . 'system/end.php';
+                echo $view->render('system::app/legacy', [
+                    'title'   => _t('Admin Panel'),
+                    'content' => $tools->displayError(_t('Invalid IP'), '<a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a>'),
+                ]);
                 exit;
             }
 
             $req = $db->query("SELECT * FROM `cms_ban_ip` WHERE '$get_ip' BETWEEN `ip1` AND `ip2` LIMIT 1");
         } else {
-            echo $tools->displayError(_t('Invalid IP'),
-                '<a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a>');
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Admin Panel'),
+                'content' => $tools->displayError(_t('Invalid IP'), '<a href="index.php?act=ipban&amp;mod=new">' . _t('Back') . '</a>'),
+            ]);
             exit;
         }
 
         if (!$req->rowCount()) {
             echo '<div class="menu"><p>' . _t('This address not in the database') . '</p></div>';
             echo '<div class="phdr"><a href="index.php?act=ipban">' . _t('Back') . '</a></div>';
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Admin Panel'),
+                'content' => ob_get_clean(),
+            ]);
             exit;
         } else {
             $res = $req->fetch();

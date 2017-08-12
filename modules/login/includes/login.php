@@ -30,6 +30,9 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 if ($systemUser->isValid()) {
     echo '<div class="menu"><h2><a href="' . $config->homeurl . '">' . _t('Home', 'system') . '</a></h2></div>';
 } else {
@@ -159,4 +162,7 @@ if ($systemUser->isValid()) {
     }
 }
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Login', 'system'),
+    'content' => ob_get_clean(),
+]);

@@ -20,9 +20,7 @@ $config = $container->get('config')['mobicms'];
 
 // Проверяем права доступа
 if ($systemUser->rights < 7) {
-    echo _t('Access denied');
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Admin Panel') . '</b></a> | ' . _t('Permissions') . '</div>';

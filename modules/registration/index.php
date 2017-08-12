@@ -30,13 +30,18 @@ $config = $container->get(Mobicms\Api\ConfigInterface::class);
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 $pageTitle = _t('Registration');
 ob_start();
 
 // Если регистрация закрыта, выводим предупреждение
 if (!$config->mod_reg || $systemUser->isValid()) {
-    echo '<p>' . _t('Registration is temporarily closed') . '</p>';
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => $pageTitle,
+        'content' => '<p>' . _t('Registration is temporarily closed') . '</p>',
+    ]);
     exit;
 }
 
@@ -159,7 +164,11 @@ if (isset($postParams['submit'])) {
         }
 
         echo '</div>';
-        require ROOT_PATH . 'system/end.php';
+
+        echo $view->render('system::app/legacy', [
+            'title'   => $pageTitle,
+            'content' => ob_get_clean(),
+        ]);
         exit;
     }
 }
@@ -207,4 +216,7 @@ echo '<form action="index.php" method="post"><div class="gmenu">' .
     '<p><input type="submit" name="submit" value="' . _t('Registration') . '"/></p></div></form>' .
     '<div class="phdr"><small>' . _t('Please, do not register names like 111, shhhh, uuuu, etc. They will be deleted. <br /> Also all the profiles registered via proxy servers will be deleted') . '</small></div>';
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => $pageTitle,
+    'content' => ob_get_clean(),
+]);

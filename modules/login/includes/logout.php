@@ -16,6 +16,9 @@ $container = App::getContainer();
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 $referer = isset($_SERVER['HTTP_REFERER']) ? htmlspecialchars($_SERVER['HTTP_REFERER']) : $config->homeurl;
 
 if (isset($_POST['submit'])) {
@@ -31,5 +34,8 @@ if (isset($_POST['submit'])) {
         '<form action="?" method="post"><p><input type="submit" name="submit" value="' . _t('Logout', 'system') . '" /></p></form>' .
         '<p><a href="' . $referer . '">' . _t('Cancel', 'system') . '</a></p>' .
         '</div>';
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Logout', 'system'),
+        'content' => ob_get_clean(),
+    ]);
 }

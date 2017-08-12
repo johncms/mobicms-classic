@@ -28,6 +28,9 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 ob_start();
 
 // Обзор комментариев
@@ -109,4 +112,8 @@ if ($total > $userConfig->kmess) {
 }
 
 echo '<p><a href="?">' . _t('Downloads') . '</a></p>';
-require ROOT_PATH . 'system/end.php';
+
+echo $view->render('system::app/legacy', [
+    'title'   => $pageTitle,
+    'content' => ob_get_clean(),
+]);

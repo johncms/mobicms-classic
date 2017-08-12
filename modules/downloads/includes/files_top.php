@@ -22,6 +22,9 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 ob_start();
 require dirname(__DIR__) . '/classes/download.php';
 
@@ -58,4 +61,8 @@ while ($res_down = $req_down->fetch()) {
 }
 
 echo '<div class="phdr"><a href="?">' . _t('Downloads') . '</a></div>';
-require ROOT_PATH . 'system/end.php';
+
+echo $view->render('system::app/legacy', [
+    'title'   => $pageTitle,
+    'content' => ob_get_clean(),
+]);

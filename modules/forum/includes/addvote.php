@@ -30,9 +30,7 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     ob_start();
 
     if ($topic_vote != 0 || $topic == 0) {
-        echo $tools->displayError(_t('Wrong data'), '<a href="' . htmlspecialchars(getenv("HTTP_REFERER")) . '">' . _t('Back') . '</a>');
-        require ROOT_PATH . 'system/end.php';
-        exit;
+        exit(_t('Wrong data'));
     }
 
     if (isset($_POST['submit'])) {

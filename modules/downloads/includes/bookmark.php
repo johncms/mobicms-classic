@@ -25,16 +25,18 @@ $userConfig = $systemUser->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 // Закладки
 $pageTitle = _t('Favorites');
 require dirname(__DIR__) . '/classes/download.php';
-ob_start();
 
 if (!$systemUser->isValid()) {
-    echo _t('For registered users only');
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('For registered users only'));
 }
+
+ob_start();
 
 echo '<div class="phdr"><a href="?"><b>' . _t('Downloads') . '</b></a> | ' . $pageTitle . '</div>';
 $total = $db->query("SELECT COUNT(*) FROM `download__bookmark` WHERE `user_id` = " . $systemUser->id)->fetchColumn();
@@ -69,4 +71,8 @@ if ($total > $userConfig->kmess) {
 }
 
 echo '<p><a href="?">' . _t('Downloads') . '</a></p>';
-require ROOT_PATH . 'system/end.php';
+
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Downloads'),
+    'content' => ob_get_clean(),
+]);

@@ -23,7 +23,9 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-$pageTitle = _t('User Search');
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 ob_start();
 
 // Принимаем данные, выводим форму поиска
@@ -99,4 +101,7 @@ if ($search && !$error) {
 echo '<p>' . ($search && !$error ? '<a href="?act=search">' . _t('New search') . '</a><br />' : '') .
     '<a href=".">' . _t('Back') . '</a></p>';
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => _t('User Search'),
+    'content' => ob_get_clean(),
+]);

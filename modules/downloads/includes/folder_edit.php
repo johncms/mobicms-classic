@@ -19,6 +19,9 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 // Редактирование категорий
 if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     ob_start();
@@ -124,5 +127,9 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     }
 
     echo '<div class="phdr"><a href="?id=' . $id . '">' . _t('Back') . '</a></div>';
-    require ROOT_PATH . 'system/end.php';
+
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Downloads'),
+        'content' => ob_get_clean(),
+    ]);
 }

@@ -19,7 +19,11 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 ob_start();
+
 require dirname(dirname(__DIR__)) . '/classes/download.php';
 require dirname(dirname(__DIR__)) . '/classes/getid3/getid3.php';
 
@@ -29,7 +33,10 @@ $res_down = $req_down->fetch();
 
 if (!$req_down->rowCount() || !is_file($res_down['dir'] . '/' . $res_down['name']) || pathinfo($res_down['name'], PATHINFO_EXTENSION) != 'mp3' || $systemUser->rights < 6) {
     echo '<a href="?">' . _t('Downloads') . '</a>';
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Downloads'),
+        'content' => ob_get_clean(),
+    ]);
     exit;
 }
 
@@ -70,4 +77,7 @@ echo '<div class="list1"><form action="?act=mp3tags&amp;id=' . $id . '" method="
     '<input type="submit" name="submit" value="' . _t('Save') . '"/></form></div>' .
     '<div class="phdr"><a href="?act=view&amp;id=' . $id . '">' . _t('Back') . '</a></div>';
 
-require ROOT_PATH . 'system/end.php';
+echo $view->render('system::app/legacy', [
+    'title'   => _t('Downloads'),
+    'content' => ob_get_clean(),
+]);

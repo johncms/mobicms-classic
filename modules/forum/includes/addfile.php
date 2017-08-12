@@ -30,27 +30,28 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
 
 if (!$id || !$systemUser->isValid()) {
-    echo $tools->displayError(_t('Wrong data'));
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Wrong data'));
 }
 
 // Проверяем, тот ли юзер заливает файл и в нужное ли место
 $res = $db->query("SELECT * FROM `forum` WHERE `id` = '$id'")->fetch();
 
 if ($res['type'] != 'm' || $res['user_id'] != $systemUser->id) {
-    echo $tools->displayError(_t('Wrong data'));
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Wrong data'));
 }
 
 // Проверяем лимит времени, отведенный для выгрузки файла
 if ($res['time'] < (time() - 3600)) {
-    echo $tools->displayError(_t('The time allotted for the file upload has expired'), '<a href="index.php?id=' . $res['refid'] . '&amp;page=' . $page . '">' . _t('Back') . '</a>');
-    require ROOT_PATH . 'system/end.php';
+    echo $view->render('system::app/legacy', [
+        'title'   => _t('Forum'),
+        'content' => $tools->displayError(_t('The time allotted for the file upload has expired'), '<a href="index.php?id=' . $res['refid'] . '&amp;page=' . $page . '">' . _t('Back') . '</a>'),
+    ]);
     exit;
 }
 

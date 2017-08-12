@@ -28,6 +28,9 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 $set_mail = unserialize($systemUser->set_mail);
 $out = '';
 $total = 0;
@@ -38,10 +41,10 @@ if ($id) {
     $req = $db->query("SELECT * FROM `users` WHERE `id` = '$id' LIMIT 1");
 
     if (!$req->rowCount()) {
-        $pageTitle = _t('Mail');
-        ob_start();
-        echo $tools->displayError(_t('User does not exists'));
-        require ROOT_PATH . 'system/end.php';
+        echo $view->render('system::app/legacy', [
+            'title'   => _t('Mail'),
+            'content' => $tools->displayError(_t('User does not exists')),
+        ]);
         exit;
     }
 
@@ -95,7 +98,11 @@ if ($id) {
 
         echo '<div class="phdr"><a href="index.php?act=write&amp;id=' . $id . '">' . _t('Back') . '</a></div>';
         echo '<p><a href="../profile/?act=office">' . _t('Personal') . '</a></p>';
-        require ROOT_PATH . 'system/end.php';
+
+        echo $view->render('system::app/legacy', [
+            'title'   => _t('Mail'),
+            'content' => ob_get_clean(),
+        ]);
         exit;
     }
 }

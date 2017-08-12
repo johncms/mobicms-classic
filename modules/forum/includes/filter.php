@@ -15,14 +15,15 @@ ob_start();
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();
 
+/** @var League\Plates\Engine $view */
+$view = $container->get(League\Plates\Engine::class);
+
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 $start = $tools->getPgStart();
 
 if (!$id) {
-    echo $tools->displayError(_t('Wrong data'), '<a href="index.php">' . _t('Forum') . '</a>');
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Wrong data'));
 }
 
 switch ($do) {
@@ -38,8 +39,10 @@ switch ($do) {
         $users = isset($_POST['users']) ? $_POST['users'] : '';
 
         if (empty($_POST['users'])) {
-            echo '<div class="rmenu"><p>' . _t('You have not selected any author') . '<br /><a href="index.php?act=filter&amp;id=' . $id . '&amp;start=' . $start . '">' . _t('Back') . '</a></p></div>';
-            require ROOT_PATH . 'system/end.php';
+            echo $view->render('system::app/legacy', [
+                'title'   => _t('Forum'),
+                'content' => $tools->displayError(_t('You have not selected any author'), '<a href="index.php?act=filter&amp;id=' . $id . '&amp;start=' . $start . '">' . _t('Back') . '</a>'),
+            ]);
             exit;
         }
 

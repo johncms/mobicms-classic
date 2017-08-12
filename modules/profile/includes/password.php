@@ -24,9 +24,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Проверяем права доступа
 if ($user['id'] != $systemUser->id && ($systemUser->rights < 7 || $user['rights'] > $systemUser->rights)) {
-    echo $tools->displayError(_t('Access forbidden'));
-    require ROOT_PATH . 'system/end.php';
-    exit;
+    exit(_t('Access denied'));
 }
 
 $pageTitle = htmlspecialchars($user['name']) . ': ' . _t('Change Password');
