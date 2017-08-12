@@ -28,13 +28,13 @@ const CONFIG_PATH = __DIR__ . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARAT
 const LOG_PATH = __DIR__ . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR;
 const UPLOAD_PATH = ROOT_PATH . 'uploads' . DIRECTORY_SEPARATOR;
 
-// Include system kernel
-if (is_file(__DIR__ . '/mobicms-core/bootstrap.php')) {
-    require __DIR__ . '/mobicms-core/bootstrap.php';
-} else {
-    // If there are no dependencies, we stop the script and displays an error
+// If there are no dependencies, we stop the script and displays an error
+if (!is_file(__DIR__ . '/vendor/autoload.php')) {
     die('<div style="text-align: center; font-size: xx-large">'
         . '<h3 style="color: #dd0000">ERROR: missing dependencies</h3>'
         . 'Please run: <strong>composer install</strong>'
         . '</div>');
 }
+
+// Include autoloader
+require __DIR__ . '/vendor/autoload.php';
