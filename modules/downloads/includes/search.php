@@ -17,7 +17,7 @@ $search_post = isset($_POST['search']) ? trim($_POST['search']) : false;
 $search_get = isset($_GET['search']) ? rawurldecode(trim($_GET['search'])) : '';
 $search = $search_post ? $search_post : $search_get;
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 require dirname(__DIR__) . '/classes/download.php';
 
 // Форма для поиска

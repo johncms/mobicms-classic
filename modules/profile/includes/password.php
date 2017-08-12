@@ -30,7 +30,7 @@ if ($user['id'] != $systemUser->id && ($systemUser->rights < 7 || $user['rights'
 }
 
 $pageTitle = htmlspecialchars($user['name']) . ': ' . _t('Change Password');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 switch ($mod) {
     case 'change':

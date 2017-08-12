@@ -23,7 +23,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 //    $datauser['comm_old'] = $datauser['comm_count'];
 //}
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 $context_top = '<div class="phdr"><a href="?user=' . $user['id'] . '"><b>' . _t('Profile') . '</b></a> | ' . _t('Guestbook') . '</div>' .
     '<div class="user"><p>' . $tools->displayUser($user, ['iphide' => 1,]) . '</p></div>';

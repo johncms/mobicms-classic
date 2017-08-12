@@ -37,7 +37,7 @@ if ($systemUser->rights < 6) {
 }
 
 $pageTitle = _t('Admin Panel');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 $array = [
     'forum',

@@ -31,7 +31,7 @@ $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
 $pageTitle = _t('Registration');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 // Если регистрация закрыта, выводим предупреждение
 if (!$config->mod_reg || $systemUser->isValid()) {

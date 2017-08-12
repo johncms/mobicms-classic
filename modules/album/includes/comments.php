@@ -30,7 +30,7 @@ if ($req_obj->rowCount()) {
     $owner = $tools->getUser($res_obj['user_id']);
 
     if (!$owner) {
-        require ROOT_PATH . 'system/head.php';
+        ob_start();
         echo $tools->displayError(_t('User does not exists'));
         require ROOT_PATH . 'system/end.php';
         exit;
@@ -42,7 +42,7 @@ if ($req_obj->rowCount()) {
 
     if (($res_a['access'] == 1 && $owner['id'] != $systemUser->id && $systemUser->rights < 7) || ($res_a['access'] == 2 && $systemUser->rights < 7 && (!isset($_SESSION['ap']) || $_SESSION['ap'] != $res_a['password']) && $owner['id'] != $systemUser->id)) {
         // Если доступ закрыт
-        require ROOT_PATH . 'system/head.php';
+        ob_start();
         echo $tools->displayError(_t('Access forbidden')) .
             '<div class="phdr"><a href="?act=list&amp;user=' . $owner['id'] . '">' . _t('Album List') . '</a></div>';
         require ROOT_PATH . 'system/end.php';
@@ -91,7 +91,7 @@ if ($req_obj->rowCount()) {
     }
 
     // Показываем комментарии
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     $comm = new Mobicms\Deprecated\Comments($arg);
 
     // Обрабатываем метки непрочитанных комментариев
@@ -99,6 +99,6 @@ if ($req_obj->rowCount()) {
         $db->exec("UPDATE `cms_album_files` SET `unread_comments` = '1' WHERE `id` = '$img' LIMIT 1");
     }
 } else {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError(_t('Wrong data'));
 }

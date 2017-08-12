@@ -28,7 +28,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 // Обзор комментариев
 if (!$config['mod_down_comm'] && $systemUser->rights < 7) {

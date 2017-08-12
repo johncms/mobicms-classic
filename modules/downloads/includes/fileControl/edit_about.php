@@ -19,7 +19,7 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 // Редактирование описания файла
 $req_down = $db->query("SELECT * FROM `download__files` WHERE `id` = '" . $id . "' AND (`type` = 2 OR `type` = 3)  LIMIT 1");

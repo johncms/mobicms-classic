@@ -32,7 +32,7 @@ if (($adm || ($db->query("SELECT `user_add` FROM `library_cats` WHERE `id`=" . $
     $flood = $tools->antiflood();
 
     if ($flood) {
-        require ROOT_PATH . 'system/head.php';
+        ob_start();
         echo $tools->displayError(sprintf(_t('You cannot add the Article so often<br>Please, wait %d sec.'), $flood),
             '<br><a href="?do=dir&amp;id=' . $id . '">' . _t('Back') . '</a>');
         require ROOT_PATH . 'system/end.php';

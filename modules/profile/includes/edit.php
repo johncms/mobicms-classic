@@ -11,7 +11,7 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $pageTitle = htmlspecialchars($user['name']) . ': ' . _t('Edit Profile');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();

@@ -160,7 +160,6 @@ class scaner
         '../incfiles/db.php',
         '../system/end.php',
         '../incfiles/func.php',
-        '../system/head.php',
         '../incfiles/index.php',
         '../incfiles/lib/mp3.php',
         '../incfiles/lib/pclerror.lib.php',

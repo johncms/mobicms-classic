@@ -39,7 +39,7 @@ if ($id) {
 
     if (!$req->rowCount()) {
         $pageTitle = _t('Mail');
-        require ROOT_PATH . 'system/head.php';
+        ob_start();
         echo $tools->displayError(_t('User does not exists'));
         require ROOT_PATH . 'system/end.php';
         exit;
@@ -49,7 +49,7 @@ if ($id) {
 
     if ($mod == 'clear') {
         $pageTitle = _t('Mail');
-        require ROOT_PATH . 'system/head.php';
+        ob_start();
         echo '<div class="phdr"><b>' . _t('Clear messages') . '</b></div>';
 
         if (isset($_POST['clear'])) {
@@ -489,7 +489,7 @@ if ($id) {
 }
 
 $pageTitle = _t('Mail');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 echo $out;
 echo '<p>';
 

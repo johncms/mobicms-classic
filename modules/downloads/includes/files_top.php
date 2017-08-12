@@ -22,7 +22,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 require dirname(__DIR__) . '/classes/download.php';
 
 // Топ файлов

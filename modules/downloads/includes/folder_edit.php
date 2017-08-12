@@ -21,7 +21,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
 // Редактирование категорий
 if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
 
     $req = $db->query("SELECT * FROM `download__category` WHERE `id` = " . $id);
     $res = $req->fetch();

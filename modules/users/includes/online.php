@@ -11,7 +11,7 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $pageTitle = _t('Online');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();

@@ -24,7 +24,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 $mod = isset($_GET['mod']) ? trim($_GET['mod']) : '';
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 // Список посетителей. у которых есть фотографии
 switch ($mod) {

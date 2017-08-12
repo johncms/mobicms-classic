@@ -64,6 +64,6 @@ if (!$error) {
     // Отдаем файл
     header('Location: ' . $config['homeurl'] . '/uploads/users/album/' . $res['user_id'] . '/' . $res['img_name']);
 } else {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError($error, '<a href="index.php">' . _t('Back') . '</a>');
 }

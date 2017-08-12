@@ -25,7 +25,7 @@ $userConfig = $systemUser->getConfig();
 /** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 require dirname(__DIR__) . '/classes/download.php';
 
 $pageTitle = _t('Files on moderation');

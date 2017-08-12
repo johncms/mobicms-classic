@@ -22,7 +22,7 @@ $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
 
 $pageTitle = 'FAQ';
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 // Обрабатываем ссылку для возврата
 if (empty($_SESSION['ref'])) {

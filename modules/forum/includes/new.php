@@ -11,7 +11,7 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $pageTitle = _t('Forum') . ' | ' . _t('Unread');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 unset($_SESSION['fsort_id']);
 unset($_SESSION['fsort_users']);
 

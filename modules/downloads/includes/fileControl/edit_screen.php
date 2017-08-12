@@ -22,7 +22,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 // Управление скриншотами
 $req_down = $db->query("SELECT * FROM `download__files` WHERE `id` = '" . $id . "' AND (`type` = 2 OR `type` = 3)  LIMIT 1");

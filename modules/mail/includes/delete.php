@@ -11,7 +11,7 @@
 defined('MOBICMS') or die('Error: restricted access');
 
 $pageTitle = _t('Mail');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 echo '<div class="phdr"><h3>' . _t('Deleting messages') . '</h3></div>';
 

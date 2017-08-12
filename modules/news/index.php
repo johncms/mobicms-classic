@@ -39,7 +39,7 @@ $mod = $queryParams['mod'] ?? '';
 $do = $queryParams['do'] ?? '';
 
 $pageTitle = _t('News');
-require(ROOT_PATH . 'system/head.php');
+ob_start();
 
 switch ($do) {
     case 'add':

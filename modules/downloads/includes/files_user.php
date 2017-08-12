@@ -28,7 +28,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 // Файлы юзера
 $pageTitle = _t('User Files');
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 require dirname(__DIR__) . '/classes/download.php';
 
 if (($user = $tools->getUser($id)) === false) {

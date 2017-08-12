@@ -38,7 +38,7 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 
 // Закрываем от неавторизованных юзеров
 if (!$systemUser->isValid()) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError(_t('For registered users only'));
     require ROOT_PATH . 'system/end.php';
     exit;
@@ -48,7 +48,7 @@ if (!$systemUser->isValid()) {
 $user = $tools->getUser(isset($_REQUEST['user']) ? abs(intval($_REQUEST['user'])) : 0);
 
 if (!$user) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError(_t('This User does not exists'));
     require ROOT_PATH . 'system/end.php';
     exit;
@@ -112,7 +112,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
 } else {
     // Анкета пользователя
     $pageTitle = _t('Profile') . ': ' . htmlspecialchars($user['name']);
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo '<div class="phdr"><b>' . ($user['id'] != $systemUser->id ? _t('User Profile') : _t('My Profile')) . '</b></div>';
 
     // Меню анкеты

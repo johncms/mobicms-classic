@@ -43,7 +43,7 @@ if (!$id
     || isset($systemUser->ban[11])
     || (!$systemUser->rights && $config['mod_forum'] == 3)
 ) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError(_t('Access forbidden'));
     require ROOT_PATH . 'system/end.php';
     exit;
@@ -95,7 +95,7 @@ $flood = $tools->antiflood();
 $type1 = $db->query("SELECT * FROM `forum` WHERE `id` = '$id'")->fetch();
 
 if ($flood) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError(sprintf(_t('You cannot add the message so often<br>Please, wait %d sec.'), $flood),
         '<a href="index.php?id=' . ($type1['type'] == 'm' ? $type1['refid'] : $id) . '&amp;start=' . $start . '">' . _t('Back') . '</a>');
     require ROOT_PATH . 'system/end.php';
@@ -107,7 +107,7 @@ switch ($type1['type']) {
         // Добавление простого сообщения
         if (($type1['edit'] == 1 || $type1['close'] == 1) && $systemUser->rights < 6) {
             // Проверка, закрыта ли тема
-            require ROOT_PATH . 'system/head.php';
+            ob_start();
             echo $tools->displayError(_t('You cannot write in a closed topic'), '<a href="index.php?id=' . $id . '">' . _t('Back') . '</a>');
             require ROOT_PATH . 'system/end.php';
             exit;
@@ -125,7 +125,7 @@ switch ($type1['type']) {
         ) {
             // Проверяем на минимальную длину
             if (mb_strlen($msg) < 4) {
-                require ROOT_PATH . 'system/head.php';
+                ob_start();
                 echo $tools->displayError(_t('Text is too short'), '<a href="index.php?id=' . $id . '">' . _t('Back') . '</a>');
                 require ROOT_PATH . 'system/end.php';
                 exit;
@@ -137,7 +137,7 @@ switch ($type1['type']) {
             if ($req->rowCount()) {
                 $res = $req->fetch();
                 if ($msg == $res['text']) {
-                    require ROOT_PATH . 'system/head.php';
+                    ob_start();
                     echo $tools->displayError(_t('Message already exists'), '<a href="index.php?id=' . $id . '&amp;start=' . $start . '">' . _t('Back') . '</a>');
                     require ROOT_PATH . 'system/end.php';
                     exit;
@@ -240,7 +240,7 @@ switch ($type1['type']) {
             }
             exit;
         } else {
-            require ROOT_PATH . 'system/head.php';
+            ob_start();
             $msg_pre = $tools->checkout($msg, 1, 1);
             $msg_pre = $tools->smilies($msg_pre, $systemUser->rights ? 1 : 0);
             $msg_pre = preg_replace('#\[c\](.*?)\[/c\]#si', '<div class="quote">\1</div>', $msg_pre);
@@ -288,14 +288,14 @@ switch ($type1['type']) {
         $th1 = $db->query("SELECT * FROM `forum` WHERE `id` = '$th'")->fetch();
 
         if (($th1['edit'] == 1 || $th1['close'] == 1) && $systemUser->rights < 6) {
-            require ROOT_PATH . 'system/head.php';
+            ob_start();
             echo $tools->displayError(_t('You cannot write in a closed topic'), '<a href="index.php?id=' . $th1['id'] . '">' . _t('Back') . '</a>');
             require ROOT_PATH . 'system/end.php';
             exit;
         }
 
         if ($type1['user_id'] == $systemUser->id) {
-            require ROOT_PATH . 'system/head.php';
+            ob_start();
             echo $tools->displayError(_t('You can not reply to your own message'), '<a href="index.php?id=' . $th1['id'] . '">' . _t('Back') . '</a>');
             require ROOT_PATH . 'system/end.php';
             exit;
@@ -340,7 +340,7 @@ switch ($type1['type']) {
             && $postParams['token'] == $_SESSION['token']
         ) {
             if (empty($postParams['msg'])) {
-                require ROOT_PATH . 'system/head.php';
+                ob_start();
                 echo $tools->displayError(_t('You have not entered the message'), '<a href="index.php?act=say&amp;id=' . $th . (isset($queryParams['cyt']) ? '&amp;cyt' : '') . '">' . _t('Repeat') . '</a>');
                 require ROOT_PATH . 'system/end.php';
                 exit;
@@ -348,7 +348,7 @@ switch ($type1['type']) {
 
             // Проверяем на минимальную длину
             if (mb_strlen($msg) < 4) {
-                require ROOT_PATH . 'system/head.php';
+                ob_start();
                 echo $tools->displayError(_t('Text is too short'), '<a href="index.php?id=' . $id . '">' . _t('Back') . '</a>');
                 require ROOT_PATH . 'system/end.php';
                 exit;
@@ -361,7 +361,7 @@ switch ($type1['type']) {
                 $res = $req->fetch();
 
                 if ($msg == $res['text']) {
-                    require ROOT_PATH . 'system/head.php';
+                    ob_start();
                     echo $tools->displayError(_t('Message already exists'), '<a href="index.php?id=' . $th . '&amp;start=' . $start . '">' . _t('Back') . '</a>');
                     require ROOT_PATH . 'system/end.php';
                     exit;
@@ -427,7 +427,7 @@ switch ($type1['type']) {
             exit;
         } else {
             $pageTitle = _t('Forum');
-            require ROOT_PATH . 'system/head.php';
+            ob_start();
             $qt = " $type1[text]";
             $msg_pre = $tools->checkout($msg, 1, 1);
             $msg_pre = $tools->smilies($msg_pre, $systemUser->rights ? 1 : 0);
@@ -475,7 +475,7 @@ switch ($type1['type']) {
         break;
 
     default:
-        require ROOT_PATH . 'system/head.php';
+        ob_start();
         echo $tools->displayError(_t('Topic has been deleted or does not exists'), '<a href="index.php">' . _t('Forum') . '</a>');
         require ROOT_PATH . 'system/end.php';
         exit;

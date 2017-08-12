@@ -28,7 +28,7 @@ if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
     }
 }
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 echo '<div class="phdr"><b>' . _t('Update counters') . '</b></div>' .
     '<div class="gmenu"><p>' . _t('All Counters successfully updated') . '</p></div>' .
     '<div class="phdr"><a href="?id=' . $id . '">' . _t('Back') . '</a></div>';

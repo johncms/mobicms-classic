@@ -112,7 +112,7 @@ if ($mod == 'clear') {
 }
 
 $pageTitle = _t('Mail');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 echo '<div class="phdr"><b>' . _t('System messages') . '</b></div>';
 echo $out;
 echo '<p>';

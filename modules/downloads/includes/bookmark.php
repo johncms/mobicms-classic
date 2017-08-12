@@ -28,7 +28,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 // Закладки
 $pageTitle = _t('Favorites');
 require dirname(__DIR__) . '/classes/download.php';
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 if (!$systemUser->isValid()) {
     echo _t('For registered users only');

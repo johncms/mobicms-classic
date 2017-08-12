@@ -22,7 +22,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 if ($systemUser->rights >= 7 && $systemUser->rights > $user['rights']) {
     // Сброс настроек пользователя
     $pageTitle = htmlspecialchars($user['name']) . ': ' . _t('Edit Profile');
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
 
     $db->query("UPDATE `users` SET `set_user` = '', `set_forum` = '' WHERE `id` = " . $user['id']);
 

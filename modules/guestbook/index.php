@@ -58,7 +58,7 @@ if (isset($_SESSION['ga']) && $systemUser->rights < 1 && !in_array($systemUser->
 
 // Задаем заголовки страницы
 $pageTitle = isset($_SESSION['ga']) ? _t('Admin Club') : _t('Guestbook');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 // Если гостевая закрыта, выводим сообщение и закрываем доступ (кроме Админов)
 if (!$config->mod_guest && $systemUser->rights < 7) {

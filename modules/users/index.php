@@ -32,7 +32,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Закрываем от неавторизованных юзеров
 if (!$systemUser->isValid() && !$config->active) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError(_t('For registered users only'));
     require ROOT_PATH . 'system/end.php';
     exit;
@@ -62,7 +62,7 @@ if (in_array($act, $array) && file_exists(__DIR__ . '/includes/' . $act . '.php'
 
     // Актив сайта
     $pageTitle = _t('Community');
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
 
     $brth = $db->query("SELECT COUNT(*) FROM `users` WHERE `dayb` = '" . date('j', time()) . "' AND `monthb` = '" . date('n', time()) . "' AND `preg` = '1'")->fetchColumn();
     $count_adm = $db->query("SELECT COUNT(*) FROM `users` WHERE `rights` > 0")->fetchColumn();

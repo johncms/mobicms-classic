@@ -28,7 +28,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     if (!$id) {
-        require ROOT_PATH . 'system/head.php';
+        ob_start();
         echo $tools->displayError(_t('Wrong data'));
         require ROOT_PATH . 'system/end.php';
         exit;
@@ -38,7 +38,7 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
         $db->exec("UPDATE `forum` SET  `vip` = '" . (isset($queryParams['vip']) ? '1' : '0') . "' WHERE `id` = '$id'");
         header('Location: ?id=' . $id);
     } else {
-        require ROOT_PATH . 'system/head.php';
+        ob_start();
         echo $tools->displayError(_t('Wrong data'));
         require ROOT_PATH . 'system/end.php';
         exit;

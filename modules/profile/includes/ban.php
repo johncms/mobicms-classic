@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 $ban = isset($_GET['ban']) ? intval($_GET['ban']) : 0;
 
 /** @var Psr\Container\ContainerInterface $container */

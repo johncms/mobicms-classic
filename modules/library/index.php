@@ -99,7 +99,7 @@ if (!$config['mod_lib'] && $systemUser->rights < 7) {
 }
 
 if ($error) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError($error);
     require ROOT_PATH . 'system/end.php';
     exit;
@@ -129,7 +129,7 @@ if ($id > 0) {
     }
 }
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 ?>
 

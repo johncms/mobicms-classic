@@ -20,7 +20,7 @@ $db = $container->get(PDO::class);
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
 if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
 
     if (!$id) {
         $load_cat = $files_path;

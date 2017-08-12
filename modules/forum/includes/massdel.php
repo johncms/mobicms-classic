@@ -26,7 +26,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     // Массовое удаление выбранных постов форума
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
 
     if (isset($queryParams['yes'])) {
         $dc = $_SESSION['dc'];

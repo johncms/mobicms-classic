@@ -24,7 +24,7 @@ $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/defa
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 $pageTitle = _t('User Search');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 // Принимаем данные, выводим форму поиска
 $search_post = isset($_POST['search']) ? trim($_POST['search']) : false;

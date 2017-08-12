@@ -21,7 +21,7 @@ $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
 // Обновление файлов
 if ($systemUser->rights == 4 || $systemUser->rights >= 6) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
 
     set_time_limit(99999);
     $do = isset($_GET['do']) ? trim($_GET['do']) : '';

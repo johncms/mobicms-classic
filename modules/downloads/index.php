@@ -61,7 +61,7 @@ if (!$config['mod_down'] && $systemUser->rights < 7) {
 }
 
 if ($error) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo '<div class="rmenu"><p>' . $error . '</p></div>';
     require ROOT_PATH . 'system/end.php';
     exit;
@@ -140,7 +140,7 @@ if (isset($actions[$act]) && is_file(__DIR__ . '/includes/' . $actions[$act])) {
     $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
     require __DIR__ . '/classes/download.php';
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
 
     if (!$config['mod_down']) {
         echo '<div class="rmenu">' . _t('Downloads are closed') . '</div>';

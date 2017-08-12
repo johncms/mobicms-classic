@@ -133,7 +133,7 @@ if (!$config->mod_forum && $systemUser->rights < 7) {
 }
 
 if ($error) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo '<div class="rmenu"><p>' . $error . '</p></div>';
     require ROOT_PATH . 'system/end.php';
     exit;
@@ -189,7 +189,7 @@ $mods = [
 if ($act && ($key = array_search($act, $mods)) !== false && is_file(__DIR__ . '/includes/' . $mods[$key] . '.php')) {
     require __DIR__ . '/includes/' . $mods[$key] . '.php';
 } else {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
 
     // Если форум закрыт, то для Админов выводим напоминание
     if (!$config->mod_forum) {

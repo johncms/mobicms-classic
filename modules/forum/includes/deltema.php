@@ -24,7 +24,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     if (!$id) {
-        require ROOT_PATH . 'system/head.php';
+        ob_start();
         echo $tools->displayError(_t('Wrong data'));
         require ROOT_PATH . 'system/end.php';
         exit;
@@ -34,7 +34,7 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     $req = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 't'");
 
     if (!$req->rowCount()) {
-        require ROOT_PATH . 'system/head.php';
+        ob_start();
         echo $tools->displayError(_t('Topic has been deleted or does not exists'));
         require ROOT_PATH . 'system/end.php';
         exit;
@@ -69,7 +69,7 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
         header('Location: ?id=' . $res['refid']);
     } else {
         // Меню выбора режима удаления темы
-        require ROOT_PATH . 'system/head.php';
+        ob_start();
         echo '<div class="phdr"><a href="index.php?id=' . $id . '"><b>' . _t('Forum') . '</b></a> | ' . _t('Delete Topic') . '</div>' .
             '<div class="rmenu"><form method="post" action="index.php?act=deltema&amp;id=' . $id . '">' .
             '<p><h3>' . _t('Do you really want to delete?') . '</h3>' .

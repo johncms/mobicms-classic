@@ -19,7 +19,7 @@ $db = $container->get(PDO::class);
 /** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 require dirname(dirname(__DIR__)) . '/classes/download.php';
 require dirname(dirname(__DIR__)) . '/classes/getid3/getid3.php';
 

@@ -10,7 +10,7 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();

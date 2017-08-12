@@ -123,7 +123,7 @@ switch ($mod) {
 
 // Показываем список фотографий, отсортированных по рейтингу
 unset($_SESSION['ref']);
-require ROOT_PATH . 'system/head.php';
+ob_start();
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Photo Albums') . '</b></a> | ' . $title . '</div>';
 
 if ($mod == 'my_new_comm') {

@@ -12,7 +12,7 @@ defined('MOBICMS') or die('Error: restricted access');
 
 // История активности
 $pageTitle = htmlspecialchars($user['name']) . ': ' . _t('Activity');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 
 /** @var Psr\Container\ContainerInterface $container */
 $container = App::getContainer();

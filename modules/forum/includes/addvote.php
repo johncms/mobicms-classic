@@ -27,7 +27,7 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
 
     $topic = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='t' AND `id`='$id' AND `edit` != '1'")->fetchColumn();
     $topic_vote = $db->query("SELECT COUNT(*) FROM `cms_forum_vote` WHERE `type`='1' AND `topic`='$id'")->fetchColumn();
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
 
     if ($topic_vote != 0 || $topic == 0) {
         echo $tools->displayError(_t('Wrong data'), '<a href="' . htmlspecialchars(getenv("HTTP_REFERER")) . '">' . _t('Back') . '</a>');

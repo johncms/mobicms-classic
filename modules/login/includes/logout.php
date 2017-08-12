@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
     header('Location: ' . $config->homeurl);
     exit;
 } else {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo '<div class="rmenu">' .
         '<p>' . _t('Are you sure you want to leave the site?', 'system') . '</p>' .
         '<form action="?" method="post"><p><input type="submit" name="submit" value="' . _t('Logout', 'system') . '" /></p></form>' .

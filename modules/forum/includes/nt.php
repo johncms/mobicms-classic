@@ -38,7 +38,7 @@ if (!$id
     || isset($systemUser->ban['11'])
     || (!$systemUser->rights && $config['mod_forum'] == 3)
 ) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError(_t('Access forbidden'));
     require ROOT_PATH . 'system/end.php';
     exit;
@@ -88,7 +88,7 @@ function forum_link($m)
 $flood = $tools->antiflood();
 
 if ($flood) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError(sprintf(_t('You cannot add the message so often<br>Please, wait %d sec.'), $flood) . ', <a href="index.php?id=' . $id . '&amp;start=' . $tools->getPgStart() . '">' . _t('Back') . '</a>');
     require ROOT_PATH . 'system/end.php';
     exit;
@@ -97,7 +97,7 @@ if ($flood) {
 $req_r = $db->query("SELECT * FROM `forum` WHERE `id` = '$id' AND `type` = 'r' LIMIT 1");
 
 if (!$req_r->rowCount()) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError(_t('Wrong data'));
     require ROOT_PATH . 'system/end.php';
     exit;
@@ -233,14 +233,14 @@ if (isset($_POST['submit'])
         }
     } else {
         // Выводим сообщение об ошибке
-        require ROOT_PATH . 'system/head.php';
+        ob_start();
         echo $tools->displayError($error, '<a href="index.php?act=nt&amp;id=' . $id . '">' . _t('Repeat') . '</a>');
         require ROOT_PATH . 'system/end.php';
         exit;
     }
 } else {
     $res_c = $db->query("SELECT * FROM `forum` WHERE `id` = '" . $res_r['refid'] . "'")->fetch();
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     $msg_pre = $tools->checkout($msg, 1, 1);
     $msg_pre = $tools->smilies($msg_pre, $systemUser->rights ? 1 : 0);
     $msg_pre = preg_replace('#\[c\](.*?)\[/c\]#si', '<div class="quote">\1</div>', $msg_pre);

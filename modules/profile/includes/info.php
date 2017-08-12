@@ -24,7 +24,7 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 // Подробная информация, контактные данные
 $pageTitle = htmlspecialchars($user['name']) . ': ' . _t('Information');
-require ROOT_PATH . 'system/head.php';
+ob_start();
 echo '<div class="phdr"><a href="?user=' . $user['id'] . '"><b>' . _t('Profile') . '</b></a> | ' . _t('Information') . '</div>';
 
 if ($user['id'] == $systemUser->id || ($systemUser->rights >= 7 && $systemUser->rights > $user['rights'])) {

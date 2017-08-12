@@ -39,7 +39,7 @@ $max_photo = 400;
 
 // Закрываем от неавторизованных юзеров
 if (!$systemUser->isValid()) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError(_t('For registered users only'));
     require ROOT_PATH . 'system/end.php';
     exit;
@@ -49,7 +49,7 @@ if (!$systemUser->isValid()) {
 $user = $tools->getUser(isset($_REQUEST['user']) ? abs(intval($_REQUEST['user'])) : 0);
 
 if (!$user) {
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     echo $tools->displayError(_t('User does not exists'));
     require ROOT_PATH . '../system/end.php';
     exit;
@@ -126,7 +126,7 @@ if (in_array($act, $array) && is_file(__DIR__ . '/includes/' . $act . '.php')) {
     /** @var Mobicms\Api\ConfigInterface $config */
     $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
-    require ROOT_PATH . 'system/head.php';
+    ob_start();
     $albumcount = $db->query("SELECT COUNT(DISTINCT `user_id`) FROM `cms_album_files`")->fetchColumn();
     $total_mans = $db->query("SELECT COUNT(DISTINCT `user_id`)
       FROM `cms_album_files`
