@@ -28,7 +28,6 @@
   },
   "autoload": {
     "psr-4": {
-      "Mobicms\\": "system/src/",
       "Library\\": "modules/library/classes/"
     }
   }
