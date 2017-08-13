@@ -10,28 +10,22 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-$pageTitle = _t('Forum') . ' | ' . _t('Unread');
+/**
+ * @var string                           $do
+ * @var array                            $set_forum
+ *
+ * @var Psr\Container\ContainerInterface $container
+ * @var Mobicms\Asset\Manager            $asset
+ * @var PDO                              $db
+ * @var Mobicms\Api\UserInterface        $systemUser
+ * @var Mobicms\Checkpoint\UserConfig    $userConfig
+ * @var Mobicms\Api\ToolsInterface       $tools
+ */
+
 ob_start();
+$pageTitle = _t('Forum') . ' | ' . _t('Unread');
 unset($_SESSION['fsort_id']);
 unset($_SESSION['fsort_users']);
-
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
-
-/** @var Mobicms\Asset\Manager $asset */
-$asset = $container->get(Mobicms\Asset\Manager::class);
-
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Checkpoint\UserConfig $userConfig */
-$userConfig = $systemUser->getConfig();
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
 
 if ($systemUser->isValid()) {
     switch ($do) {

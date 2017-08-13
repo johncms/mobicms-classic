@@ -10,31 +10,22 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
+/**
+ * @var int                                     $id
+ * @var array                                   $queryParams
+ * @var array                                   $set_forum
+ *
+ * @var Psr\Container\ContainerInterface        $container
+ * @var PDO                                     $db
+ * @var Psr\Http\Message\ServerRequestInterface $request
+ * @var Mobicms\Api\UserInterface               $systemUser
+ * @var Mobicms\Checkpoint\UserConfig           $userConfig
+ * @var Mobicms\Api\ToolsInterface              $tools
+ * @var Mobicms\Api\ConfigInterface             $config
+ * @var League\Plates\Engine                    $view
+ */
 
-/** @var Mobicms\Api\ConfigInterface $config */
-$config = $container->get(Mobicms\Api\ConfigInterface::class);
-
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Psr\Http\Message\ServerRequestInterface $request */
-$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
-$queryParams = $request->getQueryParams();
 $postParams = $request->getParsedBody();
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Checkpoint\UserConfig $userConfig */
-$userConfig = $systemUser->getConfig();
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
-/** @var League\Plates\Engine $view */
-$view = $container->get(League\Plates\Engine::class);
 
 $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
 $start = $tools->getPgStart();

@@ -10,16 +10,13 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
+/**
+ * @var int $id
+ *
+ * @var PDO $db
+ */
+
 if ($id) {
-    /** @var Psr\Container\ContainerInterface $container */
-    $container = App::getContainer();
-
-    /** @var PDO $db */
-    $db = $container->get(PDO::class);
-
-    /** @var Mobicms\Api\ToolsInterface $tools */
-    $tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
     $error = false;
 
     // Скачивание прикрепленного файла Форума

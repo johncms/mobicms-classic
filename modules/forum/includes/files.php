@@ -10,30 +10,20 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
+/**
+ * @var int                                     $id
+ * @var array                                   $queryParams
+ * @var array                                   $set_forum
+ *
+ * @var Mobicms\Asset\Manager                   $asset
+ * @var PDO                                     $db
+ * @var Psr\Http\Message\ServerRequestInterface $request
+ * @var Mobicms\Api\UserInterface               $systemUser
+ * @var Mobicms\Checkpoint\UserConfig           $userConfig
+ * @var Mobicms\Api\ToolsInterface              $tools
+ */
+
 ob_start();
-
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
-
-/** @var Mobicms\Asset\Manager $asset */
-$asset = $container->get(Mobicms\Asset\Manager::class);
-
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Psr\Http\Message\ServerRequestInterface $request */
-$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
-$queryParams = $request->getQueryParams();
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Checkpoint\UserConfig $userConfig */
-$userConfig = $systemUser->getConfig();
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
 $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
 
 $types = [

@@ -10,23 +10,19 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
+/**
+ * @var int                       $id
+ *
+ * @var PDO                       $db
+ * @var Mobicms\Api\UserInterface $systemUser
+ */
 
 if ($systemUser->isValid()) {
-    /** @var PDO $db */
-    $db = $container->get(PDO::class);
-
-    /** @var Mobicms\Api\ToolsInterface $tools */
-    $tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
     $topic = $db->query("SELECT COUNT(*) FROM `forum` WHERE `type`='t' AND `id` = '$id' AND `edit` != '1'")->fetchColumn();
     $vote = abs(intval($_POST['vote']));
     $topic_vote = $db->query("SELECT COUNT(*) FROM `cms_forum_vote` WHERE `type` = '2' AND `id` = '$vote' AND `topic` = '$id'")->fetchColumn();
     $vote_user = $db->query("SELECT COUNT(*) FROM `cms_forum_vote_users` WHERE `user` = '" . $systemUser->id . "' AND `topic` = '$id'")->fetchColumn();
+
     ob_start();
 
     if ($topic_vote == 0 || $vote_user > 0 || $topic == 0) {

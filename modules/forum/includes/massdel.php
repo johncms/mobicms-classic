@@ -10,25 +10,18 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
+/**
+ * @var int                                     $id
+ * @var array                                   $queryParams
+ *
+ * @var PDO                                     $db
+ * @var Psr\Http\Message\ServerRequestInterface $request
+ * @var Mobicms\Api\UserInterface               $systemUser
+ * @var Mobicms\Api\ToolsInterface              $tools
+ * @var League\Plates\Engine                    $view
+ */
 
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Psr\Http\Message\ServerRequestInterface $request */
-$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
-$queryParams = $request->getQueryParams();
 $postParams = $request->getParsedBody();
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
-/** @var League\Plates\Engine $view */
-$view = $container->get(League\Plates\Engine::class);
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     // Массовое удаление выбранных постов форума
@@ -55,6 +48,8 @@ if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
             ]);
             exit;
         }
+
+        $dc = [];
 
         foreach ($postParams['delch'] as $v) {
             $dc[] = intval($v);

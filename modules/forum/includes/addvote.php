@@ -10,17 +10,12 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
-
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
+/**
+ * @var int                       $id
+ *
+ * @var PDO                       $db
+ * @var Mobicms\Api\UserInterface $systemUser
+ */
 
 if ($systemUser->rights == 3 || $systemUser->rights >= 6) {
     $vote_count = abs(intval($_POST['count_vote'] ?? 2));

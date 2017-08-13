@@ -10,29 +10,27 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
+/**
+ * @var int                           $id
+ * @var array                         $ext_win
+ * @var array                         $ext_java
+ * @var array                         $ext_sis
+ * @var array                         $ext_doc
+ * @var array                         $ext_pic
+ * @var array                         $ext_arch
+ * @var array                         $ext_video
+ * @var array                         $ext_audio
+ * @var array                         $ext_other
+ *
+ * @var PDO                           $db
+ * @var Mobicms\Api\UserInterface     $systemUser
+ * @var Mobicms\Checkpoint\UserConfig $userConfig
+ * @var Mobicms\Api\ToolsInterface    $tools
+ * @var Mobicms\Api\ConfigInterface   $config
+ * @var League\Plates\Engine          $view
+ */
+
 ob_start();
-
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
-
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Checkpoint\UserConfig $userConfig */
-$userConfig = $systemUser->getConfig();
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
-/** @var Mobicms\Api\ConfigInterface $config */
-$config = $container->get(Mobicms\Api\ConfigInterface::class);
-
-/** @var League\Plates\Engine $view */
-$view = $container->get(League\Plates\Engine::class);
-
 $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
 
 if (!$id || !$systemUser->isValid()) {

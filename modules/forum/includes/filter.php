@@ -10,21 +10,22 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-ob_start();
+/**
+ * @var int                        $id
+ * @var string                     $do
+ *
+ * @var PDO                        $db
+ * @var Mobicms\Api\ToolsInterface $tools
+ * @var League\Plates\Engine       $view
+ */
 
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
-
-/** @var League\Plates\Engine $view */
-$view = $container->get(League\Plates\Engine::class);
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
-$start = $tools->getPgStart();
 
 if (!$id) {
     exit(_t('Wrong data'));
 }
+
+ob_start();
+$start = $tools->getPgStart();
 
 switch ($do) {
     case 'unset':
@@ -58,9 +59,6 @@ switch ($do) {
         break;
 
     default :
-        /** @var PDO $db */
-        $db = $container->get(PDO::class);
-
         // Показываем список авторов темы, с возможностью выбора
         $req = $db->query("SELECT *, COUNT(`from`) AS `count` FROM `forum` WHERE `refid` = '$id' GROUP BY `from` ORDER BY `from`");
         $total = $req->rowCount();

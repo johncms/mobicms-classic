@@ -10,17 +10,14 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
-
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Checkpoint\UserConfig $userConfig */
-$userConfig = $systemUser->getConfig();
+/**
+ * @var int                           $id
+ * @var array                         $set_forum
+ *
+ * @var PDO                           $db
+ * @var Mobicms\Api\UserInterface     $systemUser
+ * @var Mobicms\Checkpoint\UserConfig $userConfig
+ */
 
 $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
 

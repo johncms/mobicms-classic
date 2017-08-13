@@ -10,26 +10,18 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
+/**
+ * @var int                           $id
+ * @var array                         $set_forum
+ *
+ * @var Mobicms\Asset\Manager         $asset
+ * @var PDO                           $db
+ * @var Mobicms\Api\UserInterface     $systemUser
+ * @var Mobicms\Checkpoint\UserConfig $userConfig
+ * @var Mobicms\Api\ToolsInterface    $tools
+ */
+
 ob_start();
-
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
-
-/** @var Mobicms\Asset\Manager $asset */
-$asset = $container->get(Mobicms\Asset\Manager::class);
-
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Checkpoint\UserConfig $userConfig */
-$userConfig = $systemUser->getConfig();
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
 $page = isset($_REQUEST['page']) && $_REQUEST['page'] > 0 ? intval($_REQUEST['page']) : 1;
 $start = $tools->getPgStart();
 
@@ -116,24 +108,24 @@ if (count($freq)) {
         'jpeg',
         'png',
     ];
-   foreach ($freq as $fres) {
-    $fls = round(@filesize(UPLOAD_PATH . 'forum/attach/' . $fres['filename']) / 1024, 2);
-    echo '<div class="gray" style="font-size: x-small;background-color: rgba(128, 128, 128, 0.1);padding: 2px 4px;float: left;margin: 4px 4px 0 0;">' . _t('Attachment') . ':';
-    // Предпросмотр изображений
-    $att_ext = strtolower(pathinfo(UPLOAD_PATH . 'forum/attach/' . $fres['filename'], PATHINFO_EXTENSION));
+    foreach ($freq as $fres) {
+        $fls = round(@filesize(UPLOAD_PATH . 'forum/attach/' . $fres['filename']) / 1024, 2);
+        echo '<div class="gray" style="font-size: x-small;background-color: rgba(128, 128, 128, 0.1);padding: 2px 4px;float: left;margin: 4px 4px 0 0;">' . _t('Attachment') . ':';
+        // Предпросмотр изображений
+        $att_ext = strtolower(pathinfo(UPLOAD_PATH . 'forum/attach/' . $fres['filename'], PATHINFO_EXTENSION));
 
-    if (in_array($att_ext, $pic_ext)) {
-        echo '<div><a href="index.php?act=file&amp;id=' . $fres['id'] . '">';
-        echo '<img src="../assets/modules/forum/thumbinal.php?file=' . (urlencode($fres['filename'])) . '" alt="' . _t('Click to view image') . '" /></a></div>';
-    } else {
-        echo '<br /><a href="index.php?act=file&amp;id=' . $fres['id'] . '">' . $fres['filename'] . '</a>';
+        if (in_array($att_ext, $pic_ext)) {
+            echo '<div><a href="index.php?act=file&amp;id=' . $fres['id'] . '">';
+            echo '<img src="../assets/modules/forum/thumbinal.php?file=' . (urlencode($fres['filename'])) . '" alt="' . _t('Click to view image') . '" /></a></div>';
+        } else {
+            echo '<br /><a href="index.php?act=file&amp;id=' . $fres['id'] . '">' . $fres['filename'] . '</a>';
+        }
+
+        echo ' (' . $fls . ' кб.)<br>';
+        echo _t('Downloads') . ': ' . $fres['dlcount'] . '</div>';
+        $file_id = $fres['id'];
     }
-
-    echo ' (' . $fls . ' кб.)<br>';
-    echo _t('Downloads') . ': ' . $fres['dlcount'] . '</div>';
-    $file_id = $fres['id'];
-   }
-   echo '<div style="clear: both;"></div></div>';
+    echo '<div style="clear: both;"></div></div>';
 }
 
 echo '</div>';

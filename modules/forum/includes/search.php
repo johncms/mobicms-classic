@@ -10,28 +10,21 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
+/**
+ * @var int                                     $id
+ * @var array                                   $queryParams
+ *
+ * @var PDO                                     $db
+ * @var Psr\Http\Message\ServerRequestInterface $request
+ * @var Mobicms\Api\UserInterface               $systemUser
+ * @var Mobicms\Checkpoint\UserConfig           $userConfig
+ * @var Mobicms\Api\ToolsInterface              $tools
+ */
 
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Psr\Http\Message\ServerRequestInterface $request */
-$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
-$queryParams = $request->getQueryParams();
 $postParams = $request->getParsedBody();
 
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Checkpoint\UserConfig $userConfig */
-$userConfig = $systemUser->getConfig();
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
-$pageTitle = _t('Forum search');
 ob_start();
+$pageTitle = _t('Forum search');
 echo '<div class="phdr"><a href="index.php"><b>' . _t('Forum') . '</b></a> | ' . _t('Search') . '</div>';
 
 // Функция подсветки результатов запроса

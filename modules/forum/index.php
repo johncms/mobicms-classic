@@ -10,41 +10,35 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-/** @var Psr\Container\ContainerInterface $container */
+/**
+ * @var Psr\Container\ContainerInterface        $container
+ * @var Mobicms\Asset\Manager                   $asset
+ * @var PDO                                     $db
+ * @var Psr\Http\Message\ServerRequestInterface $request
+ * @var Mobicms\Api\UserInterface               $systemUser
+ * @var Mobicms\Checkpoint\UserConfig           $userConfig
+ * @var Mobicms\Api\ToolsInterface              $tools
+ * @var Mobicms\Api\ConfigInterface             $config
+ * @var Mobicms\Deprecated\Counters             $counters
+ * @var Zend\I18n\Translator\Translator         $translator
+ * @var League\Plates\Engine                    $view
+ */
 $container = App::getContainer();
-
-/** @var Mobicms\Asset\Manager $asset */
 $asset = $container->get(Mobicms\Asset\Manager::class);
-
-/** @var PDO $db */
 $db = $container->get(PDO::class);
-
-/** @var Psr\Http\Message\ServerRequestInterface $request */
 $request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
-
-/** @var Mobicms\Api\UserInterface $systemUser */
 $systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Checkpoint\UserConfig $userConfig */
 $userConfig = $systemUser->getConfig();
-
-/** @var Mobicms\Api\ToolsInterface $tools */
 $tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
-/** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
-
-/** @var Mobicms\Deprecated\Counters $counters */
 $counters = App::getContainer()->get('counters');
-
-/** @var Zend\I18n\Translator\Translator $translator */
 $translator = $container->get(Zend\I18n\Translator\Translator::class);
 $translator->addTranslationFilePattern('gettext', __DIR__ . '/locale', '/%s/default.mo');
-
-/** @var League\Plates\Engine $view */
 $view = $container->get(League\Plates\Engine::class);
 
+/** @var array $queryParams */
 $queryParams = $request->getQueryParams();
+
 $id = abs(intval($queryParams['id'] ?? 0));
 $act = $queryParams['act'] ?? '';
 $mod = $queryParams['mod'] ?? '';

@@ -10,29 +10,18 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
-
-/** @var Mobicms\Asset\Manager $asset */
-$asset = $container->get(Mobicms\Asset\Manager::class);
-
-/** @var Mobicms\Api\ConfigInterface $config */
-$config = $container->get(Mobicms\Api\ConfigInterface::class);
-
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Psr\Http\Message\ServerRequestInterface $request */
-$request = $container->get(Psr\Http\Message\ServerRequestInterface::class);
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
-
-/** @var League\Plates\Engine $view */
-$view = $container->get(League\Plates\Engine::class);
+/**
+ * @var int                                     $id
+ *
+ * @var Psr\Container\ContainerInterface        $container
+ * @var Mobicms\Asset\Manager                   $asset
+ * @var PDO                                     $db
+ * @var Psr\Http\Message\ServerRequestInterface $request
+ * @var Mobicms\Api\UserInterface               $systemUser
+ * @var Mobicms\Api\ToolsInterface              $tools
+ * @var Mobicms\Api\ConfigInterface             $config
+ * @var League\Plates\Engine                    $view
+ */
 
 // Закрываем доступ для определенных ситуаций
 if (!$id

@@ -10,19 +10,15 @@
 
 defined('MOBICMS') or die('Error: restricted access');
 
+/**
+ * @var int                        $id
+ *
+ * @var PDO                        $db
+ * @var Mobicms\Api\UserInterface  $systemUser
+ * @var Mobicms\Api\ToolsInterface $tools
+ */
+
 ob_start();
-
-/** @var Psr\Container\ContainerInterface $container */
-$container = App::getContainer();
-
-/** @var PDO $db */
-$db = $container->get(PDO::class);
-
-/** @var Mobicms\Api\UserInterface $systemUser */
-$systemUser = $container->get(Mobicms\Api\UserInterface::class);
-
-/** @var Mobicms\Api\ToolsInterface $tools */
-$tools = $container->get(Mobicms\Api\ToolsInterface::class);
 $start = $tools->getPgStart();
 
 if ($systemUser->rights >= 7) {
