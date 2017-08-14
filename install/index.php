@@ -287,7 +287,7 @@ switch ($act) {
         $protocol = isset($_SERVER["HTTPS"]) ? 'https' : 'http';
         $host = $_SERVER['HTTP_HOST'];
         $query = explode('?', $_SERVER['REQUEST_URI']);
-        $path = dirname(trim($query[0], '/'));
+        $path = trim(dirname($query[0]), '/\\.');
 
         // Принимаем данные формы
         $db_host = isset($_POST['dbhost']) ? htmlentities(trim($_POST['dbhost'])) : 'localhost';
