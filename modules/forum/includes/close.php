@@ -19,18 +19,14 @@ defined('MOBICMS') or die('Error: restricted access');
  * @var Mobicms\Api\UserInterface               $systemUser
  */
 
-if (($systemUser->rights != 3 && $systemUser->rights < 6) || !$id) {
-    header('Lication^ ?');
-    exit;
-}
-
-if ($db->query("SELECT COUNT(*) FROM `forum` WHERE `id` = '$id' AND `type` = 't'")->fetchColumn()) {
-    if (isset($queryParams['closed'])) {
-        $db->exec("UPDATE `forum` SET `edit` = '1' WHERE `id` = '$id'");
-    } else {
-        $db->exec("UPDATE `forum` SET `edit` = '0' WHERE `id` = '$id'");
+if (($systemUser->rights == 3 && $systemUser->rights >= 6) || !$id) {
+    if ($db->query("SELECT COUNT(*) FROM `forum` WHERE `id` = '$id' AND `type` = 't'")->fetchColumn()) {
+        if (isset($queryParams['closed'])) {
+            $db->exec("UPDATE `forum` SET `edit` = '1' WHERE `id` = '$id'");
+        } else {
+            $db->exec("UPDATE `forum` SET `edit` = '0' WHERE `id` = '$id'");
+        }
     }
+
+    header('Location: ?id=' . $id);
 }
-
-header('Location: ?id=' . $id);
-
