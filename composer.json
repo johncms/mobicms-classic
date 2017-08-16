@@ -21,7 +21,7 @@
   },
   "require": {
     "php": "^7.0",
-    "mobicms/mobicms-core": "dev-develop",
+    "mobicms/mobicms-classic-core": "dev-develop",
     "mobicms/mobicms-installer": "dev-develop",
     "roave/security-advisories": "dev-master",
     "verot/class.upload.php": "dev-master"
