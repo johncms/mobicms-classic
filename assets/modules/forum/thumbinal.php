@@ -28,6 +28,8 @@ if ($file && file_exists('../../../uploads/forum/attach/' . $file)) {
         case 4:
             $att_ext = 'jpg';
             break;
+        default:
+            $att_ext = null;
     }
 
     if ($att_ext) {
