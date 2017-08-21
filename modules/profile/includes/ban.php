@@ -34,6 +34,8 @@ $tools = $container->get(Mobicms\Api\ToolsInterface::class);
 /** @var Mobicms\Api\ConfigInterface $config */
 $config = $container->get(Mobicms\Api\ConfigInterface::class);
 
+$pageTitle = htmlspecialchars($user['name']) . ': ' . _t('Ban Panel');
+
 switch ($mod) {
     case 'do':
         // Баним пользователя (добавляем Бан в базу)
@@ -310,12 +312,12 @@ switch ($mod) {
             $i = 0;
 
             $types = [
-                1  => 'Full block',
-                2  => 'Private messages',
-                10 => 'Comments',
-                11 => 'Forum',
-                13 => 'Guestbook',
-                15 => 'Library',
+                1  => _t('Full block'),
+                2  => _t('Private messages'),
+                10 => _t('Comments'),
+                11 => _t('Forum'),
+                13 => _t('Guestbook'),
+                15 => _t('Library'),
             ];
 
             while ($res = $req->fetch()) {

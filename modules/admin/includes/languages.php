@@ -43,7 +43,7 @@ if (isset($_POST['lng']) || isset($_GET['refresh'])) {
         // Обновляем список имеющихся языков
         $lng_list = [];
 
-        foreach (glob(ROOT_PATH . 'system/locale/*/lng.ini') as $val) {
+        foreach (glob(ROOT_PATH . 'system/mobicms-classic-core/locale/*/lng.ini') as $val) {
             $iso = basename(dirname($val));
             $desc = parse_ini_file($val);
             $lng_list[$iso] = isset($desc['name']) && !empty($desc['name']) ? $desc['name'] : $iso;

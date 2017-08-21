@@ -66,8 +66,8 @@ if (!empty($act) && in_array($act, $array) && is_file(__DIR__ . '/includes/' . $
     require(__DIR__ . '/includes/' . $act . '.php');
 } else {
     $cnt = $db->query('SELECT * FROM (
-	SELECT COUNT( * ) `regtotal` FROM `cms_ban_users` WHERE `ban_time` > ' . time() . ')q1, (
-	SELECT COUNT( * ) `bantotal` FROM `users` WHERE `preg` = 0)q2')->fetch(); // TODO: column `preg` нужен индекс
+	SELECT COUNT( DISTINCT `user_id` ) `bantotal` FROM `cms_ban_users` WHERE `ban_time` > ' . time() . ')q1, (
+	SELECT COUNT( * ) `regtotal` FROM `users` WHERE `preg` = 0)q2')->fetch(); // TODO: column `preg` нужен индекс
     echo '<div class="phdr"><b>' . _t('Admin Panel') . '</b></div>';
 
     // Блок пользователей
