@@ -26,10 +26,6 @@ module.exports = function (grunt) {
                             '!system/vendor/container-interop/container-interop/docs/**',
                             '!system/vendor/container-interop/container-interop/composer.json',
 
-                            '!system/vendor/erusev/parsedown/test/**',
-                            '!system/vendor/erusev/parsedown/composer.json',
-                            '!system/vendor/erusev/parsedown/phpunit.xml.dist',
-
                             '!system/vendor/geshi/geshi/src/geshi/*',
                             'system/vendor/geshi/geshi/src/geshi/css.php',
                             'system/vendor/geshi/geshi/src/geshi/html5.php',
