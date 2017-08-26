@@ -1,0 +1,470 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: johncms\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
+"Last-Translator: mobiCMS <dev@mobicms.net>\n"
+"Language-Team: Indonesian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: crowdin.com\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-KeywordsList: _t;_p:1,2\n"
+"X-Poedit-SearchPath-0: modules/login\n"
+"X-Poedit-SearchPath-1: modules/homepage\n"
+"X-Poedit-SearchPath-2: system/src\n"
+"X-Poedit-SearchPath-3: themes/default/templates\n"
+"X-Poedit-SearchPath-4: modules/language\n"
+"X-Poedit-SearchPath-5: modules/redirect\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: johncms\n"
+"X-Crowdin-Language: id\n"
+"X-Crowdin-File: /system/system.pot\n"
+"Language: id_ID\n"
+
+#: modules/login/includes/login.php:37
+#: themes/default/templates/app/old/topmenu.phtml:10
+msgid "Home"
+msgstr "Beranda"
+
+#: modules/login/includes/login.php:39 modules/login/includes/login.php:159
+#: themes/default/templates/app/old/topmenu.phtml:20
+msgid "Login"
+msgstr "Masuk"
+
+#: modules/login/includes/login.php:49
+msgid "You have not entered login"
+msgstr "Anda belum memasukkan Nama Pengguna"
+
+#: modules/login/includes/login.php:53
+msgid "You have not entered password"
+msgstr "Anda belum memasukkan kata sandi"
+
+#: modules/login/includes/login.php:57
+msgid "Nickname"
+msgstr "Nama pengguna"
+
+#: modules/login/includes/login.php:57 modules/login/includes/login.php:61
+msgid "Invalid length"
+msgstr "Panjang tidak valid"
+
+#: modules/login/includes/login.php:61 modules/login/includes/login.php:156
+msgid "Password"
+msgstr "Kata Sandi"
+
+#: modules/login/includes/login.php:81
+msgid "The security code is not correct"
+msgstr "Kode verifikasi salah"
+
+#: modules/login/includes/login.php:93
+msgid "Verification code"
+msgstr "Kode verifikasi"
+
+#: modules/login/includes/login.php:94
+msgid "Enter verification code"
+msgstr "Masukkan kode verifikasi"
+
+#: modules/login/includes/login.php:99
+msgid "Continue"
+msgstr "Lanjutkan"
+
+#: modules/login/includes/login.php:111
+msgid "Sorry, but your request for registration is not considered yet. Please, be patient."
+msgstr "Maaf, permintaan pendaftaran Anda tertunda. Mohon tunggu."
+
+#: modules/login/includes/login.php:138 modules/login/includes/login.php:142
+msgid "Authorization failed"
+msgstr "Otorasi gagal"
+
+#: modules/login/includes/login.php:154
+msgid "Username"
+msgstr "Nama pengguna"
+
+#: modules/login/includes/login.php:158
+msgid "Remember"
+msgstr "Ingat"
+
+#: modules/login/includes/login.php:161
+msgid "Registration"
+msgstr "Pendaftaran"
+
+#: modules/login/includes/logout.php:35
+msgid "Are you sure you want to leave the site?"
+msgstr "Apakah Anda yakin ingin keluar dari situs?"
+
+#: modules/login/includes/logout.php:36
+msgid "Logout"
+msgstr "Keluar"
+
+#: modules/login/includes/logout.php:37 system/src/Deprecated/Comments.php:255
+msgid "Cancel"
+msgstr "Batal"
+
+#: system/src/Deprecated/Bbcode.php:170
+msgid "Edit List"
+msgstr "Sunting Daftar"
+
+#: system/src/Deprecated/Bbcode.php:181
+msgid "Add Smilies"
+msgstr "Tambahkan Smile"
+
+#: system/src/Deprecated/Bbcode.php:239
+msgid "Bold"
+msgstr "Tebal"
+
+#: system/src/Deprecated/Bbcode.php:240
+msgid "Italic"
+msgstr "Miring"
+
+#: system/src/Deprecated/Bbcode.php:241
+msgid "Underline"
+msgstr "Garis Bawah"
+
+#: system/src/Deprecated/Bbcode.php:242
+msgid "Strike"
+msgstr "Coret"
+
+#: system/src/Deprecated/Bbcode.php:243
+msgid "Text Color"
+msgstr "Warna Teks"
+
+#: system/src/Deprecated/Bbcode.php:244
+msgid "Background Color"
+msgstr "Warna Latar belakang"
+
+#: system/src/Deprecated/Bbcode.php:245
+msgid "List"
+msgstr "Daftar"
+
+#: system/src/Deprecated/Bbcode.php:246
+msgid "Spoiler"
+msgstr "Spoiler"
+
+#: system/src/Deprecated/Bbcode.php:247
+msgid "Quote"
+msgstr "Kutipan"
+
+#: system/src/Deprecated/Bbcode.php:248
+msgid "URL"
+msgstr "URL"
+
+#: system/src/Deprecated/Bbcode.php:249
+msgid "Code"
+msgstr "Kode"
+
+#: system/src/Deprecated/Bbcode.php:253
+msgid "Smilies"
+msgstr "Smile"
+
+#: system/src/Deprecated/Bbcode.php:293
+msgid "Added"
+msgstr "Ditambahkan"
+
+#: system/src/Deprecated/Comments.php:115
+#: system/src/Deprecated/Comments.php:311
+msgid "Reply"
+msgstr "Balas"
+
+#: system/src/Deprecated/Comments.php:123
+msgid "Administrator already replied to this message"
+msgstr "Pengurus telah membalas pesan ini"
+
+#: system/src/Deprecated/Comments.php:123
+#: system/src/Deprecated/Comments.php:146
+#: system/src/Deprecated/Comments.php:154
+#: system/src/Deprecated/Comments.php:157
+#: system/src/Deprecated/Comments.php:174
+#: system/src/Deprecated/Comments.php:202
+#: system/src/Deprecated/Comments.php:211
+#: system/src/Deprecated/Comments.php:214
+#: system/src/Deprecated/Comments.php:259
+#: modules/redirect/templates/index.phtml:21
+msgid "Back"
+msgstr "Kembali"
+
+#: system/src/Deprecated/Comments.php:157
+#: system/src/Deprecated/Comments.php:211
+msgid "Wrong data"
+msgstr "Data salah"
+
+#: system/src/Deprecated/Comments.php:165
+#: system/src/Deprecated/Comments.php:312
+msgid "Edit"
+msgstr "Sunting"
+
+#: system/src/Deprecated/Comments.php:174
+msgid "You cannot edit posts of higher administration"
+msgstr "Anda tidak bisa menyunting pos lebih tinggi dari Pengurus"
+
+#: system/src/Deprecated/Comments.php:252
+#: system/src/Deprecated/Comments.php:254
+#: system/src/Deprecated/Comments.php:313
+msgid "Delete"
+msgstr "Hapus"
+
+#: system/src/Deprecated/Comments.php:253
+msgid "Do you really want to delete?"
+msgstr "Apakah Anda yakin ingin menghapus?"
+
+#: system/src/Deprecated/Comments.php:256
+msgid "Clear all messages from this user"
+msgstr "Hapus semua pesan dari pengguna ini"
+
+#: system/src/Deprecated/Comments.php:257
+msgid "Clear"
+msgstr "Hapus"
+
+#: system/src/Deprecated/Comments.php:319
+msgid "Edited"
+msgstr "Disunting"
+
+#: system/src/Deprecated/Comments.php:343
+msgid "The list is empty"
+msgstr "Daftar ini kosong"
+
+#: system/src/Deprecated/Comments.php:346
+msgid "Total"
+msgstr "Total"
+
+#: system/src/Deprecated/Comments.php:352
+msgid "To Page"
+msgstr "Ke halaman"
+
+#: system/src/Deprecated/Comments.php:411
+msgid "Message"
+msgstr "Pesan"
+
+#: system/src/Deprecated/Comments.php:414
+msgid "Send"
+msgstr "Kirim"
+
+#: system/src/Deprecated/Comments.php:433
+msgid "Text is too short"
+msgstr "Teks terlalu pendek"
+
+#: system/src/Deprecated/Comments.php:439
+msgid "You cannot add the message so often<br>Please, wait"
+msgstr "Anda tidak bisa mengirim pesan terlalu sering<br>Mohon tunggu"
+
+#: system/src/Deprecated/Comments.php:439
+msgid "seconds"
+msgstr "detik"
+
+#: system/src/Deprecated/Comments.php:449
+msgid "Message already exists"
+msgstr "Pesan ini sudah ada"
+
+#: system/src/Deprecated/Counters.php:172
+msgid "Show for Period"
+msgstr "Lihat Riwayat"
+
+#: system/src/Deprecated/Counters.php:173
+#: themes/default/templates/app/old/notifications.phtml:48
+msgid "Unread"
+msgstr "Belum dibaca"
+
+#: system/src/Deprecated/Counters.php:179
+msgid "Last activity"
+msgstr "Aktivitas Terakhir"
+
+#: system/src/Deprecated/NewsWidget.php:66
+msgid "show more"
+msgstr "selengkapnya"
+
+#: system/src/Deprecated/NewsWidget.php:101
+msgid "Discuss"
+msgstr "Diskusi"
+
+#: system/src/Tools/Utilites.php:152
+msgid "Today"
+msgstr "Hari ini"
+
+#: system/src/Tools/Utilites.php:155
+msgid "Yesterday"
+msgstr "Kemarin"
+
+#: system/src/Tools/Utilites.php:171
+msgid "ERROR"
+msgstr "KESALAHAN"
+
+#: system/src/Tools/Utilites.php:258
+msgid "On the Homepage"
+msgstr "Di Beranda"
+
+#: system/src/Tools/Utilites.php:259
+msgid "Who is online?"
+msgstr "Siapa yang Aktif?"
+
+#: system/src/Tools/Utilites.php:260
+msgid "Reading the news"
+msgstr "Membaca berita"
+
+#: system/src/Tools/Utilites.php:261
+msgid "List of Users"
+msgstr "Daftar Pengguna"
+
+#: system/src/Tools/Utilites.php:262
+msgid "Watching the photo album"
+msgstr "Melihat Album Foto"
+
+#: system/src/Tools/Utilites.php:263
+#: modules/homepage/templates/mainmenu.phtml:16
+msgid "Downloads"
+msgstr "Unduhan"
+
+#: system/src/Tools/Utilites.php:264
+msgid "Reading the FAQ"
+msgstr "Membaca FAQ"
+
+#: system/src/Tools/Utilites.php:265
+#: modules/homepage/templates/mainmenu.phtml:12
+msgid "Forum"
+msgstr "Forum"
+
+#: system/src/Tools/Utilites.php:266
+#: modules/homepage/templates/mainmenu.phtml:9
+#: themes/default/templates/app/old/notifications.phtml:38
+msgid "Guestbook"
+msgstr "Buku Tamu"
+
+#: system/src/Tools/Utilites.php:267
+#: modules/homepage/templates/mainmenu.phtml:19
+msgid "Library"
+msgstr "Perpustakaan"
+
+#: system/src/Tools/Utilites.php:268
+msgid "Personal correspondence"
+msgstr "Pesan Pribadi"
+
+#: system/src/Tools/Utilites.php:269
+msgid "Profile"
+msgstr "Profil"
+
+#: system/src/Tools/Utilites.php:270
+msgid "Registered on the site"
+msgstr "Terdaftar di situs"
+
+#: system/src/Tools/Utilites.php:279
+msgid "Somewhere on the site"
+msgstr "Di suatu tempat di situs"
+
+#: system/src/Tools/Utilites.php:306
+msgid "Guest"
+msgstr "Pengunjung"
+
+#: system/src/Tools/Utilites.php:374
+msgid "Last Visit"
+msgstr "Kunjungan Terakhir"
+
+#: system/src/Tools/Utilites.php:378
+msgid "Browser"
+msgstr "Peramban"
+
+#: system/src/Tools/Utilites.php:380
+msgid "IP address"
+msgstr "Alamat IP"
+
+#: system/src/Tools/Utilites.php:590
+msgid "Day"
+msgid_plural "Days"
+msgstr[0] "Hari"
+
+#: modules/homepage/templates/mainmenu.phtml:1
+msgid "Welcome"
+msgstr "Selamat datang"
+
+#: modules/homepage/templates/mainmenu.phtml:3
+msgid "Information"
+msgstr "Informasi"
+
+#: modules/homepage/templates/mainmenu.phtml:5
+msgid "News archive"
+msgstr "Arsip berita"
+
+#: modules/homepage/templates/mainmenu.phtml:6
+msgid "Information, FAQ"
+msgstr "Informasi, FAQ"
+
+#: modules/homepage/templates/mainmenu.phtml:7
+msgid "Communication"
+msgstr "Komunikasi"
+
+#: modules/homepage/templates/mainmenu.phtml:14
+msgid "Useful"
+msgstr "Berguna"
+
+#: modules/homepage/templates/mainmenu.phtml:22
+msgid "Community"
+msgstr "Komunitas"
+
+#: modules/homepage/templates/mainmenu.phtml:23
+msgid "Users"
+msgstr "Pengguna"
+
+#: modules/homepage/templates/mainmenu.phtml:24
+msgid "Photo Albums"
+msgstr "Album Foto"
+
+#: modules/language/templates/index.phtml:1
+#: modules/language/templates/index.phtml:5
+msgid "Select language"
+msgstr "Pilih bahasa"
+
+#: modules/language/templates/index.phtml:16
+msgid "Apply"
+msgstr "Terapkan"
+
+#: modules/redirect/templates/index.phtml:1
+msgid "Redirect to an external link"
+msgstr "Mengarahkan ulang ke link eksternal"
+
+#: modules/redirect/templates/index.phtml:4
+msgid "External Link"
+msgstr "Tautan Eksternal"
+
+#: modules/redirect/templates/index.phtml:8
+msgid "ATTENTION!"
+msgstr "PERHATIAN!"
+
+#: modules/redirect/templates/index.phtml:10
+msgid "You are going to leave our site and go to an external link"
+msgstr "Anda akan keluar dari situs kami dan menuju ke tautan eksternal"
+
+#: modules/redirect/templates/index.phtml:14
+msgid "Administration of our site is not responsible for the content of external sites"
+msgstr "Pengurus tidak bertanggung jawab atas isi dari situs eksternal"
+
+#: modules/redirect/templates/index.phtml:15
+msgid "It is recommended not to specify your data (Login, Password) on third party sites"
+msgstr "Disarankan tidak untuk menentukan data anda (Login, Password) pada situs pihak ketiga"
+
+#: modules/redirect/templates/index.phtml:17
+msgid "Go to Link"
+msgstr "Buka tautan"
+
+#: themes/default/templates/app/old/notifications.phtml:15
+msgid "Ban"
+msgstr "Blokir"
+
+#: themes/default/templates/app/old/notifications.phtml:15
+msgid "Details"
+msgstr "Detail"
+
+#: themes/default/templates/app/old/notifications.phtml:22
+msgid "System"
+msgstr "Sistem"
+
+#: themes/default/templates/app/old/notifications.phtml:34
+msgid "Mail"
+msgstr "Pesan"
+
+#: themes/default/templates/app/old/notifications.phtml:44
+msgid "Comments"
+msgstr "Komentar"
+
+#: themes/default/templates/app/old/topmenu.phtml:16
+msgid "Personal"
+msgstr "Pribadi"
+

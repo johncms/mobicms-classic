@@ -1,0 +1,472 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: johncms\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
+"Last-Translator: mobiCMS <dev@mobicms.net>\n"
+"Language-Team: Lithuanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: crowdin.com\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-KeywordsList: _t;_p:1,2\n"
+"X-Poedit-SearchPath-0: modules/login\n"
+"X-Poedit-SearchPath-1: modules/homepage\n"
+"X-Poedit-SearchPath-2: system/src\n"
+"X-Poedit-SearchPath-3: themes/default/templates\n"
+"X-Poedit-SearchPath-4: modules/language\n"
+"X-Poedit-SearchPath-5: modules/redirect\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Crowdin-Project: johncms\n"
+"X-Crowdin-Language: lt\n"
+"X-Crowdin-File: /system/system.pot\n"
+"Language: lt_LT\n"
+
+#: modules/login/includes/login.php:37
+#: themes/default/templates/app/old/topmenu.phtml:10
+msgid "Home"
+msgstr "Pradžia"
+
+#: modules/login/includes/login.php:39 modules/login/includes/login.php:159
+#: themes/default/templates/app/old/topmenu.phtml:20
+msgid "Login"
+msgstr "Prisijungti"
+
+#: modules/login/includes/login.php:49
+msgid "You have not entered login"
+msgstr "Jus neįvedėte slapyvardžio"
+
+#: modules/login/includes/login.php:53
+msgid "You have not entered password"
+msgstr "Jus neįvedėte slaptažodžio"
+
+#: modules/login/includes/login.php:57
+msgid "Nickname"
+msgstr "Slapyvardis"
+
+#: modules/login/includes/login.php:57 modules/login/includes/login.php:61
+msgid "Invalid length"
+msgstr "Neleistinas ilgis"
+
+#: modules/login/includes/login.php:61 modules/login/includes/login.php:156
+msgid "Password"
+msgstr "Slaptažodis"
+
+#: modules/login/includes/login.php:81
+msgid "The security code is not correct"
+msgstr "Neteisingas apsaugos kodas"
+
+#: modules/login/includes/login.php:93
+msgid "Verification code"
+msgstr "Patvirtinimo kodas"
+
+#: modules/login/includes/login.php:94
+msgid "Enter verification code"
+msgstr "Įveskite patvirtinimo kodą"
+
+#: modules/login/includes/login.php:99
+msgid "Continue"
+msgstr "Tęsti"
+
+#: modules/login/includes/login.php:111
+msgid "Sorry, but your request for registration is not considered yet. Please, be patient."
+msgstr "Atsiprašome, bet jusų prašymas dar neperžiuretas administracija. Prašome, būkite kantrus."
+
+#: modules/login/includes/login.php:138 modules/login/includes/login.php:142
+msgid "Authorization failed"
+msgstr "Autorizavimas nepavyko"
+
+#: modules/login/includes/login.php:154
+msgid "Username"
+msgstr "Vartotojo vardas"
+
+#: modules/login/includes/login.php:158
+msgid "Remember"
+msgstr "Prisiminti"
+
+#: modules/login/includes/login.php:161
+msgid "Registration"
+msgstr "Registracija"
+
+#: modules/login/includes/logout.php:35
+msgid "Are you sure you want to leave the site?"
+msgstr "Ar tikrai norite palikti šią svetainę?"
+
+#: modules/login/includes/logout.php:36
+msgid "Logout"
+msgstr "Atsijungti"
+
+#: modules/login/includes/logout.php:37 system/src/Deprecated/Comments.php:255
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: system/src/Deprecated/Bbcode.php:170
+msgid "Edit List"
+msgstr "Redaguoti sąrašą"
+
+#: system/src/Deprecated/Bbcode.php:181
+msgid "Add Smilies"
+msgstr "Pridėti Šypsenėles"
+
+#: system/src/Deprecated/Bbcode.php:239
+msgid "Bold"
+msgstr "Paryškintas"
+
+#: system/src/Deprecated/Bbcode.php:240
+msgid "Italic"
+msgstr "Kursyvinis"
+
+#: system/src/Deprecated/Bbcode.php:241
+msgid "Underline"
+msgstr "Pabrauktas"
+
+#: system/src/Deprecated/Bbcode.php:242
+msgid "Strike"
+msgstr "Perbrauktas"
+
+#: system/src/Deprecated/Bbcode.php:243
+msgid "Text Color"
+msgstr "Teksto spalva"
+
+#: system/src/Deprecated/Bbcode.php:244
+msgid "Background Color"
+msgstr "Fono spalva"
+
+#: system/src/Deprecated/Bbcode.php:245
+msgid "List"
+msgstr "Sąrašas"
+
+#: system/src/Deprecated/Bbcode.php:246
+msgid "Spoiler"
+msgstr "Paslėptukas"
+
+#: system/src/Deprecated/Bbcode.php:247
+msgid "Quote"
+msgstr "Cituoti"
+
+#: system/src/Deprecated/Bbcode.php:248
+msgid "URL"
+msgstr "URL"
+
+#: system/src/Deprecated/Bbcode.php:249
+msgid "Code"
+msgstr "Kodas"
+
+#: system/src/Deprecated/Bbcode.php:253
+msgid "Smilies"
+msgstr "Šypsenėlės"
+
+#: system/src/Deprecated/Bbcode.php:293
+msgid "Added"
+msgstr "Pridėta"
+
+#: system/src/Deprecated/Comments.php:115
+#: system/src/Deprecated/Comments.php:311
+msgid "Reply"
+msgstr "Atsakyti"
+
+#: system/src/Deprecated/Comments.php:123
+msgid "Administrator already replied to this message"
+msgstr "Administratorius jau atsakė į šį pranešimą"
+
+#: system/src/Deprecated/Comments.php:123
+#: system/src/Deprecated/Comments.php:146
+#: system/src/Deprecated/Comments.php:154
+#: system/src/Deprecated/Comments.php:157
+#: system/src/Deprecated/Comments.php:174
+#: system/src/Deprecated/Comments.php:202
+#: system/src/Deprecated/Comments.php:211
+#: system/src/Deprecated/Comments.php:214
+#: system/src/Deprecated/Comments.php:259
+#: modules/redirect/templates/index.phtml:21
+msgid "Back"
+msgstr "Atgal"
+
+#: system/src/Deprecated/Comments.php:157
+#: system/src/Deprecated/Comments.php:211
+msgid "Wrong data"
+msgstr "Klaidingi duomenys"
+
+#: system/src/Deprecated/Comments.php:165
+#: system/src/Deprecated/Comments.php:312
+msgid "Edit"
+msgstr "Redaguoti"
+
+#: system/src/Deprecated/Comments.php:174
+msgid "You cannot edit posts of higher administration"
+msgstr "Jus negalite redaguoti vyresniojo už jus administracijos pranešimus"
+
+#: system/src/Deprecated/Comments.php:252
+#: system/src/Deprecated/Comments.php:254
+#: system/src/Deprecated/Comments.php:313
+msgid "Delete"
+msgstr "Ištrinti"
+
+#: system/src/Deprecated/Comments.php:253
+msgid "Do you really want to delete?"
+msgstr "Ar tikrai norite ištrinti?"
+
+#: system/src/Deprecated/Comments.php:256
+msgid "Clear all messages from this user"
+msgstr "Išvalyti visus šio vartotojo pranešimus"
+
+#: system/src/Deprecated/Comments.php:257
+msgid "Clear"
+msgstr "Išvalyti"
+
+#: system/src/Deprecated/Comments.php:319
+msgid "Edited"
+msgstr "Redagavo"
+
+#: system/src/Deprecated/Comments.php:343
+msgid "The list is empty"
+msgstr "Sąrašas tuščias"
+
+#: system/src/Deprecated/Comments.php:346
+msgid "Total"
+msgstr "Viso"
+
+#: system/src/Deprecated/Comments.php:352
+msgid "To Page"
+msgstr "Į puslapį"
+
+#: system/src/Deprecated/Comments.php:411
+msgid "Message"
+msgstr "Žinutė"
+
+#: system/src/Deprecated/Comments.php:414
+msgid "Send"
+msgstr "Siųsti"
+
+#: system/src/Deprecated/Comments.php:433
+msgid "Text is too short"
+msgstr "Tekstas per trumpas"
+
+#: system/src/Deprecated/Comments.php:439
+msgid "You cannot add the message so often<br>Please, wait"
+msgstr "Jus negalite rašyti pranešimą taip dažnai<br> Prašome palaukti"
+
+#: system/src/Deprecated/Comments.php:439
+msgid "seconds"
+msgstr "sek."
+
+#: system/src/Deprecated/Comments.php:449
+msgid "Message already exists"
+msgstr "Pranešimas jau yra"
+
+#: system/src/Deprecated/Counters.php:172
+msgid "Show for Period"
+msgstr "Rodyti laikotarpi"
+
+#: system/src/Deprecated/Counters.php:173
+#: themes/default/templates/app/old/notifications.phtml:48
+msgid "Unread"
+msgstr "Neskaityta"
+
+#: system/src/Deprecated/Counters.php:179
+msgid "Last activity"
+msgstr "Paskutinis aktyvumas"
+
+#: system/src/Deprecated/NewsWidget.php:66
+msgid "show more"
+msgstr "rodyti daugiau"
+
+#: system/src/Deprecated/NewsWidget.php:101
+msgid "Discuss"
+msgstr "Diskusija"
+
+#: system/src/Tools/Utilites.php:152
+msgid "Today"
+msgstr "Šiandien"
+
+#: system/src/Tools/Utilites.php:155
+msgid "Yesterday"
+msgstr "Vakar"
+
+#: system/src/Tools/Utilites.php:171
+msgid "ERROR"
+msgstr "KLAIDA"
+
+#: system/src/Tools/Utilites.php:258
+msgid "On the Homepage"
+msgstr "Pagrindiniame puslapyje"
+
+#: system/src/Tools/Utilites.php:259
+msgid "Who is online?"
+msgstr "Kas Prisijungę?"
+
+#: system/src/Tools/Utilites.php:260
+msgid "Reading the news"
+msgstr "Skaito naujienas"
+
+#: system/src/Tools/Utilites.php:261
+msgid "List of Users"
+msgstr "Vartotojų sąrašas"
+
+#: system/src/Tools/Utilites.php:262
+msgid "Watching the photo album"
+msgstr "Žiūrėti nuotraukų albumą"
+
+#: system/src/Tools/Utilites.php:263
+#: modules/homepage/templates/mainmenu.phtml:16
+msgid "Downloads"
+msgstr "Atsisiuntimai"
+
+#: system/src/Tools/Utilites.php:264
+msgid "Reading the FAQ"
+msgstr "Skaityti DUK"
+
+#: system/src/Tools/Utilites.php:265
+#: modules/homepage/templates/mainmenu.phtml:12
+msgid "Forum"
+msgstr "Forumas"
+
+#: system/src/Tools/Utilites.php:266
+#: modules/homepage/templates/mainmenu.phtml:9
+#: themes/default/templates/app/old/notifications.phtml:38
+msgid "Guestbook"
+msgstr "Svečių Knyga"
+
+#: system/src/Tools/Utilites.php:267
+#: modules/homepage/templates/mainmenu.phtml:19
+msgid "Library"
+msgstr "Biblioteka"
+
+#: system/src/Tools/Utilites.php:268
+msgid "Personal correspondence"
+msgstr "Asmeninė korespondencija"
+
+#: system/src/Tools/Utilites.php:269
+msgid "Profile"
+msgstr "Profilis"
+
+#: system/src/Tools/Utilites.php:270
+msgid "Registered on the site"
+msgstr "Prisiregistravęs svetainėje"
+
+#: system/src/Tools/Utilites.php:279
+msgid "Somewhere on the site"
+msgstr "Kažkur apie svetainę"
+
+#: system/src/Tools/Utilites.php:306
+msgid "Guest"
+msgstr "Svečias"
+
+#: system/src/Tools/Utilites.php:374
+msgid "Last Visit"
+msgstr "Paskutinis apsilankymas"
+
+#: system/src/Tools/Utilites.php:378
+msgid "Browser"
+msgstr "Naršyklė"
+
+#: system/src/Tools/Utilites.php:380
+msgid "IP address"
+msgstr "IP adresas"
+
+#: system/src/Tools/Utilites.php:590
+msgid "Day"
+msgid_plural "Days"
+msgstr[0] "Dieną"
+msgstr[1] "Dienos"
+msgstr[2] "Dienų"
+
+#: modules/homepage/templates/mainmenu.phtml:1
+msgid "Welcome"
+msgstr "Sveiki"
+
+#: modules/homepage/templates/mainmenu.phtml:3
+msgid "Information"
+msgstr "Informacija"
+
+#: modules/homepage/templates/mainmenu.phtml:5
+msgid "News archive"
+msgstr "Naujienų archyvas"
+
+#: modules/homepage/templates/mainmenu.phtml:6
+msgid "Information, FAQ"
+msgstr "Informacija, klausimai ir atsakymai"
+
+#: modules/homepage/templates/mainmenu.phtml:7
+msgid "Communication"
+msgstr "Komunikacijos"
+
+#: modules/homepage/templates/mainmenu.phtml:14
+msgid "Useful"
+msgstr "Naudinga"
+
+#: modules/homepage/templates/mainmenu.phtml:22
+msgid "Community"
+msgstr "Bendruomenė"
+
+#: modules/homepage/templates/mainmenu.phtml:23
+msgid "Users"
+msgstr "Vartotojai"
+
+#: modules/homepage/templates/mainmenu.phtml:24
+msgid "Photo Albums"
+msgstr "Nuotraukų Albumai"
+
+#: modules/language/templates/index.phtml:1
+#: modules/language/templates/index.phtml:5
+msgid "Select language"
+msgstr "Pasirinkti kalbą"
+
+#: modules/language/templates/index.phtml:16
+msgid "Apply"
+msgstr "Pritaikyti"
+
+#: modules/redirect/templates/index.phtml:1
+msgid "Redirect to an external link"
+msgstr "Nukreipti į išorės nuorodą"
+
+#: modules/redirect/templates/index.phtml:4
+msgid "External Link"
+msgstr "Išorinė nuoroda"
+
+#: modules/redirect/templates/index.phtml:8
+msgid "ATTENTION!"
+msgstr "DĖMESIO!"
+
+#: modules/redirect/templates/index.phtml:10
+msgid "You are going to leave our site and go to an external link"
+msgstr "Jus ketinate palikti mūsų svetainę ir eiti į išorinę nuorodą"
+
+#: modules/redirect/templates/index.phtml:14
+msgid "Administration of our site is not responsible for the content of external sites"
+msgstr "Mūsų svetainės administracija nėra atsakinga už išorės svetainių turinį"
+
+#: modules/redirect/templates/index.phtml:15
+msgid "It is recommended not to specify your data (Login, Password) on third party sites"
+msgstr "Rekomenduojama ne nurodykite savo duomenis (Prisijungimo vardą, Slaptažodį) į trečiųjų šalių svetaines"
+
+#: modules/redirect/templates/index.phtml:17
+msgid "Go to Link"
+msgstr "Eiti į Nuorodą"
+
+#: themes/default/templates/app/old/notifications.phtml:15
+msgid "Ban"
+msgstr "Blokuoti"
+
+#: themes/default/templates/app/old/notifications.phtml:15
+msgid "Details"
+msgstr "Detaliau"
+
+#: themes/default/templates/app/old/notifications.phtml:22
+msgid "System"
+msgstr "Sistema"
+
+#: themes/default/templates/app/old/notifications.phtml:34
+msgid "Mail"
+msgstr "Paštas"
+
+#: themes/default/templates/app/old/notifications.phtml:44
+msgid "Comments"
+msgstr "Komentarai"
+
+#: themes/default/templates/app/old/topmenu.phtml:16
+msgid "Personal"
+msgstr "Asmeninės"
+

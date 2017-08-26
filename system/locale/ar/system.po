@@ -1,0 +1,475 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: johncms\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2017-07-30 08:08-0400\n"
+"Last-Translator: mobiCMS <dev@mobicms.net>\n"
+"Language-Team: Arabic\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: crowdin.com\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-KeywordsList: _t;_p:1,2\n"
+"X-Poedit-SearchPath-0: modules/login\n"
+"X-Poedit-SearchPath-1: modules/homepage\n"
+"X-Poedit-SearchPath-2: system/src\n"
+"X-Poedit-SearchPath-3: themes/default/templates\n"
+"X-Poedit-SearchPath-4: modules/language\n"
+"X-Poedit-SearchPath-5: modules/redirect\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Crowdin-Project: johncms\n"
+"X-Crowdin-Language: ar\n"
+"X-Crowdin-File: /system/system.pot\n"
+"Language: ar_SA\n"
+
+#: modules/login/includes/login.php:37
+#: themes/default/templates/app/old/topmenu.phtml:10
+msgid "Home"
+msgstr "الصفحة الرّئيسية"
+
+#: modules/login/includes/login.php:39 modules/login/includes/login.php:159
+#: themes/default/templates/app/old/topmenu.phtml:20
+msgid "Login"
+msgstr "تسجيل دخول"
+
+#: modules/login/includes/login.php:49
+msgid "You have not entered login"
+msgstr "لم تقم بادخال العضوية"
+
+#: modules/login/includes/login.php:53
+msgid "You have not entered password"
+msgstr "لم تدخل كلمة المرور"
+
+#: modules/login/includes/login.php:57
+msgid "Nickname"
+msgstr "الكنية"
+
+#: modules/login/includes/login.php:57 modules/login/includes/login.php:61
+msgid "Invalid length"
+msgstr "طول غير صالح"
+
+#: modules/login/includes/login.php:61 modules/login/includes/login.php:156
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: modules/login/includes/login.php:81
+msgid "The security code is not correct"
+msgstr "رمز الأمان غير صحيح"
+
+#: modules/login/includes/login.php:93
+msgid "Verification code"
+msgstr "رمز التحقق"
+
+#: modules/login/includes/login.php:94
+msgid "Enter verification code"
+msgstr "رمز التحقق الخاص بك"
+
+#: modules/login/includes/login.php:99
+msgid "Continue"
+msgstr "متابعه"
+
+#: modules/login/includes/login.php:111
+msgid "Sorry, but your request for registration is not considered yet. Please, be patient."
+msgstr "لم يتم تفعيل اسمك حتى الان"
+
+#: modules/login/includes/login.php:138 modules/login/includes/login.php:142
+msgid "Authorization failed"
+msgstr "التصريح مرفوض !"
+
+#: modules/login/includes/login.php:154
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: modules/login/includes/login.php:158
+msgid "Remember"
+msgstr "تذكّر"
+
+#: modules/login/includes/login.php:161
+msgid "Registration"
+msgstr "تسجيل"
+
+#: modules/login/includes/logout.php:35
+msgid "Are you sure you want to leave the site?"
+msgstr "هل ترغب حقّا بمغادرة هذه الصفحة؟"
+
+#: modules/login/includes/logout.php:36
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: modules/login/includes/logout.php:37 system/src/Deprecated/Comments.php:255
+msgid "Cancel"
+msgstr "إلغاء الأمر"
+
+#: system/src/Deprecated/Bbcode.php:170
+msgid "Edit List"
+msgstr "تعديل القائمة "
+
+#: system/src/Deprecated/Bbcode.php:181
+msgid "Add Smilies"
+msgstr "إضافة الابتسامات"
+
+#: system/src/Deprecated/Bbcode.php:239
+msgid "Bold"
+msgstr "عريض"
+
+#: system/src/Deprecated/Bbcode.php:240
+msgid "Italic"
+msgstr "مائل"
+
+#: system/src/Deprecated/Bbcode.php:241
+msgid "Underline"
+msgstr "تسطير"
+
+#: system/src/Deprecated/Bbcode.php:242
+msgid "Strike"
+msgstr "ضربة"
+
+#: system/src/Deprecated/Bbcode.php:243
+msgid "Text Color"
+msgstr "لون الخط"
+
+#: system/src/Deprecated/Bbcode.php:244
+msgid "Background Color"
+msgstr "لون الخلفية"
+
+#: system/src/Deprecated/Bbcode.php:245
+msgid "List"
+msgstr "قائمة"
+
+#: system/src/Deprecated/Bbcode.php:246
+msgid "Spoiler"
+msgstr "تالف"
+
+#: system/src/Deprecated/Bbcode.php:247
+msgid "Quote"
+msgstr "اقتباس"
+
+#: system/src/Deprecated/Bbcode.php:248
+msgid "URL"
+msgstr "الرابط"
+
+#: system/src/Deprecated/Bbcode.php:249
+msgid "Code"
+msgstr "الكود"
+
+#: system/src/Deprecated/Bbcode.php:253
+msgid "Smilies"
+msgstr "الابتسامات"
+
+#: system/src/Deprecated/Bbcode.php:293
+msgid "Added"
+msgstr "تمت الاضافة"
+
+#: system/src/Deprecated/Comments.php:115
+#: system/src/Deprecated/Comments.php:311
+msgid "Reply"
+msgstr "رد "
+
+#: system/src/Deprecated/Comments.php:123
+msgid "Administrator already replied to this message"
+msgstr "مدير بالفعل رد على هذه الرسالة"
+
+#: system/src/Deprecated/Comments.php:123
+#: system/src/Deprecated/Comments.php:146
+#: system/src/Deprecated/Comments.php:154
+#: system/src/Deprecated/Comments.php:157
+#: system/src/Deprecated/Comments.php:174
+#: system/src/Deprecated/Comments.php:202
+#: system/src/Deprecated/Comments.php:211
+#: system/src/Deprecated/Comments.php:214
+#: system/src/Deprecated/Comments.php:259
+#: modules/redirect/templates/index.phtml:21
+msgid "Back"
+msgstr "رجوع"
+
+#: system/src/Deprecated/Comments.php:157
+#: system/src/Deprecated/Comments.php:211
+msgid "Wrong data"
+msgstr "بيانات خاطئة"
+
+#: system/src/Deprecated/Comments.php:165
+#: system/src/Deprecated/Comments.php:312
+msgid "Edit"
+msgstr "تحرير"
+
+#: system/src/Deprecated/Comments.php:174
+msgid "You cannot edit posts of higher administration"
+msgstr "لا يمكنك تحرير مناصب الإدارة العليا"
+
+#: system/src/Deprecated/Comments.php:252
+#: system/src/Deprecated/Comments.php:254
+#: system/src/Deprecated/Comments.php:313
+msgid "Delete"
+msgstr "حذف"
+
+#: system/src/Deprecated/Comments.php:253
+msgid "Do you really want to delete?"
+msgstr "هل ترغب بالحذف ؟"
+
+#: system/src/Deprecated/Comments.php:256
+msgid "Clear all messages from this user"
+msgstr "مسح جميع رسائل من هذا المستخدم"
+
+#: system/src/Deprecated/Comments.php:257
+msgid "Clear"
+msgstr "تنظيف"
+
+#: system/src/Deprecated/Comments.php:319
+msgid "Edited"
+msgstr "تحرير"
+
+#: system/src/Deprecated/Comments.php:343
+msgid "The list is empty"
+msgstr "فارغة"
+
+#: system/src/Deprecated/Comments.php:346
+msgid "Total"
+msgstr "مجموع"
+
+#: system/src/Deprecated/Comments.php:352
+msgid "To Page"
+msgstr "الى صفحه"
+
+#: system/src/Deprecated/Comments.php:411
+msgid "Message"
+msgstr "الرسالة"
+
+#: system/src/Deprecated/Comments.php:414
+msgid "Send"
+msgstr "إرسال"
+
+#: system/src/Deprecated/Comments.php:433
+msgid "Text is too short"
+msgstr "النص قصير جداً"
+
+#: system/src/Deprecated/Comments.php:439
+msgid "You cannot add the message so often<br>Please, wait"
+msgstr "لا يمكنك إضافة الرسالة في كثير من الأحيان <br>من فضلك، الانتظار"
+
+#: system/src/Deprecated/Comments.php:439
+msgid "seconds"
+msgstr "ثانية"
+
+#: system/src/Deprecated/Comments.php:449
+msgid "Message already exists"
+msgstr "الرسالة موجوده بالفعل"
+
+#: system/src/Deprecated/Counters.php:172
+msgid "Show for Period"
+msgstr "إظهار للفترة"
+
+#: system/src/Deprecated/Counters.php:173
+#: themes/default/templates/app/old/notifications.phtml:48
+msgid "Unread"
+msgstr "غير مقروءة"
+
+#: system/src/Deprecated/Counters.php:179
+msgid "Last activity"
+msgstr "آخر نشاط"
+
+#: system/src/Deprecated/NewsWidget.php:66
+msgid "show more"
+msgstr "اعرض المزيد"
+
+#: system/src/Deprecated/NewsWidget.php:101
+msgid "Discuss"
+msgstr "مناقشة"
+
+#: system/src/Tools/Utilites.php:152
+msgid "Today"
+msgstr "اليوم"
+
+#: system/src/Tools/Utilites.php:155
+msgid "Yesterday"
+msgstr "بالأمس"
+
+#: system/src/Tools/Utilites.php:171
+msgid "ERROR"
+msgstr "خطأ"
+
+#: system/src/Tools/Utilites.php:258
+msgid "On the Homepage"
+msgstr "على الصفحة الرئيسية"
+
+#: system/src/Tools/Utilites.php:259
+msgid "Who is online?"
+msgstr "المتواجدون الآن؟"
+
+#: system/src/Tools/Utilites.php:260
+msgid "Reading the news"
+msgstr "قراءة الأخبار"
+
+#: system/src/Tools/Utilites.php:261
+msgid "List of Users"
+msgstr "قائمة المستخدمين"
+
+#: system/src/Tools/Utilites.php:262
+msgid "Watching the photo album"
+msgstr "مشاهدة ألبوم الصور"
+
+#: system/src/Tools/Utilites.php:263
+#: modules/homepage/templates/mainmenu.phtml:16
+msgid "Downloads"
+msgstr "التنزيلات"
+
+#: system/src/Tools/Utilites.php:264
+msgid "Reading the FAQ"
+msgstr "قراءة أسئلة وأجوبة"
+
+#: system/src/Tools/Utilites.php:265
+#: modules/homepage/templates/mainmenu.phtml:12
+msgid "Forum"
+msgstr "منتديات"
+
+#: system/src/Tools/Utilites.php:266
+#: modules/homepage/templates/mainmenu.phtml:9
+#: themes/default/templates/app/old/notifications.phtml:38
+msgid "Guestbook"
+msgstr "سجل الزوار"
+
+#: system/src/Tools/Utilites.php:267
+#: modules/homepage/templates/mainmenu.phtml:19
+msgid "Library"
+msgstr "مَكتبَة"
+
+#: system/src/Tools/Utilites.php:268
+msgid "Personal correspondence"
+msgstr "المراسلات الشخصية"
+
+#: system/src/Tools/Utilites.php:269
+msgid "Profile"
+msgstr "الملفّ الشّخصي"
+
+#: system/src/Tools/Utilites.php:270
+msgid "Registered on the site"
+msgstr "التسجيل في الموقع"
+
+#: system/src/Tools/Utilites.php:279
+msgid "Somewhere on the site"
+msgstr "في مكان ما على الموقع"
+
+#: system/src/Tools/Utilites.php:306
+msgid "Guest"
+msgstr "زائر"
+
+#: system/src/Tools/Utilites.php:374
+msgid "Last Visit"
+msgstr "آخر زيارة:"
+
+#: system/src/Tools/Utilites.php:378
+msgid "Browser"
+msgstr "المُتصفّح"
+
+#: system/src/Tools/Utilites.php:380
+msgid "IP address"
+msgstr "عنوان الـ IP"
+
+#: system/src/Tools/Utilites.php:590
+msgid "Day"
+msgid_plural "Days"
+msgstr[0] "ايام"
+msgstr[1] "اليوم"
+msgstr[2] "ايام"
+msgstr[3] "يوم"
+msgstr[4] "يوم"
+msgstr[5] "يوم"
+
+#: modules/homepage/templates/mainmenu.phtml:1
+msgid "Welcome"
+msgstr "مرحبا بك"
+
+#: modules/homepage/templates/mainmenu.phtml:3
+msgid "Information"
+msgstr "المعلومات"
+
+#: modules/homepage/templates/mainmenu.phtml:5
+msgid "News archive"
+msgstr "أرشيف الأخبار"
+
+#: modules/homepage/templates/mainmenu.phtml:6
+msgid "Information, FAQ"
+msgstr "معلومات، أسئلة وأجوبة"
+
+#: modules/homepage/templates/mainmenu.phtml:7
+msgid "Communication"
+msgstr "الاتصالات"
+
+#: modules/homepage/templates/mainmenu.phtml:14
+msgid "Useful"
+msgstr "مفيدة"
+
+#: modules/homepage/templates/mainmenu.phtml:22
+msgid "Community"
+msgstr "المجتمع"
+
+#: modules/homepage/templates/mainmenu.phtml:23
+msgid "Users"
+msgstr "الاعضاء"
+
+#: modules/homepage/templates/mainmenu.phtml:24
+msgid "Photo Albums"
+msgstr "ألبومات الصور"
+
+#: modules/language/templates/index.phtml:1
+#: modules/language/templates/index.phtml:5
+msgid "Select language"
+msgstr "حدد اللغة"
+
+#: modules/language/templates/index.phtml:16
+msgid "Apply"
+msgstr "تطبيق"
+
+#: modules/redirect/templates/index.phtml:1
+msgid "Redirect to an external link"
+msgstr "إعادة توجيه إلى رابط خارجي"
+
+#: modules/redirect/templates/index.phtml:4
+msgid "External Link"
+msgstr "رابط خارجي"
+
+#: modules/redirect/templates/index.phtml:8
+msgid "ATTENTION!"
+msgstr "الاهتمام!"
+
+#: modules/redirect/templates/index.phtml:10
+msgid "You are going to leave our site and go to an external link"
+msgstr "انت على وشك مغادرة موقعنا للذهاب الى رابط خارجي"
+
+#: modules/redirect/templates/index.phtml:14
+msgid "Administration of our site is not responsible for the content of external sites"
+msgstr "إدارة الموقع ليست مسؤولة عن محتويات المواقع الخارجية"
+
+#: modules/redirect/templates/index.phtml:15
+msgid "It is recommended not to specify your data (Login, Password) on third party sites"
+msgstr "فمن المستحسن عدم تحديد البيانات الخاصة بك (اسم المستخدم, كلمة المرور) على مواقع الطرف الثالث"
+
+#: modules/redirect/templates/index.phtml:17
+msgid "Go to Link"
+msgstr "الذهاب إلى الرابط"
+
+#: themes/default/templates/app/old/notifications.phtml:15
+msgid "Ban"
+msgstr "حظر"
+
+#: themes/default/templates/app/old/notifications.phtml:15
+msgid "Details"
+msgstr "التفاصيل"
+
+#: themes/default/templates/app/old/notifications.phtml:22
+msgid "System"
+msgstr "النظام"
+
+#: themes/default/templates/app/old/notifications.phtml:34
+msgid "Mail"
+msgstr "البريـــد"
+
+#: themes/default/templates/app/old/notifications.phtml:44
+msgid "Comments"
+msgstr "التعليقات"
+
+#: themes/default/templates/app/old/topmenu.phtml:16
+msgid "Personal"
+msgstr "الملف الشخصي"
+
