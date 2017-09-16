@@ -131,7 +131,7 @@ switch ($act) {
             $flood = $tools->antiflood();
         } else {
             // Антифлуд для гостей
-            $req = $db->query("SELECT `time` FROM `guest` WHERE `ip` = '" . $db->quote($request->getAttribute('ip')) . "' AND `browser` = " . $db->quote($request->getAttribute('user_agent')) . " AND `time` > '" . (time() - 60) . "'");
+            $req = $db->query("SELECT `time` FROM `guest` WHERE `ip` = " . $db->quote($request->getAttribute('ip')) . " AND `browser` = " . $db->quote($request->getAttribute('user_agent')) . " AND `time` > '" . (time() - 60) . "'");
 
             if ($req->rowCount()) {
                 $res = $req->fetch();
