@@ -42,7 +42,7 @@ $menu[] = $mod == 'history' ? '<b>' . _t('History') . '</b>' : '<a href="?act=on
 
 if ($systemUser->rights) {
     $menu[] = $mod == 'guest' ? '<b>' . _t('Guests') . '</b>' : '<a href="?act=online&amp;mod=guest">' . _t('Guests') . '</a>';
-    $menu[] = $mod == 'ip' ? '<b>' . _t('IP Activity') . '</b>' : '<a href="?act=online&amp;mod=ip">' . _t('IP Activity') . '</a>';
+    //$menu[] = $mod == 'ip' ? '<b>' . _t('IP Activity') . '</b>' : '<a href="?act=online&amp;mod=ip">' . _t('IP Activity') . '</a>';
 }
 
 echo '<div class="phdr"><b>' . _t('Who is online?') . '</b></div>' .
@@ -50,7 +50,7 @@ echo '<div class="phdr"><b>' . _t('Who is online?') . '</b></div>' .
 
 switch ($mod) {
     case 'history':
-        // История посетилелей за последние 2 суток
+        // История посетителей за последние 2 суток
         $sql_total = "SELECT COUNT(*) FROM `users` WHERE `lastdate` > " . (time() - 172800 . " AND `lastdate` < " . (time() - 310));
         $sql_list = "SELECT * FROM `users` WHERE `lastdate` > " . (time() - 172800) . " AND `lastdate` < " . (time() - 310) . " ORDER BY `sestime` DESC LIMIT ";
         break;
