@@ -127,11 +127,11 @@ switch ($mod) {
             $set_user = $userConfig->getArrayCopy();
 
             // Записываем новые настройки, заданные пользователем
-            $set_user['timeshift'] = isset($_POST['timeshift']) ? intval($_POST['timeshift']) : 0;
+            $set_user['timeshift'] = isset($_POST['timeshift']) ? (int) $_POST['timeshift'] : 0;
             $set_user['directUrl'] = isset($_POST['directUrl']);
             $set_user['youtube'] = isset($_POST['youtube']);
-            $set_user['fieldHeight'] = isset($_POST['fieldHeight']) ? abs(intval($_POST['fieldHeight'])) : 3;
-            $set_user['kmess'] = isset($_POST['kmess']) ? abs(intval($_POST['kmess'])) : 10;
+            $set_user['fieldHeight'] = isset($_POST['fieldHeight']) ? abs((int) $_POST['fieldHeight']) : 3;
+            $set_user['kmess'] = isset($_POST['kmess']) ? abs((int) $_POST['kmess']) : 10;
 
             if ($set_user['timeshift'] < -12) {
                 $set_user['timeshift'] = -12;
@@ -160,11 +160,13 @@ switch ($mod) {
             }
 
             // Записываем настройки
-            $db->prepare('UPDATE `users` SET `set_user` = ? WHERE `id` = ?')->execute([serialize($set_user), $systemUser->id]);
+            $db->prepare('UPDATE `users` SET `set_user` = ? WHERE `id` = ?')->execute([json_encode($set_user), $systemUser->id]);
             $_SESSION['set_ok'] = 1;
             header('Location: ?act=settings');
             exit;
-        } elseif (isset($_GET['reset'])) {
+        }
+
+        if (isset($_GET['reset'])) {
             // Задаем настройки по-умолчанию
             $db->exec("UPDATE `users` SET `set_user` = '' WHERE `id` = " . $systemUser->id);
             $_SESSION['reset_ok'] = 1;
