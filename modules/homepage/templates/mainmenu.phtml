@@ -1,4 +1,17 @@
-<?php $this->layout('system::layout/legacy', ['title' => _t('Welcome', 'system')]) ?>
+<?php
+
+/**
+ * @var string $news
+ * @var string $newscount
+ * @var bool $showGuestbook
+ * @var bool $showForum
+ * @var bool $showDownloads
+ * @var bool $showLibrary
+ * @var bool $showActive
+ */
+
+$this->layout('system::layout/legacy', ['title' => _t('Welcome', 'system')])
+?>
 
 <div class="phdr"><strong><?= _t('Information', 'system') ?></strong></div>
 <div><?= $news ?></div>
