@@ -71,8 +71,7 @@ switch ($mod) {
         // Настройки Форума
         echo '<div class="phdr"><b>' . _t('Settings') . '</b> | ' . _t('Forum') . '</div>' .
             '<div class="topmenu">' . implode(' | ', $menu) . '</div>';
-        $set_forum = [];
-        $set_forum = unserialize($systemUser->set_forum);
+        $set_forum = (array) json_decode($systemUser->set_forum);
 
         if (isset($_POST['submit'])) {
             $set_forum['farea'] = isset($_POST['farea']);
@@ -85,7 +84,7 @@ switch ($mod) {
             }
 
             $db->prepare('UPDATE `users` SET `set_forum` = ? WHERE `id` = ?')->execute([
-                serialize($set_forum),
+                json_encode($set_forum),
                 $systemUser->id,
             ]);
 
@@ -100,7 +99,7 @@ switch ($mod) {
             $set_forum['postclip'] = 1;
 
             $db->prepare('UPDATE `users` SET `set_forum` = ? WHERE `id` = ?')->execute([
-                serialize($set_forum),
+                json_encode($set_forum),
                 $systemUser->id,
             ]);
 

@@ -50,7 +50,7 @@ if (isset($_SESSION['ref'])) {
 }
 
 // Настройки форума
-$set_forum = $systemUser->isValid() ? unserialize($systemUser->set_forum) : [
+$set_forum = $systemUser->isValid() ? (array) json_decode($systemUser->set_forum) : [
     'farea'    => 0,
     'upfp'     => 0,
     'preview'  => 1,
