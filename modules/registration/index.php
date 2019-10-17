@@ -178,7 +178,7 @@ if ($config->mod_reg == 1) {
     echo '<div class="rmenu"><p>' . _t('You can get authorized on the site after confirmation of your registration.') . '</p></div>';
 }
 
-$captcha = new Mobicms\Captcha\Captcha;
+$captcha = new Batumibiz\Captcha\Captcha;
 $code = $captcha->generateCode();
 $_SESSION['code'] = $code;
 
