@@ -1,15 +1,19 @@
-# [mobiCMS Classic](http://mobicms.org)
+# Attention!
+Most of the developments on the project mobioCMS-Classic was moved to JohnCMS 9.0.0.  
+This repository no longer maintained.
 
-Система управления сайтом mobiCMS Classic предназначена для построения сайтов, которые будут просматриваться с мобильных телефонов.
+Please see the [repository of the JohnCMS project](https://github.com/simba77/johncms),  
+all subsequent commits after the tag 8.0.0.
 
-## Системные требования
-- Версия PHP не ниже 7.0
-- MySQL версии не ниже 5.5
-- Поддержка .htaccess
+**_Good luck to everyone!_**  
+_Oleg (AlkatraZ) Kasyanov_
 
-## Установка из репозитория
-1. У Вас должен иметься [Composer](https://getcomposer.org/), компьютер должен быть подключен к Internet.  
-2. В консоли наберите команду:  `composer install` установите все зависимости.
-3. Наберите в браузере адрес: http://ваш.сайт/install
-4. Запустится Инсталлятор, далее следуйте его инструкциям
-5. После установки **обязательно** удалите каталог /install
+# Внимание!
+Большинство наработок по проекту mobioCMS-Classic были перенесены в JohnCMS 9.0.0.
+В данном репозитории разработка больше не ведется.
+
+Пожалуйста смотрите [репозитоирй проекта JohnCMS](https://github.com/simba77/johncms),  
+все последующие комиты после тэга 8.0.0.
+
+**_Всем удачи!_**  
+_Олег (AlkatraZ) Касьянов_
